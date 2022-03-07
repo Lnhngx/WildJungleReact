@@ -1,0 +1,173 @@
+.productContainer {
+    width: calc(100% - 60px);
+    margin: 0px 30px 0 30px;
+    padding-top: 60px;
+}
+
+.slider {
+    width: 100%;
+    position: relative;
+    height: 46vw;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+}
+
+.mainPic {
+    width: 100%;
+    height: 46vw;
+}
+
+.main {
+    width: 100%;
+    height: 46vw;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+.white {
+    width: 100%;
+    clip-path: polygon(0 0, 20% 0, 45% 100%, 0% 100%);
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    height: 46vw;
+}
+
+.adTitle {
+    font-family: 'Noto Sans TC', sans-serif;
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 2%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 12px;
+}
+
+.adTitle h1 {
+    font-weight: 700;
+}
+
+.titlespan {
+    margin-top: 20px;
+}
+
+.iconGroup {
+    position: absolute;
+    z-index: 4;
+    bottom: 0;
+    left: 55%;
+    color: #C4C4C4;
+    text-shadow: 1px 1px white, -1px -1px gray;
+    transform: translate(-50%);
+    font-size: 12px;
+}
+
+.iconGroup i {
+    margin: 0 5px 0 5px;
+}
+
+.adNew {
+    position: absolute;
+    z-index: 5;
+    font-size: 25px;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 20%;
+    left: 19%;
+    letter-spacing: 1px;
+}
+
+.adNew .span-1 {
+    color: #EB5C37;
+}
+
+.secondSpan {
+    margin-top: 15px;
+}
+
+.sliderButtom {
+    width: 100%;
+}
+
+.sliderButtom button {
+    font-family: 'Playfair Display', serif;
+    width: 100%;
+    display: block;
+    border: 0;
+    height: 50px;
+    background-color: #000000;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sliderButtom button .span2 {
+    display: inline-block;
+    margin-top: -15px;
+    font-size: 40px;
+}
+.typeGroup{
+    font-family: 'Playfair Display',serif;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media screen and (min-width:980px) {
+
+    .productContainer {
+        width: 100%;
+        margin: 0;
+    }
+
+    .slider {
+        height: 40vw;
+        border-bottom: 4px solid;
+    }
+
+    .mainPic {
+        height: 40vw;
+    }
+
+    .main {
+        width: 73%;
+        height: 40vw;
+        object-fit: contain;
+        right: 0;
+    }
+
+
+    .adNew {
+        font-size: 75px;
+        top: 20%;
+        left: 37%;
+        font-weight: 700;
+    }
+
+    .white {
+        clip-path: polygon(0 0, 38% 0, 55% 100%, 0% 100%);
+        height: 40vw;
+    }
+
+    .adTitle {
+        font-size: 28px;
+        margin: 50px;
+    }
+    .adTitle h1{
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+    .iconGroup {
+        left: 50%;
+    }
+    .sliderButtom{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 200px;
+    }
+}
