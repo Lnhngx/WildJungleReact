@@ -16,15 +16,28 @@ function homePage() {
           </li>
         </ul>
       </div>
-      <div><img src="/img/home/homebgc(black).svg"></img></div>
-      <div className="ninghometicketbox">
-      <div className="ninghomeAdmissionbox"></div>
+      <div className="ninghomeJungleTour">
+        <img src="/img/home/homebgcblack.svg"></img>
+        <div className="ninghomeJungleTourTitle">
+          <h1 className="ninghomeEnTitle">Jungle Tour</h1>
+          <p className="ninghomeChTitle">園區分類一覽</p>
+          <div className="ninghomeJungleTourmap">
+            <img src="/img/home/tropicalmap.svg"></img>
+          </div>
+        </div>
+        <div className="ninghometropical">
+          <img src="/img/home/tropical.jpg"></img>
+        </div>
+      </div>
+
+      {/* <div className="ninghometicketbox">
+        <div className="ninghomeAdmissionbox"></div>
         <div className="ninghomeAdmissionboxIcon">
           <i className="homeIconfas fas fa-users"></i>
           <p className="ninghomeAdmissionText">入園人數</p>
         </div>
         <div className="ninghomeAdmissionNumber">180</div>
-      </div>
+      </div> */}
     </>
   );
 }

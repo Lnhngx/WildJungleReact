@@ -1,13 +1,13 @@
 .ninghomeCarouselWrapImg li img {
   width: 100vw;
-  height:800px;
+  height: 800px;
   display: flex;
   object-fit: cover;
 }
 .ninghomeCarouselWrap {
   padding-top: 60px;
   width: 100vw;
-  height: 800px;
+  height: 750px;
   overflow: hidden;
 }
 .ninghomeCarouselWrapImg {
@@ -17,18 +17,53 @@
   transform: translateX(0px);
 }
 
-.ninghometicketbox{
-    width: 70vw;
-    height: 120px;
-    background-color: #555;
-    position: absolute;
-    right: 0;
-    top: 800px;
-    display: flex;
+.ninghometicketbox {
+  width: 70vw;
+  height: 120px;
+  background-color: #555;
+  position: absolute;
+  right: 0;
+  top: 800px;
+  display: flex;
 }
 
-.homeIconfas{
+.homeIconfas {
   color: white;
-  font-size:3rem;
+  font-size: 3rem;
 }
-
+.ninghomeJungleTour{
+  width: 100vw;
+  position: relative;
+}
+.ninghomeJungleTour img {
+  width: 100%;
+}
+.ninghomeEnTitle {
+  font-size:72px;
+  font-weight:700;
+  color:white;
+  margin-bottom:30px;
+  padding-left:120px;
+}
+.ninghomeChTitle{
+  font-family: "Noto Sans TC", sans-serif;
+  font-size:2rem;
+  font-weight: 400;
+  color: white;
+  padding-left:120px;
+}
+.ninghomeJungleTourTitle{
+  position:absolute;
+  top:150px;
+}
+.ninghomeJungleTourmap{
+  margin-left: 30px;
+  margin-top: 80px;
+}
+.ninghometropical{
+  width: 15%;
+  overflow: hidden;
+}
+.ninghometropical img{
+  width: 50%;
+}
