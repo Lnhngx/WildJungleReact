@@ -26,7 +26,7 @@ function App() {
 
         {/* 路由表 */}
         <Switch>
-          <Route path="/homepage">
+          <Route exact path="/">
             <HomePage />
           </Route>
           <Route path="/tour">
