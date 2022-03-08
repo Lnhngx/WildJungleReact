@@ -1,0 +1,45 @@
+$stan_color1: #eb5c37;
+$stan_color2: #f9b112;
+$stan_color3: #1b7754;
+
+.stan-carts-main {
+    width: 100%;
+    height: auto;
+    padding-top: 60px;
+    background-color: #ececec;
+}
+
+.stan-process {
+    height: 80px;
+}
+
+.stan-process-iconarea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stan-circle {
+    width: 60px;
+    height: 60px;
+    background-color: $stan_color1;
+    border-radius: 50%;
+    text-align: center;
+}
+.stan-line {
+    width: 205px;
+    height: 4px;
+    background-color: #c4c4c4;
+}
+
+@media screen and (max-width: 375px) {
+
+    .stan-circle {
+        width: 35px;
+        height: 35px;
+    }
+
+    .stan-line {
+        width: 65px;
+    }
+}
