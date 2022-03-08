@@ -41,7 +41,7 @@ function App() {
           <Route path="/game">
             <Game />
           </Route>
-          <Route path="/orders">
+          <Route path="/carts">
             <Orders />
           </Route>
           <Route path="/members">
