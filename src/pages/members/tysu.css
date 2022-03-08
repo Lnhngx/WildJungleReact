@@ -1,0 +1,381 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+@font-face {
+  font-family: "Noto Sans TC", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+  unicode-range: U+4E00-9FFF;
+}
+
+@font-face {
+  font-family: "Playfair Display", serif;
+  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  unicode-range: U+00-024F;
+}
+
+:root {
+  --tysu_color: #f9b112;
+  --tysu_color2: #eb5c37;
+  --tysu_fontSize: 1.2rem;
+  --tysu_fontWeight: 600;
+  --tysu_showdow: 0 0 3px #f9b01210;
+  --tysu_inputMargin: 1.8rem 0 0 1.8rem;
+}
+.tysu_contain {
+  width: 100vw- calc(100vw - 100%);
+}
+
+.tysu_h1 {
+  padding: 106px 0;
+  font-size: 3rem;
+  background: linear-gradient(135deg, rgb(9, 32, 27), rgb(27, 119, 84) 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 900;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.tysu_tr th,
+.tysu_tr td {
+  text-align: right;
+  border-bottom: 1px solid #e9e9e9;
+  font-weight: var(--tysu_fontWeight);
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+
+span {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+
+.tysu_input {
+  border: 0.8px solid #000;
+  width: 420px;
+  height: 50px;
+  margin: var(--tysu_inputMargin);
+  font-size: var(--tysu_fontSize);
+  outline: none;
+  background-color: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition-delay: 99999s;
+  transition: color 99999s ease-out, background-color 99999s ease-out;
+  -webkit-transition-delay: 99999s;
+  -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+  -webkit-text-fill-color: #000;
+}
+
+.tysu_input:focus {
+  outline: 0.8px solid var(--tysu_color);
+  border: 0.8px solid transparent;
+  border-color: var(--tysu_color);
+  box-shadow: 0 0 3px 3px transparent;
+  background-color: transparent;
+}
+
+.tysu_year {
+  width: 150px;
+  margin-right: 0.5rem;
+}
+
+.tysu_month,
+.tysu_date {
+  width: 80px;
+  margin: 0 0.5rem;
+}
+#emailHelp,
+#nameHelp,
+#genderHelp,
+#birthHelp,
+#tysu_adressHelp,
+#tysu_passHelp,
+#tysu_cfPassHelp,
+#tysu_codeHelp,
+#addressHelp {
+  margin: 0.3rem 0 0.3rem 2rem;
+  height: 1rem;
+  text-align: left;
+  font-size: 1rem;
+}
+.tysu_tr th.tysu_last,
+.tysu_tr td.tysu_last {
+  border-bottom: 0;
+  margin-bottom: 40px;
+}
+
+.tysu_btn_sign,
+.tysu_editBtn,
+.tysu_cancelBtn,
+.tysu_gradeBtn,
+.tysu_addBtn,
+.tysu_addressBtn {
+  border: 0;
+  background-color: none;
+  outline: none;
+  -webkit-appearance: none;
+  height: 50px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: var(--tysu_fontWeight);
+  margin: 1.4rem 0 10px 1.8rem;
+}
+.tysu_btn_sign {
+  display: block;
+  width: 320px;
+  background-color: var(--tysu_color);
+}
+.tysu_editBtn,
+.tysu_cancelBtn {
+  width: 160px;
+  background-color: #000;
+}
+
+.tysu_gradeBtn {
+  width: 160px;
+  margin: 0;
+  background-color: #09201b;
+}
+.tysu_addBtn {
+  width: 830px;
+  background-color: var(--tysu_color);
+  margin-left: 0;
+}
+.tysu_addBtn img,
+.tysu_addressBtn img {
+  height: 60%;
+}
+.tysu_addressBtn {
+  display: inline-block;
+  width: 800px;
+  background-color: var(--tysu_color);
+  margin: 1.4rem auto 0 50%;
+  transform: translateX(-50%);
+}
+
+/* canvas-------------- */
+.tysu_tr_code #mycanvas {
+  margin: 1.4rem 0 0 1.8rem;
+}
+
+#myCode {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  line-height: 0.85rem;
+  padding: 10px;
+  width: 278px;
+  margin: 16px 0 22px;
+  border: 0.5px solid #ccc;
+}
+/* canvas-------------- */
+.tysu_btn_sign a,
+.tysu_help a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  font-weight: var(--tysu_fontWeight);
+  margin-left: 1rem;
+  letter-spacing: 0.02rem;
+  text-indent: 0.02rem;
+}
+.tysu_btn_sign a:visited,
+.tysu_help a:visited {
+  color: #000;
+}
+.tysu_help img {
+  margin-right: 0.25rem;
+  vertical-align: sub;
+  color: #d2d2d2;
+}
+.tysu_help {
+  width: 320px;
+  margin: 0 0 0 1.8rem;
+  text-align: right;
+}
+
+.tysu_contain {
+  height: 90vmin;
+  width: 100vw - calc(100vw - 100%);
+  margin: 0 calc(-50vw + 50% + (var(--scroll-bar) / 2));
+}
+
+.tysu_titleSpan {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.tysu_gradeImg {
+  /* background: url("./tysu_img/d.png") bottom 47.3% center/120% no-repeat; */
+  width: 830px;
+  height: 226px;
+  /* outline: 1px solid red; */
+  overflow: hidden;
+  margin: 108px auto 14px auto;
+}
+.tysu_gradeLi {
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+}
+.tysu_gradetext {
+  /* line-height: 50px; */
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.tysu_gradeSmall {
+  width: 450%;
+  left: -257px;
+  top: -145px;
+  position: absolute;
+}
+.tysu_memberList {
+  margin-bottom: 3.8rem;
+}
+.tysu_memberList li {
+  width: 195px;
+  height: 100px;
+  font-size: 1.1rem;
+  font-weight: var(--tysu_fontWeight);
+  border: 0.8px solid #000;
+  text-align: center;
+  line-height: 100px;
+  margin: 0 7px;
+}
+.tysu_memberList li:hover {
+  color: var(--tysu_color2);
+  border: 0.8px solid var(--tysu_color2);
+  box-shadow: var(--tysu_showdow);
+}
+.tysu_memberList,
+.tysu_memberChild,
+.tysu_focusUnderLine {
+  display: flex;
+  justify-content: center;
+}
+.tysu_memberChild li,
+.tysu_focusUnderLine li {
+  width: 150px;
+}
+.tysu_memberChild li {
+  /* outline: 1px solid red; */
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: var(--tysu_fontWeight);
+}
+
+.tysu_focusUnderLine li {
+  height: 0.6rem;
+  background-color: #000;
+  margin: 0 8px 3.8rem;
+}
+
+.tysu_hr {
+  width: 830px;
+  border: 0;
+  background-color: black;
+  height: 1px;
+  margin: 4px auto 0;
+}
+/* 子項目底線 */
+
+.tysu_listHr {
+  margin-bottom: 4px;
+}
+
+.tysu_bg {
+  position: absolute;
+  max-width: 330px;
+  right: calc(50% - 410px);
+  opacity: 0.4;
+  z-index: -1;
+  color: var(--tysu_color);
+  /* background: url(./tysu_img/5603122.svg) 820px / 22% no-repeat; */
+}
+
+.tysu_creditCard {
+  width: 100px;
+  height: 50px;
+  margin: 1.8rem 0.2rem 1.8rem;
+  font-size: var(--tysu_fontSize);
+  border: 0.8px solid #000;
+  font-size: var(--tysu_fontSize);
+  outline: none;
+  background-color: transparent;
+}
+.tysu_creditCard.first {
+  margin: 1.8rem 0.2rem 0 1.8rem;
+}
+.tysu_expireDate,
+.tysu_codeContent {
+  display: flex;
+  justify-items: start;
+}
+.tysu_expireDateList {
+  display: flex;
+  justify-self: start;
+  margin: 0 0 0 0;
+}
+#tysu_expireDate,
+.tysu_code,
+.tysu_creditYear {
+  margin: 1.8rem 0.5rem 1.8rem 1.8rem;
+}
+.tysu_code {
+  width: 100px;
+}
+.tysu_creditYear {
+  margin-left: 0.5rem;
+}
+.tysu_creditGroup {
+  display: flex;
+  width: 700px;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  align-items: center;
+}
+
+.tysu_creditImg {
+  width: 514px;
+  height: 325px;
+  display: flex;
+  margin: 0 auto;
+}
+.tysu_creditNum {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+.tysu_Bank {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 30%;
+  font-size: 2rem;
+  font-weight: var(--tysu_fontWeight);
+}
+.tysu_creditDelete img,
+.tysu_creditEdit img,
+.tysu_addressDelete img,
+.tysu_addressEdit img {
+  width: 32px;
+  padding: 32px;
+}
+
+.tysu_list {
+  display: flex;
+}
