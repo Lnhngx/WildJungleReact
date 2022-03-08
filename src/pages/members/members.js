@@ -1,6 +1,9 @@
 import React from "react";
-import Login from './Login.js'
-import Signup from './Signup.js'
+import Login from './components/Login.js'
+import Signup from './components/Signup.js'
+import ForgotPass from './components/ForgotPass.js'
+import ForgotPassChange from './components/ForgotPassChange.js'
+import MemberInfo from './components/MemberInfo.js'
 
 import './../members/tysu.css'
 
@@ -10,12 +13,15 @@ function members(){
 
 
 
-    return(
-    <div className="container tysu_contain">
-    <h1 className="tysu_h1">LOGIN</h1>
-    <Login />
-    <Signup />
-  </div>
+    return(<>
+      <div className="container tysu_contain">
+        {/* <Login /> */}
+        {/* <Signup /> */}
+        {/* <ForgotPass /> */}
+        {/* <ForgotPassChange /> */}
+        <MemberInfo />
+      </div>
+    </>
   )
 }
 

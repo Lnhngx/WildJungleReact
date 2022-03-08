@@ -2,7 +2,9 @@
 import React from "react";
 
 function Signup(){
-    return(<><form id="tysu_form">
+    return(<>
+    <h1 className="tysu_h1">SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
+    <form id="tysu_form">
     <table>
         <tbody>
             <tr className="tysu_tr">
@@ -38,13 +40,9 @@ function Signup(){
                     <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
                 </th>
                 <td>
-                    <input type="number" id="tysu_birth" className="tysu_input tysu_year" maxLength="4"
-                    value={inpuyValue}
-                         />年
-                    <input type="text" className="tysu_input tysu_month" maxLength="2"
-                        onInput="value=value.replace(/[^\d]/g,'')" />月
-                    <input type="text" className="tysu_input tysu_date" maxLength="2"
-                        onInput="value=value.replace(/[^\d]/g,'')" />日
+                    <input type="number" id="tysu_birth" className="tysu_input tysu_year" maxLength="4" />年
+                    <input type="text" className="tysu_input tysu_month" maxLength="2" />月
+                    <input type="text" className="tysu_input tysu_date" maxLength="2" />日
                     <div id="birthHelp"></div>
                 </td>
             </tr>

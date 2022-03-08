@@ -1,7 +1,18 @@
-import React from "react";
+import React ,{useEffect} from "react";
+
 
 function Login(){
+
+
+  useEffect(() => {
+    
+  }, []);
+
+
+
+
     return(<>
+    <h1 className="tysu_h1">LOGIN</h1>
 <form id="tysu_form">
       <table>
         <tbody>

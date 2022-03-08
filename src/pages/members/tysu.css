@@ -20,8 +20,9 @@
   --tysu_showdow: 0 0 3px #f9b01210;
   --tysu_inputMargin: 1.8rem 0 0 1.8rem;
 }
+
 .tysu_contain {
-  width: 100vw- calc(100vw - 100%);
+  min-height: 75vw;
 }
 
 .tysu_h1 {
@@ -35,7 +36,7 @@
   text-align: center;
 }
 
-table {
+#tysu_form table {
   border-collapse: collapse;
   margin: 0 auto;
 }
@@ -49,7 +50,7 @@ table {
   vertical-align: middle;
 }
 
-span {
+.tysu_tr span {
   font-family: "Playfair Display", serif;
   font-weight: 500;
 }
@@ -177,8 +178,8 @@ input:-webkit-autofill:active {
   border: 0.5px solid #ccc;
 }
 /* canvas-------------- */
-.tysu_btn_sign a,
-.tysu_help a {
+.tysu_btn_sign Link,
+.tysu_help Link {
   text-decoration: none;
   color: #000;
   font-size: 1rem;
@@ -202,24 +203,22 @@ input:-webkit-autofill:active {
   text-align: right;
 }
 
-.tysu_contain {
-  height: 90vmin;
-  width: 100vw - calc(100vw - 100%);
-  margin: 0 calc(-50vw + 50% + (var(--scroll-bar) / 2));
-}
-
 .tysu_titleSpan {
   display: inline-block;
   margin-top: 6px;
 }
 
 .tysu_gradeImg {
-  /* background: url("./tysu_img/d.png") bottom 47.3% center/120% no-repeat; */
+  background: url("../../../public/img/member/d.png") bottom 50% center/110%
+    no-repeat;
   width: 830px;
   height: 226px;
   /* outline: 1px solid red; */
   overflow: hidden;
-  margin: 108px auto 14px auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.9rem;
+  padding: 106px 0;
 }
 .tysu_gradeLi {
   width: 160px;
@@ -378,4 +377,10 @@ input:-webkit-autofill:active {
 
 .tysu_list {
   display: flex;
+}
+
+.tysu_link {
+  color: #000;
+
+  text-decoration: none;
 }
