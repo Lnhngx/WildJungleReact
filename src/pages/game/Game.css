@@ -4,11 +4,12 @@ body {
 .container {
     width: 100%;
 }
-.title{
+.game_title{
     width: 100%;
     font-size: 3rem;
     color: white;
     text-align: center;
+    /* margin-top: 50px; */
 }
 .leaf_left{
     width: 200px;
