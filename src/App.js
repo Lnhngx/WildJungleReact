@@ -9,7 +9,7 @@ import HomePage from "./pages/homePage/homePage";
 import Tour from "./pages/tour/tour";
 import AnimalTouch from "./pages/animalTouch/animalTouch";
 import Products from "./pages/products/products";
-import Game from "./pages/question/question";
+import Game from "./pages/game/Game";
 import Members from "./pages/members/members";
 import Orders from "./pages/orders/orders";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
