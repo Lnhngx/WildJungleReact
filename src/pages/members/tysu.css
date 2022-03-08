@@ -142,7 +142,7 @@ input:-webkit-autofill:active {
 }
 
 .tysu_gradeBtn {
-  width: 160px;
+  width: 150px;
   margin: 0;
   background-color: #09201b;
 }
@@ -188,8 +188,9 @@ input:-webkit-autofill:active {
   letter-spacing: 0.02rem;
   text-indent: 0.02rem;
 }
-.tysu_btn_sign a:visited,
-.tysu_help a:visited {
+.tysu_btn_sign Link:visited,
+.tysu_help Link:visited,
+.tysu_link Link:visited {
   color: #000;
 }
 .tysu_help img {
@@ -227,9 +228,7 @@ input:-webkit-autofill:active {
   position: relative;
 }
 .tysu_gradetext {
-  /* line-height: 50px; */
-  margin-top: auto;
-  margin-bottom: auto;
+  align-self: center;
 }
 .tysu_gradeSmall {
   width: 450%;
@@ -250,11 +249,18 @@ input:-webkit-autofill:active {
   line-height: 100px;
   margin: 0 7px;
 }
+
+/* -----li hover 文字顏色會被改變----- */
 .tysu_memberList li:hover {
   color: var(--tysu_color2);
   border: 0.8px solid var(--tysu_color2);
   box-shadow: var(--tysu_showdow);
 }
+.tysu_memberList li:hover .tysu_link {
+  color: var(--tysu_color2);
+}
+/* ---------------------------------- */
+
 .tysu_memberList,
 .tysu_memberChild,
 .tysu_focusUnderLine {
@@ -270,6 +276,7 @@ input:-webkit-autofill:active {
   text-align: center;
   font-size: 1.1rem;
   font-weight: var(--tysu_fontWeight);
+  margin: 8px;
 }
 
 .tysu_focusUnderLine li {
@@ -381,6 +388,8 @@ input:-webkit-autofill:active {
 
 .tysu_link {
   color: #000;
-
   text-decoration: none;
 }
+/* .tysu_link:hover {
+  color: var(--tysu_color2);
+} */
