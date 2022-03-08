@@ -1,6 +1,6 @@
 import React from "react";
 import './chatbot.css';
- function Chatbot(){
+ function chatbot(){
      return(
      <>
         <div className="wrap">
@@ -59,4 +59,4 @@ import './chatbot.css';
      </>
      )
  }
- export default Chatbot
+ export default chatbot

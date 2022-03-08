@@ -1,7 +1,7 @@
 import React from "react";
-import Chatbot from './Chatbot'
+import Chatbot from './chatbot'
 import './game.css';
- function Game(){
+ function game(){
      return(
      <>
         <div className="container">
@@ -19,8 +19,9 @@ import './game.css';
             </div>
             <Chatbot />
         </div>
-        
+         
+
      </>
      )
  }
- export default Game
+ export default game
