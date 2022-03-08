@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(249,177,18);
+}
+.container {
+    width: 100%;
+}
+.game_title{
+    width: 100%;
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    /* margin-top: 50px; */
+}
+.leaf_left{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    position: absolute;
+    z-index: 55;
+    top: 100px;
+    left: 0;
+}
+.leaf_left img{
+    width: 200px;
+    height: auto;
+    /* position: absolute;
+    object-position: center center; */
+}
+.leaf_right{
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
