@@ -1,8 +1,6 @@
-body {
-    background-color: rgb(249,177,18);
-}
 .container {
     width: 100%;
+    background-color: rgb(249,177,18);
 }
 .game_title{
     width: 100%;

@@ -10,6 +10,7 @@ import Tour from "./pages/tour/tour";
 import AnimalTouch from "./pages/animalTouch/animalTouch";
 import Products from "./pages/products/products";
 import Game from "./pages/game/game";
+import SpotDiff from "./pages/game/spot-diff"
 import Members from "./pages/members/members";
 import Orders from "./pages/carts/carts";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
@@ -38,7 +39,10 @@ function App() {
           <Route path="/products">
             <Products />
           </Route>
-          <Route path="/game">
+          <Route path="/game/spot-diff">
+            <SpotDiff />
+          </Route>
+          <Route exact path="/game">
             <Game />
           </Route>
           <Route path="/carts">
