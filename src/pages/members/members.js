@@ -3,7 +3,7 @@ import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import ForgotPass from './components/ForgotPass.js'
 import ForgotPassChange from './components/ForgotPassChange.js'
-import MemberInfo from './components/MemberInfo.js'
+import MemberList from './components/MemberList.js'
 
 import './../members/tysu.css'
 
@@ -19,7 +19,7 @@ function members(){
         {/* <Signup /> */}
         {/* <ForgotPass /> */}
         {/* <ForgotPassChange /> */}
-        <MemberInfo />
+        <MemberList />
       </div>
     </>
   )

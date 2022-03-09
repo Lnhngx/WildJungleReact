@@ -33,7 +33,7 @@ function GradeInfo(){
             
         <hr className="tysu_hr tysu_listHr" />
         
-        <ul className="tysu_memberChild">
+        <ul className="tysu_memberChild" style={{paddingBottom:"7rem"}}>
             <li><button id="tysu_gradeBtn" className="tysu_gradeBtn">優&emsp;&emsp;惠</button></li>
             <li className="tysu_gradetext">享一次免運</li>
             <li className="tysu_gradetext">購物享九折</li>
