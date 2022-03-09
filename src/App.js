@@ -13,6 +13,7 @@ import Game from "./pages/game/game";
 import SpotDiff from "./pages/game/spot-diff"
 import Members from "./pages/members/members";
 import Orders from "./pages/carts/carts";
+import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 
 
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/members">
             <Members />
+          </Route>
+          <Route path="/lodging">
+            <Lodging />
           </Route>
           {/* 網址上的動態參數params 
           <Route path="/product-list/product-detail/:id?">
