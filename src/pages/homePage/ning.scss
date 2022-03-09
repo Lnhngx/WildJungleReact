@@ -3,23 +3,28 @@ $ning-color2: #f9b112;
 $ning-color3: #ffffff;
 $ning-color4: #000000;
 $ning-color5: #1b7754;
+$ning-chinesefont: "Noto Sans", sans-serif;
+$ning-englishont: "Playfair Display", serif;
 
 @media screen and (min-width: 700px) {
   .ning_homecontainer {
     position: relative;
   }
+
   .ning_CarouselWrapImg li img {
     width: 100vw;
     height: 800px;
     display: flex;
     object-fit: cover;
   }
+
   .ning_CarouselWrap {
     padding-top: 60px;
     width: calc(100vw - calc(100vw - 100%));
     height: 80%;
     overflow: hidden;
   }
+
   .ning_CarouselWrapImg {
     display: flex;
     width: 300vw;
@@ -27,48 +32,174 @@ $ning-color5: #1b7754;
     transform: translateX(0px);
   }
 
-  .ning_ticketbox {
+  /* ticketbox */
+
+  .ning_informationbox {
     width: 65vw;
-    height: 120px;
+    height: 100px;
     background-color: #555;
     position: absolute;
     right: 0;
-    top: 800px;
+    top: 810px;
     display: flex;
   }
+
   .ning_Admissionbox {
     display: flex;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-right:1px solid;
-    border-color: $ning-color3;
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
+
   .ning_AdmissionboxIcon {
     position: relative;
   }
 
   .material-icons {
     color: $ning-color3;
-    font-size: 4rem;
-    margin-left: 4px;
+    font-size: 3.2rem;
+    margin-left: 3px;
   }
 
-  .ninghometicket {
-    color: $ning-color3;
-    font-size: 18px;
-    position: absolute;
-    top: 55px;
-  }
-
-  .ninghometicketEn {
+  .ninghomeAdmission {
+    font-family: $ning-chinesefont;
     color: $ning-color3;
     font-size: 14px;
     position: absolute;
-    top: 80px;
-    left: 18px;
+    top: 46px;
+  }
+
+  .ninghomeAdmissionEn {
+    font-family: $ning-englishont;
+    color: $ning-color3;
+    font-size: 12px;
+    position: absolute;
+    top: 65px;
+    left: 10px;
+  }
+
+  .ninghomeAdmissionCout {
+    display: flex;
+    padding-top: 24px;
+  }
+
+  .ninghomeAdmissionNumber {
+    font-family: $ning-chinesefont;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: $ning-color3;
+    padding-left: 15px;
+    padding-top: 6px;
+  }
+
+  .ninghomeAdmissionUnit {
+    font-family: $ning-chinesefont;
+    font-size: 0.8rem;
+    color: $ning-color3;
+    padding-top: 24px;
+    padding-left: 3px;
+  }
+
+  .ning_ticketborderbox {
+    padding-top: 15px;
+    margin-left: 30px;
+  }
+
+  .ning_ticketborder {
+    height: 60px;
+    border-right: 0.7px solid;
+    border-color: $ning-color3;
+  }
+
+  .ning_weatherbox {
+    padding-top: 5px;
+    display: flex;
+    padding-right: 30px;
+  }
+
+  .ning_weatherboxIcon {
+    position: relative;
+  }
+
+  .ning_weatherIcon {
+    color: $ning-color3;
+    font-size: 2rem;
+    margin-left: 7px;
+    margin-top: 9px;
+  }
+
+  .ninghomeweather {
+    font-family: $ning-chinesefont;
+    color: $ning-color3;
+    font-size: 14px;
+    position: absolute;
+    top: 46px;
+  }
+
+  .ninghomeweatherEn {
+    font-family: $ning-englishont;
+    color: $ning-color3;
+    font-size: 12px;
+    position: absolute;
+    top: 65px;
+    left: 9px;
+  }
+
+  .ninghomeweatherCout {
+    display: flex;
+    padding-top: 24px;
+  }
+
+  .ninghomeweatherNumber {
+    font-family: $ning-chinesefont;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: $ning-color3;
+    padding-left: 15px;
+    padding-top: 6px;
+  }
+
+  .ninghomeweatherUnit {
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    color: $ning-color3;
+    padding-top: 12px;
+    padding-left: 3px;
+  }
+  .ning_ticketbox {
+    display: flex;
+    padding-top: 5px;
+    padding-right: 30px;
+  }
+  .ning_ticketboxIcon {
+    position: relative;
+  }
+  .ning_ticketIcon {
+    color: $ning-color3;
+    font-size: 2.8rem;
+    margin-left: 5px;
+  }
+  .ninghometicket {
+    font-family: $ning-chinesefont;
+    color: $ning-color3;
+    font-size: 14px;
+    position: absolute;
+    top: 46px;
+  }
+  .ninghometicketEn {
+    font-family: $ning-englishont;
+    color: $ning-color3;
+    font-size: 12px;
+    position: absolute;
+    top: 65px;
+    left: 10px;
+  }
+
+  /* JungleTour */
+  .ning_bgcblack {
+    width: calc(100vw - calc(100vw - 100%));
   }
   .ning_JungleTour {
-    width: calc(100vw - calc(100vw - 100%));
     position: relative;
   }
   .ning_JungleTour img {
@@ -77,38 +208,21 @@ $ning-color5: #1b7754;
   .ning_EnTitle {
     font-size: 72px;
     font-weight: 700;
-    color: white;
+    color: $ning-color3;
     margin-bottom: 30px;
     padding-left: 120px;
   }
   .ning_ChTitle {
-    font-family: "Noto Sans", sans-serif;
+    font-family: $ning-chinesefont;
     font-size: 2rem;
     font-weight: 400;
     color: $ning-color3;
     padding-left: 120px;
   }
-  .ninghomeAdmissionCout {
-    display: flex;
-    padding-top: 38px;
-  }
-  .ninghomeAdmissionNumber {
-    font-family: "Noto Sans", sans-serif;
-    font-size: 3rem;
-    font-weight: 500;
-    color: $ning-color3;
-    padding-left: 20px;
-  }
-  .ninghomeAdmissionUnit {
-    font-family: "Noto Sans", sans-serif;
-    font-size: 1.2rem;
-    color: $ning-color3;
-    padding-top: 24px;
-    padding-left: 3px;
-  }
+
   .ning_JungleTourTitle {
     position: absolute;
-    top: 150px;
+    top: 50px;
   }
   .ning_JungleTourmap {
     margin-left: 30px;
