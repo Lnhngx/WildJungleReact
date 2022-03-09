@@ -3,7 +3,7 @@
     padding-top: 60px;
     padding-bottom: 60px;
     background-color: rgb(249,177,18);
-    margin-bottom: -200px;
+    margin-bottom: -400px;
 }
 .game_title{
     padding-top: 2rem;
@@ -16,29 +16,52 @@
 }
 .game_profile{
     margin-top: 2rem;
-   text-align: center; 
-   color: black;
-   line-height: 25px;
+    text-align: center; 
+    color: black;
+    line-height: 27px;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+}
+.game_profile span{
+    color: red;
+    
+    font-weight: 800;
 }
 .leaf_left{
-    width: 200px;
-    height: 200px;
-    background-color: red;
+    width: 180px;
+    height: 180px;
     position: absolute;
-    z-index: 55;
-    top: 100px;
+    top: 20px;
     left: 0;
 }
+.cloud_left{
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top: 230px;
+    left: 230px;
+}
+.cloud_right{
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top: 190px;
+    right: 150px;
+}
 .leaf_left img{
-    width: 200px;
+    width: 100%;
     height: auto;
-    /* position: absolute;
-    object-position: center center; */
 }
 .leaf_right{
+    width: 180px;
+    height: 180px;
     position: absolute;
-    top: 100px;
+    top: 20px;
     right: 0;
+}
+.leaf_right img{
+    width: 100%;
+    height: auto;
 }
 *{
     margin: 0;
@@ -51,9 +74,9 @@
     flex-wrap: wrap;
     align-content: space-between;
     width: calc(100% - 300px);
-    height: 700px;
-    margin: 60px auto;
-    background-color: rgb(27,119,84);
+    height: 800px;
+    margin: 40px auto;
+    background-color: rgb(49, 40, 8);
     border-radius: 30px;
 }
 .upper{
@@ -85,17 +108,29 @@
 }
 .wrap_pic {
     width: 48%;
-    
+    position: relative;
+}
+.wrap_pic img{
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    border:3px solid wheat;
 }
 .wrap1_pic {
     width: 48%;
+    position: relative;
     cursor: pointer;
 }
-
+.wrap1_pic img{
+    width: 100%;
+            height: auto;
+            background-size: cover;
+            border:3px solid wheat;
+}
 .spot_tool{
     width: 100%;
-    height: 50px;
-    background-color: darkgreen;
+    height: 70px;
+    background-color: rgb(31, 22, 3);
     border-radius:0 0 30px 30px ;
     display: flex;
     justify-content: space-between;
@@ -108,11 +143,12 @@
 .right_tool{
     width: 150px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    align-items: center;
 }
 .list{
     text-align: center;
-    line-height: 38px;
+    line-height: 35px;
     width: 40px;
     height: 40px;
     margin-left: 30px;
@@ -123,7 +159,7 @@
 }
 .help {
     text-align: center;
-    line-height: 38px;
+    line-height: 35px;
     width: 40px;
     height: 40px;
     margin-left: 30px;
@@ -135,44 +171,80 @@
 .count{
     color: white;
     font-size: 2rem;
+    font-family: sans-serif;
 }
 .hint{
     text-align: center;
-    line-height: 38px;
+    line-height: 35px;
     width: 40px;
     height: 40px;
-    margin-right: 30px;
     font-size: 1.5rem;
+    margin-right: 10px;
     color: white;
     border: 2px solid gold;
     border-radius: 50%;
 }
-.spot1 {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    z-index: 999;
-    border: 1px solid red;
-    left: 190px;
-    top: 50px;
+.hint_count{
+    color: white;
+    font-size: 1.8rem;
+    font-family: sans-serif;
 }
-.spot2 {
+/* 以下是(遊戲:眼力大挑戰)正確答案的位置 */
+.spot1 {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    z-index: 999;
+    /* border: 1px solid red; */
+    left: 16%;
+    bottom: 14%;
+}
+.wrap1_pic .far.fa-circle.aa{ 
+    color: green;
+    /* width: 30px;
+    height: 30px; */
+    position: absolute;
+    border: none;
+    z-index: 999;
+    left: 17%;
+    bottom: 15%;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 30px;
+    pointer-events: none;
+} 
+/* .wrap1_pic .far.fa-circle{ 
+    color: green;
     width: 30px;
     height: 30px;
     position: absolute;
+    border: none;
+    z-index: 999;
+    left: 17%;
+    bottom: 15%;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 30px;
+    pointer-events: none;
+}  */
+/* 在前面那隻的右耳朵 */
+.spot2 {
+    width: 35px;
+    height: 35px;
+    position: absolute;
     z-index: 999;
     border: 1px solid red;
-    left: 385px;
-    top: 80px;
+    left: 30%;
+    top: 29%;
 }
 .spot3 {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     position: absolute;
     z-index: 999;
-    border: 1px solid red;
-    left: 500px;
-    top: 85px;
+    /* border: 1px solid red; */
+    left: 39%;
+    top: 30%;
 }
 .spot4 {
     width: 40px;
@@ -213,7 +285,7 @@
     perspective-origin: 80% 50%; 
     position: absolute;
     left: calc(50% - 120px);
-    margin-top: 3rem;
+    margin-top: 2.2rem;
 }
 .cube{
     transform-style: preserve-3d;
@@ -235,7 +307,7 @@
     font-size: 50px;
     line-height: 50px;
     opacity: 0;
-    
+    font-family: sans-serif;
 }
 .front{
     /* background: rgba(43, 16, 196, 0.5); */
@@ -270,9 +342,11 @@
 }
 .animals-footer{
     width: 100%;
+   
 }
 .animals-footer img{
     width: 100%;
     height: auto;
     border: none;
+   
 }
