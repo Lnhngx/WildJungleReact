@@ -7,7 +7,7 @@ import Footer from "./components/footer";
 //頁面元件
 import HomePage from "./pages/homePage/homePage";
 import Tour from "./pages/tour/tour";
-import AnimalTouch from "./pages/animalTouch/animalTouch";
+import Activity from "./pages/activity/activity";
 import Products from "./pages/products/products";
 import Game from "./pages/game/game";
 import SpotDiff from "./pages/game/spot-diff"
@@ -33,8 +33,8 @@ function App() {
           <Route path="/tour">
             <Tour />
           </Route>
-          <Route path="/animal-touch">
-            <AnimalTouch />
+          <Route path="/activity">
+            <Activity />
           </Route>
           <Route path="/products">
             <Products />
