@@ -1,32 +1,32 @@
 import React from "react";
-import "./homePage.css";
+import "./ning.scss";
 function homePage() {
   return (
     <>
-      <div className="ninghomeCarouselWrap">
-        <ul className="ninghomeCarouselWrapImg">
+      <div className="ning_CarouselWrap">
+        <ul className="ning_CarouselWrapImg">
           <li>
-            <img src="/img/home/activity03.jpg" />
+            <img src="/img/home/activity03.jpg" alt="" />
           </li>
           <li>
-            <img src="/img/home/activity01.jpeg" />
+            <img src="/img/home/activity01.jpeg" alt="" />
           </li>
           <li>
-            <img src="/img/home/activity02.jpg" />
+            <img src="/img/home/activity02.jpg" alt="" />
           </li>
         </ul>
       </div>
-      <div className="ninghomeJungleTour">
-        <img src="/img/home/homebgcblack.svg"></img>
-        <div className="ninghomeJungleTourTitle">
-          <h1 className="ninghomeEnTitle">Jungle Tour</h1>
-          <p className="ninghomeChTitle">園區分類一覽</p>
-          <div className="ninghomeJungleTourmap">
-            <img src="/img/home/tropicalmap.svg"></img>
+      <div className="ning_JungleTour">
+        <img src="/img/home/homebgcblack.svg" alt="" />
+        <div className="ning_JungleTourTitle">
+          <h1 className="ning_EnTitle">Jungle Tour</h1>
+          <p className="ning_ChTitle">園區分類一覽</p>
+          <div className="ning_JungleTourmap">
+            <img src="/img/home/tropicalmap.svg" alt="" />
           </div>
         </div>
-        <div className="ninghometropical">
-          <img src="/img/home/tropical.jpg"></img>
+        <div className="ning_tropical">
+          <img src="/img/home/tropical.jpg" alt="" />
         </div>
       </div>
 
