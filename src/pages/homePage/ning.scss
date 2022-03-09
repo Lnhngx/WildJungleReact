@@ -1,77 +1,124 @@
-$ning-color1:#EB5C37;
-$ning-color2:#F9B112;
-$ning-color3:#ffffff;
-$ning-color4:#000000;
-$ning-color5:#1B7754;
+$ning-color1: #eb5c37;
+$ning-color2: #f9b112;
+$ning-color3: #ffffff;
+$ning-color4: #000000;
+$ning-color5: #1b7754;
 
 @media screen and (min-width: 700px) {
-    .ning_CarouselWrapImg li img {
-      width: 100vw;
-      height: 800px;
-      display: flex;
-      object-fit: cover;
-    }
-    .ning_CarouselWrap {
-      padding-top: 60px;
-      width: calc(100vw - calc(100vw - 100%));
-      height: 80%;
-      overflow: hidden;
-    }
-    .ning_CarouselWrapImg {
-      display: flex;
-      width: 300vw;
-      transition: 0.5s;
-      transform: translateX(0px);
-    }
-  
-    .ning_ticketbox {
-      width: 70vw;
-      height: 120px;
-      background-color: #555;
-      position: absolute;
-      right: 0;
-      top: 800px;
-      display: flex;
-    }
-  
-    .homeIconfas {
-      color: $ning-color3;
-      font-size: 3rem;
-    }
-    .ning_JungleTour {
-      width: calc(100vw - calc(100vw - 100%));
-      position: relative;
-    }
-    .ning_JungleTour img {
-      width: 100%;
-    }
-    .ning_EnTitle {
-      font-size: 72px;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 30px;
-      padding-left: 120px;
-    }
-    .ning_ChTitle {
-      font-family: "Noto Sans TC", sans-serif;
-      font-size: 2rem;
-      font-weight: 400;
-      color: $ning-color3;
-      padding-left: 120px;
-    }
-    .ning_JungleTourTitle {
-      position: absolute;
-      top: 150px;
-    }
-    .ning_JungleTourmap {
-      margin-left: 30px;
-      margin-top: 80px;
-    }
-    .ning_tropical {
-      width: 15%;
-      overflow: hidden;
-    }
-    .ning_tropical img {
-      width: 50%;
-    }
+  .ning_homecontainer {
+    position: relative;
   }
+  .ning_CarouselWrapImg li img {
+    width: 100vw;
+    height: 800px;
+    display: flex;
+    object-fit: cover;
+  }
+  .ning_CarouselWrap {
+    padding-top: 60px;
+    width: calc(100vw - calc(100vw - 100%));
+    height: 80%;
+    overflow: hidden;
+  }
+  .ning_CarouselWrapImg {
+    display: flex;
+    width: 300vw;
+    transition: 0.5s;
+    transform: translateX(0px);
+  }
+
+  .ning_ticketbox {
+    width: 65vw;
+    height: 120px;
+    background-color: #555;
+    position: absolute;
+    right: 0;
+    top: 800px;
+    display: flex;
+  }
+  .ning_Admissionbox {
+    display: flex;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-right:1px solid;
+    border-color: $ning-color3;
+  }
+  .ning_AdmissionboxIcon {
+    position: relative;
+  }
+
+  .material-icons {
+    color: $ning-color3;
+    font-size: 4rem;
+    margin-left: 4px;
+  }
+
+  .ninghometicket {
+    color: $ning-color3;
+    font-size: 18px;
+    position: absolute;
+    top: 55px;
+  }
+
+  .ninghometicketEn {
+    color: $ning-color3;
+    font-size: 14px;
+    position: absolute;
+    top: 80px;
+    left: 18px;
+  }
+  .ning_JungleTour {
+    width: calc(100vw - calc(100vw - 100%));
+    position: relative;
+  }
+  .ning_JungleTour img {
+    width: 100%;
+  }
+  .ning_EnTitle {
+    font-size: 72px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 30px;
+    padding-left: 120px;
+  }
+  .ning_ChTitle {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: $ning-color3;
+    padding-left: 120px;
+  }
+  .ninghomeAdmissionCout {
+    display: flex;
+    padding-top: 38px;
+  }
+  .ninghomeAdmissionNumber {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    color: $ning-color3;
+    padding-left: 20px;
+  }
+  .ninghomeAdmissionUnit {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.2rem;
+    color: $ning-color3;
+    padding-top: 24px;
+    padding-left: 3px;
+  }
+  .ning_JungleTourTitle {
+    position: absolute;
+    top: 150px;
+  }
+  .ning_JungleTourmap {
+    margin-left: 30px;
+    margin-top: 80px;
+  }
+  .ning_tropical {
+    width: 15%;
+    overflow: hidden;
+  }
+  .ning_tropical img {
+    width: 50%;
+  }
+}
