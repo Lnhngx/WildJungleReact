@@ -4,7 +4,7 @@ import './game.css';
  function game(){
      return(
      <>
-        <div className="container">
+        <div className="game_container">
             <div className="game_title">眼力大考驗</div>
             <div className="leaf_left">
                 <img src="/leaf_left.png" alt=""/>
