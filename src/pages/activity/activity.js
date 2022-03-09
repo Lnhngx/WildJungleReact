@@ -1,7 +1,7 @@
 import React from "react";
 
-function tour(){
+function activity(){
     return(<></>)
 }
 
-export default tour
+export default activity;

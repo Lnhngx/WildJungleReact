@@ -7,9 +7,10 @@ import Footer from "./components/footer";
 //頁面元件
 import HomePage from "./pages/homePage/homePage";
 import Tour from "./pages/tour/tour";
-import AnimalTouch from "./pages/animalTouch/animalTouch";
+import Activity from "./pages/activity/activity";
 import Products from "./pages/products/products";
 import Game from "./pages/game/game";
+import SpotDiff from "./pages/game/spot-diff"
 import Members from "./pages/members/members";
 import Orders from "./pages/carts/carts";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
@@ -32,13 +33,16 @@ function App() {
           <Route path="/tour">
             <Tour />
           </Route>
-          <Route path="/animal-touch">
-            <AnimalTouch />
+          <Route path="/activity">
+            <Activity />
           </Route>
           <Route path="/products">
             <Products />
           </Route>
-          <Route path="/game">
+          <Route path="/game/spot-diff">
+            <SpotDiff />
+          </Route>
+          <Route exact path="/game">
             <Game />
           </Route>
           <Route path="/carts">
