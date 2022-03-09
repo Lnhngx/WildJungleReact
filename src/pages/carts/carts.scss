@@ -5,89 +5,134 @@ $stan_white: #ffffff;
 $stan_black: #000000;
 
 @font-face {
-  font-family: "Noto Sans TC", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
-  unicode-range: U+4E00-9FFF;
+    font-family: "Noto Sans TC", sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+    unicode-range: U+4E00-9FFF;
 }
 
 @font-face {
-  font-family: "Playfair Display", serif;
-  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-  unicode-range: U+00-024F;
+    font-family: "Playfair Display", serif;
+    src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    unicode-range: U+00-024F;
 }
 
 .stan_carts_main {
-  width: 100%;
-  height: 800px;
-  padding-top: 60px;
-  background-color: #ececec;
+    width: 100%;
+    height: 800px;
+    padding-top: 60px;
+    background-color: #ececec;
 }
 
 .stan_process_iconarea {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  padding-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    padding-top: 75px;
 }
 
 .stan_circle {
-  width: 60px;
-  height: 60px;
-  background-color: $stan_color1;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 60px;
-  position: relative;
-  font-family: sans-serif;
+    width: 60px;
+    height: 60px;
+    background-color: $stan_color1;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    position: relative;
+    font-weight: 700;
+    font-family: sans-serif;
 }
+
+.stan_circle:nth-child(1) {
+    @extend .stan_circle;
+    color: $stan_white;
+}
+
+.stan_circle:nth-child(3) {
+    @extend .stan_circle;
+    background-color: #c4c4c4;
+    color: #737373;
+}
+
+.stan_circle:nth-child(5) {
+    @extend .stan_circle;
+    background-color: #c4c4c4;
+    color: #737373;
+}
+
 .stan_word1::before {
-  content: "確認商品\a票券及訂房資訊";
-  white-space: pre;
-  line-height: 20px;
-  position: absolute;
-  bottom: -50px;
-  left: 0px;
-  transform: translateX(-20%);
-  font-size: 14px;
-  font-family: sans-serif;
+    content: "確認商品\a票券及訂房資訊";
+    white-space: pre;
+    line-height: 20px;
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+    transform: translateX(-22%);
+    color: $stan_black;
+    font-size: 16px;
+    font-family: sans-serif;
 }
 
 .stan_word2::before {
-  content: "確認地址\a及付款方式";
-  white-space: pre;
-  line-height: 20px;
-  position: absolute;
-  bottom: -50px;
-  left: 0px;
-  transform: translateX(-10%);
-  font-size: 14px;
-  font-family: sans-serif;
+    content: "確認地址\a及付款方式";
+    white-space: pre;
+    line-height: 20px;
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+    transform: translateX(-12%);
+    font-size: 16px;
+    font-family: sans-serif;
 }
 
 .stan_word3::before {
-  content: "完成訂單";
-  position: absolute;
-  bottom: -50px;
-  left: 0px;
-  transform: translateX(0%);
-  font-size: 14px;
-  font-family: sans-serif;
+    content: "完成訂單";
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+    transform: translateX(0%);
+    font-size: 16px;
+    font-family: sans-serif;
 }
 
 .stan_line {
-  width: 205px;
-  height: 4px;
-  background-color: #c4c4c4;
+    width: 205px;
+    height: 4px;
+    background-color: #c4c4c4;
 }
 
 @media screen and (max-width: 375px) {
-  .stan_circle {
-    width: 35px;
-    height: 35px;
-  }
+    .stan_process_iconarea {
+        font-size: 20px;
+    }
 
-  .stan_line {
-    width: 65px;
-  }
+    .stan_circle {
+        width: 35px;
+        height: 35px;
+        line-height: 38px;
+    }
+
+    .stan_line {
+        width: 65px;
+    }
+
+    .stan_word1::before {
+        content: "確認商品";
+        bottom: -29px;
+        transform: translateX(-13%);
+        font-size: 12px;
+    }
+
+    .stan_word2::before {
+        line-height: 18px;
+        bottom: -45px;
+        transform: translateX(-20%);
+        font-size: 12px;
+    }
+
+    .stan_word3::before {
+        bottom: -37px;
+        transform: translateX(-10%);
+        font-size: 12px;
+    }
 }

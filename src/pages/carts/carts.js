@@ -1,18 +1,18 @@
 import React from "react";
 import "./carts.scss";
+import Process01 from "./components/process_01";
 
 function carts() {
   return (
     <>
       <div className="stan_carts_main">
-          <ul className="stan_process_iconarea">
-            <li className="stan_circle stan_word1">1</li>
-            <li className="stan_line"></li>
-            <li className="stan_circle stan_word2">2</li>
-            <li className="stan_line"></li>
-            <li className="stan_circle stan_word3">3</li>
-          </ul>
+      <Process01 />
+      <div className="stan_cart_products">
+        123
       </div>
+      </div>
+
+
     </>
   );
 }
