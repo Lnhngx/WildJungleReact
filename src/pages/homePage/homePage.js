@@ -24,7 +24,7 @@ function homePage() {
         </div>
         <div className="ninghomeAdmissionNumber">180</div>
       </div>
-      <div className="ning_JungleTour">
+      {/* <div className="ning_JungleTour">
         <div className="ning_bgcblack"><img src="/img/home/homebgcblack.svg" alt="" /></div>
         <div className="ning_JungleTourTitle">
           <h1 className="ning_EnTitle">Jungle Tour</h1>
@@ -36,7 +36,7 @@ function homePage() {
         <div className="ning_tropical">
           <img src="/img/home/tropical.jpg" alt="" />
         </div>
-      </div>
+      </div> */}
 
       
     </>
