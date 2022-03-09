@@ -2,15 +2,12 @@ import React from 'react';
 
 function CreditcardAdd(){
     return(<>
+        <div className='tysu_creditImg'>
+            <img className="tysu_gradePic" src="" alt="" />
+        </div>
         <form id="tysu_form">
             <table>
                 <tbody>
-                <tr >
-                    <th></th>
-                    <td>
-                        <img className="tysu_gradePic tysu_creditImg" src="" alt="" />
-                    </td>
-                </tr>
                 <tr className="tysu_tr">
                     <th>
                     <label htmlFor="tysu_creditCard">信用卡卡號<br />
@@ -41,7 +38,7 @@ function CreditcardAdd(){
                     </td>
                 </tr>
                 <tr className="tysu_tr">
-                    <th class="tysu_creditLast">
+                    <th className="tysu_creditLast">
                     <label htmlFor="tysu_code">檢查碼<br /><span className="tysu_titleSpan">Card Vaildation Code</span></label>
                     </th>
                     <td className="tysu_creditLast tysu_codeContent">
@@ -52,19 +49,12 @@ function CreditcardAdd(){
                     
                     </td>
                 </tr>
-                <tr>
-                    <th></th>
-                    <td>
-                    <div>
-                        <button id="tysu_editBtn" className="tysu_editBtn">更 改</button>
-                        <button id="tysu_cancelBtn" className="tysu_cancelBtn">
-                        取 消
-                        </button>
-                    </div>
-                    </td>
-                </tr>
                 </tbody>
             </table>
+            <div className="tysu_btnGroup" style={{left:"5rem"}}>
+                <button id="tysu_editBtn" className="tysu_editBtn">更 改</button>
+                <button id="tysu_cancelBtn" className="tysu_cancelBtn">取 消</button>
+            </div>
         </form>
     </>)
 }

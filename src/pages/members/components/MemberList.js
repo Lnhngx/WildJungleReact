@@ -16,7 +16,9 @@ function MemberList(){
           <li><Link to=""  className="tysu_link">喜愛收藏</Link></li>
         </ul>
       <MemberNavItem />
-      <div className="tysu_memberBg"><img src="./img/member/leaf_y.svg" alt="" /></div>
+      <div className="tysu_memberBg">
+        <img src="./img/member/leaf_y.svg" alt="" />
+      </div>
       
     </div>
   )
