@@ -16,8 +16,16 @@ function homePage() {
           </li>
         </ul>
       </div>
+      <div className="ning_ticketbox">
+        <div className="ning_Admissionbox"></div>
+        <div className="ning_AdmissionboxIcon">
+          <i className="homeIconfas fas fa-users"></i>
+          <p className="ninghomeAdmissionText">入園人數</p>
+        </div>
+        <div className="ninghomeAdmissionNumber">180</div>
+      </div>
       <div className="ning_JungleTour">
-        <img src="/img/home/homebgcblack.svg" alt="" />
+        <div className="ning_bgcblack"><img src="/img/home/homebgcblack.svg" alt="" /></div>
         <div className="ning_JungleTourTitle">
           <h1 className="ning_EnTitle">Jungle Tour</h1>
           <p className="ning_ChTitle">園區分類一覽</p>
@@ -30,14 +38,7 @@ function homePage() {
         </div>
       </div>
 
-      {/* <div className="ninghometicketbox">
-        <div className="ninghomeAdmissionbox"></div>
-        <div className="ninghomeAdmissionboxIcon">
-          <i className="homeIconfas fas fa-users"></i>
-          <p className="ninghomeAdmissionText">入園人數</p>
-        </div>
-        <div className="ninghomeAdmissionNumber">180</div>
-      </div> */}
+      
     </>
   );
 }
