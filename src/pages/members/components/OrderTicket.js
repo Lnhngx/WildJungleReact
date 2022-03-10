@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function OrderInfo(){
+function OrderTicket(){
 
 
 
@@ -26,8 +26,8 @@ function OrderInfo(){
                     <th style={{width: "208px"}}>商品名稱</th>
                     <th style={{width: "68px"}}>單價</th>
                     <th style={{width: "60px"}}>數量</th>
-                    <th style={{width: "126px"}}>訂購時間</th>
                     <th style={{width: "88px"}}>訂單金額</th>
+                    <th style={{width: "126px"}}>有效時間</th>
                     <th style={{width: "88px"}}>狀態</th>
                 </tr>
             </thead>
@@ -37,17 +37,19 @@ function OrderInfo(){
                     <td rowSpan="0">
                         <a href="#/">A220201777888</a>
                     </td>
-                    <td className="tysu_orderBg">法蘭絨動物兒童披風</td>
-                    <td>$1065</td>
+                    <td className="tysu_orderBg">WildJungle入園門票</td>
+                    <td>$50</td>
                     <td>2</td>
-                    <td rowSpan="0">2022/02/01<br />22:00:36</td>
-                    <td rowSpan="0">$2048</td>
-                    <td rowSpan="0">已配達</td>
+                    <td rowSpan="0">$100</td>
+                    <td>~ 2022/05/01</td>
+                    <td>未使用</td>
                 </tr>
                 <tr className="tysu_orderTr tysu_orderText">
-                    <td className="tysu_orderBg">法蘭絨動物兒童披風</td>
-                    <td>$1065</td>
+                    <td className="tysu_orderBg">動物餵食秀</td>
+                    <td>$100</td>
                     <td>2</td>
+                    <td>2022/02/08</td>
+                    <td>已過期</td>
                 </tr>
             </tbody>
             <tbody>
@@ -56,32 +58,15 @@ function OrderInfo(){
                     <td>
                         <a href="#/">A220201777889</a>
                     </td>
-                    <td className="tysu_orderBg">動物拼圖</td>
+                    <td className="tysu_orderBg">WildJungle入園門票</td>
                     <td>$105</td>
                     <td>1</td>
-                    <td>2022/02/05<br />22:00:36</td>
                     <td>$105</td>
-                    <td>已配達</td>
+                    <td>2022/01/08</td>
+                    <td>已使用</td>
                 </tr>
             </tbody>
         </table>
-        <nav className="tysu_filterSelect tysu_btnPages">
-            <ul className="tysu_pageGroup">
-                <li className="tysu_pageItem">
-                    <a className="tysu_pageLink" href="#/">
-                        <i className="fas fa-angle-left"></i>
-                    </a>
-                </li>
-                <li className="tysu_pageItem tysu_pageText">
-                    <input type="text" className="tysu_pageInput" defaultValue="1" />
-                </li>
-                <li className="tysu_pageItem">
-                    <a className="tysu_pageLink" href="#/">
-                        <i className="fas fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </>)
 }
-export default OrderInfo
+export default OrderTicket
