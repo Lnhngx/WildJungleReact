@@ -451,3 +451,28 @@ input:-webkit-autofill:active,
   margin: 0 auto;
   justify-content: flex-end;
 }
+
+.tysu_pageGroup {
+  display: flex;
+}
+
+.tysu_pageItem,
+.tysu_pageInput {
+  width: 50px;
+  height: 50px;
+  font-size: var(--tysu_fontSize);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 1.8rem; */
+}
+.tysu_pageItem,
+.tysu_pageItem a {
+  color: #fff;
+  background-color: #000;
+}
+
+.tysu_pageText {
+  margin: 0 1rem;
+}
