@@ -47,12 +47,12 @@ function MemberInfo(){
               <div id="birthHelp"></div>
             </td>
           </tr>
-          <tr className="tysu_tr">
-            <th className="tysu_last">
+          <tr className="tysu_tr tysu_last">
+            <th>
               <label htmlFor="tysu_adress">聯絡地址<br />
                 <span className="tysu_titleSpan">Adress</span></label>
             </th>
-            <td className="tysu_last">
+            <td>
               <input type="text" id="tysu_adress" className="tysu_input" />
               <div id="tysu_adressHelp"></div>
             </td>

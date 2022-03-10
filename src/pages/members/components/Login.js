@@ -40,11 +40,11 @@ function Login(){
             <th></th>
             <td><canvas id="mycanvas" width="200" height="88"></canvas></td>
           </tr>
-          <tr className="tysu_tr">
-            <th className="tysu_last">
+          <tr className="tysu_tr tysu_last">
+            <th>
               <label htmlFor="tysu_code">驗證碼<br /><span className="tysu_titleSpan">verification code</span></label>
             </th>
-            <td className="tysu_last">
+            <td>
               <input type="text" id="tysu_code" className="tysu_input" />
               <div id="tysu_codeHelp"></div>
             </td>

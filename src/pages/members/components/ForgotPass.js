@@ -6,12 +6,12 @@ function ForgotPass(){
     <form id="tysu_form">
         <table>
             <tbody>
-                <tr className="tysu_tr">
-                    <th className="tysu_last">
+                <tr className="tysu_tr tysu_last">
+                    <th>
                         <label htmlFor="tysu_email">請輸入電子郵件<br />
                             <span className="tysu_titleSpan">Email</span></label>
                     </th>
-                    <td className="tysu_last">
+                    <td>
                         <input type="email" id="tysu_email" className="tysu_input" />
                         <div id="emailHelp"></div>
                     </td>

@@ -1,173 +1,403 @@
+.totalbackground {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
+}
+.totalbackground .backgroundimg1 {
+  position: fixed;
+  width: 30%;
+  height: 50%;
+  background-image: url(./imgs/lift1.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  right: 0;
+  top: 70%;
+  animation: leaf1 20s linear  infinite;
+  transform-origin: top right;
+}
+
+.totalbackground .backgroundimg2 {
+  position: fixed;
+  width: 40%;
+  height: 50%;
+  background-image: url(./imgs/lift2.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  right: 0;
+  top: 10%;
+  animation: leaf2 15s linear 0s infinite;
+  transform-origin: top right;
+}
+
+.totalbackground .backgroundimg3 {
+  position: fixed;
+  width: 25%;
+  height: 35%;
+  background-image: url(./imgs/lift3.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  right: 50%;
+  top: 0;
+  animation: leaf3 15s linear 0s infinite;
+  transform-origin: top ;
+}
+
+.totalbackground .backgroundimg4 {
+  position: fixed;
+  width: 20%;
+  height: 40%;
+  background-image: url(./imgs/lift4.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 0;
+  top: 10%;
+  animation: leaf4 12s linear 0s infinite;
+  transform-origin: top left ;
+}
+
+.totalbackground .backgroundimg5 {
+  position: fixed;
+  width: 45%;
+  height: 50%;
+  background-image: url(./imgs/lift5.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 0;
+  bottom: 0;
+  animation: leaf5 15s linear 0s infinite;
+  transform-origin: top left ;
+}
+
+@keyframes leaf1 {
+    0% {
+        transform: rotate(15deg) ;
+    }
+    25% {
+        transform: rotate(10deg) ;
+    }
+    50% {
+        transform: rotate(5deg) ;
+    }
+    75% {
+        transform: rotate(15deg) ;
+    }
+    100% {
+        transform: rotate(20deg) ;
+    }
+}
+
+@keyframes leaf2 {
+    0% {
+        transform: rotate(0deg) ;
+    }
+    25% {
+        transform: rotate(10deg) ;
+    }
+    50% {
+        transform: rotate(15deg) ;
+    }
+    75% {
+        transform: rotate(10deg) ;
+    }
+    100% {
+        transform: rotate(0deg) ;
+    }
+}
+@keyframes leaf3 {
+    0% {
+        transform: rotate(0deg) ;
+    }
+    25% {
+        transform: rotate(5deg) ;
+    }
+    50% {
+        transform: rotate(10deg) ;
+    }
+    75% {
+        transform: rotate(5deg) ;
+    }
+    100% {
+        transform: rotate(0deg) ;
+    }
+}
+
+@keyframes leaf4 {
+    0% {
+        transform: rotate(30deg) ;
+    }
+    25% {
+        transform: rotate(15deg) ;
+    }
+    50% {
+        transform: rotate(0deg) ;
+    }
+    75% {
+        transform: rotate(15deg) ;
+    }
+    100% {
+        transform: rotate(30deg) ;
+    }
+}
+
+@keyframes leaf5 {
+    0% {
+        transform: rotate(0deg) ;
+    }
+    25% {
+        transform: rotate(7deg) ;
+    }
+    50% {
+        transform: rotate(22deg) ;
+    }
+    75% {
+        transform: rotate(7deg) ;
+    }
+    100% {
+        transform: rotate(0deg) ;
+    }
+}
+
 .productContainer {
-    width: calc(100% - 60px);
-    margin: 0px 30px 0 30px;
-    padding-top: 60px;
+  width: calc(100% - 60px);
+  margin: 0px 30px 0 30px;
+  padding-top: 60px;
 }
 
 .slider {
-    width: 100%;
-    position: relative;
-    height: 46vw;
-    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: relative;
+  height: 46vw;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
 }
 
 .mainPic {
-    width: 100%;
-    height: 46vw;
+  width: 100%;
+  height: 46vw;
 }
 
 .main {
-    width: 100%;
-    height: 46vw;
-    position: absolute;
-    top: 0;
-    z-index: 0;
+  width: 100%;
+  height: 46vw;
+  position: absolute;
+  top: 0;
+  z-index: 0;
 }
 
 .white {
-    width: 100%;
-    clip-path: polygon(0 0, 20% 0, 45% 100%, 0% 100%);
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    height: 46vw;
+  width: 100%;
+  clip-path: polygon(0 0, 20% 0, 45% 100%, 0% 100%);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  height: 46vw;
 }
 
 .adTitle {
-    font-family: 'Noto Sans TC', sans-serif;
-    position: absolute;
-    z-index: 3;
-    bottom: 0;
-    left: 2%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 12px;
+  font-family: "Noto Sans TC", sans-serif;
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 2%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 12px;
 }
 
 .adTitle h1 {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .titlespan {
-    margin-top: 20px;
+  margin: 20px 0 20px 0;
 }
 
 .iconGroup {
-    position: absolute;
-    z-index: 4;
-    bottom: 0;
-    left: 55%;
-    color: #C4C4C4;
-    text-shadow: 1px 1px white, -1px -1px gray;
-    transform: translate(-50%);
-    font-size: 12px;
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  left: 55%;
+  color: #c4c4c4;
+  text-shadow: 1px 1px white, -1px -1px gray;
+  transform: translate(-50%);
+  font-size: 12px;
 }
 
 .iconGroup i {
-    margin: 0 5px 0 5px;
+  margin: 0 5px 0 5px;
 }
 
 .adNew {
-    position: absolute;
-    z-index: 5;
-    font-size: 25px;
-    font-weight: 900;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 20%;
-    left: 19%;
-    letter-spacing: 1px;
+  position: absolute;
+  z-index: 5;
+  font-size: 25px;
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 20%;
+  left: 19%;
+  letter-spacing: 1px;
 }
 
 .adNew .span-1 {
-    color: #EB5C37;
+  color: #eb5c37;
 }
 
 .secondSpan {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .sliderButtom {
-    width: 100%;
+  width: 100%;
 }
 
 .sliderButtom button {
-    font-family: 'Playfair Display', serif;
-    width: 100%;
-    display: block;
-    border: 0;
-    height: 50px;
-    background-color: #000000;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
+  font-family: "Playfair Display", serif;
+  width: 100%;
+  display: block;
+  border: 0;
+  height: 50px;
+  background-color: #000000;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .sliderButtom button .span2 {
-    display: inline-block;
-    margin-top: -15px;
-    font-size: 40px;
+  display: inline-block;
+  margin-top: -15px;
+  font-size: 40px;
 }
-.typeGroup{
-    font-family: 'Playfair Display',serif;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.typeGroup {
+  font-family: "Noto Sans TC", sans-serif;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-@media screen and (min-width:980px) {
+.typeTitle h2 {
+  margin: 20px;
+  font-size: 22px;
+}
+.typeSelect {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #000000;
+}
+.typeSelect .type {
+  display: flex;
+  width: 45%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px 0 10px 0;
+  height: 50px;
+  background-color: white;
+  font-size: 16px;
+}
+.typeSelect .type:last-child {
+  margin-bottom: 20px;
+}
+.typeSelect .type:first-child,
+.type:nth-child(2) {
+  margin-top: 20px;
+}
+.typeSelect .type1 {
+  margin-right: 20px;
+}
+.typeSelect .typeimg {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-image: url(./imgs/baby.png);
+  background-size: contain;
+}
 
-    .productContainer {
-        width: 100%;
-        margin: 0;
-    }
+@media screen and (min-width: 980px) {
+  .productContainer {
+    width: 100%;
+    margin: 0;
+  }
 
-    .slider {
-        height: 40vw;
-        border-bottom: 4px solid;
-    }
+  .slider {
+    height: 40vw;
+  }
 
-    .mainPic {
-        height: 40vw;
-    }
+  .mainPic {
+    height: 40vw;
+  }
 
-    .main {
-        width: 73%;
-        height: 40vw;
-        object-fit: cover;
-        right: 0;
-    }
+  .main {
+    width: 73%;
+    height: 40vw;
+    object-fit: cover;
+    right: 0;
+  }
 
+  .adNew {
+    font-size: 75px;
+    top: 20%;
+    left: 37%;
+    font-weight: 700;
+  }
 
-    .adNew {
-        font-size: 75px;
-        top: 20%;
-        left: 37%;
-        font-weight: 700;
-    }
+  .white {
+    clip-path: polygon(0 0, 38% 0, 55% 100%, 0% 100%);
+    height: 40vw;
+  }
 
-    .white {
-        clip-path: polygon(0 0, 38% 0, 55% 100%, 0% 100%);
-        height: 40vw;
-    }
-
-    .adTitle {
-        font-size: 28px;
-        margin: 50px;
-    }
-    .adTitle h1{
-        font-size: 38px;
-        margin-bottom: 20px;
-    }
-    .iconGroup {
-        left: 50%;
-    }
-    .sliderButtom{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 200px;
-    }
+  .adTitle {
+    font-size: 28px;
+    margin: 50px;
+  }
+  .adTitle h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+  }
+  .iconGroup {
+    left: 50%;
+  }
+  .sliderButtom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+  }
+  .typeGroup {
+    margin-top: 0;
+    border-top: 3px solid;
+  }
+  .typeTitle {
+    border-top: 10px solid;
+  }
+  .typeTitle h2 {
+    font-size: 32px;
+    margin: 40px;
+  }
+  .typeSelect {
+    width: 100%;
+  }
+  .typeSelect .type {
+    width: 30%;
+    height: 95px;
+    font-size: 24px;
+  }
+  .typeSelect .type:nth-child(3) {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 0;
+  }
+  .typeSelect .type:nth-child(5) {
+    margin-left: 20px;
+  }
+  .typeSelect .type:last-child {
+    margin-right: 0;
+  }
+  .typeSelect .typeimg {
+    width: 80px;
+    height: 80px;
+  }
 }
