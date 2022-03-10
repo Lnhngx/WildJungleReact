@@ -11,6 +11,7 @@ import Activity from "./pages/activity/activity";
 import Products from "./pages/products/products";
 import Game from "./pages/game/game";
 import SpotDiff from "./pages/game/spot-diff";
+import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import Members from "./pages/members/members";
 import Orders from "./pages/carts/carts";
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/game/spot-diff">
             <SpotDiff />
+          </Route>
+          <Route path="/game/start">
+            <GameStart />
           </Route>
           <Route exact path="/game">
             <Game />

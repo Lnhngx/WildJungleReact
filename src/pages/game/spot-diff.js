@@ -62,8 +62,14 @@ function SpotDiff(){
             <div className="cloud_left">
                 <img src="/img/game/cloud-left.png" alt=""/> 
             </div>
+            <div className="cloud_left1">
+                <img src="/img/game/cloud-left1.png" alt=""/> 
+            </div>
             <div className="cloud_right">
                 <img src="/img/game/cloud-right.png" alt=""/> 
+            </div>
+            <div className="cloud_right1">
+                <img src="/img/game/cloud-right1.png" alt=""/> 
             </div>
             <div className="game_title">眼力大考驗</div>
             <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span></p>
@@ -90,16 +96,11 @@ function SpotDiff(){
                     <div className="wrap1_pic">
                         <div className="spot1" onClick={
                             (e)=>{  
-                                // const circle = document.createElement('div');
-                                // circle.style.position = 'absolute';
-                                // circle.className = `far fa-circle`
-                                // circle.style.left = '17%';
-                                // circle.style.bottom = '15%';
-                                // circle.style.background = 'green';
-                                // circle.style.fontSize = '2.5rem'
-                                // document.querySelector('.spot1').append(circle)
+                                const circle = document.createElement('div');    
+                                circle.className = `aa`
+                                document.querySelector('.spot1').append(circle)
                                 // console.log(e.target)
-                                e.target.className = `far fa-circle aa`;
+                                e.target.className = `far fa-circle`;
                                 setCountSuccess(countSuccess+1);
                             }
                         }></div>
