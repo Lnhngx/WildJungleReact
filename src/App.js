@@ -10,7 +10,8 @@ import Tour from "./pages/tour/tour";
 import Activity from "./pages/activity/activity";
 import Products from "./pages/products/products";
 import Game from "./pages/game/game";
-import SpotDiff from "./pages/game/spot-diff"
+import SpotDiff from "./pages/game/spot-diff";
+import SpotLevel from "./pages/game/spotLevel";
 import Members from "./pages/members/members";
 import Orders from "./pages/carts/carts";
 import Lodging from "./pages/lodging/lodging";
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/products">
             <Products />
+          </Route>
+          <Route path="/game/spot-level">
+            <SpotLevel />
           </Route>
           <Route path="/game/spot-diff">
             <SpotDiff />
