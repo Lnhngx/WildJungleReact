@@ -50,7 +50,7 @@ import './chatbot.css';
         <div className="tool_bar">
             <div className="rich_menu"> <i className="fas fa-bars"></i></div>
            
-            <input type="text"/>
+            <input classNaeme="robot_input" type="text"/>
 
             <div className="send"><i className="fas fa-paper-plane"></i></div>
             

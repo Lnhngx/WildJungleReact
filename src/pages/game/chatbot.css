@@ -95,12 +95,12 @@
     bottom: 0;
     line-height: 50px;
 }
-input {   
+robot_input {   
     width: 350px;
     height: 35px;
     border: none;
 }
-input:focus-visible{
+robot_input:focus-visible{
     outline: none;
 }
 
