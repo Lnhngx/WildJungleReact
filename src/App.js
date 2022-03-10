@@ -77,7 +77,7 @@ function App() {
             <NotFoundPage />
           </Route>
         </Switch>
-        <Footer />
+         <Footer /> 
       </>
     </Router>
   );

@@ -4,7 +4,14 @@ import "./products.scss";
 function products() {
   return (
     <>
-      <div className="productContainer">
+      <div className="totalbackground">
+        <div className="totalbackgroundimg backgroundimg1"></div>
+        <div className="totalbackgroundimg backgroundimg2"></div>
+        <div className="totalbackgroundimg backgroundimg3"></div>
+        <div className="totalbackgroundimg backgroundimg4"></div>
+        <div className="totalbackgroundimg backgroundimg5"></div>
+      </div>
+       <div className="productContainer">
         <div className="slider">
           <div className="mainPic">
             <div className="triangle">
@@ -52,33 +59,41 @@ function products() {
             <h2>依種類選擇</h2>
           </div>
           <div className="typeSelect">
-            <div className="type">
-              <img src="" alt="" />
+            <div className="type type1">
+              <div className="typeimg">
+              </div>
               <span>絨毛玩具</span>
             </div>
             <div className="type">
-              <img src="" alt="" />
+              <div className="typeimg">
+              </div>
               <span>擬真模型</span>
             </div>
-            <div className="type">
-              <img src="" alt="" />
+            <div className="type type1">
+              <div className="typeimg">
+              </div>
               <span>嬰兒背巾</span>
             </div>
             <div className="type">
-              <img src="" alt="" />
+              <div className="typeimg">
+              </div>
               <span>文具用品</span>
             </div>
-            <div className="type">
-              <img src="" alt="" />
+            <div className="type type1">
+              <div className="typeimg">
+              </div>
               <span>填充布偶</span>
             </div>
             <div className="type">
-              <img src="" alt="" />
+              <div className="typeimg">
+              </div>
               <span>兒童衣飾</span>
             </div>
           </div>
         </div>
-      </div>
+        <div className="filter">
+        </div>
+      </div> 
     </>
   );
 }
