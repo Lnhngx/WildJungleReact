@@ -241,18 +241,23 @@ input:-webkit-autofill:active,
   display: inline-block;
   margin-top: 6px;
 }
-
+.tysu_grade {
+  padding-top: 120px;
+}
 .tysu_gradeImg {
-  background: url("../../../public/img/member/d.png") bottom 50% center/110%
-    no-repeat;
   width: 830px;
   height: 226px;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.9rem;
-  padding: 106px 0;
+}
+
+.tysu_gradeImg img {
+  width: 100%;
+  vertical-align: middle;
+  margin: -20.5% 0;
 }
 .tysu_gradeLi {
   width: 160px;

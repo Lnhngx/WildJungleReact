@@ -10,8 +10,10 @@ function MemberList(){
 
     
   return(
-    <div>
-      <div className="tysu_gradeImg"><img src="" alt="" /></div>
+    <div className="tysu_grade">
+      <div className="tysu_gradeImg">
+        <img src="/img/member/d.png" alt="" />
+      </div>
         <ul className="tysu_memberList">
           <li><Link to=""  className="tysu_link">會員資料</Link></li>
           <li><Link to=""  className="tysu_link">訂單資訊</Link></li>
