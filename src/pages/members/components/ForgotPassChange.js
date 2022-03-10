@@ -16,12 +16,12 @@ function ForgotPassChange(){
                 </td>
 
             </tr>
-            <tr className="tysu_tr">
-                <th className="tysu_last">
+            <tr className="tysu_tr tysu_last">
+                <th>
                     <label htmlFor="tysu_cfPass">再次確認密碼<br /><span className="tysu_titleSpan">Confirm
                             Password</span></label>
                 </th>
-                <td className="tysu_last">
+                <td>
                     <input type="text" id="tysu_cfPass" className="tysu_input" />
                     <div id="tysu_cfPassHelp"></div>
                 </td>

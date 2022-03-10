@@ -37,11 +37,11 @@ function CreditcardAdd(){
                     
                     </td>
                 </tr>
-                <tr className="tysu_tr">
-                    <th className="tysu_creditLast">
+                <tr className="tysu_tr tysu_last">
+                    <th>
                     <label htmlFor="tysu_code">檢查碼<br /><span className="tysu_titleSpan">Card Vaildation Code</span></label>
                     </th>
-                    <td className="tysu_creditLast tysu_codeContent">
+                    <td className="tysu_codeContent">
                         <div className="">
                             <input type="text" id="tysu_code" className="tysu_input tysu_code" maxLength="3"
                             />( 3-digital )
