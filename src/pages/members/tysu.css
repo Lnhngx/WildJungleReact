@@ -445,15 +445,20 @@ input:-webkit-autofill:active,
   margin: 0;
   margin-bottom: 1.8rem;
 }
+
 .tysu_filterSelect {
   display: flex;
   width: 830px;
   margin: 0 auto;
   justify-content: flex-end;
 }
+.tysu_btnPages {
+  justify-content: center;
+}
 
 .tysu_pageGroup {
   display: flex;
+  margin-top: 1.8rem;
 }
 
 .tysu_pageItem,

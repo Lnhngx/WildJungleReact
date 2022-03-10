@@ -65,7 +65,7 @@ function OrderInfo(){
                 </tr>
             </tbody>
         </table>
-        <nav className="tysu_filterSelect">
+        <nav className="tysu_filterSelect tysu_btnPages">
             <ul className="tysu_pageGroup">
                 <li className="tysu_pageItem">
                     <a className="tysu_pageLink" href="#/">
