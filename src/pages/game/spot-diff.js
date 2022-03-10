@@ -96,25 +96,49 @@ function SpotDiff(){
                     <div className="wrap1_pic">
                         <div className="spot1" onClick={
                             (e)=>{  
-                                const circle = document.createElement('div');    
-                                circle.className = `aa`
+                                const circle = document.createElement('i');    
+                                circle.className = `far fa-circle`;
                                 document.querySelector('.spot1').append(circle)
-                                // console.log(e.target)
-                                e.target.className = `far fa-circle`;
+                                e.target.style.pointerEvents = 'none';
                                 setCountSuccess(countSuccess+1);
                             }
                         }></div>
                         <div className="spot2" onClick={
                             (e)=>{
-                                console.log(e.target)
-                                console.log(e.target.offsetX)
-                                e.target.className = `far fa-circle`
+                                const circle = document.createElement('i');    
+                                circle.className = `far fa-circle`;
+                                document.querySelector('.spot2').append(circle)
+                                e.target.style.pointerEvents = 'none';
                                 setCountSuccess(countSuccess+1);
                             }
                         }></div>
-                        <div className="spot3"></div>
-                        <div className="spot4"></div>
-                        <div className="spot5"></div> 
+                        <div className="spot3" onClick={
+                            (e)=>{
+                                const circle = document.createElement('i');    
+                                circle.className = `far fa-circle`;
+                                document.querySelector('.spot3').append(circle)
+                                e.target.style.pointerEvents = 'none';
+                                setCountSuccess(countSuccess+1);
+                            }
+                        }></div>
+                        <div className="spot4" onClick={
+                            (e)=>{
+                                const circle = document.createElement('i');    
+                                circle.className = `far fa-circle`;
+                                document.querySelector('.spot4').append(circle)
+                                e.target.style.pointerEvents = 'none';
+                                setCountSuccess(countSuccess+1);
+                            }
+                        }></div>
+                        <div className="spot5" onClick={
+                            (e)=>{
+                                const circle = document.createElement('i');    
+                                circle.className = `far fa-circle`;
+                                document.querySelector('.spot5').append(circle)
+                                e.target.style.pointerEvents = 'none';
+                                setCountSuccess(countSuccess+1);
+                            }
+                        }></div> 
                         <img src="/img/game/leopard-final.jpg" id="img" alt=""/>
                     </div>
                 </div>
@@ -127,7 +151,7 @@ function SpotDiff(){
                             <i className="fas fa-list-ul"></i>
                         </div>
                     </div>
-                    <div className="count">0<span>/5</span></div>
+                    <div className="count">{countSuccess}<span>/5</span></div>
                     <div className="right_tool">
                         <div className="hint">
                             <i className="fas fa-search"></i>
