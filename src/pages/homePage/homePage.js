@@ -18,8 +18,8 @@ function homePage() {
           </ul>
         </div>
         <div className="ning_bgcblack">
-            <img src="/img/home/homebgcblack.svg" alt="" />
-          </div>
+          <img src="/img/home/homebgcblack.svg" alt="" />
+        </div>
         <div className="ning_informationbox">
           <div className="ning_Admissionbox">
             <div className="ning_AdmissionboxIcon">
@@ -57,13 +57,21 @@ function homePage() {
               <p className="ninghometicket">票券資訊</p>
               <p className="ninghometicketEn">Ticket</p>
             </div>
-            <div className="ninghomeweatherCout">
-              <div className="ninghomeweatherNumber">18</div>
-              <p className="ninghomeweatherUnit">°C</p>
+            <div className="ninghomealdultbox">
+              <div className="ninghomealdult">全票</div>
+              <p className="ninghomealdultprice">$50</p>
+            </div>
+            <div className="ninghomestudentbox">
+              <div className="ninghomestudent">學生票</div>
+              <p className="ninghomestudentprice">$30</p>
+            </div>
+            <div className="ninghomelovebox">
+              <div className="ninghomelove">愛心票</div>
+              <p className="ninghomeloveprice">$20</p>
             </div>
           </div>
         </div>
-        <div className="ning_JungleTour">
+        {/* <div className="ning_JungleTour">
           <div className="ning_JungleTourTitle">
             <h1 className="ning_EnTitle">Jungle Tour</h1>
             <p className="ning_ChTitle">園區分類一覽</p>
@@ -74,7 +82,7 @@ function homePage() {
           <div className="ning_tropical">
             <img src="/img/home/tropical.jpg" alt="" />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
