@@ -81,6 +81,9 @@ function OrderInfo(){
                     </a>
                 </li>
             </ul>
+            <ul>
+                <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
+            </ul>
         </nav>
     </>)
 }

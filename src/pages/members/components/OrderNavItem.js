@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom'
 
 import OrderInfo from './OrderInfo'
 import OrderTicket from './OrderTicket'
-import Creditcard from './Creditcard'
-import CreditcardAdd from './CreditcardAdd'
-import AddressAdd from './AddressAdd'
+import ConvenienceStore from './ConvenienceStore'
 
 function OrderNavItem(){
     return(<><ul className="tysu_memberChild">
@@ -22,8 +20,9 @@ function OrderNavItem(){
     <Link to=""  className="tysu_link"><li></li></Link>
     <img className="tysu_bg" src="./img/member/flower.svg" alt="" />
   </ul>
-  <OrderInfo />
+  {/* <OrderInfo /> */}
   {/* <OrderTicket /> */}
+  <ConvenienceStore />
   </>)
 }
 export default OrderNavItem;

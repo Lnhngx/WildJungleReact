@@ -8,7 +8,8 @@ import CreditcardAdd from './CreditcardAdd'
 import AddressAdd from './AddressAdd'
 
 function MemberNavItem(){
-    return(<><ul className="tysu_memberChild">
+    return(<>
+    <ul className="tysu_memberChild">
     <li><Link to=""  className="tysu_link">基本設定</Link></li>
     <li><Link to=""  className="tysu_link">分級資訊</Link></li>
     <li><Link to=""  className="tysu_link">信用卡管理</Link></li>

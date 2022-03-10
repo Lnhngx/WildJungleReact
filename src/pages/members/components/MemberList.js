@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import MemberNavItem from './MemberNavItem'
 import OrderNavItem from './OrderNavItem'
+import DiscountNavItem from './DiscountNavItem'
+import LikeNavItem from './LikeNavItem'
 
 function MemberList(){
 
@@ -17,7 +19,9 @@ function MemberList(){
           <li><Link to=""  className="tysu_link">喜愛收藏</Link></li>
         </ul>
       {/* <MemberNavItem /> */}
-      <OrderNavItem />
+      {/* <OrderNavItem /> */}
+      {/* <DiscountNavItem /> */}
+      <LikeNavItem />
       <div className="tysu_memberBg">
         <img src="./img/member/leaf_y.svg" alt="" />
       </div>

@@ -28,7 +28,7 @@ function Creditcard(){
                             </button>
                         </div>
                     </td>
-            </tr>
+                </tr>
             </tbody>
         </table>
     </>)
