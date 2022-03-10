@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 import OrderInfo from './OrderInfo'
-import GradeInfo from './GradeInfo'
+import OrderTicket from './OrderTicket'
 import Creditcard from './Creditcard'
 import CreditcardAdd from './CreditcardAdd'
 import AddressAdd from './AddressAdd'
@@ -22,7 +22,8 @@ function OrderNavItem(){
     <Link to=""  className="tysu_link"><li></li></Link>
     <img className="tysu_bg" src="./img/member/flower.svg" alt="" />
   </ul>
-  <OrderInfo />
+  {/* <OrderInfo /> */}
+  <OrderTicket />
   </>)
 }
 export default OrderNavItem;
