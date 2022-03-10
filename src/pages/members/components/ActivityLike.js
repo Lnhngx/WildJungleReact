@@ -26,7 +26,7 @@ function ActivityLike(){
             </tbody>
         </table>
         <nav className="tysu_filterSelect tysu_btnPages">
-            <ul className="tysu_pageGroup">
+            <ul className="tysu_pageGroup" style={{marginLeft:"63.2px"}}>
                 <li className="tysu_pageItem">
                     <a className="tysu_pageLink" href="#/">
                         <i className="fas fa-angle-left"></i>

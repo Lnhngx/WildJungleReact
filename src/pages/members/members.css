@@ -7,51 +7,8 @@
   --tysu_inputMargin: 1.8rem 0 0 1.8rem;
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (max-width: 1000px) {
   .tysu_contain {
-    width: 100%;
-  }
-
-  .tysu_gradeImg,
-  .tysu_memberList,
-  .tysu_memberChild,
-  .tysu_hr {
-    width: 100%;
-  }
-  .tysu_gradeImg {
-    background-size: 20%;
-  }
-  .tysu_bg {
-    right: 0;
-    width: 200px;
-    transition: 0.5s;
-  }
-  .tysu_focusUnderLine li {
-    width: 100px;
-    margin: 0;
-  }
-  .tysu_creditGroup {
-    width: 10vw;
-    margin: 0 auto;
-  }
-  .tysu_addBtn {
-    width: 85vw;
-  }
-  .tysu_memberBg {
-    width: 260px;
-  }
-  .tysu_creditImg {
-    width: 314px;
-    height: 199px;
-  }
-  .tysu_Bank,
-  .tysu_creditNum {
-    font-size: var(--tysu_fontSize);
-    transform: translate(-50%, -15%);
-  }
-}
-@media screen and (min-width: 700px) {
-  .tysu_bg {
-    width: 300px;
+    width: 80%;
   }
 }
