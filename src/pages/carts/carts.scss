@@ -1,3 +1,7 @@
+// -------------------------通用-------------------------
+//
+//
+
 $stan_color1: #eb5c37;
 $stan_color2: #f9b112;
 $stan_color3: #1b7754;
@@ -16,6 +20,12 @@ $stan_black: #000000;
   unicode-range: U+00-024F;
 }
 
+@mixin mobile {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
 .stan_carts_main {
   width: 100%;
   height: auto;
@@ -24,9 +34,23 @@ $stan_black: #000000;
   padding-top: 60px;
   background-color: #ececec;
   font-family: sans-serif;
+  font-size: 16px;
+  
+  @include mobile {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
 }
 
-// -------------------流程區-------------------
+.stan_hr {
+  margin: -1px 0;
+}
+
+//
+//
+// -------------------------通用-------------------------
+
+// -------------------------流程區-------------------------
 //
 //
 
@@ -36,6 +60,10 @@ $stan_black: #000000;
   align-items: center;
   font-size: 32px;
   padding-top: 75px;
+  
+  @include mobile {
+    font-size: 20px;
+  }
 }
 
 .stan_circle {
@@ -47,6 +75,12 @@ $stan_black: #000000;
   line-height: 60px;
   position: relative;
   font-weight: 700;
+
+  @include mobile {
+    width: 35px;
+    height: 35px;
+    line-height: 38px;
+  }
 }
 
 .stan_circle:nth-child(1) {
@@ -76,6 +110,13 @@ $stan_black: #000000;
   transform: translateX(-22%);
   color: $stan_black;
   font-size: 16px;
+
+  @include mobile {
+    content: "確認商品";
+    bottom: -29px;
+    transform: translateX(-13%);
+    font-size: 12px;
+  }
 }
 
 .stan_word2::before {
@@ -87,6 +128,13 @@ $stan_black: #000000;
   left: 0px;
   transform: translateX(-12%);
   font-size: 16px;
+
+  @include mobile {
+    line-height: 18px;
+    bottom: -45px;
+    transform: translateX(-20%);
+    font-size: 12px;
+  }
 }
 
 .stan_word3::before {
@@ -96,35 +144,94 @@ $stan_black: #000000;
   left: 0px;
   transform: translateX(0%);
   font-size: 16px;
+
+  @include mobile {
+    bottom: -37px;
+    transform: translateX(-10%);
+    font-size: 12px;
+  }
 }
 
 .stan_line {
   width: 205px;
   height: 4px;
   background-color: #c4c4c4;
+  @include mobile {
+    width: 65px;
+  }
 }
 
 //
 //
-// -------------------流程區結束-------------------
+// -------------------------流程區結束-------------------------
 
-// -------------------中間商品區塊-------------------
+// -------------------------中間區域-------------------------
 //
 //
 
 .stan_carts_middle {
   padding-top: 100px;
   display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    flex-direction: column;
+  }
 }
 
 .stan_product_title {
-  width: 770px;
+  width: 60%;
   height: auto; //暫時
   background-color: $stan_white;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .stan_product_selector,
 .stan_forcus_selector {
+  
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+
+  @include mobile {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
+
+.stan_selector_Item {
+  width: 18%;
+  margin-top: 12px;
+  line-height: 15px;
+  font-size: 18px;
+  font-weight: 600;
+
+  @include mobile {
+    margin-top: 10px;
+    line-height: 10px;
+    font-size: 14px;
+  }
+}
+
+.stan_forcus_Item {
+  margin-top: -1px;
+  width: 20%;
+  height: 9.6px;
+  background-color: $stan_black;
+
+  @include mobile {
+    width: 20%;
+    height: 8px;
+  }
+}
+
+.stan_product_content {
   padding-left: 10%;
   padding-right: 10%;
   width: 100%;
@@ -133,94 +240,113 @@ $stan_black: #000000;
   text-align: center;
 }
 
-.stan_selector_Item {
-  width: 18%;
-  margin: 8px;
-  line-height: 20px;
-  font-size: 1.1rem;
+.stan_block {
+  display: none;
+
+  @include mobile {
+    display: block;
+    width: 100%;
+    height: 10px;
+    background-color: #ececec;
+  }
+}
+
+.stan_checkout_temppayname {
+  display: none;
+
+  @include mobile{
+    display: flex;
+    justify-content: center;
+    margin: 3% 0px;
+  }
+}
+.stan_checkout_templine {
+  display: none;
+  
+  @include mobile{
+    display: block;
+    margin: -1px 0;
+  }
+}
+
+.stan_checkout_area {
+  width: 33%;
+  height: auto; //暫時
+  background-color: $stan_white;
+  font-size: 18px;
   font-weight: 600;
-}
 
-.stan_forcus_Item {
-  margin-top: -1px;
-  width: 20%;
-  height: 0.6rem;
-  background-color: $stan_black;
-}
-
-@media screen and (max-width: 375px) {
-  .stan_carts_main {
-    padding-left: 8%;
-    padding-right: 8%;
-  }
-
-  // 流程區
-  //
-  //
-
-  .stan_process_iconarea {
-    font-size: 20px;
-  }
-
-  .stan_circle {
-    width: 35px;
-    height: 35px;
-    line-height: 38px;
-  }
-
-  .stan_line {
-    width: 65px;
-  }
-
-  .stan_word1::before {
-    content: "確認商品";
-    bottom: -29px;
-    transform: translateX(-13%);
-    font-size: 12px;
-  }
-
-  .stan_word2::before {
-    line-height: 18px;
-    bottom: -45px;
-    transform: translateX(-20%);
-    font-size: 12px;
-  }
-
-  .stan_word3::before {
-    bottom: -37px;
-    transform: translateX(-10%);
-    font-size: 12px;
-  }
-  //
-  //
-  // -------------------流程區結束-------------------
-
-  // -------------------中間商品區塊-------------------
-
-  .stan_carts_midd  le {
-    flex-direction: column;
-  }
-
-  .stan_product_title {
+  @include mobile {
     width: 100%;
   }
+}
 
-  .stan_product_selector,
-  .stan_forcus_selector {
-    padding-left: 0%;
-    padding-right: 0%;
-  }
+.stan_checkout {
+  padding: 8% 10% 12% 10%;
+  line-height: 30px;
 
-  .stan_selector_Item {
-    margin: 5px;
+  @include mobile {
+    padding-top: 3%;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
     font-size: 14px;
-  }
-
-  .stan_forcus_Item {
-    width: 20%;
-    height: 0.5rem;
+    line-height: 25px;
   }
 }
+
+.stan_foralign {
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    padding: 0px 8%;
+  }
+}
+
+.stan_foralign2 {
+  margin-bottom: 10px;
+}
+
+.stan_checkouthr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  @include mobile {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.stan_checkout_btn {
+  margin-top: 30px;
+  width: 100%;
+  height: 50px;
+  border: 0px;
+  background-color: $stan_color2;
+  font-size: 16px;
+  font-weight: 600;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.stan_checkout_btn2 {
+  display: none;
+
+  @include mobile {
+    display: block;
+    margin-top: 30px;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    background-color: $stan_color2;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
 //
 //
-// -------------------中間商品區塊結束-------------------
+// -------------------------中間區域結束-------------------------
