@@ -5,7 +5,7 @@ import "../components/all.scss";
 function navbar(props) {
   return (
     <>
-      <div className="navbar">
+      <div className="navbar1">
         <div className="navbarLeftLeft">
           <a href="#/">
             <i className="fas fa-bars"></i>
@@ -26,7 +26,7 @@ function navbar(props) {
               <i className="fas fa-shopping-cart"></i>
             </a>
           </div>
-          <div className="navbarMenu">
+          <div className="navbarMenu1">
             <a href="#/">
               <span>MENU</span>
             </a>
