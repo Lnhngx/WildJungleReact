@@ -1,9 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import "./products.scss";
 
 function Products() {
-  const [sliders, setSliders] = useState(8);
   return (
     <>
       <div className="totalbackground">
@@ -18,7 +16,7 @@ function Products() {
           <div className="mainPic">
             <div className="triangle">
               <div className="adTitle">
-                <h1>2021.秋季重新販售！</h1>
+                <p>2021.秋季重新販售！</p>
                 <span>Bisque Design</span>
                 <span className="titlespan">極佳觸感.親膚材質</span>
               </div>
