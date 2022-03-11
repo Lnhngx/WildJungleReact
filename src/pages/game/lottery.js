@@ -43,10 +43,7 @@ function Lottery(){
     function first_render (ctx, ctx_bottom){
         const canvas = ctx.canvas;
         const canvas_bottom = ctx_bottom.canvas;
-        ctx_bottom.font = "40px Arial";
-            ctx_bottom.fillStyle = 'whtie';
-            ctx_bottom.textAlign = 'center';
-            ctx_bottom.fillText('銘謝惠顧',canvas_bottom.width/2,canvas_bottom.height/2);
+        
         const image = new Image();
         const image_bottom = new Image();
         image.src = "http://localhost:3000/img/game/lottery1.png";
@@ -55,7 +52,11 @@ function Lottery(){
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         };
         image_bottom.onload = () => {
-            ctx_bottom.drawImage(image_bottom,0,0,canvas_bottom.width,canvas_bottom.height)
+            ctx_bottom.drawImage(image_bottom,0,0,canvas_bottom.width,canvas_bottom.height);
+            ctx_bottom.font = "40px Arial";
+            ctx_bottom.fillStyle = 'white';
+            // ctx_bottom.textAlign = 'center';
+            ctx_bottom.fillText('銘謝惠顧',canvas_bottom.width/2,150);
         }
         // 獎勵文字的部分
         
