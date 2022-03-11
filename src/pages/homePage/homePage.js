@@ -4,23 +4,27 @@ function homePage() {
   return (
     <>
       <div className="ning_homecontainer">
-        <div className="ning_CarouselWrap">
-          <ul className="ning_CarouselWrapImg">
-            <li>
-              <img src="/img/home/activity03.jpg" alt="" />
-            </li>
-            <li>
-              <img src="/img/home/activity01.jpeg" alt="" />
-            </li>
-            <li>
-              <img src="/img/home/activity02.jpg" alt="" />
-            </li>
-          </ul>
+        <div className="ning_homecarouselwrap">
+          <div className="ning_homecarouselwrapimg">
+            <div>
+              <a href="#/">
+                <img src="/img/home/activity03.jpg" alt="" />
+              </a>
+            </div>
+            <div>
+              <a href="#/">
+                <img src="/img/home/activity01.jpeg" alt="" />
+              </a>
+            </div>
+            <div>
+              <a href="#/">
+                <img src="/img/home/activity02.jpg" alt="" />
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="ning_bgcblack">
-          <img src="/img/home/homebgcblack.svg" alt="" />
-        </div>
-        <div className="ning_informationbox">
+        <div className="ning_informationbox"></div>
+        {/* <div className="ning_informationbox">
           <div className="ning_Admissionbox">
             <div className="ning_AdmissionboxIcon">
               <span className="material-icons">groups</span>
@@ -70,8 +74,10 @@ function homePage() {
               <p className="ninghomeloveprice">$20</p>
             </div>
           </div>
-        </div>
-        <div className="ning_JungleTour">
+        </div> */}
+        {/* <div className="ning_bgcblack">
+          <img src="/img/home/homebgcblack.svg" alt="" />
+          <div className="ning_JungleTour">
           <h1 className="ning_EnTitle">Jungle Tour</h1>
           <p className="ning_ChTitle">園區分類一覽</p>
           <div className="ning_JungleTourbox">
@@ -109,7 +115,7 @@ function homePage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
