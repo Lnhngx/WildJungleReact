@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect} from "react";
 import { useRef } from "react";
 import './lottery.css';
 
@@ -6,7 +6,7 @@ function Lottery(){
     const myCanvas = useRef(null);
     const myCanvas_bottom = useRef(null);
     // 利用useRef 抓到render出來的真實canvas
-    const [count,setCount] = useState(0);
+    // const [count,setCount] = useState(0);
     let painting = false;
     function startPosition(e){        
         painting = true;
@@ -28,16 +28,17 @@ function Lottery(){
     }
     function show_result(){
         const ctx = myCanvas.current.getContext("2d");  
-        const data = ctx.getImageData(200,100,300,100).data;
+        const data = ctx.getImageData(70,60,250,150).data;
+        let transparent_number = 0;
         for (let i = 0; i < data.length; i++) {
             if (data[i] === 0) {
-                setCount(count+1);
+                transparent_number++;
             }
         };
-        if (count >= data.length * 0.79) {            
+        if (transparent_number >= data.length * 0.79) {            
             ctx.canvas.style.opacity = 0;            
-            myCanvas.removeEventListener("mousedown",startPosition);
-            myCanvas.removeEventListener("mousemove",draw);
+            myCanvas.current.removeEventListener("mousedown",startPosition);
+            myCanvas.current.removeEventListener("mousemove",draw);
         }        
     }
     function first_render (ctx, ctx_bottom){
@@ -53,13 +54,13 @@ function Lottery(){
         };
         image_bottom.onload = () => {
             ctx_bottom.drawImage(image_bottom,0,0,canvas_bottom.width,canvas_bottom.height);
+            // ctx_bottom.fillStyle = 'red';
+            // ctx_bottom.fillRect(70,60,250,150);
             ctx_bottom.font = "40px Arial";
             ctx_bottom.fillStyle = 'white';
-            // ctx_bottom.textAlign = 'center';
+            ctx_bottom.textAlign = 'center';
             ctx_bottom.fillText('銘謝惠顧',canvas_bottom.width/2,150);
         }
-        // 獎勵文字的部分
-        
     }
     useEffect(()=>{
         // 刮刮樂表面的CSS
