@@ -71,18 +71,45 @@ function homePage() {
             </div>
           </div>
         </div>
-        {/* <div className="ning_JungleTour">
-          <div className="ning_JungleTourTitle">
-            <h1 className="ning_EnTitle">Jungle Tour</h1>
-            <p className="ning_ChTitle">園區分類一覽</p>
+        <div className="ning_JungleTour">
+          <h1 className="ning_EnTitle">Jungle Tour</h1>
+          <p className="ning_ChTitle">園區分類一覽</p>
+          <div className="ning_JungleTourbox">
             <div className="ning_JungleTourmap">
               <img src="/img/home/tropicalmap.svg" alt="" />
             </div>
+            <div className="ning_hometourimgbox">
+              <div className="ning_hometropical">
+                <img
+                  className="ning_hometropicalimg"
+                  src="/img/home/tropical.jpg"
+                  alt=""
+                />
+                <p>熱帶雨林館</p>
+              </div>
+              <div className="ning_homeOcean">
+                <img
+                  className="ning_homeOceanimg"
+                  src="/img/home/Ocean.jpg"
+                  alt=""
+                />
+                <p>海底世界館</p>
+              </div>
+              <div className="ning_homenocturnal">
+                <img
+                  className="ning_homenocturnalimg"
+                  src="/img/home/nocturnal.jpg"
+                  alt=""
+                />
+                <p>夜行動物館</p>
+              </div>
+              <div className="ning_homeice">
+                <img className="ning_homeiceimg" src="/img/home/ice.jpg" alt="" />
+                <p>冰原歷險館</p>
+              </div>
+            </div>
           </div>
-          <div className="ning_tropical">
-            <img src="/img/home/tropical.jpg" alt="" />
-          </div>
-        </div> */}
+        </div>
       </div>
     </>
   );
