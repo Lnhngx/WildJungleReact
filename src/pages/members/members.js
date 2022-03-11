@@ -16,11 +16,11 @@ function members(){
 
     return(<>
       <div className="container tysu_contain">
-        {/* <Login /> */}
+        <Login />
         {/* <Signup /> */}
         {/* <ForgotPass /> */}
         {/* <ForgotPassChange /> */}
-        <MemberList />
+        {/* <MemberList /> */}
       </div>
     </>
   )
