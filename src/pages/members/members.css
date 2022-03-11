@@ -7,8 +7,81 @@
   --tysu_inputMargin: 1.8rem 0 0 1.8rem;
 }
 
-@media screen and (max-width: 1000px) {
-  .tysu_contain {
-    width: 80%;
+@media screen and (max-width: 900px) {
+  .tysu_row {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .tysu_grade {
+    width: 100%;
+    padding-top: 60px;
+  }
+  .tysu_gradeImg {
+    padding-top: 0;
+  }
+
+  .tysu_bg {
+    max-width: 300px;
+    left: calc(85% - 260px);
+  }
+}
+@media screen and (max-width: 635px) {
+  .tysu_gradeImg {
+    min-height: 145px;
+    /* transition: 0.1s; */
+  }
+  .tysu_gradeImg img {
+    margin: -50% 0;
+    transform: translateY(14%);
+  }
+  .tysu_memberList {
+    flex-wrap: wrap;
+  }
+
+  .tysu_memberList li {
+    width: 17rem;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .tysu_hr {
+    width: 85%;
+  }
+
+  .tysu_memberChild li,
+  .tysu_focusUnderLine li {
+    width: 8.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .tysu_gradeImg {
+    min-height: 128px;
+    /* transition: 0.1s; */
+  }
+  .tysu_gradeImg img {
+    margin: -50% 0;
+    transform: translateY(13%);
+  }
+  .tysu_memberList li {
+    width: 14rem;
+  }
+  .tysu_hr {
+    width: 91%;
+  }
+
+  .tysu_memberChild li,
+  .tysu_focusUnderLine li {
+    width: 6rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .tysu_gradeImg {
+    min-height: 106px;
+  }
+  .tysu_gradeImg img {
+    margin: -50% 0;
+    transform: translateY(13%);
   }
 }

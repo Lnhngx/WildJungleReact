@@ -20,10 +20,10 @@ function MemberList(){
           <li><Link to=""  className="tysu_link">折價優惠</Link></li>
           <li><Link to=""  className="tysu_link">喜愛收藏</Link></li>
         </ul>
-      {/* <MemberNavItem /> */}
+      <MemberNavItem />
       {/* <OrderNavItem /> */}
       {/* <DiscountNavItem /> */}
-      <LikeNavItem />
+      {/* <LikeNavItem /> */}
       <div className="tysu_memberBg">
         <img src="./img/member/leaf_y.svg" alt="" />
       </div>

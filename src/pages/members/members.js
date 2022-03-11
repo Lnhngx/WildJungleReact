@@ -6,7 +6,7 @@ import ForgotPassChange from './components/ForgotPassChange.js'
 import MemberList from './components/MemberList.js'
 
 import './../members/tysu.css'
-// import './../members/members.css'
+import './../members/members.css'
 
 function members(){
 
@@ -15,12 +15,14 @@ function members(){
 
 
     return(<>
-      <div className="container tysu_contain">
-        <Login />
+      <div className="tysu_contain">
+        <div className="tysu_row">
+        {/* <Login /> */}
         {/* <Signup /> */}
         {/* <ForgotPass /> */}
         {/* <ForgotPassChange /> */}
-        {/* <MemberList /> */}
+        <MemberList />
+        </div>
       </div>
     </>
   )
