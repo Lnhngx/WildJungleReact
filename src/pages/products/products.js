@@ -1,9 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import "./products.scss";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import { MyHandle } from "./MyHandle";
 
 function Products() {
   const [sliders, setSliders] = useState(8);
@@ -108,15 +105,6 @@ function Products() {
               </select>
             </div>
             <div className="dragableinput">
-              <Slider
-                min={1}
-                max={30}
-                value={sliders}
-                step={1}
-                marks={{ 1: "1 year", 30: "30 years" }}
-                onChange={setSliders}
-                handle={MyHandle}
-              />
             </div>
           </div>
           <div className="productgroup">
