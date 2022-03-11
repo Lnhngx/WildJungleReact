@@ -1,6 +1,6 @@
 import React from "react";
 import './spotLevel.css';
-
+import Lottery from './lottery';
 function SpotLevel(){
     return(
     <>
@@ -25,6 +25,7 @@ function SpotLevel(){
             </div>
             <div className="game_title">眼力大考驗</div>
             <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span></p>
+            <Lottery />
             <div className="container_level">
                 <div class="choose_levelTitle">選擇關卡</div>
                 <div class="wrap_level">
