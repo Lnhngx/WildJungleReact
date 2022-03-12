@@ -31,7 +31,7 @@ $ning-englishont: "Playfair Display", serif;
   position: relative;
 }
 .ning_information {
-  width: 60vw;
+  width: 65vw;
   height: 120px;
   background-color: #555;
   display: flex;
@@ -65,7 +65,7 @@ $ning-englishont: "Playfair Display", serif;
 
 .material-icons {
   color: $ning-color3;
-  font-size: 5.2rem;
+  font-size: 5rem;
   padding-left: 1.5px;
 }
 
@@ -164,17 +164,17 @@ $ning-englishont: "Playfair Display", serif;
 
 .ning_TitleEn {
   font-size: 6rem;
-  font-weight: 700;
+  font-weight: 600;
   color: $ning-color3;
   padding-top: 160px;
 }
 
 .ning_TitleCh {
   font-family: $ning-chinesefont;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 400;
   color: $ning-color3;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .ning_JungleTourmapbox {
@@ -210,7 +210,7 @@ $ning-englishont: "Playfair Display", serif;
   margin-top: 15px;
 }
 
-.ning_Jungletropical{
+.ning_Jungletropical {
   margin-top: 70px;
   opacity: 0.8;
 }
@@ -220,7 +220,7 @@ $ning-englishont: "Playfair Display", serif;
   left: -180px;
 }
 
-.ning_JungleOcean{
+.ning_JungleOcean {
   margin-top: 140px;
   opacity: 0.8;
 }
@@ -230,7 +230,7 @@ $ning-englishont: "Playfair Display", serif;
   left: -280px;
 }
 
-.ning_Junglenocturnal{
+.ning_Junglenocturnal {
   margin-top: 70px;
   opacity: 0.8;
 }
@@ -240,7 +240,7 @@ $ning-englishont: "Playfair Display", serif;
   left: -300px;
 }
 
-.ning_Jungleice{
+.ning_Jungleice {
   opacity: 0.8;
 }
 
@@ -251,22 +251,182 @@ $ning-englishont: "Playfair Display", serif;
 
 /* hover 效果 */
 
-.ning_Jungletropical:hover{
+.ning_Jungletropical:hover {
   margin-top: 50px;
   opacity: 1;
 }
 
-.ning_JungleOcean:hover{
+.ning_JungleOcean:hover {
   margin-top: 120px;
   opacity: 1;
 }
 
-.ning_Junglenocturnal:hover{
+.ning_Junglenocturnal:hover {
   margin-top: 50px;
   opacity: 1;
 }
 
-.ning_Jungleice:hover{
+.ning_Jungleice:hover {
   margin-top: -20px;
   opacity: 1;
 }
+
+/* 釘選購票、紅利遊戲 */
+
+.ning_buyticket,
+.ning_game {
+  background-color: $ning-color2;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  margin-left: -5px;
+  padding-top: 5px;
+  margin-top: 30px;
+}
+
+.ning_buyticketicon p,
+.ning_gameicon p {
+  font-family: $ning-chinesefont;
+  color: $ning-color3;
+  font-size: 1.2rem;
+  margin-top: -10px;
+}
+
+.ning_rightflex {
+  position: fixed;
+  z-index: 8888;
+  top: 150px;
+  right: 0px;
+}
+
+/* Popular Events 熱門活動 */
+
+.ning_PopularEvents {
+  margin-top: -150px;
+}
+
+.ning_TitleEnblack {
+  font-size: 6rem;
+  font-weight: 600;
+  color: $ning-color4;
+  padding-top: 160px;
+}
+
+.ning_TitleChblack {
+  font-family: $ning-chinesefont;
+  font-size: 2.3rem;
+  font-weight: 400;
+  color: $ning-color4;
+  margin-top: 20px;
+}
+
+.ning_eventsbox {
+  padding: 10px 20px;
+  margin-top: 50px;
+}
+
+.ning_eventsday {
+  color: $ning-color4;
+  font-family: $ning-chinesefont;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.ning_eventsyear {
+  color: $ning-color4;
+  font-family: $ning-chinesefont;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.ning_eventsdateline {
+  width: 100px;
+  height: 1.3px;
+  background-color: $ning-color4;
+  margin: 2px 0;
+}
+
+.ning_eventstour {
+  color: $ning-color4;
+  font-family: $ning-chinesefont;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.ning_eventsimg {
+  width: 308px;
+  margin-top: 15px;
+}
+
+.ning_eventsimg img {
+  width: 100%;
+}
+
+.ning_eventsboxbottom {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ning_eventstext {
+  font-family: $ning-chinesefont;
+  color: $ning-color4;
+  font-size: 1.5rem;
+}
+
+.ning_eventsgo {
+  border-top: 1.2px solid $ning-color4;
+}
+
+.ning_eventsgo span {
+  color: $ning-color4;
+  font-size: 1.6rem;
+  padding: 6px 12px;
+}
+
+.ning_buttonbox{
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ning_viewmorebtn {
+  background-color: $ning-color4;
+  border-radius: 0%;
+  display: flex;
+  width: 315px;
+  height: 50px;
+  align-items: center;
+  padding: 5px 40px;
+  justify-content: space-between;
+}
+
+.ning_viewmorebtntext {
+  font-family: $ning-englishont;
+  color: $ning-color3;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ning_viewmoreicon {
+  color: $ning-color3;
+  font-size: 2rem;
+  font-weight: 200;
+  margin: 0;
+}
+
+
+/* Popular Events 熱門活動 hover */
+
+
+.ning_eventsbox:hover {
+  border: 1px solid $ning-color4;
+  padding: 10px 0px 10px 20px;
+  margin-top: 20px;
+}
+

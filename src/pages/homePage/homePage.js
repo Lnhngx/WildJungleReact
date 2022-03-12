@@ -1,24 +1,25 @@
 import React from "react";
 import "./ning.scss";
+import { Link } from "react-router-dom";
 function homePage() {
   return (
     <>
       <div className="ning_homecarouselwrap">
         <ul className="ning_homecarouselwrapimg">
           <li>
-            <a href="#/">
+            <Link to="">
               <img src="/img/home/activity03.jpg" alt="" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#/">
+            <Link to="">
               <img src="/img/home/activity01.jpeg" alt="" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#/">
+            <Link to="">
               <img src="/img/home/activity02.jpg" alt="" />
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -89,7 +90,7 @@ function homePage() {
             <img src="/img/home/tropicalmap.svg" alt="" />
           </div>
           <div className="ning_Jungletourimgbox">
-            <a href="#/">
+            <Link to="">
               <div className="ning_Jungletropical">
                 <div className="ning_tourboxhd">
                   <img
@@ -100,8 +101,8 @@ function homePage() {
                 </div>
                 <p>熱帶雨林館</p>
               </div>
-            </a>
-            <a href="#/">
+            </Link>
+            <Link to="">
               <div className="ning_JungleOcean">
                 <div className="ning_tourboxhd">
                   <img
@@ -112,8 +113,8 @@ function homePage() {
                 </div>
                 <p>海底世界館</p>
               </div>
-            </a>
-            <a href="#/">
+            </Link>
+            <Link to="">
               <div className="ning_Junglenocturnal">
                 <div className="ning_tourboxhd">
                   <img
@@ -124,8 +125,8 @@ function homePage() {
                 </div>
                 <p>夜行動物館</p>
               </div>
-            </a>
-            <a href="#/">
+            </Link>
+            <Link to="">
               <div className="ning_Jungleice">
                 <div className="ning_tourboxhd">
                   <img
@@ -136,7 +137,153 @@ function homePage() {
                 </div>
                 <p>冰原歷險館</p>
               </div>
-            </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="ning_rightflex">
+        <Link to="">
+          <div className="ning_buyticket">
+            <div className="ning_buyticketicon">
+              <span class="material-icons">confirmation_number</span>
+              <p>立即訂票</p>
+            </div>
+          </div>
+        </Link>
+        <Link to="">
+          <div className="ning_game">
+            <div className="ning_gameicon">
+              <span class="material-icons">sports_esports</span>
+              <p>紅利遊戲</p>
+            </div>
+          </div>
+        </Link>
+      </div>
+      <div className="container">
+        <div className="ning_PopularEvents">
+          <h1 className="ning_TitleEnblack">Popular Events</h1>
+          <h2 className="ning_TitleChblack">熱門活動一覽</h2>
+        </div>
+        <div className="row">
+          <div className="col-4">
+            <Link to="">
+              <div className="ning_eventsbox">
+                <p className="ning_eventsday">05.16</p>
+                <p className="ning_eventsyear">2022</p>
+                <div className="ning_eventsdateline"></div>
+                <p className="ning_eventstour">熱帶雨林館</p>
+                <div className="ning_eventsimg">
+                  <img src="/img/home/activity03.jpg" alt="" />
+                </div>
+                <div className="ning_eventsboxbottom">
+                  <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
+                  <div className="ning_eventsgo">
+                    <span className="material-icons">east</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-4">
+            <Link to="">
+              <div className="ning_eventsbox">
+                <p className="ning_eventsday">05.16</p>
+                <p className="ning_eventsyear">2022</p>
+                <div className="ning_eventsdateline"></div>
+                <p className="ning_eventstour">熱帶雨林館</p>
+                <div className="ning_eventsimg">
+                  <img src="/img/home/activity03.jpg" alt="" />
+                </div>
+                <div className="ning_eventsboxbottom">
+                  <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
+                  <div className="ning_eventsgo">
+                    <span className="material-icons">east</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-4">
+            <Link to="">
+              <div className="ning_eventsbox">
+                <p className="ning_eventsday">05.16</p>
+                <p className="ning_eventsyear">2022</p>
+                <div className="ning_eventsdateline"></div>
+                <p className="ning_eventstour">熱帶雨林館</p>
+                <div className="ning_eventsimg">
+                  <img src="/img/home/activity03.jpg" alt="" />
+                </div>
+                <div className="ning_eventsboxbottom">
+                  <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
+                  <div className="ning_eventsgo">
+                    <span className="material-icons">east</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-4">
+            <Link to="">
+              <div className="ning_eventsbox">
+                <p className="ning_eventsday">05.16</p>
+                <p className="ning_eventsyear">2022</p>
+                <div className="ning_eventsdateline"></div>
+                <p className="ning_eventstour">熱帶雨林館</p>
+                <div className="ning_eventsimg">
+                  <img src="/img/home/activity03.jpg" alt="" />
+                </div>
+                <div className="ning_eventsboxbottom">
+                  <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
+                  <div className="ning_eventsgo">
+                    <span className="material-icons">east</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-4">
+            <Link to="">
+              <div className="ning_eventsbox">
+                <p className="ning_eventsday">05.16</p>
+                <p className="ning_eventsyear">2022</p>
+                <div className="ning_eventsdateline"></div>
+                <p className="ning_eventstour">熱帶雨林館</p>
+                <div className="ning_eventsimg">
+                  <img src="/img/home/activity03.jpg" alt="" />
+                </div>
+                <div className="ning_eventsboxbottom">
+                  <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
+                  <div className="ning_eventsgo">
+                    <span className="material-icons">east</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-4">
+            <Link to="">
+              <div className="ning_eventsbox">
+                <p className="ning_eventsday">05.16</p>
+                <p className="ning_eventsyear">2022</p>
+                <div className="ning_eventsdateline"></div>
+                <p className="ning_eventstour">熱帶雨林館</p>
+                <div className="ning_eventsimg">
+                  <img src="/img/home/activity03.jpg" alt="" />
+                </div>
+                <div className="ning_eventsboxbottom">
+                  <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
+                  <div className="ning_eventsgo">
+                    <span className="material-icons">east</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="ning_buttonbox">
+            <button className="btn ning_viewmorebtn">
+              <p className="ning_viewmorebtntext">View More</p>
+              <p className="ning_viewmoreicon">⟶</p>
+            </button>
           </div>
         </div>
       </div>
