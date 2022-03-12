@@ -3,6 +3,7 @@ import "./carts.scss";
 import Process01 from "./components/Process_01";
 import Checkarea from "./components/Checkarea";
 
+
 function carts() {
   return (
     <>
@@ -30,6 +31,16 @@ function carts() {
                 <li>商品名稱</li>
                 <li>單價</li>
                 <li>數量</li>
+              </ul>
+              <div className="stan_blackhr"></div>
+            </div>
+            <div className="stan_product_space">
+              <ul >
+                <li>X</li>
+                <li>這是圖片</li>
+                <li>法蘭絨動物兒童披風</li>
+                <li>$900</li>
+                <li>按鈕</li>
               </ul>
               <div className="stan_blackhr"></div>
             </div>
