@@ -6,9 +6,9 @@ function Process01() {
       <div className="stan_process_iconarea">
         <ul>
           <li>1</li>
-          <li></li>
+          <div></div>
           <li>2</li>
-          <li></li>
+          <div></div>
           <li>3</li>
         </ul>
       </div>
