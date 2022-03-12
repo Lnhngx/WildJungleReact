@@ -9,21 +9,30 @@ function carts() {
       <div className="stan_carts_main">
         <Process01 />
         <div className="stan_carts_middle">
-          <div className="stan_product_title">
+          <div className="stan_product_main">
             <ul className="stan_product_selector">
-              <li className="stan_selector_Item">商品清單</li>
-              <li className="stan_selector_Item">票券</li>
-              <li className="stan_selector_Item">認養</li>
-              <li className="stan_selector_Item">預定住宿</li>
+              <li>商品清單</li>
+              <li>票券</li>
+              <li>認養</li>
+              <li>預定住宿</li>
             </ul>
             <hr className="stan_hr" />
             <ul className="stan_forcus_selector">
-              <li className="stan_forcus_Item"></li>
-              <li className="stan_forcus_Item"></li>
-              <li className="stan_forcus_Item"></li>
-              <li className="stan_forcus_Item"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
             </ul>
-            <div className="stan_product_content">123123</div>
+            <div className="stan_product_title">
+              <ul>
+                <li>Empty</li>
+                <li>商品種類</li>
+                <li>商品名稱</li>
+                <li>單價</li>
+                <li>數量</li>
+              </ul>
+              <div className="stan_blackhr"></div>
+            </div>
           </div>
           <div className="stan_block"></div>
           <Checkarea />

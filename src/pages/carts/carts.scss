@@ -179,7 +179,7 @@ $stan_black: #000000;
   }
 }
 
-.stan_product_title {
+.stan_product_main {
   width: 60%;
   height: auto; //暫時
   background-color: $stan_white;
@@ -189,7 +189,34 @@ $stan_black: #000000;
   }
 }
 
-.stan_product_selector,
+.stan_product_selector {
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+
+  @include mobile {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  li {
+    width: 18%;
+    margin-top: 12px;
+    line-height: 15px;
+    font-size: 16px;
+    font-weight: 600;
+
+    @include mobile {
+      margin-top: 10px;
+      line-height: 10px;
+      font-size: 14px;
+    }
+  }
+}
+
 .stan_forcus_selector {
   padding-left: 10%;
   padding-right: 10%;
@@ -202,41 +229,52 @@ $stan_black: #000000;
     padding-left: 0%;
     padding-right: 0%;
   }
-}
 
-.stan_selector_Item {
-  width: 18%;
-  margin-top: 12px;
-  line-height: 15px;
-  font-size: 16px;
-  font-weight: 600;
-
-  @include mobile {
-    margin-top: 10px;
-    line-height: 10px;
-    font-size: 14px;
-  }
-}
-
-.stan_forcus_Item {
-  margin-top: -1px;
-  width: 20%;
-  height: 9.6px;
-  background-color: $stan_black;
-
-  @include mobile {
+  li {
+    margin-top: -1px;
     width: 20%;
-    height: 8px;
+    height: 9.6px;
+    background-color: $stan_black;
+    @include mobile {
+      width: 20%;
+      height: 8px;
+    }
   }
 }
 
-.stan_product_content {
-  padding-left: 10%;
-  padding-right: 10%;
+.stan_product_title {
   width: 100%;
-  display: flex;
-  justify-content: space-around;
   text-align: center;
+  ul {
+    display: flex;
+    li {
+      font-size: 16px;
+
+      @include mobile {
+        display: none;
+      }
+    }
+    li:nth-child(1) {
+      width: 10%;
+    }
+    li:nth-child(2) {
+      width: 25%;
+      justify-content: center;
+    }
+    li:nth-child(3) {
+      width: 20%;
+    }
+    li:nth-child(4) {
+      width: 15%;
+    }
+    li:nth-child(5) {
+      width: 30%;
+    }
+  }
+  .stan_blackhr {
+    width: 100%;
+    border: 1px solid $stan_black;
+  }
 }
 
 .stan_block {
@@ -261,7 +299,6 @@ $stan_black: #000000;
     width: 100%;
   }
 }
-
 
 .stan_tempay {
   display: none;
