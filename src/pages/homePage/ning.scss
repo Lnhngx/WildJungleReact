@@ -6,6 +6,12 @@ $ning-color5: #1b7754;
 $ning-chinesefont: "Noto Sans", sans-serif;
 $ning-englishont: "Playfair Display", serif;
 
+@mixin mobile {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
 /* 輪播牆 */
 
 .ning_homecarouselwrapimg li img {
@@ -387,7 +393,7 @@ $ning-englishont: "Playfair Display", serif;
   padding: 6px 12px;
 }
 
-.ning_buttonbox{
+.ning_buttonbox {
   width: 100%;
   margin-top: 100px;
   display: flex;
@@ -420,13 +426,19 @@ $ning-englishont: "Playfair Display", serif;
   margin: 0;
 }
 
-
 /* Popular Events 熱門活動 hover */
-
 
 .ning_eventsbox:hover {
   border: 1px solid $ning-color4;
   padding: 10px 0px 10px 20px;
   margin-top: 20px;
 }
+
+/* Accommodation 風格住宿 */
+
+.ning_Accommodation {
+  margin-top: -60px;
+}
+
+
 

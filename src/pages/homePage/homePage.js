@@ -286,6 +286,26 @@ function homePage() {
             </button>
           </div>
         </div>
+        <div className="ning_Accommodation">
+          <h1 className="ning_TitleEnblack">Accommodation</h1>
+          <h2 className="ning_TitleChblack">風格住宿</h2>
+        </div>
+        <div className="ning_Accommodationbox">
+          <div className="ning_Accommodationcardwrap">
+            <div className="ning_Accommodationcard">
+              <img src="/img/home/icefieldroom.jpeg" alt="" />
+            </div>
+            <div className="ning_Accommodationcard">
+              <img src="/img/home/tropicalroom.jpg" alt="" />
+            </div>
+            <div className="ning_Accommodationcard">
+              <img src="/img/home/nocturnalroom.jpeg" alt="" />
+            </div>
+            <div className="ning_Accommodationcard">
+              <img src="/img/home/oceanroom.jpeg" alt="" />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

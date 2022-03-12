@@ -3,6 +3,7 @@ import "./products.scss";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Range = Slider;
 
 function Products() {
@@ -95,7 +96,7 @@ function Products() {
           <div className="filter">
             <div className="inputwithIcon">
               <input type="search" name="" id="" placeholder="Search" />
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </div>
             <div className="selectGroup">
               <select name="" id="">
@@ -110,17 +111,18 @@ function Products() {
             </div>
             <div className="dragableinput">
               <span>依價格 ${rangevalue}以下</span>
-              <Range className="alanslider"
+              <Range
+                className="alanslider"
                 marks={{
                   1: `$ 1`,
-                  5000: `$ 5000`,
+                  3000: `$ 3000`,
                 }}
                 min={1}
-                max={5000}
+                max={3000}
                 onChange={setRangevalue}
                 handleStyle={{
                   backgroundColor: "#eb5c37",
-                  opacity:1,
+                  opacity: 1,
                   border: "0",
                   boxShadow: "0 0 30px rgba(0, 0, 0, 0.1)",
                 }}
@@ -133,16 +135,220 @@ function Products() {
                   backgroundColor: "black",
                 }}
                 dotStyle={{
-                  border:"0",
-                  backgroundColor:"#eb5c37",
+                  border: "0",
+                  backgroundColor: "#eb5c37",
                 }}
               />
             </div>
+            <div className="filterIcon">
+              <a href="#/">
+                <i className="fab fa-facebook-square"></i>
+              </a>
+              <a href="#/">
+                <i className="fab fa-twitter-square"></i>
+              </a>
+              <a href="#/">
+                <i className="fab fa-google-plus-square"></i>
+              </a>
+              <a href="#/">
+                <i className="fab fa-blogger"></i>
+              </a>
+            </div>
           </div>
           <div className="productgroup">
-            <div className="productCard"></div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                </div>
+              </Link>
+
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+      <div className="backToTop">
+        <button>
+          <span className="span1">Click </span>
+          <span className="span2">To </span>
+          <span className="span3">Top <i class="fas fa-angle-double-up"></i></span>
+        </button>
       </div>
     </>
   );

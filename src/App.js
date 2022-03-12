@@ -13,6 +13,7 @@ import Game from "./pages/game/game";
 import SpotDiff from "./pages/game/spot-diff";
 import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
+import PsychoGame from "./pages/game/psycho-game";
 import Members from "./pages/members/members";
 import MemberLogin from './pages/members/MemberLogin.js'
 import MemberSignUp from "./pages/members/MemberSignUp";
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/game/spot-level">
             <SpotLevel />
+          </Route>
+          <Route path="/game/psycho-game">
+            <PsychoGame />
           </Route>
           <Route path="/game/spot-diff">
             <SpotDiff />
