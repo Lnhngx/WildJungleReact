@@ -15,7 +15,7 @@
 :root {
   --tysu_color: #f9b112;
   --tysu_color2: #eb5c37;
-  --tysu_fontSize: 1.2rem;
+  --tysu_fontSize: 1.3rem;
   --tysu_fontWeight: 600;
   --tysu_showdow: 0 0 3px #f9b01210;
   --tysu_inputMargin: 1.8rem 0 0 1.8rem;
@@ -23,6 +23,12 @@
 
 .tysu_contain {
   min-height: 100vh;
+  font-size: var(--tysu_fontSize);
+}
+.tysu_row {
+  max-width: 830px;
+
+  margin: 0 auto;
 }
 
 .tysu_h1 {
@@ -57,13 +63,18 @@
 .tysu_tr td {
   text-align: right;
   font-weight: var(--tysu_fontWeight);
-  font-size: 1rem;
+  font-size: var(--tysu_fontSize);
   vertical-align: middle;
 }
 
 .tysu_tr span {
   font-family: "Playfair Display", serif;
   font-weight: 500;
+  margin-top: 0;
+}
+
+.tysu_tr label {
+  margin-bottom: 0;
 }
 
 .tysu_orderTr {
@@ -80,6 +91,7 @@
 .tysu_orderText th,
 .tysu_orderText td {
   font-family: "Noto Sans TC", sans-serif;
+  font-size: var(--tysu_fontSize);
   font-weight: 300;
   text-align: center;
   padding: 1rem 0;
@@ -242,22 +254,23 @@ input:-webkit-autofill:active,
   margin-top: 6px;
 }
 .tysu_grade {
+  width: 100%;
   padding-top: 120px;
+  overflow: hidden;
+  margin-right: 0;
 }
 .tysu_gradeImg {
-  width: 830px;
-  height: 226px;
+  min-height: 226px;
   outline: 1px solid red;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
+
   margin-bottom: 0.9rem;
 }
 
 .tysu_gradeImg img {
   width: 100%;
   vertical-align: middle;
-  margin: -20.5% 0;
+  margin: -20% 0;
 }
 .tysu_gradeLi {
   width: 160px;
@@ -280,7 +293,7 @@ input:-webkit-autofill:active,
 .tysu_memberList li {
   width: 195px;
   height: 100px;
-  font-size: 1.1rem;
+  font-size: var(--tysu_fontSize);
   font-weight: var(--tysu_fontWeight);
   border: 0.8px solid #000;
   text-align: center;
@@ -308,7 +321,8 @@ input:-webkit-autofill:active,
 }
 .tysu_memberChild li,
 .tysu_focusUnderLine li {
-  width: 150px;
+  width: 9.35rem;
+  /* font-size: var(--tysu_fontSize); */
 }
 .tysu_memberChild li {
   /* outline: 1px solid red; */
@@ -325,7 +339,7 @@ input:-webkit-autofill:active,
 }
 
 .tysu_hr {
-  width: 830px;
+  width: 100%;
   border: 0;
   background-color: black;
   height: 1px;
@@ -430,6 +444,7 @@ input:-webkit-autofill:active,
 .tysu_link {
   color: #000;
   text-decoration: none;
+  font-size: var(--tysu_fontSize);
 }
 
 .tysu_table {

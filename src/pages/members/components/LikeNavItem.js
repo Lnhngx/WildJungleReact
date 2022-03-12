@@ -17,7 +17,7 @@ function LikeNavItem(){
     <img className="tysu_bg" src="./img/member/flower.svg" alt="" />
   </ul>
   {/* <ProductLike /> */}
-  <ActivityLike />
+  {/* <ActivityLike /> */}
   </>)
 }
 export default LikeNavItem;

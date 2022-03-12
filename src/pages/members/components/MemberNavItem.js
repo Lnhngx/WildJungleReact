@@ -27,7 +27,7 @@ function MemberNavItem(){
   {/* <GradeInfo /> */}
   {/* <Creditcard /> */}
   {/* <CreditcardAdd /> */}
-  <AddressAdd />
+  {/* <AddressAdd /> */}
   </>)
 }
 export default MemberNavItem;
