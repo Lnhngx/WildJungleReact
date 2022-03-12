@@ -347,7 +347,7 @@ function Products() {
         <button>
           <span className="span1">Click </span>
           <span className="span2">To </span>
-          <span className="span3">Top <i class="fas fa-angle-double-up"></i></span>
+          <span className="span3">Top <i class="fas fa-angle-double-up">132123123</i></span>
         </button>
       </div>
     </>
