@@ -69,6 +69,19 @@
   transform-origin: top left;
 }
 
+.totalbackground .backgroundimg6 {
+  position: fixed;
+  width: 45%;
+  height: 50%;
+  background-image: url(./imgs/bird.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 30%;
+  bottom: 20%;
+  animation: bird 10s linear 0s infinite;
+  transform-origin: center center;
+}
+
 @keyframes leaf1 {
   0% {
     transform: rotate(15deg);
@@ -149,6 +162,24 @@
   }
   50% {
     transform: rotate(22deg);
+  }
+  75% {
+    transform: rotate(7deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bird {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(7deg);
+  }
+  50% {
+    transform: rotate(10deg);
   }
   75% {
     transform: rotate(7deg);
@@ -319,6 +350,7 @@
   width: 100%;
 }
 .inputwithIcon {
+  width: 100%;
   position: relative;
 }
 .inputwithIcon input {
@@ -351,6 +383,27 @@
   background-color: white;
 }
 
+.dragableinput{
+  margin: 20px 0 20px 0 ;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  width: 90%;
+  height: 53px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dragableinput .alanslider{
+  width: 100%;
+  margin-top: 10px;
+}
+.filter{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+}
 @media screen and (min-width: 980px) {
   .productContainer {
     width: 100%;

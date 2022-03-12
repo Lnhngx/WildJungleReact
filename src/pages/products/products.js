@@ -1,7 +1,12 @@
 import React from "react";
 import "./products.scss";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+import { useState } from "react";
+const Range = Slider;
 
 function Products() {
+  const [rangevalue, setRangevalue] = useState(1);
   return (
     <>
       <div className="totalbackground">
@@ -10,6 +15,7 @@ function Products() {
         <div className="totalbackgroundimg backgroundimg3"></div>
         <div className="totalbackgroundimg backgroundimg4"></div>
         <div className="totalbackgroundimg backgroundimg5"></div>
+        <div className="totalbackgroundimg backgroundimg6"></div>
       </div>
       <div className="productContainer">
         <div className="slider">
@@ -103,6 +109,34 @@ function Products() {
               </select>
             </div>
             <div className="dragableinput">
+              <span>依價格 ${rangevalue}以下</span>
+              <Range className="alanslider"
+                marks={{
+                  1: `$ 1`,
+                  5000: `$ 5000`,
+                }}
+                min={1}
+                max={5000}
+                onChange={setRangevalue}
+                handleStyle={{
+                  backgroundColor: "#eb5c37",
+                  opacity:1,
+                  border: "0",
+                  boxShadow: "0 0 30px rgba(0, 0, 0, 0.1)",
+                }}
+                railStyle={{
+                  height: "5px",
+                  backgroundColor: "gray",
+                }}
+                trackStyle={{
+                  height: "5px",
+                  backgroundColor: "black",
+                }}
+                dotStyle={{
+                  border:"0",
+                  backgroundColor:"#eb5c37",
+                }}
+              />
             </div>
           </div>
           <div className="productgroup">
