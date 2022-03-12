@@ -80,6 +80,7 @@ body {
 .footer a {
   color: black;
   text-decoration: none;
+  margin: 0 3px 0 3px;
 }
 
 .footerSitemap {
@@ -192,7 +193,6 @@ body {
   }
 
   .footerBottom {
-    margin-top: 50px;
     transform: scale(1);
   }
 }
