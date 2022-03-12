@@ -1,9 +1,9 @@
-.spot_container {
+.psycho_container {
     width: 100%;
     padding-top: 60px;
     padding-bottom: 60px;
     background-color: rgb(249,177,18);
-    margin-bottom: -380px;
+    margin-bottom: -400px;
 }
 .game_title{
     padding-top: 2rem;
@@ -77,66 +77,27 @@
     width: 100%;
     height: auto;
 }
-.container_level {
+.container_game {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
+    align-content: space-between;
     width: calc(100% - 300px);
-    height: 300px;
+    height: 800px;
     margin: 40px auto;
     background-color: rgb(49, 40, 8);
     border-radius: 30px;
 }
-.choose_levelTitle{
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: white;
-    width: 100%;
+.psycho_help {
     text-align: center;
-    margin-top: -5rem;
-    margin-bottom: 2rem;
-}
-.level_hexagon{
-    position:relative;
-    width:100px;
-    height:0;
-    border-width:0 25px 43px;
-    border-style:solid;
-    border-color:transparent transparent #eb5c37;
-}
-.level_hexagon:before{
-    position:absolute;
-    content:"";
-    top:43px;
-    left:-25px;
-    width:50px;
-    height:0;
-    background:none;
-    border-width:43px 25px 0;
-    border-style:solid;    
-    border-color:#eb5c37 transparent transparent;
-    }
-.level_circle{
-    font-family: sans-serif;
-    font-weight: 600;
-    text-align: center;
+    line-height: 35px;
+    width: 40px;
+    height: 40px;
+    margin-left: 30px;
     font-size: 1.5rem;
-    line-height: 70px;
-    position: absolute;
-    left: -10px;
-    top: 8px;
-    width: 70px;
-    height: 70px;
+    color: white;
+    border: 2px solid gold;
     border-radius: 50%;
-    background-color: rgb(233, 226, 131);
-    color: rgb(49, 40, 8);
-}
-.wrap_level{
-    width: 600px;
-    display: flex;
-    justify-content: space-around;
 }
 .animals-footer{
     width: 100%; 
@@ -146,3 +107,4 @@
     height: auto;
     border: none;  
 }
+

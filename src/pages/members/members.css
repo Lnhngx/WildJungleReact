@@ -69,6 +69,70 @@
   }
 }
 
+@media screen and (min-width: 631px) {
+  .tysu_tBody2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .tysu_tBody1 {
+    display: none;
+  }
+  .tysu_input {
+    width: 100%;
+    margin: 5px 0 0 0;
+  }
+  .tysu_tr td {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  #emailHelp,
+  #nameHelp,
+  #genderHelp,
+  #birthHelp,
+  #tysu_adressHelp,
+  #tysu_passHelp,
+  #tysu_cfPassHelp,
+  #tysu_codeHelp,
+  #addressHelp {
+    margin-left: 0;
+  }
+  #birthHelp {
+    margin-bottom: 0;
+  }
+
+  .tysu_year,
+  .tysu_month,
+  .tysu_date {
+    width: 75%;
+    margin: 5px 1.2rem 0;
+  }
+  .tysu_year {
+    margin-left: 0;
+  }
+  .tysu_editBtn,
+  .tysu_cancelBtn {
+    margin: 0;
+  }
+  .tysu_memberBtnGroup {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .tysu_input {
+    width: 100%;
+  }
+  .tysu_year,
+  .tysu_month,
+  .tysu_date {
+    width: 28%;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .tysu_gradeImg {
     height: 128px;
@@ -99,5 +163,13 @@
   }
   .tysu_memberList li {
     width: 12rem;
+  }
+  .tysu_tr td {
+    margin-right: 0;
+    width: 100%;
+  }
+  .tysu_memberBtnGroup {
+    display: flex;
+    justify-content: space-between;
   }
 }

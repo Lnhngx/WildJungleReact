@@ -220,6 +220,7 @@ $stan_black: #000000;
 .stan_forcus_selector {
   padding-left: 10%;
   padding-right: 10%;
+  margin-bottom: 5%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -243,38 +244,68 @@ $stan_black: #000000;
 }
 
 .stan_product_title {
+  padding: 0px 10%;
   width: 100%;
+  font-weight: 600;
   text-align: center;
   ul {
     display: flex;
     li {
       font-size: 16px;
-
-      @include mobile {
-        display: none;
-      }
     }
     li:nth-child(1) {
       width: 10%;
     }
     li:nth-child(2) {
-      width: 25%;
-      justify-content: center;
+      width: 20%;
     }
     li:nth-child(3) {
-      width: 20%;
+      width: 30%;
     }
     li:nth-child(4) {
       width: 15%;
     }
     li:nth-child(5) {
-      width: 30%;
+      width: 25%;
     }
   }
   .stan_blackhr {
     width: 100%;
     border: 1px solid $stan_black;
   }
+  @include mobile{
+    display: none;
+  }
+}
+
+.stan_product_space {
+  margin: 40px 0;
+  padding: 0px 10%;
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+  ul {
+    display: flex;
+    li {
+      font-size: 16px;
+    }
+    li:nth-child(1) {
+      width: 10%;
+    }
+    li:nth-child(2) {
+      width: 20%;
+    }
+    li:nth-child(3) {
+      width: 30%;
+    }
+    li:nth-child(4) {
+      width: 15%;
+    }
+    li:nth-child(5) {
+      width: 25%;
+    }
+  }
+
 }
 
 .stan_block {
