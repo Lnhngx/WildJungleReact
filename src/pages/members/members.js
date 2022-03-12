@@ -16,13 +16,13 @@ function members(){
 
     return(<>
       <div className="tysu_contain">
-        <div className="tysu_row">
+        
         {/* <Login /> */}
         {/* <Signup /> */}
         {/* <ForgotPass /> */}
         {/* <ForgotPassChange /> */}
         <MemberList />
-        </div>
+        
       </div>
     </>
   )
