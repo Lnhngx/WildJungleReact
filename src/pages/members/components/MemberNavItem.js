@@ -23,8 +23,8 @@ function MemberNavItem(){
     <Link to=""  className="tysu_link"><li></li></Link>
     <img className="tysu_bg" src="./img/member/flower.svg" alt="" />
   </ul>
-  <MemberInfo />
-  {/* <GradeInfo /> */}
+  {/* <MemberInfo /> */}
+  <GradeInfo />
   {/* <Creditcard /> */}
   {/* <CreditcardAdd /> */}
   {/* <AddressAdd /> */}

@@ -20,12 +20,12 @@
     padding-top: 0;
   }
 
-  /* .tysu_hr {
-    width: 100%;
-  } */
   .tysu_bg {
     max-width: 300px;
     left: calc(85% - 260px);
+  }
+  .tysu_listHr {
+    width: 97%;
   }
 }
 
@@ -45,9 +45,6 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  /* .tysu_hr {
-    width: 85%;
-  } */
 
   .tysu_memberChild li,
   .tysu_focusUnderLine li {

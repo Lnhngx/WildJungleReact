@@ -14,9 +14,15 @@ import SpotDiff from "./pages/game/spot-diff";
 import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import Members from "./pages/members/members";
+import MemberLogin from './pages/members/MemberLogin.js'
+import MemberSignUp from "./pages/members/MemberSignUp";
+import MemberForgotPass from "./pages/members/MemberForgotPass";
+import MemberPassChange from "./pages/members/MemberPassChange";
 import Orders from "./pages/carts/carts";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
+
+
 
 
 function App() {
@@ -57,8 +63,23 @@ function App() {
           <Route path="/carts">
             <Orders />
           </Route>
+          <Route path="/members/signup">
+            <MemberSignUp />
+          </Route>
+          <Route path="/members/login">
+            <MemberLogin />
+          </Route>
+          <Route path="/members/forgot">
+            <MemberForgotPass />
+          </Route>
+          <Route path="/members/password-change">
+            <MemberPassChange />
+          </Route>
+          <Route path="/members/modify-member-info">
+            <MemberLogin />
+          </Route>
           <Route path="/members">
-            <Members />
+            <MemberLogin />
           </Route>
           <Route path="/lodging">
             <Lodging />
