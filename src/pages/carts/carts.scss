@@ -159,6 +159,33 @@ $stan_black: #000000;
       }
     }
   }
+
+  .stan_process_iconarea_ul_02 {
+    li:nth-child(3) {
+      background-color: $stan_color1;
+      color: $stan_white;
+    }
+    li:nth-child(3)::before {
+      color: $stan_black;
+    }
+    div:nth-child(2) {
+      background-color: $stan_color1;
+    }
+  }
+  
+  .stan_process_iconarea_ul_03 {
+    @extend .stan_process_iconarea_ul_02;
+    li:nth-child(5) {
+      background-color: $stan_color1;
+      color: $stan_white;
+    }
+    li:nth-child(5)::before {
+      color: $stan_black;
+    }
+    div:nth-child(4) {
+      background-color: $stan_color1;
+    }
+  }
 }
 
 //

@@ -1,20 +1,10 @@
 import React from "react";
-import "./carts.scss";
-import Process01 from "./components/Process_01";
-import CartProduct from "./components/CartProduct"
-import Checkarea from "./components/Checkarea";
-
+import Carts01product from "./carts_01_product";
 
 function carts() {
   return (
     <>
-      <div className="stan_carts_main">
-        <Process01 />
-        <div className="stan_carts_middle">
-          <CartProduct />
-          <Checkarea />
-        </div>
-      </div>
+        <Carts01product />
     </>
   );
 }

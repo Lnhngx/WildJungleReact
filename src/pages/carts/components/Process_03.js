@@ -1,10 +1,10 @@
 import React from "react";
 
-function Process01() {
+function Process03() {
   return (
     <>
       <div className="stan_process_iconarea">
-        <ul className="stan_process_iconarea_ul_01">
+        <ul className="stan_process_iconarea_ul_03">
           <li>1</li>
           <div></div>
           <li>2</li>
@@ -16,4 +16,4 @@ function Process01() {
   );
 }
 
-export default Process01;
+export default Process03;
