@@ -24,7 +24,7 @@ function MemberNavItem(){
     <img className="tysu_bg" src="./img/member/flower.svg" alt="" />
   </ul>
   {/* <MemberInfo /> */}
-  <GradeInfo />
+  {/* <GradeInfo /> */}
   {/* <Creditcard /> */}
   {/* <CreditcardAdd /> */}
   {/* <AddressAdd /> */}

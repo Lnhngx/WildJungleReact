@@ -36,7 +36,8 @@ function Lottery(){
             }
         };
         if (transparent_number >= data.length * 0.79) {            
-            ctx.canvas.style.opacity = 0;            
+            ctx.canvas.style.opacity = 0;
+            document.querySelector('.lottery_bonusBtn').style.display = 'block';          
             myCanvas.current.removeEventListener("mousedown",startPosition);
             myCanvas.current.removeEventListener("mousemove",draw);
         }        

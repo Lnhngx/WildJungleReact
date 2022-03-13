@@ -27,6 +27,9 @@
   .tysu_listHr {
     width: 97%;
   }
+  .tysu_hr {
+    width: 85%;
+  }
 }
 
 @media screen and (max-width: 635px) {
@@ -76,6 +79,7 @@
   .tysu_tBody1 {
     display: none;
   }
+
   .tysu_input {
     width: 100%;
     margin: 5px 0 0 0;
@@ -83,7 +87,8 @@
   .tysu_tr td {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 0;
+    width: 85%;
+    margin: 20px auto;
   }
   #emailHelp,
   #nameHelp,
@@ -152,6 +157,9 @@
   .tysu_focusUnderLine li {
     margin-top: 0;
   }
+  .tysu_memberBtnGroup {
+    justify-content: space-evenly;
+  }
 }
 
 @media screen and (max-width: 405px) {
@@ -161,12 +169,13 @@
   .tysu_memberList li {
     width: 12rem;
   }
-  .tysu_tr td {
-    margin-right: 0;
-    width: 100%;
-  }
+
   .tysu_memberBtnGroup {
-    display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+  }
+
+  .tysu_editBtn,
+  .tysu_cancelBtn {
+    width: 145px;
   }
 }
