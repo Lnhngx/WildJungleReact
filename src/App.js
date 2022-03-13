@@ -3,6 +3,7 @@ import { useState } from "react";
 //頁首、頁尾、CSS
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import FixedRight from "./components/fixedRight";
 
 //頁面元件
 import HomePage from "./pages/homePage/homePage";
@@ -15,16 +16,13 @@ import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
 import Members from "./pages/members/members";
-import MemberLogin from './pages/members/MemberLogin.js'
+import MemberLogin from "./pages/members/MemberLogin.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
 import MemberForgotPass from "./pages/members/MemberForgotPass";
 import MemberPassChange from "./pages/members/MemberPassChange";
 import Orders from "./pages/carts/carts";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
-
-
-
 
 function App() {
   // 全域狀態
@@ -34,7 +32,7 @@ function App() {
     <Router>
       <>
         <Navbar />
-
+        <FixedRight />
         {/* 路由表 */}
         <Switch>
           <Route exact path="/">
@@ -106,7 +104,7 @@ function App() {
             <NotFoundPage />
           </Route>
         </Switch>
-         <Footer /> 
+        <Footer />
       </>
     </Router>
   );
