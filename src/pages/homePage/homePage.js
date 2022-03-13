@@ -1,10 +1,14 @@
 import React from "react";
 import "./ning.scss";
 import { Link } from "react-router-dom";
+import HomeCarousel from "./components/HomeCarousel";
+import {CarouselData} from "./components/CarouselData"
 function homePage() {
   return (
     <>
-      <div className="ning_homecarouselwrap">
+      <HomeCarousel slides={CarouselData}/>
+
+      {/* <div className="ning_homecarouselwrap">
         <ul className="ning_homecarouselwrapimg">
           <li>
             <Link to="">
@@ -22,7 +26,7 @@ function homePage() {
             </Link>
           </li>
         </ul>
-      </div>
+      </div> */}
       <div className="ning_informationbox">
         <div className="ning_information">
           <div className="ning_Admissionbox">

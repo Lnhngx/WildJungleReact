@@ -14,22 +14,62 @@ $ning-englishont: "Playfair Display", serif;
 
 /* 輪播牆 */
 
-.ning_homecarouselwrapimg li img {
-  width: calc(100vw - calc(100vw - 100%));
-  object-fit: cover;
-}
-
-.ning_homecarouselwrap {
-  padding-top: 60px;
+.ning_homeslider {
+  position: relative;
   width: calc(100vw - calc(100vw - 100%));
   height: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
-.ning_homecarouselwrapimg {
-  display: flex;
-  width: 300vw;
+
+.ning_homecarouselimg {
+  width:calc(100vw - calc(100vw - 100%));
 }
+
+
+
+.ning_homecarousellefticon {
+  position: absolute;
+  top:50%;
+  left:50px;
+  font-size: 3rem;
+  color: $ning-color4;
+  z-index: 10;
+  cursor:pointer; //鼠標改變
+  user-select:none;
+}
+
+.ning_homecarouselrighticon {
+  position: absolute;
+  top:50%;
+  right:50px;
+  font-size: 3rem;
+  color: $ning-color4;
+  z-index: 10;
+  cursor:pointer;
+  user-select:none;
+}
+
+
+// .ning_homecarouselwrapimg li img {
+//   width: calc(100vw - calc(100vw - 100%));
+//   object-fit: cover;
+// }
+
+// .ning_homecarouselwrap {
+//   padding-top: 60px;
+//   width: calc(100vw - calc(100vw - 100%));
+//   height: 50vw;
+//   overflow: hidden;
+// }
+
+// .ning_homecarouselwrapimg {
+//   display: flex;
+//   width: 300vw;
+// }
 
 
 /* 園區資訊box */
