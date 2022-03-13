@@ -95,7 +95,7 @@ function Game(){
 
 
 
-
+        <Chatbot />
 
             <div className="gameChoose_zone">
                 <div className="choose_spotGame" 

@@ -1,12 +1,17 @@
 import React from "react";
+import { useRef } from "react";
 import './chatbot.css';
- function chatbot(){
+ function Chatbot(){
+     const myChatbotInput = useRef(null);
+     function SendQuestion(){
+
+     }
      return(
      <>
         <div className="wrap">
         <div className="nav">
             <div className="name">WILDJUNGLE</div>
-            <div className="close"><i className="fas fa-times"></i></div>
+            <div className="chatbot_close"><i className="fas fa-times"></i></div>
             
         </div>
         <div className="menu">
@@ -49,14 +54,18 @@ import './chatbot.css';
         </div>
         <div className="tool_bar">
             <div className="rich_menu"> <i className="fas fa-bars"></i></div>
-           
-            <input classNaeme="robot_input" type="text"/>
+           <form onSubmit={(e)=>{
+               e.preventDefault()
+           }}>
+                <input className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..."/>
+                <button className="send"><i className="fas fa-paper-plane"></i></button>
+           </form>
+            
 
-            <div className="send"><i className="fas fa-paper-plane"></i></div>
             
         </div> 
     </div>
      </>
      )
  }
- export default chatbot
+ export default Chatbot
