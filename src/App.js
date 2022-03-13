@@ -23,6 +23,9 @@ import MemberPassChange from "./pages/members/MemberPassChange";
 import Orders from "./pages/carts/carts";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
+import ProductsDetail from "./pages/products/productsdetail"
+
+
 
 function App() {
   // 全域狀態
@@ -46,6 +49,9 @@ function App() {
           </Route>
           <Route path="/products">
             <Products />
+          </Route>
+          <Route path="/productsdetail">
+            <ProductsDetail />
           </Route>
           <Route path="/game/spot-level">
             <SpotLevel />
