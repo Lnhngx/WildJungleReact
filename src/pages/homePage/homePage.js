@@ -8,17 +8,17 @@ function homePage() {
         <ul className="ning_homecarouselwrapimg">
           <li>
             <Link to="">
-              <img src="/img/home/activity03.jpg" alt="" />
+              <img src="img/home/activity02.jpg" alt="" />
             </Link>
           </li>
           <li>
             <Link to="">
-              <img src="/img/home/activity01.jpeg" alt="" />
+              <img src="img/home/activity02.jpg" alt="" />
             </Link>
           </li>
           <li>
             <Link to="">
-              <img src="/img/home/activity02.jpg" alt="" />
+              <img src="img/home/activity02.jpg" alt="" />
             </Link>
           </li>
         </ul>
@@ -290,21 +290,33 @@ function homePage() {
           <h1 className="ning_TitleEnblack">Accommodation</h1>
           <h2 className="ning_TitleChblack">風格住宿</h2>
         </div>
-        <div className="ning_Accommodationbox">
-          <div className="ning_Accommodationcardwrap">
-            <div className="ning_Accommodationcard">
-              <img src="/img/home/icefieldroom.jpeg" alt="" />
-            </div>
-            <div className="ning_Accommodationcard">
-              <img src="/img/home/tropicalroom.jpg" alt="" />
-            </div>
-            <div className="ning_Accommodationcard">
-              <img src="/img/home/nocturnalroom.jpeg" alt="" />
-            </div>
-            <div className="ning_Accommodationcard">
-              <img src="/img/home/oceanroom.jpeg" alt="" />
-            </div>
-          </div>
+      </div>
+      <div className="ning_Accommodationbox">
+        <div className="ning_Accommodationwrap">
+          <Link to="">
+            <img src="img/home/oceanroom.jpeg" alt="" />
+          </Link>
+          <Link to="">
+            <img src="img/home/nocturnalroom.jpeg" alt="" />
+          </Link>
+          <Link to="">
+            <img src="img/home/tropicalroom.jpg" alt="" />
+          </Link>
+          <Link to="">
+            <img src="img/home/icefieldroom.jpeg" alt="" />
+          </Link>
+        </div>
+      </div>
+      <div className="container">
+        <div className="ning_buttonbox">
+          <button className="btn ning_viewmorebtn">
+            <p className="ning_viewmorebtntext">View More</p>
+            <p className="ning_viewmoreicon">⟶</p>
+          </button>
+        </div>
+        <div className="ning_Junglestar">
+          <h1 className="ning_TitleEnblack">Jungle Star</h1>
+          <h2 className="ning_TitleChblack">明星動物認養</h2>
         </div>
       </div>
     </>
