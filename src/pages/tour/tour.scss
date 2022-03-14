@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "Noto Sans TC", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+  unicode-range: U+4E00-9FFF;
+}
+
+@font-face {
+  font-family: "Playfair Display", serif;
+  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  unicode-range: U+00-024F;
+}
+:root {
+  --tour_color: #f9b112;
+  --tour_color2: #eb5c37;
+  --tour_fontSize: 1.2rem;
+  --tour_fontWeight: 600;
+  --tour_showdow: 0 0 3px #f9b01210;
+  --tour_inputMargin: 1.8rem 0 0 1.8rem;
+}
+
+.tourbackground {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
+  background-color:#000000;
+}
+
+.tourContainer {
+  min-height: 50rem;
+  position: relative;
+  width: calc(100% - 60px);
+  padding-top: 60px;
+  margin: 0px 30px 0px 30px;
+}
+
+.tourTop {
+  margin-top:5%;
+  width: 100%;
+  position: relative;
+  // border-bottom: 3px solid #ffffff;
+  display: flex;
+  flex-direction: row;
+}
+.tourContent {
+  font-size: 140%;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 1px;
+  font-weight: var(--tour_fontWeight);
+}
+
+.tour_h1 {
+  color:#ffffff;
+}
+
+.tour_h2 {
+  font-size: 10px;
+  color:#ffffff;
+}
+
+.tourMap img {
+  width: 100%;
+}
+
+.tourLeftIndustry {
+  width: 30%;
+}
+
+.tourRightIndustry {
+  margin-top: 1%;
+  width: 70%;
+  display: flex;
+}
+
+.tourRightIndustry img{
+  width: 100%;
+  height: 100%
+}
+
+.tourRightIndustry figure {
+  float: left;
+  width: 100%;
+}
+.tourRightIndustry figcaption {
+  width: 20%;
+  font-weight: var(--tour_fontWeight);
+  font-size: 1px;
+  color:#ffffff;
+}
+.tourR1img {
+  // height: 420px;
+  // width:190px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+   width:25%;
+  // height: 100%;
+  //  margin: 3% 0 4% 0;
+}
+.tourR1img img{
+ height:100%;
+
+}
+.tourR2img {
+  margin: 6% 0 1% 0;
+}
+.tourR3img {
+  margin: 3% 0 4% 0;
+}
+.tourR4img {
+  margin: 0 0 7% 0;
+}
+#container2{
+  min-height: 50vh;
+}
+.tourCenterIndustry {
+  width: 100%;
+  min-height: 25rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 7%;
+}
+
+.tourCenterCard {
+    width: 50%;
+    background-color: #000000;
+    padding-top: 3%;
+    text-align: center;
+}
+
+.figure {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+.figure img {
+  width: 100%;
+  height: 100%
+
+}
+
+.tourTitle {
+  font-weight: var(--tour_fontWeight);
+  font-size: var(--tour_fontSize);
+}
+.tourCardTwoText{
+    font-weight: var(--tour_fontWeight);
+    font-size: var(--tour_fontSize);
+    color: #ffffff;
+    word-wrap: break-word; 
+    
+}
+.tourCenterText {
+  font-weight: var(--tour_fontWeight);
+  font-size: var(--tour_fontSize);
+  color: #ffffff;
+}
+
+@media screen and (min-width: 980px) {
+  .tourContent {
+    font-size: 400%;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1px;
+    font-weight: var(--tour_fontWeight);
+  }
+  .tour_h2 {
+    font-size: 25px;
+  }
+  .tourRightIndustry table{
+    table-layout: fixed;
+  }
+  .tourText {
+    font-size: 20px;
+    text-align: center;
+  }
+  .tourRightIndustry figcaption {
+    font-weight: var(--tour_fontWeight);
+    font-size: 24px;
+  }
+  .tourCenterText {
+    font-weight: var(--tour_fontWeight);
+    font-size: var(--tour_fontSize);
+    left: 30%;
+    color: #ffffff;
+  }
+  .tourCenterIndustry{
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  #Centerimg2{
+   margin-top:-20px;
+   margin-bottom: 20px;
+  }
+  #Centerimg3{
+    margin-top:-40px;
+    margin-bottom: 40px;
+  }
+  #Centerimg4{
+    margin-top:20px;
+    margin-bottom: -20px;
+  }
+
+}

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { CarouselData } from "./CarouselData";
+import { Link } from "react-router-dom";
+
 const HomeCarousel = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
@@ -36,8 +38,18 @@ const HomeCarousel = ({ slides }) => {
         return (
           <div
             className={index === current ? "slide active" : "slide"}
-            key={index}>
-            {index === current && (<img src={slider.image} alt="" className="ning_homecarouselimg" />)}</div>
+            key={index}
+          >
+            {index === current && (
+              <Link to="">
+                <img
+                  src={slider.image}
+                  alt=""
+                  className="ning_homecarouselimg"
+                />
+              </Link>
+            )}
+          </div>
         );
       })}
     </section>
