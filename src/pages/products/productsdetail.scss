@@ -208,37 +208,40 @@
 
 @media screen and (min-width: 980px) {
   .alan_detail {
-    margin: 0 160px 0 160px;
+    margin: 0 200px 0 200px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between
   }
   .alan_productsdetail {
     display: flex;
     flex-direction: row-reverse;
-    width: 55%;
-    justify-content: flex-end;
+    width: 70%;
+    justify-content: space-between;
   }
   .alan_product_img_ul {
-    width: 150px;
+    width: 135px;
     flex-direction: column;
     margin-right: 12px;
   }
   .alan_main_product_img {
     display: flex;
-    max-width: 650px;
-    width: calc(100% - 200px);
+    flex-direction: column;
+    // max-width: 700px;
+    max-height: 680px;
+    width: calc(100% - 157px);
     
   }
   .alan_main_product_img img {
     width: 100%;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
   }
   .alan_product_img_li:first-child {
     display: none;
   }
   .alan_product_img_li {
-    width: 150px;
-    height: 150px;
+    width: 135px;
+    height: 135px;
     object-fit: cover;
     margin-bottom: 10px;
   }
@@ -288,7 +291,7 @@
     flex-direction: column;
     align-items: center;
     font-size: 14px;
-    margin-right: 15px;
+    // margin-right: 15px;
   }
   .alan_hashlikedesk a {
     color: #2d3436;
@@ -318,4 +321,21 @@
     width: 100px;
     line-height: 40px;
   }
+  .alan_bread{
+      width: 50%;
+      margin: 0 200px 0 200px;
+      padding-top: 80px;
+  }
+.alan_navbread{
+    margin: 0;
+    overflow: hidden;
+    justify-content: flex-start;
+}
+.alan_navbread li{
+    margin: 0 5px 0 5px;
+    font-size: 14px;
+}
+.alan_hash{
+    border: 0;
+}
 }

@@ -143,6 +143,12 @@ function ProductsDetail() {
           </div>
         </div>
       </div>
+      <div className="alan_information">
+        <div className="alan_infoButtonGroup">
+            <button></button>
+            <button></button>
+        </div>
+      </div>
       <Productsbackground />
     </>
   );
