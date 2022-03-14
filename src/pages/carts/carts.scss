@@ -26,7 +26,7 @@ $stan_black: #000000;
   }
 }
 
-.stan_carts_main {
+.stan_carts_main_ec {
   width: 100%;
   height: auto;
   padding-left: 8%;
@@ -42,9 +42,19 @@ $stan_black: #000000;
   }
 }
 
+.stan_carts_main {
+  @extend .stan_carts_main_ec;
+  background-color: $stan_white;
+}
+
 .stan_hr {
   margin: -1px 0;
   border: 1px solid $stan_black;
+}
+
+.stan_arrow_icon {
+  color: $stan_black;
+  font-size: 25px;
 }
 //
 //
@@ -85,67 +95,67 @@ $stan_black: #000000;
 
     li:nth-child(1) {
       color: $stan_white;
-    }
 
-    li:nth-child(1)::before {
-      content: "確認商品\a票券及訂房資訊";
-      white-space: pre;
-      line-height: 20px;
-      position: absolute;
-      bottom: -50px;
-      left: 0px;
-      transform: translateX(-22%);
-      color: $stan_black;
-      font-size: 16px;
+      &:before {
+        content: "確認商品\a票券及訂房資訊";
+        white-space: pre;
+        line-height: 20px;
+        position: absolute;
+        bottom: -50px;
+        left: 0px;
+        transform: translateX(-22%);
+        color: $stan_black;
+        font-size: 16px;
 
-      @include mobile {
-        content: "確認商品";
-        bottom: -29px;
-        transform: translateX(-13%);
-        font-size: 12px;
+        @include mobile {
+          content: "確認商品";
+          bottom: -29px;
+          transform: translateX(-13%);
+          font-size: 12px;
+        }
       }
     }
 
     li:nth-child(3) {
       background-color: #c4c4c4;
       color: #737373;
-    }
 
-    li:nth-child(3)::before {
-      content: "確認地址\a及付款方式";
-      white-space: pre;
-      line-height: 20px;
-      position: absolute;
-      bottom: -50px;
-      left: 0px;
-      transform: translateX(-12%);
-      font-size: 16px;
+      &:before {
+        content: "確認地址\a及付款方式";
+        white-space: pre;
+        line-height: 20px;
+        position: absolute;
+        bottom: -50px;
+        left: 0px;
+        transform: translateX(-12%);
+        font-size: 16px;
 
-      @include mobile {
-        line-height: 18px;
-        bottom: -45px;
-        transform: translateX(-20%);
-        font-size: 12px;
+        @include mobile {
+          line-height: 18px;
+          bottom: -45px;
+          transform: translateX(-20%);
+          font-size: 12px;
+        }
       }
     }
 
     li:nth-child(5) {
       background-color: #c4c4c4;
       color: #737373;
-    }
 
-    li:nth-child(5)::before {
-      content: "完成訂單";
-      position: absolute;
-      bottom: -50px;
-      left: 0px;
-      transform: translateX(0%);
-      font-size: 16px;
+      &:before {
+        content: "完成訂單";
+        position: absolute;
+        bottom: -50px;
+        left: 0px;
+        transform: translateX(0%);
+        font-size: 16px;
 
-      @include mobile {
-        bottom: -37px;
-        transform: translateX(-10%);
-        font-size: 12px;
+        @include mobile {
+          bottom: -37px;
+          transform: translateX(-10%);
+          font-size: 12px;
+        }
       }
     }
 
@@ -164,24 +174,28 @@ $stan_black: #000000;
     li:nth-child(3) {
       background-color: $stan_color1;
       color: $stan_white;
+
+      &:before {
+        color: $stan_black;
+      }
     }
-    li:nth-child(3)::before {
-      color: $stan_black;
-    }
+
     div:nth-child(2) {
       background-color: $stan_color1;
     }
   }
-  
+
   .stan_process_iconarea_ul_03 {
     @extend .stan_process_iconarea_ul_02;
     li:nth-child(5) {
       background-color: $stan_color1;
       color: $stan_white;
+
+      &:before {
+        color: $stan_black;
+      }
     }
-    li:nth-child(5)::before {
-      color: $stan_black;
-    }
+
     div:nth-child(4) {
       background-color: $stan_color1;
     }
@@ -196,7 +210,7 @@ $stan_black: #000000;
 //
 //
 
-.stan_carts_middle {
+.stan_carts_middle_ec {
   padding-top: 100px;
   display: flex;
   justify-content: space-between;
@@ -518,6 +532,165 @@ $stan_black: #000000;
   }
 }
 
+.stan_carts_middle {
+  padding-top: 100px;
+}
+
 //
 //
 // -------------------------中間區域結束-------------------------
+
+// -------------------------購物車第二頁-------------------------
+//
+//
+
+.stan_filloutform_order {
+  width: 100%;
+  height: auto;
+  border: 1px solid $stan_white;
+  background-color: $stan_color2;
+
+  .stan_filloutform_order_title {
+    height: 50px;
+    border: 1px solid $stan_color2;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 47%;
+    padding-right: 2%;
+    @include mobile {
+      font-size: 14px;
+    }
+    .stan_arrow_icon {
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .stan_filloutform_order_content {
+    width: 100%;
+    height: auto; //暫時
+    border: 1px solid #c4c4c4;
+    background-color: $stan_white;
+  }
+  .stan_filloutform_order_product_title {
+    @extend .stan_product_title;
+    padding-top: 20px;
+  }
+
+  .stan_order_product {
+    padding: 0px 10%;
+    width: 100%;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+
+    @include mobile {
+      padding: 0px;
+    }
+
+    ul:nth-child(1) {
+      width: 30%;
+    }
+    ul:nth-child(2) {
+      width: 70%;
+    }
+
+    .stan_order_product_left {
+      display: flex;
+      margin: 40px 0;
+      align-items: center;
+      @include mobile {
+        margin: 20px 0;
+      }
+
+      li {
+        font-size: 16px;
+      }
+
+      .stan_order_product_sid {
+        width: 33.33%;
+        @include mobile {
+          display: none;
+        }
+      }
+      .stan_order_product_pic {
+        width: 66.66%;
+        @include mobile {
+          padding-left: 40%;
+          width: 100%;
+        }
+      }
+    }
+
+    .stan_order_product_right {
+      @extend .stan_order_product_left;
+      @include mobile {
+        text-align: end;
+        display: block;
+        width: 80%;
+        padding-right: 10%;
+      }
+
+      li:nth-child(1) {
+        width: 42%;
+        @include mobile {
+          width: 100%;
+        }
+      }
+      li:nth-child(2) {
+        width: 24%;
+        @include mobile {
+          width: 100%;
+        }
+      }
+      li:nth-child(3) {
+        width: 32%;
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .stan_order_blackhr {
+    padding: 0 10%;
+    div {
+      display: block;
+      width: 100%;
+      border: 1px solid $stan_black;
+      justify-content: center;
+      @include mobile {
+        border-color: #e4e4e4;
+      }
+    }
+  }
+  .stan_filloutform_order_total {
+    padding: 0px 10%;
+    font-weight: 600;
+    text-align: center;
+    background-color: $stan_white;
+
+    @include mobile {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      margin: 10px 0;
+      font-size: 16px;
+
+      li:nth-child(1) {
+        width: 60%;
+      }
+      li:nth-child(2) {
+        width: 15%;
+      }
+      li:nth-child(3) {
+        width: 25%;
+      }
+    }
+  }
+}
