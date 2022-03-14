@@ -23,7 +23,7 @@
   height: 100vh;
   width: 100%;
   z-index: 0;
-  background-color:#000000;
+  background-color: #000000;
 }
 
 .tourContainer {
@@ -35,7 +35,7 @@
 }
 
 .tourTop {
-  margin-top:5%;
+  margin-top: 5%;
   width: 100%;
   position: relative;
   // border-bottom: 3px solid #ffffff;
@@ -51,12 +51,12 @@
 }
 
 .tour_h1 {
-  color:#ffffff;
+  color: #ffffff;
 }
 
 .tour_h2 {
   font-size: 10px;
-  color:#ffffff;
+  color: #ffffff;
 }
 
 .tourMap img {
@@ -73,9 +73,9 @@
   display: flex;
 }
 
-.tourRightIndustry img{
+.tourRightIndustry img {
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
 .tourRightIndustry figure {
@@ -86,21 +86,20 @@
   width: 20%;
   font-weight: var(--tour_fontWeight);
   font-size: 1px;
-  color:#ffffff;
+  color: #ffffff;
 }
 .tourR1img {
   // height: 420px;
   // width:190px;
   display: flex;
-  justify-content:center;
-  align-items:center;
-   width:25%;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
   // height: 100%;
   //  margin: 3% 0 4% 0;
 }
-.tourR1img img{
- height:100%;
-
+.tourR1img img {
+  height: 100%;
 }
 .tourR2img {
   margin: 6% 0 1% 0;
@@ -111,7 +110,7 @@
 .tourR4img {
   margin: 0 0 7% 0;
 }
-#container2{
+#container2 {
   min-height: 50vh;
 }
 .tourCenterIndustry {
@@ -123,36 +122,34 @@
 }
 
 .tourCenterCard {
-    width: 50%;
-    background-color: #000000;
-    padding-top: 3%;
-    text-align: center;
+  width: 50%;
+  background-color: #000000;
+  padding-top: 3%;
+  text-align: center;
 }
 
 .figure {
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 .figure img {
   width: 100%;
-  height: 100%
-
+  height: 100%;
 }
 
 .tourTitle {
   font-weight: var(--tour_fontWeight);
   font-size: var(--tour_fontSize);
 }
-.tourCardTwoText{
-    font-weight: var(--tour_fontWeight);
-    font-size: var(--tour_fontSize);
-    color: #ffffff;
-    word-wrap: break-word; 
-    
+.tourCardTwoText {
+  font-weight: var(--tour_fontWeight);
+  font-size: var(--tour_fontSize);
+  color: #ffffff;
+  word-wrap: break-word;
 }
 .tourCenterText {
   font-weight: var(--tour_fontWeight);
@@ -171,7 +168,7 @@
   .tour_h2 {
     font-size: 25px;
   }
-  .tourRightIndustry table{
+  .tourRightIndustry table {
     table-layout: fixed;
   }
   .tourText {
@@ -188,21 +185,32 @@
     left: 30%;
     color: #ffffff;
   }
-  .tourCenterIndustry{
+  .tourCenterIndustry {
     width: 100%;
     flex-wrap: nowrap;
   }
-  #Centerimg2{
-   margin-top:-20px;
-   margin-bottom: 20px;
+  #Centerimg2 {
+    margin-top: -20px;
+    margin-bottom: 20px;
   }
-  #Centerimg3{
-    margin-top:-40px;
+  #Centerimg3 {
+    margin-top: -40px;
     margin-bottom: 40px;
   }
-  #Centerimg4{
-    margin-top:20px;
+  #Centerimg4 {
+    margin-top: 20px;
     margin-bottom: -20px;
   }
+}
+@media screen and (max-width: 768px) {
+  .tysu_tourGuide1 {
+    min-width: 100%;
+  }
 
+  .tysu_tourGuide2 {
+    min-width: 100%;
+  }
+  .tysu_tourGuide1 img {
+    display: none;
+  }
 }
