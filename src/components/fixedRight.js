@@ -23,7 +23,7 @@ const fixedRight = () => {
             }}>
             <div className="ning_gameicon">
               <span className="material-icons">sports_esports</span>
-              <p>紅利遊戲</p>
+              <p>紅利刮刮樂</p>
             </div>
           </div>
       </div>
