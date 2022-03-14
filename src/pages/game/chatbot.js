@@ -165,9 +165,6 @@ function Chatbot(){
                 <input className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..."/>
                 <button className="send"><i className="fas fa-paper-plane"></i></button>
             </form>
-            
-
-            
         </div> 
     </div>
      </>
