@@ -60,7 +60,7 @@ function homePage() {
           <div className="ning_ticketbox">
             <div className="ning_ticketboxIcon">
               <div className="ning_ticketicon">
-                <span class="material-icons">confirmation_number</span>
+                <span className="material-icons">confirmation_number</span>
               </div>
               <p className="ning_ticket">票券資訊</p>
               <p className="ning_ticketEn">Ticket</p>
@@ -149,7 +149,7 @@ function homePage() {
         <Link to="">
           <div className="ning_buyticket">
             <div className="ning_buyticketicon">
-              <span class="material-icons">confirmation_number</span>
+              <span className="material-icons">confirmation_number</span>
               <p>立即訂票</p>
             </div>
           </div>
@@ -157,7 +157,7 @@ function homePage() {
         <Link to="">
           <div className="ning_game">
             <div className="ning_gameicon">
-              <span class="material-icons">sports_esports</span>
+              <span className="material-icons">sports_esports</span>
               <p>紅利遊戲</p>
             </div>
           </div>
