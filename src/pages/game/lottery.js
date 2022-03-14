@@ -84,7 +84,7 @@ function Lottery(){
     return (
         <>  
         <div className="lottery_container">
-            <div className="lottery_closeBtn">
+            <div className="lottery_closeBtn" onClick={()=>{document.querySelector('.lottery_container').style.display = 'none'}}>
                 <i className="fas fa-times"></i>
             </div>
             <div className="lottery_title">Scratch to reveal</div>
