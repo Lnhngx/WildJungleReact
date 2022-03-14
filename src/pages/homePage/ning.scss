@@ -330,6 +330,7 @@ $ning-englishont: "Playfair Display", serif;
   margin-left: -5px;
   padding-top: 5px;
   margin-top: 30px;
+  border: 2px solid $ning-color3;
 }
 
 .ning_buyticketicon p,
@@ -513,89 +514,93 @@ $ning-englishont: "Playfair Display", serif;
   margin-top: -60px;
 }
 
-.ning_junglestarcards {
-  width: 100%;
-  margin: 50px auto;
-  overflow: hidden;
-  display: block;
-  width: 100%;
-}
-
 .ning_eaglecard {
   width: 500px;
   height: 350px;
   background-color: $ning-color5;
-  display: flex;
-  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ning_eaglecard img {
+  height: 100%;
+  position: absolute;
+  left: -80px;
 }
 
 .ning_elephantcard {
   width: 500px;
   height: 350px;
   background-color: $ning-color1;
-  display: flex;
-  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.ning_elephantcard img {
+  height: 90%;
+  position: absolute;
+  top: 40px;
+  left: -70px;
 }
 
 .ning_tigercard {
   width: 500px;
   height: 350px;
   background-color: $ning-color2;
-  padding-top: 40px;
+  position: relative;
   overflow: hidden;
+}
+
+.ning_tigercard img {
+  height: 100%;
+  position: absolute;
+  left: -50px;
+  bottom: -40px;
 }
 
 .ning_sharkcard {
   width: 500px;
   height: 350px;
   background-color: $ning-color4;
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
+}
+
+.ning_sharkcard img {
+  height: 90%;
+  position: absolute;
+  left: -140px;
 }
 
 .ning_hitefoxcard {
   width: 500px;
   height: 350px;
   background-color: #1297cf;
-  display: flex;
-  align-items: center;
-}
-
-.ning_eaglecard img {
-  height: 300px;
-  background-color: $ning-color5;
-  padding-left: 10px;
-}
-
-.ning_elephantcard img {
-  height: 300px;
-  background-color: $ning-color1;
-  padding-left: 10px;
-}
-
-.ning_tigercard img {
-  height: 380px;
-  background-color: $ning-color2;
-}
-
-.ning_sharkcard img {
-  height: 280px;
-  background-color: $ning-color4;
-  padding-left: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
 .ning_hitefoxcard img {
-  height: 300px;
-  background-color: #1297cf;
-  padding-left: 10px;
+  height: 100%;
+  position: absolute;
+  left: -20px;
 }
 
-.ning_junglestarcards figure {
+.ning_Junglestarcontainer {
+  width: 750px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.ning_Junglestarcontainer figure {
   position: absolute;
   top: 0;
   left: 150px;
+  width: 335px;
   margin: 0;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+  box-shadow: rgba(255, 255, 255, 0.6);
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -603,37 +608,170 @@ $ning-englishont: "Playfair Display", serif;
   transition: all 0.3s ease-in-out;
 }
 
-.ning_junglestarcards > figure {
+.ning_Junglestarcontainer > figure {
   position: relative;
   left: 0 !important;
 }
 
-.ning_junglestarcards input {
+.ning_eaglecard,
+.ning_elephantcard,
+.ning_tigercard,
+.ning_sharkcard,
+.ning_hitefoxcard {
+  display: block;
+}
+
+.ning_Junglestarcontainer input {
   position: absolute;
   top: 0;
   left: 0;
-  width: 50px;
+  width: 150px;
   height: 100%;
   cursor: pointer;
   border: 0;
   padding: 0;
   opacity: 0;
+  z-index: 100;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.ning_junglestarcards input:checked{
-  width: 5px;
+.ning_Junglestarcontainer input:checked {
+  width: 15px;
   left: auto;
-  right: 0px;
+  right: 0;
 }
 
-.ning_junglestarcards input:checked ~ figure {
+.ning_Junglestarcontainer input:checked ~ figure {
   -webkit-transition: all 0.7s ease-in-out;
   -moz-transition: all 0.7s ease-in-out;
   -o-transition: all 0.7s ease-in-out;
   -ms-transition: all 0.7s ease-in-out;
   transition: all 0.7s ease-in-out;
-  left: 335px;
 }
+
+// .ning_junglestarcards {
+//   width: 100%;
+//   margin: 50px auto;
+//   overflow: hidden;
+//   display: block;
+//   width: 100%;
+// }
+
+// .ning_eaglecard {
+//   width: 500px;
+//   height: 350px;
+//   background-color: $ning-color5;
+//   display: flex;
+//   align-items: center;
+// }
+
+// .ning_elephantcard {
+//   width: 500px;
+//   height: 350px;
+//   background-color: $ning-color1;
+//   display: flex;
+//   align-items: flex-end;
+// }
+
+// .ning_tigercard {
+//   width: 500px;
+//   height: 350px;
+//   background-color: $ning-color2;
+//   padding-top: 40px;
+//   overflow: hidden;
+// }
+
+// .ning_sharkcard {
+//   width: 500px;
+//   height: 350px;
+//   background-color: $ning-color4;
+//   display: flex;
+//   align-items: center;
+// }
+
+// .ning_hitefoxcard {
+//   width: 500px;
+//   height: 350px;
+//   background-color: #1297cf;
+//   display: flex;
+//   align-items: center;
+// }
+
+// .ning_eaglecard img {
+//   height: 300px;
+//   background-color: $ning-color5;
+//   padding-left: 10px;
+// }
+
+// .ning_elephantcard img {
+//   height: 300px;
+//   background-color: $ning-color1;
+//   padding-left: 10px;
+// }
+
+// .ning_tigercard img {
+//   height: 380px;
+//   background-color: $ning-color2;
+// }
+
+// .ning_sharkcard img {
+//   height: 280px;
+//   background-color: $ning-color4;
+//   padding-left: 10px;
+// }
+
+// .ning_hitefoxcard img {
+//   height: 300px;
+//   background-color: #1297cf;
+//   padding-left: 10px;
+// }
+
+// .ning_junglestarcards figure {
+//   position: absolute;
+//   top: 0;
+//   left: 150px;
+//   margin: 0;
+//   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+//   -webkit-transition: all 0.3s ease-in-out;
+//   -moz-transition: all 0.3s ease-in-out;
+//   -o-transition: all 0.3s ease-in-out;
+//   -ms-transition: all 0.3s ease-in-out;
+//   transition: all 0.3s ease-in-out;
+// }
+
+// .ning_junglestarcards > figure {
+//   position: relative;
+//   left: 0 !important;
+// }
+
+// .ning_junglestarcards input {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 50px;
+//   height: 100%;
+//   cursor: pointer;
+//   border: 0;
+//   padding: 0;
+//   opacity: 0;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+// }
+
+// .ning_junglestarcards input:checked{
+//   width: 5px;
+//   left: auto;
+//   right: 0px;
+// }
+
+// .ning_junglestarcards input:checked ~ figure {
+//   -webkit-transition: all 0.7s ease-in-out;
+//   -moz-transition: all 0.7s ease-in-out;
+//   -o-transition: all 0.7s ease-in-out;
+//   -ms-transition: all 0.7s ease-in-out;
+//   transition: all 0.7s ease-in-out;
+//   left: 335px;
+// }

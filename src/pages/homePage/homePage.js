@@ -9,7 +9,6 @@ function homePage() {
   return (
     <>
       <HomeCarousel slides={CarouselData} />
-
       {/* <div className="ning_homecarouselwrap">
         <ul className="ning_homecarouselwrapimg">
           <li>
@@ -147,7 +146,7 @@ function homePage() {
           </div>
         </div>
       </div>
-      <div className="ning_rightflex">
+      {/* <div className="ning_rightflex">
         <Link to="">
           <div className="ning_buyticket">
             <div className="ning_buyticketicon">
@@ -164,7 +163,7 @@ function homePage() {
             </div>
           </div>
         </Link>
-      </div>
+      </div> */}
       <div className="container">
         <div className="ning_PopularEvents">
           <h1 className="ning_TitleEnblack">Popular Events</h1>
@@ -320,67 +319,122 @@ function homePage() {
             <p className="ning_viewmoreicon">⟶</p>
           </button>
         </div>
-        <div className="ning_Junglestar">
-          <h1 className="ning_TitleEnblack">Jungle Star</h1>
-          <h2 className="ning_TitleChblack">明星動物認養</h2>
-          <div className="ning_junglestarcards">
-            <figure>
-              <Link to="">
-                <div className="ning_eaglecard">
-                  <img src="img/home/star_eagle.png" alt="png_1" />
-                </div>
-                <input type="radio" name="radio-set" checked="checked"></input>
-                <figcaption>
-                  <button className="adoptbtn btn">我要認養！</button>
-                </figcaption>
-              </Link>
+      </div>
+      {/* 明星動物認養 */}
+      <div className="container">
+        <h1 className="ning_TitleEnblack">Jungle Star</h1>
+        <h2 className="ning_TitleChblack">明星動物認養</h2>
+        <section className="ning_JunglestarMain">
+          <div className="ning_Junglestarcontainer">
               <figure>
                 <Link to="">
-                  <div className="ning_elephantcard">
-                    <img src="img/home/star_elephant.png" alt="png_2" />
+                  <div className="ning_eaglecard">
+                    <img src="img/home/star_eagle.png" alt="png_1" />
                   </div>
-                  <input type="radio" name="radio-set" checked="checked"></input>
+                  <input
+                    type="radio"
+                    name="radio-set"
+                    checked="checked"
+                  ></input>
                   <figcaption>
-                    <button className="adoptbtn btn">我要認養！</button>
+                    <span>
+                      <h3 className="ning_eaglecardtitle">Eagle</h3>
+                      <p>
+                        對於網頁開發或平面設計來說，在工作時可能經常會需要使用一些文字或圖片來填充空白區域以利設計排版，讓它看起來更近完成時，的樣貌也能協助其他人瞭解你的構想。
+                      </p>
+                      <button className="adoptbtn btn">我要認養！</button>
+                    </span>
                   </figcaption>
                 </Link>
                 <figure>
                   <Link to="">
-                    <div className="ning_tigercard">
-                      <img src="img/home/star_tiger.png" alt="png_3" />
+                    <div className="ning_elephantcard">
+                      <img src="img/home/star_elephant.png" alt="png_2" />
                     </div>
-                    <input type="radio" name="radio-set" checked="checked"></input>
+                    <input
+                      type="radio"
+                      name="radio-set"
+                      checked="checked"
+                    ></input>
                     <figcaption>
-                      <button className="adoptbtn btn">我要認養！</button>
+                      <span>
+                        <h3 className="ning_eaglecardtitle">Eagle</h3>
+                        <p>
+                          對於網頁開發或平面設計來說，在工作時可能經常會需要使用一些文字或圖片來填充空白區域以利設計排版，讓它看起來更近完成時，的樣貌也能協助其他人瞭解你的構想。
+                        </p>
+                        <button className="adoptbtn btn">我要認養！</button>
+                      </span>
                     </figcaption>
                   </Link>
                   <figure>
                     <Link to="">
-                      <div className="ning_sharkcard">
-                        <img src="img/home/star_shark.png" alt="png_4" />
+                      <div className="ning_tigercard">
+                        <img src="img/home/star_tiger.png" alt="png_3" />
                       </div>
-                      <input type="radio" name="radio-set" checked="checked"></input>
+                      <input
+                        type="radio"
+                        name="radio-set"
+                        checked="checked"
+                      ></input>
                       <figcaption>
-                        <button className="adoptbtn btn">我要認養！</button>
+                        <span>
+                          <h3 className="ning_eaglecardtitle">Eagle</h3>
+                          <p>
+                            對於網頁開發或平面設計來說，在工作時可能經常會需要使用一些文字或圖片來填充空白區域以利設計排版，讓它看起來更近完成時，的樣貌也能協助其他人瞭解你的構想。
+                          </p>
+                          <button className="adoptbtn btn">我要認養！</button>
+                        </span>
                       </figcaption>
                     </Link>
                     <figure>
                       <Link to="">
-                        <div className="ning_hitefoxcard">
-                          <img src="img/home/star_hitefox.png" alt="png_5" />
+                        <div className="ning_sharkcard">
+                          <img src="img/home/star_shark.png" alt="png_4" />
                         </div>
-                        <input type="radio" name="radio-set" checked="checked"></input>
+                        <input
+                          type="radio"
+                          name="radio-set"
+                          checked="checked"
+                        ></input>
                         <figcaption>
-                          <button className="adoptbtn btn">我要認養！</button>
+                          <span>
+                            <h3 className="ning_eaglecardtitle">Eagle</h3>
+                            <p>
+                              對於網頁開發或平面設計來說，在工作時可能經常會需要使用一些文字或圖片來填充空白區域以利設計排版，讓它看起來更近完成時，的樣貌也能協助其他人瞭解你的構想。
+                            </p>
+                            <button className="adoptbtn btn">我要認養！</button>
+                          </span>
                         </figcaption>
                       </Link>
+                      <figure>
+                        <Link to="">
+                          <div className="ning_hitefoxcard">
+                            <img src="img/home/star_hitefox.png" alt="png_5" />
+                          </div>
+                          <input
+                            type="radio"
+                            name="radio-set"
+                            checked="checked"
+                          ></input>
+                          <figcaption>
+                            <span>
+                              <h3 className="ning_eaglecardtitle">Eagle</h3>
+                              <p>
+                                對於網頁開發或平面設計來說，在工作時可能經常會需要使用一些文字或圖片來填充空白區域以利設計排版，讓它看起來更近完成時，的樣貌也能協助其他人瞭解你的構想。
+                              </p>
+                              <button className="adoptbtn btn">
+                                我要認養！
+                              </button>
+                            </span>
+                          </figcaption>
+                        </Link>
+                      </figure>
                     </figure>
                   </figure>
                 </figure>
               </figure>
-            </figure>
-          </div>
-        </div>
+            </div>
+        </section>
       </div>
     </>
   );
