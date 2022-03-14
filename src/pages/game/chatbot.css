@@ -7,10 +7,9 @@
     right: 80px;
     bottom: 30px;
     box-shadow: 0 0 10px 0 rgb(153, 151, 151);
-    z-index: 999;
-    /* overflow: scroll; */
+    z-index: 1000;
 }
-.nav{
+.chatbot_nav{
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -19,7 +18,7 @@
     text-align: right;
     line-height: 45px;
 }
-.nav .name{
+.chatbot_nav .name{
     color: white;
     margin-left: 1rem;
     font-size: 1.2rem;
@@ -32,14 +31,130 @@
     margin-right: 1rem;
     cursor: pointer;
 }
+.chat_area{
+    width: 100%;
+    height: 605px;
+    overflow-y: scroll;
+    /* overflow: hidden; */
+}
+/* 機器人回話的區域(靠左) */
+.chatbot_reply{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.5rem 1rem;
+}
+.chatbot_avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: coral;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chatbot_avatar img{
+    width: 80%;
+    height: auto;
+}
+.chatbot_message{
+    width: 300px;
+    background-color: white;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 10px 16px;
+    margin-top: 1rem;
+    /* margin-bottom: 2rem; */
+    position: relative;
+    word-wrap: normal;
+    white-space: pre-wrap;
+}
+.chatbot_message::before{
+    content: "";
+    display: block;
+    width: 0px; 
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    border-width: 10px 20px 10px 0px;
+    border-color: transparent rgb(255, 255, 255) transparent;
+    border-style:solid;
+}
+.chatbot_time{
+    /* width: 10%; */
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: white;
+    margin-left: 5rem;
+    margin-top: 0.5rem;
+}
+/* 使用者回話的區域(靠右) */
+.user_reply{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin: 1.5rem 1rem;
+}
+.user_avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: cyan;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user_avatar img{
+    width: 80%;
+    height: auto;
+}
+.user_message{
+    width: 300px;
+    background-color: white;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 10px 16px;
+    margin-top: 1rem;
+    /* margin-bottom: 2rem; */
+    position: relative;
+    word-wrap: normal;
+    white-space: pre-wrap;
+}
+.user_message::before{
+    content: "";
+    display: block;
+    width: 0px; 
+    position: absolute;
+    top: 0;
+    left: 300px;
+    border-width: 10px 0px 10px 20px;
+    border-color: transparent rgb(255, 255, 255) transparent;
+    border-style:solid;
+}
+.user_time{
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: white;
+    margin-right: 5rem;
+    margin-top: 0.5rem;
+}
 .menu{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     /* height: 400px; */
-    position: absolute;
-    bottom: 50px;
-    
+    position: relative;
+    /* top: 405px; */
+    bottom: 200px;
 }
 .menu div{
     display: flex;
@@ -51,32 +166,32 @@
     cursor: pointer;
 }
 .menu .book{
-    width: 150px;
+    width: 33.3%;
     height: 100px;
     background-color: rgb(27,119,84);
 }
 .menu .coupon{ 
-    width: 150px;
+    width: 33.3%;
     height: 100px;
     background-color: rgb(11,156,101);
 }
 .menu .adopt{  
-    width: 150px;
+    width: 33.3%;
     height: 100px;
     background-color: rgb(27,119,84);
 }
 .menu .profile{   
-    width: 150px;
+    width: 33.3%;
     height: 100px;
     background-color: rgb(11,156,101);
 }
 .menu .weather{
-    width: 150px;
+    width: 33.3%;
     height: 100px;
     background-color: rgb(27,119,84);
 }
 .menu .phone{   
-    width: 150px;
+    width: 33.3%;
     height: 100px;
     background-color: rgb(11,156,101);
 }

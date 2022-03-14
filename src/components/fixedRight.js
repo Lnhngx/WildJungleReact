@@ -13,14 +13,19 @@ const fixedRight = () => {
             </div>
           </div>
         </Link>
-        <Link to="">
-          <div className="ning_game">
+        <div className="ning_game" onClick={()=>{
+            let opened = false;
+            if(opened){
+              document.querySelector('.lottery_container').style.display = 'block'
+            }else{
+              document.querySelector('.lottery_container').style.display = 'block'
+            }
+            }}>
             <div className="ning_gameicon">
               <span className="material-icons">sports_esports</span>
-              <p>紅利遊戲</p>
+              <p>刮刮樂遊戲</p>
             </div>
           </div>
-        </Link>
       </div>
       <div className="backToTop">
         <button>
