@@ -15,6 +15,7 @@ import SpotDiff from "./pages/game/spot-diff";
 import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
+import MultiChoice from "./pages/game/multiChoice-game.js";
 import Members from "./pages/members/members";
 import MemberLogin from "./pages/members/MemberLogin.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
@@ -62,6 +63,9 @@ function App() {
           </Route>
           <Route path="/game/spot-diff">
             <SpotDiff />
+          </Route>
+          <Route path="/game/multi-choice">
+            <MultiChoice />
           </Route>
           <Route path="/game/start">
             <GameStart />
