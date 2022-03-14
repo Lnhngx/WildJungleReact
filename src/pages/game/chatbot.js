@@ -27,94 +27,94 @@ function Chatbot(){
         </div>
         <div className="chat_area">
             {/*--------------------------------------------------------------------------*/} 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
             {/*--------------------------------------------------------------------------*/}
         </div>
