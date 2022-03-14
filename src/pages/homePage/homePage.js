@@ -1,12 +1,14 @@
 import React from "react";
 import "./ning.scss";
-import { Link } from "react-router-dom";
 import HomeCarousel from "./components/HomeCarousel";
-import {CarouselData} from "./components/CarouselData"
+import HomeAccordion from "./components/HomeAccordion";
+import { CarouselData } from "./components/CarouselData";
+import { Link } from "react-router-dom";
+
 function homePage() {
   return (
     <>
-      <HomeCarousel slides={CarouselData}/>
+      <HomeCarousel slides={CarouselData} />
 
       {/* <div className="ning_homecarouselwrap">
         <ul className="ning_homecarouselwrapimg">
@@ -60,7 +62,7 @@ function homePage() {
           <div className="ning_ticketbox">
             <div className="ning_ticketboxIcon">
               <div className="ning_ticketicon">
-                <span class="material-icons">confirmation_number</span>
+                <span className="material-icons">confirmation_number</span>
               </div>
               <p className="ning_ticket">票券資訊</p>
               <p className="ning_ticketEn">Ticket</p>
@@ -149,7 +151,7 @@ function homePage() {
         <Link to="">
           <div className="ning_buyticket">
             <div className="ning_buyticketicon">
-              <span class="material-icons">confirmation_number</span>
+              <span className="material-icons">confirmation_number</span>
               <p>立即訂票</p>
             </div>
           </div>
@@ -157,7 +159,7 @@ function homePage() {
         <Link to="">
           <div className="ning_game">
             <div className="ning_gameicon">
-              <span class="material-icons">sports_esports</span>
+              <span className="material-icons">sports_esports</span>
               <p>紅利遊戲</p>
             </div>
           </div>
@@ -321,6 +323,63 @@ function homePage() {
         <div className="ning_Junglestar">
           <h1 className="ning_TitleEnblack">Jungle Star</h1>
           <h2 className="ning_TitleChblack">明星動物認養</h2>
+          <div className="ning_junglestarcards">
+            <figure>
+              <Link to="">
+                <div className="ning_eaglecard">
+                  <img src="img/home/star_eagle.png" alt="png_1" />
+                </div>
+                <input type="radio" name="radio-set" checked="checked"></input>
+                <figcaption>
+                  <button className="adoptbtn btn">我要認養！</button>
+                </figcaption>
+              </Link>
+              <figure>
+                <Link to="">
+                  <div className="ning_elephantcard">
+                    <img src="img/home/star_elephant.png" alt="png_2" />
+                  </div>
+                  <input type="radio" name="radio-set" checked="checked"></input>
+                  <figcaption>
+                    <button className="adoptbtn btn">我要認養！</button>
+                  </figcaption>
+                </Link>
+                <figure>
+                  <Link to="">
+                    <div className="ning_tigercard">
+                      <img src="img/home/star_tiger.png" alt="png_3" />
+                    </div>
+                    <input type="radio" name="radio-set" checked="checked"></input>
+                    <figcaption>
+                      <button className="adoptbtn btn">我要認養！</button>
+                    </figcaption>
+                  </Link>
+                  <figure>
+                    <Link to="">
+                      <div className="ning_sharkcard">
+                        <img src="img/home/star_shark.png" alt="png_4" />
+                      </div>
+                      <input type="radio" name="radio-set" checked="checked"></input>
+                      <figcaption>
+                        <button className="adoptbtn btn">我要認養！</button>
+                      </figcaption>
+                    </Link>
+                    <figure>
+                      <Link to="">
+                        <div className="ning_hitefoxcard">
+                          <img src="img/home/star_hitefox.png" alt="png_5" />
+                        </div>
+                        <input type="radio" name="radio-set" checked="checked"></input>
+                        <figcaption>
+                          <button className="adoptbtn btn">我要認養！</button>
+                        </figcaption>
+                      </Link>
+                    </figure>
+                  </figure>
+                </figure>
+              </figure>
+            </figure>
+          </div>
         </div>
       </div>
     </>

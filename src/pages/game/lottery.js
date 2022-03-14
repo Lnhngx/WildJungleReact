@@ -85,7 +85,7 @@ function Lottery(){
         <>  
         <div className="lottery_container">
             <div className="lottery_closeBtn">
-                <i class="fas fa-times"></i>
+                <i className="fas fa-times"></i>
             </div>
             <div className="lottery_title">Scratch to reveal</div>
             <div className="lottery_text">用滑鼠按住拖曳下圖即可刮出獎勵</div>
