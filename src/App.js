@@ -21,7 +21,7 @@ import MemberSignUp from "./pages/members/MemberSignUp";
 import MemberForgotPass from "./pages/members/MemberForgotPass";
 import MemberPassChange from "./pages/members/MemberPassChange";
 import ModifyMemberInfo from "./pages/members/ModifyMemberInfo";
-import Orders from "./pages/carts/carts";
+import Carts from "./pages/carts/carts";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail"
@@ -70,7 +70,7 @@ function App() {
             <Game />
           </Route>
           <Route path="/carts">
-            <Orders />
+            <Carts />
           </Route>
           <Route path="/members/signup">
             <MemberSignUp />
