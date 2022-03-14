@@ -27,7 +27,7 @@ function MemberList(){
         {/* <DiscountNavItem /> */}
         {/* <LikeNavItem /> */}
         <div className="tysu_memberBg">
-          <img src="./img/member/leaf_y.svg" alt="" />
+          <img src="./../img/member/leaf_y.svg" alt="" />
         </div>
         
       </div>

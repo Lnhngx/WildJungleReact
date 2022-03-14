@@ -8,8 +8,11 @@ function ModifyMemberInfo(){
         <MemberList />
             <MemberNavItem />
                 <MemberInfo />
-
-
+                {/* <GradeInfo /> */}
+                {/* <Creditcard /> */}
+                {/* <CreditcardAdd /> */}
+                {/* <AddressAdd /> */}
+                {/* TODO: 用戶點哪個項目顯示哪個畫面 */}
     </>)
 }
 export default ModifyMemberInfo
