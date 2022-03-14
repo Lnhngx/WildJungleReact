@@ -30,6 +30,26 @@ function Filloutorder() {
             <li>小計</li>
             <li>$3,000</li>
           </ul>
+          <ul>
+            <li></li>
+            <li>預估運費</li>
+            <li>$100</li>
+          </ul>
+          <ul>
+            <li></li>
+            <li>紅利折扣</li>
+            <li>$0</li>
+          </ul>
+          <ul className="stan_total_hr">
+            <div></div>
+            <div></div>
+            <div></div>
+          </ul>
+          <ul>
+            <li></li>
+            <li>結帳金額</li>
+            <li>$3,100</li>
+          </ul>
         </div>
       </div>
     </>
