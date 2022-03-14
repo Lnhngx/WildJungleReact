@@ -3,8 +3,8 @@ import React from "react";
 // 星星组件
 function Star({ marked, starId }) {
   return (
-    <span star-id={starId} style={{ color: "#ff9933" }} role="button">
-      {/* 空星，实星 */}
+    <span star-id={starId} style={{ color: "#eb5c37" }} role="button">
+      {/* 空星，實星 */}
       {marked ? "\u2605" : "\u2606"}
     </span>
   );
@@ -25,6 +25,7 @@ function StarRating(props) {
     setSelection(val);
   };
   return (
+    <>
     <div
       // 鼠标移入效果
       onMouseOut={() => hoverOver(null)}
@@ -43,6 +44,7 @@ function StarRating(props) {
         />
       ))}
     </div>
+    </>
   );
 }
 
