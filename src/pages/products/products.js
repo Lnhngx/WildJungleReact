@@ -4,20 +4,14 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Productsbackground from "./productsbackground";
 const Range = Slider;
 
 function Products() {
   const [rangevalue, setRangevalue] = useState(1);
   return (
     <>
-      <div className="totalbackground">
-        <div className="totalbackgroundimg backgroundimg1"></div>
-        <div className="totalbackgroundimg backgroundimg2"></div>
-        <div className="totalbackgroundimg backgroundimg3"></div>
-        <div className="totalbackgroundimg backgroundimg4"></div>
-        <div className="totalbackgroundimg backgroundimg5"></div>
-        <div className="totalbackgroundimg backgroundimg6"></div>
-      </div>
+      <Productsbackground />
       <div className="productContainer">
         <div className="slider">
           <div className="mainPic">
@@ -347,7 +341,9 @@ function Products() {
         <button>
           <span className="span1">Click </span>
           <span className="span2">To </span>
-          <span className="span3">Top <i className="fas fa-angle-double-up"></i></span>
+          <span className="span3">
+            Top <i className="fas fa-angle-double-up"></i>
+          </span>
         </button>
       </div>
     </>

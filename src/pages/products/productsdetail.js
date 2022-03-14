@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./productsdetail.scss";
 import StarRating from "./starRating";
-
+import Productsbackground from "./productsbackground";
 function ProductsDetail() {
   return (
     <>
@@ -11,6 +11,7 @@ function ProductsDetail() {
           width: 0 !important;
         }
       `}</style>
+      <Productsbackground />
       <div className="alan_detail">
         <div className="alan_bread">
           <ul className="alan_navbread">
@@ -92,28 +93,34 @@ function ProductsDetail() {
               <button>直接購買</button>
             </div>
           </div>
-          <div className="alan_hushtag">
-            <div className="alan_tagGroup">
-              <span>#標籤名稱</span>
-              <span>#標籤名稱</span>
-              <span>#標籤名稱</span>
-              <span>#標籤名稱</span>
-              <span>#標籤名稱</span>
-              <span>#標籤名稱</span>
+          <div className="alan_hash">
+            <div className="alan_hushtag">
+              <div className="alan_tagGroup">
+                <span>#標籤名稱</span>
+                <span>#標籤名稱</span>
+                <span>#標籤名稱</span>
+                <span>#標籤名稱</span>
+                <span>#標籤名稱</span>
+                <span>#標籤名稱</span>
+              </div>
+              <div className="alan_tagIcon">
+                <a href="#/">
+                  <i className="fab fa-facebook-square"></i>
+                </a>
+                <a href="#/">
+                  <i className="fab fa-twitter-square"></i>
+                </a>
+                <a href="#/">
+                  <i className="fab fa-google-plus-square"></i>
+                </a>
+                <a href="#/">
+                  <i className="fab fa-blogger"></i>
+                </a>
+              </div>
             </div>
-            <div className="alan_tagIcon">
-              <a href="#/">
-                <i className="fab fa-facebook-square"></i>
-              </a>
-              <a href="#/">
-                <i className="fab fa-twitter-square"></i>
-              </a>
-              <a href="#/">
-                <i className="fab fa-google-plus-square"></i>
-              </a>
-              <a href="#/">
-                <i className="fab fa-blogger"></i>
-              </a>
+            <div className="alan_hushlike">
+                <Link to=""><i className="fas fa-heart"></i> 加入我的最愛</Link>
+                <Link to=""><i className="fas fa-plus"></i> 加入商品比較</Link>
             </div>
           </div>
         </div>
