@@ -8,9 +8,9 @@ import Checkarea from "./components/Checkarea";
 function Carts01product() {
     return (
         <>
-            <div className="stan_carts_main">
+            <div className="stan_carts_main_ec">
                 <Process01 />
-                <div className="stan_carts_middle">
+                <div className="stan_carts_middle_ec">
                     <CartProduct />
                     <Checkarea />
                 </div>
