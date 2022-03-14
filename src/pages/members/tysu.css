@@ -15,6 +15,8 @@
 :root {
   --tysu_color: #f9b112;
   --tysu_color2: #eb5c37;
+  --tysu_color3: #1b7754;
+  --tysu_color4: #222;
   --tysu_fontSize: 1.3rem;
   --tysu_fontWeight: 600;
   --tysu_showdow: 0 0 3px #f9b01210;
@@ -74,6 +76,8 @@
 }
 
 .tysu_tr label {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
   margin-bottom: 0;
 }
 
@@ -172,8 +176,9 @@ input:-webkit-autofill:active,
   outline: none;
   height: 50px;
   color: white;
-  font-size: 1.1rem;
-  font-weight: var(--tysu_fontWeight);
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: var(--tysu_fontSize);
+  font-weight: 500;
   margin: 1.4rem 0 10px 1.8rem;
 }
 
@@ -234,30 +239,44 @@ input:-webkit-autofill:active,
   /* border: 1px solid #ccc; */
 }
 /* canvas-------------- */
-.tysu_btn_sign Link,
-.tysu_help Link {
+.tysu_btn_sign a,
+.tysu_signText,
+.tysu_helpText {
   text-decoration: none;
   color: #000;
-  font-size: 1rem;
+  font-size: var(--tysu_fontSize);
   font-weight: var(--tysu_fontWeight);
   margin-left: 1rem;
   letter-spacing: 0.02rem;
   text-indent: 0.02rem;
 }
-.tysu_btn_sign Link:visited,
-.tysu_help Link:visited,
-.tysu_link Link:visited {
+.tysu_signText,
+.tysu_helpText {
+  /* font-family: "Noto Sans TC", sans-serif; */
+  font-weight: 800;
+  color: var(--tysu_color3);
+}
+
+.tysu_btn_sign a:visited,
+.tysu_link a:visited {
   color: #000;
 }
-.tysu_help img {
-  margin-right: 0.25rem;
-  vertical-align: sub;
-  color: #d2d2d2;
+.tysu_signText:visited,
+.tysu_helpText:visited {
+  color: var(--tysu_color3);
+}
+.tysu_help a,
+.tysu_help i {
+  margin: 0 0.5rem 0 1rem;
 }
 .tysu_help {
   width: 320px;
   margin: 0 0 0 1.8rem;
   text-align: right;
+}
+.tysu_signText:hover,
+.tysu_helpText:hover {
+  color: var(--tysu_color4);
 }
 
 .tysu_titleSpan {

@@ -1,12 +1,11 @@
 import React ,{useEffect, useRef,useState} from "react";
-
+import { Link } from "react-router-dom";
 
 import Config from "../Config";
 
 function Login(){
 
   const [data,setData]=useState([]);
-  
 
   const [row,setRow]=useState({});
   const [emai,setEmail]=useState('');
@@ -14,13 +13,13 @@ function Login(){
   const [verifyCode,setVerifyCode]=useState('');
   const [codeText,setCodeText]=useState('');
   // 驗證碼
-  const getData =async ()=>{
-    const obj=await (await fetch(Config.TYSU_LOGIN)).json();
+//   const getData =async ()=>{
+//     const obj=await (await fetch(Config.TYSU_LOGIN)).json();
     
-      console.log(obj);
-      setData(obj);
+//       console.log(obj);
+//       setData(obj);
   
-}
+// }
 
   async function sendForm(event){
     event.preventDefault();
@@ -28,9 +27,24 @@ function Login(){
 
   }
   
+  
 
 
 
+let validate = "";
+function rand() {
+  const str =
+    "123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789";
+  // 大小寫英文、數字，但不包含I、l、O、o、0，數字重複出現率高
+  const arr = str.split("");
+  // 以空字串作為連接字符
+  let randNum;
+  for (var i = 0; i < 6; i++) {
+    randNum = Math.floor(Math.random() * 66); //隨機數在[0,65]之間
+    validate += arr[randNum];
+  }
+  return validate;
+}
 
 // const mycanvas=useRef();
   useEffect(() => {
@@ -38,20 +52,8 @@ function Login(){
     const mycanvas = document.getElementById("mycanvas");
     const cxt = mycanvas.getContext("2d");
      // 產生隨機六位數
-     let validate = "";
-     function rand() {
-       const str =
-         "123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789";
-       // 大小寫英文、數字，但不包含I、l、O、o、0，數字重複出現率高
-       const arr = str.split("");
-       // 以空字串作為連接字符
-       let randNum;
-       for (var i = 0; i < 6; i++) {
-         randNum = Math.floor(Math.random() * 66); //隨機數在[0,65]之間
-         validate += arr[randNum];
-       }
-       return validate;
-     }
+    //  let validate = "";
+     
    
     //干擾點顏色
     const sColor = ["#B22222", "#F9F900", "#82D900", "#FFAF60"];
@@ -128,21 +130,12 @@ function Login(){
 
 
       
-      try{
-        // async ()=>{
-        //   const fs=await fetch('./../src/pages/members/data/memberData.json');
-        //   const obj=await fs.json();
-        //   setData(obj[0]);
-        //   };
-      }catch(e){
+      
 
-      }
-
-getData();
+// getData();
 
       
   }, []);
-  // console.log(codeText);  
   
   
   
@@ -177,7 +170,12 @@ getData();
             <th></th>
             <td>
               <div className="tysu_canvas" >
-                <canvas id="mycanvas"></canvas>
+                <canvas id="mycanvas" value={codeText} onClick={
+                  (event)=>{
+                  event.preventDefault();
+                  setCodeText(rand());
+                  }
+                }></canvas>
                 <img src="./img/member/noise.jpg" alt="" />
               </div>
             </td>
@@ -197,10 +195,10 @@ getData();
               <div className="tysu_logHelp">
                 <button id="submit" className="tysu_btn_sign" onSubmit={(event) =>{event.preventDefault()}}>登 入</button>
                 <div className="tysu_help">
-                  <a href="#/">
-                    <img src="/tysu_img/person_add_black_24dp.svg" alt="" />SIGN UP </a><a href="#/">
-                    <img src="/tysu_img/help_outline_black_24dp.svg" alt="" />HELP
-                  </a>
+                  <Link to="#/" className="tysu_signText">
+                    <i className="fas fa-user-plus"></i>SIGN UP</Link>
+                  <Link to="#/" className="tysu_helpText">
+                    <i className="fas fa-question"></i>HELP</Link>
                 </div>
               </div>
             </td>
