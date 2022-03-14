@@ -590,7 +590,7 @@ $ning-englishont: "Playfair Display", serif;
 }
 
 .ning_Junglestarcontainer {
-  width: 750px;
+  width: 685px;
   margin: 20px auto;
   overflow: hidden;
 }
@@ -598,7 +598,7 @@ $ning-englishont: "Playfair Display", serif;
 .ning_Junglestarcontainer figure {
   position: absolute;
   top: 0;
-  left: 150px;
+  left: 50px;
   width: 335px;
   margin: 0;
   box-shadow: rgba(255, 255, 255, 0.6);
@@ -620,13 +620,14 @@ $ning-englishont: "Playfair Display", serif;
 .ning_sharkcard,
 .ning_hitefoxcard {
   display: block;
+  width: 100%;
 }
 
 .ning_Junglestarcontainer input {
   position: absolute;
   top: 0;
   left: 0;
-  width: 150px;
+  width: 50px;
   height: 100%;
   cursor: pointer;
   border: 0;
@@ -639,9 +640,9 @@ $ning-englishont: "Playfair Display", serif;
 }
 
 .ning_Junglestarcontainer input:checked {
-  width: 15px;
+  width: 5px;
   left: auto;
-  right: 0;
+  right: 0px;
 }
 
 .ning_Junglestarcontainer input:checked ~ figure {
@@ -650,6 +651,7 @@ $ning-englishont: "Playfair Display", serif;
   -o-transition: all 0.7s ease-in-out;
   -ms-transition: all 0.7s ease-in-out;
   transition: all 0.7s ease-in-out;
+  left: 335px;
 }
 
 // .ning_junglestarcards {

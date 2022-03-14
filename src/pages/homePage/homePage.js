@@ -2,6 +2,7 @@ import React from "react";
 import "./ning.scss";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeAccordion from "./components/HomeAccordion";
+import HomeWeather from "./components/HomeWeather"
 import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
@@ -44,7 +45,8 @@ function homePage() {
             </div>
           </div>
           <div className="ning_separationline"></div>
-          <div className="ning_weatherbox">
+          <HomeWeather />
+          {/* <div className="ning_weatherbox">
             <div className="ning_weatherboxIcon">
               <div className="ning_weathericon">
                 <span className="material-icons">cloud</span>
@@ -56,7 +58,7 @@ function homePage() {
               <div className="ning_weatherNumber">18</div>
               <p className="ning_weatherUnit">°C</p>
             </div>
-          </div>
+          </div> */}
           <div className="ning_separationline"></div>
           <div className="ning_ticketbox">
             <div className="ning_ticketboxIcon">
@@ -326,16 +328,28 @@ function homePage() {
         <h2 className="ning_TitleChblack">明星動物認養</h2>
         <section className="ning_JunglestarMain">
           <div className="ning_Junglestarcontainer">
+            <figure>
+              <Link to="">
+                <div className="ning_eaglecard">
+                  <img src="img/home/star_eagle.png" alt="png_1" />
+                </div>
+                <input type="radio" name="radio-set" checked="checked" />
+                <figcaption>
+                  <span>
+                    <h3 className="ning_eaglecardtitle">Eagle</h3>
+                    <p>
+                      對於網頁開發或平面設計來說，在工作時可能經常會需要使用一些文字或圖片來填充空白區域以利設計排版，讓它看起來更近完成時，的樣貌也能協助其他人瞭解你的構想。
+                    </p>
+                    <button className="adoptbtn btn">我要認養！</button>
+                  </span>
+                </figcaption>
+              </Link>
               <figure>
                 <Link to="">
-                  <div className="ning_eaglecard">
-                    <img src="img/home/star_eagle.png" alt="png_1" />
+                  <div className="ning_elephantcard">
+                    <img src="img/home/star_elephant.png" alt="png_2" />
                   </div>
-                  <input
-                    type="radio"
-                    name="radio-set"
-                    checked="checked"
-                  ></input>
+                  <input type="radio" name="radio-set" checked="checked" />
                   <figcaption>
                     <span>
                       <h3 className="ning_eaglecardtitle">Eagle</h3>
@@ -348,14 +362,10 @@ function homePage() {
                 </Link>
                 <figure>
                   <Link to="">
-                    <div className="ning_elephantcard">
-                      <img src="img/home/star_elephant.png" alt="png_2" />
+                    <div className="ning_tigercard">
+                      <img src="img/home/star_tiger.png" alt="png_3" />
                     </div>
-                    <input
-                      type="radio"
-                      name="radio-set"
-                      checked="checked"
-                    ></input>
+                    <input type="radio" name="radio-set" checked="checked" />
                     <figcaption>
                       <span>
                         <h3 className="ning_eaglecardtitle">Eagle</h3>
@@ -368,14 +378,10 @@ function homePage() {
                   </Link>
                   <figure>
                     <Link to="">
-                      <div className="ning_tigercard">
-                        <img src="img/home/star_tiger.png" alt="png_3" />
+                      <div className="ning_sharkcard">
+                        <img src="img/home/star_shark.png" alt="png_4" />
                       </div>
-                      <input
-                        type="radio"
-                        name="radio-set"
-                        checked="checked"
-                      ></input>
+                      <input type="radio" name="radio-set" checked="checked" />
                       <figcaption>
                         <span>
                           <h3 className="ning_eaglecardtitle">Eagle</h3>
@@ -388,14 +394,14 @@ function homePage() {
                     </Link>
                     <figure>
                       <Link to="">
-                        <div className="ning_sharkcard">
-                          <img src="img/home/star_shark.png" alt="png_4" />
+                        <div className="ning_hitefoxcard">
+                          <img src="img/home/star_hitefox.png" alt="png_5" />
                         </div>
                         <input
                           type="radio"
                           name="radio-set"
                           checked="checked"
-                        ></input>
+                        />
                         <figcaption>
                           <span>
                             <h3 className="ning_eaglecardtitle">Eagle</h3>
@@ -406,34 +412,12 @@ function homePage() {
                           </span>
                         </figcaption>
                       </Link>
-                      <figure>
-                        <Link to="">
-                          <div className="ning_hitefoxcard">
-                            <img src="img/home/star_hitefox.png" alt="png_5" />
-                          </div>
-                          <input
-                            type="radio"
-                            name="radio-set"
-                            checked="checked"
-                          ></input>
-                          <figcaption>
-                            <span>
-                              <h3 className="ning_eaglecardtitle">Eagle</h3>
-                              <p>
-                                對於網頁開發或平面設計來說，在工作時可能經常會需要使用一些文字或圖片來填充空白區域以利設計排版，讓它看起來更近完成時，的樣貌也能協助其他人瞭解你的構想。
-                              </p>
-                              <button className="adoptbtn btn">
-                                我要認養！
-                              </button>
-                            </span>
-                          </figcaption>
-                        </Link>
-                      </figure>
                     </figure>
                   </figure>
                 </figure>
               </figure>
-            </div>
+            </figure>
+          </div>
         </section>
       </div>
     </>
