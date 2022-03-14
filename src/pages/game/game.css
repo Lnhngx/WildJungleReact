@@ -13,6 +13,7 @@
     font-weight: 800;
     text-align: center;
     margin-top: 50px;
+    font-family: sans-serif;
 }
 .game_profile{
     margin-top: 2rem;
@@ -192,9 +193,10 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    opacity: 0;
-    transition: 1.5s;
-    transition-delay: 1s;
+    opacity: 1;
+    /* transition: 1.5s; */
+    /* transition-delay: 1s; */
+    z-index: 99;
 }
 .mask_title{
     font-size: 3rem;

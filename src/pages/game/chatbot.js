@@ -19,10 +19,12 @@ function Chatbot(){
     // }
     return(
     <>
-        <div className="wrap">
+        <div className="chatbot_wrap">
         <div className="chatbot_nav">
             <div className="name">WILDJUNGLE</div>
-            <div className="chatbot_close"><i className="fas fa-times"></i></div>
+            <div className="chatbot_close" onClick={()=>{
+                document.querySelector('.chatbot_wrap').style.display = 'none';
+            }}><i className="fas fa-times"></i></div>
             
         </div>
         <div className="chat_area">
