@@ -2,24 +2,11 @@ import React ,{useEffect, useRef,useState} from "react";
 
 
 function Login(){
-  let validate = "";
-  function rand() {
-    validate = "";
-    const str =
-      "123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789";
-    // 大小寫英文、數字，但不包含I、l、O、o、0，數字重複出現率高
-    const arr = str.split("");
-    // 以空字串作為連接字符
-    let randNum;
-    for (var i = 0; i < 6; i++) {
-      randNum = Math.floor(Math.random() * 66); //隨機數在[0,65]之間
-      validate += arr[randNum];
-    }
-    return validate;
-  }
-  // 產生隨機六位數
+  
+  
+
+
 let [codeText,setCodeText]=useState('');
-codeText=validate;
 
 
 
@@ -28,12 +15,26 @@ codeText=validate;
 
 
 
-
+// const mycanvas=useRef();
   useEffect(() => {
+    
     const mycanvas = document.getElementById("mycanvas");
-    var ctx = mycanvas.getContext("2d");
+    const cxt = mycanvas.getContext("2d");
      // 產生隨機六位數
-    let validate = "";
+     let validate = "";
+     function rand() {
+       const str =
+         "123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789";
+       // 大小寫英文、數字，但不包含I、l、O、o、0，數字重複出現率高
+       const arr = str.split("");
+       // 以空字串作為連接字符
+       let randNum;
+       for (var i = 0; i < 6; i++) {
+         randNum = Math.floor(Math.random() * 66); //隨機數在[0,65]之間
+         validate += arr[randNum];
+       }
+       return validate;
+     }
    
     //干擾點顏色
     const sColor = ["#B22222", "#F9F900", "#82D900", "#FFAF60"];
@@ -55,24 +56,64 @@ codeText=validate;
       const ranLineY = Math.floor(Math.random() * 88);
       return ranLineY;
     }
-    ctx.strokeStyle = sColor[randColor()];
-    // 起始點
-    ctx.moveTo(0, lineY());
-    // 從起始點畫一條線到(x, y)座標
-    ctx.lineTo(200, lineY());
-    // 亂數取得1~2之間的值
-    ctx.lineWidth = (Math.floor(Math.random() * (20 - 10 + 1)) + 10) / 10;
-    ctx.stroke();
-    ctx.closePath();
+    // 重設canvas內容
+    function clickChange() {
+      // mycanvas.width = mycanvas.width;
+      // mycanvas.height = mycanvas.height;
+
+      cxt.drawImage(lineY(), 200, 88, 0, 0, 200, 88);
+      /* 圖片範圍(img, 從img的X擷取, 從img的Y擷取, 
+                      擷取的width, 擷取的height, 
+                      img在canvas上的X軸, img在canvas上的Y軸, 
+                      img在canvas上的width, img在canvas上的height) */
+
+      for (let j = 0; j < 2; j++) {
+        // 隨機產生新路徑
+        cxt.beginPath();
+        // 每次重新生成
+        cxt.strokeStyle = sColor[randColor()];
+        cxt.moveTo(0, lineY());
+        // 起始點
+        cxt.lineTo(200, lineY());
+        // 從起始點畫一條線到(x, y)座標
+        cxt.lineWidth = (Math.floor(Math.random() * (20 - 10 + 1)) + 10) / 10;
+        // 亂數取得1~2之間的值
+        cxt.stroke();
+        cxt.closePath();
+      }
+      // 兩條干擾線
+
+      cxt.fillStyle = fColor[randColor()];
+      // 隨機文字顏色
+      cxt.font = "bold 2rem Verdana";
+      cxt.fillText(rand(), 30, 55);
+      // 隨機生成的字寫入canvas, x軸, Y軸
+    }
+    
     
 
+
+      cxt.moveTo(0, lineY());
+      // 起始點
+      cxt.lineTo(200, lineY());
+      // 從起始點畫一條線到(x, y)座標
+      cxt.lineWidth = (Math.floor(Math.random() * (20 - 10 + 1)) + 10) / 10;
+      // 亂數取得1~2之間的值
+      cxt.stroke();
+      cxt.closePath();
+
+
+      cxt.fillStyle = fColor[randColor()];
+      // 隨機文字顏色
+      cxt.font = "bold 2rem Verdana";
+      cxt.fillText(rand(), 30, 55);
+      // 隨機生成的字寫入canvas, x軸, Y軸
+
+      setCodeText(validate);
   }, []);
-
-
   
 
-
-  const mycanvas=useRef();
+  
 
   
     return(<>
@@ -103,7 +144,10 @@ codeText=validate;
           <tr className="tysu_tr_code">
             <th></th>
             <td>
-              <canvas ref={mycanvas} id="mycanvas" width="200" height="88" style={{ border: "1px solid #d3d3d3" ,backgroundColor:"#4444"}} >{codeText}</canvas>
+              <div className="tysu_canvas" >
+                <canvas id="mycanvas"></canvas>
+                <img src="./img/member/noise.jpg" alt="" />
+              </div>
             </td>
           </tr>
           <tr className="tysu_tr tysu_last">
