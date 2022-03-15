@@ -57,6 +57,24 @@ $stan_height: 50px;
   color: $stan_black;
   font-size: 25px;
 }
+.stan_h3 {
+  font-size: 20px;
+  width: 80%;
+  margin: 10px 0px;
+  // border: 1px solid $stan_black;
+  text-align: left;
+  border: 1px solid;
+  border-color: transparent transparent $stan_black transparent;
+}
+
+.stan_fof_flex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 22%;
+}
+
 //
 //
 // -------------------------通用-------------------------
@@ -721,14 +739,40 @@ $stan_height: 50px;
       }
     }
   }
+}
 
-  #stan_fof_form table {
-    border-collapse: collapse;
-    margin: 0 auto;
-    justify-content: center;
+.stan_fof_label {
+}
 
-    .stan_fof_input {
-      height: $stan_height;
-    }
-  }
+.stan_fof_redword {
+  color: red;
+}
+
+.stan_fof_input {
+  height: 50px;
+  width: 45vw;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.stan_fof_input:focus {
+  outline: 0.8px solid $stan_color2;
+  border: 0.8px solid transparent;
+  border-color: $stan_color2;
+  box-shadow: 0 0 3px 3px transparent;
+  background-color: transparent;
+}
+
+.stan_fof_flex_left {
+  @extend .stan_fof_flex;
+  padding-left: 26%;
+  margin-bottom: 10px;
+}
+
+.stan_select_group {
+  font-family: "Noto Sans TC", sans-serif;
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./carts.scss";
 import Process02 from "./components/Process_02";
 import Filloutorder from "./components/Filloutform_order";
+import Deliveryhome from "./components/Delivery_home";
 
 function Cart02filloutform() {
   return (
@@ -10,59 +11,36 @@ function Cart02filloutform() {
         <Process02 />
         <div className="stan_carts_middle">
           <Filloutorder />
-          <h3>收件人資料</h3>
-          <form id="stan_fof_form">
-            <table>
-              <tbody>
-                <tr className="stan_fof_tr">
-                  <tr>
-                    <th>
-                      <label htmlFor="text" className="stan_fof_label">姓名<span className="stan_fof_redword">*</span></label>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td><input type="text" className="stan_fof_input" required /></td>
-                  </tr>
-                </tr>
 
-                <tr className="stan_fof_tr">
-                  <tr>
-                    <th>
-                      <label htmlFor="phone" className="stan_fof_label">手機<span className="stan_fof_redword">*</span></label>
-                    </th>
-                  </tr>
-                  <tr>
-                    <input type="tel" id="phone" name="phone" className="stan_fof_input" pattern="[0-9]" required />
-                  </tr>
-                </tr>
+          <div className="stan_fof_flex">
+            <div className="stan_h3">貨運方式</div>
+          </div>
 
-                <tr className="stan_fof_tr">
-                  <tr>
-                    <th>
-                      <label htmlFor="email" className="stan_fof_label">電子信箱<span className="stan_fof_redword">*</span></label>
-                    </th>
-                  </tr>
-                  <tr>
-                    <input type="email" id="email" name="email" className="stan_fof_input" />
-                  </tr>
-                </tr>
+          <div className="stan_fof_flex_left">
+            <select name="" id="" className="stan_select_group">
+              <option value="">請選擇</option>
+              <option value="">宅配</option>
+              <option value="">超商取貨</option>
+              <option value="">園區取貨</option>
+            </select>
+          </div>
 
-                <tr className="stan_fof_tr">
-                  <tr>
-                    <th>
-                      <label htmlFor="text" className="stan_fof_label">運送地址<span className="stan_fof_redword">*</span></label>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td><input type="text" className="stan_fof_input" required /></td>
-                  </tr>
-                </tr>
+          <div className="stan_fof_flex">
+            <div className="stan_h3">付款方式</div>
+          </div>
 
+          <div className="stan_fof_flex_left">
+            <select name="" id="" className="stan_select_group">
+              <option value="">請選擇</option>
+              <option value="">信用卡</option>
+              <option value="">貨到付款</option>
+            </select>
+          </div>
 
-              </tbody>
-            </table>
-          </form>
-
+          <div className="stan_fof_flex">
+            <div className="stan_h3">收件人資料</div>
+          </div>
+          <Deliveryhome />
         </div>
       </div>
     </>
