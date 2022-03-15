@@ -2,7 +2,8 @@ import React from "react";
 import "./ning.scss";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeAccordion from "./components/HomeAccordion";
-import HomeWeather from "./components/HomeWeather"
+import HomeWeather from "./components/HomeWeather";
+import HomeTransportion from "./components/HomeTransportion";
 import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
@@ -148,24 +149,6 @@ function homePage() {
           </div>
         </div>
       </div>
-      {/* <div className="ning_rightflex">
-        <Link to="">
-          <div className="ning_buyticket">
-            <div className="ning_buyticketicon">
-              <span className="material-icons">confirmation_number</span>
-              <p>立即訂票</p>
-            </div>
-          </div>
-        </Link>
-        <Link to="">
-          <div className="ning_game">
-            <div className="ning_gameicon">
-              <span className="material-icons">sports_esports</span>
-              <p>紅利遊戲</p>
-            </div>
-          </div>
-        </Link>
-      </div> */}
       <div className="container">
         <div className="ning_PopularEvents">
           <h1 className="ning_TitleEnblack">Popular Events</h1>
@@ -419,6 +402,13 @@ function homePage() {
             </figure>
           </div>
         </section>
+      </div>
+      <div className="container">
+        <h1 className="ning_TitleEnblack">Transportion</h1>
+        <h2 className="ning_TitleChblack">交通</h2>
+        <div className="ning_transportionButton">
+          <HomeTransportion />
+        </div>
       </div>
     </>
   );

@@ -206,7 +206,7 @@ $ning-englishont: "Playfair Display", serif;
 /* JungleTour 園區導覽 */
 
 .ning_bgcblack {
-  background-image: url("../../../public/img/home/homebgcblack.svg");
+  background: url("../../../public/img/home/homebgcblack.svg") , no-repeat;
   height: 1150px;
 }
 
@@ -654,127 +654,30 @@ $ning-englishont: "Playfair Display", serif;
   left: 335px;
 }
 
-// .ning_junglestarcards {
-//   width: 100%;
-//   margin: 50px auto;
-//   overflow: hidden;
-//   display: block;
-//   width: 100%;
-// }
+/* Transportion 交通 */
 
-// .ning_eaglecard {
-//   width: 500px;
-//   height: 350px;
-//   background-color: $ning-color5;
-//   display: flex;
-//   align-items: center;
-// }
+.ning_transportionButton {
+  margin-top: 50px;
+}
 
-// .ning_elephantcard {
-//   width: 500px;
-//   height: 350px;
-//   background-color: $ning-color1;
-//   display: flex;
-//   align-items: flex-end;
-// }
+.ning_busButton {
+  font-family: $ning-chinesefont;
+  color: $ning-color3;
+  font-size: 1.5rem;
+  background-color: $ning-color2;
+  border-radius: 0;
+  width: 200px;
+  height: 50px;
 
-// .ning_tigercard {
-//   width: 500px;
-//   height: 350px;
-//   background-color: $ning-color2;
-//   padding-top: 40px;
-//   overflow: hidden;
-// }
+}
 
-// .ning_sharkcard {
-//   width: 500px;
-//   height: 350px;
-//   background-color: $ning-color4;
-//   display: flex;
-//   align-items: center;
-// }
-
-// .ning_hitefoxcard {
-//   width: 500px;
-//   height: 350px;
-//   background-color: #1297cf;
-//   display: flex;
-//   align-items: center;
-// }
-
-// .ning_eaglecard img {
-//   height: 300px;
-//   background-color: $ning-color5;
-//   padding-left: 10px;
-// }
-
-// .ning_elephantcard img {
-//   height: 300px;
-//   background-color: $ning-color1;
-//   padding-left: 10px;
-// }
-
-// .ning_tigercard img {
-//   height: 380px;
-//   background-color: $ning-color2;
-// }
-
-// .ning_sharkcard img {
-//   height: 280px;
-//   background-color: $ning-color4;
-//   padding-left: 10px;
-// }
-
-// .ning_hitefoxcard img {
-//   height: 300px;
-//   background-color: #1297cf;
-//   padding-left: 10px;
-// }
-
-// .ning_junglestarcards figure {
-//   position: absolute;
-//   top: 0;
-//   left: 150px;
-//   margin: 0;
-//   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
-//   -webkit-transition: all 0.3s ease-in-out;
-//   -moz-transition: all 0.3s ease-in-out;
-//   -o-transition: all 0.3s ease-in-out;
-//   -ms-transition: all 0.3s ease-in-out;
-//   transition: all 0.3s ease-in-out;
-// }
-
-// .ning_junglestarcards > figure {
-//   position: relative;
-//   left: 0 !important;
-// }
-
-// .ning_junglestarcards input {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 50px;
-//   height: 100%;
-//   cursor: pointer;
-//   border: 0;
-//   padding: 0;
-//   opacity: 0;
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-//   appearance: none;
-// }
-
-// .ning_junglestarcards input:checked{
-//   width: 5px;
-//   left: auto;
-//   right: 0px;
-// }
-
-// .ning_junglestarcards input:checked ~ figure {
-//   -webkit-transition: all 0.7s ease-in-out;
-//   -moz-transition: all 0.7s ease-in-out;
-//   -o-transition: all 0.7s ease-in-out;
-//   -ms-transition: all 0.7s ease-in-out;
-//   transition: all 0.7s ease-in-out;
-//   left: 335px;
-// }
+.ning_PButton {
+  font-family: $ning-chinesefont;
+  color: $ning-color3;
+  font-size: 1.5rem;
+  background-color: $ning-color4;
+  border-radius: 0;
+  width: 200px;
+  height: 50px;
+  margin-left: 20px;
+}
