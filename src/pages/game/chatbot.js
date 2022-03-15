@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 // import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
+    const [toggleMenu,setToggleMenu] = useState(false); 
     // const [io,setIo] = useState(null);
     // const connectWebSocket = ()=>{
     //     setIo( webSocket('http://localhost:3001') );
@@ -160,7 +161,17 @@ function Chatbot(){
             </div>
         </div> 
         <div className="tool_bar">
-            <div className="rich_menu"> <i className="fas fa-bars"></i></div>
+            <div className="rich_menu" onClick={()=>{
+                if(!toggleMenu){
+                    document.querySelector('.menu').style.bottom = '50px'
+                    setToggleMenu(true)
+                }else{
+                    document.querySelector('.menu').style.bottom = '-200px'
+                    setToggleMenu(false)
+                }
+            }}>
+                <i className="fas fa-bars"></i>
+            </div>
             <form onSubmit={(e)=>{
                 e.preventDefault()
             }}>
@@ -169,7 +180,7 @@ function Chatbot(){
             </form>
         </div> 
     </div>
-     </>
-     )
- }
- export default Chatbot
+    </>
+    )
+}
+export default Chatbot

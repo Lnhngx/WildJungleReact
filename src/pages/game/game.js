@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Chatbot from './chatbot'
+import Chatbot from './chatbot';
 import {useState} from 'react';
 import './game.css';
 function Game(){
@@ -15,13 +15,13 @@ function Game(){
             document.querySelector('.game_profile').innerHTML = `遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span>`;
         }else if(hover===2){
             document.querySelector('.game_title').innerHTML = '神準動物心理測驗'; 
-            document.querySelector('.game_profile').innerHTML = `你總共會遇到<span>3</span>個題目，請依照自己心中的第一個想法來選擇<br />點擊你所選的答案後<br />就可以知道自己心靈所對應的動物囉！`;
+            document.querySelector('.game_profile').innerHTML = `你總共會遇到<span>3</span>個題目，請依照自己心中的第一個想法來選擇<br />點擊你所選的答案後<br />就可以知道自己心靈所對應的動物囉!`;
         }else if(hover===3){
             document.querySelector('.game_title').innerHTML = '動物冷知識,10題見真章';
             document.querySelector('.game_profile').innerHTML = `在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>300</span><br /><span>全部答對能拿到翻倍紅利哦</span>`;
         }else if (hover===4){
             document.querySelector('.game_title').innerHTML = '填字遊戲（維護中）';
-            document.querySelector('.game_profile').innerHTML = `<span>維護中啦！！！！！！！！！！！</span>`
+            document.querySelector('.game_profile').innerHTML = `<span>維護中哦!!!!!!!</span><br />維護中 維護中 維護中 維護中<br />維護中啦!!!!!!`
         }
     },[hover])
     const hoverHandler = id => {
