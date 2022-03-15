@@ -1,19 +1,19 @@
 import React from "react";
 // import { useRef } from "react";
 import { useState,useEffect } from "react";
-// import  webSocket  from "socket.io-client";
+import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
     const [toggleMenu,setToggleMenu] = useState(false); 
-    // const [io,setIo] = useState(null);
-    // const connectWebSocket = ()=>{
-    //     setIo( webSocket('http://localhost:3001') );
-    // }
-    // useEffect(()=>{
-    //     if(io){
-    //         console.log('success connect!')
-    //     }
-    // },[io])
+    const [io,setIo] = useState(null);
+    const connectWebSocket = ()=>{
+        setIo( webSocket('http://localhost:3001') );
+    }
+    useEffect(()=>{
+        if(io){
+            console.log('success connect!')
+        }
+    },[io])
     // const myChatbotInput = useRef(null);
     // function SendQuestion(){
 
@@ -123,7 +123,7 @@ function Chatbot(){
         </div>
         {/* menu是浮起來的 */}
         <div className="menu">
-            <div className="book">
+            <div className="book" onClick={()=>{console.log(123456)}}>
                 <div className="icon">
                     <i className="fas fa-ticket-alt"></i>
                 </div>    
@@ -153,7 +153,7 @@ function Chatbot(){
                 </div>
                 <div className="text">查看天氣</div>
             </div>
-            <div className="phone">
+            <div className="phone" onClick={connectWebSocket}>
                 <div className="icon">
                     <i className="fas fa-headphones-alt"></i>
                 </div>

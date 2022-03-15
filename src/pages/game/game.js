@@ -4,12 +4,11 @@ import {useState} from 'react';
 import './game.css';
 function Game(){
     const [hover,setHover] = useState(-1);
-    const [spotLeft,setSpotLeft] = useState(0);
-    const [spotHover,setSpotHover] = useState(-1);
+    // const [spotLeft,setSpotLeft] = useState(0);
 
     useEffect(()=>{
-        const spot = document.querySelector('.choose_spotGame').getBoundingClientRect().left;
-        setSpotLeft(spot);
+        // const spot = document.querySelector('.choose_spotGame').getBoundingClientRect().left;
+        // setSpotLeft(spot);
         if(hover===1){
             document.querySelector('.game_title').innerHTML = '眼力大考驗'; 
             document.querySelector('.game_profile').innerHTML = `遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span>`;
@@ -24,59 +23,60 @@ function Game(){
             document.querySelector('.game_profile').innerHTML = `<span>維護中哦!!!!!!!</span><br />維護中 維護中 維護中 維護中<br />維護中啦!!!!!!`
         }
     },[hover])
-    const hoverHandler = id => {
-        console.log(spotLeft);
-        let obj = {
-            opacity:'1',
-            pointerEvents:'all',
-            marginRight:'-2rem',
-            top: '0px',
-            left: spotLeft+'px',
-            // transform: 'translateX(-50%)',
-            zIndex:'99',
-        };
-        let obj1 = {
-            opacity:'1',
-            pointerEvents:'all',
-            marginRight:'-2rem',
-            top:'0px',
-            left:'510px',
-            zIndex:'99',
-        };
-        let origin_obj = {
-            opacity:'0',
-            pointerEvents:'none',
-            marginRight:'2.5rem',
-            left:'175px'
-        }
-        switch (id) {
-            case 1:
-                return obj;
-                break;
-            case 2:
-                return obj1;
-                break;
-            default:
-                return origin_obj;
-        }
-    }
+    // const hoverHandler = id => {
+    //     console.log(spotLeft);
+    //     let obj = {
+    //         opacity:'1',
+    //         pointerEvents:'all',
+    //         marginRight:'-2rem',
+    //         top: '0px',
+    //         left: spotLeft+'px',
+    //         transform: 'translateX(-25%)',
+    //         zIndex:'99',
+    //     };
+    //     let obj1 = {
+    //         opacity:'1',
+    //         pointerEvents:'all',
+    //         marginRight:'-2rem',
+    //         top:'0px',
+    //         left:'510px',
+    //         zIndex:'99',
+    //     };
+    //     let origin_obj = {
+    //         opacity:'0',
+    //         pointerEvents:'none',
+    //         marginRight:'2.5rem',
+    //         left:'175px'
+    //     }
+    //     switch (id) {
+    //         case 1:
+    //             return obj;
+    //             break;
+    //         case 2:
+    //             return obj1;
+    //             break;
+    //         default:
+    //             return origin_obj;
+    //     }
+    // }
     const hoverHandlerSpot = id => {
         let obj = {
-            width: '500px',
-            height: '500px',
-            marginRight:'-2.5rem',
+            // width:'500px',
+            // height:'500px',
+            transform:'scale(1.66)',
+            marginRight:'3rem',
             zIndex:'0',
         };
         let origin_obj = {
-            width: '300px',
-            height: '300px',
+            // width:'300px',
+            // height:'300px',
+            transform:'scale(1)',
             marginRight:'2.5rem',
             zIndex:'9',
         }
         switch (id) {
             case 1:
                 return obj;
-                break;
             default:
                 return origin_obj;
         }
@@ -106,33 +106,55 @@ function Game(){
             <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span></p>
 
 
-
         <Chatbot />
 
             <div className="gameChoose_zone">
                 <div className="choose_spotGame" 
-                    onMouseEnter={()=>{
+                    onMouseEnter={(e)=>{
+                        let offset = 1/1.66
                         setHover(1)
+                        document.querySelector('.mask').style.display = 'flex'
+                        document.querySelector('.mask').style.left = '-110px'
+                        document.querySelector('.mask').style.top = '-110px'
+                        document.querySelector('.mask').style.transform = `scale(${offset})`
                     }}
-                    onMouseLeave={()=>{ 
+                    onMouseLeave={(e)=>{ 
                         setHover(-1)
+                        document.querySelector('.mask').style.display = 'none'
                     }}
                     style={hoverHandlerSpot(hover)}
                 >
-                <img src="/img/game/spot_game.png" alt="" />
-                
+                    <img src="/img/game/spot_game.png" alt="" />
+                {/* -------------測試用，沒寫出來效果就刪掉------------- */}
+                    <div className="mask">
+                        <div className="mask_title">眼力大挑戰</div>
+                        <div className="mask_text">遊戲中你將要找出5個不同之處<br/>利用滑鼠點擊圖片若正確...</div>
+                        <button className="mask_btn" onClick={()=>{console.log(123456)}}>進入遊戲</button>
+                    </div>
+                {/* -------------測試用，沒寫出來效果就刪掉------------- */}
                 </div>
 
                 <div className="choose_psychoGame"
                     onMouseEnter={()=>{
+                        let offset = 1/1.66;
                         setHover(2);
+                        document.querySelectorAll('.mask')[1].style.display = 'flex'
+                        document.querySelectorAll('.mask')[1].style.left = '-110px'
+                        document.querySelectorAll('.mask')[1].style.top = '-110px'
+                        document.querySelectorAll('.mask')[1].style.transform = `scale(${offset})`
                     }}
                     onMouseLeave={()=>{ 
                         setHover(-1)
+                        document.querySelectorAll('.mask')[1].style.display = 'none'
                     }}
                     // style={ hover===2 && hoverHandlerUnder(hover)}
                 >
                     <img src="/img/game/psycho_game.png" alt="" />
+                    <div className="mask">
+                        <div className="mask_title">眼力大挑戰</div>
+                        <div className="mask_text">遊戲中你將要找出5個不同之處<br/>利用滑鼠點擊圖片若正確...</div>
+                        <button className="mask_btn" onClick={()=>{console.log(123456)}}>進入遊戲</button>
+                    </div>
                 </div>
                 <div className="choose_crossGame" 
                     onMouseEnter={()=>{

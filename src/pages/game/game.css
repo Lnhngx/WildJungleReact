@@ -96,7 +96,9 @@
     border: 10px solid white;
     overflow: hidden;
     margin-right: 2.5rem;
+    /* transform-origin: center center; */
     transition: 1s;
+    position: relative;
 }
 /* .choose_spotGame:hover{
     width: 500px;
@@ -116,7 +118,8 @@
     border: 10px solid white;
     overflow: hidden;
     margin-right: 2.5rem;
-    transition: 1.25s;
+    transition: 1s;
+    position: relative;
 }
 .choose_psychoGame:hover{
     width: 500px;
@@ -186,17 +189,14 @@
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.801);
     position: absolute;
-    left: 208px;
+    left: -110px;
+    top: -90px;
     text-align: center;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
-    opacity: 1;
-    /* transition: 1.5s; */
-    /* transition-delay: 1s; */
-    z-index: 99;
+    z-index: 999;
 }
 .mask_title{
     font-size: 3rem;
