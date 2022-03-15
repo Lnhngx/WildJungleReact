@@ -1,35 +1,67 @@
 import React ,{useEffect, useRef,useState} from "react";
 import { Link } from "react-router-dom";
+import {
+  GoogleReCaptchaProvider,
+  GoogleReCaptcha
+} from "react-google-recaptcha-v3";
 
 import Config from "../Config";
+import Keys from './../Keys';
 
 function Login(){
-
+  // 資料庫的資料
   const [data,setData]=useState([]);
 
 
-  // 所有input欄位
-  const [fields,setFields]=useState({
-    email:'',
-    password:'',
-    verifyCode:'',
+  // input欄位
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+  
+  
+  const [token, setToken] = useState(null);
+
+  const [serverState, setServerState] = useState({
+    submitting: false,
+    status: null
   });
-  
-  
-  // 驗證碼
-//   const getData =async ()=>{
-//     const obj=await (await fetch(Config.TYSU_LOGIN)).json();
-    
-//       console.log(obj);
-//       setData(obj);
-  
-// }
+  const handleServerResponse = (ok, msg, form) => {
+    setServerState({
+      submitting: false,
+      status: { ok, msg }
+    })
+    if (ok) {
+      form.reset()
+    }
+  };
+  const handleOnSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    setServerState({ submitting: true })
+    const data = new FormData(form)
+    data.append("g-recaptcha-response", token);
 
-  async function sendForm(event){
-    event.preventDefault();
-    
-
+    fetch({
+      method: "post",
+      url: "",
+      data
+    })
+      .then(r => {
+        handleServerResponse(true, "Thanks!", form)
+      })
+      .catch(r => {
+        handleServerResponse(false, r.response.data.error, form)
+      })
   }
+
+
+
+
+
+  // async function sendForm(event){
+  //   event.preventDefault();
+    
+
+  // }
   
   
 
@@ -49,7 +81,8 @@ function Login(){
   
     return(<>
     <h1 className="tysu_h1">LOGIN</h1>
-    <form name="form1" onSubmit={(event)=>{sendForm(event)}} id="tysu_form">
+    <GoogleReCaptchaProvider reCaptchaKey={Keys.RECAPTCHA_KEY}>
+    <form name="form1" onSubmit={(event)=>{}} id="tysu_form">
       <table>
         <tbody>
           <tr className="tysu_tr">
@@ -58,25 +91,24 @@ function Login(){
                 <span className="tysu_titleSpan">Email</span></label>
             </th>
             <td>
-              <input type="email" id="tysu_email" className="tysu_input" name="email" value={fields.email} onChange={(e)=>{}}/>
+              <input type="email" id="tysu_email" className="tysu_input" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
               <div id="emailHelp"></div>
             </td>
           </tr>
 
-          <tr className="tysu_tr">
+          <tr className="tysu_tr tysu_last">
             <th>
               <label htmlFor="tysu_pass">密碼<br /><span className="tysu_titleSpan">Password</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_pass" className="tysu_input" name="password" value={fields.password} onChange={(e)=>{}}/>
+              <input type="text" id="tysu_pass" className="tysu_input" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
               <div id="tysu_passHelp"></div>
             </td>
           </tr>
-          <tr className="tysu_tr_code">
+          {/* <tr className="tysu_tr_code">
             <th></th>
             <td>
               <div className="tysu_canvas" >
-                
                 <img src="./img/member/noise.jpg" alt="" />
               </div>
             </td>
@@ -89,12 +121,13 @@ function Login(){
               <input type="text" id="tysu_code" className="tysu_input" value={fields.verifyCode} onChange={(e)=>{}}/>
               <div id="tysu_codeHelp"></div>
             </td>
-          </tr>
+          </tr> */}
           <tr>
             <th></th>
             <td>
               <div className="tysu_logHelp">
-                <button id="submit" className="tysu_btn_sign" onSubmit={(event) =>{event.preventDefault()}}>登 入</button>
+                <button id="submit" className="tysu_btn_sign" onSubmit={(event) =>{event.preventDefault()
+                handleOnSubmit()}}>登 入</button>
                 <div className="tysu_help">
                   <Link to="#/" className="tysu_signText">
                     <i className="fas fa-user-plus"></i>SIGN UP</Link>
@@ -107,6 +140,7 @@ function Login(){
         </tbody>
       </table>
     </form>
+    </GoogleReCaptchaProvider>
     </>)
 }
 export default Login
