@@ -3,6 +3,7 @@ import "./carts.scss";
 import Process02 from "./components/Process_02";
 import Filloutorder from "./components/Filloutform_order";
 import Deliveryhome from "./components/Delivery_home";
+import Deliveryconvenient from "./components/Delivery_convenient";
 
 function Cart02filloutform() {
   return (
@@ -41,6 +42,13 @@ function Cart02filloutform() {
             <div className="stan_h3">收件人資料</div>
           </div>
           <Deliveryhome />
+          <></>
+          {/* <Deliveryconvenient /> */}
+
+          <div className="stan_fof_btn">
+            <div className="stan_fof_btn_back">上一頁</div>
+            <div className="stan_fof_btn_next">完成結帳</div>
+          </div>
         </div>
       </div>
     </>
