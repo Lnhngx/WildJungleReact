@@ -7,6 +7,7 @@ $stan_color2: #f9b112;
 $stan_color3: #1b7754;
 $stan_white: #ffffff;
 $stan_black: #000000;
+$stan_height: 50px;
 
 @font-face {
   font-family: "Noto Sans TC", sans-serif;
@@ -21,7 +22,7 @@ $stan_black: #000000;
 }
 
 @mixin mobile {
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 700px) {
     @content;
   }
 }
@@ -56,6 +57,24 @@ $stan_black: #000000;
   color: $stan_black;
   font-size: 25px;
 }
+.stan_h3 {
+  font-size: 20px;
+  width: 80%;
+  margin: 10px 0px;
+  // border: 1px solid $stan_black;
+  text-align: left;
+  border: 1px solid;
+  border-color: transparent transparent $stan_black transparent;
+}
+
+.stan_fof_flex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 22%;
+}
+
 //
 //
 // -------------------------通用-------------------------
@@ -548,11 +567,11 @@ $stan_black: #000000;
   width: 100%;
   height: auto;
   border: 1px solid $stan_white;
-  background-color: $stan_color2;
 
   .stan_filloutform_order_title {
     height: 50px;
     border: 1px solid $stan_color2;
+    background-color: $stan_color2;
     font-size: 18px;
     display: flex;
     justify-content: space-between;
@@ -572,7 +591,8 @@ $stan_black: #000000;
   .stan_filloutform_order_content {
     width: 100%;
     height: auto; //暫時
-    border: 1px solid #c4c4c4;
+    border: 1px solid;
+    border-color: #c4c4c4 #c4c4c4 $stan_white #c4c4c4;
     background-color: $stan_white;
   }
   .stan_filloutform_order_product_title {
@@ -656,6 +676,7 @@ $stan_black: #000000;
   }
 
   .stan_order_blackhr {
+    margin-bottom: -2px;
     padding: 0 10%;
     div {
       display: block;
@@ -663,7 +684,7 @@ $stan_black: #000000;
       border: 1px solid $stan_black;
       justify-content: center;
       @include mobile {
-        border-color: #e4e4e4;
+        border-color: #c4c4c4;
       }
     }
   }
@@ -671,26 +692,87 @@ $stan_black: #000000;
     padding: 0px 10%;
     font-weight: 600;
     text-align: center;
+    border: 1px solid;
+    border-color: $stan_white #c4c4c4 #c4c4c4 #c4c4c4;
     background-color: $stan_white;
-
-    @include mobile {
-      display: none;
-    }
 
     ul {
       display: flex;
-      margin: 10px 0;
+      margin: 7px 0;
       font-size: 16px;
+      background-color: $stan_white;
 
       li:nth-child(1) {
         width: 60%;
+        @include mobile {
+          display: none;
+        }
       }
       li:nth-child(2) {
         width: 15%;
+        text-align: left;
+        @include mobile {
+          width: 50%;
+        }
       }
       li:nth-child(3) {
-        width: 25%;
+        width: 15%;
+        text-align: right;
+        @include mobile {
+          width: 50%;
+        }
+      }
+    }
+    .stan_total_hr {
+      div:nth-child(1) {
+        width: 50%;
+        @include mobile {
+          width: 0%;
+        }
+      }
+      div:nth-child(2) {
+        width: 50%;
+        border: 1px solid $stan_black;
+        @include mobile {
+          width: 100%;
+        }
       }
     }
   }
+}
+
+.stan_fof_label {
+}
+
+.stan_fof_redword {
+  color: red;
+}
+
+.stan_fof_input {
+  height: 50px;
+  width: 45vw;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.stan_fof_input:focus {
+  outline: 0.8px solid $stan_color2;
+  border: 0.8px solid transparent;
+  border-color: $stan_color2;
+  box-shadow: 0 0 3px 3px transparent;
+  background-color: transparent;
+}
+
+.stan_fof_flex_left {
+  @extend .stan_fof_flex;
+  padding-left: 26%;
+  margin-bottom: 10px;
+}
+
+.stan_select_group {
+  font-family: "Noto Sans TC", sans-serif;
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
 }

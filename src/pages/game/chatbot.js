@@ -1,126 +1,129 @@
 import React from "react";
 // import { useRef } from "react";
 import { useState,useEffect } from "react";
-// import  webSocket  from "socket.io-client";
+import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
-    // const [io,setIo] = useState(null);
-    // const connectWebSocket = ()=>{
-    //     setIo( webSocket('http://localhost:3001') );
-    // }
-    // useEffect(()=>{
-    //     if(io){
-    //         console.log('success connect!')
-    //     }
-    // },[io])
+    const [toggleMenu,setToggleMenu] = useState(false); 
+    const [io,setIo] = useState(null);
+    const connectWebSocket = ()=>{
+        setIo( webSocket('http://localhost:3001') );
+    }
+    useEffect(()=>{
+        if(io){
+            console.log('success connect!')
+        }
+    },[io])
     // const myChatbotInput = useRef(null);
     // function SendQuestion(){
 
     // }
     return(
     <>
-        <div className="wrap">
+        <div className="chatbot_wrap">
         <div className="chatbot_nav">
             <div className="name">WILDJUNGLE</div>
-            <div className="chatbot_close"><i className="fas fa-times"></i></div>
+            <div className="chatbot_close" onClick={()=>{
+                document.querySelector('.chatbot_wrap').style.display = 'none';
+            }}><i className="fas fa-times"></i></div>
             
         </div>
         <div className="chat_area">
             {/*--------------------------------------------------------------------------*/} 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
 
-        <div class="user_reply">
-            <div class="user_message">
+        <div className="user_reply">
+            <div className="user_message">
                 請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
             </div>
-            <div class="user_avatar">
+            <div className="user_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="user_time">00:23</div>
+            <div className="user_time">00:23</div>
         </div>
 
-        <div class="chatbot_reply">
-            <div class="chatbot_avatar">
+        <div className="chatbot_reply">
+            <div className="chatbot_avatar">
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
-            <div class="chatbot_message">
+            <div className="chatbot_message">
                 請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
             </div>
-            <div class="chatbot_time">上午00:20</div>
+            <div className="chatbot_time">上午00:20</div>
         </div>
             {/*--------------------------------------------------------------------------*/}
         </div>
         {/* menu是浮起來的 */}
         <div className="menu">
-            <div className="book">
+            <div className="book" onClick={()=>{console.log(123456)}}>
                 <div className="icon">
                     <i className="fas fa-ticket-alt"></i>
                 </div>    
@@ -150,7 +153,7 @@ function Chatbot(){
                 </div>
                 <div className="text">查看天氣</div>
             </div>
-            <div className="phone">
+            <div className="phone" onClick={connectWebSocket}>
                 <div className="icon">
                     <i className="fas fa-headphones-alt"></i>
                 </div>
@@ -158,7 +161,17 @@ function Chatbot(){
             </div>
         </div> 
         <div className="tool_bar">
-            <div className="rich_menu"> <i className="fas fa-bars"></i></div>
+            <div className="rich_menu" onClick={()=>{
+                if(!toggleMenu){
+                    document.querySelector('.menu').style.bottom = '50px'
+                    setToggleMenu(true)
+                }else{
+                    document.querySelector('.menu').style.bottom = '-200px'
+                    setToggleMenu(false)
+                }
+            }}>
+                <i className="fas fa-bars"></i>
+            </div>
             <form onSubmit={(e)=>{
                 e.preventDefault()
             }}>
@@ -167,7 +180,7 @@ function Chatbot(){
             </form>
         </div> 
     </div>
-     </>
-     )
- }
- export default Chatbot
+    </>
+    )
+}
+export default Chatbot

@@ -1,0 +1,528 @@
+$terry_color1: #eb5c37;
+$terry_color2: #f9b112;
+$terry_color3: #1b7754;
+$terry_white: #ffffff;
+$terry_black: #000000;
+
+@font-face {
+  font-family: "Noto Sans TC", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+  unicode-range: U+4E00-9FFF;
+}
+
+@font-face {
+  font-family: "Playfair Display", serif;
+  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  unicode-range: U+00-024F;
+}
+
+@mixin mobile {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
+.styleFlex {
+  display: flex;
+}
+
+// ---------------------共用---------------------
+
+.terry_bg {
+  width: 100%;
+  height: 1000vh;
+  padding-top: 60px;
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: $terry_black;
+  display: flex;
+  justify-content: center;
+}
+.terry_leaf_leftArea {
+  position: absolute;
+  margin-top: -10px;
+  left: 0px;
+  img {
+    height: 300px;
+  }
+}
+.terry_leaf_rightArea {
+  right: 0;
+  position: absolute;
+  margin-top: 0px;
+  img {
+    height: 300px;
+  }
+}
+/*葉子背景區結束*/
+
+.terry_container {
+  width: 90%;
+  height: 1000vh;
+  padding-top: 60px;
+  font-family: sans-serif;
+  font-size: 16px;
+  outline: 2px solid $terry_white;
+  position: relative;
+}
+/*第一區塊開始*/
+
+.terry_show_area {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6.5%;
+}
+
+.terry_show_area_textArea {
+  color: $terry_white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .terry_01 {
+    font-family: "Playfair Display";
+    font-size: 200px;
+    margin-top: -120px;
+  }
+  .terry_show_title1 {
+    font-family: "Playfair Display";
+    font-size: 60px;
+  }
+  .terry_show_title2 {
+    font-family: "Playfair Display";
+    font-size: 60px;
+    margin-top: -40px;
+  }
+  .terry_show_subtitle {
+    font-family: "Noto Sans TC";
+    font-size: 42px;
+    margin-top: -26px;
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+  .terry_show_viewmore {
+    background-color: $terry_color3;
+    border-radius: 0%;
+    display: flex;
+    width: 215px;
+    height: 40px;
+    align-items: center;
+    padding: 5px 40px;
+    justify-content: space-between;
+  }
+  .terry_title_grop{
+    margin-top: -30px;
+  }
+}
+
+.terry_show_area_img {
+  width: 900px;
+  height: 470px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover 10px;
+  }
+}
+/*01banner結束*/
+
+.terry_showIntroduction_area {
+  margin-top: 16%;
+  display: flex;
+
+  .terry_showIntroduction_img {
+    width: 1000px;
+    height: 700px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover 10px;
+    }
+  }
+  .terry_showIntroduction_textArea {
+    width: 50%;
+    height: auto;
+    // outline: 2px solid $terry_white;
+    padding-top: 2%;
+    padding-left: 4%;
+    color: $terry_white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .showTitle {
+      font-family: "Noto Sans TC";
+      font-size: 34px;
+    }
+    .showIntroduction {
+      font-family: "Noto Sans TC";
+      font-weight: 300;
+      font-size: 16px;
+      word-wrap: normal;
+      white-space: pre-wrap;
+      margin-top: 3%;
+    }
+    .showLocation {
+      width: 8px;
+      height: 18px;
+      background-color: #f9b112;
+      position: relative;
+      margin-top: 4%;
+    }
+    .showLocation::after {
+      content: "活動地點";
+      font-size: 1.5rem;
+      color: #f9b112;
+      position: absolute;
+      top: -4px;
+      margin-left: 12px;
+    }
+    .showNotice {
+      width: 8px;
+      height: 18px;
+      background-color: #f9b112;
+      position: relative;
+      margin-top: 3%;
+    }
+    .showLocation_text {
+      font-family: "Noto Sans TC";
+      font-weight: 300;
+      margin-top: 1%;
+    }
+    .showNotice::after {
+      content: "訂位須知";
+      font-size: 1.5rem;
+      color: #f9b112;
+      position: absolute;
+      top: -4px;
+      margin-left: 12px;
+    }
+    .showNotice_text {
+      font-family: "Noto Sans TC";
+      font-weight: 300;
+      font-size: 14px;
+      word-wrap: normal;
+      white-space: pre-wrap;
+      flex-grow: 2;
+      margin-top: 1%;
+    }
+    .showSelect {
+      display: flex;
+      flex-direction: column;
+      select {
+        width: auto;
+        height: 50px;
+        text-align: center;
+        font-size: 1.5rem;
+        background-color: transparent;
+        color: $terry_white;
+        border-color: #eb5c37;
+        margin: 5px 0;
+        //selectIcon
+        appearance: none;
+        background: url(../../../public/img/activity/selectIcon.svg) 100% / 5%
+          no-repeat;
+      }
+      button {
+        height: 50px;
+        background-color: #eb5c37;
+        border: none;
+        font-size: 1.5rem;
+        color: $terry_white;
+      }
+    }
+  }
+}
+.terry_showBooking_area {
+  display: flex;
+  margin-top: 5%;
+  outline: 1px solid white;
+  .tourAndNotice {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    outline: 1px solid white;
+    .tourImage {
+      width: 550px;
+      height: 550px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .bookingNotice {
+    width: 8px;
+    height: 18px;
+    background-color: #f9b112;
+    position: relative;
+    margin-top: -4%;
+    margin-left: 10%;
+  }
+  .bookingNotice::after {
+    content: "訂票提示";
+    font-size: 1.5rem;
+    color: #f9b112;
+    position: absolute;
+    top: -4px;
+    margin-left: 12px;
+  }
+  .bookingNotice_text {
+    font-family: "Noto Sans TC";
+    font-weight: 300;
+    font-size: 14px;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    color: $terry_white;
+    margin-top: 3%;
+    padding: 0 10%;
+  }
+  .bookingArea {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .stage {
+      // width: 120px;
+      // height: 50px;
+      // border: 6px solid $terry_white;
+      position: relative;
+      margin-top: -5%;
+      width: 200px;
+      height: 200px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .stage::after {
+      content: "舞台";
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $terry_white;
+      font-family: "Noto Sans TC";
+      font-size: 20px;
+      font-weight: 300;
+    }
+    .seatsArea {
+      flex-grow: 2;
+      margin-top: 1%;
+      position: relative;
+    }
+    .seatsArea::before{
+      content: "12345678";
+      position: absolute;
+      font-family: "Noto Sans TC";
+      font-size: 28px;
+      font-weight: 500;
+      color: #505050;
+      top: -44px;
+      left: 28px;
+      letter-spacing: 4.5rem;
+    }
+    .seatsArea::after{
+      content: "ABCDEFGH";
+      position: absolute;
+      font-family: "Noto Sans TC";
+      font-size: 28px;
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+      font-weight: 500;
+      color: #505050;
+      top: 14px;
+      left: -50px;
+      letter-spacing: 1.8rem;
+    }
+    .seats {
+      width: 40px;
+      height: auto;
+      margin: 5px 15px;
+    }
+    .buttonGrop {
+      button {
+        width: 220px;
+        height: 50px;
+        border: none;
+        color: $terry_white;
+        font-family: "Noto Sans TC";
+        font-size: 20px;
+        font-weight: 300;
+        margin: 0 30px;
+      }
+      button:nth-child(1) {
+        background-color: $terry_color1;
+      }
+      button:nth-child(2) {
+        background-color: $terry_color2;
+      }
+    }
+  }
+}
+/*第一區塊結束*/
+/*第二區塊開始*/
+.terry_spomsor_area {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+
+.terry_sponsor_cardsArea{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10%;
+  .cardbg{
+    margin: 12px;
+  }
+  .cardbg1{
+    width: 48%;
+    height: 450px;
+    background-color: $terry_color3;
+    display: flex;
+    position: relative;
+  }
+  .cardbg2{
+    width: 48%;
+    height: 450px;
+    background-color: $terry_white;
+    display: flex;
+    position: relative;
+  }
+  .cardbg3{
+    width: 48%;
+    height: 450px;
+    background-color: $terry_color2;
+    display: flex;
+    position: relative;
+  }
+  .cardbg4{
+    width: 48%;
+    height: 450px;
+    background-color: $terry_color1;
+    display: flex;
+    position: relative;
+  }
+  .cardbg5{
+    width: 48%;
+    height: 450px;
+    background-color: #1297CF;
+    display: flex;
+    position: relative;
+  }
+  .cardbg6{
+    width: 48%;
+    height: 450px;
+    background-color: #777b7e;
+    display: flex;
+    position: relative;
+  }
+  .sponsor_animalImg{
+    width: 440px;
+    height: auto;
+    position: absolute;
+    margin-top: 20px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg2{
+    width: 340px;
+    height: auto;
+    position: absolute;
+    margin-top: 60px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg3{
+    width: 330px;
+    height: auto;
+    position: absolute;
+    margin-top: 10px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg4{
+    width: 380px;
+    height: auto;
+    position: absolute;
+    margin-top: 30px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg5{
+    width: 320px;
+    height: auto;
+    position: absolute;
+    margin-top: 50px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg6{
+    font-size: 400px;
+    margin-top: -80px;
+    margin-left: 50px;
+  }
+  .sponsor_introduction_area{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 47%;
+    height: 100%;
+    right: 0;
+    padding: 15% 5% 5% 0;
+    .sponsor_animalName{
+      width: auto;
+      color: $terry_white;
+      font-family: "Playfair Display";
+      font-size: 44px;
+      font-weight: 600;
+      text-align: end;
+    }
+    .sponsor_introductionText{
+      font-family: "Noto Sans TC";
+      font-weight: 300;
+      font-size: 14px;
+      word-wrap: normal;
+      white-space: pre-wrap;
+      color: $terry_white;
+      text-indent: 2em;
+      padding-top: 10%;
+      flex-grow: 2;
+    }
+    .sponsor_animalName2{
+      width: auto;
+      color: $terry_black;
+      font-family: "Playfair Display";
+      font-size: 44px;
+      font-weight: 600;
+      text-align: end;
+    }
+    .sponsor_introductionText2{
+      font-family: "Noto Sans TC";
+      font-weight: 300;
+      font-size: 14px;
+      word-wrap: normal;
+      white-space: pre-wrap;
+      color: $terry_black;
+      text-indent: 2em;
+      padding-top: 10%;
+      flex-grow: 2;
+    }
+    button{
+      width: 90%;
+      height: 50px;
+      border: none;
+      background-color: $terry_black;
+      color: $terry_white;
+    }
+  }
+}
