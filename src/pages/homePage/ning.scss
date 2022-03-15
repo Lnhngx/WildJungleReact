@@ -207,8 +207,7 @@ $ning-englishont: "Playfair Display", serif;
 
 .ning_bgcblack {
   background: url("../../../public/img/home/homebgcblack.svg") no-repeat;
-  height: 1150px;
-  object-fit: cover;
+  width: calc(100vw - calc(100vw - 100%));
 }
 
 .ning_TitleEn {
