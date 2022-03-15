@@ -236,7 +236,6 @@ $ning-englishont: "Playfair Display", serif;
 
 .ning_Jungletourimgbox {
   display: flex;
-
 }
 
 .ning_tourboxhd {
@@ -684,4 +683,34 @@ $ning-englishont: "Playfair Display", serif;
   width: 200px;
   height: 50px;
   margin-left: 20px;
+}
+
+.ning_busstopname {
+  color: $ning-color1;
+  font-size: 1.6rem;
+  font-family: $ning-chinesefont;
+  margin-top: 2%;
+}
+
+.ning_busbox {
+  width: 50%;
+}
+
+.ning_bus {
+  width: 50%;
+  display: flex;
+}
+
+.ning_bustime {
+  width: 45%;
+  height: 30px;
+  border: 1px solid $ning-color1;
+  border-radius: 15px;
+  font-size: 2rem;
+  font-family: $ning-chinesefont;
+
+}
+
+.ning_busname {
+  width: 45%;
 }
