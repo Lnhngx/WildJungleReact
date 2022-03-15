@@ -120,14 +120,68 @@ function activity() {
                         </div>
                     </div>
                     <div className="terry_sponsor_cardsArea">
-                        <div className="cardbg">
+
+                        <div className="cardbg cardbg1">
                             <div className="sponsor_animalImg">
                                 <img src="/img/home/star_eagle_bk.png" alt="" />
                             </div>
                             <div className="sponsor_introduction_area">
                                 <div className="sponsor_animalName">Eagle</div>
-                                <div className="sponsor_introductionText">老鷹四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少，已被列為臺灣保育類野生動物名錄中的二級珍貴稀有物種。</div>
-                                <button>我要認養</button>
+                                <div className="sponsor_introductionText">老鷹在四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少，已被列為臺灣保育類野生動物名錄中的二級珍貴稀有物種。</div>
+                                <button>我要認養！</button>
+                            </div>
+                        </div>
+
+                        <div className="cardbg cardbg2">
+                            <div className="sponsor_animalImg2">
+                                <img src="/img/home/star_shark_bk.png" alt="" />
+                            </div>
+                            <div className="sponsor_introduction_area">
+                                <div className="sponsor_animalName2">Shark</div>
+                                <div className="sponsor_introductionText2">鲨鱼有高度流線、適合游泳的外型，全身覆滿了盾鳞，鳞除了保護鯊魚免於受傷或者被寄生蟲寄生，還可以增進它們的流體動力，讓它們游得更快速。鯊魚體側用於呼吸的鳃裂有五到七個。它們有數套可替換的牙齒。</div>
+                                <button>我要認養！</button>
+                            </div>
+                        </div>
+
+                        <div className="cardbg cardbg3">
+                            <div className="sponsor_animalImg3">
+                                <img src="/img/home/star_tiger_bk.png" alt="" />
+                            </div>
+                            <div className="sponsor_introduction_area">
+                                <div className="sponsor_animalName">Tiger</div>
+                                <div className="sponsor_introductionText">為貓科中繼虎和獅之後第三大物種，同時也是為西半球最大型以及最強健的貓科動物！外表型態和豹極為相似，但較粗壯，圓斑中有黑點，生態位也較像虎，體型介於虎和豹之間，貓科中的全能冠軍。</div>
+                                <button>我要認養！</button>
+                            </div>
+                        </div>
+
+                        <div className="cardbg cardbg4">
+                            <div className="sponsor_animalImg4">
+                                <img src="/img/home/star_elephant_bk.png" alt="" />
+                            </div>
+                            <div className="sponsor_introduction_area">
+                                <div className="sponsor_animalName">Elephant</div>
+                                <div className="sponsor_introductionText">頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛。象牙是長得特別長的上門齒。象鼻是由肌肉構成，非常靈活有力，末端上下各有一靈巧的指狀突起。</div>
+                                <button>我要認養！</button>
+                            </div>
+                        </div>
+
+                        <div className="cardbg cardbg5">
+                            <div className="sponsor_animalImg5">
+                                <img src="/img/home/star_hitefox_bk.png" alt="" />
+                            </div>
+                            <div className="sponsor_introduction_area">
+                                <div className="sponsor_animalName">Hite Fox</div>
+                                <div className="sponsor_introductionText">吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。</div>
+                                <button>我要認養！</button>
+                            </div>
+                        </div>
+
+                        <div className="cardbg cardbg6">
+                            <div className="sponsor_animalImg6">?</div>
+                            <div className="sponsor_introduction_area">
+                                <div className="sponsor_animalName">Random</div>
+                                <div className="sponsor_introductionText">不知道要選哪隻可愛的動物嗎？猶豫了很久還是遲遲無法行動嗎？快點點選亂數抽取鍵幫您找到心中理想的動物吧！</div>
+                                <button>亂數抽取</button>
                             </div>
                         </div>
                     </div>

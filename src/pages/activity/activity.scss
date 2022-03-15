@@ -368,11 +368,50 @@ $terry_black: #000000;
 
 .terry_sponsor_cardsArea{
   display: flex;
+  flex-wrap: wrap;
   margin-top: 10%;
   .cardbg{
+    margin: 12px;
+  }
+  .cardbg1{
     width: 48%;
     height: 450px;
     background-color: $terry_color3;
+    display: flex;
+    position: relative;
+  }
+  .cardbg2{
+    width: 48%;
+    height: 450px;
+    background-color: $terry_white;
+    display: flex;
+    position: relative;
+  }
+  .cardbg3{
+    width: 48%;
+    height: 450px;
+    background-color: $terry_color2;
+    display: flex;
+    position: relative;
+  }
+  .cardbg4{
+    width: 48%;
+    height: 450px;
+    background-color: $terry_color1;
+    display: flex;
+    position: relative;
+  }
+  .cardbg5{
+    width: 48%;
+    height: 450px;
+    background-color: #1297CF;
+    display: flex;
+    position: relative;
+  }
+  .cardbg6{
+    width: 48%;
+    height: 450px;
+    background-color: #777b7e;
     display: flex;
     position: relative;
   }
@@ -386,13 +425,58 @@ $terry_black: #000000;
       height: 100%;
     }
   }
+  .sponsor_animalImg2{
+    width: 340px;
+    height: auto;
+    position: absolute;
+    margin-top: 60px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg3{
+    width: 330px;
+    height: auto;
+    position: absolute;
+    margin-top: 10px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg4{
+    width: 380px;
+    height: auto;
+    position: absolute;
+    margin-top: 30px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg5{
+    width: 320px;
+    height: auto;
+    position: absolute;
+    margin-top: 50px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .sponsor_animalImg6{
+    font-size: 400px;
+    margin-top: -80px;
+    margin-left: 50px;
+  }
   .sponsor_introduction_area{
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 46%;
+    align-items: flex-end;
+    width: 47%;
     height: 100%;
-    outline: 1px solid white;
     right: 0;
     padding: 15% 5% 5% 0;
     .sponsor_animalName{
@@ -406,12 +490,39 @@ $terry_black: #000000;
     .sponsor_introductionText{
       font-family: "Noto Sans TC";
       font-weight: 300;
-      font-size: 15px;
+      font-size: 14px;
       word-wrap: normal;
       white-space: pre-wrap;
-      color: rgb(230, 230, 230);
+      color: $terry_white;
       text-indent: 2em;
-      padding-top: 8%;
+      padding-top: 10%;
+      flex-grow: 2;
+    }
+    .sponsor_animalName2{
+      width: auto;
+      color: $terry_black;
+      font-family: "Playfair Display";
+      font-size: 44px;
+      font-weight: 600;
+      text-align: end;
+    }
+    .sponsor_introductionText2{
+      font-family: "Noto Sans TC";
+      font-weight: 300;
+      font-size: 14px;
+      word-wrap: normal;
+      white-space: pre-wrap;
+      color: $terry_black;
+      text-indent: 2em;
+      padding-top: 10%;
+      flex-grow: 2;
+    }
+    button{
+      width: 90%;
+      height: 50px;
+      border: none;
+      background-color: $terry_black;
+      color: $terry_white;
     }
   }
 }
