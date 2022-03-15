@@ -1,10 +1,10 @@
 import React from "react";
-import "./products.scss";
+import "./scss/products.scss";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Productsbackground from "./productsbackground";
+import Productsbackground from "./components/productsbackground";
 const Range = Slider;
 
 function Products() {
@@ -153,7 +153,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -176,7 +176,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -199,7 +199,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -222,7 +222,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -245,7 +245,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -268,7 +268,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -291,7 +291,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -314,7 +314,7 @@ function Products() {
             <div className="productCard">
               <Link to="">
                 <div className="cardImg">
-                  <img src={require("./imgs/cloth-2 2.png")} alt="" />
+                  <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
 
@@ -336,15 +336,6 @@ function Products() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="backToTop">
-        <button>
-          <span className="span1">Click </span>
-          <span className="span2">To </span>
-          <span className="span3">
-            Top <i className="fas fa-angle-double-up"></i>
-          </span>
-        </button>
       </div>
     </>
   );

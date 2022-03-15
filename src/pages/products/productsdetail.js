@@ -1,9 +1,16 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./productsdetail.scss";
-import StarRating from "./starRating";
-import Productsbackground from "./productsbackground";
+import "./scss/productsdetail.scss";
+import StarRating from "./components/starRating";
+import Productsbackground from "./components/productsbackground";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import ProductCarousel from "./components/productCarousel";
+import { CarouselData } from "./components/productCarouselData";
+
 function ProductsDetail() {
+  const [tabIndex, setTabIndex] = useState(0);
   return (
     <>
       <style jsx="true">{`
@@ -40,27 +47,24 @@ function ProductsDetail() {
       </div>
       <div className="alan_detail">
         <div className="alan_productsdetail">
-          <div className="alan_main_product_img">
+          {/* <div className="alan_main_product_img">
             <img src={require("./imgs/cloth-2 3.png")} alt="" />
-          </div>
-          <ul className="alan_product_img_ul">
+          </div> */}
+          <ProductCarousel slides={CarouselData} />
+           <ul className="alan_product_img_ul">
             <li className="alan_product_img_li">
-              <img src={require("./imgs/cloth-2 3.png")} alt="" />
+              <img src='img/product/cloth-3.png' alt="" />
             </li>
             <li className="alan_product_img_li">
-              <img src={require("./imgs/cloth-3.png")} alt="" />
+              <img src='img/product/cloth-4.png' alt="" />
             </li>
             <li className="alan_product_img_li">
-              <img src={require("./imgs/cloth-4.png")} alt="" />
+              <img src='img/product/cloth-5.png' alt="" />
             </li>
             <li className="alan_product_img_li">
-              <img src={require("./imgs/cloth-5.png")} alt="" />
+              <img src='img/product/cloth-6.png' alt="" />
             </li>
-            <li className="alan_product_img_li">
-              <img src={require("./imgs/cloth-6.png")} alt="" />
-            </li>
-          </ul>
-          <div className="alan_product_img_icon">01/06</div>
+          </ul> 
         </div>
         <div className="alan_productTitle">
           <div className="alan_product_star">
@@ -144,10 +148,50 @@ function ProductsDetail() {
         </div>
       </div>
       <div className="alan_information">
-        <div className="alan_infoButtonGroup">
-            <button></button>
-            <button></button>
-        </div>
+        <Tabs
+          className={"alan_tabs"}
+          selectedIndex={tabIndex}
+          onSelect={(index) => setTabIndex(index)}
+        >
+          <TabList className={"alan_tablist"}>
+            <Tab className={"alan_tab1"}>
+              <div className="alan_space"></div>
+              <span>商品資訊</span>
+            </Tab>
+            <Tab className={"alan_tab2"}>
+              <div className="alan_space"></div>
+              <span>評論</span>
+            </Tab>
+          </TabList>
+          <TabPanel>
+            <div className="alan_info_page1">
+              <div className="alan_detail_reserve">
+                <span>商品規格:100cm*100cm*100cm</span>
+                <span>庫存餘剩99個</span>
+              </div>
+              <div className="alan_product_info1">
+                <div className="alan_infotitle">
+                  <span>商品</span>
+                  <span>詳情</span>
+                </div>
+                <div className="alan_infoContent">
+                  <div className="alan_info1">
+                    {/* (1) 客製商品採小量客製接單，此產品 1 組即可訂製。
+                    (2)完成結帳且確認設計圖檔後，從開始製作到寄出商品為十至十三個工作日。
+                    (3)
+                    「加購圖檔編排」：將您提供的圖檔做完稿排版，依據您指定的擺放位置調整排版，素材需由您提供，並酌收每圖
+                    200 元的排版費用。
+                    (4)減少塑料對環境的傷害，重視動物與人類共存的重要性。
+                    [尺寸]兒童（目標參考年齡 1 歲半至 5 歲） [材質] 100% 滌綸 */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+        </Tabs>
       </div>
       <Productsbackground />
     </>
