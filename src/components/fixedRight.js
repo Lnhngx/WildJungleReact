@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import * as Scroll from 'react-scroll';
+import {Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 const fixedRight = () => {
   return (
@@ -28,7 +30,7 @@ const fixedRight = () => {
           </div>
       </div>
       <div className="backToTop">
-        <button>
+        <button  onClick={() => scroll.scrollToTop()}>
           <span className="span1">Click </span>
           <span className="span2">To </span>
           <span className="span3">

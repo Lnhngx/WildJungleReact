@@ -1,5 +1,5 @@
 import React from "react";
-import './productsbackground.scss'
+import '../scss/productsbackground.scss'
 
 const Productsbackground = () => {
   return (
