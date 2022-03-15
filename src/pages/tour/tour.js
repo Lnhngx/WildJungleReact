@@ -8,86 +8,36 @@ function tour(){
 
 
     <div className="tourbackground"></div>
-    <div className="tourContainer">
-
-    <div style={{display: 'flex',paddingTop:"5rem" ,flexWrap:"wrap"}} className="tysu_Group">
-        <div style={{maxWidth:"30%"}} className="tysu_tourGuide1">
-            <div style={{color: 'white'}}>
-                <h2 className="tysu_tourH2" style={{fontSize:"6rem"}}>Jungle Tour</h2>
-                <p className="tysu_tour" style={{fontSize:"3rem"}}>園區導覽</p>
+     <div className="tourContainer">
+      <div className="tour_Group">
+        <div className="tourGuide1">
+            <div className="tourtextArea1">
+                <h2 className="tourH2">Jungle Tour</h2>
+                <p className="tourP1">園區導覽</p>
             </div>
             <div>
-            <img  style={{width:"100%"}} src="/img/tour/Group 277.png" alt="" />
+            <img src="/img/tour/Group 277.png" alt="#/" />
             </div>
         </div>
-
-        <div style={{width:"70%", display: 'flex',color: 'white'}} className="tysu_tourGuide2">
-            <figure style={{height:"40vw",maxWidth:"25%" ,outline: '1px solid red',textAlign: 'center'}}>
-              <img  style={{width:"100%",height:"100%",objectFit: 'cover' ,objectPosition:"35%"}} src="/img/home/tropical.jpg" alt="#/" /> 
-              <figcaption>海底世界</figcaption>
-            </figure>
-            <figure style={{height:"40vw",maxWidth:"25%" ,outline: '1px solid red',textAlign: 'center'}}>
-              <img  style={{width:"100%",height:"100%",objectFit: 'cover' ,objectPosition:"70%"}} src="/img/home/Ocean.jpg" alt="#/" /> 
-              <figcaption>海底世界</figcaption>
-            </figure>
-            <figure style={{height:"40vw",maxWidth:"25%" ,outline: '1px solid red',textAlign: 'center'}}>
-              <img  style={{width:"100%",height:"100%",objectFit: 'cover' ,objectPosition:"68%"}} src="/img/home/nocturnal.jpg" alt="#/" />
-              <figcaption>海底世界</figcaption>
-            </figure>
-            <figure style={{height:"40vw",maxWidth:"25%" ,outline: '1px solid red',textAlign: 'center'}}>
-              <img  style={{width:"100%",height:"100%",objectFit: 'cover' ,objectPosition:"80%"}} src="/img/home/ice.jpg" alt="#/" /> 
-              <figcaption>海底世界</figcaption>
-            </figure>
-    </div>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-      <div className="tourTop">
-        <div className="tourLeftIndustry">
-          <div className="tourContent">
-            <span className="tour_h1">Jungle Tour</span>
-            <span className="tour_h2">園區導覽</span>
-          </div>
-          <div className="tourMap">
-            <img src="/img/tour/Group 277.png" alt="" />
-          </div>
-        </div>
-      </div>
-
-    
-      <div className="tourRightIndustry">
+        <div className="tourGuide2">
             <figure className="tourR1img">
               <img src="/img/home/tropical.jpg" alt="#/" /> 
-              <figcaption>海底世界</figcaption>
+              <figcaption>熱帶雨林</figcaption>
             </figure>
-           
-            
             <figure className="tourR2img">
-              <img src="/img/tour/ocean.jpg" alt="#/" />
+              <img src="/img/home/Ocean.jpg" alt="#/" /> 
               <figcaption>海底世界</figcaption>
             </figure>
             <figure className="tourR3img">
-              <img src="/img/tour/sleep.jpeg" alt="#/" />
+              <img src="/img/home/nocturnal.jpg" alt="#/" />
               <figcaption>夜行動物</figcaption>
             </figure>
             <figure className="tourR4img">
-              <img src="/img/tour/Sphenisciformes/90e80dbb-penguin-chick.jpeg" alt="#/" />
-              <figcaption>極地世界</figcaption>
+              <img src="/img/home/ice.jpg" alt="#/" /> 
+              <figcaption>冰原歷險</figcaption>
             </figure>
+        </div>
       </div>
-
-
-
       <div className="Container" id="container2">
         <div className="tourCenterIndustry">
           <div className="tourCenterCard" id="Centerimg1">
@@ -122,9 +72,45 @@ function tour(){
          
     
         </div>
-
       </div>
-      <div className="tourdescription"></div>
+      <div className="tourdescription">
+       <div className="tourdescriptiongGuild">
+         <div className="tourdescriptionGuild1">
+          <div className="tourdescriptionpic">
+            <img src="/img/tour/Elephant.jpg" alt="#/"/>
+          </div>
+         </div>
+         <div className="tourdescriptionGuild2">
+        <div className="tourdescriptionGuild2Text">
+          <h2>亞洲象</h2>
+          <p>學名：Elephas maximus），是象的一種，
+
+                  錫蘭象是亞洲象的指名亞種。亞洲象為IUCN紅色名錄中的瀕
+
+                  危物種之一[1]，也是中國國家一級保護動物
+
+                  亞洲象主要棲息地，為東南亞和南亞這些熱帶地區的印度、
+
+                  尼泊爾、斯里蘭卡、緬甸、泰國、越南、印尼和馬來西亞等
+
+                  十三個國家，大約四十四萬平方公里的土地上。古代從西亞
+
+                  的兩河流域，往東延伸到中國的黃河流域，都曾經有牠們活
+
+                  躍的蹤影。現今中國境內其自然棲息地自清朝以後就被壓縮
+
+                  到雲南無量山、哀牢山以南的西雙版納、普洱和臨滄一帶。不過近年
+
+                  來其活動北界可達玉溪、昆明之間。</p>
+          </div>
+          <div className="tourdescriptionGuild2Icon">
+            <div className="test1234"></div>
+            <button className="adoptbtn btn" style={{color: "white"}}>我要認養！</button>
+          </div>
+         </div>
+        </div> 
+      </div>  
+      
       <div className="tourLife"></div>  
     </div>
     

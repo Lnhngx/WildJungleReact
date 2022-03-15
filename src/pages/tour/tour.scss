@@ -20,10 +20,10 @@
 
 .tourbackground {
   position: fixed;
-  height: 100vh;
+  height: 200vh;
   width: 100%;
   z-index: 0;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .tourContainer {
@@ -34,84 +34,102 @@
   margin: 0px 30px 0px 30px;
 }
 
-.tourTop {
-  margin-top: 5%;
-  width: 100%;
-  position: relative;
-  // border-bottom: 3px solid #ffffff;
+.tour_Group {
   display: flex;
-  flex-direction: row;
+  padding-top: 5rem; 
+  flex-wrap: wrap;
 }
-.tourContent {
-  font-size: 140%;
-  display: flex;
-  flex-direction: column;
-  letter-spacing: 1px;
-  font-weight: var(--tour_fontWeight);
+.tourGuide1 {
+  max-Width:30%;
 }
-
-.tour_h1 {
-  color: #ffffff;
-}
-
-.tour_h2 {
-  font-size: 10px;
-  color: #ffffff;
+.tourtextArea1{
+   color: #ffffff;
+  }
+.tourH2{
+  font-size: 6rem;
 }
 
-.tourMap img {
-  width: 100%;
+.tourP1 {
+  font-size:3rem;
 }
+.tourGuide1 img{
+    width: 100%;
+}
+.tourGuide2{
+   width:70%;
+   display: flex;
+   color: white;
+}
+.tourGuide2 figure{
+  height:40vw;
+  max-width:25%;
+  text-align: center;
+}
+.tourR1img img{
+  width:100%;
+  height:100%;
+  object-Fit: cover;
+  object-Position:35%;
+}
+.tourR2img img{
+  width:100%;
+  height:100%;
+  object-Fit: cover;
+  object-Position:70%;
+  
+}
+.tourR3img img{
+  width:100%;
+  height:100%;
+  object-Fit: cover;
+  object-Position:70%;
+}
+.tourR4img img{
+  width:100%;
+  height:100%;
+  object-Fit: cover;
+  object-Position:70%;
 
-.tourLeftIndustry {
-  width: 30%;
 }
+.tourR1img{
+  opacity:0.8;
 
-.tourRightIndustry {
-  margin-top: 1%;
-  width: 70%;
-  display: flex;
 }
-
-.tourRightIndustry img {
-  width: 100%;
-  height: 100%;
+.tourR1img:hover{
+  margin-top:-20px;
+  opacity: 1;
 }
-
-.tourRightIndustry figure {
-  float: left;
-  width: 100%;
+.tourR2img:hover{
+  margin-top:-20px;
+  opacity: 1;
 }
-.tourRightIndustry figcaption {
-  width: 20%;
-  font-weight: var(--tour_fontWeight);
-  font-size: 1px;
-  color: #ffffff;
+.tourR3img:hover{
+  margin-top:-20px;
+  opacity: 1;
 }
-.tourR1img {
-  // height: 420px;
-  // width:190px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25%;
-  // height: 100%;
-  //  margin: 3% 0 4% 0;
-}
-.tourR1img img {
-  height: 100%;
+.tourR4img:hover{
+  margin-top:-20px;
+  opacity: 1;
 }
 .tourR2img {
-  margin: 6% 0 1% 0;
+   margin: 6% 0 1% 0;
+   opacity:0.8;
 }
 .tourR3img {
   margin: 3% 0 4% 0;
+  opacity:0.8;
 }
 .tourR4img {
   margin: 0 0 7% 0;
+  opacity:0.8;
+}
+figcaption {
+  font-weight: var(--tour_fontWeight);
+  font-size: var(--tour_fontSize);
+  
 }
 #container2 {
-  min-height: 50vh;
+  min-height: 45vh;
 }
 .tourCenterIndustry {
   width: 100%;
@@ -156,6 +174,57 @@
   font-size: var(--tour_fontSize);
   color: #ffffff;
 }
+.tourdescription{
+   display: flex;
+  padding-top: 2rem; 
+  
+}
+.tourdescriptiongGuild{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+
+}
+.tourdescriptionGuild1{
+  width: 100% ;
+}
+.tourdescriptionGuild2{
+  width: 100% ;
+  
+}
+.tourdescriptionpic img{
+  width: 100% ;
+  
+}
+.tourdescriptionGuild2{
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+ 
+}
+.tourdescriptionGuild2Text{
+  width: 100%;
+  height: 300px;
+  white-space:normal;
+  
+}
+.tourdescriptionGuild2Text>h2{
+  color:var(--tour_color);
+}
+.tourdescriptionGuild2Text p{
+  color: white;
+}
+.test1234{
+  width: 200px;
+  height: 200px;
+  background-color: bisque;
+  background-image: url(./imgs/footprint.svg);
+  background-repeat: no-repeat;
+
+}
+
+
 
 @media screen and (min-width: 980px) {
   .tourContent {
@@ -201,16 +270,28 @@
     margin-top: 20px;
     margin-bottom: -20px;
   }
+  figcaption {
+    font-weight: var(--tour_fontWeight);
+    font-size: var(--tour_fontSize);
+    font-size:2rem;
+  }
+  .tourdescriptionGuild1{
+    width: 50% ;
+  }
+  .tourdescriptionGuild2{
+    width: 40% ;
+  }
 }
 @media screen and (max-width: 768px) {
-  .tysu_tourGuide1 {
+  .tourGuide1 {
     min-width: 100%;
   }
 
-  .tysu_tourGuide2 {
+  .tourGuide2 {
     min-width: 100%;
   }
-  .tysu_tourGuide1 img {
+  .tourGuide1 img {
     display: none;
   }
+  
 }
