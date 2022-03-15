@@ -13,7 +13,7 @@ for (let i = 0; i < WIDTH; i++) {
         );
     }
 }
-console.log(datas)
+// console.log(datas)
 
 const renderSeats = () => {
     return datas.map((data, i) => (
@@ -120,7 +120,16 @@ function activity() {
                         </div>
                     </div>
                     <div className="terry_sponsor_cardsArea">
-                        
+                        <div className="cardbg">
+                            <div className="sponsor_animalImg">
+                                <img src="/img/home/star_eagle_bk.png" alt="" />
+                            </div>
+                            <div className="sponsor_introduction_area">
+                                <div className="sponsor_animalName">Eagle</div>
+                                <div className="sponsor_introductionText">老鷹四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少，已被列為臺灣保育類野生動物名錄中的二級珍貴稀有物種。</div>
+                                <button>我要認養</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
