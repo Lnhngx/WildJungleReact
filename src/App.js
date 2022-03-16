@@ -66,9 +66,9 @@ function App() {
             <Route path="/game/multi-choice">
               <MultiChoice />
             </Route>
-            <Route path="/game/start">
-              <GameStart />
-            </Route>
+            <Route path="/game/start" component={GameStart}>
+            {/* <GameStart /> */}
+          </Route>
             <Route exact path="/game">
               <Game />
             </Route>
