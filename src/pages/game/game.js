@@ -111,7 +111,7 @@ function Game(){
             <div className="gameChoose_zone">
                 <div className="choose_spotGame" 
                     onMouseEnter={(e)=>{
-                        let offset = 1/1.66
+                        let offset = 1/1.66;
                         setHover(1)
                         document.querySelector('.mask').style.display = 'flex'
                         document.querySelector('.mask').style.left = '-110px'
@@ -136,12 +136,12 @@ function Game(){
 
                 <div className="choose_psychoGame"
                     onMouseEnter={()=>{
-                        let offset = 1/1.66;
+                        // let offset = 1/1.66;
                         setHover(2);
-                        document.querySelectorAll('.mask')[1].style.display = 'flex'
-                        document.querySelectorAll('.mask')[1].style.left = '-110px'
-                        document.querySelectorAll('.mask')[1].style.top = '-110px'
-                        document.querySelectorAll('.mask')[1].style.transform = `scale(${offset})`
+                        document.querySelectorAll('.mask')[1].style.display = 'flex';
+                        document.querySelectorAll('.mask')[1].style.left = '-10px';
+                        document.querySelectorAll('.mask')[1].style.top = '0px';
+                        // document.querySelectorAll('.mask')[1].style.transform = `scale(${offset})`
                     }}
                     onMouseLeave={()=>{ 
                         setHover(-1)

@@ -1,11 +1,13 @@
 import React from "react";
-// import { useRef } from "react";
+import { useRef } from "react";
 import { useState,useEffect } from "react";
+import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [io,setIo] = useState(null);
+    const myChatbotInput = useRef(null);
     const connectWebSocket = ()=>{
         setIo( webSocket('http://localhost:3001') );
     }
@@ -14,7 +16,7 @@ function Chatbot(){
             console.log('success connect!')
         }
     },[io])
-    // const myChatbotInput = useRef(null);
+    
     // function SendQuestion(){
 
     // }
@@ -135,12 +137,16 @@ function Chatbot(){
                 </div>
                 <div className="text">我的優惠</div>
             </div>
+           
             <div className="adopt">
+            <Link to="/carts">
                 <div className="icon">
                     <i className="fas fa-paw"></i>
                 </div>
-                <div className="text">明星動物</div>
+                <div className="text">明星動物</div> 
+            </Link>
             </div>
+            
             <div className="profile">
                 <div className="icon">
                     <i className="fas fa-search"></i>
@@ -173,9 +179,39 @@ function Chatbot(){
                 <i className="fas fa-bars"></i>
             </div>
             <form onSubmit={(e)=>{
-                e.preventDefault()
+                // 一樣持有按button與按鍵盤Enter就submit的功能，只是我阻止預設送出刷新頁面
+                e.preventDefault();
+                // let timeNow = '';
+                console.log(myChatbotInput.current.value)
+                if(myChatbotInput.current.value){
+                    
+                    // let p = document.createElement("div");
+                    // p.outerHTML = `<div className="user_reply">
+                    // //                         <div className="user_message">
+                    // //                             ${myChatbotInput.current.value}
+                    // //                         </div>
+                    // //                         <div className="user_avatar">
+                    // //                             <img src="/img/game/chatbot_avatar.png" alt="" />
+                    // //                         </div>
+                    // //                         <div className="user_time">00:23</div>
+                    // //                     </div>`;
+                    let userMessage =  `<div class="user_reply">
+                                            <div class="user_message">
+                                                ${myChatbotInput.current.value}
+                                            </div>
+                                            <div class="user_avatar">
+                                                <img src="/img/game/chatbot_avatar.png" alt="" />
+                                            </div>
+                                            <div class="user_time">00:23</div>
+                                        </div>`;
+                    myChatbotInput.current.value = '';
+                    
+                    document.querySelector('.chat_area').innerHTML +=  userMessage;
+
+                    
+                }
             }}>
-                <input className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..."/>
+                <input className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..." ref={myChatbotInput} />
                 <button className="send"><i className="fas fa-paper-plane"></i></button>
             </form>
         </div> 
