@@ -16,14 +16,25 @@
   --tour_fontWeight: 600;
   --tour_showdow: 0 0 3px #f9b01210;
   --tour_inputMargin: 1.8rem 0 0 1.8rem;
+  --tour_chinesefont: "Noto Sans", sans-serif;
 }
 
-.tourbackground {
-  position: fixed;
-  height: 200vh;
+
+.tourbackground{
+  position: absolute;
+
+img{
+  width: 100%;
+  }
+}
+
+.tourback {
+ height: 100vh;
   width: 100%;
   z-index: 0;
-  background-color: #ffffff;
+  background-color: #000;
+  
+ 
 }
 
 .tourContainer {
@@ -177,6 +188,8 @@ figcaption {
 .tourdescription{
    display: flex;
   padding-top: 2rem; 
+  width: 100%;
+
   
 }
 .tourdescriptiongGuild{
@@ -205,7 +218,7 @@ figcaption {
 }
 .tourdescriptionGuild2Text{
   width: 100%;
-  height: 300px;
+  height: 200px;
   white-space:normal;
   
 }
@@ -214,15 +227,58 @@ figcaption {
 }
 .tourdescriptionGuild2Text p{
   color: white;
+  font-Size:var(--tour_fontSize);
+  font-weight: var(--tour_fontWeight);
 }
-.test1234{
-  width: 200px;
-  height: 200px;
-  background-color: bisque;
+.tourdescriptionGuild2Icon{
+  width: 100%;
+}
+.tourdescriptionGuild2Iconbox{
+  display: flex;
+  justify-content:space-between;
+}
+.tourdescriptionGuild2Icon1{
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
   background-image: url(./imgs/footprint.svg);
   background-repeat: no-repeat;
-
 }
+.tourdescriptionGuild2Icon2{
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  background-image: url(./imgs/food.svg);
+  background-repeat: no-repeat;
+}
+.touradoptbtn{
+  font-family: var(--tour_chinesefont);
+  color:white;
+  font-size: 1.5rem;
+  background-color: var(--tour_color);
+  border-radius: 0;
+  width: 200px;
+  height: 50px;
+}
+.tourLife{
+  // padding-top: 100px;
+}
+.tourLifeTop{
+  width: 300px;
+  height: 300px;
+}
+.tourLifeToppic{
+  width: 200px;
+  height: 200px;
+}
+.tourLifeToppic1{
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: 35%;
+}
+
+
 
 
 
@@ -281,6 +337,14 @@ figcaption {
   .tourdescriptionGuild2{
     width: 40% ;
   }
+  .tourback{
+     height: 95vh;
+  }
+  .tourdescriptionGuild2Text{
+    width: 100%;
+    height: 300px;
+  }
+
 }
 @media screen and (max-width: 768px) {
   .tourGuide1 {

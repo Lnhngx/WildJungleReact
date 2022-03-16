@@ -6,8 +6,10 @@ function tour(){
 
 
 
-
-    <div className="tourbackground"></div>
+ <div className="tourbackground">
+    <div className="tourback"></div>
+    <img src="/img/home/homebgcblack.svg" alt="" />
+ </div>
      <div className="tourContainer">
       <div className="tour_Group">
         <div className="tourGuide1">
@@ -81,7 +83,7 @@ function tour(){
           </div>
          </div>
          <div className="tourdescriptionGuild2">
-        <div className="tourdescriptionGuild2Text">
+            <div className="tourdescriptionGuild2Text">
           <h2>亞洲象</h2>
           <p>學名：Elephas maximus），是象的一種，
 
@@ -102,18 +104,30 @@ function tour(){
                   到雲南無量山、哀牢山以南的西雙版納、普洱和臨滄一帶。不過近年
 
                   來其活動北界可達玉溪、昆明之間。</p>
-          </div>
-          <div className="tourdescriptionGuild2Icon">
-            <div className="test1234"></div>
-            <button className="adoptbtn btn" style={{color: "white"}}>我要認養！</button>
-          </div>
+            </div>
+            <div className="tourdescriptionGuild2Icon">
+              <div className="tourdescriptionGuild2Iconbox"> 
+                 <div className="tourdescriptionGuild2Icon1"></div>
+                 <div className="tourdescriptionGuild2Icon2"></div>
+                 <button className="touradoptbtn btn" style={{color: "white"}}>我要認養！</button>        
+              </div>
+            <div> 
+           </div> 
+            </div>
          </div>
-        </div> 
+       </div> 
       </div>  
-      
-      <div className="tourLife"></div>  
+      <div className="tourLife">
+        <div className="tourLifeTop">
+        <div className="tourLifeToppic1"></div>
+          <div className="tourLifeToppic">
+            
+          </div>
+          <div className="tourLifeTitle"></div>
+        </div>
+      </div>  
     </div>
-    
+     
     </>)
 }
 
