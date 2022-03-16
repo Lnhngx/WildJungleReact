@@ -24,7 +24,7 @@ function lodging() {
               <h4>Ocean Style</h4>
               <h1>海洋2人房型</h1>
             </div>
-            <div className="lodging_line"></div>
+            <div className="lodging_oceanline"></div>
             <div className="lodging_oceanlist1">
               <p>坪數</p>
               <p>10坪</p>
@@ -34,6 +34,89 @@ function lodging() {
               <p>1-2人</p>
             </div>
             <div className="lodging_oceanlist3">
+              <p>房數</p>
+              <p>10房</p>
+            </div>
+            <button className="btn">更多細節</button>
+          </div>
+        </div>
+      </div>
+      <div className="lodging_ice">
+        <img src="img/lodging/icefield_style/ice_style01.jpeg" alt="" />
+        <div className="lodging_icebox">
+          <div className="lodging_icewrap">
+            <div className="lodging_icetitle">
+              <h4>IceField Style</h4>
+              <h1>冰原3人房型</h1>
+            </div>
+            <div className="lodging_iceline"></div>
+            <div className="lodging_icelist1">
+              <p>坪數</p>
+              <p>15坪</p>
+            </div>
+            <div className="lodging_icelist2">
+              <p>入住人數</p>
+              <p>3人</p>
+            </div>
+            <div className="lodging_icelist3">
+              <p>房數</p>
+              <p>10房</p>
+            </div>
+            <button className="btn">更多細節</button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="lodging_nocturnal"
+      >
+        <img src="img/lodging/nocturnal_style/nocturnal_style01.jpeg" alt="" />
+        <div
+          className="lodging_nocturnalbox"
+        >
+          <div
+            className="lodging_nocturnalwrap"
+          >
+            <div
+              className="lodging_nocturnaltitle"
+            >
+              <h4>Nocturnal Style</h4>
+              <h1>夜行4人房型</h1>
+            </div>
+            <div className="lodging_nocturnalline"></div>
+            <div className="lodging_nocturnallist1">
+              <p>坪數</p>
+              <p>22坪</p>
+            </div>
+            <div className="lodging_nocturnallist2">
+              <p>入住人數</p>
+              <p>4人</p>
+            </div>
+            <div className="lodging_nocturnallist3">
+              <p>房數</p>
+              <p>10房</p>
+            </div>
+            <button className="btn">更多細節</button>
+          </div>
+        </div>
+      </div>
+      <div className="lodging_tropical">
+        <img src="img/lodging/tropical_style/tropical_style01.jpeg" alt="" />
+        <div className="lodging_tropicalbox">
+          <div className="lodging_tropicalwrap">
+            <div className="lodging_tropicaltitle">
+              <h4>Tropical Style</h4>
+              <h1>熱帶5人房型</h1>
+            </div>
+            <div className="lodging_tropicalline"></div>
+            <div className="lodging_tropicallist1">
+              <p>坪數</p>
+              <p>30坪</p>
+            </div>
+            <div className="lodging_tropicallist2">
+              <p>入住人數</p>
+              <p>5人</p>
+            </div>
+            <div className="lodging_tropicallist3">
               <p>房數</p>
               <p>10房</p>
             </div>
