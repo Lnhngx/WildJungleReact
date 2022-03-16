@@ -49,8 +49,8 @@ ul.slider-dots {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 10%;
-  background-color: rgba(250, 116, 116, 0.424);
+  z-index: 999;
+  width: 40%;
   cursor: pointer;
 }
 
@@ -62,13 +62,14 @@ ul.slider-dots {
   right: 0;
 }
 
-.fa-chevron-left,
 .fa-chevron-right {
   position: absolute;
   top: 50%;
-  left: 50%;
-  color: #fff;
+  font-size: 36px;
+  right: 5%;
+  color: rgba(255, 255, 255, 0.5);
 }
+
 .main {
   width: 33%;
   height: 46vw;
@@ -164,17 +165,23 @@ ul.slider-dots {
 
 .iconGroup {
   position: absolute;
-  z-index: 4;
+  z-index: 9999;
   bottom: 0;
   left: 55%;
-  color: #c4c4c4;
-  text-shadow: 1px 1px white, -1px -1px gray;
   transform: translate(-50%);
   font-size: 12px;
 }
 
 .iconGroup i {
+  color: #c4c4c4;
   margin: 0 5px 0 5px;
+}
+.iconGroup i:first-child{
+  color: #eb5c37;
+}
+.iconGroup i:hover {
+  color: #eb5c37;
+  text-shadow: 1px 1px white, -1px -1px #390b00;
 }
 
 .adNew {
