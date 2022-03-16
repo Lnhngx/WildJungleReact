@@ -1,6 +1,6 @@
 import React from "react";
 
-function Cartproductitemone() {
+function Cartliveitemone() {
   return (
     <>
       <div className="stan_product_space">
@@ -38,4 +38,4 @@ function Cartproductitemone() {
     </>
   );
 }
-export default Cartproductitemone;
+export default Cartliveitemone;
