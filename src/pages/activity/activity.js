@@ -9,7 +9,7 @@ for (let i = 0; i < WIDTH; i++) {
     datas[i] = [];
     for (let j = 0; j < HEIGHTT; j++) {
         datas[i].push(
-            <img src="/img/activity/chair.svg" alt="" />
+            1
         );
     }
 }
@@ -18,8 +18,8 @@ for (let i = 0; i < WIDTH; i++) {
 const renderSeats = () => {
     return datas.map((data, i) => (
         <div className="styleFlex">
-            {data.map(() => (
-                <img className="seats" src="/img/activity/chair.svg" alt="" />
+            {data.map((v, j) => (
+                <img onClick={() => { alert(i + ' ' + j) }} className="seats" src="/img/activity/chair.svg" alt="" />
             ))}
         </div>
     ));
@@ -228,6 +228,20 @@ function activity() {
                             <img src="/img/activity/touch1.jpg" alt="" />
                         </div>
                     </div>
+
+                    <div className="terry_touch_imgArea">
+                        <div className="imgAndNameGrop">
+                            <img src="/img/activity/touchshow1.jpeg" alt="" />
+                            <div className="name">海狗互動秀</div>
+                        </div>
+                        <div className="imgAndNameGrop">
+                            <img src="/img/activity/touchshow2.jpg" alt="" />
+                            <div className="name">萌兔餵食體驗</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="terry_animalImg_Area">
+                    <img src="/animals-footer.png" alt="" />
                 </div>
             </div>
         </>)

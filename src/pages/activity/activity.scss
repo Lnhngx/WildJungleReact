@@ -30,13 +30,15 @@ $terry_black: #000000;
 
 .terry_bg {
   width: 100%;
-  height: 1000vh;
+  // height: 1400vh;
   padding-top: 60px;
   font-family: sans-serif;
   font-size: 16px;
   background-color: $terry_black;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: -240px;
 }
 .terry_leaf_leftArea {
   position: absolute;
@@ -58,7 +60,7 @@ $terry_black: #000000;
 
 .terry_container {
   width: 90%;
-  height: 1000vh;
+  // height: 1400vh;
   padding-top: 60px;
   font-family: sans-serif;
   font-size: 16px;
@@ -363,7 +365,7 @@ $terry_black: #000000;
 .terry_sponsor_area {
   display: flex;
   justify-content: space-between;
-  margin-top: 10%;
+  margin-top: 12%;
 }
 
 .terry_sponsor_cardsArea {
@@ -618,5 +620,42 @@ $terry_black: #000000;
     button:nth-child(2) {
       background-color: $terry_color2;
     }
+  }
+}
+
+
+.terry_touch_imgArea{
+  display: flex;
+  margin-top: 12%;
+  .imgAndNameGrop{
+    width: 60%;
+    height: 400px;
+    // display: flex;
+    // justify-content: center;
+  }
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  .name{
+    color: $terry_white;
+    font-family: "Playfair Display";
+    font-size: 44px;
+    font-weight: 600;
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+    margin-top: 3%;
+    text-align: center;
+  }
+}
+.terry_animalImg_Area{
+  // position: absolute;
+  bottom: 0;
+  margin-top: 10%;
+  width: 100%;
+  height: auto;
+  img{
+    width: 100%;
+    height: 100%;
   }
 }
