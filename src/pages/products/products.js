@@ -60,11 +60,6 @@ function Products() {
             </div>
             <JqueryProduct />
             {/* <img className="main" src="img/product/Sliderpic.jpeg" alt="" /> */}
-            <div className="iconGroup">
-              <i className="fas fa-circle"></i>
-              <i className="fas fa-circle"></i>
-              <i className="fas fa-circle"></i>
-            </div>
             <div className="adNew">
               <div className="firstSpan">
                 <span className="span-1">WH</span>

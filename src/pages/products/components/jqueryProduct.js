@@ -6,96 +6,83 @@ function JqueryProduct() {
   React.useEffect(() => {
     let page = 0;
     let myInterval = null;
-    $('.slider-dots li').hover(function () {
-        page = $(this).index();
-        $(this).css("background", "white").siblings().css("background", "transparent");
-        // if($(this).index() === 1){
-        //     $('.alan_img-wrap').css("transform", "translateX(-800px)")
-        // }
-        const moveX = $(this).index() * -800;
-        $('.alan_img-wrap').css("transform", `translateX(${moveX}px)`)
-    })
-    // 有的白色其他透明
-
-    $(".slider-dots li").hover(function () {
-        console.log("this", $(this).index());
-        $(this)
-            .css("background", "#fff")
-            .siblings()
-            .css("background", "transparent");
-        // if ($(this).index() === 0) {
-        //   $("ul.alan_img-wrap").css("transform", "translateX(0px)");
-        // }
-        // if ($(this).index() === 1) {
-        //   $("ul.alan_img-wrap").css("transform", "translateX(-800px)");
-        // }
-        // if ($(this).index() === 2) {
-        //   $("ul.alan_img-wrap").css("transform", "translateX(-1600px)");
-        // }
-
-        const moveX = $(this).index() * -800;
-        $("ul.alan_img-wrap").css("transform", `translateX(${moveX}px)`);
+    $(".iconGroup i").hover(function () {
+      page = $(this).index();
+      $(this).css("color", "#eb5c37")
+      .siblings()
+      .css("color", "#c4c4c4");
+      const moveX = $(this).index() * -25;
+      $(".alan_img-wrap").css("transform", `translateX(${moveX}%)`);
     });
     $("#btn-left-area").click(function () {
-        console.log("btn-left-area clicked");
-        page--;
-        console.log("btn-right-area clicked", page);
-        if (page < 0) page = 3;
-        const moveX = page * -25;
-        $("ul.alan_img-wrap").css("transition", "0.5s").css("transform", `translateX(${moveX}%)`);
-        // 改變白色的指示點
-        $(".slider-dots li")
-            .eq((page === 3) ? 0 : page)
-            .css("background", "#fff")
-            .siblings()
-            .css("background", "transparent");
+      page--;
+      if (page < 0) page = 2;
+      const moveX = page * -25;
+      $("ul.alan_img-wrap")
+        .css("transition", "0.5s")
+        .css("transform", `translateX(${moveX}%)`);
+      // 改變白色的指示點
+      $(".iconGroup i")
+        .eq(page === 3 ? 0 : page)
+        .css("color", "#eb5c37")
+        .siblings()
+        .css("color", "#c4c4c4");
     });
 
     $("#btn-right-area").click(function () {
-        page++;
-        console.log("btn-right-area clicked", page);
-        // if (page >= 5) page = 0;
-        console.log("btn-right-area clicked new page:", page);
-        const moveX = page * -25;
-        $("ul.alan_img-wrap").css("transition", "0.5s").css("transform", `translateX(${moveX}%)`);
-        // 改變白色的指示點
-        $(".slider-dots li")
-            .eq((page === 3) ? 0 : page)
-            .css("background", "#fff")
-            .siblings()
-            .css("background", "transparent");
+      page++;
+      const moveX = page * -25;
+      $("ul.alan_img-wrap")
+        .css("transition", "0.5s")
+        .css("transform", `translateX(${moveX}%)`);
+      // 改變白色的指示點
+      $(".iconGroup i")
+        .eq(page === 3 ? 0 : page)
+        .css("color", "#eb5c37")
+        .siblings()
+        .css("color", "#c4c4c4");
     });
 
-
     function startInterval() {
-        myInterval = setInterval(() => {
-            page++;
-            const moveX = page * -25;
-            $("ul.alan_img-wrap").css("transition", "0.5s").css("transform", `translateX(${moveX}%)`);
+      myInterval = setInterval(() => {
+        page++;
+        const moveX = page * -25;
+        $("ul.alan_img-wrap")
+          .css("transition", "0.5s")
+          .css("transform", `translateX(${moveX}%)`);
 
-            // 改變白色的指示點
-            $(".slider-dots li")
-                .eq((page === 3) ? 0 : page)
-                .css("background", "#fff")
-                .siblings()
-                .css("background", "transparent");
-        }, 2500);
+        $(".iconGroup i")
+          .eq(page === 3 ? 0 : page)
+          .css("color", "#eb5c37")
+          .siblings()
+          .css("color", "#c4c4c4");
+      }, 2500);
     }
     $("ul.alan_img-wrap").on("transitionend", function () {
-        if (page >= 3) {
-            $("ul.alan_img-wrap").css("transition", "none").css("transform", `translate(0px)`);
-            page = 0;
-        };
+      if (page >= 3) {
+        $("ul.alan_img-wrap")
+          .css("transition", "none")
+          .css("transform", `translate(0px)`);
+        page = 0;
+      }
     });
     startInterval();
     $(".alan_wrap").hover(
+      function () {
+        clearInterval(myInterval);
+      },
+      function () {
+        startInterval();
+      }
+    );
+    $(".iconGroup").hover(
         function () {
-            clearInterval(myInterval);
+          clearInterval(myInterval);
         },
         function () {
-            startInterval();
+          startInterval();
         }
-    );
+      );
   }, []);
   return (
     <>
@@ -115,11 +102,15 @@ function JqueryProduct() {
           </li>
         </ul>
         <div id="btn-left-area">
-          <i className="fas fa-chevron-left"></i>
         </div>
         <div id="btn-right-area">
           <i className="fas fa-chevron-right"></i>
         </div>
+      </div>
+      <div className="iconGroup">
+        <i className="fas fa-circle"></i>
+        <i className="fas fa-circle"></i>
+        <i className="fas fa-circle"></i>
       </div>
     </>
   );
