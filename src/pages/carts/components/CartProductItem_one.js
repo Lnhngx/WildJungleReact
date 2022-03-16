@@ -13,7 +13,7 @@ function Cartproductitemone() {
             <div className="stan_count_minus">
               <i class="fas fa-minus stan_btnicon"></i>
             </div>
-            <input type="text" className="stan_btninput"/>
+            <input type="text" className="stan_btninput" value={1}/>
             <div className="stan_count_add">
               <i class="fas fa-plus stan_btnicon"></i>
             </div>

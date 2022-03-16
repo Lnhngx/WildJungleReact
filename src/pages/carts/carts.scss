@@ -413,9 +413,14 @@ $stan_height: 50px;
 
   .stan_count_btn {
     display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 30px;
 
-    .stan_btninput{
-      width: 80px;
+    .stan_btninput {
+      width: 60px;
+      font-size: 18px;
+      text-align: center;
     }
     .stan_count_minus,
     .stan_count_add {
@@ -425,8 +430,7 @@ $stan_height: 50px;
       color: $stan_white;
 
       .stan_btnicon {
-        width: 10px;
-        height: 10px;
+        line-height: 30px;
       }
     }
   }
