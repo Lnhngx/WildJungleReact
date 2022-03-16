@@ -410,6 +410,26 @@ $stan_height: 50px;
     width: 100%;
     border: 1px solid $stan_black;
   }
+
+  .stan_count_btn {
+    display: flex;
+
+    .stan_btninput{
+      width: 80px;
+    }
+    .stan_count_minus,
+    .stan_count_add {
+      width: 30px;
+      height: 30px;
+      background-color: $stan_black;
+      color: $stan_white;
+
+      .stan_btnicon {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
 }
 
 .stan_product_total {
@@ -851,9 +871,9 @@ $stan_height: 50px;
 
   .stan_format {
     width: 400px;
-    
+
     margin: 20px 0px;
-    @include mobile{
+    @include mobile {
       width: 100%;
     }
   }
