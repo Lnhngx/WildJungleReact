@@ -20,6 +20,7 @@ function Login(){
   const [loading, setLoading] = useState(false);
   // const [token, setToken] = useState(null);
 
+  // 掛載
   useEffect(() => {
     const loadScriptByURL = (id, url, callback) => {
       const isScriptExist = document.getElementById(id);
@@ -69,98 +70,19 @@ function Login(){
     }).then(res => res.json()).then(obj => {
       setLoading(false);
       console.log(obj);
+
+
+      if(obj.success){
+        localStorage.setItem('admin_account',JSON.stringify(obj.account));
+        localStorage.setItem('admin_token',obj.token);
+        alert('登入成功');
+      }else{
+        alert(obj.error || '登入失敗');
+      }
       
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  // 點擊會送到google判斷,不是機器人得到一個google的token
-  // const handleOnClick = e => {
-  //   e.preventDefault();
-  //   // setLoading(true);
-  //   window.grecaptcha.ready(() => {
-  //     window.grecaptcha.execute(Config.TYSU_LOGIN, { action: 'submitLogin' }).then(token => {
-  //       submitData(token);
-  //     });
-  //   });
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // const submitData = async (token,event) => {
-  //   // call a backend API to verify reCAPTCHA response
-  //   event.preventDefault();
-  //   //  fetch(Config.TYSU_LOGIN, {
-  //   //   method: 'POST',
-  //   //   headers: {
-  //   //     "Content-Type": "application/json",
-        
-  //   //   },
-  //   //   body: JSON.stringify({
-  //   //     "email": email,
-  //   //     "password": password,
-  //   //     "g-recaptcha-response": token
-  //   //   })
-  //   // }).then(r => r.json())
-  //   // .then(obj => {
-  //   //   console.log(obj);
-  //   //   // setLoading(false);
-  //   //   // setResponse(res);
-  //   // });
-  //   const fd=new FormData(document.form1);
-  //   const r=await fetch(Config.TYSU_LOGIN,{
-  //     method:"POST",
-  //     body:{fd,"g-recaptcha-response":token}
-  //   });
-  //   const obj=await r.json();
-  //   console.log(obj);
-  //   }
 
 
 
