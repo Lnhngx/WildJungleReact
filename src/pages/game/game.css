@@ -122,10 +122,9 @@
     position: relative;
 }
 .choose_psychoGame:hover{
-    width: 500px;
-    height: 500px;
-    margin-left: -4rem;
-    margin-right: -2rem;
+    transform: scale(1.66);
+    margin-left: 4rem;
+    margin-right: 6rem;
     z-index: 999;
 }
 .choose_psychoGame img{
@@ -140,13 +139,12 @@
     border: 10px solid white;
     overflow: hidden;
     margin-right: 2.5rem;
-    transition: 1.25s;
+    transition: 1s;
 }
 .choose_crossGame:hover{
-    width: 500px;
-    height: 500px;
-    margin-left: -4rem;
-    margin-right: -2rem;
+    transform: scale(1.66);
+    margin-left: 4rem;
+    margin-right: 6rem;
     z-index: 999;
 }
 .choose_crossGame img{
@@ -162,12 +160,11 @@
     border: 10px solid rgb(255, 255, 255);
     overflow: hidden;
     margin-right: 2.5rem;
-    transition: 1.25s;
+    transition: 1s;
 }
 .choose_iceGame:hover{
-    width: 500px;
-    height: 500px;
-    margin-left: -4rem;
+    transform: scale(1.66);
+    margin-left: 3rem;
     z-index: 999;
 }
 .choose_iceGame img{
@@ -192,31 +189,41 @@
     left: -110px;
     top: -90px;
     text-align: center;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 999;
 }
 .mask_title{
-    font-size: 3rem;
+    font-family: sans-serif;
+    font-size: 3.5rem;
     font-weight: 800;
     margin-top: -2rem;
     margin-bottom: 2rem;
 }
 .mask_text{
     font-family: sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-bottom: 2rem;
 }
+.mask_text span{
+    color: red;
+    font-weight: 800;
+}
 .mask_btn {
-    font-size: 1.35rem;
+    font-size: 2rem;
     font-weight: 600;
-    width: 150px;
+    width: 200px;
     height: 50px;
     border: none;
     background-color: black;
     color: #eb5c37;
     margin-top: 2rem;
+    line-height: 50px;
+}
+.mask_btn:hover{
+    text-decoration: none;
+    color: #eb5c37;
 }

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Chatbot from './chatbot';
 import {useState} from 'react';
 import './game.css';
@@ -16,7 +17,7 @@ function Game(){
             document.querySelector('.game_title').innerHTML = '神準動物心理測驗'; 
             document.querySelector('.game_profile').innerHTML = `你總共會遇到<span>3</span>個題目，請依照自己心中的第一個想法來選擇<br />點擊你所選的答案後<br />就可以知道自己心靈所對應的動物囉!`;
         }else if(hover===3){
-            document.querySelector('.game_title').innerHTML = '動物冷知識,10題見真章';
+            document.querySelector('.game_title').innerHTML = '動物冷知識';
             document.querySelector('.game_profile').innerHTML = `在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>300</span><br /><span>全部答對能拿到翻倍紅利哦</span>`;
         }else if (hover===4){
             document.querySelector('.game_title').innerHTML = '填字遊戲（維護中）';
@@ -61,18 +62,14 @@ function Game(){
     // }
     const hoverHandlerSpot = id => {
         let obj = {
-            // width:'500px',
-            // height:'500px',
             transform:'scale(1.66)',
-            marginRight:'3rem',
-            zIndex:'0',
+            marginRight:'6.5rem',
+            zIndex:'998',
         };
         let origin_obj = {
-            // width:'300px',
-            // height:'300px',
             transform:'scale(1)',
             marginRight:'2.5rem',
-            zIndex:'9',
+            zIndex:'0',
         }
         switch (id) {
             case 1:
@@ -113,72 +110,118 @@ function Game(){
                     onMouseEnter={(e)=>{
                         let offset = 1/1.66;
                         setHover(1)
-                        document.querySelector('.mask').style.display = 'flex'
-                        document.querySelector('.mask').style.left = '-110px'
-                        document.querySelector('.mask').style.top = '-110px'
-                        document.querySelector('.mask').style.transform = `scale(${offset})`
+                        document.querySelectorAll('.mask')[0].style.display = 'flex'
+                        document.querySelectorAll('.mask')[0].style.left = '50%'
+                        document.querySelectorAll('.mask')[0].style.top = '50%'
+                        document.querySelectorAll('.mask')[0].style.transform = `translate(-50%,-50%) scale(${offset})`
                     }}
                     onMouseLeave={(e)=>{ 
                         setHover(-1)
-                        document.querySelector('.mask').style.display = 'none'
+                        document.querySelectorAll('.mask')[0].style.display = 'none'
                     }}
                     style={hoverHandlerSpot(hover)}
                 >
                     <img src="/img/game/spot_game.png" alt="" />
-                {/* -------------測試用，沒寫出來效果就刪掉------------- */}
                     <div className="mask">
                         <div className="mask_title">眼力大挑戰</div>
-                        <div className="mask_text">遊戲中你將要找出5個不同之處<br/>利用滑鼠點擊圖片若正確...</div>
-                        <button className="mask_btn" onClick={()=>{console.log(123456)}}>進入遊戲</button>
+                        <div className="mask_text">遊戲中你將要找出<span>5</span>個不同之處<br/>利用滑鼠點擊圖片若正確...</div>
+                        <Link
+                            className="mask_btn" 
+                            to={{
+                                pathname:"/game/start",
+                                state:["眼力大挑戰",`遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span>`,"/game/spot-diff"],
+                            }}
+                        >
+                            進入遊戲
+                        </Link>
                     </div>
-                {/* -------------測試用，沒寫出來效果就刪掉------------- */}
                 </div>
 
                 <div className="choose_psychoGame"
                     onMouseEnter={()=>{
-                        // let offset = 1/1.66;
+                        let offset = 1/1.66;
                         setHover(2);
                         document.querySelectorAll('.mask')[1].style.display = 'flex';
-                        document.querySelectorAll('.mask')[1].style.left = '-10px';
-                        document.querySelectorAll('.mask')[1].style.top = '0px';
-                        // document.querySelectorAll('.mask')[1].style.transform = `scale(${offset})`
+                        document.querySelectorAll('.mask')[1].style.left = '50%';
+                        document.querySelectorAll('.mask')[1].style.top = '50%';
+                        document.querySelectorAll('.mask')[1].style.transform = `translate(-50%,-50%) scale(${offset})`
                     }}
                     onMouseLeave={()=>{ 
                         setHover(-1)
                         document.querySelectorAll('.mask')[1].style.display = 'none'
                     }}
-                    // style={ hover===2 && hoverHandlerUnder(hover)}
                 >
                     <img src="/img/game/psycho_game.png" alt="" />
                     <div className="mask">
-                        <div className="mask_title">眼力大挑戰</div>
-                        <div className="mask_text">遊戲中你將要找出5個不同之處<br/>利用滑鼠點擊圖片若正確...</div>
-                        <button className="mask_btn" onClick={()=>{console.log(123456)}}>進入遊戲</button>
+                        <div className="mask_title">神準動物心理測驗</div>
+                        <div className="mask_text">你總共會遇到<span>3</span>個題目<br/>請依照自己心中的第一...</div>
+                        <Link
+                            className="mask_btn" 
+                            to={{
+                                pathname:"/game/start",
+                                state:["神準動物心理測驗",`你總共會遇到<span>3</span>個題目，請依照自己心中的第一個想法來選擇<br />點擊你所選的答案後<br />就可以知道自己心靈所對應的動物囉!`,"/game/psycho-game"]
+                            }}
+                        >
+                            進入遊戲
+                        </Link>
                     </div>
                 </div>
                 <div className="choose_crossGame" 
                     onMouseEnter={()=>{
                         setHover(3);
+                        let offset = 1/1.66;
+                        document.querySelectorAll('.mask')[2].style.display = 'flex';
+                        document.querySelectorAll('.mask')[2].style.left = '50%';
+                        document.querySelectorAll('.mask')[2].style.top = '50%';
+                        document.querySelectorAll('.mask')[2].style.transform = `translate(-50%,-50%) scale(${offset})`;
                     }}
                     onMouseLeave={()=>{ 
                         setHover(-1)
+                        document.querySelectorAll('.mask')[2].style.display = 'none'
                     }}>
                     <img src="/img/game/cross_game.png" alt="" />
+                    <div className="mask">
+                        <div className="mask_title">動物冷知識</div>
+                        <div className="mask_text">在這<span>10</span>題中努力回答吧<br/>可能有些答案會超出你的想像...</div>
+                        <Link
+                            className="mask_btn" 
+                            to={{
+                                pathname:"/game/start",
+                                state:["動物冷知識",`在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>300</span><br /><span>全部答對能拿到翻倍紅利哦</span>`,"/game/multi-choice"]
+                            }}
+                        >
+                            進入遊戲
+                        </Link>
+                    </div>
                 </div>
                 <div className="choose_iceGame" 
                     onMouseEnter={()=>{
                         setHover(4);
+                        let offset = 1/1.66;
+                        document.querySelectorAll('.mask')[3].style.display = 'flex';
+                        document.querySelectorAll('.mask')[3].style.left = '50%';
+                        document.querySelectorAll('.mask')[3].style.top = '50%';
+                        document.querySelectorAll('.mask')[3].style.transform = `translate(-50%,-50%) scale(${offset})`;
                     }}
                     onMouseLeave={()=>{ 
                         setHover(-1)
+                        document.querySelectorAll('.mask')[3].style.display = 'none'
                     }}>
                     <img src="/img/game/ice_game.png" alt="" />
+                    <div className="mask">
+                        <div className="mask_title">敬請期待......</div>
+                        <div className="mask_text">先玩前面<span>3</span>個遊戲<br/>我個人是覺得你可能要等一輩子啊...</div>
+                        <Link
+                            className="mask_btn" 
+                            to={{
+                                pathname:"/game/start",
+                                state:["動物冷知識",`在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>300</span><br /><span>全部答對能拿到翻倍紅利哦</span>`]
+                            }}
+                        >
+                            進入遊戲
+                        </Link>
+                    </div>
                 </div>
-                {/* <div className="mask" style={hoverHandler(hover)}>
-                    <div className="mask_title">眼力大挑戰</div>
-                    <div className="mask_text">遊戲中你將要找出5個不同之處<br/>利用滑鼠點擊圖片若正確...</div>
-                    <button className="mask_btn" onClick={()=>{console.log(123456)}}>進入遊戲</button>
-                </div> */}
             </div>
 
 

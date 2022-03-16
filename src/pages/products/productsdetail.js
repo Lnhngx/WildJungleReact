@@ -51,20 +51,6 @@ function ProductsDetail() {
             <img src={require("./imgs/cloth-2 3.png")} alt="" />
           </div> */}
           <ProductCarousel slides={CarouselData} />
-           <ul className="alan_product_img_ul">
-            <li className="alan_product_img_li">
-              <img src='img/product/cloth-3.png' alt="" />
-            </li>
-            <li className="alan_product_img_li">
-              <img src='img/product/cloth-4.png' alt="" />
-            </li>
-            <li className="alan_product_img_li">
-              <img src='img/product/cloth-5.png' alt="" />
-            </li>
-            <li className="alan_product_img_li">
-              <img src='img/product/cloth-6.png' alt="" />
-            </li>
-          </ul> 
         </div>
         <div className="alan_productTitle">
           <div className="alan_product_star">
