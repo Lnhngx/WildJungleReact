@@ -5,10 +5,28 @@ import "rc-slider/assets/index.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
+import JqueryProduct from "./components/jqueryProduct"
+
+
+
 const Range = Slider;
 
 function Products() {
   const [rangevalue, setRangevalue] = useState(1);
+
+  // React.useEffect(() => {
+  //   const adTitle = document.querySelector(".adTitle");
+  //   adTitle.addEventListener("click", () => {
+  //     console.log(1);
+  //   });
+ 
+  //   return () => {
+  //     adTitle.removeEventListener("click", () => {
+  //       console.log(1);
+  //     });
+  //   };
+  // }, []);
+
   return (
     <>
       <Productsbackground />
@@ -17,7 +35,20 @@ function Products() {
           <div className="mainPic">
             <div className="triangle">
               <div className="adTitle">
-                <p>2021.秋季重新販售！</p>
+                <p>
+                  <span className="alan_letter">2</span>
+                  <span className="alan_letter">0</span>
+                  <span className="alan_letter">2</span>
+                  <span className="alan_letter">1</span>
+                  <span className="alan_letter">.</span>
+                  <span className="alan_letter">秋</span>
+                  <span className="alan_letter">季</span>
+                  <span className="alan_letter">重</span>
+                  <span className="alan_letter">新</span>
+                  <span className="alan_letter">販</span>
+                  <span className="alan_letter">售</span>
+                  <span className="alan_letter">！</span>
+                </p>
                 <span>Bisque Design</span>
                 <span className="titlespan">極佳觸感.親膚材質</span>
               </div>
@@ -27,16 +58,8 @@ function Products() {
                 alt=""
               />
             </div>
-            <img
-              className="main"
-              src={require("./imgs/Sliderpic.png")}
-              alt=""
-            />
-            <div className="iconGroup">
-              <i className="fas fa-circle"></i>
-              <i className="fas fa-circle"></i>
-              <i className="fas fa-circle"></i>
-            </div>
+            <JqueryProduct />
+            {/* <img className="main" src="img/product/Sliderpic.jpeg" alt="" /> */}
             <div className="adNew">
               <div className="firstSpan">
                 <span className="span-1">WH</span>
@@ -156,7 +179,28 @@ function Products() {
                   <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
-
+              <div className="cardName">
+                <Link className="cardTitle" to="">
+                  <p>法蘭絨動物兒童披風</p>
+                  <span>Animal Moco</span>
+                  <span>$799</span>
+                </Link>
+                <div className="cardIcon">
+                  <Link to="">
+                    <i className="fas fa-heart"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fas fa-shopping-cart"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="productCard">
+              <Link to="">
+                <div className="cardImg">
+                  <img src="img/product/cloth-2.png" alt="" />
+                </div>
+              </Link>
               <div className="cardName">
                 <Link className="cardTitle" to="">
                   <p>法蘭絨動物兒童披風</p>
@@ -248,7 +292,6 @@ function Products() {
                   <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
-
               <div className="cardName">
                 <Link className="cardTitle" to="">
                   <p>法蘭絨動物兒童披風</p>
@@ -271,7 +314,6 @@ function Products() {
                   <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
-
               <div className="cardName">
                 <Link className="cardTitle" to="">
                   <p>法蘭絨動物兒童披風</p>
@@ -294,30 +336,6 @@ function Products() {
                   <img src="img/product/cloth-2.png" alt="" />
                 </div>
               </Link>
-
-              <div className="cardName">
-                <Link className="cardTitle" to="">
-                  <p>法蘭絨動物兒童披風</p>
-                  <span>Animal Moco</span>
-                  <span>$799</span>
-                </Link>
-                <div className="cardIcon">
-                  <Link to="">
-                    <i className="fas fa-heart"></i>
-                  </Link>
-                  <Link to="">
-                    <i className="fas fa-shopping-cart"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="productCard">
-              <Link to="">
-                <div className="cardImg">
-                  <img src="img/product/cloth-2.png" alt="" />
-                </div>
-              </Link>
-
               <div className="cardName">
                 <Link className="cardTitle" to="">
                   <p>法蘭絨動物兒童披風</p>

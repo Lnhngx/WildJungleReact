@@ -97,7 +97,7 @@
 .user_reply{
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    justify-content: flex-end;
     margin: 1.5rem 1rem;
 }
 .user_avatar{

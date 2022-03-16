@@ -109,7 +109,7 @@ $terry_black: #000000;
     padding: 5px 40px;
     justify-content: space-between;
   }
-  .terry_title_grop{
+  .terry_title_grop {
     margin-top: -30px;
   }
 }
@@ -309,7 +309,7 @@ $terry_black: #000000;
       margin-top: 1%;
       position: relative;
     }
-    .seatsArea::before{
+    .seatsArea::before {
       content: "12345678";
       position: absolute;
       font-family: "Noto Sans TC";
@@ -320,7 +320,7 @@ $terry_black: #000000;
       left: 28px;
       letter-spacing: 4.5rem;
     }
-    .seatsArea::after{
+    .seatsArea::after {
       content: "ABCDEFGH";
       position: absolute;
       font-family: "Noto Sans TC";
@@ -360,117 +360,117 @@ $terry_black: #000000;
 }
 /*第一區塊結束*/
 /*第二區塊開始*/
-.terry_spomsor_area {
+.terry_sponsor_area {
   display: flex;
   justify-content: space-between;
   margin-top: 10%;
 }
 
-.terry_sponsor_cardsArea{
+.terry_sponsor_cardsArea {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10%;
-  .cardbg{
+  .cardbg {
     margin: 12px;
   }
-  .cardbg1{
+  .cardbg1 {
     width: 48%;
     height: 450px;
     background-color: $terry_color3;
     display: flex;
     position: relative;
   }
-  .cardbg2{
+  .cardbg2 {
     width: 48%;
     height: 450px;
     background-color: $terry_white;
     display: flex;
     position: relative;
   }
-  .cardbg3{
+  .cardbg3 {
     width: 48%;
     height: 450px;
     background-color: $terry_color2;
     display: flex;
     position: relative;
   }
-  .cardbg4{
+  .cardbg4 {
     width: 48%;
     height: 450px;
     background-color: $terry_color1;
     display: flex;
     position: relative;
   }
-  .cardbg5{
+  .cardbg5 {
     width: 48%;
     height: 450px;
-    background-color: #1297CF;
+    background-color: #1297cf;
     display: flex;
     position: relative;
   }
-  .cardbg6{
+  .cardbg6 {
     width: 48%;
     height: 450px;
     background-color: #777b7e;
     display: flex;
     position: relative;
   }
-  .sponsor_animalImg{
+  .sponsor_animalImg {
     width: 440px;
     height: auto;
     position: absolute;
     margin-top: 20px;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
   }
-  .sponsor_animalImg2{
+  .sponsor_animalImg2 {
     width: 340px;
     height: auto;
     position: absolute;
     margin-top: 60px;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
   }
-  .sponsor_animalImg3{
+  .sponsor_animalImg3 {
     width: 330px;
     height: auto;
     position: absolute;
     margin-top: 10px;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
   }
-  .sponsor_animalImg4{
+  .sponsor_animalImg4 {
     width: 380px;
     height: auto;
     position: absolute;
     margin-top: 30px;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
   }
-  .sponsor_animalImg5{
+  .sponsor_animalImg5 {
     width: 320px;
     height: auto;
     position: absolute;
     margin-top: 50px;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
   }
-  .sponsor_animalImg6{
+  .sponsor_animalImg6 {
     font-size: 400px;
     margin-top: -80px;
     margin-left: 50px;
   }
-  .sponsor_introduction_area{
+  .sponsor_introduction_area {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -479,7 +479,7 @@ $terry_black: #000000;
     height: 100%;
     right: 0;
     padding: 15% 5% 5% 0;
-    .sponsor_animalName{
+    .sponsor_animalName {
       width: auto;
       color: $terry_white;
       font-family: "Playfair Display";
@@ -487,7 +487,7 @@ $terry_black: #000000;
       font-weight: 600;
       text-align: end;
     }
-    .sponsor_introductionText{
+    .sponsor_introductionText {
       font-family: "Noto Sans TC";
       font-weight: 300;
       font-size: 14px;
@@ -498,7 +498,7 @@ $terry_black: #000000;
       padding-top: 10%;
       flex-grow: 2;
     }
-    .sponsor_animalName2{
+    .sponsor_animalName2 {
       width: auto;
       color: $terry_black;
       font-family: "Playfair Display";
@@ -506,7 +506,7 @@ $terry_black: #000000;
       font-weight: 600;
       text-align: end;
     }
-    .sponsor_introductionText2{
+    .sponsor_introductionText2 {
       font-family: "Noto Sans TC";
       font-weight: 300;
       font-size: 14px;
@@ -517,12 +517,106 @@ $terry_black: #000000;
       padding-top: 10%;
       flex-grow: 2;
     }
-    button{
+    button {
       width: 90%;
       height: 50px;
       border: none;
       background-color: $terry_black;
       color: $terry_white;
+    }
+  }
+}
+.terry_sponsor_planSelectionArea {
+  display: flex;
+  margin-top: 10%;
+  padding: 0 3%;
+  position: relative;
+  .demoArea {
+    width: 49%;
+    height: auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .imgBorder {
+    position: relative;
+  }
+  .animalName {
+    width: 100%;
+    color: $terry_white;
+    font-family: "Playfair Display";
+    font-size: 68px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    margin-bottom: 1%;
+  }
+  .animalImg {
+    position: absolute;
+    top: 1%;
+    width: 60%;
+    height: auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.introduction_area {
+  display: flex;
+  flex-direction: column;
+  width: 38%;
+  margin-left: 9%;
+  .sponsor_introductionText3 {
+    font-family: "Noto Sans TC";
+    font-weight: 300;
+    font-size: 28px;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    color: $terry_white;
+    padding-top: 50%;
+    line-height: 38px;
+  }
+  .sponsorSelect {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    flex-grow: 2;
+    select {
+      width: auto;
+      height: 50px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: $terry_black;
+      margin: 3% 0;
+      //selectIcon
+      appearance: none;
+      background-image: url(../../../public/img/activity/selectIcon.svg);
+      background-size: 100% / 5%;
+      background-repeat: no-repeat;
+      background-position: right;
+      background-color: $terry_white;
+    }
+  }
+  .buttonGrop{
+    display: flex;
+    justify-content: space-between;
+    button {
+      width: 220px;
+      height: 50px;
+      border: none;
+      color: $terry_white;
+      font-family: "Noto Sans TC";
+      font-size: 20px;
+      font-weight: 300;
+    }
+    button:nth-child(1) {
+      background-color: $terry_color1;
+    }
+    button:nth-child(2) {
+      background-color: $terry_color2;
     }
   }
 }

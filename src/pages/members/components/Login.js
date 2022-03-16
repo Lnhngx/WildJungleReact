@@ -17,42 +17,150 @@ function Login(){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   
-  
-  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
+  // const [token, setToken] = useState(null);
 
-  const [serverState, setServerState] = useState({
-    submitting: false,
-    status: null
-  });
-  const handleServerResponse = (ok, msg, form) => {
-    setServerState({
-      submitting: false,
-      status: { ok, msg }
-    })
-    if (ok) {
-      form.reset()
+  useEffect(() => {
+    const loadScriptByURL = (id, url, callback) => {
+      const isScriptExist = document.getElementById(id);
+
+      if (!isScriptExist) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.id = id;
+        script.onload = function () {
+          if (callback) callback();
+        };
+        document.body.appendChild(script);
+      }
+
+      if (isScriptExist && callback) callback();
     }
-  };
-  const handleOnSubmit = e => {
-    e.preventDefault()
-    const form = e.target
-    setServerState({ submitting: true })
-    const data = new FormData(form)
-    data.append("g-recaptcha-response", token);
 
-    fetch({
-      method: "post",
-      url: "",
-      data
-    })
-      .then(r => {
-        handleServerResponse(true, "Thanks!", form)
-      })
-      .catch(r => {
-        handleServerResponse(false, r.response.data.error, form)
-      })
+    // load the script by passing the URL
+    loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${Keys.RECAPTCHA_KEY}`, function () {
+      console.log("google驗證");
+    });
+  }, []);
+
+  const handleOnClick = e => {
+    e.preventDefault();
+    setLoading(true);
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(Keys.RECAPTCHA_KEY, { action: 'submit' }).then(token => {
+        submitData(token);
+      });
+    });
   }
 
+  const submitData = token => {
+    // call a backend API to verify reCAPTCHA response
+    fetch('http://localhost:4000/members/login', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "email": email,
+        "password": password,
+        "g-recaptcha-response": token
+      })
+    }).then(res => res.json()).then(obj => {
+      setLoading(false);
+      console.log(obj);
+      
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  // 點擊會送到google判斷,不是機器人得到一個google的token
+  // const handleOnClick = e => {
+  //   e.preventDefault();
+  //   // setLoading(true);
+  //   window.grecaptcha.ready(() => {
+  //     window.grecaptcha.execute(Config.TYSU_LOGIN, { action: 'submitLogin' }).then(token => {
+  //       submitData(token);
+  //     });
+  //   });
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // const submitData = async (token,event) => {
+  //   // call a backend API to verify reCAPTCHA response
+  //   event.preventDefault();
+  //   //  fetch(Config.TYSU_LOGIN, {
+  //   //   method: 'POST',
+  //   //   headers: {
+  //   //     "Content-Type": "application/json",
+        
+  //   //   },
+  //   //   body: JSON.stringify({
+  //   //     "email": email,
+  //   //     "password": password,
+  //   //     "g-recaptcha-response": token
+  //   //   })
+  //   // }).then(r => r.json())
+  //   // .then(obj => {
+  //   //   console.log(obj);
+  //   //   // setLoading(false);
+  //   //   // setResponse(res);
+  //   // });
+  //   const fd=new FormData(document.form1);
+  //   const r=await fetch(Config.TYSU_LOGIN,{
+  //     method:"POST",
+  //     body:{fd,"g-recaptcha-response":token}
+  //   });
+  //   const obj=await r.json();
+  //   console.log(obj);
+  //   }
 
 
 
@@ -69,7 +177,7 @@ function Login(){
 
 
   useEffect(() => {
-
+    // submitData();
 // getData();
 
       
@@ -105,29 +213,11 @@ function Login(){
               <div id="tysu_passHelp"></div>
             </td>
           </tr>
-          {/* <tr className="tysu_tr_code">
-            <th></th>
-            <td>
-              <div className="tysu_canvas" >
-                <img src="./img/member/noise.jpg" alt="" />
-              </div>
-            </td>
-          </tr>
-          <tr className="tysu_tr tysu_last">
-            <th>
-              <label htmlFor="tysu_code">驗證碼<br /><span className="tysu_titleSpan">verification code</span></label>
-            </th>
-            <td>
-              <input type="text" id="tysu_code" className="tysu_input" value={fields.verifyCode} onChange={(e)=>{}}/>
-              <div id="tysu_codeHelp"></div>
-            </td>
-          </tr> */}
           <tr>
             <th></th>
             <td>
               <div className="tysu_logHelp">
-                <button id="submit" className="tysu_btn_sign" onSubmit={(event) =>{event.preventDefault()
-                handleOnSubmit()}}>登 入</button>
+                <button id="submit" className="tysu_btn_sign" onClick={handleOnClick}>登 入</button>
                 <div className="tysu_help">
                   <Link to="#/" className="tysu_signText">
                     <i className="fas fa-user-plus"></i>SIGN UP</Link>
