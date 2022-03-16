@@ -49,7 +49,6 @@ $stan_height: 50px;
 }
 
 .stan_hr {
-  margin: -1px 0;
   border: 1px solid $stan_black;
 }
 
@@ -72,7 +71,7 @@ $stan_height: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 20%;
+  padding-left: 18%;
 }
 
 //
@@ -579,7 +578,7 @@ $stan_height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 47%;
+    padding-left: 48%;
     padding-right: 2%;
     @include mobile {
       font-size: 14px;
@@ -688,7 +687,7 @@ $stan_height: 50px;
       border: 1px solid $stan_black;
       justify-content: center;
       @include mobile {
-        border-color: #c4c4c4;
+        border-color: $stan_black;
       }
     }
   }
@@ -771,7 +770,7 @@ $stan_height: 50px;
 
 .stan_fof_flex_left {
   @extend .stan_fof_flex;
-  padding-left: 24%;
+  padding-left: 23%;
   margin-bottom: 10px;
 }
 
@@ -845,17 +844,44 @@ $stan_height: 50px;
   width: 100%;
   display: flex;
   justify-content: center;
-  
+
   @include mobile {
     width: 100%;
   }
-  .stan_fo_orderinfo{
+
+  .stan_format {
+    width: 400px;
+    
+    margin: 20px 0px;
+    @include mobile{
+      width: 100%;
+    }
+  }
+
+  .stan_fo_orderinfo {
     border: 1px solid $stan_color2;
     background-color: $stan_color2;
     text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font-size: 18px;
   }
-  li{
-    display: flex;
+  .stan_fo_buyerinfo {
+    height: 200px;
+    padding-top: 6%;
+    border: 1px solid #c4c4c4;
+
+    .stan_fo_frame {
+      display: flex;
+
+      .stan_fo_title {
+        width: 35%;
+        text-align: end;
+      }
+      .stan_fo_content {
+        width: 65%;
+      }
+    }
   }
 }
 
