@@ -13,7 +13,7 @@ for (let i = 0; i < WIDTH; i++) {
         );
     }
 }
-// console.log(datas)
+
 
 const renderSeats = () => {
     return datas.map((data, i) => (
@@ -105,7 +105,7 @@ function activity() {
                         </div>
                     </div>
                     {/*01結束*/}
-                    <div className="terry_spomsor_area">
+                    <div className="terry_sponsor_area">
                         <div className="terry_show_area_textArea">
                             <div className="terry_01">02</div>
                             <div className="terry_title_grop">
@@ -183,6 +183,49 @@ function activity() {
                                 <div className="sponsor_introductionText">不知道要選哪隻可愛的動物嗎？猶豫了很久還是遲遲無法行動嗎？快點點選亂數抽取鍵幫您找到心中理想的動物吧！</div>
                                 <button>亂數抽取</button>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="terry_sponsor_planSelectionArea">
+                        <div className="demoArea">
+                            <div className="imgBorder">
+                                <img src="/img/activity/animalBorder.svg" alt="" />
+                                <div className="animalName">Eagle</div>
+                            </div>
+                            <div className="animalImg">
+                                <img src="/img/home/star_eagle.png" alt="" />
+                            </div>
+                        </div>
+                        <div className="introduction_area">
+                            <div className="sponsor_introductionText3">我是動物園的明星動物之一，老鷹！感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意，感恩的心，平安喜樂。</div>
+                            <div className="sponsorSelect">
+                                <select>
+                                    <option>選擇方案</option>
+                                </select>
+                                <select>
+                                    <option>選擇金額</option>
+                                </select>
+                            </div>
+                            <div className="buttonGrop">
+                                <button>加入購物車</button>
+                                <button>回上一步</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/*02結束*/}
+                    <div className="terry_sponsor_area">
+                        <div className="terry_show_area_textArea">
+                            <div className="terry_01">03</div>
+                            <div className="terry_title_grop">
+                                <div className="terry_show_title1">Animal</div>
+                                <div className="terry_show_title2">Touch.</div>
+                                <div className="terry_show_subtitle">動物接觸</div>
+                            </div>
+                            <div className="terry_show_viewmore">View More</div>
+                        </div>
+                        <div className="terry_show_area_img">
+                            <img src="/img/activity/touch1.jpg" alt="" />
                         </div>
                     </div>
                 </div>
