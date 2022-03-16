@@ -282,77 +282,66 @@ function homePage() {
         <h1 className="ning_TitleEnblack">Jungle Star</h1>
         <h2 className="ning_TitleChblack">明星動物認養</h2>
         <div className="ning_Junglestarcontainer">
-          <Link to="">
-            {/* <div className="ning_cardhd"> */}
-            <div className="ning_eaglecard">
-              <img src="img/home/star_eagle_bk.png" alt="" />
+          <div className="ning_eaglecard">
+            <img src="img/home/star_eagle_bk.png" alt="" />
+            <div className="ning_starcardtext">
+              <h3 className="ning_starcardtitle">Eagle</h3>
+              <span>
+                老鷹在四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少...
+              </span>
+              <button className="adoptbtn btn">我要認養！</button>
+            </div>
+          </div>
+
+          <div className="ning_elephantcard">
+            <img src="img/home/star_elephant_bk.png" alt="" />
+            <div className="ning_starcardtext">
+              <h3 className="ning_starcardtitle">Elephant</h3>
+              <span>
+                頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛...
+              </span>
+              <button className="adoptbtn btn">我要認養！</button>
+            </div>
+          </div>
+
+          <div className="ning_tigercard">
+            <img src="img/home/star_tiger_bk.png" alt="" />
+            <div className="ning_starcardtext">
+              <h3 className="ning_starcardtitle">Tiger</h3>
+              <span>
+                為貓科中繼虎和獅之後第三大物種，同時也是為西半球最大型以及最強健的貓科動物！外表型態和豹極為相似，但較粗壯，圓斑中有黑點，生態位也較像虎，體型介於虎和豹之間，貓科中的全能冠軍。
+              </span>
+              <button className="adoptbtn btn">我要認養！</button>
+            </div>
+          </div>
+
+          <div className="ning_sharkcard">
+            <img src="img/home/star_shark_bk.png" alt="" />
+            <div className="ning_starcardtext">
+              <h3 className="ning_starcardtitle">Shark</h3>
+              <span>
+                鲨鱼有高度流線、適合游泳的外型，全身覆滿了盾鳞，鳞除了保護鯊魚免於受傷或者被寄生蟲寄生，還可以增進它們的流體動力，讓它們游得更快速。鯊魚體側用於呼吸的鳃裂有五到七個。它們有數套可替換的牙齒。
+              </span>
+              <button className="adoptbtn btn">我要認養！</button>
+            </div>
+          </div>
+
+          <div className="ning_hitefoxcardhd">
+            <div className="ning_hitefoxcard">
+              <img src="img/home/star_hitefox_bk.png" alt="" />
               <div className="ning_starcardtext">
-                <h3 className="ning_starcardtitle">Eagle</h3>
+                <h3 className="ning_starcardtitle">Hitefox</h3>
                 <span>
-                  老鷹在四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少，已被列為臺灣保育類野生動物名錄中的二級珍貴稀有物種。
+                  吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。
                 </span>
                 <button className="adoptbtn btn">我要認養！</button>
               </div>
             </div>
-            {/* </div> */}
-          </Link>
-          <Link to="">
-            <div className="ning_cardhd">
-              <div className="ning_elephantcard">
-                <img src="img/home/star_elephant_bk.png" alt="" />
-                <div className="ning_starcardtext">
-                  <h3 className="ning_starcardtitle">Elephant</h3>
-                  <span>
-                    頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛。象牙是長得特別長的上門齒。象鼻是由肌肉構成，非常靈活有力，末端上下各有一靈巧的指狀突起。
-                  </span>
-                  <button className="adoptbtn btn">我要認養！</button>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="">
-            <div className="ning_cardhd">
-              <div className="ning_tigercard">
-                <img src="img/home/star_tiger_bk.png" alt="" />
-                <div className="ning_starcardtext">
-                  <h3 className="ning_starcardtitle">Tiger</h3>
-                  <span>
-                    為貓科中繼虎和獅之後第三大物種，同時也是為西半球最大型以及最強健的貓科動物！外表型態和豹極為相似，但較粗壯，圓斑中有黑點，生態位也較像虎，體型介於虎和豹之間，貓科中的全能冠軍。
-                  </span>
-                  <button className="adoptbtn btn">我要認養！</button>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="">
-            <div className="ning_cardhd">
-              <div className="ning_sharkcard">
-                <img src="img/home/star_shark_bk.png" alt="" />
-                <div className="ning_starcardtext">
-                  <h3 className="ning_starcardtitle">Shark</h3>
-                  <span>
-                    鲨鱼有高度流線、適合游泳的外型，全身覆滿了盾鳞，鳞除了保護鯊魚免於受傷或者被寄生蟲寄生，還可以增進它們的流體動力，讓它們游得更快速。鯊魚體側用於呼吸的鳃裂有五到七個。它們有數套可替換的牙齒。
-                  </span>
-                  <button className="adoptbtn btn">我要認養！</button>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="">
-            <div className="ning_cardhd">
-              <div className="ning_hitefoxcard">
-                <img src="img/home/star_hitefox_bk.png" alt="" />
-                <div className="ning_starcardtext">
-                  <h3 className="ning_starcardtitle">Hitefox</h3>
-                  <span>
-                    吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。
-                  </span>
-                  <button className="adoptbtn btn">我要認養！</button>
-                </div>
-              </div>
-            </div>
-          </Link>
+          </div>
         </div>
+
+        {/* 動物相關商品  */}
+
         <h3 className="ning_starproducts">相關動物商品</h3>
         <div className="ning_starproductbox">
           <span className="ning_starcarousellefticon material-icons">
