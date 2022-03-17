@@ -1,5 +1,7 @@
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { useState } from "react";
+import React from 'react';
+import { useContext } from "react";
 
 //頁首、頁尾、CSS
 import Navbar from "./components/navbar";
@@ -31,12 +33,15 @@ import ProductsDetail from "./pages/products/productsdetail";
 function App() {
   // 全域狀態
   //const [auth, setAuth] = useState(false)
-
+  const [toggleLottery,setToggleLottery] = useState(false);
+  const openOrNot = {toggleLottery,setToggleLottery};
   return (
     <Router>
       <>
           <Navbar />
-          <FixedRight />
+          <LotteryContext.Provider value={openOrNot}>
+            <FixedRight />
+          </LotteryContext.Provider>
           {/* 路由表 */}
           <Switch>
             <Route exact path="/">
@@ -69,8 +74,11 @@ function App() {
             <Route path="/game/start" component={GameStart}>
             {/* <GameStart /> */}
           </Route>
+          
             <Route exact path="/game">
-              <Game />
+              <LotteryContext.Provider value={openOrNot}>
+                <Game />
+              </LotteryContext.Provider>
             </Route>
             <Route path="/carts">
               <Carts />
@@ -119,5 +127,8 @@ function App() {
     </Router>
   );
 }
-
+export const LotteryContext = React.createContext({
+  toggleLottery: 'false',
+  setToggleLottery: () => {},
+});
 export default App;

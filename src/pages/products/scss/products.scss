@@ -163,24 +163,21 @@ ul.slider-dots {
   }
 }
 @keyframes scalepic {
-  0%{
+  0% {
     transform: scale(1);
   }
-  100%{
+  100% {
     transform: scale(1.04);
   }
 }
 @keyframes scalepic1 {
-  0%{
+  0% {
     transform: scale(1);
   }
-  100%{
+  100% {
     transform: scale(1.03);
   }
 }
-
-
-
 
 .titlespan {
   margin: 20px 0 20px 0;
@@ -199,7 +196,7 @@ ul.slider-dots {
   color: #c4c4c4;
   margin: 0 5px 0 5px;
 }
-.iconGroup i:first-child{
+.iconGroup i:first-child {
   color: #eb5c37;
 }
 .iconGroup i:hover {
@@ -263,6 +260,7 @@ ul.slider-dots {
   background-color: #212529;
 }
 .typeSelect .type {
+  transition: 0.5s;
   display: flex;
   width: 45%;
   align-items: center;
@@ -271,6 +269,29 @@ ul.slider-dots {
   height: 50px;
   background-color: white;
   font-size: 16px;
+  cursor: pointer;
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+}
+.type::before{
+  content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: #eb5c37;
+    height: 2px;
+    transition-property: left, right;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+.type:hover {
+  transform: scale(1.03) translateY(-5px);
+}
+.type:hover::before{
+  left: 0;
+  right:0;
 }
 .typeSelect .type:last-child {
   margin-bottom: 20px;
@@ -288,8 +309,24 @@ ul.slider-dots {
   border-radius: 50%;
   object-fit: cover;
   background-image: url(../imgs/baby.png);
-  background-size: contain;
+  background-size: cover;
 }
+.typeSelect .typeimg1 {
+  background-image: url(../imgs/babyclothes.png);
+}
+.typeSelect .typeimg2 {
+  background-image: url(../imgs/2.png);
+}
+.typeSelect .typeimg3 {
+  background-image: url(../imgs/3.png);
+}
+.typeSelect .typeimg4 {
+  background-image: url(../imgs/4.png);
+}
+.typeSelect .typeimg5 {
+  background-image: url(../imgs/5.png);
+}
+
 .productItem {
   margin-top: 20px;
   width: 100%;
@@ -370,24 +407,26 @@ ul.slider-dots {
   transform: scale(1.3);
 }
 .cardImg::before {
-  transition: 0.5s;
+  transition: all 0.8s cubic-bezier(0.7, -0.5, 0.2, 2);
   position: absolute;
   content: "";
   bottom: 0;
-  right: 10%;
+  right: 0;
   height: 30px;
   width: 0;
-  overflow: hidden;
+  background-color: #eb5c37;
 }
 .productCard:hover .cardImg::before {
-  content: "Click ➡";
+  content: "View more";
   z-index: 999;
-  width: 65px;
+  width: 85px;
   background-color: #eb5c37;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   color: #212529;
-  font-size: 18px;
-  right: 0;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 2px 0 0 0;
 }
 .productCard:hover p {
   color: #eb5c37;

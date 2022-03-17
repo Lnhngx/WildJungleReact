@@ -1,11 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 import './spot-diff.css';
 
 function SpotDiff(){
     const [countSuccess,setCountSuccess] = useState(0);
     const [countDown,setCountDown] = useState(30);
+    const [hintCountDown,setHintCountDown] = useState(3);
     useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({
+                top: 280,
+                behavior: 'smooth'
+            });
+        }, 0);
         document.querySelector('.cube').style.transform = `rotateX(-90deg) `; 
         document.querySelector('.up').style.animation = `chopacity .4s linear forwards`;
         let countDownFrom = 30
@@ -13,8 +21,7 @@ function SpotDiff(){
         // console.log(`[timer] == start count down ${countDownFrom}s  ==`)
         // const startTime = Date.now()
         const countDownTimer = setInterval(() => {
-          // 計算剩餘秒數
-        // const pastSeconds = parseInt((Date.now() - startTime) / 1000)
+        // 計算剩餘秒數
         let remain = countDownFrom--;
         // console.log(remain);
         // const remain = (countDownFrom - pastSeconds)
@@ -50,6 +57,11 @@ function SpotDiff(){
     // }
     //     let myInterval = setInterval(counter,1000);
     //  },[countDown]);
+
+    // 以下是預留的提示function 我希望是能在圖片上直接幫他圈一個答案，要先篩選掉已經點過的答案
+    function getHint(){
+        console.log(123);
+    }
     return(
     <>
         <div className="spot_container">
@@ -78,7 +90,7 @@ function SpotDiff(){
                 <div className="cube">
                     <div className="front">大家來找碴</div>
                     <div className="up">
-                        <div className="min">00  :  <span className="sec">{countDown}</span></div>
+                        <div className="min">00  :  <span className="sec">{countDown<10 ? '0'+countDown : countDown}</span></div>
                     </div>
                 </div>
             </div> 
@@ -147,16 +159,21 @@ function SpotDiff(){
                         <div className="help">
                             <i className="fas fa-question"></i>
                         </div>
-                        <div className="list">
+                        <Link to="/game/spot-level" className="list">
                             <i className="fas fa-list-ul"></i>
-                        </div>
+                        </Link>
                     </div>
                     <div className="count">{countSuccess}<span>/5</span></div>
                     <div className="right_tool">
-                        <div className="hint">
+                        <div className="hint" onClick={()=>{
+                            if(hintCountDown>0){
+                            getHint();
+                            setHintCountDown(hintCountDown-1)
+                            }
+                        }}>
                             <i className="fas fa-search"></i>
                         </div>
-                        <div className="hint_count">x3</div>
+                        <div className="hint_count">x{hintCountDown}</div>
                     </div>
                 </div>
             </div>
@@ -173,7 +190,7 @@ function SpotDiff(){
             border:3px solid wheat;
         }`}
         </style> */}
-     </>
-     )
- };
+    </>
+    )
+};
 export default SpotDiff;
