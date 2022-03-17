@@ -1,12 +1,20 @@
-import React, { useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import { useRef } from "react";
 import './lottery.css';
 
 function Lottery(){
+    const [toggle,setToggle] = useState(false);
     const myCanvas = useRef(null);
     const myCanvas_bottom = useRef(null);
     // 利用useRef 抓到render出來的真實canvas
     // const [count,setCount] = useState(0);
+    const lottery_show = {
+                            display:'block'
+                        }
+    const lottery_close = {
+                            display:'none'
+                        }
+    let result  = toggle ? lottery_show : lottery_close;
     let painting = false;
     function startPosition(e){        
         painting = true;
@@ -83,8 +91,11 @@ function Lottery(){
     },[])
     return (
         <>  
-        <div className="lottery_container">
-            <div className="lottery_closeBtn" onClick={()=>{document.querySelector('.lottery_container').style.display = 'none'}}>
+        <div className="lottery_container" style={result}>
+            <div className="lottery_closeBtn" 
+            // onClick={()=>{document.querySelector('.lottery_container').style.display = 'none'}}
+            onClick={()=>{setToggle(false)}}
+            >
                 <i className="fas fa-times"></i>
             </div>
             <div className="lottery_title">Scratch to reveal</div>
@@ -93,7 +104,7 @@ function Lottery(){
                 <canvas ref={myCanvas_bottom} width="401" height='556'></canvas>
                 <canvas ref={myCanvas} width="401" height='556'></canvas>
             </div>
-            <button className="lottery_bonusBtn" onClick={console.log('你他媽快去給我領獎')}>查看獎勵</button>
+            <button className="lottery_bonusBtn" onClick={()=>{console.log('你他媽快去給我領獎')}}>查看獎勵</button>
         </div>
         </>
     )

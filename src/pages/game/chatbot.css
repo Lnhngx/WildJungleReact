@@ -65,8 +65,8 @@
     margin: 1.5rem 1rem;
 }
 .chatbot_avatar{
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: coral;
     overflow: hidden;
@@ -81,7 +81,7 @@
 .chatbot_message{
     width: 300px;
     background-color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: sans-serif;
     font-weight: 600;
     margin-left: 1.5rem;
@@ -121,23 +121,22 @@
     margin: 1.5rem 1rem;
 }
 .user_avatar{
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: cyan;
-    overflow: hidden;
+    background-color: rgb(88, 105, 105);
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.user_avatar img{
-    width: 80%;
-    height: auto;
+.user_avatar i{
+    font-size: 2.5rem;
+    color: white;
 }
 .user_message{
     width: 300px;
     background-color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: sans-serif;
     font-weight: 600;
     margin-left: 1.5rem;
@@ -167,6 +166,22 @@
     color: white;
     margin-right: 5rem;
     margin-top: 0.5rem;
+}
+.reply_hint{
+    width: 100px;
+    height: 40px;
+    font-size: 3.5rem;
+    font-weight: 600;
+    background-color: white;
+    font-family: sans-serif;
+    letter-spacing: 0.8rem;
+    padding-left: 10px;
+    position: absolute;
+    left: 2rem;
+    bottom: 80px;
+    border-radius: 30px;
+    line-height: 25px;
+    text-align: center;
 }
 .menu{
     display: flex;
@@ -201,10 +216,16 @@
     height: 100px;
     background-color: rgb(27,119,84);
 }
+.adopt_link:hover{
+    text-decoration: none;
+}
 .menu .profile{   
     width: 33.3%;
     height: 100px;
     background-color: rgb(11,156,101);
+}
+.profile_link:hover{
+    text-decoration: none;
 }
 .menu .weather{
     width: 33.3%;

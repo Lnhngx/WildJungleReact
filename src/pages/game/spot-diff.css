@@ -167,6 +167,10 @@
     border: 2px solid gold;
     border-radius: 50%;
 }
+.list:hover{
+    color: white;
+}
+/* 這是為了抵銷link to 預設的超連結反藍樣式效果 */
 .help {
     text-align: center;
     line-height: 35px;
@@ -193,6 +197,7 @@
     color: white;
     border: 2px solid gold;
     border-radius: 50%;
+    cursor: pointer;
 }
 .hint_count{
     color: white;
