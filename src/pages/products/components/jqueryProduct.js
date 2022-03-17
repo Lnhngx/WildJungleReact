@@ -6,6 +6,9 @@ function JqueryProduct() {
   React.useEffect(() => {
     let page = 0;
     let myInterval = null;
+    const alanWrap = document.querySelector('.alan_wrap')
+    const alanLi =document.querySelectorAll('.alan_li')
+
     $(".iconGroup i").hover(function () {
       page = $(this).index();
       $(this).css("color", "#eb5c37")
@@ -83,21 +86,22 @@ function JqueryProduct() {
           startInterval();
         }
       );
+
   }, []);
   return (
     <>
       <div className="alan_wrap">
         <ul className="alan_img-wrap">
-          <li>
+          <li className="alan_li">
             <img className="main" src="img/product/Sliderpic.jpeg" alt="" />
           </li>
-          <li>
+          <li className="alan_li">
             <img className="main" src="img/product/Sliderpic2.jpeg" alt="" />
           </li>
-          <li>
+          <li className="alan_li">
             <img className="main" src="img/product/Sliderpic3.jpeg" alt="" />
           </li>
-          <li>
+          <li className="alan_li">
             <img className="main" src="img/product/Sliderpic.jpeg" alt="" />
           </li>
         </ul>
