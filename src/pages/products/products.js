@@ -39,9 +39,9 @@ function Products() {
                   <span className="alan_letter">2</span>
                   <span className="alan_letter">0</span>
                   <span className="alan_letter">2</span>
-                  <span className="alan_letter">1</span>
+                  <span className="alan_letter">2</span>
                   <span className="alan_letter">.</span>
-                  <span className="alan_letter">秋</span>
+                  <span className="alan_letter">春</span>
                   <span className="alan_letter">季</span>
                   <span className="alan_letter">重</span>
                   <span className="alan_letter">新</span>

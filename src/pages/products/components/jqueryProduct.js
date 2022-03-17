@@ -3,17 +3,13 @@ import { useEffect } from "react";
 import $ from "jquery";
 
 function JqueryProduct() {
-  React.useEffect(() => {
+  useEffect(() => {
     let page = 0;
     let myInterval = null;
-    const alanWrap = document.querySelector('.alan_wrap')
-    const alanLi =document.querySelectorAll('.alan_li')
 
     $(".iconGroup i").hover(function () {
       page = $(this).index();
-      $(this).css("color", "#eb5c37")
-      .siblings()
-      .css("color", "#c4c4c4");
+      $(this).css("color", "#eb5c37").siblings().css("color", "#c4c4c4");
       const moveX = $(this).index() * -25;
       $(".alan_img-wrap").css("transform", `translateX(${moveX}%)`);
     });
@@ -53,7 +49,7 @@ function JqueryProduct() {
         $("ul.alan_img-wrap")
           .css("transition", "0.5s")
           .css("transform", `translateX(${moveX}%)`);
-
+        $(".main").css("animation-play-state", "running");
         $(".iconGroup i")
           .eq(page === 3 ? 0 : page)
           .css("color", "#eb5c37")
@@ -61,6 +57,7 @@ function JqueryProduct() {
           .css("color", "#c4c4c4");
       }, 2500);
     }
+
     $("ul.alan_img-wrap").on("transitionend", function () {
       if (page >= 3) {
         $("ul.alan_img-wrap")
@@ -70,7 +67,17 @@ function JqueryProduct() {
       }
     });
     startInterval();
-    $(".alan_wrap").hover(
+    $(".slider").hover(
+      function () {
+        clearInterval(myInterval);
+        $(".main").css("animation", "scalepic1 4s");
+      },
+      function () {
+        startInterval();
+        $(".main").css("animation", "scalepic 2.5s infinite");
+      }
+    );
+    $(".iconGroup").hover(
       function () {
         clearInterval(myInterval);
       },
@@ -78,15 +85,6 @@ function JqueryProduct() {
         startInterval();
       }
     );
-    $(".iconGroup").hover(
-        function () {
-          clearInterval(myInterval);
-        },
-        function () {
-          startInterval();
-        }
-      );
-
   }, []);
   return (
     <>
@@ -105,8 +103,7 @@ function JqueryProduct() {
             <img className="main" src="img/product/Sliderpic.jpeg" alt="" />
           </li>
         </ul>
-        <div id="btn-left-area">
-        </div>
+        <div id="btn-left-area"></div>
         <div id="btn-right-area">
           <i className="fas fa-chevron-right"></i>
         </div>
