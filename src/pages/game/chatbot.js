@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
+    const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [userMessage,setUserMessage] = useState([]);
     const [io,setIo] = useState(null);
@@ -17,11 +18,32 @@ function Chatbot(){
             console.log('success connect!')
         }
     },[io])
-    
+    // 每一次開啟機器人的第一句預設問好
+    useEffect(()=>{
+        const sendTime = new Date();
+        const hour = sendTime.getHours();
+        const minute = sendTime.getMinutes();
+        const description = hour >= 12 ? '下午':'上午';
+        const timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+        document.querySelector('.chatbot_time').innerHTML = `${timeNow}`;
+    },[toggleChatbot]);
+    // 機器人的開關
+    function chatbotToggle (toggleChatbot) {
+        const chatot_open = {  
+            display:'block',
+        }
+        const chatot_close = {
+            display:'none',
+        }
+        let result = toggleChatbot ? chatot_open : chatot_close;
+        return result;
+    }    
+
     function SendQuestion(){
         if(myChatbotInput.current.value){
-            userMessage.map((v,i)=>{});
-            let userMessage =  `<div class="user_reply">
+            userMessage.map((v,i)=>{
+                return (
+                    <div class="user_reply">
                                     <div class="user_message">
                                         ${myChatbotInput.current.value}
                                     </div>
@@ -29,7 +51,10 @@ function Chatbot(){
                                         <img src="/img/game/chatbot_avatar.png" alt="" />
                                     </div>
                                     <div class="user_time">00:23</div>
-                                </div>`;
+                    </div>
+                )
+
+            });
             myChatbotInput.current.value = '';
             
             
@@ -37,11 +62,20 @@ function Chatbot(){
     }
     return(
     <>
-        <div className="chatbot_wrap">
+        <div className="chatbot_logo" 
+            onClick={()=>{
+                setToggleChatbot(true)
+            }}
+            style={chatbotToggle(!toggleChatbot)}
+            >
+            <img src="/img/game/chatbot_logo.png" alt="" />
+            </div>
+        <div className="chatbot_wrap" style={chatbotToggle(toggleChatbot)}>
         <div className="chatbot_nav">
             <div className="name">WILDJUNGLE</div>
             <div className="chatbot_close" onClick={()=>{
-                document.querySelector('.chatbot_wrap').style.display = 'none';
+                // document.querySelector('.chatbot_wrap').style.display = 'none';
+                setToggleChatbot(false)
             }}><i className="fas fa-times"></i></div>
             
         </div>
@@ -52,9 +86,9 @@ function Chatbot(){
                 <img src="/img/game/chatbot_avatar.png" alt="" />
             </div>
             <div className="chatbot_message">
-                請問我打這麼多自他會怎麼做換行阿
+                yo~ 我是熊貓<br/>有任何基礎問題可以問我
             </div>
-            <div className="chatbot_time">上午00:20</div>
+            <div className="chatbot_time"></div>
         </div>
 
         <div className="user_reply">
@@ -136,9 +170,9 @@ function Chatbot(){
             </div>
             <div className="chatbot_time">上午00:20</div>
         </div>
-            {/*--------------------------------------------------------------------------*/}
+    {/*------------------------------------------------------------------------------*/}
         </div>
-        {/* menu是浮起來的 */}
+    {/*------------- menu是浮起來的 -----------------*/}
         <div className="menu">
             <div className="book" onClick={()=>{console.log(123456)}}>
                 <div className="icon">
@@ -200,37 +234,34 @@ function Chatbot(){
                 let hour = getTime.getHours();
                 let minute = getTime.getMinutes();
                 let description = hour >= 12 ? '下午':'上午';
-                console.log(description); 
                 let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
                 console.log(myChatbotInput.current.value)
                 if(myChatbotInput.current.value){
                     let newUserMessage = [...userMessage];
                     newUserMessage.push(myChatbotInput.current.value)
                     setUserMessage(newUserMessage);
-                    // let p = document.createElement("div");
-                    // p.outerHTML = `<div className="user_reply">
-                    // //                         <div className="user_message">
-                    // //                             ${myChatbotInput.current.value}
-                    // //                         </div>
-                    // //                         <div className="user_avatar">
-                    // //                             <img src="/img/game/chatbot_avatar.png" alt="" />
-                    // //                         </div>
-                    // //                         <div className="user_time">00:23</div>
-                    // //                     </div>`;
-                    let userMessage =  `<div class="user_reply">
-                                            <div class="user_message">
-                                                ${myChatbotInput.current.value}
-                                            </div>
-                                            <div class="user_avatar">
-                                                <img src="/img/game/chatbot_avatar.png" alt="" />
-                                            </div>
-                                            <div class="user_time">${timeNow}</div>
-                                        </div>`;
+                    let p = document.createElement("div");
+                    p.outerHTML = `<div className="user_reply">
+                                    <div className="user_message">
+                                        ${myChatbotInput.current.value}
+                                    </div>
+                                    <div className="user_avatar">
+                                        <img src="/img/game/chatbot_avatar.png" alt="" />
+                                    </div>
+                                    <div className="user_time">${timeNow}</div>
+                                </div>`;
+                    // let userMessage =  `<div class="user_reply">
+                    //                         <div class="user_message">
+                    //                             ${myChatbotInput.current.value}
+                    //                         </div>
+                    //                         <div class="user_avatar">
+                    //                             <img src="/img/game/chatbot_avatar.png" alt="" />
+                    //                         </div>
+                    //                         <div class="user_time">${timeNow}</div>
+                    //                     </div>`;
                     myChatbotInput.current.value = '';
                     
-                    document.querySelector('.chat_area').innerHTML +=  userMessage;
-
-                    
+                    document.querySelector('.chat_area').innerHTML +=  p;
                 }
             }}>
                 <input className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..." ref={myChatbotInput} />

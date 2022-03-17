@@ -1,3 +1,23 @@
+.chatbot_logo{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid rgb(201, 194, 194);
+    background-color: rgba(235, 91, 55, 0.897);
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.chatbot_logo img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-55%);
+}
 .chatbot_wrap{
     width: 450px;
     height: 700px;
