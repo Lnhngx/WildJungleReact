@@ -11,12 +11,12 @@
     overflow: hidden;
 }
 .chatbot_logo img{
-    width: 70%;
+    width: 100%;
     height: auto;
     position: absolute;
-    top: 5px;
+    top: 10px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-55%);
 }
 .chatbot_wrap{
     width: 450px;
