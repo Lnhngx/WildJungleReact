@@ -16,7 +16,7 @@ const {show,setShow,success}=props;
         Launch static backdrop modal
       </Button> */}
 
-      <Modal
+      <Modal  size='sm'
         show={show}
         // onHide={handleClose}
         backdrop="static"
@@ -26,7 +26,7 @@ const {show,setShow,success}=props;
         {/* <Modal.Header closeButton>
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header> */}
-        <Modal.Body>
+        <Modal.Body className="tysu_modal">
           {success}
         </Modal.Body>
         {/* <Modal.Footer> */}

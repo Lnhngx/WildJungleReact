@@ -394,7 +394,6 @@ input:-webkit-autofill:active,
   opacity: 0.4;
   z-index: -1;
   color: var(--tysu_color);
-  /* background: url(./tysu_img/5603122.svg) 820px / 22% no-repeat; */
 }
 
 .tysu_creditCard {
@@ -488,9 +487,6 @@ input:-webkit-autofill:active,
   margin-right: auto;
 }
 
-/* .tysu_tr .tysu_creditLast {
-  border-bottom: 0;
-} */
 .tysu_btnGroup {
   display: flex;
   justify-content: center;
@@ -581,4 +577,9 @@ input:-webkit-autofill:active,
 }
 .tysu_memberBtnGroup {
   padding-bottom: 7rem;
+}
+
+.tysu_modal {
+  font-size: var(--tysu_fontSize);
+  text-align: center;
 }
