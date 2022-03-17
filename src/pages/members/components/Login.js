@@ -1,5 +1,5 @@
 import React ,{useEffect, useRef,useState} from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import {
   GoogleReCaptchaProvider,
   GoogleReCaptcha
@@ -10,20 +10,20 @@ import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(){
-
+  const history=useHistory();
 
 
   // input欄位
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   
-  const [loading, setLoading] = useState(false);
- 
+  // Modal 顯示是否成功登入
   const [success,setSuccess]=useState('');
   const [show, setShow] = useState(false);
   const handleShow = () =>  {
     setShow(true);
-    setTimeout(() => setShow(false), 700)
+    setTimeout(() => setShow(false), 1000);
+    // history.push('/members/modify-member-info');
   }
 
 
@@ -31,7 +31,6 @@ function Login(){
   useEffect(() => {
     const loadScriptByURL = (id, url, callback) => {
       const isScriptExist = document.getElementById(id);
-
       if (!isScriptExist) {
         var script = document.createElement("script");
         script.type = "text/javascript";
@@ -54,7 +53,6 @@ function Login(){
 
   const handleOnClick = e => {
     e.preventDefault();
-    setLoading(true);
     window.grecaptcha.ready(() => {
       window.grecaptcha.execute(Keys.RECAPTCHA_KEY, { action: 'submit' }).then(token => {
         submitData(token);
@@ -64,7 +62,7 @@ function Login(){
 
   const submitData = token => {
     // call a backend API to verify reCAPTCHA response
-    fetch('http://localhost:4000/members/login', {
+    fetch(Config.TYSU_LOGIN, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -75,7 +73,6 @@ function Login(){
         "g-recaptcha-response": token
       })
     }).then(res => res.json()).then(obj => {
-      setLoading(false);
       console.log(obj);
 
 
@@ -83,6 +80,7 @@ function Login(){
         localStorage.setItem('admin_account',JSON.stringify(obj.account));
         localStorage.setItem('admin_token',obj.token);
         handleShow(setSuccess('登入成功'));
+
         // alert('登入成功');
       }else{
         handleShow(setSuccess(obj.error || '帳號或密碼錯誤'));
@@ -91,6 +89,16 @@ function Login(){
       
     });
   }
+
+
+  // 卸載
+  useEffect(()=>{
+    return()=>{
+      
+  }},[])
+
+
+
 
   
     return(<>
