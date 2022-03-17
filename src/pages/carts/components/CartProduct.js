@@ -1,6 +1,21 @@
 import React from "react";
 import CartProductItem from "./CartProductItem";
-import CartLiveItem from "./CartLiveItem";
+import CartLive from "./CartLive";
+
+const products = [
+  {
+    sid: 1,
+    name: "咖啡色 T-shirt",
+    image: "https://i.imgur.com/1GrakTl.jpg",
+    price: 300,
+  },
+  {
+    sid: 2,
+    name: "黑色 T-shirt",
+    image: "https://i.imgur.com/1GrakTl.jpg",
+    price: 400,
+  },
+];
 
 function CartProduct() {
   return (
@@ -18,7 +33,8 @@ function CartProduct() {
           <li></li>
         </ul>
         {/* <CartProductItem /> */}
-        <CartLiveItem />
+        <CartLive />
+
       </div>
       <div className="stan_block"></div>
     </>
