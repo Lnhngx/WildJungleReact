@@ -85,6 +85,15 @@ function JqueryProduct() {
         startInterval();
       }
     );
+
+    // $(window).scroll(function () {
+    //     console.log("scrollTop", $(window).scrollTop());
+    //     console.log("scrollLeft", $(window).scrollLeft());
+    //     console.log("width", $(window).width());
+    //     console.log("height", $(window).height());
+    //     console.log("body width", $("body").width());
+    //     console.log("body height", $("body").height());
+    // })
    }, []);
   return (
     <>

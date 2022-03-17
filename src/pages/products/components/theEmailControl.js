@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 function EmailControl() {
@@ -17,23 +17,66 @@ function EmailControl() {
       .then(
         (result) => {
           console.log(result.text);
+          alert(result.text);
         },
         (error) => {
           console.log(error.text);
+          alert(error.text);
         }
       );
   };
+  
+  useEffect(() => {
+    const alanEmail= document.getElementById('alan_Email')
+    function emailshow() {
+      if (window.pageYOffset > 875) {
+        alanEmail.style.cssText="display:flex;width: 35%;animation: emailshow 0.8s 1;";
+      }
+    }
+    //   console.log(window.pageYOffset);
+    // (window.pageYOffset > 875)
+    window.addEventListener("scroll", emailshow);
+   
+  }, []);
 
+  function submit() {
+    const sub = document.getElementById("alan_send");
+    sub.click();
+  }
+  
+  function alanDe(){
+    const alanEmail= document.getElementById('alan_Email')
+    alanEmail.style.cssText="display:none";
+}
+  
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input type="text" name="user_name" />
-      <label>Email</label>
-      <input type="email" name="user_email" />
-      <label>Message</label>
-      <textarea name="message" />
-      <input type="submit" value="Send" />
-    </form>
+    <>
+      <div className="alan_Email" id="alan_Email">
+        <form className="alan_form" ref={form} onSubmit={sendEmail}>
+          <span className="alan_email_title">取得紅利以及最新消息！</span>
+          <span className="alan_email_content">輸入您的Email取得優惠券發放資格，你將收到紅利反饋的折扣郵件！新品優惠將定期推送給您！</span>
+          
+          <div className="alan_emailSend">
+            <input
+              className="alan_emailinput"
+              type="email"
+              name="user_email"
+              placeholder="Email address"
+            />
+            <i className="far fa-envelope" onClick={submit}></i>
+            <input
+              className="alan_send"
+              id="alan_send"
+              type="submit"
+              value="Send"
+            />
+          </div>
+          <span className="alan_email_alert">將會發放折扣至您信箱，價值最高可折抵300元。<br/>點擊送出表示您同意我們的隱私權政策。</span>
+        </form>
+        <img className="alan_emailimg" src="/img/product/email.jpeg" alt="" />
+        <i className="fas fa-times alan_de" onClick={alanDe}></i>
+      </div>
+    </>
   );
 }
 
