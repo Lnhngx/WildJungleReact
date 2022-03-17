@@ -11,6 +11,7 @@ import { CarouselData } from "./components/productCarouselData";
 
 function ProductsDetail() {
   const [tabIndex, setTabIndex] = useState(0);
+  const [total, setTotal] = useState(0);
   return (
     <>
       <style jsx="true">{`
@@ -77,9 +78,11 @@ function ProductsDetail() {
           <div className="alan_productButtonGroup">
             <div className="alan_quantityGroup">
               <div className="alan_quantity">
-                <button>-</button>
-                <span>1</span>
-                <button>+</button>
+                <button onClick={() => (total < 1 ? 1 : setTotal(total - 1))}>
+                  -
+                </button>
+                <span>{total + 1}</span>
+                <button onClick={() => setTotal(total + 1)}>+</button>
               </div>
               <div className="alan_hashlikedesk">
                 <Link to="">

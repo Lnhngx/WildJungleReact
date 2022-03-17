@@ -561,11 +561,24 @@ ul.slider-dots {
 @keyframes emailshow {
   0%{
     width: 0%;
+    opacity: 0;
   }
   100%{
     width: 35%;
+    opacity: 1;
   }
 }
+
+// @keyframes emailshow1{
+//   0%{
+//     width: 35%;
+//     opacity: 1;
+//   }
+//   100%{
+//     width: 0%;
+//     opacity: 0;   
+//   }
+// }
 
 .alan_form {
   margin: 30px;
