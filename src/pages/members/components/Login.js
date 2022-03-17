@@ -5,12 +5,12 @@ import {
   GoogleReCaptcha
 } from "react-google-recaptcha-v3";
 
+import MemberModal from './MemberModal';
 import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(){
-  // 資料庫的資料
-  const [data,setData]=useState([]);
+
 
 
   // input欄位
@@ -18,7 +18,14 @@ function Login(){
   const [password,setPassword]=useState('');
   
   const [loading, setLoading] = useState(false);
-  // const [token, setToken] = useState(null);
+ 
+  const [success,setSuccess]=useState('');
+  const [show, setShow] = useState(false);
+  const handleShow = () =>  {
+    setShow(true);
+    setTimeout(() => setShow(false), 700)
+  }
+
 
   // 掛載
   useEffect(() => {
@@ -75,44 +82,21 @@ function Login(){
       if(obj.success){
         localStorage.setItem('admin_account',JSON.stringify(obj.account));
         localStorage.setItem('admin_token',obj.token);
-        alert('登入成功');
+        handleShow(setSuccess('登入成功'));
+        // alert('登入成功');
       }else{
-        alert(obj.error || '登入失敗');
+        handleShow(setSuccess(obj.error || '帳號或密碼錯誤'));
+        // alert(obj.error || '登入失敗');
       }
       
     });
   }
 
-
-
-
-
-  // async function sendForm(event){
-  //   event.preventDefault();
-    
-
-  // }
-  
-  
-
-
-
-
-  useEffect(() => {
-    // submitData();
-// getData();
-
-      
-  }, []);
-  
-  
-  
-
   
     return(<>
     <h1 className="tysu_h1">LOGIN</h1>
     <GoogleReCaptchaProvider reCaptchaKey={Keys.RECAPTCHA_KEY}>
-    <form name="form1" onSubmit={(event)=>{}} id="tysu_form">
+    <form name="form1" id="tysu_form">
       <table>
         <tbody>
           <tr className="tysu_tr">
@@ -145,6 +129,7 @@ function Login(){
                     <i className="fas fa-user-plus"></i>SIGN UP</Link>
                   <Link to="#/" className="tysu_helpText">
                     <i className="fas fa-question"></i>HELP</Link>
+                    <MemberModal show={show} setShow={setShow} success={success} />
                 </div>
               </div>
             </td>

@@ -1,0 +1,263 @@
+$ning-color1: #eb5c37;
+$ning-color2: #f9b112;
+$ning-color3: #ffffff;
+$ning-color4: #000000;
+$ning-color5: #1b7754;
+$ning-chinesefont: "Noto Sans", sans-serif;
+$ning-englishont: "Playfair Display", serif;
+
+@mixin mobile {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .mb_container {
+    padding: 0 30px;
+  }
+
+  .loding_titlebox {
+    width: 100%;
+    height: 60vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .loding_title {
+    width: 100%;
+    text-align: center;
+    h2 {
+      font-family: $ning-englishont;
+      font-weight: 600;
+      font-size: 4rem;
+      margin-top: 50%;
+    }
+
+    p {
+      width: 100%;
+      font-family: $ning-chinesefont;
+      color: $ning-color4;
+      word-wrap: normal;
+      white-space: pre-wrap;
+      font-size: 1rem;
+      line-height: 2rem;
+      margin-top: 8%;
+    }
+  }
+
+  .lodging_ocean,
+  .lodging_ice,
+  .lodging_nocturnal,
+  .lodging_tropical {
+    margin-top: 30%;
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  .lodging_ocean img,
+  .lodging_ice img,
+  .lodging_nocturnal img,
+  .lodging_tropical img {
+    width: 100%;
+  }
+
+  .lodging_oceanname,
+  .lodging_oceantitle h4,
+  .lodging_icename,
+  .lodging_icetitle h4,
+  .lodging_nocturnalname,
+  .lodging_nocturnaltitle h4,
+  .lodging_tropicalname,
+  .lodging_tropicaltitle h4 {
+    display: none;
+  }
+
+  .lodging_oceantitle,
+  .lodging_icetitle,
+  .lodging_nocturnaltitle,
+  .lodging_tropicaltitle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+    h1 {
+      font-family: $ning-chinesefont;
+      color: $ning-color4;
+      font-size: 2.4rem;
+      font-weight: 400;
+    }
+
+    .lodging_oceanprice , .lodging_iceprice , .lodging_nocturnalprice, .lodging_tropicalprice{
+      p {
+        display: none;
+      }
+      h3 {
+        font-family: $ning-chinesefont;
+        color: $ning-color4;
+        font-size: 2.4rem;
+        font-weight: 500;
+      }
+      span {
+        font-family: $ning-chinesefont;
+        color: $ning-color4;
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .lodging_oceanlist1,
+  .lodging_oceanlist2,
+  .lodging_oceanlist3,
+  .lodging_oceanlist4,
+  .lodging_icelist1,
+  .lodging_icelist2,
+  .lodging_icelist3,
+  .lodging_icelist4,
+  .lodging_nocturnallist1,
+  .lodging_nocturnallist2,
+  .lodging_nocturnallist3,
+  .lodging_nocturnallist4,
+  .lodging_tropicallist1,
+  .lodging_tropicallist2,
+  .lodging_tropicallist3,
+  .lodging_tropicallist4 {
+    display: none;
+  }
+
+  .lodging_oceanwrap button,
+  .lodging_icewrap button,
+  .lodging_nocturnalwrap button,
+  .lodging_tropicalwrap button {
+    width: 100%;
+    height: 50px;
+    background-color: $ning-color4;
+    font-family: $ning-chinesefont;
+    color: $ning-color3;
+    font-size: 1.2rem;
+    font-weight: 400;
+    border-radius: 0;
+    margin-top: 10%;
+  }
+
+  .ocean_introducebox h2 {
+    font-family: $ning-chinesefont;
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 10%;
+  }
+
+  .ocean_introduce {
+    display: flex;
+    align-items: center;
+    margin-top: 20%;
+
+    h2 {
+      font-family: $ning-chinesefont;
+      font-size: 2rem;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .ocean_score {
+      width: 30px;
+      height: 30px;
+      background-color: $ning-color2;
+      border-radius: 5px 5px 5px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 40%;
+
+      p {
+        font-family: $ning-chinesefont;
+        font-size: 1.6rem;
+        color: $ning-color3;
+        margin: 0;
+      }
+    }
+    p {
+      font-family: $ning-chinesefont;
+      font-size: 1.4rem;
+      color: #777;
+      margin: 0;
+      margin-left: 25%;
+    }
+  }
+
+  .ocean_introducetext {
+    width: 100%;
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    color: $ning-color4;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    margin-top: 10%;
+    line-height: 160%;
+    font-weight: 400;
+  }
+
+  .ocean_equipment {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15%;
+  }
+
+  .ocean_bath,
+  .ocean_other {
+    width: 50%;
+  }
+
+  .ocean_bathtitle,
+  .ocean_othertitle {
+    font-family: $ning-chinesefont;
+    font-size: 1.6rem;
+    color: $ning-color2;
+    border-left: 10px solid $ning-color2;
+    padding: 0 3%;
+    line-height: 1.6rem;
+    margin-top: 15%;
+  }
+
+  .ocean_bathtext,
+  .ocean_othertext {
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    margin-top: 8%;
+    line-height: 2.8rem;
+  }
+
+  .ocean_introduceicon {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    figure {
+      width: 25%;
+      border-left: 1px solid #777;
+      padding: 3% 3%;
+      margin: 2% 0;
+      font-family: $ning-chinesefont;
+    }
+
+    figure:nth-child(4),
+    figure:nth-child(8),
+    figure:nth-child(12),
+    figure:nth-child(14) {
+      border-right: 1px solid #777;
+    }
+
+    img {
+      width: 80%;
+    }
+
+    fieldset {
+      margin-top: 20%;
+      font-size: 1.2rem;
+    }
+  }
+}

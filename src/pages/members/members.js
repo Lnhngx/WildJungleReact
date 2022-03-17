@@ -7,7 +7,7 @@ import ForgotPass from './components/ForgotPass.js'
 import ForgotPassChange from './components/ForgotPassChange.js'
 import MemberList from './components/MemberList.js'
 
-import './../members/tysu.css'
+import './../members/tysu.scss'
 import './../members/members.css'
 
 

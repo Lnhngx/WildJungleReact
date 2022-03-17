@@ -1,6 +1,7 @@
 import React from "react";
 import CartProductItem from "./CartProductItem";
-import CartLiveItem from "./CartLiveItem";
+import CartLive from "./CartLive";
+
 
 function CartProduct() {
   return (
@@ -18,7 +19,8 @@ function CartProduct() {
           <li></li>
         </ul>
         {/* <CartProductItem /> */}
-        <CartLiveItem />
+        <CartLive />
+
       </div>
       <div className="stan_block"></div>
     </>
