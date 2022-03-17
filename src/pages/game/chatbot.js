@@ -54,6 +54,7 @@ function Chatbot(){
             }}
             style={chatbotToggle(!toggleChatbot)}
             >
+            <img src="/img/game/chatbot_logo.png" alt="" />
             </div>
         <div className="chatbot_wrap" style={chatbotToggle(toggleChatbot)}>
         <div className="chatbot_nav">
