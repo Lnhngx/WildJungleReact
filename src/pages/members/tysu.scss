@@ -26,11 +26,11 @@
 .tysu_contain {
   min-height: 100vh;
   font-size: var(--tysu_fontSize);
-}
-.tysu_row {
-  max-width: 830px;
 
-  margin: 0 auto;
+  > .tysu_row {
+    max-width: 830px;
+    margin: 0 auto;
+  }
 }
 
 .tysu_h1 {
@@ -107,6 +107,7 @@
   width: calc(100% - 1.8rem);
   height: 4.16rem;
   margin: var(--tysu_inputMargin);
+  font-family: "Noto Sans TC", sans-serif;
   font-size: var(--tysu_fontSize);
   outline: none;
   background-color: transparent;
@@ -287,6 +288,7 @@ input:-webkit-autofill:active,
   width: 100%;
   padding-top: 120px;
   overflow: hidden;
+  // height: 100vh;
   margin-right: 0;
 }
 .tysu_gradeImg {
@@ -392,7 +394,6 @@ input:-webkit-autofill:active,
   opacity: 0.4;
   z-index: -1;
   color: var(--tysu_color);
-  /* background: url(./tysu_img/5603122.svg) 820px / 22% no-repeat; */
 }
 
 .tysu_creditCard {
@@ -486,9 +487,6 @@ input:-webkit-autofill:active,
   margin-right: auto;
 }
 
-/* .tysu_tr .tysu_creditLast {
-  border-bottom: 0;
-} */
 .tysu_btnGroup {
   display: flex;
   justify-content: center;
@@ -576,4 +574,12 @@ input:-webkit-autofill:active,
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.tysu_memberBtnGroup {
+  padding-bottom: 7rem;
+}
+
+.tysu_modal {
+  font-size: var(--tysu_fontSize);
+  text-align: center;
 }

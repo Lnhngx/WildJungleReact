@@ -1,9 +1,12 @@
-import React from "react";
+import {React} from "react";
 import { Link } from "react-router-dom";
 import * as Scroll from 'react-scroll';
 import {Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import {LotteryContext} from '../App';
+import { useContext } from "react";
 
-const fixedRight = () => {
+const FixedRight = () => {
+  const {toggleLottery,setToggleLottery} = useContext(LotteryContext);
   return (
     <>
       <div className="ning_rightflex">
@@ -16,12 +19,7 @@ const fixedRight = () => {
           </div>
         </Link>
         <div className="ning_game" onClick={()=>{
-            let opened = false;
-            if(opened){
-              document.querySelector('.lottery_container').style.display = 'block'
-            }else{
-              document.querySelector('.lottery_container').style.display = 'block'
-            }
+            setToggleLottery(true);
             }}>
             <div className="ning_gameicon">
               <span className="material-icons">sports_esports</span>
@@ -42,4 +40,4 @@ const fixedRight = () => {
   );
 };
 
-export default fixedRight;
+export default FixedRight;

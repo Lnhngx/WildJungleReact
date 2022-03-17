@@ -64,6 +64,45 @@ $ning-englishont: "Playfair Display", serif;
     object-fit: cover;
     position: absolute;
   }
+  .lodging_oceanimgwrap {
+    width: 30%;
+    position: absolute;
+    display: flex;
+    outline: 1px solid red;
+  }
+
+  .lodging_oceanimg1 {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .lodging_oceanimg2 {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+   .lodging_oceanimg3 {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   .lodging_oceanname {
     font-size: 5rem;
@@ -141,6 +180,11 @@ $ning-englishont: "Playfair Display", serif;
       font-family: $ning-chinesefont;
       font-size: 1.2rem;
       font-weight: 400;
+    }
+
+    input:focus {
+      border-color: $ning-color2;
+      box-shadow: 0 0 0 #ffffff00;
     }
 
     button {
@@ -419,6 +463,11 @@ $ning-englishont: "Playfair Display", serif;
       font-weight: 400;
     }
 
+    input:focus {
+      border-color: $ning-color2;
+      box-shadow: 0 0 0 #ffffff00;
+    }
+
     button {
       width: 60%;
       height: 50px;
@@ -542,6 +591,11 @@ $ning-englishont: "Playfair Display", serif;
       font-family: $ning-chinesefont;
       font-size: 1.2rem;
       font-weight: 400;
+    }
+
+    input:focus {
+      border-color: $ning-color2;
+      box-shadow: 0 0 0 #ffffff00;
     }
 
     button {
@@ -668,8 +722,13 @@ $ning-englishont: "Playfair Display", serif;
       font-weight: 400;
     }
 
+    input:focus {
+      border-color: $ning-color2;
+      box-shadow: 0 0 0 #ffffff00;
+    }
+
     button {
-      width: 50%;
+      width: 60%;
       height: 50px;
       background-color: $ning-color4;
       color: $ning-color3;
@@ -722,7 +781,9 @@ $ning-englishont: "Playfair Display", serif;
       left: 40%;
     }
   }
-  button:hover {
-    background-color: $ning-color2;
+  .lodging_tropicalwrap {
+    button:hover {
+      background-color: $ning-color2;
+    }
   }
 }

@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./lodging.scss";
 import "./lodging_mb.scss";
 
-function lodging() {
+function Lodging() {
+  const [oceanbox, setOceanbox] = useState(0);
+  const [icebox, setIcebox] = useState(0);
+  const [nocturnalbox, setNocturnalbox] = useState(0);
+  const [tropicalbox, setTropicalbox] = useState(0);
+
+  const oceanPush = () => {
+    setOceanbox(oceanbox === 0 ? 1 : oceanbox - 1);
+  };
+  const icePush = () => {
+    setIcebox(icebox === 0 ? 1 : icebox - 1);
+  };
+  const nocturnalPush = () => {
+    setNocturnalbox(nocturnalbox === 0 ? 1 : nocturnalbox - 1);
+  };
+  const tropicalPush = () => {
+    setTropicalbox(tropicalbox === 0 ? 1 : tropicalbox - 1);
+  };
+
   return (
     <>
       <div className="container mb_container">
@@ -22,8 +40,22 @@ function lodging() {
       </div>
       <div className="lodging_ocean">
         <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" />
+        <div className="lodging_oceanimgwrap">
+          <div className="lodging_oceanimg1">
+            <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" />
+          </div>
+          <div className="lodging_oceanimg2">
+            <img src="img/lodging/ocean_style/oceanstyle02.jpg" alt="" />
+          </div>
+          <div className="lodging_oceanimg3">
+            <img src="img/lodging/ocean_style/oceanstyle03.jpg" alt="" />
+          </div>
+        </div>
         <span className="lodging_oceanname">Ocean Style</span>
-        {/* <div className="lodging_oceanbox">
+        <div
+          className="lodging_oceanbox"
+          style={{ visibility: oceanbox === 1 && "hidden" }}
+        >
           <div className="lodging_oceanwrap">
             <div className="lodging_oceantitle">
               <h4>Ocean Style</h4>
@@ -48,13 +80,18 @@ function lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn">更多細節</button>
+            <button className="btn" onClick={oceanPush}>
+              更多細節
+            </button>
           </div>
-        </div> */}
+        </div>
 
         {/* click 海洋房 */}
 
-        <div className="lodging_oceanbox">
+        <div
+          className="lodging_oceanbox"
+          style={{ visibility: oceanbox === 0 && "hidden" }}
+        >
           <div className="lodging_oceanwrap">
             <div className="lodging_oceantitle">
               <h4>Ocean Style</h4>
@@ -83,7 +120,10 @@ function lodging() {
         {/* click 海洋房 */}
       </div>
 
-      <div className="container mb_container">
+      <div
+        className="container mb_container"
+        style={{ display: oceanbox === 0 && "none" }}
+      >
         <div className="lodging_oceandetail">
           <div className="ocean_introducebox">
             <div className="ocean_introduce">
@@ -201,10 +241,10 @@ function lodging() {
         </div>
       </div>
 
-      <div className="lodging_ice">
+      <div className="lodging_ice" C>
         <img src="img/lodging/icefield_style/ice_style01.jpeg" alt="" />
         <span className="lodging_icename">IceField Style</span>
-        {/* <div className="lodging_icebox">
+        <div className="lodging_icebox">
           <div className="lodging_icewrap">
             <div className="lodging_icetitle">
               <h4>IceField Style</h4>
@@ -229,13 +269,18 @@ function lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn">更多細節</button>
+            <button className="btn" onClick={icePush}>
+              更多細節
+            </button>
           </div>
-        </div> */}
+        </div>
 
         {/* click 冰原房 */}
         <div className="lodging_iceboxclick">
-          <div className="lodging_icebox">
+          <div
+            className="lodging_icebox"
+            style={{ visibility: icebox === 0 && "hidden" }}
+          >
             <div className="lodging_icewrap">
               <div className="lodging_icetitle">
                 <h4>IceField Style</h4>
@@ -265,7 +310,10 @@ function lodging() {
         {/* click 冰原房 */}
       </div>
 
-      <div className="container mb_container">
+      <div
+        className="container mb_container"
+        style={{ display: icebox === 0 && "none" }}
+      >
         <div className="lodging_oceandetail">
           <div className="ocean_introducebox">
             <div className="ocean_introduce">
@@ -386,7 +434,10 @@ function lodging() {
       <div className="lodging_nocturnal">
         <img src="img/lodging/nocturnal_style/nocturnal_style01.jpeg" alt="" />
         <span className="lodging_nocturnalname">Nocturnal Style</span>
-        {/* <div className="lodging_nocturnalbox">
+        <div
+          className="lodging_nocturnalbox"
+          style={{ visibility: nocturnalbox === 1 && "hidden" }}
+        >
           <div className="lodging_nocturnalwrap">
             <div className="lodging_nocturnaltitle">
               <h4>Nocturnal Style</h4>
@@ -411,13 +462,18 @@ function lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn">更多細節</button>
+            <button className="btn" onClick={nocturnalPush}>
+              更多細節
+            </button>
           </div>
-        </div> */}
+        </div>
 
         {/* click 夜行房 */}
         <div className="lodging_nocturnalboxclick">
-          <div className="lodging_nocturnalbox">
+          <div
+            className="lodging_nocturnalbox"
+            style={{ visibility: nocturnalbox === 0 && "hidden" }}
+          >
             <div className="lodging_nocturnalwrap">
               <div className="lodging_nocturnaltitle">
                 <h4>Nocturnal Style</h4>
@@ -447,7 +503,10 @@ function lodging() {
         {/* click 夜行房 */}
       </div>
 
-      <div className="container mb_container">
+      <div
+        className="container mb_container"
+        style={{ display: nocturnalbox === 0 && "none" }}
+      >
         <div className="lodging_oceandetail">
           <div className="ocean_introducebox">
             <div className="ocean_introduce">
@@ -569,7 +628,10 @@ function lodging() {
         <img src="img/lodging/tropical_style/tropical_style01.jpeg" alt="" />
         <span className="lodging_tropicalname">Tropical Style</span>
 
-        {/* <div className="lodging_tropicalbox">
+        <div
+          className="lodging_tropicalbox"
+          style={{ visibility: tropicalbox === 1 && "hidden" }}
+        >
           <div className="lodging_tropicalwrap">
             <div className="lodging_tropicaltitle">
               <h4>Tropical Style</h4>
@@ -594,13 +656,18 @@ function lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn">更多細節</button>
+            <button className="btn" onClick={tropicalPush}>
+              更多細節
+            </button>
           </div>
-        </div> */}
+        </div>
 
         {/* click 熱帶房 */}
         <div className="lodging_tropicalboxclick">
-          <div className="lodging_tropicalbox">
+          <div
+            className="lodging_tropicalbox"
+            style={{ visibility: tropicalbox === 0 && "hidden" }}
+          >
             <div className="lodging_tropicalwrap">
               <div className="lodging_tropicaltitle">
                 <h4>Tropical Style</h4>
@@ -630,7 +697,10 @@ function lodging() {
         {/* click 冰原房 */}
       </div>
 
-      <div className="container mb_container">
+      <div
+        className="container mb_container"
+        style={{ display: tropicalbox === 0 && "none" }}
+      >
         <div className="lodging_oceandetail">
           <div className="ocean_introducebox">
             <div className="ocean_introduce">
@@ -751,4 +821,4 @@ function lodging() {
   );
 }
 
-export default lodging;
+export default Lodging;
