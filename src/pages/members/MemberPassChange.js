@@ -2,7 +2,7 @@ import React from "react";
 
 import ForgotPassChange from './components/ForgotPassChange.js'
 
-import './../members/tysu.css'
+import './../members/tysu.scss'
 import './../members/members.css'
 
 function MemberPassChange(){

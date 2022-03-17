@@ -2,7 +2,7 @@ import React from "react";
 
 import Signup from './components/Signup.js'
 
-import './../members/tysu.css'
+import './../members/tysu.scss'
 import './../members/members.css'
 
 function MemberSignUp(){
