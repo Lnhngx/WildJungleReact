@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./scss/products.scss";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
-import JqueryProduct from "./components/jqueryProduct"
+import JqueryProduct from "./components/jqueryProduct";
 import EmailControl from "./components/theEmailControl";
-
-
 
 const Range = Slider;
 
@@ -20,13 +18,14 @@ function Products() {
   //   adTitle.addEventListener("click", () => {
   //     console.log(1);
   //   });
- 
+
   //   return () => {
   //     adTitle.removeEventListener("click", () => {
   //       console.log(1);
   //     });
   //   };
   // }, []);
+
 
   return (
     <>
