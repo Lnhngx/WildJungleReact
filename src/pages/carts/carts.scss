@@ -242,6 +242,7 @@ $stan_height: 50px;
   width: 60%;
   height: auto; //暫時
   background-color: $stan_white;
+  position: relative;
 
   @include mobile {
     width: 100%;
@@ -343,7 +344,6 @@ $stan_height: 50px;
   width: 100%;
   font-weight: 600;
   text-align: center;
-
   @include mobile {
     padding: 0px;
   }
@@ -451,7 +451,7 @@ $stan_height: 50px;
       text-align: center;
 
       .stan_btnicon {
-        line-height: 28px;
+        line-height: 25px;
       }
     }
   }
@@ -933,3 +933,73 @@ $stan_height: 50px;
 //
 //
 // -------------------------購物車第三頁-------------------------
+
+
+
+
+
+
+// .stan_product_main {
+//   width: 700px;
+//   margin: 30px auto;
+//   position:relative;
+// }
+
+// input[type=radio] {
+//   display: none;
+// }
+
+// .stan_product_space {
+//   width: 640px;
+//   height: auto;
+//   background-color: #eee;
+//   display: block;
+//   z-index: 1;
+//   opacity: 0;
+// }
+
+// .stan_page_tab {
+//   display:inline-block;
+// }
+
+
+// .stan_page_tab label {
+//   background: #eee;
+//   padding: 10px 10px 9px 10px;
+//   border: 1px solid #ccc;
+//   border-bottom: none;
+//   margin-left: -1px;
+//   position: relative;
+//   left: 1px;
+//   cursor:pointer;
+
+//   font-size: 16px;
+//   font-weight: 600;
+// }
+
+// .stan_page_tab [type=radio] {
+//   display: none;
+// }
+
+// .stan_product_space {
+//   position: absolute;
+//   top: 28px;
+//   left: 0;
+//   background: white;
+//   right: 0;
+//   bottom: 0;
+//   padding: 20px;
+//   border: 1px solid #ccc;
+//   transition: opacity 1s;
+// }
+
+// [type=radio]:checked ~ label {
+//   background-color: white;
+//   z-index: 20;
+// }
+
+// [type=radio]:checked ~ .stan_product_space {
+//   z-index: 12;
+//   opacity: 1.0;
+//   transition: opacity 1s;
+// }

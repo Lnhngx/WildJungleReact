@@ -39,7 +39,7 @@ function Lodging() {
         </div>
       </div>
       <div className="lodging_ocean">
-        <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" />
+        <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" className="lodging_oceanimg"/>
         <div className="lodging_oceanimgwrap">
           <div className="lodging_oceanimg1">
             <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" />
