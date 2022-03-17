@@ -425,3 +425,11 @@
     top: 100px;
     left: 100px;
 } */
+@media (min-width:701px) and (max-width:1400px) {
+    .spot_container{
+        margin-bottom: -280px;
+    }
+    .animals-footer{
+        margin-top: 150px;
+    }
+}

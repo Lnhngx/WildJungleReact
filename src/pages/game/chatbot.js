@@ -6,6 +6,7 @@ import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
     const [toggleMenu,setToggleMenu] = useState(false); 
+    const [userMessage,setUserMessage] = useState([]);
     const [io,setIo] = useState(null);
     const myChatbotInput = useRef(null);
     const connectWebSocket = ()=>{
@@ -17,9 +18,23 @@ function Chatbot(){
         }
     },[io])
     
-    // function SendQuestion(){
-
-    // }
+    function SendQuestion(){
+        if(myChatbotInput.current.value){
+            userMessage.map((v,i)=>{});
+            let userMessage =  `<div class="user_reply">
+                                    <div class="user_message">
+                                        ${myChatbotInput.current.value}
+                                    </div>
+                                    <div class="user_avatar">
+                                        <img src="/img/game/chatbot_avatar.png" alt="" />
+                                    </div>
+                                    <div class="user_time">00:23</div>
+                                </div>`;
+            myChatbotInput.current.value = '';
+            
+            
+        }
+    }
     return(
     <>
         <div className="chatbot_wrap">
@@ -137,16 +152,16 @@ function Chatbot(){
                 </div>
                 <div className="text">我的優惠</div>
             </div>
-           
+
             <div className="adopt">
-            <Link to="/carts">
+            <Link to="/activity">
                 <div className="icon">
                     <i className="fas fa-paw"></i>
                 </div>
                 <div className="text">明星動物</div> 
             </Link>
             </div>
-            
+
             <div className="profile">
                 <div className="icon">
                     <i className="fas fa-search"></i>
@@ -181,10 +196,17 @@ function Chatbot(){
             <form onSubmit={(e)=>{
                 // 一樣持有按button與按鍵盤Enter就submit的功能，只是我阻止預設送出刷新頁面
                 e.preventDefault();
-                // let timeNow = '';
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                console.log(description); 
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
                 console.log(myChatbotInput.current.value)
                 if(myChatbotInput.current.value){
-                    
+                    let newUserMessage = [...userMessage];
+                    newUserMessage.push(myChatbotInput.current.value)
+                    setUserMessage(newUserMessage);
                     // let p = document.createElement("div");
                     // p.outerHTML = `<div className="user_reply">
                     // //                         <div className="user_message">
@@ -202,7 +224,7 @@ function Chatbot(){
                                             <div class="user_avatar">
                                                 <img src="/img/game/chatbot_avatar.png" alt="" />
                                             </div>
-                                            <div class="user_time">00:23</div>
+                                            <div class="user_time">${timeNow}</div>
                                         </div>`;
                     myChatbotInput.current.value = '';
                     

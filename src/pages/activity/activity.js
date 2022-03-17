@@ -9,17 +9,17 @@ for (let i = 0; i < WIDTH; i++) {
     datas[i] = [];
     for (let j = 0; j < HEIGHTT; j++) {
         datas[i].push(
-            <img src="/img/activity/chair.svg" alt="" />
+            1
         );
     }
 }
-// console.log(datas)
+
 
 const renderSeats = () => {
     return datas.map((data, i) => (
         <div className="styleFlex">
-            {data.map(() => (
-                <img className="seats" src="/img/activity/chair.svg" alt="" />
+            {data.map((v, j) => (
+                <img onClick={() => { alert(i + ' ' + j) }} className="seats" src="/img/activity/chair.svg" alt="" />
             ))}
         </div>
     ));
@@ -105,7 +105,7 @@ function activity() {
                         </div>
                     </div>
                     {/*01結束*/}
-                    <div className="terry_spomsor_area">
+                    <div className="terry_sponsor_area">
                         <div className="terry_show_area_textArea">
                             <div className="terry_01">02</div>
                             <div className="terry_title_grop">
@@ -185,6 +185,63 @@ function activity() {
                             </div>
                         </div>
                     </div>
+
+                    <div className="terry_sponsor_planSelectionArea">
+                        <div className="demoArea">
+                            <div className="imgBorder">
+                                <img src="/img/activity/animalBorder.svg" alt="" />
+                                <div className="animalName">Eagle</div>
+                            </div>
+                            <div className="animalImg">
+                                <img src="/img/home/star_eagle.png" alt="" />
+                            </div>
+                        </div>
+                        <div className="introduction_area">
+                            <div className="sponsor_introductionText3">我是動物園的明星動物之一，老鷹！感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意，感恩的心，平安喜樂。</div>
+                            <div className="sponsorSelect">
+                                <select>
+                                    <option>選擇方案</option>
+                                </select>
+                                <select>
+                                    <option>選擇金額</option>
+                                </select>
+                            </div>
+                            <div className="buttonGrop">
+                                <button>加入購物車</button>
+                                <button>回上一步</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/*02結束*/}
+                    <div className="terry_sponsor_area">
+                        <div className="terry_show_area_textArea">
+                            <div className="terry_01">03</div>
+                            <div className="terry_title_grop">
+                                <div className="terry_show_title1">Animal</div>
+                                <div className="terry_show_title2">Touch.</div>
+                                <div className="terry_show_subtitle">動物接觸</div>
+                            </div>
+                            <div className="terry_show_viewmore">View More</div>
+                        </div>
+                        <div className="terry_show_area_img">
+                            <img src="/img/activity/touch1.jpg" alt="" />
+                        </div>
+                    </div>
+
+                    <div className="terry_touch_imgArea">
+                        <div className="imgAndNameGrop">
+                            <img src="/img/activity/touchshow1.jpeg" alt="" />
+                            <div className="name">海狗互動秀</div>
+                        </div>
+                        <div className="imgAndNameGrop">
+                            <img src="/img/activity/touchshow2.jpg" alt="" />
+                            <div className="name">萌兔餵食體驗</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="terry_animalImg_Area">
+                    <img src="/animals-footer.png" alt="" />
                 </div>
             </div>
         </>)

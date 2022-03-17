@@ -227,3 +227,64 @@
     text-decoration: none;
     color: #eb5c37;
 }
+@media (min-width:701px) and (max-width:1400px) {
+    .game_container{
+        margin-bottom: -280px;
+    }
+    .gameChoose_zone{
+        width: 700px;
+        margin-top: 18rem;
+    }
+    .choose_spotGame{
+        width: 320px;
+        height: 320px;
+        margin-bottom: 3rem;
+    }
+    .choose_psychoGame{
+        width: 320px;
+        height: 320px;
+        margin-bottom: 3rem;
+    }
+    .choose_crossGame{
+        width: 320px;
+        height: 320px;
+    }
+    .choose_iceGame{
+        width: 320px;
+        height: 320px;   
+    }
+    .animals-footer{
+        margin-top: 150px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .game_container{
+        margin-bottom: -168px;
+    }
+    .gameChoose_zone{
+        width: 375px;
+        margin-top: 40rem;
+    }
+    .choose_spotGame{
+        width: 320px;
+        height: 320px;
+        margin-bottom: 3rem;
+    }
+    .choose_psychoGame{
+        width: 320px;
+        height: 320px;
+        margin-bottom: 3rem;
+    }
+    .choose_crossGame{
+        width: 320px;
+        height: 320px;
+    }
+    .choose_iceGame{
+        width: 320px;
+        height: 320px;   
+    }
+    .animals-footer{
+        margin-top: 400px;
+    }
+}

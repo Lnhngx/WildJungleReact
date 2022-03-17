@@ -42,7 +42,6 @@ function Cart02filloutform() {
             <div className="stan_h3">收件人資料</div>
           </div>
           <Deliveryhome />
-          <></>
           {/* <Deliveryconvenient /> */}
 
           <div className="stan_fof_btn">
