@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
+    const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [userMessage,setUserMessage] = useState([]);
     const [io,setIo] = useState(null);
@@ -17,7 +18,17 @@ function Chatbot(){
             console.log('success connect!')
         }
     },[io])
-    
+    function chatbotToggle (toggleChatbot) {
+        const chatot_open = {  
+            display:'block',
+        }
+        const chatot_close = {
+            display:'none',
+        }
+        let result = toggleChatbot ? chatot_open : chatot_close;
+        return result;
+    }    
+
     function SendQuestion(){
         if(myChatbotInput.current.value){
             userMessage.map((v,i)=>{});
@@ -37,11 +48,19 @@ function Chatbot(){
     }
     return(
     <>
-        <div className="chatbot_wrap">
+        <div className="chatbot_logo" 
+            onClick={()=>{
+                setToggleChatbot(true)
+            }}
+            style={chatbotToggle(!toggleChatbot)}
+            >
+            </div>
+        <div className="chatbot_wrap" style={chatbotToggle(toggleChatbot)}>
         <div className="chatbot_nav">
             <div className="name">WILDJUNGLE</div>
             <div className="chatbot_close" onClick={()=>{
-                document.querySelector('.chatbot_wrap').style.display = 'none';
+                // document.querySelector('.chatbot_wrap').style.display = 'none';
+                setToggleChatbot(false)
             }}><i className="fas fa-times"></i></div>
             
         </div>
@@ -136,9 +155,9 @@ function Chatbot(){
             </div>
             <div className="chatbot_time">上午00:20</div>
         </div>
-            {/*--------------------------------------------------------------------------*/}
+    {/*------------------------------------------------------------------------------*/}
         </div>
-        {/* menu是浮起來的 */}
+    {/*------------- menu是浮起來的 -----------------*/}
         <div className="menu">
             <div className="book" onClick={()=>{console.log(123456)}}>
                 <div className="icon">
