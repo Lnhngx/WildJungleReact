@@ -15,13 +15,6 @@ function CartLive() {
         <div className="stan_blackhr"></div>
       </div>
       <Cartliveitem />
-      <div className="stan_product_total">
-        <ul>
-          <li></li>
-          <li>小計</li>
-          <li>$5,500</li>
-        </ul>
-      </div>
     </>
   );
 }
