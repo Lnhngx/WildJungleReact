@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import $ from "jquery";
 
 function JqueryProduct() {
-  useEffect(() => {
+   useEffect(() => {
     let page = 0;
     let myInterval = null;
 
@@ -85,7 +85,7 @@ function JqueryProduct() {
         startInterval();
       }
     );
-  }, []);
+   }, []);
   return (
     <>
       <div className="alan_wrap">

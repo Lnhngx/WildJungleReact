@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
 import JqueryProduct from "./components/jqueryProduct"
+import EmailControl from "./components/theEmailControl";
 
 
 
@@ -84,11 +85,11 @@ function Products() {
           </div>
           <div className="typeSelect">
             <div className="type type1">
-              <div className="typeimg"></div>
+              <div className="typeimg typeimg2"></div>
               <span>絨毛玩具</span>
             </div>
             <div className="type">
-              <div className="typeimg"></div>
+              <div className="typeimg typeimg3"></div>
               <span>擬真模型</span>
             </div>
             <div className="type type1">
@@ -96,15 +97,15 @@ function Products() {
               <span>嬰兒背巾</span>
             </div>
             <div className="type">
-              <div className="typeimg"></div>
+              <div className="typeimg typeimg5"></div>
               <span>文具用品</span>
             </div>
             <div className="type type1">
-              <div className="typeimg"></div>
+              <div className="typeimg typeimg4"></div>
               <span>填充布偶</span>
             </div>
             <div className="type">
-              <div className="typeimg"></div>
+              <div className="typeimg typeimg1"></div>
               <span>兒童衣飾</span>
             </div>
           </div>
@@ -355,6 +356,7 @@ function Products() {
           </div>
         </div>
       </div>
+      <EmailControl />
     </>
   );
 }
