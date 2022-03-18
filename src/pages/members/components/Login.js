@@ -22,8 +22,6 @@ function Login(){
   const [show, setShow] = useState(false);
   const handleShow = () =>  {
     setShow(true);
-    setTimeout(() => setShow(false), 1000);
-    
   }
 
 
@@ -82,13 +80,17 @@ function Login(){
         localStorage.setItem('admin_account',JSON.stringify(obj.account));
         localStorage.setItem('admin_token',obj.token);
         
-        handleShow(setSuccess('登入成功'));
-        history.push('/members/modify-member-info');
-        
-        
+        setSuccess('登入成功')
+        handleShow();
+        setTimeout(() => setShow(false), 1000);
+        setTimeout(() => history.push('/members/modify-member-info'), 1500);
+      
         // alert('登入成功');
       }else{
-        handleShow(setSuccess(obj.error || '帳號或密碼錯誤'));
+        setSuccess(obj.error || '帳號或密碼錯誤')
+        handleShow();
+        setTimeout(() => setShow(false), 1000);
+        
         // alert(obj.error || '登入失敗');
       }
       
