@@ -89,6 +89,178 @@
     background-color: rgb(49, 40, 8);
     border-radius: 30px;
 }
+/* 失敗遊戲畫面 */
+.fail_game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 800px;
+    background-color: rgb(128, 128, 128);
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.fail_left{
+    width: 45%;
+    height: 800px;
+    position: relative;
+}
+.fail_left img{
+    width: 70%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.fail_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 800px;
+    margin-right: 9rem;
+}
+.fail_text{
+    font-size: 6rem;
+    font-weight: 800;
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+}
+.fail_btnGroup{
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.fail_btn{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 260px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+}
+.fail_btn p{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #eb5c37;
+    pointer-events: none;
+}
+.fail_btn img{
+    width: 100%;
+    height: auto;
+}
+/* 獲勝遊戲畫面 */
+.win_game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 800px;
+    background-color: rgb(128, 128, 128);
+    border-radius: 30px;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+.win_left{
+    width: 45%;
+    height: 800px;
+    position: relative;
+}
+.thou_point{
+    font-size: 6rem;
+    font-family: sans-serif;
+    font-weight: 800;
+    color: red;
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+.text_point{
+    font-size: 3rem;
+    font-family: sans-serif;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+.win_left img{
+    width: 70%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.win_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 800px;
+    margin-right: 9rem;
+}
+.win_text{
+    font-size: 6rem;
+    font-weight: 800;
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+}
+.win_btnGroup{
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.win_btn{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 260px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+}
+.win_btn p{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #eb5c37;
+    pointer-events: none;
+}
+.win_btn img{
+    width: 100%;
+    height: auto;
+}
+.win_ps {
+    width: 100%;
+    font-size: 1rem;
+    color: white;
+    text-align: end;
+}
 .upper{
     width: 100%;
     height: 50px;
@@ -119,6 +291,7 @@
 .wrap_pic {
     width: 48%;
     position: relative;
+    cursor: pointer;
 }
 .wrap_pic img{
     width: 100%;
@@ -214,10 +387,9 @@
     left: 16%;
     bottom: 14%;
 }
-.spot1 .far.fa-circle{ 
+/* .spot1 .far.fa-circle{ 
     color: green;
-    /* width: 30px;
-    height: 30px; */
+    font-size: 2rem;
     position: absolute;
     border: none;
     z-index: 999;
@@ -227,21 +399,8 @@
     text-align: center;
     line-height: 30px;
     pointer-events: none;
-} 
-/* .wrap1_pic .far.fa-circle{ 
-    color: green;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: 17%;
-    bottom: 15%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
 }  */
+
 /* 在前面那隻的右耳朵 */
 .spot2 {
     width: 35px;
@@ -252,20 +411,6 @@
     left: 32%;
     top: 30%;
 }
-.spot2 .far.fa-circle{ 
-    color: green;
-    /* width: 30px;
-    height: 30px; */
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: -10%;
-    top: 5%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
-} 
 /* 在後面那隻臉頰上 */
 .spot3 {
     width: 35px;
@@ -276,20 +421,6 @@
     left: 39%;
     top: 30%;
 }
-.spot3 .far.fa-circle{ 
-    color: green;
-    /* width: 30px;
-    height: 30px; */
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: -10%;
-    top: 5%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
-} 
 /* 後面那隻的額頭上 */
 .spot4 {
     width: 35px;
@@ -337,19 +468,46 @@
     line-height: 30px;
     pointer-events: none;
 } 
+/* 這個判斷左圖的叉叉置中 */
 .wrap_pic .fas.fa-times {
     font-size: 50px;
     position: absolute;
     z-index: 999;
     color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+/* 這個判斷右圖的叉叉置中 */
+.wrap1_pic .fas.fa-times {
+    font-size: 50px;
+    position: absolute;
+    z-index: 999;
+    color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* 這個判斷左圖的圈圈置中 */
 .wrap_pic .far.fa-circle {
     font-size: 50px;
     position: absolute;
     z-index: 999;
     color: green;
-    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+/* 這個判斷左圖的圈圈置中 */
+.wrap1_pic .far.fa-circle{ 
+    font-size: 50px;
+    position: absolute;
+    z-index: 999;
+    color: green;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
 /* 標題與計時器 begin */
 .camera{
     width: 200px;
@@ -421,15 +579,15 @@
     height: auto;
     border: none;  
 }
-/* .aa{
-    width: 200px;
-    height: 200px;
-    background-color: aqua;
-    border: 2px solid gold;
+/* 只要按錯位置就會有的框框，裡面是放叉叉的icon */
+.wrong_spot{
+    width: 35px;
+    height: 35px;
     position: absolute;
-    top: 100px;
-    left: 100px;
-} */
+    z-index: 999;
+    left: 16%;
+    bottom: 14%;
+}
 @media (min-width:701px) and (max-width:1400px) {
     .spot_container{
         margin-bottom: -280px;
