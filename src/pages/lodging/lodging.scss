@@ -392,7 +392,7 @@ $ning-englishont: "Playfair Display", serif;
     margin-top: 1%;
   }
 
-  .lodging_ice img {
+  .lodging_iceimg {
     width: 70%;
     right: 0;
     object-fit: cover;
@@ -548,7 +548,7 @@ $ning-englishont: "Playfair Display", serif;
     margin-top: 1%;
   }
 
-  .lodging_nocturnal img {
+  .lodging_nocturnalimg {
     width: 70%;
     object-fit: cover;
     position: absolute;
@@ -665,7 +665,7 @@ $ning-englishont: "Playfair Display", serif;
       right: 40%;
     }
   }
-  button:hover {
+  .lodging_nocturnal button:hover {
     background-color: $ning-color2;
   }
 
@@ -679,7 +679,7 @@ $ning-englishont: "Playfair Display", serif;
     margin-top: 1%;
   }
 
-  .lodging_tropical img {
+  .lodging_tropicalimg {
     width: 70%;
     right: 0;
     object-fit: cover;

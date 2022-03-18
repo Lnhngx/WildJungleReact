@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./lodging.scss";
 import "./lodging_mb.scss";
+
+const oceanimgs = [
+  { img: "img/lodging/ocean_style/oceanstyle01.jpeg" },
+  { img: "img/lodging/ocean_style/oceanstyle01.jpeg" },
+  { img: "img/lodging/ocean_style/oceanstyle01.jpeg" },
+];
 
 function Lodging() {
   const [oceanbox, setOceanbox] = useState(0);
@@ -22,6 +28,10 @@ function Lodging() {
     setTropicalbox(tropicalbox === 0 ? 1 : tropicalbox - 1);
   };
 
+  //換照片
+
+  const [oceanimg, setOceanimg] = useState(0);
+
   return (
     <>
       <div className="container mb_container">
@@ -39,8 +49,15 @@ function Lodging() {
         </div>
       </div>
       <div className="lodging_ocean">
-        <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" className="lodging_oceanimg"/>
-        <div className="lodging_oceanimgwrap">
+        <img
+          src="img/lodging/ocean_style/oceanstyle01.jpeg"
+          alt=""
+          className="lodging_oceanimg"
+        />
+        <div
+          className="lodging_oceanimgwrap"
+          style={{ visibility: oceanbox === 0 && "hidden" }}
+        >
           <div className="lodging_oceanimg1">
             <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" />
           </div>
@@ -87,36 +104,34 @@ function Lodging() {
         </div>
 
         {/* click 海洋房 */}
-
-        <div
-          className="lodging_oceanbox"
-          style={{ visibility: oceanbox === 0 && "hidden" }}
-        >
-          <div className="lodging_oceanwrap">
-            <div className="lodging_oceantitle">
-              <h4>Ocean Style</h4>
-              <h1>海洋2人房型</h1>
-              <div className="lodging_oceanprice">
-                <p>房間定價</p>
-                <h3>
-                  <span>NT$</span>3200
-                </h3>
+        <div className="lodging_oceanboxclick" style={{ visibility: oceanbox === 0 && "hidden" }}>
+          <div
+            className="lodging_oceanbox">
+            <div className="lodging_oceanwrap">
+              <div className="lodging_oceantitle">
+                <h4>Ocean Style</h4>
+                <h1>海洋2人房型</h1>
+                <div className="lodging_oceanprice">
+                  <p>房間定價</p>
+                  <h3>
+                    <span>NT$</span>3200
+                  </h3>
+                </div>
               </div>
+              <input
+                type="date"
+                placeholder="入住日期"
+                className="form-control"
+              ></input>
+              <input
+                type="date"
+                placeholder="入住日期"
+                className="form-control"
+              ></input>
+              <button className="btn">預約訂房</button>
             </div>
-            <input
-              type="date"
-              placeholder="入住日期"
-              className="form-control"
-            ></input>
-            <input
-              type="date"
-              placeholder="入住日期"
-              className="form-control"
-            ></input>
-            <button className="btn">預約訂房</button>
           </div>
         </div>
-
         {/* click 海洋房 */}
       </div>
 
@@ -242,7 +257,11 @@ function Lodging() {
       </div>
 
       <div className="lodging_ice" C>
-        <img src="img/lodging/icefield_style/ice_style01.jpeg" alt="" />
+        <img
+          src="img/lodging/icefield_style/ice_style01.jpeg"
+          alt=""
+          className="lodging_iceimg"
+        />
         <span className="lodging_icename">IceField Style</span>
         <div className="lodging_icebox">
           <div className="lodging_icewrap">
@@ -432,7 +451,11 @@ function Lodging() {
       </div>
 
       <div className="lodging_nocturnal">
-        <img src="img/lodging/nocturnal_style/nocturnal_style01.jpeg" alt="" />
+        <img
+          src="img/lodging/nocturnal_style/nocturnal_style01.jpeg"
+          alt=""
+          className="lodging_nocturnalimg"
+        />
         <span className="lodging_nocturnalname">Nocturnal Style</span>
         <div
           className="lodging_nocturnalbox"
@@ -625,7 +648,11 @@ function Lodging() {
       </div>
 
       <div className="lodging_tropical">
-        <img src="img/lodging/tropical_style/tropical_style01.jpeg" alt="" />
+        <img
+          src="img/lodging/tropical_style/tropical_style01.jpeg"
+          alt=""
+          className="lodging_tropicalimg"
+        />
         <span className="lodging_tropicalname">Tropical Style</span>
 
         <div
