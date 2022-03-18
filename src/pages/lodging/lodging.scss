@@ -126,6 +126,8 @@ $ning-englishont: "Playfair Display", serif;
     bottom: 5%;
   }
 
+  .lodging_oceanboxclick
+
   .lodging_oceanbox {
     width: 50%;
     height: 100%;
@@ -378,7 +380,7 @@ $ning-englishont: "Playfair Display", serif;
       right: 40%;
     }
   }
-  button:hover {
+  .lodging_ocean button:hover {
     background-color: $ning-color2;
   }
 
@@ -534,7 +536,7 @@ $ning-englishont: "Playfair Display", serif;
       left: 40%;
     }
   }
-  button:hover {
+  .lodging_ice button:hover {
     background-color: $ning-color2;
   }
 
@@ -665,6 +667,7 @@ $ning-englishont: "Playfair Display", serif;
       right: 40%;
     }
   }
+
   .lodging_nocturnal button:hover {
     background-color: $ning-color2;
   }
