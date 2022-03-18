@@ -22,7 +22,6 @@ function SpotDiff(){
     let [clicked , left , top ] = spotWrong;
     let [clicked1 , left1 , top1 ] = spot1Wrong;
     let [clicked2 , left2 , top2 ] = spot2Wrong;
-    let countDownTimer = null;
     useEffect(() => {
         setTimeout(() => {
             window.scrollTo({
@@ -34,7 +33,7 @@ function SpotDiff(){
         document.querySelector('.up').style.animation = `chopacity .4s linear forwards`;
         let countDownFrom = 30
         // 產生 Timer
-        const countDownTimer = setInterval(() => {
+        const countDownTimer = setInterval(() => {            
             // 計算剩餘秒數
             let remain = countDownFrom--;
             // console.log(remain);
@@ -42,11 +41,12 @@ function SpotDiff(){
             setCountDown(remain < 0 ? 0 : remain)
             // 檢查是否結束
             if (remain <= 0) {
-                clearInterval(countDownTimer)
+                clearInterval(countDownTimer);
                 setFail(true);
                 return;
             }
-        }, 1000)
+        }, 1000);
+        setWinClean(countDownTimer);
     }, []) 
     // function heart(countWrong){
     //     const heart_show = {opacity:1}
@@ -100,22 +100,57 @@ function SpotDiff(){
             case 1:
                 setSpot1(true);
                 setCountSuccess(countSuccess+1);
+                if(countSuccess+1===5){
+                    setTimeout(()=>{
+                        clearInterval(winClean);
+                        setWin(true);
+                        return;
+                    },500)
+                }
             break;
             case 2:
                 setSpot2(true);
                 setCountSuccess(countSuccess+1);
+                if(countSuccess+1===5){
+                    setTimeout(()=>{
+                        clearInterval(winClean);
+                        setWin(true);
+                        return;
+                    },500)
+                }
             break;
             case 3:
                 setSpot3(true);
                 setCountSuccess(countSuccess+1);
+                if(countSuccess+1===5){
+                    setTimeout(()=>{
+                        clearInterval(winClean);
+                        setWin(true);
+                        return;
+                    },500)
+                }
             break;
             case 4:
                 setSpot4(true);
                 setCountSuccess(countSuccess+1);
+                if(countSuccess+1===5){
+                    setTimeout(()=>{
+                        clearInterval(winClean);
+                        setWin(true);
+                        return;
+                    },500)
+                }
             break;
             case 5:
                 setSpot5(true);
                 setCountSuccess(countSuccess+1);
+                if(countSuccess+1===5){
+                    setTimeout(()=>{
+                        clearInterval(winClean);
+                        setWin(true);
+                        return;
+                    },500)
+                }
             break;
             default:
                 console.log('代表沒得提示啦');
@@ -170,6 +205,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -184,6 +220,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -198,6 +235,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -212,6 +250,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -226,6 +265,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -260,6 +300,7 @@ function SpotDiff(){
                                 const top2 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
                                 setSpot2Wrong([true,left2,top2]);
                                 setTimeout(()=>{
+                                    clearInterval(winClean);
                                     setFail(true)
                                     return;
                                 },100)
@@ -286,6 +327,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -301,6 +343,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -315,6 +358,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -329,6 +373,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -343,6 +388,7 @@ function SpotDiff(){
                                 setCountSuccess(countSuccess+1);
                                 if(countSuccess+1===5){
                                     setTimeout(()=>{
+                                        clearInterval(winClean);
                                         setWin(true);
                                         return;
                                     },500)
@@ -377,6 +423,7 @@ function SpotDiff(){
                                 const top2 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
                                 setSpot2Wrong([true,left2,top2]);
                                 setTimeout(()=>{
+                                    clearInterval(winClean);
                                     setFail(true)
                                     return;
                                 },100)
@@ -416,28 +463,29 @@ function SpotDiff(){
                     {/* ---------------- 以下做遊戲成功畫面，完成後才會浮出 ---------------- */}
                     <div className="win_game" style={{display:win?'flex':'none'}}>
                         <div className="win_left">
+                            <div className="thou_point">1000</div>
+                            <div className="text_point">WILDJUNGLE</div>
                             <img src="/img/game/game-points.png" alt="" />
                         </div>
-                        <div className="fail_right">
-                            <div className="fail_text">恭喜你完成啦!</div>
-                            <div className="fail_btnGroup">
+                        <div className="win_right">
+                            <div className="win_text">恭喜你完成啦!</div>
+                            <div className="win_btnGroup">
                                 <Link
-                                    className="fail_btn" 
+                                    className="win_btn" 
                                     to= '/game'
                                 >
                                     <p>回遊戲主頁</p>
                                     <img src="/img/game/game_button.png" alt="" />
                                 </Link>
                                 <Link
-                                    className="fail_btn" 
-                                    onClick={()=>{
-                                        window.location.reload()
-                                    }}
+                                    className="win_btn"
+                                    to= '/products' 
                                 >
-                                    <p>再玩一次</p>
+                                    <p>點數馬上用</p>
                                     <img src="/img/game/game_button.png" alt="" />
                                 </Link>
                             </div>
+                            <div className="win_ps">點數適用於全站...</div>
                         </div>
                     </div>
                     {/* ---------------- 找碴圖片區域到此結束 ---------------- */}
