@@ -14,7 +14,12 @@ function SpotDiff(){
     const [spot4,setSpot4] = useState(false);
     const [spot5,setSpot5] = useState(false);
     const [spotWrong,setSpotWrong] = useState([false,'0px','0px']);
+    const [spot1Wrong,setSpot1Wrong] = useState([false,'0px','0px']);
+    const [spot2Wrong,setSpot2Wrong] = useState([false,'0px','0px']);
     let [clicked , left , top ] = spotWrong;
+    let [clicked1 , left1 , top1 ] = spot1Wrong;
+    let [clicked2 , left2 , top2 ] = spot2Wrong;
+    let hint = [spot1,spot2,spot3,spot4,spot5];
     useEffect(() => {
         setTimeout(() => {
             window.scrollTo({
@@ -72,7 +77,47 @@ function SpotDiff(){
 
     // 以下是預留的提示function 我希望是能在圖片上直接幫他圈一個答案，要先篩選掉已經點過的答案
     function getHint(){
-        console.log(123);
+        let temp_arr = [];
+        if(spot1===false){
+            temp_arr.push(1);
+        }
+        if(spot2===false){
+            temp_arr.push(2);
+        }
+        if(spot3===false){
+            temp_arr.push(3);
+        }
+        if(spot4===false){
+            temp_arr.push(4);
+        }
+        if(spot5===false){
+            temp_arr.push(5);
+        }
+        let whichOne = temp_arr[Math.floor((temp_arr.length)*Math.random())]
+        switch (whichOne){
+            case 1:
+                setSpot1(true);
+                setCountSuccess(countSuccess+1);
+            break;
+            case 2:
+                setSpot2(true);
+                setCountSuccess(countSuccess+1);
+            break;
+            case 3:
+                setSpot3(true);
+                setCountSuccess(countSuccess+1);
+            break;
+            case 4:
+                setSpot4(true);
+                setCountSuccess(countSuccess+1);
+            break;
+            case 5:
+                setSpot5(true);
+                setCountSuccess(countSuccess+1);
+            break;
+            default:
+                console.log('代表沒得提示啦');
+        }
     }
     return(
     <>
@@ -158,16 +203,43 @@ function SpotDiff(){
                             <i className="far fa-circle" style={{display:spot5?'block':'none'}}></i>
                         </div>
                         <div className="wrong_spot1" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot1" style={{display:clicked1 ?'block':'none',left:left1,top:top1}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot1" style={{display:clicked2 ?'block':'none',left:left2,top:top2}}><i className="fas fa-times"></i></div>
                         <img src="/img/game/leopard.jpg" alt=""  onClick={
                         (event)=>{
-                            if(countWrong<3){
-                                let left = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
-                                let top = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                            setCountWrong(countWrong+1)
+                            switch (countWrong+1){
+                                case 1:
                                 // 抓到在圖片中的相對pixel，因為event.offset無法使用去抓到游標的相對位置
                                 // countWrong預設是0，答錯1次就加 1
-                                setCountWrong(countWrong+1)
+                                const left = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                                const top = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
                                 setSpotWrong([true,left,top]);
+                                break;
+                                case 2:
+                                // 抓到在圖片中的相對pixel，因為event.offset無法使用去抓到游標的相對位置
+                                // countWrong預設是0，答錯1次就加 1
+                                const left1 = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                                const top1 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                                setSpot1Wrong([true,left1,top1]);
+                                break;
+                                case 3:
+                                const left2 = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                                const top2 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                                setSpot2Wrong([true,left2,top2]);
+                                break;
+                                default:
+                                console.log('沒出錯不應該進到這裡來');
                             }
+                            
+                            // if(countWrong<3){
+                            //     let left = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                            //     let top = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                            //     // 抓到在圖片中的相對pixel，因為event.offset無法使用去抓到游標的相對位置
+                            //     // countWrong預設是0，答錯1次就加 1
+                            //     setCountWrong(countWrong+1)
+                            //     setSpotWrong([true,left,top]);
+                            // }
                         }}/>
                     </div>
                 {/* -------------- 右邊的圖片 -------------- */}
@@ -213,11 +285,34 @@ function SpotDiff(){
                         >
                             <i className="far fa-circle" style={{display:spot5?'block':'none'}}></i>
                         </div>
-                        <img src="/img/game/leopard-final.jpg" id="img" alt="" onClick={
-                        ()=>{
-                            if(countWrong<3){
+                        <div className="wrong_spot1" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot1" style={{display:clicked1 ?'block':'none',left:left1,top:top1}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot1" style={{display:clicked2 ?'block':'none',left:left2,top:top2}}><i className="fas fa-times"></i></div>
+                        <img src="/img/game/leopard.jpg" alt=""  onClick={
+                        (event)=>{
+                            setCountWrong(countWrong+1)
+                            switch (countWrong+1){
+                                case 1:
+                                // 抓到在圖片中的相對pixel，因為event.offset無法使用去抓到游標的相對位置
                                 // countWrong預設是0，答錯1次就加 1
-                                setCountWrong(countWrong+1)
+                                const left = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                                const top = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                                setSpotWrong([true,left,top]);
+                                break;
+                                case 2:
+                                // 抓到在圖片中的相對pixel，因為event.offset無法使用去抓到游標的相對位置
+                                // countWrong預設是0，答錯1次就加 1
+                                const left1 = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                                const top1 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                                setSpot1Wrong([true,left1,top1]);
+                                break;
+                                case 3:
+                                const left2 = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                                const top2 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                                setSpot2Wrong([true,left2,top2]);
+                                break;
+                                default:
+                                console.log('沒出錯不應該進到這裡來');
                             }
                         }}/>
                     </div>

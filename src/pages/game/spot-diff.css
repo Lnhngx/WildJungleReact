@@ -249,20 +249,6 @@
     left: 39%;
     top: 30%;
 }
-.spot3 .far.fa-circle{ 
-    color: green;
-    /* width: 30px;
-    height: 30px; */
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: -10%;
-    top: 5%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
-} 
 /* 後面那隻的額頭上 */
 .spot4 {
     width: 35px;
@@ -310,7 +296,18 @@
     line-height: 30px;
     pointer-events: none;
 } 
+/* 這個判斷左圖的叉叉置中 */
 .wrap_pic .fas.fa-times {
+    font-size: 50px;
+    position: absolute;
+    z-index: 999;
+    color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* 這個判斷右圖的叉叉置中 */
+.wrap1_pic .fas.fa-times {
     font-size: 50px;
     position: absolute;
     z-index: 999;
@@ -329,7 +326,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/*  */
+/* 這個判斷左圖的圈圈置中 */
 .wrap1_pic .far.fa-circle{ 
     font-size: 50px;
     position: absolute;
