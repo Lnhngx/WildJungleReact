@@ -583,3 +583,15 @@ input:-webkit-autofill:active,
   font-size: var(--tysu_fontSize);
   text-align: center;
 }
+.tysu_input.tysu_birth {
+  width: 2rem;
+  margin-right: 1px;
+}
+.tysu_tr {
+  .tysu_birthText {
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: var(--tysu_fontSize);
+    font-weight: 500;
+    margin: 0 0 0 1rem;
+  }
+}
