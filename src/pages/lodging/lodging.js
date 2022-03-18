@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./lodging.scss";
 import "./lodging_mb.scss";
 
-
 function Lodging() {
   const [oceanbox, setOceanbox] = useState(0);
   const [icebox, setIcebox] = useState(0);
@@ -43,7 +42,6 @@ function Lodging() {
   const nocturnalimg = useRef();
   const tropicalimg = useRef();
 
-
   return (
     <>
       <div className="container mb_container">
@@ -76,7 +74,8 @@ function Lodging() {
               src="img/lodging/ocean_style/oceanstyle01.jpeg"
               alt=""
               onClick={() => {
-                oceanimg.current.src="img/lodging/ocean_style/oceanstyle01.jpeg"
+                oceanimg.current.src =
+                  "img/lodging/ocean_style/oceanstyle01.jpeg";
               }}
             />
           </div>
@@ -85,7 +84,8 @@ function Lodging() {
               src="img/lodging/ocean_style/oceanstyle02.jpg"
               alt=""
               onClick={() => {
-                oceanimg.current.src="img/lodging/ocean_style/oceanstyle02.jpg"
+                oceanimg.current.src =
+                  "img/lodging/ocean_style/oceanstyle02.jpg";
               }}
             />
           </div>
@@ -94,7 +94,8 @@ function Lodging() {
               src="img/lodging/ocean_style/oceanstyle03.jpg"
               alt=""
               onClick={() => {
-                oceanimg.current.src="img/lodging/ocean_style/oceanstyle03.jpg"
+                oceanimg.current.src =
+                  "img/lodging/ocean_style/oceanstyle03.jpg";
               }}
             />
           </div>
@@ -316,7 +317,8 @@ function Lodging() {
               src="img/lodging/icefield_style/ice_style01.jpeg"
               alt=""
               onClick={() => {
-                iceimg.current.src="img/lodging/icefield_style/ice_style01.jpeg"
+                iceimg.current.src =
+                  "img/lodging/icefield_style/ice_style01.jpeg";
               }}
             />
           </div>
@@ -325,7 +327,8 @@ function Lodging() {
               src="img/lodging/icefield_style/ice_style02.jpeg"
               alt=""
               onClick={() => {
-                iceimg.current.src="img/lodging/icefield_style/ice_style02.jpeg"
+                iceimg.current.src =
+                  "img/lodging/icefield_style/ice_style02.jpeg";
               }}
             />
           </div>
@@ -334,7 +337,8 @@ function Lodging() {
               src="img/lodging/icefield_style/ice_style03.jpeg"
               alt=""
               onClick={() => {
-                iceimg.current.src="img/lodging/icefield_style/ice_style03.jpeg"
+                iceimg.current.src =
+                  "img/lodging/icefield_style/ice_style03.jpeg";
               }}
             />
           </div>
@@ -365,7 +369,7 @@ function Lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn lodging_oceandetailbtn" onClick={icePush}>
+            <button className="btn lodging_icedetailbtn" onClick={icePush}>
               更多細節
             </button>
           </div>
@@ -543,7 +547,43 @@ function Lodging() {
           src="img/lodging/nocturnal_style/nocturnal_style01.jpeg"
           alt=""
           className="lodging_nocturnalimg"
+          ref={nocturnalimg}
         />
+        <div
+          className="lodging_nocturnalimgwrap"
+          style={{ visibility: nocturnalbox === 0 && "hidden" }}
+        >
+          <div className="lodging_nocturnalimg1">
+            <img
+              src="img/lodging/nocturnal_style/nocturnal_style01.jpeg"
+              alt=""
+              onClick={() => {
+                nocturnalimg.current.src =
+                  "img/lodging/nocturnal_style/nocturnal_style01.jpeg";
+              }}
+            />
+          </div>
+          <div className="lodging_nocturnalimg2">
+            <img
+              src="img/lodging/nocturnal_style/nocturnal_style02.jpeg"
+              alt=""
+              onClick={() => {
+                nocturnalimg.current.src =
+                  "img/lodging/nocturnal_style/nocturnal_style02.jpeg";
+              }}
+            />
+          </div>
+          <div className="lodging_nocturnalimg3">
+            <img
+              src="img/lodging/nocturnal_style/nocturnal_style03.jpeg"
+              alt=""
+              onClick={() => {
+                nocturnalimg.current.src =
+                  "img/lodging/nocturnal_style/nocturnal_style03.jpeg";
+              }}
+            />
+          </div>
+        </div>
         <span className="lodging_nocturnalname">Nocturnal Style</span>
         <div
           className="lodging_nocturnalbox"
@@ -573,7 +613,10 @@ function Lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn" onClick={nocturnalPush}>
+            <button
+              className="btn lodging_nocturnaldetailbtn"
+              onClick={nocturnalPush}
+            >
               更多細節
             </button>
           </div>
@@ -596,17 +639,30 @@ function Lodging() {
                   </h3>
                 </div>
               </div>
+              <div className="lodging_nocturnalamount">
+                <button className="btn lodging_nocturnalminus">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input
+                  type="text"
+                  value="1"
+                  className="lodging_nocturnalvalue"
+                />
+                <button className="btn lodging_nocturnalplus">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
               <input
                 type="date"
                 placeholder="入住日期"
-                className="form-control"
+                className="lodging_nocturnalincheck"
               ></input>
               <input
                 type="date"
                 placeholder="入住日期"
-                className="form-control"
+                className="lodging_nocturnalincheck"
               ></input>
-              <button className="btn">預約訂房</button>
+              <button className="btn nocturnalreservation">預約訂房</button>
             </div>
           </div>
         </div>
@@ -742,7 +798,43 @@ function Lodging() {
           src="img/lodging/tropical_style/tropical_style01.jpeg"
           alt=""
           className="lodging_tropicalimg"
+          ref={tropicalimg}
         />
+        <div
+          className="lodging_tropicalimgwrap"
+          style={{ visibility: tropicalbox === 0 && "hidden" }}
+        >
+          <div className="lodging_tropicalimg1">
+            <img
+              src="img/lodging/tropical_style/tropical_style01.jpeg"
+              alt=""
+              onClick={() => {
+                tropicalimg.current.src =
+                  "img/lodging/tropical_style/tropical_style01.jpeg";
+              }}
+            />
+          </div>
+          <div className="lodging_tropicalimg2">
+            <img
+              src="img/lodging/tropical_style/tropical_style02.jpeg"
+              alt=""
+              onClick={() => {
+                tropicalimg.current.src =
+                  "img/lodging/tropical_style/tropical_style02.jpeg";
+              }}
+            />
+          </div>
+          <div className="lodging_tropicalimg3">
+            <img
+              src="img/lodging/tropical_style/tropical_style03.jpeg"
+              alt=""
+              onClick={() => {
+                tropicalimg.current.src =
+                  "img/lodging/tropical_style/tropical_style03.jpeg";
+              }}
+            />
+          </div>
+        </div>
         <span className="lodging_tropicalname">Tropical Style</span>
 
         <div
@@ -773,7 +865,7 @@ function Lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn" onClick={tropicalPush}>
+            <button className="btn lodging_tropicaldetailbtn" onClick={tropicalPush}>
               更多細節
             </button>
           </div>
@@ -796,28 +888,37 @@ function Lodging() {
                   </h3>
                 </div>
               </div>
+              <div className="lodging_tropicalamount">
+                <button className="btn lodging_tropicalminus">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input type="text" value="1" className="lodging_tropicalvalue" />
+                <button className="btn lodging_tropicalplus">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
               <input
                 type="date"
                 placeholder="入住日期"
-                className="form-control"
+                className="lodging_tropicalincheck"
               ></input>
               <input
                 type="date"
-                placeholder="入住日期"
-                className="form-control"
+                placeholder="退房日期"
+                className="lodging_tropicaloutcheck"
               ></input>
-              <button className="btn">預約訂房</button>
+              <button className="btn tropicalreservation">預約訂房</button>
             </div>
           </div>
         </div>
 
-        {/* click 冰原房 */}
+        {/* click 熱帶房 */}
       </div>
 
       <div className="container mb_container">
         <div
           className="lodging_tropicalboxdetail"
-          style={{ height: tropicalbox === 1 && "90vh" }}
+          style={{ height: tropicalbox === 1 && "100vh" }}
         >
           <div className="lodging_tropicaldetail">
             <div className="tropical_introducebox">
