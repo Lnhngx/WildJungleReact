@@ -23,7 +23,7 @@ function Login(){
   const handleShow = () =>  {
     setShow(true);
     setTimeout(() => setShow(false), 1000);
-    // history.push('/members/modify-member-info');
+    
   }
 
 
@@ -49,7 +49,9 @@ function Login(){
     loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${Keys.RECAPTCHA_KEY}`, function () {
       console.log("google驗證");
     });
+    
   }, []);
+  
 
   const handleOnClick = e => {
     e.preventDefault();
@@ -79,8 +81,11 @@ function Login(){
       if(obj.success){
         localStorage.setItem('admin_account',JSON.stringify(obj.account));
         localStorage.setItem('admin_token',obj.token);
+        
         handleShow(setSuccess('登入成功'));
-
+        history.push('/members/modify-member-info');
+        
+        
         // alert('登入成功');
       }else{
         handleShow(setSuccess(obj.error || '帳號或密碼錯誤'));
@@ -95,7 +100,7 @@ function Login(){
   // 卸載
   useEffect(()=>{
     return()=>{
-
+      
   }},[])
 
 
