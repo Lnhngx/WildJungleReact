@@ -10,8 +10,17 @@ const [fields,setFields]=useState({
     confirmPassword:'',
 });
 const handleFieldChange=(e)=>{
-    const newData={...fields,[e.target.name]:e.target.value};
-    setFields(newData);
+    // 1.拷貝 2.處理
+    // const newData={...fields,[e.target.name]:e.target.value};
+    // 3.設定回原狀態
+    // setFields(newData);
+
+    const name=e.target.name;
+    const value=e.target.value;
+    const type=e.target.type;
+
+    let newValue=value;
+    console.log(value);
 }
 
 const birthdayText=['年','月','日'];
@@ -26,11 +35,17 @@ const getBirth=(e)=>{
     setBirthday(newBirth);
 }
 
+const handleSubmit=(e)=>{
+    e.preventDefault();
+}
+
+
+
 
 
     return(<>
     <h1 className="tysu_h1">SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
-    <form id="tysu_form">
+    <form id="tysu_form" onSubmit={handleSubmit}>
     <table>
         <tbody>
             <tr className="tysu_tr">
