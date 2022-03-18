@@ -8,18 +8,21 @@ function SpotDiff(){
     const [countWrong,setCountWrong] = useState(0);
     const [countDown,setCountDown] = useState(30);
     const [hintCountDown,setHintCountDown] = useState(3);
+    const [winClean,setWinClean] = useState(0);
     const [spot1,setSpot1] = useState(false);
     const [spot2,setSpot2] = useState(false);
     const [spot3,setSpot3] = useState(false);
     const [spot4,setSpot4] = useState(false);
     const [spot5,setSpot5] = useState(false);
+    const [fail,setFail] = useState(false)
+    const [win,setWin] = useState(false)
     const [spotWrong,setSpotWrong] = useState([false,'0px','0px']);
     const [spot1Wrong,setSpot1Wrong] = useState([false,'0px','0px']);
     const [spot2Wrong,setSpot2Wrong] = useState([false,'0px','0px']);
     let [clicked , left , top ] = spotWrong;
     let [clicked1 , left1 , top1 ] = spot1Wrong;
     let [clicked2 , left2 , top2 ] = spot2Wrong;
-    let hint = [spot1,spot2,spot3,spot4,spot5];
+    let countDownTimer = null;
     useEffect(() => {
         setTimeout(() => {
             window.scrollTo({
@@ -32,18 +35,17 @@ function SpotDiff(){
         let countDownFrom = 30
         // 產生 Timer
         const countDownTimer = setInterval(() => {
-        // 計算剩餘秒數
-        let remain = countDownFrom--;
-        // console.log(remain);
-        // const remain = (countDownFrom - pastSeconds)
-        setCountDown(remain < 0 ? 0 : remain)
-        // console.log('[timer] count down: ', remain)
-    
-          // 檢查是否結束
-        if (remain <= 0) {
-            clearInterval(countDownTimer)
-            // console.log(`[timer] == stop count down ${countDownFrom}s  ==`) 
-        }
+            // 計算剩餘秒數
+            let remain = countDownFrom--;
+            // console.log(remain);
+            // const remain = (countDownFrom - pastSeconds)
+            setCountDown(remain < 0 ? 0 : remain)
+            // 檢查是否結束
+            if (remain <= 0) {
+                clearInterval(countDownTimer)
+                setFail(true);
+                return;
+            }
         }, 1000)
     }, []) 
     // function heart(countWrong){
@@ -166,6 +168,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot1(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }               
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot1?'block':'none'}}></i>
@@ -174,6 +182,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot2(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot2?'block':'none'}}></i>
@@ -182,6 +196,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot3(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot3?'block':'none'}}></i>
@@ -190,6 +210,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot4(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot4?'block':'none'}}></i>
@@ -198,13 +224,19 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot5(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot5?'block':'none'}}></i>
                         </div>
-                        <div className="wrong_spot1" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
-                        <div className="wrong_spot1" style={{display:clicked1 ?'block':'none',left:left1,top:top1}}><i className="fas fa-times"></i></div>
-                        <div className="wrong_spot1" style={{display:clicked2 ?'block':'none',left:left2,top:top2}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot" style={{display:clicked1 ?'block':'none',left:left1,top:top1}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot" style={{display:clicked2 ?'block':'none',left:left2,top:top2}}><i className="fas fa-times"></i></div>
                         <img src="/img/game/leopard.jpg" alt=""  onClick={
                         (event)=>{
                             setCountWrong(countWrong+1)
@@ -227,6 +259,10 @@ function SpotDiff(){
                                 const left2 = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
                                 const top2 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
                                 setSpot2Wrong([true,left2,top2]);
+                                setTimeout(()=>{
+                                    setFail(true)
+                                    return;
+                                },100)
                                 break;
                                 default:
                                 console.log('沒出錯不應該進到這裡來');
@@ -248,6 +284,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot1(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot1?'block':'none'}}></i>
@@ -257,6 +299,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot2(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot2?'block':'none'}}></i>
@@ -265,6 +313,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot3(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot3?'block':'none'}}></i>
@@ -273,6 +327,12 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot4(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot4?'block':'none'}}></i>
@@ -281,13 +341,19 @@ function SpotDiff(){
                             ()=>{  
                                 setSpot5(true)
                                 setCountSuccess(countSuccess+1);
+                                if(countSuccess+1===5){
+                                    setTimeout(()=>{
+                                        setWin(true);
+                                        return;
+                                    },500)
+                                }    
                             }}
                         >
                             <i className="far fa-circle" style={{display:spot5?'block':'none'}}></i>
                         </div>
-                        <div className="wrong_spot1" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
-                        <div className="wrong_spot1" style={{display:clicked1 ?'block':'none',left:left1,top:top1}}><i className="fas fa-times"></i></div>
-                        <div className="wrong_spot1" style={{display:clicked2 ?'block':'none',left:left2,top:top2}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot" style={{display:clicked1 ?'block':'none',left:left1,top:top1}}><i className="fas fa-times"></i></div>
+                        <div className="wrong_spot" style={{display:clicked2 ?'block':'none',left:left2,top:top2}}><i className="fas fa-times"></i></div>
                         <img src="/img/game/leopard.jpg" alt=""  onClick={
                         (event)=>{
                             setCountWrong(countWrong+1)
@@ -310,11 +376,69 @@ function SpotDiff(){
                                 const left2 = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
                                 const top2 = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
                                 setSpot2Wrong([true,left2,top2]);
+                                setTimeout(()=>{
+                                    setFail(true)
+                                    return;
+                                },100)
                                 break;
                                 default:
                                 console.log('沒出錯不應該進到這裡來');
                             }
                         }}/>
+                    </div>
+                    {/* ---------------- 以下做遊戲失敗畫面，失敗才會浮出 ---------------- */}
+                    <div className="fail_game" style={{display:fail?'flex':'none'}}>
+                        <div className="fail_left">
+                            <img src="/img/game/lose.png" alt="" />
+                        </div>
+                        <div className="fail_right">
+                            <div className="fail_text">遊戲失敗</div>
+                            <div className="fail_btnGroup">
+                                <Link
+                                    className="fail_btn" 
+                                    to= '/game'
+                                >
+                                    <p>回遊戲主頁</p>
+                                    <img src="/img/game/game_button.png" alt="" />
+                                </Link>
+                                <Link
+                                    className="fail_btn" 
+                                    onClick={()=>{
+                                        window.location.reload()
+                                    }}
+                                >
+                                    <p>再玩一次</p>
+                                    <img src="/img/game/game_button.png" alt="" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                    {/* ---------------- 以下做遊戲成功畫面，完成後才會浮出 ---------------- */}
+                    <div className="win_game" style={{display:win?'flex':'none'}}>
+                        <div className="win_left">
+                            <img src="/img/game/game-points.png" alt="" />
+                        </div>
+                        <div className="fail_right">
+                            <div className="fail_text">恭喜你完成啦!</div>
+                            <div className="fail_btnGroup">
+                                <Link
+                                    className="fail_btn" 
+                                    to= '/game'
+                                >
+                                    <p>回遊戲主頁</p>
+                                    <img src="/img/game/game_button.png" alt="" />
+                                </Link>
+                                <Link
+                                    className="fail_btn" 
+                                    onClick={()=>{
+                                        window.location.reload()
+                                    }}
+                                >
+                                    <p>再玩一次</p>
+                                    <img src="/img/game/game_button.png" alt="" />
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                     {/* ---------------- 找碴圖片區域到此結束 ---------------- */}
                 </div>
