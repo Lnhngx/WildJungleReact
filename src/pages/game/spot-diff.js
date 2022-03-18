@@ -400,7 +400,7 @@ function SpotDiff(){
                         <div className="wrong_spot" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
                         <div className="wrong_spot" style={{display:clicked1 ?'block':'none',left:left1,top:top1}}><i className="fas fa-times"></i></div>
                         <div className="wrong_spot" style={{display:clicked2 ?'block':'none',left:left2,top:top2}}><i className="fas fa-times"></i></div>
-                        <img src="/img/game/leopard.jpg" alt=""  onClick={
+                        <img src="/img/game/leopard-final.jpg" alt=""  onClick={
                         (event)=>{
                             setCountWrong(countWrong+1)
                             switch (countWrong+1){
