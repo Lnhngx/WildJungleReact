@@ -119,6 +119,7 @@
 .wrap_pic {
     width: 48%;
     position: relative;
+    cursor: pointer;
 }
 .wrap_pic img{
     width: 100%;
@@ -214,10 +215,9 @@
     left: 16%;
     bottom: 14%;
 }
-.spot1 .far.fa-circle{ 
+/* .spot1 .far.fa-circle{ 
     color: green;
-    /* width: 30px;
-    height: 30px; */
+    font-size: 2rem;
     position: absolute;
     border: none;
     z-index: 999;
@@ -227,21 +227,8 @@
     text-align: center;
     line-height: 30px;
     pointer-events: none;
-} 
-/* .wrap1_pic .far.fa-circle{ 
-    color: green;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: 17%;
-    bottom: 15%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
 }  */
+
 /* 在前面那隻的右耳朵 */
 .spot2 {
     width: 35px;
@@ -252,20 +239,6 @@
     left: 32%;
     top: 30%;
 }
-.spot2 .far.fa-circle{ 
-    color: green;
-    /* width: 30px;
-    height: 30px; */
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: -10%;
-    top: 5%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
-} 
 /* 在後面那隻臉頰上 */
 .spot3 {
     width: 35px;
@@ -342,14 +315,30 @@
     position: absolute;
     z-index: 999;
     color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+/* 這個判斷左圖的圈圈置中 */
 .wrap_pic .far.fa-circle {
     font-size: 50px;
     position: absolute;
     z-index: 999;
     color: green;
-    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+/*  */
+.wrap1_pic .far.fa-circle{ 
+    font-size: 50px;
+    position: absolute;
+    z-index: 999;
+    color: green;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
 /* 標題與計時器 begin */
 .camera{
     width: 200px;
@@ -430,6 +419,15 @@
     top: 100px;
     left: 100px;
 } */
+.wrong_spot1{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    z-index: 999;
+    /* border: 1px solid red; */
+    left: 16%;
+    bottom: 14%;
+}
 @media (min-width:701px) and (max-width:1400px) {
     .spot_container{
         margin-bottom: -280px;

@@ -3,12 +3,13 @@
     height: 70px;
     border-radius: 50%;
     border: 1px solid rgb(201, 194, 194);
-    background-color: rgba(235, 91, 55, 0.897);
+    background-color: rgb(235, 91, 55);
     position: fixed;
     right: 50px;
     bottom: 50px;
     cursor: pointer;
     overflow: hidden;
+    z-index: 999;
 }
 .chatbot_logo img{
     width: 100%;
@@ -56,7 +57,7 @@
     width: 100%;
     height: 605px;
     position: relative;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 /* 機器人回話的區域(靠左) */
 .chatbot_reply{

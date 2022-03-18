@@ -5,8 +5,16 @@ import './spot-diff.css';
 
 function SpotDiff(){
     const [countSuccess,setCountSuccess] = useState(0);
+    const [countWrong,setCountWrong] = useState(0);
     const [countDown,setCountDown] = useState(30);
     const [hintCountDown,setHintCountDown] = useState(3);
+    const [spot1,setSpot1] = useState(false);
+    const [spot2,setSpot2] = useState(false);
+    const [spot3,setSpot3] = useState(false);
+    const [spot4,setSpot4] = useState(false);
+    const [spot5,setSpot5] = useState(false);
+    const [spotWrong,setSpotWrong] = useState([false,'0px','0px']);
+    let [clicked , left , top ] = spotWrong;
     useEffect(() => {
         setTimeout(() => {
             window.scrollTo({
@@ -18,8 +26,6 @@ function SpotDiff(){
         document.querySelector('.up').style.animation = `chopacity .4s linear forwards`;
         let countDownFrom = 30
         // 產生 Timer
-        // console.log(`[timer] == start count down ${countDownFrom}s  ==`)
-        // const startTime = Date.now()
         const countDownTimer = setInterval(() => {
         // 計算剩餘秒數
         let remain = countDownFrom--;
@@ -35,7 +41,13 @@ function SpotDiff(){
         }
         }, 1000)
     }, []) 
-    
+    // function heart(countWrong){
+    //     const heart_show = {opacity:1}
+    //     const heart_close = {opacity:0}
+    //     let result = countWrong>=1? heart_close:heart_show;
+    //     return result
+    // }
+    // 這是預留測試愛心消失的，因為有時候直接寫狀態改樣式會當當的
     //  useEffect(()=>{
     // function counter(){
     //     if(sec===0){
@@ -96,64 +108,122 @@ function SpotDiff(){
             </div> 
                 <div className="upper">
                     <div className="life">
-                        <i className="fas fa-heart"></i>
-                        <i className="fas fa-heart"></i>
-                        <i className="fas fa-heart"></i>
+                        <i className="fas fa-heart" style={{opacity: countWrong>=1? '0':'1'}}></i>
+                        <i className="fas fa-heart" style={{opacity: countWrong>=2? '0':'1'}}></i>
+                        <i className="fas fa-heart" style={{opacity: countWrong>=3? '0':'1'}}></i>
                     </div>
                 </div>
+                {/* 下方開始是找碴圖片區域 */}
                 <div className="game_zone">
+                {/* -------------- 左邊的圖片 -------------- */}
                     <div className="wrap_pic">
-                        <img src="/img/game/leopard.jpg" alt="" />
+                        <div className="spot1" style={{pointerEvents:spot1?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot1(true)
+                                setCountSuccess(countSuccess+1);
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot1?'block':'none'}}></i>
+                        </div>
+                        <div className="spot2" style={{pointerEvents:spot2?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot2(true)
+                                setCountSuccess(countSuccess+1);
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot2?'block':'none'}}></i>
+                        </div>
+                        <div className="spot3" style={{pointerEvents:spot3?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot3(true)
+                                setCountSuccess(countSuccess+1);
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot3?'block':'none'}}></i>
+                        </div>
+                        <div className="spot4" style={{pointerEvents:spot4?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot4(true)
+                                setCountSuccess(countSuccess+1);
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot4?'block':'none'}}></i>
+                        </div>
+                        <div className="spot5" style={{pointerEvents:spot5?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot5(true)
+                                setCountSuccess(countSuccess+1);
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot5?'block':'none'}}></i>
+                        </div>
+                        <div className="wrong_spot1" style={{display:clicked ?'block':'none',left:left,top:top}}><i className="fas fa-times"></i></div>
+                        <img src="/img/game/leopard.jpg" alt=""  onClick={
+                        (event)=>{
+                            if(countWrong<3){
+                                let left = `${event.clientX  - event.target.getBoundingClientRect().x - 17.5}px`;
+                                let top = `${event.clientY  - event.target.getBoundingClientRect().y - 17.5}px`;
+                                // 抓到在圖片中的相對pixel，因為event.offset無法使用去抓到游標的相對位置
+                                // countWrong預設是0，答錯1次就加 1
+                                setCountWrong(countWrong+1)
+                                setSpotWrong([true,left,top]);
+                            }
+                        }}/>
                     </div>
+                {/* -------------- 右邊的圖片 -------------- */}
                     <div className="wrap1_pic">
-                        <div className="spot1" onClick={
-                            (e)=>{  
-                                const circle = document.createElement('i');    
-                                circle.className = `far fa-circle`;
-                                document.querySelector('.spot1').append(circle)
-                                e.target.style.pointerEvents = 'none';
+                        <div className="spot1" style={{pointerEvents:spot1?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot1(true)
                                 setCountSuccess(countSuccess+1);
-                            }
-                        }></div>
-                        <div className="spot2" onClick={
-                            (e)=>{
-                                const circle = document.createElement('i');    
-                                circle.className = `far fa-circle`;
-                                document.querySelector('.spot2').append(circle)
-                                e.target.style.pointerEvents = 'none';
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot1?'block':'none'}}></i>
+                        </div>
+
+                        <div className="spot2" style={{pointerEvents:spot2?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot2(true)
                                 setCountSuccess(countSuccess+1);
-                            }
-                        }></div>
-                        <div className="spot3" onClick={
-                            (e)=>{
-                                const circle = document.createElement('i');    
-                                circle.className = `far fa-circle`;
-                                document.querySelector('.spot3').append(circle)
-                                e.target.style.pointerEvents = 'none';
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot2?'block':'none'}}></i>
+                        </div>
+                        <div className="spot3" style={{pointerEvents:spot3?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot3(true)
                                 setCountSuccess(countSuccess+1);
-                            }
-                        }></div>
-                        <div className="spot4" onClick={
-                            (e)=>{
-                                const circle = document.createElement('i');    
-                                circle.className = `far fa-circle`;
-                                document.querySelector('.spot4').append(circle)
-                                e.target.style.pointerEvents = 'none';
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot3?'block':'none'}}></i>
+                        </div>
+                        <div className="spot4" style={{pointerEvents:spot4?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot4(true)
                                 setCountSuccess(countSuccess+1);
-                            }
-                        }></div>
-                        <div className="spot5" onClick={
-                            (e)=>{
-                                const circle = document.createElement('i');    
-                                circle.className = `far fa-circle`;
-                                document.querySelector('.spot5').append(circle)
-                                e.target.style.pointerEvents = 'none';
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot4?'block':'none'}}></i>
+                        </div>
+                        <div className="spot5" style={{pointerEvents:spot5?'none':'all'}} onClick={
+                            ()=>{  
+                                setSpot5(true)
                                 setCountSuccess(countSuccess+1);
+                            }}
+                        >
+                            <i className="far fa-circle" style={{display:spot5?'block':'none'}}></i>
+                        </div>
+                        <img src="/img/game/leopard-final.jpg" id="img" alt="" onClick={
+                        ()=>{
+                            if(countWrong<3){
+                                // countWrong預設是0，答錯1次就加 1
+                                setCountWrong(countWrong+1)
                             }
-                        }></div> 
-                        <img src="/img/game/leopard-final.jpg" id="img" alt=""/>
+                        }}/>
                     </div>
+                    {/* ---------------- 找碴圖片區域到此結束 ---------------- */}
                 </div>
+                    {/* ----------------- 以下是工具欄的部分 ----------------- */}
                 <div className="spot_tool">
                     <div className="left_tool">
                         <div className="help">
@@ -167,8 +237,8 @@ function SpotDiff(){
                     <div className="right_tool">
                         <div className="hint" onClick={()=>{
                             if(hintCountDown>0){
-                            getHint();
-                            setHintCountDown(hintCountDown-1)
+                                getHint();
+                                setHintCountDown(hintCountDown-1)
                             }
                         }}>
                             <i className="fas fa-search"></i>
