@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import "./lodging.scss";
 import "./lodging_mb.scss";
 
-const oceanimgs = [
-  { img: "img/lodging/ocean_style/oceanstyle01.jpeg" },
-  { img: "img/lodging/ocean_style/oceanstyle01.jpeg" },
-  { img: "img/lodging/ocean_style/oceanstyle01.jpeg" },
-];
 
 function Lodging() {
   const [oceanbox, setOceanbox] = useState(0);
@@ -17,20 +12,37 @@ function Lodging() {
 
   const oceanPush = () => {
     setOceanbox(oceanbox === 0 ? 1 : oceanbox - 1);
+    setIcebox(0);
+    setNocturnalbox(0);
+    setTropicalbox(0);
+    //setOceanbox(!oceanPush)
   };
   const icePush = () => {
     setIcebox(icebox === 0 ? 1 : icebox - 1);
+    setOceanbox(0);
+    setNocturnalbox(0);
+    setTropicalbox(0);
   };
   const nocturnalPush = () => {
     setNocturnalbox(nocturnalbox === 0 ? 1 : nocturnalbox - 1);
+    setIcebox(0);
+    setOceanbox(0);
+    setTropicalbox(0);
   };
   const tropicalPush = () => {
     setTropicalbox(tropicalbox === 0 ? 1 : tropicalbox - 1);
+    setIcebox(0);
+    setOceanbox(0);
+    setNocturnalbox(0);
   };
 
   //換照片
 
-  const [oceanimg, setOceanimg] = useState(0);
+  const oceanimg = useRef();
+  const iceimg = useRef();
+  const nocturnalimg = useRef();
+  const tropicalimg = useRef();
+
 
   return (
     <>
@@ -53,19 +65,38 @@ function Lodging() {
           src="img/lodging/ocean_style/oceanstyle01.jpeg"
           alt=""
           className="lodging_oceanimg"
+          ref={oceanimg}
         />
         <div
           className="lodging_oceanimgwrap"
           style={{ visibility: oceanbox === 0 && "hidden" }}
         >
           <div className="lodging_oceanimg1">
-            <img src="img/lodging/ocean_style/oceanstyle01.jpeg" alt="" />
+            <img
+              src="img/lodging/ocean_style/oceanstyle01.jpeg"
+              alt=""
+              onClick={() => {
+                oceanimg.current.src="img/lodging/ocean_style/oceanstyle01.jpeg"
+              }}
+            />
           </div>
           <div className="lodging_oceanimg2">
-            <img src="img/lodging/ocean_style/oceanstyle02.jpg" alt="" />
+            <img
+              src="img/lodging/ocean_style/oceanstyle02.jpg"
+              alt=""
+              onClick={() => {
+                oceanimg.current.src="img/lodging/ocean_style/oceanstyle02.jpg"
+              }}
+            />
           </div>
           <div className="lodging_oceanimg3">
-            <img src="img/lodging/ocean_style/oceanstyle03.jpg" alt="" />
+            <img
+              src="img/lodging/ocean_style/oceanstyle03.jpg"
+              alt=""
+              onClick={() => {
+                oceanimg.current.src="img/lodging/ocean_style/oceanstyle03.jpg"
+              }}
+            />
           </div>
         </div>
         <span className="lodging_oceanname">Ocean Style</span>
@@ -97,171 +128,217 @@ function Lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn" onClick={oceanPush}>
+            <button className="btn lodging_oceandetailbtn" onClick={oceanPush}>
               更多細節
             </button>
           </div>
         </div>
 
         {/* click 海洋房 */}
-        <div className="lodging_oceanboxclick" style={{ visibility: oceanbox === 0 && "hidden" }}>
-          <div
-            className="lodging_oceanbox">
-            <div className="lodging_oceanwrap">
-              <div className="lodging_oceantitle">
-                <h4>Ocean Style</h4>
-                <h1>海洋2人房型</h1>
-                <div className="lodging_oceanprice">
-                  <p>房間定價</p>
-                  <h3>
-                    <span>NT$</span>3200
-                  </h3>
-                </div>
+
+        <div
+          className="lodging_oceanbox"
+          style={{ visibility: oceanbox === 0 && "hidden" }}
+        >
+          <div className="lodging_oceanwrap">
+            <div className="lodging_oceantitle">
+              <h4>Ocean Style</h4>
+              <h1>海洋2人房型</h1>
+              <div className="lodging_oceanprice">
+                <p>房間定價</p>
+                <h3>
+                  <span>NT$</span>3200
+                </h3>
               </div>
-              <input
-                type="date"
-                placeholder="入住日期"
-                className="form-control"
-              ></input>
-              <input
-                type="date"
-                placeholder="入住日期"
-                className="form-control"
-              ></input>
-              <button className="btn">預約訂房</button>
             </div>
+            <div className="lodging_oceanamount">
+              <button className="btn lodging_oceanminus">
+                <i class="fas fa-minus"></i>
+              </button>
+              <input type="text" value="1" className="lodging_oceanvalue" />
+              <button className="btn lodging_oceanplus">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <input
+              type="date"
+              placeholder="入住日期"
+              className="lodging_oceanincheck"
+            ></input>
+            <input
+              type="date"
+              placeholder="入住日期"
+              className="lodging_oceanoutcheck"
+            ></input>
+            <button className="btn oceanreservation">預約訂房</button>
           </div>
         </div>
+
         {/* click 海洋房 */}
       </div>
 
-      <div
-        className="container mb_container"
-        style={{ display: oceanbox === 0 && "none" }}
-      >
-        <div className="lodging_oceandetail">
-          <div className="ocean_introducebox">
-            <div className="ocean_introduce">
-              <h2>房型簡介</h2>
-              <Link to="">
-                <div className="ocean_score">
-                  <p>9.3</p>
+      <div className="container mb_container">
+        <div
+          className="lodging_oceanboxdetail"
+          style={{ height: oceanbox === 1 && "105vh" }}
+        >
+          <div className="lodging_oceandetail">
+            <div className="ocean_introducebox">
+              <div className="ocean_introduce">
+                <h2>房型簡介</h2>
+                <Link to="">
+                  <div className="ocean_score">
+                    <p>9.3</p>
+                  </div>
+                </Link>
+                <Link to="">
+                  <p>15則評論</p>
+                </Link>
+              </div>
+              <div className="ocean_introducetext">
+                10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
+              </div>
+              <h2>房型設備</h2>
+              <div className="ocean_equipment">
+                <div className="ocean_bath">
+                  <p className="ocean_bathtitle">浴室設備</p>
+                  <p className="ocean_bathtext">
+                    浴缸、淋浴間
+                    <br />
+                    TOTO電腦免治馬桶
+                    <br />
+                    TOTO衛浴系統
+                    <br />
+                    Malin + Goetz
+                    <br />
+                    沐浴用品
+                    <br />
+                    吹風機
+                    <br />
+                    浴室暖燈
+                  </p>
                 </div>
-              </Link>
-              <Link to="">
-                <p>15則評論</p>
-              </Link>
-            </div>
-            <div className="ocean_introducetext">
-              10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
-            </div>
-            <h2>房型設備</h2>
-            <div className="ocean_equipment">
-              <div className="ocean_bath">
-                <p className="ocean_bathtitle">浴室設備</p>
-                <p className="ocean_bathtext">
-                  浴缸、淋浴間
-                  <br />
-                  TOTO電腦免治馬桶
-                  <br />
-                  TOTO衛浴系統
-                  <br />
-                  Malin + Goetz
-                  <br />
-                  沐浴用品
-                  <br />
-                  吹風機
-                  <br />
-                  浴室暖燈
-                </p>
-              </div>
-              <div className="ocean_other">
-                <p className="ocean_othertitle">其他設備</p>
-                <p className="ocean_othertext">
-                  一大床 (200*200cm)
-                  <br />
-                  65吋電視
-                  <br />
-                  舒眠級睡床及寢具
-                  <br />
-                  電子保險箱
-                  <br />
-                  全身鏡
-                  <br />
-                  熨斗及燙衣板
-                  <br />
-                  沙發
-                </p>
+                <div className="ocean_other">
+                  <p className="ocean_othertitle">其他設備</p>
+                  <p className="ocean_othertext">
+                    一大床 (200*200cm)
+                    <br />
+                    65吋電視
+                    <br />
+                    舒眠級睡床及寢具
+                    <br />
+                    電子保險箱
+                    <br />
+                    全身鏡
+                    <br />
+                    熨斗及燙衣板
+                    <br />
+                    沙發
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="ocean_introduceicon">
-            <figure>
-              <img src="img/lodging/icon/cotton_swabs.png" alt="" />
-              <fieldset>棉花棒</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/electric_kettle.png" alt="" />
-              <fieldset>熱水壺</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/bed.png" alt="" />
-              <fieldset>舒眠床</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/toothbrush.png" alt="" />
-              <fieldset>牙膏牙刷</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/television.png" alt="" />
-              <fieldset>65寸電視</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/couch.png" alt="" />
-              <fieldset>沙發</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/iron_table.png" alt="" />
-              <fieldset>熨斗</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/slippers.png" alt="" />
-              <fieldset>拖鞋</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/foam.png" alt="" />
-              <fieldset>沐浴用品</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_comb.png" alt="" />
-              <fieldset>梳子</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_dryer.png" alt="" />
-              <fieldset>吹風機</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/towel.png" alt="" />
-              <fieldset>毛巾</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/mirror.png" alt="" />
-              <fieldset>全身鏡</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/safe_box.png" alt="" />
-              <fieldset>保險箱</fieldset>
-            </figure>
+            <div className="ocean_introduceicon">
+              <figure>
+                <img src="img/lodging/icon/cotton_swabs.png" alt="" />
+                <fieldset>棉花棒</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/electric_kettle.png" alt="" />
+                <fieldset>熱水壺</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/bed.png" alt="" />
+                <fieldset>舒眠床</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/toothbrush.png" alt="" />
+                <fieldset>牙膏牙刷</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/television.png" alt="" />
+                <fieldset>65寸電視</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/couch.png" alt="" />
+                <fieldset>沙發</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/iron_table.png" alt="" />
+                <fieldset>熨斗</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/slippers.png" alt="" />
+                <fieldset>拖鞋</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/foam.png" alt="" />
+                <fieldset>沐浴用品</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_comb.png" alt="" />
+                <fieldset>梳子</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_dryer.png" alt="" />
+                <fieldset>吹風機</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/towel.png" alt="" />
+                <fieldset>毛巾</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/mirror.png" alt="" />
+                <fieldset>全身鏡</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/safe_box.png" alt="" />
+                <fieldset>保險箱</fieldset>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="lodging_ice" C>
+      <div className="lodging_ice">
         <img
           src="img/lodging/icefield_style/ice_style01.jpeg"
           alt=""
           className="lodging_iceimg"
+          ref={iceimg}
         />
+        <div
+          className="lodging_iceimgwrap"
+          style={{ visibility: icebox === 0 && "hidden" }}
+        >
+          <div className="lodging_iceimg1">
+            <img
+              src="img/lodging/icefield_style/ice_style01.jpeg"
+              alt=""
+              onClick={() => {
+                iceimg.current.src="img/lodging/icefield_style/ice_style01.jpeg"
+              }}
+            />
+          </div>
+          <div className="lodging_iceimg2">
+            <img
+              src="img/lodging/icefield_style/ice_style02.jpeg"
+              alt=""
+              onClick={() => {
+                iceimg.current.src="img/lodging/icefield_style/ice_style02.jpeg"
+              }}
+            />
+          </div>
+          <div className="lodging_iceimg3">
+            <img
+              src="img/lodging/icefield_style/ice_style03.jpeg"
+              alt=""
+              onClick={() => {
+                iceimg.current.src="img/lodging/icefield_style/ice_style03.jpeg"
+              }}
+            />
+          </div>
+        </div>
         <span className="lodging_icename">IceField Style</span>
         <div className="lodging_icebox">
           <div className="lodging_icewrap">
@@ -288,7 +365,7 @@ function Lodging() {
               <p>房數</p>
               <p>10房</p>
             </div>
-            <button className="btn" onClick={icePush}>
+            <button className="btn lodging_oceandetailbtn" onClick={icePush}>
               更多細節
             </button>
           </div>
@@ -311,17 +388,26 @@ function Lodging() {
                   </h3>
                 </div>
               </div>
+              <div className="lodging_iceamount">
+                <button className="btn lodging_iceminus">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input type="text" value="1" className="lodging_icevalue" />
+                <button className="btn lodging_iceplus">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
               <input
                 type="date"
                 placeholder="入住日期"
-                className="form-control"
+                className="lodging_iceincheck"
               ></input>
               <input
                 type="date"
                 placeholder="入住日期"
-                className="form-control"
+                className="lodging_iceincheck"
               ></input>
-              <button className="btn">預約訂房</button>
+              <button className="btn icereservation">預約訂房</button>
             </div>
           </div>
         </div>
@@ -329,123 +415,125 @@ function Lodging() {
         {/* click 冰原房 */}
       </div>
 
-      <div
-        className="container mb_container"
-        style={{ display: icebox === 0 && "none" }}
-      >
-        <div className="lodging_oceandetail">
-          <div className="ocean_introducebox">
-            <div className="ocean_introduce">
-              <h2>房型簡介</h2>
-              <Link to="">
-                <div className="ocean_score">
-                  <p>9.3</p>
+      <div className="container mb_container">
+        <div
+          className="lodging_iceboxdetail"
+          style={{ height: icebox === 1 && "105vh" }}
+        >
+          <div className="lodging_icedetail">
+            <div className="ice_introducebox">
+              <div className="ice_introduce">
+                <h2>房型簡介</h2>
+                <Link to="">
+                  <div className="ice_score">
+                    <p>9.3</p>
+                  </div>
+                </Link>
+                <Link to="">
+                  <p>15則評論</p>
+                </Link>
+              </div>
+              <div className="ice_introducetext">
+                10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
+              </div>
+              <h2>房型設備</h2>
+              <div className="ice_equipment">
+                <div className="ice_bath">
+                  <p className="ice_bathtitle">浴室設備</p>
+                  <p className="ice_bathtext">
+                    浴缸、淋浴間
+                    <br />
+                    TOTO電腦免治馬桶
+                    <br />
+                    TOTO衛浴系統
+                    <br />
+                    Malin + Goetz
+                    <br />
+                    沐浴用品
+                    <br />
+                    吹風機
+                    <br />
+                    浴室暖燈
+                  </p>
                 </div>
-              </Link>
-              <Link to="">
-                <p>15則評論</p>
-              </Link>
-            </div>
-            <div className="ocean_introducetext">
-              10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
-            </div>
-            <h2>房型設備</h2>
-            <div className="ocean_equipment">
-              <div className="ocean_bath">
-                <p className="ocean_bathtitle">浴室設備</p>
-                <p className="ocean_bathtext">
-                  浴缸、淋浴間
-                  <br />
-                  TOTO電腦免治馬桶
-                  <br />
-                  TOTO衛浴系統
-                  <br />
-                  Malin + Goetz
-                  <br />
-                  沐浴用品
-                  <br />
-                  吹風機
-                  <br />
-                  浴室暖燈
-                </p>
-              </div>
-              <div className="ocean_other">
-                <p className="ocean_othertitle">其他設備</p>
-                <p className="ocean_othertext">
-                  一大床 (200*200cm)
-                  <br />
-                  65吋電視
-                  <br />
-                  舒眠級睡床及寢具
-                  <br />
-                  電子保險箱
-                  <br />
-                  全身鏡
-                  <br />
-                  熨斗及燙衣板
-                  <br />
-                  沙發
-                </p>
+                <div className="ice_other">
+                  <p className="ice_othertitle">其他設備</p>
+                  <p className="ice_othertext">
+                    一大床 (200*200cm)
+                    <br />
+                    65吋電視
+                    <br />
+                    舒眠級睡床及寢具
+                    <br />
+                    電子保險箱
+                    <br />
+                    全身鏡
+                    <br />
+                    熨斗及燙衣板
+                    <br />
+                    沙發
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="ocean_introduceicon">
-            <figure>
-              <img src="img/lodging/icon/cotton_swabs.png" alt="" />
-              <fieldset>棉花棒</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/electric_kettle.png" alt="" />
-              <fieldset>熱水壺</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/bed.png" alt="" />
-              <fieldset>舒眠床</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/toothbrush.png" alt="" />
-              <fieldset>牙膏牙刷</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/television.png" alt="" />
-              <fieldset>65寸電視</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/couch.png" alt="" />
-              <fieldset>沙發</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/iron_table.png" alt="" />
-              <fieldset>熨斗</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/slippers.png" alt="" />
-              <fieldset>拖鞋</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/foam.png" alt="" />
-              <fieldset>沐浴用品</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_comb.png" alt="" />
-              <fieldset>梳子</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_dryer.png" alt="" />
-              <fieldset>吹風機</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/towel.png" alt="" />
-              <fieldset>毛巾</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/mirror.png" alt="" />
-              <fieldset>全身鏡</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/safe_box.png" alt="" />
-              <fieldset>保險箱</fieldset>
-            </figure>
+            <div className="ice_introduceicon">
+              <figure>
+                <img src="img/lodging/icon/cotton_swabs.png" alt="" />
+                <fieldset>棉花棒</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/electric_kettle.png" alt="" />
+                <fieldset>熱水壺</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/bed.png" alt="" />
+                <fieldset>舒眠床</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/toothbrush.png" alt="" />
+                <fieldset>牙膏牙刷</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/television.png" alt="" />
+                <fieldset>65寸電視</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/couch.png" alt="" />
+                <fieldset>沙發</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/iron_table.png" alt="" />
+                <fieldset>熨斗</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/slippers.png" alt="" />
+                <fieldset>拖鞋</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/foam.png" alt="" />
+                <fieldset>沐浴用品</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_comb.png" alt="" />
+                <fieldset>梳子</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_dryer.png" alt="" />
+                <fieldset>吹風機</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/towel.png" alt="" />
+                <fieldset>毛巾</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/mirror.png" alt="" />
+                <fieldset>全身鏡</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/safe_box.png" alt="" />
+                <fieldset>保險箱</fieldset>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -526,123 +614,125 @@ function Lodging() {
         {/* click 夜行房 */}
       </div>
 
-      <div
-        className="container mb_container"
-        style={{ display: nocturnalbox === 0 && "none" }}
-      >
-        <div className="lodging_oceandetail">
-          <div className="ocean_introducebox">
-            <div className="ocean_introduce">
-              <h2>房型簡介</h2>
-              <Link to="">
-                <div className="ocean_score">
-                  <p>9.3</p>
+      <div className="container mb_container">
+        <div
+          className="lodging_nocturnalboxdetail"
+          style={{ height: nocturnalbox === 1 && "90vh" }}
+        >
+          <div className="lodging_nocturnaldetail">
+            <div className="nocturnal_introducebox">
+              <div className="nocturnal_introduce">
+                <h2>房型簡介</h2>
+                <Link to="">
+                  <div className="nocturnal_score">
+                    <p>9.3</p>
+                  </div>
+                </Link>
+                <Link to="">
+                  <p>15則評論</p>
+                </Link>
+              </div>
+              <div className="nocturnal_introducetext">
+                10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
+              </div>
+              <h2>房型設備</h2>
+              <div className="nocturnal_equipment">
+                <div className="nocturnal_bath">
+                  <p className="nocturnal_bathtitle">浴室設備</p>
+                  <p className="nocturnal_bathtext">
+                    浴缸、淋浴間
+                    <br />
+                    TOTO電腦免治馬桶
+                    <br />
+                    TOTO衛浴系統
+                    <br />
+                    Malin + Goetz
+                    <br />
+                    沐浴用品
+                    <br />
+                    吹風機
+                    <br />
+                    浴室暖燈
+                  </p>
                 </div>
-              </Link>
-              <Link to="">
-                <p>15則評論</p>
-              </Link>
-            </div>
-            <div className="ocean_introducetext">
-              10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
-            </div>
-            <h2>房型設備</h2>
-            <div className="ocean_equipment">
-              <div className="ocean_bath">
-                <p className="ocean_bathtitle">浴室設備</p>
-                <p className="ocean_bathtext">
-                  浴缸、淋浴間
-                  <br />
-                  TOTO電腦免治馬桶
-                  <br />
-                  TOTO衛浴系統
-                  <br />
-                  Malin + Goetz
-                  <br />
-                  沐浴用品
-                  <br />
-                  吹風機
-                  <br />
-                  浴室暖燈
-                </p>
-              </div>
-              <div className="ocean_other">
-                <p className="ocean_othertitle">其他設備</p>
-                <p className="ocean_othertext">
-                  一大床 (200*200cm)
-                  <br />
-                  65吋電視
-                  <br />
-                  舒眠級睡床及寢具
-                  <br />
-                  電子保險箱
-                  <br />
-                  全身鏡
-                  <br />
-                  熨斗及燙衣板
-                  <br />
-                  沙發
-                </p>
+                <div className="nocturnal_other">
+                  <p className="nocturnal_othertitle">其他設備</p>
+                  <p className="nocturnal_othertext">
+                    一大床 (200*200cm)
+                    <br />
+                    65吋電視
+                    <br />
+                    舒眠級睡床及寢具
+                    <br />
+                    電子保險箱
+                    <br />
+                    全身鏡
+                    <br />
+                    熨斗及燙衣板
+                    <br />
+                    沙發
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="ocean_introduceicon">
-            <figure>
-              <img src="img/lodging/icon/cotton_swabs.png" alt="" />
-              <fieldset>棉花棒</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/electric_kettle.png" alt="" />
-              <fieldset>熱水壺</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/bed.png" alt="" />
-              <fieldset>舒眠床</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/toothbrush.png" alt="" />
-              <fieldset>牙膏牙刷</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/television.png" alt="" />
-              <fieldset>65寸電視</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/couch.png" alt="" />
-              <fieldset>沙發</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/iron_table.png" alt="" />
-              <fieldset>熨斗</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/slippers.png" alt="" />
-              <fieldset>拖鞋</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/foam.png" alt="" />
-              <fieldset>沐浴用品</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_comb.png" alt="" />
-              <fieldset>梳子</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_dryer.png" alt="" />
-              <fieldset>吹風機</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/towel.png" alt="" />
-              <fieldset>毛巾</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/mirror.png" alt="" />
-              <fieldset>全身鏡</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/safe_box.png" alt="" />
-              <fieldset>保險箱</fieldset>
-            </figure>
+            <div className="nocturnal_introduceicon">
+              <figure>
+                <img src="img/lodging/icon/cotton_swabs.png" alt="" />
+                <fieldset>棉花棒</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/electric_kettle.png" alt="" />
+                <fieldset>熱水壺</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/bed.png" alt="" />
+                <fieldset>舒眠床</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/toothbrush.png" alt="" />
+                <fieldset>牙膏牙刷</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/television.png" alt="" />
+                <fieldset>65寸電視</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/couch.png" alt="" />
+                <fieldset>沙發</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/iron_table.png" alt="" />
+                <fieldset>熨斗</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/slippers.png" alt="" />
+                <fieldset>拖鞋</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/foam.png" alt="" />
+                <fieldset>沐浴用品</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_comb.png" alt="" />
+                <fieldset>梳子</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_dryer.png" alt="" />
+                <fieldset>吹風機</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/towel.png" alt="" />
+                <fieldset>毛巾</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/mirror.png" alt="" />
+                <fieldset>全身鏡</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/safe_box.png" alt="" />
+                <fieldset>保險箱</fieldset>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -724,123 +814,125 @@ function Lodging() {
         {/* click 冰原房 */}
       </div>
 
-      <div
-        className="container mb_container"
-        style={{ display: tropicalbox === 0 && "none" }}
-      >
-        <div className="lodging_oceandetail">
-          <div className="ocean_introducebox">
-            <div className="ocean_introduce">
-              <h2>房型簡介</h2>
-              <Link to="">
-                <div className="ocean_score">
-                  <p>9.3</p>
+      <div className="container mb_container">
+        <div
+          className="lodging_tropicalboxdetail"
+          style={{ height: tropicalbox === 1 && "90vh" }}
+        >
+          <div className="lodging_tropicaldetail">
+            <div className="tropical_introducebox">
+              <div className="tropical_introduce">
+                <h2>房型簡介</h2>
+                <Link to="">
+                  <div className="tropical_score">
+                    <p>9.3</p>
+                  </div>
+                </Link>
+                <Link to="">
+                  <p>15則評論</p>
+                </Link>
+              </div>
+              <div className="tropical_introducetext">
+                10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
+              </div>
+              <h2>房型設備</h2>
+              <div className="tropical_equipment">
+                <div className="tropical_bath">
+                  <p className="tropical_bathtitle">浴室設備</p>
+                  <p className="tropical_bathtext">
+                    浴缸、淋浴間
+                    <br />
+                    TOTO電腦免治馬桶
+                    <br />
+                    TOTO衛浴系統
+                    <br />
+                    Malin + Goetz
+                    <br />
+                    沐浴用品
+                    <br />
+                    吹風機
+                    <br />
+                    浴室暖燈
+                  </p>
                 </div>
-              </Link>
-              <Link to="">
-                <p>15則評論</p>
-              </Link>
-            </div>
-            <div className="ocean_introducetext">
-              10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
-            </div>
-            <h2>房型設備</h2>
-            <div className="ocean_equipment">
-              <div className="ocean_bath">
-                <p className="ocean_bathtitle">浴室設備</p>
-                <p className="ocean_bathtext">
-                  浴缸、淋浴間
-                  <br />
-                  TOTO電腦免治馬桶
-                  <br />
-                  TOTO衛浴系統
-                  <br />
-                  Malin + Goetz
-                  <br />
-                  沐浴用品
-                  <br />
-                  吹風機
-                  <br />
-                  浴室暖燈
-                </p>
-              </div>
-              <div className="ocean_other">
-                <p className="ocean_othertitle">其他設備</p>
-                <p className="ocean_othertext">
-                  一大床 (200*200cm)
-                  <br />
-                  65吋電視
-                  <br />
-                  舒眠級睡床及寢具
-                  <br />
-                  電子保險箱
-                  <br />
-                  全身鏡
-                  <br />
-                  熨斗及燙衣板
-                  <br />
-                  沙發
-                </p>
+                <div className="tropical_other">
+                  <p className="tropical_othertitle">其他設備</p>
+                  <p className="tropical_othertext">
+                    一大床 (200*200cm)
+                    <br />
+                    65吋電視
+                    <br />
+                    舒眠級睡床及寢具
+                    <br />
+                    電子保險箱
+                    <br />
+                    全身鏡
+                    <br />
+                    熨斗及燙衣板
+                    <br />
+                    沙發
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="ocean_introduceicon">
-            <figure>
-              <img src="img/lodging/icon/cotton_swabs.png" alt="" />
-              <fieldset>棉花棒</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/electric_kettle.png" alt="" />
-              <fieldset>熱水壺</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/bed.png" alt="" />
-              <fieldset>舒眠床</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/toothbrush.png" alt="" />
-              <fieldset>牙膏牙刷</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/television.png" alt="" />
-              <fieldset>65寸電視</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/couch.png" alt="" />
-              <fieldset>沙發</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/iron_table.png" alt="" />
-              <fieldset>熨斗</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/slippers.png" alt="" />
-              <fieldset>拖鞋</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/foam.png" alt="" />
-              <fieldset>沐浴用品</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_comb.png" alt="" />
-              <fieldset>梳子</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/hair_dryer.png" alt="" />
-              <fieldset>吹風機</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/towel.png" alt="" />
-              <fieldset>毛巾</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/mirror.png" alt="" />
-              <fieldset>全身鏡</fieldset>
-            </figure>
-            <figure>
-              <img src="img/lodging/icon/safe_box.png" alt="" />
-              <fieldset>保險箱</fieldset>
-            </figure>
+            <div className="tropical_introduceicon">
+              <figure>
+                <img src="img/lodging/icon/cotton_swabs.png" alt="" />
+                <fieldset>棉花棒</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/electric_kettle.png" alt="" />
+                <fieldset>熱水壺</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/bed.png" alt="" />
+                <fieldset>舒眠床</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/toothbrush.png" alt="" />
+                <fieldset>牙膏牙刷</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/television.png" alt="" />
+                <fieldset>65寸電視</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/couch.png" alt="" />
+                <fieldset>沙發</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/iron_table.png" alt="" />
+                <fieldset>熨斗</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/slippers.png" alt="" />
+                <fieldset>拖鞋</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/foam.png" alt="" />
+                <fieldset>沐浴用品</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_comb.png" alt="" />
+                <fieldset>梳子</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/hair_dryer.png" alt="" />
+                <fieldset>吹風機</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/towel.png" alt="" />
+                <fieldset>毛巾</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/mirror.png" alt="" />
+                <fieldset>全身鏡</fieldset>
+              </figure>
+              <figure>
+                <img src="img/lodging/icon/safe_box.png" alt="" />
+                <fieldset>保險箱</fieldset>
+              </figure>
+            </div>
           </div>
         </div>
       </div>

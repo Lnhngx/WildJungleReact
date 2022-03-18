@@ -54,7 +54,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_ocean {
     width: 100%;
-    height: 40vw;
+    height: 35vw;
     overflow: hidden;
     position: relative;
   }
@@ -67,7 +67,7 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_oceanimgwrap {
     width: 24%;
     left: 7%;
-    bottom:5%;
+    bottom: 5%;
     position: absolute;
     display: flex;
     justify-content: space-between;
@@ -110,11 +110,7 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_oceanimg3 img {
     height: 100px;
     object-fit: cover;
-    
   }
-
-  
-
 
   .lodging_oceanname {
     font-size: 5rem;
@@ -126,8 +122,6 @@ $ning-englishont: "Playfair Display", serif;
     bottom: 5%;
   }
 
-  .lodging_oceanboxclick
-
   .lodging_oceanbox {
     width: 50%;
     height: 100%;
@@ -135,6 +129,7 @@ $ning-englishont: "Playfair Display", serif;
     right: 0;
     background: linear-gradient(to right, #ffffff00 0%, $ning-color3 30%);
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
@@ -182,36 +177,51 @@ $ning-englishont: "Playfair Display", serif;
       color: $ning-color4;
       margin-top: 3%;
     }
+  }
+  .lodging_oceanamount {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
 
-    input {
-      margin-left: 40%;
-      width: 60%;
-      height: 50px;
-      color: $ning-color4;
-      border: 1px solid $ning-color4;
-      margin-top: 5%;
-      border-radius: 0;
-      font-family: $ning-chinesefont;
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
+  .lodging_oceanminus,
+  .lodging_oceanplus {
+    width: 30px;
+    height: 30px;
+    background-color: $ning-color4;
+    color: $ning-color3;
+    border-radius: 0;
+  }
 
-    input:focus {
-      border-color: $ning-color2;
-      box-shadow: 0 0 0 #ffffff00;
-    }
+  .lodging_oceanvalue {
+    width: 60px;
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid $ning-color4;
+    font-size: 18px;
+    font-family: $ning-chinesefont;
+    text-align: center;
+    line-height: 18px;
+    outline: 0;
+  }
 
-    button {
-      width: 60%;
-      height: 50px;
-      background-color: $ning-color4;
-      color: $ning-color3;
-      margin-top: 5%;
-      border-radius: 0;
-      font-family: $ning-chinesefont;
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
+  .lodging_oceanvalue:focus {
+    border-color: $ning-color2;
+    box-shadow: 0 0 0 #ffffff00;
+  }
+
+  .lodging_oceandetailbtn,
+  .oceanreservation {
+    width: 60%;
+    height: 50px;
+    background-color: $ning-color4;
+    color: $ning-color3;
+    margin-top: 5%;
+    border-radius: 0;
+    font-family: $ning-chinesefont;
+    font-size: 1.2rem;
+    font-weight: 400;
   }
 
   .lodging_oceanline {
@@ -255,6 +265,32 @@ $ning-englishont: "Playfair Display", serif;
     h2:nth-child(1) {
       margin-top: 0%;
     }
+  }
+
+  .lodging_oceanincheck:focus,
+  .lodging_oceanoutcheck:focus {
+    border-color: $ning-color2;
+    box-shadow: 0 0 0 #ffffff00;
+  }
+
+  .lodging_oceanincheck,
+  .lodging_oceanoutcheck {
+    margin-left: 40%;
+    width: 60%;
+    height: 50px;
+    color: $ning-color4;
+    border: 1px solid $ning-color4;
+    margin-top: 5%;
+    border-radius: 0;
+    font-family: $ning-chinesefont;
+    font-size: 1.2rem;
+    display: block;
+  }
+
+  .lodging_oceanboxdetail {
+    height: 0;
+    overflow: hidden;
+    transition: 1.5s;
   }
 
   .lodging_oceandetail {
@@ -388,7 +424,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_ice {
     width: 100%;
-    height: 40vw;
+    height: 35vw;
     overflow: hidden;
     position: relative;
     margin-top: 1%;
@@ -399,6 +435,54 @@ $ning-englishont: "Playfair Display", serif;
     right: 0;
     object-fit: cover;
     position: absolute;
+  }
+
+  .lodging_iceimgwrap {
+    width: 24%;
+    right: 7%;
+    bottom: 5%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .lodging_iceimg1 {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 0 0 2 #0000007b;
+    border: 2px solid $ning-color3;
+  }
+
+  .lodging_iceimg1 img {
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .lodging_iceimg2 {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 0 0 2 #0000007b;
+    border: 2px solid $ning-color3;
+  }
+
+  .lodging_iceimg2 img {
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .lodging_iceimg3 {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #0000007b;
+    border: 2px solid $ning-color3;
+  }
+
+  .lodging_iceimg3 img {
+    height: 100px;
+    object-fit: cover;
   }
 
   .lodging_icename {
@@ -464,35 +548,51 @@ $ning-englishont: "Playfair Display", serif;
       color: $ning-color4;
       margin-top: 3%;
     }
+  }
 
-    input {
-      width: 60%;
-      height: 50px;
-      color: $ning-color4;
-      border: 1px solid $ning-color4;
-      margin-top: 5%;
-      border-radius: 0;
-      font-family: $ning-chinesefont;
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
+  .lodging_iceamount {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+  }
 
-    input:focus {
-      border-color: $ning-color2;
-      box-shadow: 0 0 0 #ffffff00;
-    }
+  .lodging_iceminus,
+  .lodging_iceplus {
+    width: 30px;
+    height: 30px;
+    background-color: $ning-color4;
+    color: $ning-color3;
+    border-radius: 0;
+  }
 
-    button {
-      width: 60%;
-      height: 50px;
-      background-color: $ning-color4;
-      color: $ning-color3;
-      margin-top: 10%;
-      border-radius: 0;
-      font-family: $ning-chinesefont;
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
+  .lodging_icevalue {
+    width: 60px;
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid $ning-color4;
+    font-size: 18px;
+    font-family: $ning-chinesefont;
+    text-align: center;
+    line-height: 18px;
+    outline: 0;
+  }
+
+  .lodging_icevalue:focus {
+    border-color: $ning-color2;
+    box-shadow: 0 0 0 #ffffff00;
+  }
+
+  .lodging_icedetailbtn,
+  .icereservation {
+    width: 60%;
+    height: 50px;
+    background-color: $ning-color4;
+    color: $ning-color3;
+    margin-top: 5%;
+    border-radius: 0;
+    font-family: $ning-chinesefont;
+    font-size: 1.2rem;
+    font-weight: 400;
   }
 
   .lodging_iceline {
@@ -523,6 +623,156 @@ $ning-englishont: "Playfair Display", serif;
     margin-right: 70%;
   }
 
+  .ice_introducebox {
+    width: 35%;
+    h2 {
+      font-family: $ning-chinesefont;
+      font-size: 2.5rem;
+      margin-top: 15%;
+    }
+
+    h2:nth-child(1) {
+      margin-top: 0%;
+    }
+  }
+
+  .lodging_iceincheck:focus,
+  .lodging_iceoutcheck:focus {
+    border-color: $ning-color2;
+    box-shadow: 0 0 0 #ffffff00;
+  }
+
+  .lodging_iceincheck,
+  .lodging_iceoutcheck {
+    width: 60%;
+    height: 50px;
+    color: $ning-color4;
+    border: 1px solid $ning-color4;
+    outline: 0;
+    margin-top: 5%;
+    border-radius: 0;
+    font-family: $ning-chinesefont;
+    font-size: 1.2rem;
+    font-weight: 400;
+    display: block;
+  }
+
+  .lodging_iceboxdetail {
+    height: 0;
+    overflow: hidden;
+    transition: 1.5s;
+  }
+
+  .lodging_icedetail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6%;
+  }
+
+  .ice_introduce {
+    display: flex;
+    align-items: center;
+
+    .ice_score {
+      width: 50px;
+      height: 50px;
+      background-color: $ning-color2;
+      border-radius: 6px 6px 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 80%;
+    }
+
+    .ice_score p {
+      font-family: $ning-chinesefont;
+      font-size: 2rem;
+      color: $ning-color3;
+      margin: 0;
+    }
+
+    p {
+      font-family: $ning-chinesefont;
+      font-size: 1.6rem;
+      color: #777;
+      margin: 0;
+      margin-left: 60%;
+    }
+  }
+
+  .ice_introducetext {
+    width: 100%;
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    color: $ning-color4;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    margin-top: 5%;
+    line-height: 160%;
+  }
+
+  .ice_equipment {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15%;
+  }
+
+  .ice_bath,
+  .ice_other {
+    width: 50%;
+  }
+
+  .ice_bathtitle,
+  .ice_othertitle {
+    font-family: $ning-chinesefont;
+    font-size: 1.6rem;
+    color: $ning-color2;
+    border-left: 10px solid $ning-color2;
+    padding: 0 3%;
+    line-height: 1.6rem;
+    margin-top: 15%;
+  }
+
+  .ice_bathtext,
+  .ice_othertext {
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    margin-top: 8%;
+    line-height: 2.8rem;
+  }
+
+  .ice_introduceicon {
+    width: 60%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    figure {
+      width: 14%;
+      border-left: 1px solid #777;
+      padding: 2% 2%;
+      margin: 2% 0;
+      font-family: $ning-chinesefont;
+    }
+
+    figure:nth-child(7),
+    figure:nth-child(14) {
+      border-right: 1px solid #777;
+    }
+
+    img {
+      width: 80%;
+    }
+
+    fieldset {
+      margin-top: 20%;
+      font-size: 1.2rem;
+    }
+  }
+
   /* ice hover */
 
   .lodging_ice:hover {
@@ -544,7 +794,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_nocturnal {
     width: 100%;
-    height: 40vw;
+    height: 35vw;
     overflow: hidden;
     position: relative;
     margin-top: 1%;
@@ -654,6 +904,135 @@ $ning-englishont: "Playfair Display", serif;
     text-align: left;
   }
 
+  .nocturnal_introducebox {
+    width: 35%;
+    h2 {
+      font-family: $ning-chinesefont;
+      font-size: 2.5rem;
+      margin-top: 15%;
+    }
+
+    h2:nth-child(1) {
+      margin-top: 0%;
+    }
+  }
+
+  .lodging_nocturnalboxdetail {
+    height: 0;
+    overflow: hidden;
+    transition: 1.5s;
+  }
+
+  .lodging_nocturnaldetail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6%;
+  }
+
+  .nocturnal_introduce {
+    display: flex;
+    align-items: center;
+
+    .nocturnal_score {
+      width: 50px;
+      height: 50px;
+      background-color: $ning-color2;
+      border-radius: 6px 6px 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 80%;
+    }
+
+    .nocturnal_score p {
+      font-family: $ning-chinesefont;
+      font-size: 2rem;
+      color: $ning-color3;
+      margin: 0;
+    }
+
+    p {
+      font-family: $ning-chinesefont;
+      font-size: 1.6rem;
+      color: #777;
+      margin: 0;
+      margin-left: 60%;
+    }
+  }
+
+  .nocturnal_introducetext {
+    width: 100%;
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    color: $ning-color4;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    margin-top: 5%;
+    line-height: 160%;
+  }
+
+  .nocturnal_equipment {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15%;
+  }
+
+  .nocturnal_bath,
+  .nocturnal_other {
+    width: 50%;
+  }
+
+  .nocturnal_bathtitle,
+  .nocturnal_othertitle {
+    font-family: $ning-chinesefont;
+    font-size: 1.6rem;
+    color: $ning-color2;
+    border-left: 10px solid $ning-color2;
+    padding: 0 3%;
+    line-height: 1.6rem;
+    margin-top: 15%;
+  }
+
+  .nocturnal_bathtext,
+  .nocturnal_othertext {
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    margin-top: 8%;
+    line-height: 2.8rem;
+  }
+
+  .nocturnal_introduceicon {
+    width: 60%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    figure {
+      width: 14%;
+      border-left: 1px solid #777;
+      padding: 2% 2%;
+      margin: 2% 0;
+      font-family: $ning-chinesefont;
+    }
+
+    figure:nth-child(7),
+    figure:nth-child(14) {
+      border-right: 1px solid #777;
+    }
+
+    img {
+      width: 80%;
+    }
+
+    fieldset {
+      margin-top: 20%;
+      font-size: 1.2rem;
+    }
+  }
+
   /* nocturnal hover */
 
   .lodging_nocturnal:hover {
@@ -676,7 +1055,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_tropical {
     width: 100%;
-    height: 40vw;
+    height: 35vw;
     overflow: hidden;
     position: relative;
     margin-top: 1%;
@@ -766,8 +1145,8 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_tropicallist2,
   .lodging_tropicallist3 {
     display: flex;
-
     p {
+      width: 100%;
       font-family: $ning-chinesefont;
       font-size: 1.2rem;
       font-weight: 400;
@@ -781,6 +1160,135 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_tropicallist3 p:nth-child(2) {
     text-align: right;
     margin-right: 70%;
+  }
+
+  .tropical_introducebox {
+    width: 35%;
+    h2 {
+      font-family: $ning-chinesefont;
+      font-size: 2.5rem;
+      margin-top: 15%;
+    }
+
+    h2:nth-child(1) {
+      margin-top: 0%;
+    }
+  }
+
+  .lodging_tropicalboxdetail {
+    height: 0;
+    overflow: hidden;
+    transition: 1.5s;
+  }
+
+  .lodging_tropicaldetail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6%;
+  }
+
+  .tropical_introduce {
+    display: flex;
+    align-items: center;
+
+    .tropical_score {
+      width: 50px;
+      height: 50px;
+      background-color: $ning-color2;
+      border-radius: 6px 6px 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 80%;
+    }
+
+    .tropical_score p {
+      font-family: $ning-chinesefont;
+      font-size: 2rem;
+      color: $ning-color3;
+      margin: 0;
+    }
+
+    p {
+      font-family: $ning-chinesefont;
+      font-size: 1.6rem;
+      color: #777;
+      margin: 0;
+      margin-left: 60%;
+    }
+  }
+
+  .tropical_introducetext {
+    width: 100%;
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    color: $ning-color4;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    margin-top: 5%;
+    line-height: 160%;
+  }
+
+  .tropical_equipment {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15%;
+  }
+
+  .tropical_bath,
+  .tropical_other {
+    width: 50%;
+  }
+
+  .tropical_bathtitle,
+  .tropical_othertitle {
+    font-family: $ning-chinesefont;
+    font-size: 1.6rem;
+    color: $ning-color2;
+    border-left: 10px solid $ning-color2;
+    padding: 0 3%;
+    line-height: 1.6rem;
+    margin-top: 15%;
+  }
+
+  .tropical_bathtext,
+  .tropical_othertext {
+    font-family: $ning-chinesefont;
+    font-size: 1.4rem;
+    margin-top: 8%;
+    line-height: 2.8rem;
+  }
+
+  .tropical_introduceicon {
+    width: 60%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    figure {
+      width: 14%;
+      border-left: 1px solid #777;
+      padding: 2% 2%;
+      margin: 2% 0;
+      font-family: $ning-chinesefont;
+    }
+
+    figure:nth-child(7),
+    figure:nth-child(14) {
+      border-right: 1px solid #777;
+    }
+
+    img {
+      width: 80%;
+    }
+
+    fieldset {
+      margin-top: 20%;
+      font-size: 1.2rem;
+    }
   }
 
   /* tropical hover */
