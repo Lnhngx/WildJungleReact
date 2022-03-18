@@ -38,7 +38,21 @@ const getBirth=(e)=>{
 const handleSubmit=(e)=>{
     e.preventDefault();
 }
-
+// 年
+let years=[];
+for(let i=1922;i<=2022;i++){
+    years.push(i)
+}
+// 月
+let months=[];
+for(let i=1;i<=12;i++){
+    months.push(i);
+}
+// 日
+let dates=[];
+for(let i=1;i<=31;i++){
+    dates.push(i);
+}
 
 
 
@@ -94,21 +108,36 @@ const handleSubmit=(e)=>{
                     <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
                 </th>
                 <td>
-                    {birthdayText.map((v,i)=>{
-                        return (
+                    <input list="yearList" id="year" name="year" className="tysu_input tysu_birth" onChange={getBirth} style={{width:"100px"}}/>
+                    <datalist id="yearList">
+                    {years.map((v,i)=>{
+                        return(
                             <React.Fragment key={i}>
-                                <input  
-                                type="text" 
-                                className="tysu_input tysu_birth}"
-                                value={birthday[keys[i]]}
-                                name={keys[i]}
-                                onChange={getBirth}
-                                style={{width:"100px"}}
-                                /><span className="tysu_birthText">{v}</span>
+                                <option value={v} />
                             </React.Fragment>
-                        )
-                    }
-                    )}
+                            )
+                    })}
+                    </datalist>
+                    <input list="monthList" id="month" name="month" className="tysu_input tysu_birth" onChange={getBirth} style={{width:"100px"}}/>
+                    <datalist id="monthList">
+                    {months.map((v,i)=>{
+                        return(
+                            <React.Fragment key={i}>
+                                <option value={v} />
+                            </React.Fragment>
+                            )
+                    })}
+                    </datalist>
+                    <input list="dateList" id="date" name="date" className="tysu_input tysu_birth" onChange={getBirth} style={{width:"100px"}}/>
+                    <datalist id="dateList">
+                    {dates.map((v,i)=>{
+                        return(
+                            <React.Fragment key={i}>
+                                <option value={v} />
+                            </React.Fragment>
+                            )
+                    })}
+                    </datalist>
                     <div id="birthHelp"></div>
                 </td>
             </tr>
