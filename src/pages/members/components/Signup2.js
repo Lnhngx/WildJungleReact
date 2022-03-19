@@ -1,80 +1,65 @@
 
 import React,{useState} from "react";
 
-
 function Signup(){
-    // 欄位狀態
-    const [fields,setFields]=useState({
-        email:'',
-        name:'',
-        gender:'',
-        birthday:'',
-        password:'',
-        confirmPassword:'',
-    });
+const [fields,setFields]=useState({
+    email:'',
+    name:'',
+    gender:'',
+    password:'',
+    confirmPassword:'',
+});
+const handleFieldChange=(e)=>{
+    // 1.拷貝 2.處理
+    // const newData={...fields,[e.target.name]:e.target.value};
+    // 3.設定回原狀態
+    // setFields(newData);
 
-    // 錯誤訊息狀態
-    const [fieldErrors, setFieldErrors] = useState({
-        email:'',
-        name:'',
-        gender:'',
-        birthday:'',
-        password:'',
-        confirmPassword:'',
-    })
+    const name=e.target.name;
+    const value=e.target.value;
+    const type=e.target.type;
 
-    // 輸入欄位
-    const handleFieldChange=(e)=>{
-        // 1.拷貝 2.處理
-        const newData={...fields,[e.target.name]:e.target.value};
-        // 3.設定回原狀態
-        setFields(newData);
-    }
+    let newValue=value;
+    console.log(value);
+}
 
-    // 表單有更動時先清空
-    const handleFormChange=(e)=>{
-        const updateFieldError={...fieldErrors,[e.target.name]:''}
-        setFieldErrors(updateFieldError)
-    }
+const birthdayText=['年','月','日'];
+const keys=['year','month','date'];
+const [birthday,setBirthday]=useState({
+    year:'',
+    month:'',
+    date:''
+});
+const getBirth=(e)=>{
+    const newBirth={...birthday,[e.target.name]: e.target.value};
+    setBirthday(newBirth);
+}
 
-    // 填寫錯誤時顯示
-    const handleFormInvalid=(e)=>{
-        e.preventDefault()
-        if(e.target.name.trim()==='email'){
-            console.log('是email問題')
-            e.target.validationMessage='是email問題'
-        }
-        const updateFieldError={...fieldErrors,[e.target.name]:e.target.validationMessage}
-        
-        setFieldErrors(updateFieldError);
-    }
+const handleSubmit=(e)=>{
+    e.preventDefault();
+}
+// 年
+let years=[];
+for(let i=1922;i<=2022;i++){
+    years.push(i)
+}
+// 月
+let months=[];
+for(let i=1;i<=12;i++){
+    months.push(i);
+}
+// 日
+let dates=[];
+for(let i=1;i<=31;i++){
+    dates.push(i);
+}
 
-// 參考0225/3
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-        const formData=new FormData(e.target);
-        console.log(formData);
-        // if(fields.email==='' || fields.name==='' || fields.password===''||fields.gender===''||fields.birthday===''||fields.password===''||fields.confirmPassword===''){
-        //     console.log('no');
-        // }
-        if(fields.email.trim()==='' || fields.email.length===0){
-            setFieldErrors('請輸入');
-            console.log('請輸入');
-            
-        }
-        
-
-    }
 
 
 
     return(<>
     <h1 className="tysu_h1">SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
-    <form id="tysu_form" name="form2"
-        onSubmit={handleSubmit}
-        onInvalid={handleFormInvalid}
-        onChange={handleFormChange}
-        >
+    <form id="tysu_form" onSubmit={handleSubmit}>
     <table>
         <tbody>
             <tr className="tysu_tr">
@@ -83,12 +68,11 @@ function Signup(){
                 </th>
                 <td>
                     <input type="email" id="tysu_email" className="tysu_input"
-                    value={fields.email}
-                    placeholder="請輸入您正確的email"
+                    value={fields.email} 
                     onChange={handleFieldChange} 
                     name="email"
                     />
-                    <div id="emailHelp">{fieldErrors.email}</div>
+                    <div id="emailHelp"></div>
                 </td>
             </tr>
 
@@ -102,7 +86,7 @@ function Signup(){
                     onChange={handleFieldChange} 
                     name="name"
                     />
-                    <div id="nameHelp">{fieldErrors.name}</div>
+                    <div id="nameHelp"></div>
                 </td>
             </tr>
             <tr className="tysu_tr">
@@ -116,7 +100,7 @@ function Signup(){
                     <option value="女">女性</option>
                     <option value="未決定">未決定</option>
                     </select>
-                    <div id="genderHelp">{fieldErrors.gender}</div>
+                    <div id="genderHelp"></div>
                 </td>
             </tr>
             <tr className="tysu_tr">
@@ -124,8 +108,37 @@ function Signup(){
                     <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
                 </th>
                 <td>
-                    <input id="tysu_birth" type="date" className="tysu_input" value={fields.birthday} name="birthday" onChange={handleFieldChange} />
-                    <div id="birthHelp">{fieldErrors.birthday}</div>
+                    <input list="yearList" id="year" name="year" className="tysu_input tysu_birth" onChange={getBirth} style={{width:"100px"}}/>
+                    <datalist id="yearList">
+                    {years.map((v,i)=>{
+                        return(
+                            <React.Fragment key={i}>
+                                <option value={v} />
+                            </React.Fragment>
+                            )
+                    })}
+                    </datalist>
+                    <input list="monthList" id="month" name="month" className="tysu_input tysu_birth" onChange={getBirth} style={{width:"100px"}}/>
+                    <datalist id="monthList">
+                    {months.map((v,i)=>{
+                        return(
+                            <React.Fragment key={i}>
+                                <option value={v} />
+                            </React.Fragment>
+                            )
+                    })}
+                    </datalist>
+                    <input list="dateList" id="date" name="date" className="tysu_input tysu_birth" onChange={getBirth} style={{width:"100px"}}/>
+                    <datalist id="dateList">
+                    {dates.map((v,i)=>{
+                        return(
+                            <React.Fragment key={i}>
+                                <option value={v} />
+                            </React.Fragment>
+                            )
+                    })}
+                    </datalist>
+                    <div id="birthHelp"></div>
                 </td>
             </tr>
             <tr className="tysu_tr">
@@ -134,7 +147,7 @@ function Signup(){
                 </th>
                 <td>
                     <input type="text" id="tysu_pass" className="tysu_input" value={fields.password} onChange={handleFieldChange} name="password" />
-                    <div id="tysu_passHelp">{fieldErrors.password}</div>
+                    <div id="tysu_passHelp"></div>
                 </td>
 
             </tr>
@@ -145,7 +158,7 @@ function Signup(){
                 </th>
                 <td>
                     <input type="text" id="tysu_cfPass" className="tysu_input" value={fields.confirmPassword}  onChange={handleFieldChange} name="confirmPassword" />
-                    <div id="tysu_cfPassHelp">{fieldErrors.confirmPassword}</div>
+                    <div id="tysu_cfPassHelp"></div>
                 </td>
 
             </tr>
