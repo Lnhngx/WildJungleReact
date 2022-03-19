@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import './multiChoice-game.css';
 function MultiChoice(){
+    const [allQuestion,setAllQuestion] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:4000/game')
+        .then(r=>r.json())
+        .then(obj=>{
+            // let newOjb = 
+            console.log( obj);
+        });
+    },[])
+    // 這是給按鈕的狀態，按了就會換下一題
+    const [toLeft,setToLeft] = useState(false);
+    const left = {transform:'translateX(-100%)'}
     return(
     <>
         <div className="spot_container">
@@ -23,20 +36,60 @@ function MultiChoice(){
                 <img src="/img/game/cloud-right1.png" alt=""/> 
             </div>
             <div className="game_title">冷知識大挑戰</div>
-            <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span></p>
+            <p className="game_profile">在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>300</span><br /><span>全部答對能拿到翻倍紅利哦</span></p>
             <div className="mc_container_game">
                 <div className="mc_game_border">
-                    <div className="mc_game_zone">
-                        <h2>1.請問斑馬的皮膚是什麼顏色?</h2>
-                        <div className="mc_btnGroup">
-                            <button className="right">黑白相間</button>
-                            <button>白色</button>
-                            <button>黑色</button>
-                            <button>灰色</button>
-                        </div>
-                        <div className="mc_help">
+                    <ul className="mc_game_zone" style={{transform:toLeft?"translateX(-50%)":"translateX(0)"}}>
+                    {allQuestion.map((v,i)=>{
+                        if(i%4===0){
+                            return(
+                                
+                                <h1>{v.name}</h1>
+                            )
+                        }else if(i%4===1){
+                            return(
+                                <button onClick={()=>{
+                                    setToLeft(true)
+                                }}>{v.acontent}</button>
+                            )
+                        }else if(i%4===2){
+                            return(
+                                <button onClick={()=>{
+                                    setToLeft(true)
+                                }}>{v.acontent}</button>
+                            )
+                        }else if(i%4===3){
+                            return(
+                                <button onClick={()=>{
+                                    setToLeft(true)
+                                }}>{v.acontent}</button>
+                            )
+                        } 
+                    })} 
+                    
+                        {/* <li className="choose_question">
+                            <h2>1.請問斑馬的皮膚是什麼顏色?</h2>
+                            <div className="mc_btnGroup">
+                                <button onClick={()=>{
+                                    setToLeft(true)
+                                }}>黑白相間</button>
+                                <button>白色</button>
+                                <button>黑色</button>
+                                <button>灰色</button>
+                            </div>
+                        </li>
+                        <li className="choose_question">
+                            <h2>1.請問斑馬的皮膚是什麼顏色?</h2>
+                            <div className="mc_btnGroup">
+                                <button className="right">黑白相間</button>
+                                <button>白色</button>
+                                <button>黑色</button>
+                                <button>灰色</button>
+                            </div>
+                        </li> */}
+                    </ul>
+                    <div className="mc_help">
                             <i className="fas fa-question"></i>
-                        </div>
                     </div>
                 </div>
             </div>
