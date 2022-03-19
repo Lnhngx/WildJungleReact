@@ -153,6 +153,9 @@ function Login(){
         </tbody>
       </table>
     </form>
+      <div className="tysu_loginBg">
+          <img src="./../img/member/leaf_g.svg" alt="" />
+      </div>
     </GoogleReCaptchaProvider>
     </>)
 }

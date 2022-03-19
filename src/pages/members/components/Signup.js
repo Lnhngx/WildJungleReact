@@ -84,7 +84,7 @@ function Signup(){
                 <td>
                     <input type="email" id="tysu_email" className="tysu_input"
                     value={fields.email}
-                    placeholder="請輸入您正確的email"
+                    // placeholder="請輸入您正確的email"
                     onChange={handleFieldChange} 
                     name="email"
                     />
@@ -161,6 +161,10 @@ function Signup(){
         </tbody>
     </table>
 
-</form></>)
+</form>
+    <div className="tysu_loginBg">
+          <img src="./../img/member/leaf_g.svg" alt="" />
+    </div>
+      </>)
 }
 export default Signup
