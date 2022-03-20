@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function ProductItem(props) {
-  const [pic, setPic] = useState([]);
   const {
     ProductSid,
     ProductsName,
@@ -15,20 +14,9 @@ function ProductItem(props) {
     ProductsReview,
     ProductsPrice,
     ProductsDate,
-  } = props.product;
+  } = props.products;
   let MainPic = `img/product/${ProductsMainPic}`;
-  useEffect(() => {
-    fetch("http://localhost:4000/productspic", { method: "GET" })
-      .then((res) => res.json())
-      .then((data) => {
-        setPic(data);
-        console.log("成功獲得圖片");
-      })
-      .catch((error) => {
-        console.log("錯誤了", error);
-      });
-  }, []);
-
+ 
   return (
     <>
       <div className="productCard">

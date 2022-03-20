@@ -7,6 +7,7 @@ import Productsbackground from "./components/productsbackground";
 import JqueryProduct from "./components/jqueryProduct";
 import EmailControl from "./components/theEmailControl";
 import ProductsCard from "./components/productCard";
+import SortbarPrice from "./components/SortbarPrice";
 
 const Range = Slider;
 
@@ -17,21 +18,35 @@ function Products() {
   const [products, setProducts] = useState([]);
   // 2. 用於網頁上經過各種處理(排序、搜尋、過濾)後的資料
   const [displayProducts, setDisplayProducts] = useState([]);
-  //3.產品圖片的資料
-  
+ 
+  const [sortbarPrice, setSortbarPrice] = useState('');
 
-  // React.useEffect(() => {
-  //   const adTitle = document.querySelector(".adTitle");
-  //   adTitle.addEventListener("click", () => {
-  //     console.log(1);
-  //   });
+  const handleSort = (products, sortbarPrice) => {
+    let newProducts = [...products];
+    // 以價格排序-由少至多
+    if (sortbarPrice === "1") {
+      console.log(1)
+      newProducts = [...newProducts].sort(
+        (a, b) => a.ProductsPrice - b.ProductsPrice
+      );
+    }
+    if (sortbarPrice === "2") {
+      console.log(setProducts(newProducts))
+      
+      newProducts = [...newProducts].sort(
+        (a, b) => b.ProductsPrice - a.ProductsPrice
+      );
+    }
+    // 預設用id 小至大
+    if (sortbarPrice === "" && newProducts.length > 0) {
+      console.log(3)
+      newProducts = [...newProducts].sort(
+        (a, b) => a.ProductSid - b.ProductSid
+      );
+    }
+    return newProducts;
+  };
 
-  //   return () => {
-  //     adTitle.removeEventListener("click", () => {
-  //       console.log(1);
-  //     });
-  //   };
-  // }, []);
   useEffect(() => {
     fetch("http://localhost:4000/products", { method: "GET" })
       .then((res) => res.json())
@@ -43,9 +58,17 @@ function Products() {
       .catch((error) => {
         console.log("錯誤了", error);
       });
-   
-
   }, []);
+
+
+  
+  useEffect(() => {
+    let newProducts = [...products];
+    
+    newProducts = handleSort(newProducts, sortbarPrice);
+
+    setDisplayProducts(newProducts);
+  }, [ products,sortbarPrice]);
 
   return (
     <>
@@ -136,9 +159,10 @@ function Products() {
               <i className="fas fa-search"></i>
             </div>
             <div className="selectGroup">
-              <select name="" id="">
-                <option value="">排序方式</option>
-              </select>
+              <SortbarPrice
+                sortbarPrice={sortbarPrice}
+                setSortbarPrice={setSortbarPrice}
+              />
               <select name="" id="">
                 <option value="">依商品分類</option>
               </select>
@@ -193,7 +217,7 @@ function Products() {
             </div>
           </div>
           <div className="productgroup">
-            <ProductsCard products={displayProducts}/>
+            <ProductsCard products={displayProducts} />
           </div>
         </div>
       </div>

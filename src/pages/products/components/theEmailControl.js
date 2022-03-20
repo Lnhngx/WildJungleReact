@@ -31,7 +31,7 @@ function EmailControl() {
     const alanEmail = document.getElementById("alan_Email");
 
     function emailshow() {
-      if (window.pageYOffset > 875) {
+      if (window.pageYOffset > 2000) {
         alanEmail.style.cssText =
           "display:flex;width: 35%;animation: emailshow 0.8s 1;";
       }

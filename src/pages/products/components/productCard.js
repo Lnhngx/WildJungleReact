@@ -6,8 +6,8 @@ function ProductCard(props) {
   const { products} = props;
   return (
     <>
-      {products.map((product, i) => {
-        return <ProductItem key={i} product={product}/>;
+      {products.map((products, i) => {
+        return <ProductItem key={i} products={products}/>;
       })}
     </>
   );
