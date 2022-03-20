@@ -1,18 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./scss/products.scss";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
 import JqueryProduct from "./components/jqueryProduct";
 import EmailControl from "./components/theEmailControl";
-import ProductsCard from "./components/productCard"
+import ProductsCard from "./components/productCard";
 
 const Range = Slider;
 
 function Products() {
   const [rangevalue, setRangevalue] = useState(1);
+  // 產品用的資料
+  // 1. 從伺服器來的原始資料
+  const [products, setProducts] = useState([]);
+  // 2. 用於網頁上經過各種處理(排序、搜尋、過濾)後的資料
+  const [displayProducts, setDisplayProducts] = useState([]);
+  //3.產品圖片的資料
+  
 
   // React.useEffect(() => {
   //   const adTitle = document.querySelector(".adTitle");
@@ -26,7 +32,20 @@ function Products() {
   //     });
   //   };
   // }, []);
+  useEffect(() => {
+    fetch("http://localhost:4000/products", { method: "GET" })
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setDisplayProducts(data);
+        console.log("成功獲得資料");
+      })
+      .catch((error) => {
+        console.log("錯誤了", error);
+      });
+   
 
+  }, []);
 
   return (
     <>
@@ -174,7 +193,7 @@ function Products() {
             </div>
           </div>
           <div className="productgroup">
-            <ProductsCard />
+            <ProductsCard products={displayProducts}/>
           </div>
         </div>
       </div>
