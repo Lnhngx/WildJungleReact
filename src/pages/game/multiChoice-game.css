@@ -94,15 +94,23 @@
     height: 800px;
     border: 80px solid transparent;
     border-image: url(/public/img/game/mc_background.png) 300 round;
+    overflow: hidden;
 }
 .mc_game_zone {
-    width: 100%;
+    width: 200%;
     height: 700px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    transition: 1s;
+}
+.choose_question{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.mc_game_zone h2 {
+.choose_question h2 {
     height: 50px;
     font-family: sans-serif;
     font-size: 4rem;

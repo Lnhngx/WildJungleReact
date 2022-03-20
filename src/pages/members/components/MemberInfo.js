@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function MemberInfo(){
     return (<>
-    <form id="tysu_form">
+    <form id="tysu_form"  style={{paddingBottom:"10rem"}}>
       <table>
         <tbody className="tysu_tBody1">
           <tr className="tysu_tr">
