@@ -58,6 +58,7 @@
     height: 605px;
     position: relative;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 /* 機器人回話的區域(靠左) */
 .chatbot_reply{
@@ -173,7 +174,7 @@
     height: 40px;
     font-size: 3.5rem;
     font-weight: 600;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     font-family: sans-serif;
     letter-spacing: 0.8rem;
     padding-left: 10px;
@@ -291,4 +292,49 @@
     border: none;
     background-color: transparent;
     /* margin-left: 0.7rem; */
+}
+/* 下方是天氣的css */
+.weather_carousel {
+    width: 1500px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-left: 3rem;
+    font-family: sans-serif;
+}
+.weather_card {
+    border-radius: 10px;
+    width: 200px;
+    height: 250px;
+    background-color: rgb(235, 91, 55);
+    margin-right: 1.5rem;
+}
+.weather_date{
+    color: white;
+    margin: 10px;
+    text-align: center;
+    font-size: 2rem;
+}
+.weather_icon{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: white;
+    padding-top: 10px;
+}
+.weather_row{
+    display: flex;
+    margin-top: 20px;
+}
+.weather_rain{
+    color: white;
+    width: 50%;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.weather_temp{
+    color: white;
+    width: 50%;
+    font-size: 1.2rem;
+    text-align: center;
 }
