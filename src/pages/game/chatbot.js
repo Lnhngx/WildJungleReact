@@ -10,6 +10,7 @@ function Chatbot(){
     const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [message,setMessage] = useState([{id:chat_id,text:'yo~ 我是熊貓有任何基礎問題都可以問我',type:'chatbot_reply'}]);
+    const [weatherData,setWeatherData] = useState({});
     const [io,setIo] = useState(null);
     const myChatbotInput = useRef(null);
     const connectWebSocket = ()=>{
@@ -17,14 +18,19 @@ function Chatbot(){
     }
     useEffect(()=>{
         if(io){
+            document.querySelector('.chat_area').innerHTML = '';
             console.log('success connect!')
         }
     },[io])
+    useEffect(()=>{
+        const chat_area = document.querySelector('.chat_area');
+        chat_area.scrollTo({top:chat_area.scrollHeight})
+    },[message])
     // 每一次開啟機器人的第一句預設問好
     useEffect(()=>{
         const sendTime = new Date();
         const hour = sendTime.getHours();
-        const minute = sendTime.getMinutes();
+        const minute = sendTime.getMinutes()<10?'0'+sendTime.getMinutes():sendTime.getMinutes();
         const description = hour >= 12 ? '下午':'上午';
         const timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
         document.querySelector('.chatbot_time').innerHTML = `${timeNow}`;
@@ -83,7 +89,31 @@ function Chatbot(){
             </div>
             {message.map((v,i)=>{
                 if(v.id>1){
-                    
+                    if(v.type==='getWeather'){
+                        console.log(weatherData)
+                        return (
+                            <div className="chatbot_reply" >
+                            <div className="chatbot_avatar">
+                                <img src="/img/game/chatbot_avatar.png" alt="" />
+                            </div>
+                            <ul className="weather_carousel">
+                                {weatherData.map((v,i)=>{
+                                    return(
+                                    <li className="weather_card" key={i}>
+                                        <div className="weather_date">{new Date(v.date).getMonth()+1}/{new Date(v.date).getDate()}</div>
+                                        <div className="weather_icon"></div>
+                                        <div className="weather_row">
+                                            <div className="weather_rain">降雨機率<br/>{v.rain}%</div>
+                                            <div className="weather_temp">平均氣溫<br/>{v.temp}&#176;</div>
+                                        </div>
+                                    </li>
+                                )})}
+                            </ul>
+                            <div className="chatbot_time">{v.time}</div>
+                        </div> 
+                            
+                        )
+                    }
                     if(v.id % 2===1){
                         {/* console.log('我是機器人的代表') */}
                         return(
@@ -106,7 +136,7 @@ function Chatbot(){
                                                 {v.text}
                                             </div>
                                             <div className="user_avatar">
-                                                <i class="fas fa-user"></i>
+                                                <i className="fas fa-user"></i>
                                             </div>
                                             <div className="user_time">{v.time}</div>
                             </div>
@@ -154,16 +184,6 @@ function Chatbot(){
             </div>
             <div className="user_time">00:23</div>
         </div>
-
-        <div className="chatbot_reply">
-            <div className="chatbot_avatar">
-                <img src="/img/game/chatbot_avatar.png" alt="" />
-            </div>
-            <div className="chatbot_message">
-                請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
-            </div>
-            <div className="chatbot_time">上午00:20</div>
-        </div>
     {/*------------------------------------------------------------------------------*/}
         </div>
     {/* -------- 提示回復訊息的div也是浮起來的 -------- */}
@@ -201,7 +221,36 @@ function Chatbot(){
             </Link>
             </div>
             
-            <div className="weather">  
+            <div className="weather" onClick={
+                ()=>{
+                    fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-E5452D5B-0C6B-437B-A34A-8EEC59F154DB&locationName=%E5%A4%A7%E5%AE%89%E5%8D%80&elementName=PoP12h,T,Wx')
+                    .then(r=>r.json())
+                    .then(obj=>{
+                        let Data = [];
+                        for(let i=0;i<=12;i=i+2){
+                            Data.push({
+                                    date:obj.records.locations[0].location[0].weatherElement[0].time[i].startTime,
+                                    rain:obj.records.locations[0].location[0].weatherElement[0].time[i].elementValue[0].value,
+                                    temp:obj.records.locations[0].location[0].weatherElement[1].time[i].elementValue[0].value,
+                                    wx:obj.records.locations[0].location[0].weatherElement[2].time[i].elementValue[0].value,
+                            });
+                        }
+                        const getTime = new Date();
+                        let hour = getTime.getHours();
+                        let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                        let description = hour >= 12 ? '下午':'上午';
+                        let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                        let replyMessage = [...message];
+                        const uploadTmp1 = { id:888,
+                                        text: 'do something',
+                                        type:'getWeather',
+                                        time:timeNow,
+                                    } ;
+                        replyMessage.push(uploadTmp1);
+                        setWeatherData(Data);
+                        setMessage(replyMessage);
+                    })
+            }}>  
                 <div className="icon">
                     <i className="fas fa-cloud"></i>
                 </div>
@@ -232,7 +281,7 @@ function Chatbot(){
                 setToggleReply(true);
                 const getTime = new Date();
                 let hour = getTime.getHours();
-                let minute = getTime.getMinutes();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
                 let description = hour >= 12 ? '下午':'上午';
                 let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
                 if(myChatbotInput.current.value){
