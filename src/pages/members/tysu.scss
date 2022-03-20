@@ -17,6 +17,7 @@
   --tysu_color2: #eb5c37;
   --tysu_color3: #1b7754;
   --tysu_color4: #222;
+  --tysu_color5: #c7c7c7;
   --tysu_fontSize: 1.3rem;
   --tysu_fontWeight: 600;
   --tysu_showdow: 0 0 3px #f9b01210;
@@ -118,6 +119,9 @@
   font-size: var(--tysu_fontSize);
   outline: none;
   background-color: transparent;
+}
+.tysu_input::placeholder {
+  color: var(--tysu_color5);
 }
 
 input:-webkit-autofill,
@@ -223,32 +227,6 @@ input:-webkit-autofill:active,
   transform: translateX(-50%);
 }
 
-/* canvas-------------- */
-.tysu_canvas {
-  position: relative;
-  width: 200px;
-  height: 88px;
-  overflow: hidden;
-  /* outline: 1px solid red; */
-  margin: 1.4rem 0 0 1.8rem;
-}
-#mycanvas {
-  border: 1px solid #d3d3d3;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#myCode {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.85rem;
-  line-height: 0.85rem;
-  padding: 10px;
-  width: 278px;
-  margin: 16px 0 22px;
-  /* border: 1px solid #ccc; */
-}
-/* canvas-------------- */
 .tysu_btn_sign a,
 .tysu_signText,
 .tysu_helpText {
