@@ -16,9 +16,9 @@ function MemberList(){
 
   // 紀錄memberList的狀態
   const [actived,setActived]=useState('會員資料')
-  // const [navAct,setNavAct]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
+  const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
   // 紀錄navItem狀態
-  const [navState,setNavState]=useState('基本設定')
+  // const [navState,setNavState]=useState('基本設定')
 
   return(
     
@@ -31,7 +31,7 @@ function MemberList(){
             {memberlist.map((v,i)=>{
               return <li key={i} onClick={(e)=>{
                 setActived(v)
-                setNavState(navItem[0])
+                setNavState({navItem:navItem[0],orderNavItem:orderNavItem[0],discountNavItem:discountNavItem[0],likeNavItem:likeNavItem[0]})
               }} className={actived===v ?'active':''}><Link to="#/"  className="tysu_link">{v}</Link></li>
             })}
           </ul>
