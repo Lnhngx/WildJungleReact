@@ -6,6 +6,7 @@ import GradeInfo from './GradeInfo'
 import Creditcard from './Creditcard'
 import CreditcardAdd from './CreditcardAdd'
 import AddressAdd from './AddressAdd'
+import OrderInfo from './OrderInfo'
 
 function MemberNavItem(props){
   const {memberlist,actived}=props
@@ -19,9 +20,10 @@ function MemberNavItem(props){
 
 
 
+
     return(<>
     <ul className="tysu_memberChild">
-    {/*props傳入的對象是誰，就渲染哪個nav item；除被點擊的nav item以外，其他nav item變更回原狀態 */}
+    {/* props傳入的對象是誰，就渲染哪個nav item；除被點擊的nav item以外，其他nav item變更回原狀態 */}
     {actived===memberlist[0] && navItem.map((v,i)=>{
       return <li key={i} onClick={()=>{
         setNavActived({...navActived,navItem:v,orderNavItem:orderNavItem[0],discountNavItem:discountNavItem[0],likeNavItem:likeNavItem[0]})}}>
@@ -63,7 +65,13 @@ function MemberNavItem(props){
   })}
     <img className="tysu_bg" src="./../img/member/flower.svg" alt="" />
   </ul>
-  {/* <MemberInfo /> */}
+  {/* memberlist && 當前的nav item皆符合才會渲染 */}
+  {actived===memberlist[0] && navActived.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem}/> : ''}
+  {actived===memberlist[0] && navActived.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : ''}
+  {actived===memberlist[0] && navActived.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : ''}
+  {actived===memberlist[0] && navActived.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : ''}
+
+  
   {/* <GradeInfo /> */}
   {/* <Creditcard /> */}
   {/* <CreditcardAdd /> */}
