@@ -17,12 +17,11 @@ function MemberNavItem(props){
   const discountNavItem=['紅利','折價券']
   const likeNavItem=['商品','活動']
 
-useEffect(()=>{
-  
-},[navActived])
+
 
     return(<>
     <ul className="tysu_memberChild">
+    {/*props傳入的對象是誰，就渲染哪個nav item；除被點擊的nav item以外，其他nav item變更回原狀態 */}
     {actived===memberlist[0] && navItem.map((v,i)=>{
       return <li key={i} onClick={()=>{
         setNavActived({...navActived,navItem:v,orderNavItem:orderNavItem[0],discountNavItem:discountNavItem[0],likeNavItem:likeNavItem[0]})}}>
