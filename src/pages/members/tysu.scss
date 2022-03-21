@@ -340,9 +340,9 @@ input:-webkit-autofill:active,
     color: var(--tysu_color2);
   }
 }
-// .tysu_link:visited {
-//   color: rgba(255, 255, 255, 0);
-// }
+.tysu_link.disabled {
+  visibility: hidden;
+}
 /* ---------------------------------- */
 
 .tysu_memberList,
