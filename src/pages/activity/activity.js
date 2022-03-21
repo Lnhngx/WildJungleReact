@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from 'react';
 import "./activity.scss";
+import * as Scroll from 'react-scroll';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 const seatsW = 8;
 const seatsH = 8;
@@ -24,7 +26,11 @@ const renderSeats = () => {
     ));
 };
 
-function activity() {
+
+function Activity() {
+    const [state, setState] = useState(false);
+    const [state2, setState2] = useState(true);
+
     return (
         <>
             <div className="terry_bg">
@@ -45,18 +51,16 @@ function activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物表演秀</div>
                             </div>
-                            <div className="terry_show_viewmore">View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState(!state);setState2(true);scroll.scrollTo(710) }} >View More</div>
                         </div>
-                        <div className="terry_show_area_img">
-                            {/* <img src="/img/activity/show1.jpg" alt="" /> */}
-                        </div>
+                        <div className="terry_show_area_img"></div>
                     </div>
 
-                    <div className="terry_showIntroduction_area">
+                    <div className={state ? "terry_showIntroduction_area" : "areaDisplayNone"}>
                         <div className="terry_showIntroduction_img">
                             {/* <img src="/img/activity/show2.jpg" alt="" /> */}
                         </div>
-                        <div className="terry_showIntroduction_textArea">
+                        <div className={"terry_showIntroduction_textArea"}>
                             <div className="showTitle">鯨豚表演秀</div>
                             <div className="showIntroduction">各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～</div>
                             <div className="showLocation"></div>
@@ -77,12 +81,12 @@ function activity() {
                                 <select>
                                     <option>選擇人數</option>
                                 </select>
-                                <button>訂位</button>
+                                <button onClick={() => { setState2(!state2);setState(!state) }}>訂位</button>
                             </div>
                         </div>
                     </div>
 
-                    <div className="terry_showBooking_area">
+                    <div className={state2?"areaDisplayNone":"terry_showBooking_area"}>
                         <div className="tourAndNotice">
                             <div className="tourImage">
                                 <img src="/img/activity/tour1.png" alt="" />
@@ -103,7 +107,7 @@ function activity() {
                             <div className="seatsArea">{renderSeats()}</div>
                             <div className="buttonGrop">
                                 <button>加入購物車</button>
-                                <button>回上一步</button>
+                                <button onClick={() => { setState(!state);setState2(true) }}>回上一步</button>
                             </div>
                         </div>
                     </div>
@@ -120,8 +124,8 @@ function activity() {
                             </div>
                             <div className="terry_show_viewmore">View More</div>
                         </div>
-                        <div className="terry_show_area_img">
-                            <img src="/img/activity/show3.jpeg" alt="" />
+                        <div className="terry_show_area_img1">
+                            {/* <img src="/img/activity/show3.jpeg" alt="" /> */}
                         </div>
                     </div>
                     <div className="terry_sponsor_cardsArea">
@@ -202,7 +206,7 @@ function activity() {
                             </div>
                         </div>
                         <div className="introduction_area">
-                            <div className="sponsor_introductionText3">我是動物園的明星動物之一，老鷹！感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意，感恩的心，平安喜樂。</div>
+                            <div className="sponsor_introductionText3">感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。</div>
                             <div className="selectAndButton_grop">
                                 <div className="sponsorSelect">
                                     <select>
@@ -221,28 +225,33 @@ function activity() {
                     </div>
 
                     {/*02結束*/}
-                    <div className="terry_sponsor_area">
+                    <div className="terry_touch_area">
                         <div className="terry_show_area_textArea">
                             <div className="terry_01">03</div>
                             <div className="terry_title_grop">
-                                <div className="terry_show_title1">Animal</div>
-                                <div className="terry_show_title2">Touch.</div>
+                                <div className="terry_title_grop2">
+                                    <div className="terry_show_title1">Animal</div>
+                                    <div className="terry_show_title2">Touch.</div>
+                                </div>
                                 <div className="terry_show_subtitle">動物接觸</div>
                             </div>
                             <div className="terry_show_viewmore">View More</div>
                         </div>
-                        <div className="terry_show_area_img">
-                            <img src="/img/activity/touch1.jpg" alt="" />
+                        <div className="terry_show_area_img2">
+                            <div className="terry_touchAreaImg"></div>
+                            {/* <img src="/img/activity/touch1.jpg" alt="" /> */}
                         </div>
                     </div>
 
                     <div className="terry_touch_imgArea">
                         <div className="imgAndNameGrop">
-                            <img src="/img/activity/touchshow1.jpeg" alt="" />
+                            <div className="terry_touchshow1"></div>
+                            {/* <img src="/img/activity/touchshow1.jpeg" alt="" /> */}
                             <div className="name">海狗互動秀</div>
                         </div>
                         <div className="imgAndNameGrop">
-                            <img src="/img/activity/touchshow2.jpg" alt="" />
+                            <div className="terry_touchshow2"></div>
+                            {/* <img src="/img/activity/touchshow2.jpg" alt="" /> */}
                             <div className="name">萌兔餵食體驗</div>
                         </div>
                     </div>
@@ -254,4 +263,4 @@ function activity() {
         </>)
 }
 
-export default activity;
+export default Activity;
