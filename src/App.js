@@ -24,7 +24,7 @@ import MemberLogin from "./pages/members/MemberLogin.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
 import MemberForgotPass from "./pages/members/MemberForgotPass";
 import MemberPassChange from "./pages/members/MemberPassChange";
-import ModifyMemberInfo from "./pages/members/ModifyMemberInfo";
+import MemberList from "./pages/members/components/MemberList";
 import Carts from "./pages/carts/carts";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
@@ -96,7 +96,7 @@ function App() {
               <MemberPassChange />
             </Route>
             <Route path="/members/modify-member-info">
-              <ModifyMemberInfo />
+              <MemberList />
             </Route>
             <Route path="/members">
               <MemberLogin />

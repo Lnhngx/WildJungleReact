@@ -328,9 +328,20 @@ input:-webkit-autofill:active,
   color: var(--tysu_color2);
   border: 0.8px solid var(--tysu_color2);
   box-shadow: var(--tysu_showdow);
+  > .tysu_link {
+    color: var(--tysu_color2);
+  }
 }
-.tysu_memberList li:hover .tysu_link {
+.tysu_memberList li.active {
   color: var(--tysu_color2);
+  border: 0.8px solid var(--tysu_color2);
+  box-shadow: var(--tysu_showdow);
+  > .tysu_link {
+    color: var(--tysu_color2);
+  }
+}
+.tysu_link.disabled {
+  visibility: hidden;
 }
 /* ---------------------------------- */
 
@@ -340,6 +351,7 @@ input:-webkit-autofill:active,
 .tysu_btnCenter {
   display: flex;
   justify-content: center;
+  list-style: none;
 }
 .tysu_memberChild li,
 .tysu_focusUnderLine li {
@@ -352,6 +364,7 @@ input:-webkit-autofill:active,
   font-size: 1.1rem;
   font-weight: var(--tysu_fontWeight);
   margin: 8px;
+  list-style: none;
 }
 
 .tysu_focusUnderLine li {

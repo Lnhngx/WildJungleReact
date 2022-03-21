@@ -8,38 +8,133 @@ import JqueryProduct from "./components/jqueryProduct";
 import EmailControl from "./components/theEmailControl";
 import ProductsCard from "./components/productCard";
 import SortbarPrice from "./components/SortbarPrice";
+import SortbarType from "./components/SortbarType";
+import SortbarVendor from "./components/SortbarVendor";
+import SearchBar from "./components/Searchbar";
 
 const Range = Slider;
 
 function Products() {
-  const [rangevalue, setRangevalue] = useState(1);
   // 產品用的資料
   // 1. 從伺服器來的原始資料
   const [products, setProducts] = useState([]);
   // 2. 用於網頁上經過各種處理(排序、搜尋、過濾)後的資料
   const [displayProducts, setDisplayProducts] = useState([]);
- 
-  const [sortbarPrice, setSortbarPrice] = useState('');
+
+  const [sortbarPrice, setSortbarPrice] = useState("");
+  const [sortbarType, setSortbarType] = useState("");
+  const [sortbarVendor, setSortbarVendor] = useState("");
+  const [searchWord, setSearchWord] = useState("");
+
+  const [rangevalue, setRangevalue] = useState(1500);
+
+  const handleSearch = (products, searchWord) => {
+    let newProducts = [...products];
+
+    if (searchWord.length) {
+      newProducts = products.filter((products) => {
+        return products.ProductsName.includes(searchWord);
+      });
+    }
+
+    return newProducts;
+  };
+  const priceSlice = (products, rangevalue) => {
+    let newProducts = [...products];
+    if (newProducts) {
+        newProducts = [...newProducts].filter(
+          (a) => a.ProductsPrice <= rangevalue
+        )
+    }
+    return newProducts;
+  };
 
   const handleSort = (products, sortbarPrice) => {
     let newProducts = [...products];
-    // 以價格排序-由少至多
     if (sortbarPrice === "1") {
-      console.log(1)
       newProducts = [...newProducts].sort(
         (a, b) => a.ProductsPrice - b.ProductsPrice
       );
     }
     if (sortbarPrice === "2") {
-      console.log(setProducts(newProducts))
-      
+      //為什麼不能console.log
       newProducts = [...newProducts].sort(
         (a, b) => b.ProductsPrice - a.ProductsPrice
       );
     }
-    // 預設用id 小至大
     if (sortbarPrice === "" && newProducts.length > 0) {
-      console.log(3)
+      newProducts = [...newProducts].sort(
+        (a, b) => a.ProductSid - b.ProductSid
+      );
+    }
+    return newProducts;
+  };
+
+  const sortType = (products, sortbarType) => {
+    let newProducts = [...products];
+    if (sortbarType === "1") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 1);
+    }
+    if (sortbarType === "2") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 2);
+    }
+    if (sortbarType === "3") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 3);
+    }
+    if (sortbarType === "4") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 4);
+    }
+    if (sortbarType === "5") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 5);
+    }
+    if (sortbarType === "6") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 6);
+    }
+    if (sortbarType === "" && newProducts.length > 0) {
+      newProducts = [...newProducts].sort(
+        (a, b) => a.ProductSid - b.ProductSid
+      );
+    }
+    return newProducts;
+  };
+
+  const sortVendor = (products, sortbarVendor) => {
+    let newProducts = [...products];
+
+    if (sortbarVendor === "1") {
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsVendor === "AnimalMoco"
+      );
+    }
+    if (sortbarVendor === "2") {
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsVendor === "100+1"
+      );
+    }
+    if (sortbarVendor === "3") {
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsVendor === "WildLife"
+      );
+    }
+    if (sortbarVendor === "4") {
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsVendor === "HappyHorse"
+      );
+    }
+    if (sortbarVendor === "5") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "mimi");
+    }
+    if (sortbarVendor === "6") {
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsVendor === "Bisque"
+      );
+    }
+    if (sortbarVendor === "7") {
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsVendor === "BabtBites"
+      );
+    }
+    if (sortbarVendor === "" && newProducts.length > 0) {
       newProducts = [...newProducts].sort(
         (a, b) => a.ProductSid - b.ProductSid
       );
@@ -60,15 +155,22 @@ function Products() {
       });
   }, []);
 
-
-  
   useEffect(() => {
     let newProducts = [...products];
-    
+    newProducts = handleSearch(products, searchWord);
+    newProducts = sortType(newProducts, sortbarType);
+    newProducts = sortVendor(newProducts, sortbarVendor);
     newProducts = handleSort(newProducts, sortbarPrice);
-
+    newProducts = priceSlice(newProducts, rangevalue);
     setDisplayProducts(newProducts);
-  }, [ products,sortbarPrice]);
+  }, [
+    searchWord,
+    sortbarType,
+    sortbarVendor,
+    products,
+    sortbarPrice,
+    rangevalue,
+  ]);
 
   return (
     <>
@@ -154,21 +256,20 @@ function Products() {
         </div>
         <div className="productItem">
           <div className="filter">
-            <div className="inputwithIcon">
-              <input type="search" name="" id="" placeholder="Search" />
-              <i className="fas fa-search"></i>
-            </div>
+            <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
             <div className="selectGroup">
               <SortbarPrice
                 sortbarPrice={sortbarPrice}
                 setSortbarPrice={setSortbarPrice}
               />
-              <select name="" id="">
-                <option value="">依商品分類</option>
-              </select>
-              <select name="" id="">
-                <option value="">依品牌分類</option>
-              </select>
+              <SortbarType
+                sortbarType={sortbarType}
+                setSortbarType={setSortbarType}
+              />
+              <SortbarVendor
+                sortbarVendor={sortbarVendor}
+                setSortbarVendor={setSortbarVendor}
+              />
             </div>
             <div className="dragableinput">
               <span>依價格 ${rangevalue}以下</span>
@@ -180,7 +281,9 @@ function Products() {
                 }}
                 min={1}
                 max={3000}
+                value={rangevalue}
                 onChange={setRangevalue}
+                //onAfterChange={setRangevalue}
                 handleStyle={{
                   backgroundColor: "#eb5c37",
                   opacity: 1,

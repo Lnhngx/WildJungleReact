@@ -4,6 +4,7 @@ import './lottery.css';
 import {LotteryContext} from '../../App';
 import { useContext } from "react";
 function Lottery(){
+    const [bonus,setBonus] = useState(0);
     const {toggleLottery,setToggleLottery} = useContext(LotteryContext);
     const myCanvas = useRef(null);
     const myCanvas_bottom = useRef(null);
@@ -54,10 +55,36 @@ function Lottery(){
             myCanvas.current.removeEventListener("mousemove",draw);
         }        
     }
-    function first_render (ctx, ctx_bottom){
+    function first_render (ctx, ctx_bottom,randomNum){
+        let bonusText = '';
+        setBonus(randomNum)
+        switch (randomNum){
+            case 0:
+                bonusText = '銘謝惠顧';
+            break;
+            case 1:
+                bonusText = '紅利5點';
+            break;
+            case 2:
+                bonusText = '紅利15點';
+            break;
+            case 3:
+                bonusText = '紅利25點';
+            break;
+            case 4:
+                bonusText = '紅利35點';
+            break;
+            case 5:
+                bonusText = '紅利45點';
+            break;
+            case 6:
+                bonusText = '紅利50點';
+            break;
+            default:
+                bonusText = '銘謝惠顧';
+        }
         const canvas = ctx.canvas;
         const canvas_bottom = ctx_bottom.canvas;
-        
         const image = new Image();
         const image_bottom = new Image();
         image.src = "http://localhost:3000/img/game/lottery1.png";
@@ -66,16 +93,19 @@ function Lottery(){
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         };
         image_bottom.onload = () => {
+            // 隨機產出
             ctx_bottom.drawImage(image_bottom,0,0,canvas_bottom.width,canvas_bottom.height);
             // ctx_bottom.fillStyle = 'red';
             // ctx_bottom.fillRect(70,60,250,150);
             ctx_bottom.font = "40px Arial";
             ctx_bottom.fillStyle = 'white';
             ctx_bottom.textAlign = 'center';
-            ctx_bottom.fillText('銘謝惠顧',canvas_bottom.width/2,150);
+            ctx_bottom.fillText(bonusText,canvas_bottom.width/2,150);
         }
     }
     useEffect(()=>{
+        // 第一次render就先設定好獎項 0~7
+        const randomNum = Math.floor(Math.random()*7);
         // 刮刮樂表面的CSS
         myCanvas.current.style.marginLeft = '-401px';
         // 刮刮樂刮完後那面的CSS
@@ -91,13 +121,12 @@ function Lottery(){
         myCanvas.current.addEventListener("mousedown",startPosition);
         window.addEventListener("mouseup",finishPosition);
         myCanvas.current.addEventListener("mousemove",draw);
-        first_render(ctx, ctx_bottom);
+        first_render(ctx, ctx_bottom,randomNum);
     },[])
     return (
         <>  
         <div className="lottery_container" style={toggle(toggleLottery)}>
             <div className="lottery_closeBtn" 
-            // onClick={()=>{document.querySelector('.lottery_container').style.display = 'none'}}
             onClick={()=>{setToggleLottery(false)}}
             >
                 <i className="fas fa-times"></i>
@@ -108,7 +137,27 @@ function Lottery(){
                 <canvas ref={myCanvas_bottom} width="401" height='556'></canvas>
                 <canvas ref={myCanvas} width="401" height='556'></canvas>
             </div>
-            <button className="lottery_bonusBtn" onClick={()=>{console.log('你他媽快去給我領獎')}}>查看獎勵</button>
+            <button className="lottery_bonusBtn" onClick={async ()=>{
+            await fetch('http://localhost:4000/game-points', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    // We convert the React state to JSON and send it as the POST body
+                    body: JSON.stringify({point_id:bonus,
+                            getTime_start:new Date().toISOString().slice(0, 10),
+                            getTime_end:new Date(Date.now()+2592000000).toISOString().slice(0, 10),
+                            bonus_status:'未使用',
+                            m_id:JSON.parse(localStorage.admin_account).m_sid})
+                })
+                .then(r=>r.json())
+                .then(obj=>{
+                    console.log(obj)
+                    // alert('領取成功')
+                }
+                
+                )
+            }}>查看獎勵</button>
         </div>
         </>
     )

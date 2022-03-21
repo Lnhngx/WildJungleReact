@@ -65,6 +65,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 1.5rem 1rem;
+    position: relative;
 }
 .chatbot_avatar{
     width: 50px;
@@ -301,12 +302,13 @@
     margin: 0;
     padding-left: 3rem;
     font-family: sans-serif;
+    position: relative;
 }
 .weather_card {
     border-radius: 10px;
     width: 200px;
     height: 250px;
-    background-color: rgb(235, 91, 55);
+    background-color: rgb(230, 82, 45);
     margin-right: 1.5rem;
 }
 .weather_date{
@@ -319,8 +321,15 @@
     width: 100px;
     height: 100px;
     margin: 0 auto;
-    background-color: white;
     padding-top: 10px;
+    position: relative;
+}
+.weather_icon img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .weather_row{
     display: flex;
@@ -329,12 +338,40 @@
 .weather_rain{
     color: white;
     width: 50%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 .weather_temp{
     color: white;
     width: 50%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
+}
+.chatbot_toLeft{
+    position: absolute;
+    width: 45px;
+    height: 250px;
+    left: -10px;
+    top: 50px;
+    text-align: center;
+    line-height: 250px;
+    background-color: rgba(52, 100, 163, 0.638);
+}
+.chatbot_toLeft i{
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.562);
+}
+.chatbot_toRight{
+    position: absolute;
+    width: 45px;
+    height: 250px;
+    right: -10px;
+    top: 50px;
+    text-align: center;
+    line-height: 250px;
+    background-color: rgba(52, 100, 163, 0.638);
+}
+.chatbot_toRight i{
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.562);
 }
