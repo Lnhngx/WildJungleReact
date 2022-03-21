@@ -11,7 +11,7 @@ function Chatbot(){
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [message,setMessage] = useState([{id:chat_id,text:'yo~ 我是熊貓有任何基礎問題都可以問我',type:'chatbot_reply'}]);
     const [weatherData,setWeatherData] = useState({});
-    const [iconText,setIconText] = useState('');
+    const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
     const myChatbotInput = useRef(null);
     const connectWebSocket = ()=>{
@@ -57,7 +57,30 @@ function Chatbot(){
         }
         let result = toggleReply ? reply_open : reply_close;
         return result;
-    }    
+    }  
+    // 機器人天氣輪播牆控制
+    function moveCarousel(move){
+        switch (move){
+            case 1:
+                const obj1 = {transform:'translateX(-210px)'};
+                return obj1;
+            case 2:
+                const obj2 = {transform:'translateX(-420px)'};
+                return obj2;
+            case 3:
+                const obj3 = {transform:'translateX(-630px)'};
+                return obj3;
+            case 4:
+                const obj4 = {transform:'translateX(-840px)'};
+                return obj4;
+            case 5:
+                const obj5 = {transform:'translateX(-1050px)'};
+                return obj5;
+            default:
+            const obj0 = {transform:'translateX(0px)'};
+            return obj0;    
+        }
+    }  
     return(
     <>
         <div className="chatbot_logo" 
@@ -96,9 +119,10 @@ function Chatbot(){
                             <div className="chatbot_avatar">
                                 <img src="/img/game/chatbot_avatar.png" alt="" />
                             </div>
-                            <ul className="weather_carousel">
+                            <ul className="weather_carousel" style={moveCarousel(move)}>
                                 {weatherData.map((v,i)=>{
-                                    if(v.wx===1){  return(
+                                    if(v.wx===1){  
+                                    return(
                                     <li className="weather_card" key={i}>
                                         <div className="weather_date">{new Date(v.date).getMonth()+1}/{new Date(v.date).getDate()}</div>
                                         <div className="weather_icon"><img src='/img/game/sunny.svg' alt="" width="100" height="100" /></div>
@@ -141,8 +165,8 @@ function Chatbot(){
                             })}
                             </ul>
                             <div className="chatbot_time">{v.time}</div>
-                            <div className="chatbot_toLeft"><i className="fas fa-chevron-left"></i></div>
-                            <div className="chatbot_toRight"><i className="fas fa-chevron-right"></i></div>
+                            <div className="chatbot_toLeft" onClick={()=>{if(move>0)setMove(move-1)}} style={{opacity:move===0?0:1}}><i className="fas fa-chevron-left"></i></div>
+                            <div className="chatbot_toRight" onClick={()=>{if(move<5)setMove(move+1)}} style={{opacity:move===5?0:1}}><i className="fas fa-chevron-right"></i></div>
                         </div> 
                             
                         )
