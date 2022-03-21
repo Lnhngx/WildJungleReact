@@ -42,7 +42,9 @@ function Products() {
   const priceSlice = (products, rangevalue) => {
     let newProducts = [...products];
     if (newProducts) {
-     newProducts = [...newProducts].filter((a) => a.ProductsPrice <= rangevalue);
+        newProducts = [...newProducts].filter(
+          (a) => a.ProductsPrice <= rangevalue
+        )
     }
     return newProducts;
   };
@@ -281,7 +283,7 @@ function Products() {
                 max={3000}
                 value={rangevalue}
                 onChange={setRangevalue}
-                onAfterChange={setRangevalue}
+                //onAfterChange={setRangevalue}
                 handleStyle={{
                   backgroundColor: "#eb5c37",
                   opacity: 1,

@@ -114,7 +114,7 @@ function JqueryProduct() {
         </ul>
         <div id="btn-left-area"></div>
         <div id="btn-right-area">
-          <i className="fas fa-chevron-right"></i>
+          <i className="alan_right fas fa-chevron-right"></i>
         </div>
       </div>
       <div className="iconGroup">
