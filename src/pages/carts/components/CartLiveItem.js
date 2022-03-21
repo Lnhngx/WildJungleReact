@@ -11,11 +11,11 @@ function Cartliveitem() {
           <li className="stan_ds_product">$900</li>
           <li className="stan_ds_product stan_count_btn">
             <button className="stan_count_minus">
-              <i class="fas fa-minus stan_btnicon"></i>
+              <i className="fas fa-minus stan_btnicon"></i>
             </button>
             <input type="text" className="stan_btninput" value={1} disabled />
             <button className="stan_count_add">
-              <i class="fas fa-plus stan_btnicon"></i>
+              <i className="fas fa-plus stan_btnicon"></i>
             </button>
           </li>
           
@@ -24,11 +24,11 @@ function Cartliveitem() {
             <li>$900</li>
             <li className="stan_count_btn">
               <button className="stan_count_minus">
-                <i class="fas fa-minus stan_btnicon"></i>
+                <i className="fas fa-minus stan_btnicon"></i>
               </button>
               <input type="text" className="stan_btninput" value={1} disabled />
               <button className="stan_count_add">
-                <i class="fas fa-plus stan_btnicon"></i>
+                <i className="fas fa-plus stan_btnicon"></i>
               </button>
             </li>
           </div>
