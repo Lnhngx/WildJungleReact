@@ -9,7 +9,7 @@ function SortbarPrice(props) {
         value={sortbarPrice}
         onChange={(e) => setSortbarPrice(e.target.value)}
       >
-        <option value="">請選擇排序</option>
+        <option value="">依價格排序</option>
         <option value="1">以價格排序-由少至多</option>
         <option value="2">以價格排序-由多至少</option>
       </select>

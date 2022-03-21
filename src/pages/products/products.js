@@ -8,6 +8,8 @@ import JqueryProduct from "./components/jqueryProduct";
 import EmailControl from "./components/theEmailControl";
 import ProductsCard from "./components/productCard";
 import SortbarPrice from "./components/SortbarPrice";
+import SortbarType from "./components/SortbarType";
+import SortbarVendor from "./components/SortbarVendor";
 
 const Range = Slider;
 
@@ -18,28 +20,91 @@ function Products() {
   const [products, setProducts] = useState([]);
   // 2. 用於網頁上經過各種處理(排序、搜尋、過濾)後的資料
   const [displayProducts, setDisplayProducts] = useState([]);
- 
-  const [sortbarPrice, setSortbarPrice] = useState('');
 
-  const handleSort = (products, sortbarPrice) => {
+  const [sortbarPrice, setSortbarPrice] = useState("");
+  const [sortbarType, setSortbarType] = useState("");
+  const [sortbarVendor, setSortbarVendor] = useState("");
+
+  const sortPrice = (products, sortbarPrice) => {
     let newProducts = [...products];
     // 以價格排序-由少至多
     if (sortbarPrice === "1") {
-      console.log(1)
+      console.log(1);
       newProducts = [...newProducts].sort(
         (a, b) => a.ProductsPrice - b.ProductsPrice
       );
     }
     if (sortbarPrice === "2") {
-      console.log(setProducts(newProducts))
-      
+      console.log(setProducts(newProducts));
+
       newProducts = [...newProducts].sort(
         (a, b) => b.ProductsPrice - a.ProductsPrice
       );
     }
-    // 預設用id 小至大
     if (sortbarPrice === "" && newProducts.length > 0) {
-      console.log(3)
+      console.log(3);
+      newProducts = [...newProducts].sort(
+        (a, b) => a.ProductSid - b.ProductSid
+      );
+    }
+    return newProducts;
+  };
+
+  const sortType = (products, sortbarType) => {
+    let newProducts = [...products];
+    if (sortbarType === "1") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 1);
+    }
+    if (sortbarType === "2") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 2);
+    }
+    if (sortbarType === "3") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 3);
+    }
+    if (sortbarType === "4") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 4);
+    }
+    if (sortbarType === "5") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 5);
+    }
+    if (sortbarType === "6") {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 6);
+    }
+    if (sortbarType === "" && newProducts.length > 0) {
+      console.log(3);
+      newProducts = [...newProducts].sort(
+        (a, b) => a.ProductSid - b.ProductSid
+      );
+    }
+    return newProducts;
+  };
+
+  const sortVendor = (products, sortbarVendor) => {
+    let newProducts = [...products];
+    
+    if (sortbarVendor === "1") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "AnimalMoco");
+    }
+    if (sortbarVendor === "2") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "100+1");
+    }
+    if (sortbarVendor === "3") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "WildLife");
+    }
+    if (sortbarVendor === "4") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "HappyHorse");
+    }
+    if (sortbarVendor === "5") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "mimi");
+    }
+    if (sortbarVendor === "6") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "Bisque");
+    }
+    if (sortbarVendor === "7") {
+      newProducts = [...newProducts].filter((a) => a.ProductsVendor === "BabtBites");
+    }
+    if (sortbarVendor === "" && newProducts.length > 0) {
+      console.log(3);
       newProducts = [...newProducts].sort(
         (a, b) => a.ProductSid - b.ProductSid
       );
@@ -60,15 +125,15 @@ function Products() {
       });
   }, []);
 
-
-  
   useEffect(() => {
     let newProducts = [...products];
-    
-    newProducts = handleSort(newProducts, sortbarPrice);
+
+    newProducts = sortPrice(newProducts, sortbarPrice);
+    newProducts = sortType(newProducts, sortbarType);
+    newProducts = sortVendor(newProducts, sortbarVendor);
 
     setDisplayProducts(newProducts);
-  }, [ products,sortbarPrice]);
+  }, [products, sortbarPrice, sortbarType,sortbarVendor]);
 
   return (
     <>
@@ -163,12 +228,14 @@ function Products() {
                 sortbarPrice={sortbarPrice}
                 setSortbarPrice={setSortbarPrice}
               />
-              <select name="" id="">
-                <option value="">依商品分類</option>
-              </select>
-              <select name="" id="">
-                <option value="">依品牌分類</option>
-              </select>
+              <SortbarType
+                sortbarType={sortbarType}
+                setSortbarType={setSortbarType}
+              />
+             <SortbarVendor
+                sortbarVendor={sortbarVendor}
+                setSortbarVendor={setSortbarVendor}
+              />
             </div>
             <div className="dragableinput">
               <span>依價格 ${rangevalue}以下</span>
