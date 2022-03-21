@@ -9,6 +9,7 @@ function Chatbot(){
     const [toggleReply,setToggleReply] = useState(false);
     const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
+    const [toggleSticker,setToggleSticker] = useState(false);
     const [message,setMessage] = useState([{id:chat_id,text:'yo~ 我是熊貓有任何基礎問題都可以問我',type:'chatbot_reply'}]);
     const [weatherData,setWeatherData] = useState({});
     const [move,setMove] = useState(0);
@@ -113,6 +114,19 @@ function Chatbot(){
             </div>
             {message.map((v,i)=>{
                 if(v.id>1){
+                    if(v.type==='stickers'){
+                        return(
+                            <div className="user_reply" >
+                                <div className="sticker_message">
+                                    <img src={v.text} alt=""/>
+                                </div>
+                                <div className="user_avatar">
+                                    <i className="fas fa-user"></i>
+                                </div>
+                                <div className="user_time">{v.time}</div>
+                            </div>
+                        )
+                    }
                     if(v.type==='getWeather'){
                         return (
                             <div className="chatbot_reply" >
@@ -167,8 +181,7 @@ function Chatbot(){
                             <div className="chatbot_time">{v.time}</div>
                             <div className="chatbot_toLeft" onClick={()=>{if(move>0)setMove(move-1)}} style={{opacity:move===0?0:1}}><i className="fas fa-chevron-left"></i></div>
                             <div className="chatbot_toRight" onClick={()=>{if(move<5)setMove(move+1)}} style={{opacity:move===5?0:1}}><i className="fas fa-chevron-right"></i></div>
-                        </div> 
-                            
+                        </div>     
                         )
                     }
                     if(v.id % 2===1){
@@ -210,26 +223,6 @@ function Chatbot(){
                 yo~ 我是熊貓<br/>有任何基礎問題可以問我
             </div>
             <div className="chatbot_time"></div>
-        </div>
-
-        <div className="user_reply">
-            <div className="user_message">
-                請問我打這麼多自他會怎麼做換行阿，從input那得到的文字是部會換行的哦?
-            </div>
-            <div className="user_avatar">
-                <img src="/img/game/chatbot_avatar.png" alt="" />
-            </div>
-            <div className="user_time">00:23</div>
-        </div>
-
-        <div className="chatbot_reply">
-            <div className="chatbot_avatar">
-                <img src="/img/game/chatbot_avatar.png" alt="" />
-            </div>
-            <div className="chatbot_message">
-                請問我打這麼多自他會怎麼做換行阿，我真的快被機器人給搞瘋了啦
-            </div>
-            <div className="chatbot_time">上午00:20</div>
         </div>
 
         <div className="user_reply">
@@ -320,6 +313,99 @@ function Chatbot(){
                 <div className="text">專人客服</div>
             </div>
         </div> 
+        {/* 貼圖的也是浮起來的 */}
+        <div className="stickers_menu" style={{bottom:toggleSticker?"50px":"-200px"}}>
+            <div onClick={()=>{
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...message];
+                const uploadTmp1 = { id:999,
+                                text: '/img/game/brownBear.png',
+                                type:'stickers',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setMessage(replyMessage);
+            }}><img src="/img/game/brownBear.png" alt=""/></div>
+            <div onClick={()=>{
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...message];
+                const uploadTmp1 = { id:999,
+                                text: '/img/game/brownBear2.png',
+                                type:'stickers',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setMessage(replyMessage);
+            }}><img src="/img/game/brownBear2.png" alt=""/></div>
+            <div onClick={()=>{
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...message];
+                const uploadTmp1 = { id:999,
+                                text: '/img/game/koala.png',
+                                type:'stickers',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setMessage(replyMessage);
+            }}><img src="/img/game/koala.png" alt=""/></div>
+            <div onClick={()=>{
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...message];
+                const uploadTmp1 = { id:999,
+                                text: '/img/game/polarBear.png',
+                                type:'stickers',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setMessage(replyMessage);
+            }}><img src="/img/game/polarBear.png" alt="" style={{transform:'translateY(20px)'}}/></div>
+            <div onClick={()=>{
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...message];
+                const uploadTmp1 = { id:999,
+                                text: '/img/game/panda.png',
+                                type:'stickers',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setMessage(replyMessage);
+            }}><img src="/img/game/panda.png" alt=""/></div>
+            <div onClick={()=>{
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...message];
+                const uploadTmp1 = { id:999,
+                                text: '/img/game/panda2.png',
+                                type:'stickers',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setMessage(replyMessage);
+            }}><img src="/img/game/panda2.png" alt=""/></div>
+        </div>
         <div className="tool_bar">
             <div className="rich_menu" onClick={()=>{
                 if(!toggleMenu){
@@ -409,6 +495,7 @@ function Chatbot(){
                 <input className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..." ref={myChatbotInput} />
                 <button className="send"><i className="fas fa-paper-plane"></i></button>
             </form>
+            <div className="sticker" onClick={()=>{setToggleSticker(!toggleSticker)}}><img src="/img/game/sticker.png" alt=""/></div>
         </div> 
     </div>
     </>
