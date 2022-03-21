@@ -7,6 +7,12 @@ import Creditcard from './Creditcard'
 import CreditcardAdd from './CreditcardAdd'
 import AddressAdd from './AddressAdd'
 import OrderInfo from './OrderInfo'
+import OrderTicket from './OrderTicket'
+import ConvenienceStore from './ConvenienceStore'
+import DiscountPoints from './DiscountPoints'
+import DiscountTicket from './DiscountTicket'
+import ProductLike from './ProductLike'
+import ActivityLike from './ActivityLike'
 
 function MemberNavItem(props){
   const {memberlist,actived}=props
@@ -21,8 +27,8 @@ function MemberNavItem(props){
 
 
 
-    return(<>
-    <ul className="tysu_memberChild">
+  return(<>
+  <ul className="tysu_memberChild">
     {/* props傳入的對象是誰，就渲染哪個nav item；除被點擊的nav item以外，其他nav item變更回原狀態 */}
     {actived===memberlist[0] && navItem.map((v,i)=>{
       return <li key={i} onClick={()=>{
@@ -51,31 +57,35 @@ function MemberNavItem(props){
   </ul>
   <hr className="tysu_hr" />
   <ul className="tysu_focusUnderLine tysu_memberChild">
-  {actived===memberlist[0] && navItem.map((v,i)=>{
-    return <Link to="#" key={i} className={navActived.navItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
-  })}
-  {actived===memberlist[1] && orderNavItem.map((v,i)=>{
-    return <Link to="#" key={i} className={navActived.orderNavItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
-  })}
-  {actived===memberlist[2] && discountNavItem.map((v,i)=>{
-    return <Link to="#" key={i} className={navActived.discountNavItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
-  })}
-  {actived===memberlist[3] && likeNavItem.map((v,i)=>{
-    return <Link to="#" key={i} className={navActived.likeNavItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
-  })}
+    {actived===memberlist[0] && navItem.map((v,i)=>{
+      return <Link to="#" key={i} className={navActived.navItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
+    })}
+    {actived===memberlist[1] && orderNavItem.map((v,i)=>{
+      return <Link to="#" key={i} className={navActived.orderNavItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
+    })}
+    {actived===memberlist[2] && discountNavItem.map((v,i)=>{
+      return <Link to="#" key={i} className={navActived.discountNavItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
+    })}
+    {actived===memberlist[3] && likeNavItem.map((v,i)=>{
+      return <Link to="#" key={i} className={navActived.likeNavItem===v ? 'tysu_link' :'tysu_link disabled'}><li></li></Link>
+    })}
     <img className="tysu_bg" src="./../img/member/flower.svg" alt="" />
   </ul>
-  {/* memberlist && 當前的nav item皆符合才會渲染 */}
-  {actived===memberlist[0] && navActived.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem}/> : ''}
-  {actived===memberlist[0] && navActived.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : ''}
-  {actived===memberlist[0] && navActived.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : ''}
-  {actived===memberlist[0] && navActived.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : ''}
 
-  
-  {/* <GradeInfo /> */}
-  {/* <Creditcard /> */}
-  {/* <CreditcardAdd /> */}
-  {/* <AddressAdd /> */}
+    {/* memberlist && 當前的nav item皆符合才會渲染 */}
+    {actived===memberlist[0] && navActived.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem}/> : ''}
+    {actived===memberlist[0] && navActived.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : ''}
+    {actived===memberlist[0] && navActived.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : ''}
+    {actived===memberlist[0] && navActived.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : ''}
+    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[0] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : ''}
+    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : ''}
+    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[2] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : ''}
+    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[3] ? <ConvenienceStore navActived={navActived} orderNavItem={orderNavItem}/> : ''}
+    {actived===memberlist[2] && navActived.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem}/> : ''}
+    {actived===memberlist[2] && navActived.discountNavItem===discountNavItem[1] ? <DiscountTicket navActived={navActived} discountNavItem={discountNavItem}/> : ''}
+    {actived===memberlist[3] && navActived.likeNavItem===likeNavItem[0] ? <ProductLike navActived={navActived} likeNavItem={likeNavItem}/> : ''}
+    {actived===memberlist[3] && navActived.likeNavItem===likeNavItem[1] ? <ActivityLike navActived={navActived} likeNavItem={likeNavItem}/> : ''}
+
   </>)
 }
 export default MemberNavItem;
