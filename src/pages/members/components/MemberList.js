@@ -16,9 +16,10 @@ function MemberList(){
 
   // 紀錄memberList的狀態
   const [actived,setActived]=useState('會員資料')
-  const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
   // 紀錄navItem狀態
   // const [navState,setNavState]=useState('基本設定')
+  const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
+
 
   return(
     
@@ -28,6 +29,7 @@ function MemberList(){
         </div>
       <div className="tysu_row">
           <ul className="tysu_memberList">
+            {/* 點選memberList要設定回原狀態 */}
             {memberlist.map((v,i)=>{
               return <li key={i} onClick={(e)=>{
                 setActived(v)

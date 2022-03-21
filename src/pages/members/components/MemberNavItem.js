@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import MemberInfo from './MemberInfo'
 import GradeInfo from './GradeInfo'
 import Creditcard from './Creditcard'
-import CreditcardAdd from './CreditcardAdd'
+// import CreditcardAdd from './CreditcardAdd'
 import AddressAdd from './AddressAdd'
 import OrderInfo from './OrderInfo'
 import OrderTicket from './OrderTicket'
@@ -25,11 +25,8 @@ function MemberNavItem(props){
 
   const [navActived,setNavActived]=useState(navState)
   // {navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'}
+ 
   
-  
-
-
-
   return(<>
   <ul className="tysu_memberChild">
     {/* props傳入的對象是誰，就渲染哪個nav item；除被點擊的nav item以外，其他nav item不動 */}
@@ -94,7 +91,7 @@ function MemberNavItem(props){
     })}
     <img className="tysu_bg" src="./../img/member/flower.svg" alt="" />
   </ul>
-  
+
     {/* memberlist && 當前狀態的nav item皆符合才會渲染 */}
     {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : '' }
