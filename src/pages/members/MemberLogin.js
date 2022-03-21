@@ -8,7 +8,6 @@ import './../members/members.css'
 
 function MemberLogin(){
 
-    const [showModal,setShowModal]=useState(false);
 
     return (<>
         <div className="tysu_contain">

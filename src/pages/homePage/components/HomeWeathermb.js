@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const HomeWeather = () => {
+const HomeWeathermb = () => {
   const [weatherElement, setweatherElement] = useState({
-    locationName: '',
-    temperature: '',
+    locationName: "",
+    temperature: "",
   });
   useEffect(() => {
     fetchCurrentWeather();
@@ -37,23 +37,19 @@ const HomeWeather = () => {
 
   return (
     <>
-      <div className="ning_weatherbox">
-        <div className="ning_weatherboxIcon">
-          <div className="ning_weathericon">
-            <span className="material-icons">cloud</span>
-          </div>
-          <p className="ning_weather">{weatherElement.locationName}</p>
-          <p className="ning_weatherEn">Wether</p>
+      <div className="ning_weatherbox_mb">
+        <div className="ning_weathericon">
+          <span className="material-icons ning_cloudicon">cloud</span>
         </div>
-        <div className="ning_weatherCout">
-          <div className="ning_weatherNumber">
-          {weatherElement.temperature}
-          </div>
-          <p className="ning_weatherUnit">°C</p>
-        </div>
+        <p className="ning_weather">{weatherElement.locationName}</p>
+
+        <p className="ning_weatherNumber">
+          {Math.round(weatherElement.temperature)}
+          <span className="ning_weatherUnit">°C</span>
+        </p>
       </div>
     </>
   );
 };
 
-export default HomeWeather;
+export default HomeWeathermb;

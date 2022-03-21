@@ -2,6 +2,7 @@
 import React,{useState} from "react";
 
 
+
 function Signup(){
     // 欄位狀態
     const [fields,setFields]=useState({
@@ -33,17 +34,16 @@ function Signup(){
 
     // 表單有更動時先清空
     const handleFormChange=(e)=>{
-        const updateFieldError={...fieldErrors,[e.target.name]:''}
+        const name=e.target.name;
+
+        const updateFieldError=name==='password' || name==='confirmPassword'
+        ? {...fieldErrors, password:'', confirmPassword:''} : {...fieldErrors,[name]:''}
         setFieldErrors(updateFieldError)
     }
 
     // 填寫錯誤時顯示
     const handleFormInvalid=(e)=>{
         e.preventDefault()
-        if(e.target.name.trim()==='email'){
-            console.log('是email問題')
-            e.target.validationMessage='是email問題'
-        }
         const updateFieldError={...fieldErrors,[e.target.name]:e.target.validationMessage}
         
         setFieldErrors(updateFieldError);
@@ -52,16 +52,60 @@ function Signup(){
 // 參考0225/3
     const handleSubmit=(e)=>{
         e.preventDefault();
-        const formData=new FormData(e.target);
-        console.log(formData);
+        const fd=new FormData(e.target);
+        // console.log(formData);
+        const email=fd.get('email')
+        const name=fd.get('name')
+        const gender=fd.get('gender')
+        const password=fd.get('password')
+        const confirmPassword=fd.get('confirmPassword')
         // if(fields.email==='' || fields.name==='' || fields.password===''||fields.gender===''||fields.birthday===''||fields.password===''||fields.confirmPassword===''){
         //     console.log('no');
         // }
-        if(fields.email.trim()==='' || fields.email.length===0){
-            setFieldErrors('請輸入');
-            console.log('請輸入');
-            
+        
+        if(email.trim()==='' && name.trim()===''  && gender==='' && password==='' && confirmPassword===''){
+            const updateFieldError={
+                ...fieldErrors,
+                email:'請輸入您的帳號/email',
+                name:'請輸入至少兩位數',
+                gender:'請選擇一種',
+                password:'請檢查! 您的密碼與再次確認密碼不同',
+                confirmPassword:'請檢查! 您的密碼與再次確認密碼不同'
+            }
+            setFieldErrors(updateFieldError);
+            console.log('1')
+            return
         }
+        
+        if(email.trim()==='' || email.length===0){
+            const updateFieldError={
+                ...fieldErrors,
+                email:'請輸入您的帳號/email'
+            }
+            setFieldErrors(updateFieldError);
+            console.log('2')
+            return
+        }
+        if(name.trim()==='' || name.length<3){
+            const updateFieldError={
+                ...fieldErrors,
+                name:'請輸入至少兩位數的姓名'
+            }
+            setFieldErrors(updateFieldError)
+            console.log('3')
+            return
+        }
+        if(password.trim()==='' || confirmPassword.trim()==='' || password.trim()!==confirmPassword.trim()){
+            const updateFieldError={
+                ...fieldErrors,
+                password:'請檢查! 您的密碼與再次確認密碼不同',
+                confirmPassword:'請檢查! 您的密碼與再次確認密碼不同'
+            }
+            setFieldErrors(updateFieldError);
+            console.log('4')
+            return
+        }
+        
         
 
     }
@@ -84,7 +128,7 @@ function Signup(){
                 <td>
                     <input type="email" id="tysu_email" className="tysu_input"
                     value={fields.email}
-                    // placeholder="請輸入您正確的email"
+                    placeholder="請輸入您的email"
                     onChange={handleFieldChange} 
                     name="email"
                     />
@@ -99,6 +143,7 @@ function Signup(){
                 <td>
                     <input type="text" id="tysu_name" className="tysu_input" 
                     value={fields.name} 
+                    placeholder="請輸入您的姓名"
                     onChange={handleFieldChange} 
                     name="name"
                     />
@@ -110,7 +155,7 @@ function Signup(){
                     <label htmlFor="tysu_gender">性別<br /><span className="tysu_titleSpan">Gender</span></label>
                 </th>
                 <td>
-                    <select id="tysu_gender" className="tysu_input" name="gender" value={fields.gender}  onChange={handleFieldChange} >
+                    <select id="tysu_gender" className="tysu_input" name="gender" value={fields.gender}  onChange={handleFieldChange}>
                     <option value="">請選擇</option>
                     <option value="男">男性</option>
                     <option value="女">女性</option>
