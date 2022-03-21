@@ -1,14 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from 'react-router-dom'
 
 import MemberNavItem from './MemberNavItem'
-import OrderNavItem from './OrderNavItem'
-import DiscountNavItem from './DiscountNavItem'
-import LikeNavItem from './LikeNavItem'
+
+
+
 
 function MemberList(){
+  const memberlist=['會員資料','訂單資訊','折價優惠','喜愛收藏']
 
-    
+  const [actived,setActived]=useState('會員資料')
+
   return(
     
       <div className="tysu_grade">
@@ -17,15 +19,13 @@ function MemberList(){
         </div>
       <div className="tysu_row">
           <ul className="tysu_memberList">
-            <li><Link to=""  className="tysu_link">會員資料</Link></li>
-            <li><Link to=""  className="tysu_link">訂單資訊</Link></li>
-            <li><Link to=""  className="tysu_link">折價優惠</Link></li>
-            <li><Link to=""  className="tysu_link">喜愛收藏</Link></li>
+            {memberlist.map((v,i)=>{
+              return <li key={i} onClick={()=>{
+                setActived(v)
+              }} className={actived===v ?'active':''}><Link to="#/"  className="tysu_link">{v}</Link></li>
+            })}
           </ul>
-        {/* <MemberNavItem /> */}
-        {/* <OrderNavItem /> */}
-        {/* <DiscountNavItem /> */}
-        {/* <LikeNavItem /> */}
+        <MemberNavItem memberlist={memberlist} actived={actived}/>
         <div className="tysu_memberBg">
           <img src="./../img/member/leaf_y.svg" alt="" />
         </div>

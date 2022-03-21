@@ -49,31 +49,26 @@ function Signup(){
         setFieldErrors(updateFieldError);
     }
 
-// 參考0225/3
     const handleSubmit=(e)=>{
         e.preventDefault();
         const fd=new FormData(e.target);
-        // console.log(formData);
         const email=fd.get('email')
         const name=fd.get('name')
         const gender=fd.get('gender')
         const password=fd.get('password')
         const confirmPassword=fd.get('confirmPassword')
-        // if(fields.email==='' || fields.name==='' || fields.password===''||fields.gender===''||fields.birthday===''||fields.password===''||fields.confirmPassword===''){
-        //     console.log('no');
-        // }
         
         if(email.trim()==='' && name.trim()===''  && gender==='' && password==='' && confirmPassword===''){
             const updateFieldError={
                 ...fieldErrors,
                 email:'請輸入您的帳號/email',
-                name:'請輸入至少兩位數',
+                name:'請輸入至少包含兩位字元',
                 gender:'請選擇一種',
                 password:'請檢查! 您的密碼與再次確認密碼不同',
                 confirmPassword:'請檢查! 您的密碼與再次確認密碼不同'
             }
             setFieldErrors(updateFieldError);
-            console.log('1')
+            // console.log('1')
             return
         }
         
@@ -83,7 +78,7 @@ function Signup(){
                 email:'請輸入您的帳號/email'
             }
             setFieldErrors(updateFieldError);
-            console.log('2')
+            // console.log('2')
             return
         }
         if(name.trim()==='' || name.length<3){
@@ -92,7 +87,7 @@ function Signup(){
                 name:'請輸入至少兩位數的姓名'
             }
             setFieldErrors(updateFieldError)
-            console.log('3')
+            // console.log('3')
             return
         }
         if(password.trim()==='' || confirmPassword.trim()==='' || password.trim()!==confirmPassword.trim()){
@@ -102,7 +97,7 @@ function Signup(){
                 confirmPassword:'請檢查! 您的密碼與再次確認密碼不同'
             }
             setFieldErrors(updateFieldError);
-            console.log('4')
+            // console.log('4')
             return
         }
         

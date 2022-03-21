@@ -11,6 +11,7 @@ function Chatbot(){
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [message,setMessage] = useState([{id:chat_id,text:'yo~ 我是熊貓有任何基礎問題都可以問我',type:'chatbot_reply'}]);
     const [weatherData,setWeatherData] = useState({});
+    const [iconText,setIconText] = useState('');
     const [io,setIo] = useState(null);
     const myChatbotInput = useRef(null);
     const connectWebSocket = ()=>{
@@ -90,7 +91,6 @@ function Chatbot(){
             {message.map((v,i)=>{
                 if(v.id>1){
                     if(v.type==='getWeather'){
-                        console.log(weatherData)
                         return (
                             <div className="chatbot_reply" >
                             <div className="chatbot_avatar">
@@ -98,18 +98,51 @@ function Chatbot(){
                             </div>
                             <ul className="weather_carousel">
                                 {weatherData.map((v,i)=>{
+                                    if(v.wx===1){  return(
+                                    <li className="weather_card" key={i}>
+                                        <div className="weather_date">{new Date(v.date).getMonth()+1}/{new Date(v.date).getDate()}</div>
+                                        <div className="weather_icon"><img src='/img/game/sunny.svg' alt="" width="100" height="100" /></div>
+                                        <div className="weather_row">
+                                            <div className="weather_rain">降雨機率<br/>{v.rain}%</div>
+                                            <div className="weather_temp">平均氣溫<br/>{v.temp}&#176;C</div>
+                                        </div>
+                                    </li>
+                                )}else if(v.wx>=2 && v.wx<=6){
                                     return(
                                     <li className="weather_card" key={i}>
                                         <div className="weather_date">{new Date(v.date).getMonth()+1}/{new Date(v.date).getDate()}</div>
-                                        <div className="weather_icon"></div>
+                                        <div className="weather_icon"><img src='/img/game/sunwithcloud.svg' alt="" width="100" height="100" /></div>
                                         <div className="weather_row">
                                             <div className="weather_rain">降雨機率<br/>{v.rain}%</div>
-                                            <div className="weather_temp">平均氣溫<br/>{v.temp}&#176;</div>
+                                            <div className="weather_temp">平均氣溫<br/>{v.temp}&#176;C</div>
                                         </div>
                                     </li>
-                                )})}
+                                )}else if(v.wx===7){
+                                    return(
+                                    <li className="weather_card" key={i}>
+                                        <div className="weather_date">{new Date(v.date).getMonth()+1}/{new Date(v.date).getDate()}</div>
+                                        <div className="weather_icon"><img src='/img/game/cloudy.svg' alt="" width="100" height="100" /></div>
+                                        <div className="weather_row">
+                                            <div className="weather_rain">降雨機率<br/>{v.rain}%</div>
+                                            <div className="weather_temp">平均氣溫<br/>{v.temp}&#176;C</div>
+                                        </div>
+                                    </li>
+                                )}else{
+                                    return(
+                                    <li className="weather_card" key={i}>
+                                        <div className="weather_date">{new Date(v.date).getMonth()+1}/{new Date(v.date).getDate()}</div>
+                                        <div className="weather_icon"><img src='/img/game/rainy.svg' alt="" width="100" height="100" /></div>
+                                        <div className="weather_row">
+                                            <div className="weather_rain">降雨機率<br/>{v.rain}%</div>
+                                            <div className="weather_temp">平均氣溫<br/>{v.temp}&#176;C</div>
+                                        </div>
+                                    </li>
+                                )}
+                            })}
                             </ul>
                             <div className="chatbot_time">{v.time}</div>
+                            <div className="chatbot_toLeft"><i className="fas fa-chevron-left"></i></div>
+                            <div className="chatbot_toRight"><i className="fas fa-chevron-right"></i></div>
                         </div> 
                             
                         )
@@ -232,7 +265,7 @@ function Chatbot(){
                                     date:obj.records.locations[0].location[0].weatherElement[0].time[i].startTime,
                                     rain:obj.records.locations[0].location[0].weatherElement[0].time[i].elementValue[0].value,
                                     temp:obj.records.locations[0].location[0].weatherElement[1].time[i].elementValue[0].value,
-                                    wx:obj.records.locations[0].location[0].weatherElement[2].time[i].elementValue[0].value,
+                                    wx:obj.records.locations[0].location[0].weatherElement[2].time[i].elementValue[1].value,
                             });
                         }
                         const getTime = new Date();
