@@ -1212,7 +1212,6 @@ $ning-englishont: "Playfair Display", serif;
     object-fit: cover;
   }
 
-
   .lodging_tropicalname {
     font-size: 5rem;
     font-family: $ning-englishont;
@@ -1248,7 +1247,6 @@ $ning-englishont: "Playfair Display", serif;
       color: $ning-color4;
       margin-top: 3%;
     }
-
   }
 
   .lodging_tropicalamount {
@@ -1492,4 +1490,197 @@ $ning-englishont: "Playfair Display", serif;
       background-color: $ning-color2;
     }
   }
+
+  /* LodgingComment */
+
+  .commentcontainer {
+    padding: 70px 75px 80px 75px;
+    width: 55%;
+    height: 100%;
+    background-color: $ning-color3;
+    position: fixed;
+    right: 0;
+    z-index: 2;
+    box-shadow: 0 0 15px #00000077;
+  }
+
+
+  .commentClose {
+    font-size: 3rem;
+    color: $ning-color2;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+  }
+
+  .commentTotalbox {
+    width: 100%;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .commentTotalScorewrap {
+    display: flex;
+    align-items: center;
+  }
+
+  .commentTotalScore {
+    width: 50px;
+    height: 50px;
+    font-size: 2.3rem;
+    font-family: $ning-chinesefont;
+    color: $ning-color3;
+    background-color: $ning-color2;
+    border-radius: 15% 15% 15% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .commentTotal {
+    font-size: 1.8rem;
+    font-family: $ning-chinesefont;
+    color: #777;
+    margin-left: 10px;
+    margin-bottom: 0;
+  }
+
+  .writecomment {
+    width: 120px;
+    height: 40px;
+    border: 1px solid $ning-color2;
+    border-radius: 0;
+    font-size: 1.3rem;
+    color: $ning-color2;
+    font-family: $ning-chinesefont;
+  }
+
+  .writecomment:hover {
+    border: 0px;
+    border-radius: 0;
+    font-size: 1.3rem;
+    color: $ning-color3;
+    background-color: $ning-color2;
+    font-family: $ning-chinesefont;
+  }
+
+  .commentline {
+    width: 100%;
+    height: 1.2px;
+    background-color: #ccc;
+    margin: 4% 0;
+  }
+
+  .commentScore ,
+  .commentfilter , .guestComment{
+    font-size: 1.8rem;
+    font-family: $ning-chinesefont;
+  }
+
+  .commentScorebox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .Servebox,
+  .Cleanbox,
+  .Comfortablebox,
+  .Facilitybox,
+  .CPValuebox,
+  .nullbox {
+    width: 30%;
+    padding-top: 4%;
+  }
+
+  .Serve,
+  .Clean,
+  .Comfortable,
+  .Facility,
+  .CPValue {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ServeText,
+  .ServeScore,
+  .CleanText,
+  .CleanScore,
+  .ComfortableText,
+  .ComfortableScore,
+  .FacilityText,
+  .FacilityScore,
+  .CPValueText,
+  .CPValueScore {
+    font-size: 1.4rem;
+    font-family: $ning-chinesefont;
+    margin-bottom: 0;
+    padding-bottom: 3%;
+  }
+
+  .ServeScroll,
+  .CleanScroll,
+  .ComfortableScroll,
+  .FacilityScroll,
+  .CPValueScroll {
+    position: relative;
+  }
+
+  .Scrollline {
+    width: 100%;
+    height: 5px;
+    background-color: #ccc;
+    position: absolute;
+  }
+
+  .ServeScrollScore,
+  .CleanScrollScore,
+  .ComfortableScrollScore,
+  .FacilityScrollScore,
+  .CPValueScrollScore {
+    width: 90%;
+    height: 5px;
+    background-color: $ning-color2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .commentfilterbox {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4%;
+  }
+
+  .selectScore , .selectDate , .selectSort {
+    width: 30%;
+    height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: $ning-chinesefont;
+    color: #777;
+    border-radius: 0px;
+    appearance: none;
+    background: url(../../../public/img/lodging/selectIcon.svg) 100% / 15% no-repeat;
+    
+  }
+
+  .guestimg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: $ning-color5;
+    overflow: hidden;
+  }
+
+  .guestimg img {
+    width: 120%;
+    object-fit: cover;
+  } 
 }
