@@ -14,22 +14,25 @@ import DiscountTicket from './DiscountTicket'
 import ProductLike from './ProductLike'
 import ActivityLike from './ActivityLike'
 
+
+// navItem=['基本設定','分級資訊','信用卡管理','常用資訊']
+// orderNavItem=['訂單查詢','票券查詢','訂單退換貨','配送設定']
+// discountNavItem=['紅利','折價券']
+// likeNavItem=['商品','活動']
+
 function MemberNavItem(props){
   const {memberlist,navItem,orderNavItem,discountNavItem,likeNavItem,actived,setNavState,navState}=props
 
   const [navActived,setNavActived]=useState(navState)
   // {navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'}
   
-  // navItem=['基本設定','分級資訊','信用卡管理','常用資訊']
-  // orderNavItem=['訂單查詢','票券查詢','訂單退換貨','配送設定']
-  // discountNavItem=['紅利','折價券']
-  // likeNavItem=['商品','活動']
+  
 
 
 
   return(<>
   <ul className="tysu_memberChild">
-    {/* props傳入的對象是誰，就渲染哪個nav item；除被點擊的nav item以外，其他nav item變更回原狀態 */}
+    {/* props傳入的對象是誰，就渲染哪個nav item；除被點擊的nav item以外，其他nav item不動 */}
     {actived===memberlist[0] && navItem.map((v,i)=>{
       return <li key={i} onClick={(e)=>{
                 // console.log(e.target.innerHTML)
@@ -74,8 +77,6 @@ function MemberNavItem(props){
                 <Link to="#"  className="tysu_link">{v}</Link>
               </li>
     })}
-   
-    
   </ul>
   <hr className="tysu_hr" />
   <ul className="tysu_focusUnderLine tysu_memberChild">
@@ -91,23 +92,22 @@ function MemberNavItem(props){
     {actived===memberlist[3] && likeNavItem.map((v,i)=>{
       return <Link to="#" key={i} className={navState===v || navState.likeNavItem===v ? 'tysu_link':'tysu_link disabled' }><li></li></Link>
     })}
-    
     <img className="tysu_bg" src="./../img/member/flower.svg" alt="" />
   </ul>
-
-    {/* memberlist && 當前的nav item皆符合才會渲染 */}
-    {actived===memberlist[0] && navActived.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem}/> : ''}
-    {actived===memberlist[0] && navActived.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : ''}
-    {actived===memberlist[0] && navActived.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : ''}
-    {actived===memberlist[0] && navActived.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : ''}
-    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[0] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : ''}
-    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : ''}
-    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[2] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : ''}
-    {actived===memberlist[1] && navActived.orderNavItem===orderNavItem[3] ? <ConvenienceStore navActived={navActived} orderNavItem={orderNavItem}/> : ''}
-    {actived===memberlist[2] && navActived.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem}/> : ''}
-    {actived===memberlist[2] && navActived.discountNavItem===discountNavItem[1] ? <DiscountTicket navActived={navActived} discountNavItem={discountNavItem}/> : ''}
-    {actived===memberlist[3] && navActived.likeNavItem===likeNavItem[0] ? <ProductLike navActived={navActived} likeNavItem={likeNavItem}/> : ''}
-    {actived===memberlist[3] && navActived.likeNavItem===likeNavItem[1] ? <ActivityLike navActived={navActived} likeNavItem={likeNavItem}/> : ''}
+  
+    {/* memberlist && 當前狀態的nav item皆符合才會渲染 */}
+    {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : '' }
+    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[0] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
+    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : '' }
+    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[2] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
+    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[3] ? <ConvenienceStore navActived={navActived} orderNavItem={orderNavItem}/> : '' }
+    {actived===memberlist[2] && navState.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem}/> : '' }
+    {actived===memberlist[2] && navState.discountNavItem===discountNavItem[1] ? <DiscountTicket navActived={navActived} discountNavItem={discountNavItem}/> : '' }
+    {actived===memberlist[3] && navState.likeNavItem===likeNavItem[0] ? <ProductLike navActived={navActived} likeNavItem={likeNavItem}/> : '' }
+    {actived===memberlist[3] && navState.likeNavItem===likeNavItem[1] ? <ActivityLike navActived={navActived} likeNavItem={likeNavItem}/> : '' }
 
   </>)
 }
