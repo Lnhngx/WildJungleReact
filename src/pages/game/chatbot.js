@@ -246,13 +246,29 @@ function Chatbot(){
                 </div>    
                 <div className="text">立即訂票</div>
             </div>
-            <div className="coupon">
-                <div className="icon">
-                    <i className="fas fa-coins"></i>
+            {localStorage.admin_account===undefined &&
+                <div className="coupon" onClick={()=>{
+                    let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員即可查看個人優惠");
+                    if(goRigister){
+                        window.location.href = 'http://localhost:3000/members';
+                    }}}
+                >
+                    <div className="icon">
+                        <i className="fas fa-coins"></i>
+                    </div>
+                    <div className="text">我的優惠</div>
                 </div>
-                <div className="text">我的優惠</div>
-            </div>
-
+            }
+            {localStorage.admin_account!==undefined &&
+                <div className="coupon">
+                <Link to="/members" className="coupon_link">
+                    <div className="icon">
+                        <i className="fas fa-coins"></i>
+                    </div>
+                    <div className="text">我的優惠</div>
+                </Link>
+                </div>
+            }
             <div className="adopt">
             <Link to="/activity" className="adopt_link">
                 <div className="icon">
