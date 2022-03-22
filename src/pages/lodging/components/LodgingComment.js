@@ -3,8 +3,14 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 const Range = Slider;
 
-const LodgingComment = () => {
+const LodgingComment = (props) => {
+
+  const {setCommentbox} = props
+  
+  //關閉評論按鈕
   const [closebtn, setClosebtn] = useState(true);
+  
+  //撰寫評論按鈕
   const [writecommen, setWritecommen] = useState(false);
 
   const [cleanvalue, setCleanvalue] = useState(1);
@@ -15,12 +21,14 @@ const LodgingComment = () => {
 
   const clickClosebtn = () => {
     setClosebtn(!closebtn);
+    setCommentbox(false);
   };
   const writecommentbtn = () => {
     setClosebtn(!closebtn);
     setWritecommen(!writecommen);
   };
 
+  //返回評論按鈕
   const backbtn = () => {
     setClosebtn(!closebtn);
     setWritecommen(!writecommen);
@@ -28,12 +36,12 @@ const LodgingComment = () => {
 
   return (
     <>
-      <div className="commentcontainer" style={{ display: closebtn === false && "none" }}>
+      <div
+        className="commentcontainer"
+        style={{ display: closebtn === false && "none" }}
+      >
         <div className="closeiconbox">
-          <span
-            className="commentClose material-icons"
-            onClick={clickClosebtn}
-          >
+          <span className="commentClose material-icons" onClick={clickClosebtn}>
             close
           </span>
         </div>
@@ -42,7 +50,9 @@ const LodgingComment = () => {
             <p className="commentTotalScore">9.3</p>
             <p className="commentTotal">15則評論</p>
           </div>
-          <button className="writecomment btn" onClick={writecommentbtn}>撰寫評論</button>
+          <button className="writecomment btn" onClick={writecommentbtn}>
+            撰寫評論
+          </button>
         </div>
         <div className="commentline"></div>
         <div className="commentScore">各項評分</div>
@@ -168,7 +178,9 @@ const LodgingComment = () => {
         style={{ display: writecommen === false && "none" }}
       >
         <div className="lefticonbox">
-          <span class="material-icons lefticon" onClick={backbtn}>west</span>
+          <span class="material-icons lefticon" onClick={backbtn}>
+            west
+          </span>
         </div>
 
         <div className="orderInformationbox">

@@ -307,6 +307,7 @@ $ning-englishont: "Playfair Display", serif;
   .ocean_introduce {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .ocean_score {
       width: 50px;
@@ -1496,6 +1497,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .commentcontainer,
   .CommentFormcontainer {
+    overflow-y: scroll;
     padding: 70px 75px 80px 75px;
     width: 55%;
     height: 100%;
