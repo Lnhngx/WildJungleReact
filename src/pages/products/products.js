@@ -37,7 +37,25 @@ function Products() {
   const [type5, setType5] = useState(0);
   const [type6, setType6] = useState(0);
 
-const refresh = function(){ window.location.reload()};
+  //const refresh = function(){ window.location.reload()};
+  const reset1 = function () {
+    setType1(0);
+  };
+  const reset2 = function () {
+    setType2(0);
+  };
+  const reset3 = function () {
+    setType3(0);
+  };
+  const reset4 = function () {
+    setType4(0);
+  };
+  const reset5 = function () {
+    setType5(0);
+  };
+  const reset6 = function () {
+    setType6(0);
+  };
 
   const scrollToSection = () => {
     scroller.scrollTo("productgroup", {
@@ -241,7 +259,6 @@ const refresh = function(){ window.location.reload()};
     newProducts = Type5(newProducts, type5);
     newProducts = Type6(newProducts, type6);
     setDisplayProducts(newProducts);
-
   }, [
     searchWord,
     sortbarType,
@@ -327,6 +344,11 @@ const refresh = function(){ window.location.reload()};
               className="type type1"
               value={type1}
               onClick={() => {
+                reset2();
+                reset3();
+                reset4();
+                reset5();
+                reset6();
                 scrollToSection();
                 setType1(type1 + 1);
               }}
@@ -338,6 +360,11 @@ const refresh = function(){ window.location.reload()};
               className="type"
               value={type2}
               onClick={() => {
+                reset1();
+                reset3();
+                reset4();
+                reset5();
+                reset6();
                 scrollToSection();
                 setType2(type2 + 1);
               }}
@@ -349,7 +376,11 @@ const refresh = function(){ window.location.reload()};
               className="type type1"
               value={type3}
               onClick={() => {
-                
+                reset1();
+                reset2();
+                reset4();
+                reset5();
+                reset6();
                 scrollToSection();
                 setType3(type3 + 1);
               }}
@@ -361,7 +392,11 @@ const refresh = function(){ window.location.reload()};
               className="type"
               value={type4}
               onClick={() => {
-                
+                reset1();
+                reset2();
+                reset3();
+                reset5();
+                reset6();
                 scrollToSection();
                 setType4(type4 + 1);
               }}
@@ -373,7 +408,11 @@ const refresh = function(){ window.location.reload()};
               className="type type1"
               value={type5}
               onClick={() => {
-                
+                reset1();
+                reset2();
+                reset3();
+                reset4();
+                reset6();
                 scrollToSection();
                 setType5(type5 + 1);
               }}
@@ -385,7 +424,11 @@ const refresh = function(){ window.location.reload()};
               className="type"
               value={type6}
               onClick={() => {
-                
+                reset1();
+                reset2();
+                reset3();
+                reset4();
+                reset5();
                 scrollToSection();
                 setType6(type6 + 1);
               }}
