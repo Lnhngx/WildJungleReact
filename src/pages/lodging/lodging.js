@@ -189,14 +189,10 @@ function Lodging() {
             <div className="ocean_introducebox">
               <div className="ocean_introduce">
                 <h2>房型簡介</h2>
-                <Link to="">
                   <div className="ocean_score">
                     <p>9.3</p>
                   </div>
-                </Link>
-                <Link to="">
                   <p>15則評論</p>
-                </Link>
               </div>
               <div className="ocean_introducetext">
                 10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。

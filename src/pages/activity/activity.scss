@@ -26,6 +26,16 @@ $terry_black: #000000;
     @content;
   }
 }
+@mixin mobileMaxs {
+  @media screen and (max-width: 1100px) {
+    @content;
+  }
+}
+@mixin mobileMax {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
 
 .styleFlex {
   display: flex;
@@ -127,7 +137,7 @@ $terry_black: #000000;
   color: $terry_white;
   display: flex;
   flex-direction: column;
-  outline: 2px solid $terry_white;
+  // outline: 2px solid $terry_white;
   .terry_01 {
     font-family: "Playfair Display";
     font-size: 200px;
@@ -165,7 +175,7 @@ $terry_black: #000000;
 .terry_show_area_img {
   width: 75%;
   height: 450px;
-  outline: 2px solid $terry_white;
+  // outline: 2px solid $terry_white;
   background: url("../../../public/img/activity/show1.jpg") center center/cover
     no-repeat;
   img {
@@ -174,10 +184,14 @@ $terry_black: #000000;
   }
 }
 /*01banner結束*/
+.areaDisplayNone{
+  display: none;
+}
 
 .terry_showIntroduction_area {
-  margin-top: 16%;
+  margin-top: 10%;
   display: flex;
+  
 
   .terry_showIntroduction_img {
     width: 70%;
@@ -297,15 +311,17 @@ $terry_black: #000000;
 }
 .terry_showBooking_area {
   display: flex;
-  margin-top: 5%;
-  outline: 1px solid white;
+  justify-content: center;
+  margin-top: 15%;
+  margin-left: 7%;
+  // outline: 1px solid white;
   .tourAndNotice {
     display: flex;
     flex-direction: column;
     width: 35%;
-    outline: 1px solid white;
+    // outline: 1px solid white;
     .tourImage {
-      width: 100%;
+      width: 120%;
       height: auto;
       img {
         width: 100%;
@@ -370,7 +386,7 @@ $terry_black: #000000;
       font-weight: 300;
     }
     .seatsArea {
-      width: 65%;
+      width: 75%;
       // height: auto;
       flex-grow: 2;
       justify-content: center;
@@ -434,6 +450,7 @@ $terry_black: #000000;
   }
   @include mobile {
     flex-direction: column;
+    align-items: center;
     .tourAndNotice {
       width: 100%;
       flex-direction: row;
@@ -451,14 +468,31 @@ $terry_black: #000000;
       }
     }
     .bookingArea {
-      width: 100%;
+      width: 120%;
+      margin-left: -2%;
+      padding: 0;
       margin-top: 50px;
     }
   }
 }
+.terry_01area{
+  display: flex;
+  width: 150%;
+}
 /*第一區塊結束*/
 /*第二區塊開始*/
 .terry_sponsor_area {
+  .terry_show_area_img1 {
+    width: 75%;
+    height: 450px;
+    // outline: 2px solid $terry_white;
+    background: url("../../../public/img/activity/show3.jpeg") center
+      bottom/cover no-repeat;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
   display: flex;
   justify-content: space-between;
   margin-top: 12%;
@@ -501,7 +535,7 @@ $terry_black: #000000;
         font-size: 32px;
       }
     }
-    .terry_show_area_img {
+    .terry_show_area_img1 {
       width: 100%;
     }
   }
@@ -514,103 +548,69 @@ $terry_black: #000000;
   margin-top: 10%;
   .cardbg {
     margin: 5px;
-  }
-  .cardbg1 {
     width: 48%;
     height: 450px;
+  }
+  .cardbg1 {
     background-color: $terry_color3;
     display: flex;
     position: relative;
   }
   .cardbg2 {
-    width: 48%;
-    height: 450px;
     background-color: $terry_white;
     display: flex;
     position: relative;
   }
   .cardbg3 {
-    width: 48%;
-    height: 450px;
     background-color: $terry_color2;
     display: flex;
     position: relative;
   }
   .cardbg4 {
-    width: 48%;
-    height: 450px;
     background-color: $terry_color1;
     display: flex;
     position: relative;
   }
   .cardbg5 {
-    width: 48%;
-    height: 450px;
     background-color: #1297cf;
     display: flex;
     position: relative;
   }
   .cardbg6 {
-    width: 48%;
-    height: 450px;
     background-color: #777b7e;
     display: flex;
     position: relative;
   }
   .sponsor_animalImg {
-    background: url(../../../public/img/home/star_eagle_bk.png) center center/cover;
+    background: url(../../../public/img/home/star_eagle_bk.png) center
+      center/cover;
     width: 100%;
     height: auto;
-    // position: absolute;
-    // margin-top: 30px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
   .sponsor_animalImg2 {
-    background: url(../../../public/img/home/star_shark_bk.png) -60% /contain no-repeat;
+    background: url(../../../public/img/home/star_shark_bk.png) -60% / contain no-repeat;
     width: 100%;
     height: auto;
-    // position: absolute;
-    // margin-top: 60px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
   .sponsor_animalImg3 {
-    background: url(../../../public/img/home/star_tiger_bk.png) -20% center /contain no-repeat;
+    background: url(../../../public/img/home/star_tiger_bk.png) -20% center / contain
+      no-repeat;
     width: 100%;
     height: auto;
-    // position: absolute;
-    // margin-top: 10px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
   .sponsor_animalImg4 {
-    background: url(../../../public/img/home/star_elephant_bk.png) -20% center /contain no-repeat;
+    background: url(../../../public/img/home/star_elephant_bk.png) -20% center /
+      contain no-repeat;
     width: 100%;
     height: auto;
-    // position: absolute;
     margin-top: 30px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
   .sponsor_animalImg5 {
-    background: url(../../../public/img/home/star_hitefox_bk.png) -20% center /contain no-repeat;
+    background: url(../../../public/img/home/star_hitefox_bk.png) -20% center / contain
+      no-repeat;
     width: 100%;
     height: auto;
-    // position: absolute;
     margin-top: 20px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
   .sponsor_animalImg6 {
     font-size: 400px;
@@ -672,8 +672,67 @@ $terry_black: #000000;
       color: $terry_white;
     }
   }
-  @mixin mobilePlus {
-
+  @include mobilePlus {
+    flex-direction: column;
+    align-content: center;
+    .cardbg {
+      width: 100%;
+      .sponsor_animalImg {
+        background: url(../../../public/img/home/star_eagle_bk.png) center
+          center/cover;
+        width: 90%;
+        height: auto;
+      }
+      .sponsor_animalImg2 {
+        background: url(../../../public/img/home/star_shark_bk.png) -30% / contain
+          no-repeat;
+        width: 100%;
+        height: auto;
+      }
+      .sponsor_animalImg3 {
+        background: url(../../../public/img/home/star_tiger_bk.png) center left /
+          contain no-repeat;
+        width: 100%;
+        height: auto;
+      }
+      .sponsor_animalImg4 {
+        background: url(../../../public/img/home/star_elephant_bk.png) center
+          left / contain no-repeat;
+        width: 100%;
+        height: auto;
+        margin-top: 30px;
+      }
+      .sponsor_animalImg5 {
+        background: url(../../../public/img/home/star_hitefox_bk.png) center
+          left / contain no-repeat;
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+      }
+      .sponsor_animalImg6 {
+        font-size: 400px;
+        margin-top: -80px;
+        margin-left: 50px;
+      }
+      .sponsor_introductionText {
+        font-size: 15px;
+      }
+      .sponsor_introductionText2 {
+        font-size: 15px;
+      }
+      .sponsor_introductionText3 {
+        font-size: 15px;
+      }
+      .sponsor_introductionText4 {
+        font-size: 15px;
+      }
+      .sponsor_introductionText5 {
+        font-size: 15px;
+      }
+      .sponsor_introductionText6 {
+        font-size: 15px;
+      }
+    }
   }
 }
 .terry_sponsor_planSelectionArea {
@@ -713,98 +772,213 @@ $terry_black: #000000;
       height: 100%;
     }
   }
-}
-.introduction_area {
-  display: flex;
-  flex-direction: column;
-  width: 38%;
-  margin-left: 9%;
-  .sponsor_introductionText3 {
-    font-family: "Noto Sans TC";
-    font-weight: 300;
-    font-size: 28px;
-    word-wrap: normal;
-    white-space: pre-wrap;
-    color: $terry_white;
-    padding-top: 50%;
-    line-height: 38px;
-    flex-grow: 2;
-  }
-  .sponsorSelect {
+  .introduction_area {
     display: flex;
     flex-direction: column;
-    // margin-top: 20%;
-    select {
-      width: auto;
-      height: 60px;
-      text-align: center;
-      font-size: 1.5rem;
-      color: $terry_black;
-      margin: 3% 0;
-      //selectIcon
-      appearance: none;
-      background-image: url(../../../public/img/activity/selectIcon.svg);
-      background-size: 100% / 5%;
-      background-repeat: no-repeat;
-      background-position: right;
-      background-color: $terry_white;
+    width: 38%;
+    margin-left: 9%;
+    .sponsor_introductionText3 {
+      font-family: "Noto Sans TC";
+      font-weight: 300;
+      font-size: 24px;
+      word-wrap: normal;
+      white-space: pre-wrap;
+      color: $terry_white;
+      padding-top: 46%;
+      line-height: 38px;
+      flex-grow: 2;
+    }
+    .sponsorSelect {
+      display: flex;
+      flex-direction: column;
+      // margin-top: 20%;
+      select {
+        width: auto;
+        height: 60px;
+        text-align: center;
+        font-size: 1.5rem;
+        color: $terry_black;
+        margin: 3% 0;
+        //selectIcon
+        appearance: none;
+        background-image: url(../../../public/img/activity/selectIcon.svg);
+        background-size: 100% / 5%;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-color: $terry_white;
+      }
+    }
+    .buttonGrop2 {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      button {
+        width: 45%;
+        height: 50px;
+        border: none;
+        color: $terry_white;
+        font-family: "Noto Sans TC";
+        font-size: 20px;
+        font-weight: 300;
+        margin-top: 3%;
+      }
+      button:nth-child(1) {
+        background-color: $terry_color1;
+      }
+      button:nth-child(2) {
+        background-color: $terry_color2;
+      }
+    }
+    @include mobileMax {
+      .sponsor_introductionText3 {
+        font-size: 20px;
+        line-height: 30px;
+      }
     }
   }
-  .buttonGrop2 {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    button {
-      width: 45%;
-      height: 50px;
-      border: none;
-      color: $terry_white;
-      font-family: "Noto Sans TC";
-      font-size: 20px;
-      font-weight: 300;
-      margin-top: 3%;
+  @include mobilePlus {
+    flex-direction: column;
+    align-content: center;
+    .demoArea {
+      width: 100%;
+      .imgBorder {
+        width: 100%;
+        height: auto;
+      }
+      .animalImg {
+        margin-top: 5%;
+        width: 95%;
+        height: auto;
+      }
     }
-    button:nth-child(1) {
-      background-color: $terry_color1;
-    }
-    button:nth-child(2) {
-      background-color: $terry_color2;
+    .introduction_area {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      .sponsor_introductionText3 {
+        padding-top: 10%;
+        padding-bottom: 5%;
+      }
     }
   }
 }
 
+.terry_touch_area {
+  display: flex;
+  margin-top: 5%;
+  justify-content: space-between;
+  .terry_show_area_img2 {
+    width: 75%;
+    height: 450px;
+    // outline: 2px solid $terry_white;
+    background: url("../../../public/img/activity/touch1.jpg") center
+      center/cover no-repeat;
+  }
+  @include mobile {
+    flex-direction: column;
+    .terry_show_area_textArea {
+      flex-direction: row;
+      align-items: flex-end;
+      margin-bottom: -20px;
+      .terry_01 {
+        font-size: 100px;
+        margin: 0;
+        margin-bottom: 10px;
+      }
+      .terry_show_subtitle {
+        font-size: 26px;
+        -webkit-text-stroke: 0.8px white;
+        margin-left: 16%;
+        margin-bottom: 26px;
+      }
+      .terry_show_viewmore {
+        width: 20%;
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 30px;
+      }
+    }
+    .terry_title_grop2 {
+      display: flex;
+      flex-direction: row;
+      margin: 0;
+      margin-left: 16%;
+      margin-bottom: 14px;
+      .terry_show_title1 {
+        margin: 0;
+        font-size: 32px;
+      }
+      .terry_show_title2 {
+        margin: 0;
+        margin-left: 3%;
+        font-size: 32px;
+      }
+    }
+    .terry_show_area_img2 {
+      width: 100%;
+    }
+  }
+}
 .terry_touch_imgArea {
   display: flex;
   margin-top: 12%;
+  // height: 400px;
   .imgAndNameGrop {
     width: 60%;
     height: 400px;
-    // display: flex;
-    // justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .terry_touchshow1 {
+      width: 100%;
+      height: 400px;
+      // outline: 2px solid white;
+      background: url("../../../public/img/activity/touchshow1.jpeg") center
+        center/cover no-repeat;
+    }
+    .terry_touchshow2 {
+      width: 100%;
+      height: 400px;
+      // outline: 2px solid white;
+      background: url("../../../public/img/activity/touchshow2.jpg") center
+        center/cover no-repeat;
+    }
+    .name {
+      color: $terry_white;
+      font-family: "Playfair Display";
+      font-size: 44px;
+      font-weight: 600;
+      -webkit-text-stroke: 1px white;
+      color: transparent;
+      margin-top: 3%;
+      text-align: center;
+    }
   }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  .name {
-    color: $terry_white;
-    font-family: "Playfair Display";
-    font-size: 44px;
-    font-weight: 600;
-    -webkit-text-stroke: 1px white;
-    color: transparent;
-    margin-top: 3%;
-    text-align: center;
+  @include mobile {
+    flex-direction: column;
+    .imgAndNameGrop {
+      width: 100%;
+      margin-top: 5%;
+      .name {
+        font-size: 30px;
+        margin-top: 1%;
+      }
+    }
   }
 }
 .terry_animalImg_Area {
-  // position: absolute;
+  // width: 100%;
+  // height: 600px;
+  // outline: 2px solid white;
+  // background: url("../../../public/animals-footer.png") center
+  //   center/cover no-repeat;
   bottom: 0;
   margin-top: 10%;
-  width: 100%;
-  height: auto;
-  img {
+  img{
     width: 100%;
-    height: 100%;
+    height: auto;
+  }
+  @include mobile {
+    margin-top: 5%;
   }
 }

@@ -303,12 +303,13 @@
     padding-left: 3rem;
     font-family: sans-serif;
     position: relative;
+    transition: 0.7s;
 }
 .weather_card {
     border-radius: 10px;
     width: 200px;
     height: 250px;
-    background-color: rgb(230, 82, 45);
+    background-color: rgb(17, 82, 102);
     margin-right: 1.5rem;
 }
 .weather_date{
@@ -355,7 +356,7 @@
     top: 50px;
     text-align: center;
     line-height: 250px;
-    background-color: rgba(52, 100, 163, 0.638);
+    cursor: pointer;
 }
 .chatbot_toLeft i{
     font-size: 3rem;
@@ -369,9 +370,75 @@
     top: 50px;
     text-align: center;
     line-height: 250px;
-    background-color: rgba(52, 100, 163, 0.638);
+    cursor: pointer;
 }
 .chatbot_toRight i{
     font-size: 3rem;
     color: rgba(255, 255, 255, 0.562);
+}
+/* 以下是貼圖部分 */
+.sticker_message{
+        width: 235px;
+        /* height: 170px; */
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        padding: 10px 16px;
+        margin-top: 1rem;
+        /* margin-bottom: 2rem; */
+        position: relative;
+}
+.sticker_message img{
+    width: 100%;
+    height: auto;
+}
+.stickers_menu{
+    background-color: rgb(175, 170, 170);
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    position: absolute;
+    bottom: -200px;
+    transition: 1s; 
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.stickers_menu div{
+    width: 33.3%;
+    height: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+.stickers_menu div:hover{
+    overflow: visible;
+}
+.stickers_menu div img:hover{
+    width: 150%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-20%,-10%);
+    z-index: 999;
+}
+.stickers_menu div img{
+    width: 87%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.sticker{
+    position: absolute;
+    top: 0;
+    right: 60px;
+    width: 20px;
+    height: 40px;
+    cursor: pointer;
+}
+.sticker img{
+    width: 100%;
+    height: auto;
 }
