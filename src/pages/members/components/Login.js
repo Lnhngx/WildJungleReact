@@ -96,18 +96,6 @@ function Login(){
       
     });
   }
-
-  
-
-  // 卸載
-  useEffect(()=>{
-    return()=>{
-      
-  }},[])
-
-
-
-
   
     return(<>
     <h1 className="tysu_h1">LOGIN</h1>
