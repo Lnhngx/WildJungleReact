@@ -11,7 +11,9 @@ import SortbarPrice from "./components/SortbarPrice";
 import SortbarType from "./components/SortbarType";
 import SortbarVendor from "./components/SortbarVendor";
 import SearchBar from "./components/Searchbar";
-
+import * as Scroll from "react-scroll";
+import { animateScroll as scroll, scroller } from "react-scroll";
+import { data } from "jquery";
 const Range = Slider;
 
 function Products() {
@@ -27,6 +29,50 @@ function Products() {
   const [searchWord, setSearchWord] = useState("");
 
   const [rangevalue, setRangevalue] = useState(1500);
+  const [isLoading, setIsLoading] = useState(false);
+  const [type1, setType1] = useState(0);
+  const [type2, setType2] = useState(0);
+  const [type3, setType3] = useState(0);
+  const [type4, setType4] = useState(0);
+  const [type5, setType5] = useState(0);
+  const [type6, setType6] = useState(0);
+
+  //const refresh = function(){ window.location.reload()};
+  const reset1 = function () {
+    setType1(0);
+  };
+  const reset2 = function () {
+    setType2(0);
+  };
+  const reset3 = function () {
+    setType3(0);
+  };
+  const reset4 = function () {
+    setType4(0);
+  };
+  const reset5 = function () {
+    setType5(0);
+  };
+  const reset6 = function () {
+    setType6(0);
+  };
+
+  const scrollToSection = () => {
+    scroller.scrollTo("productgroup", {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+      offset: -100,
+    });
+  };
+
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }
+  }, [isLoading]);
 
   const handleSearch = (products, searchWord) => {
     let newProducts = [...products];
@@ -36,15 +82,15 @@ function Products() {
         return products.ProductsName.includes(searchWord);
       });
     }
-
     return newProducts;
   };
+
   const priceSlice = (products, rangevalue) => {
     let newProducts = [...products];
     if (newProducts) {
-        newProducts = [...newProducts].filter(
-          (a) => a.ProductsPrice <= rangevalue
-        )
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsPrice <= rangevalue
+      );
     }
     return newProducts;
   };
@@ -66,6 +112,49 @@ function Products() {
       newProducts = [...newProducts].sort(
         (a, b) => a.ProductSid - b.ProductSid
       );
+    }
+    return newProducts;
+  };
+
+  const Type1 = (products, type1) => {
+    let newProducts = [...products];
+    if (type1++) {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 1);
+    }
+    return newProducts;
+  };
+  const Type2 = (products, type2) => {
+    let newProducts = [...products];
+    if (type2++) {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 2);
+    }
+    return newProducts;
+  };
+  const Type3 = (products, type3) => {
+    let newProducts = [...products];
+    if (type3++) {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 3);
+    }
+    return newProducts;
+  };
+  const Type4 = (products, type4) => {
+    let newProducts = [...products];
+    if (type4++) {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 4);
+    }
+    return newProducts;
+  };
+  const Type5 = (products, type5) => {
+    let newProducts = [...products];
+    if (type5++) {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 5);
+    }
+    return newProducts;
+  };
+  const Type6 = (products, type6) => {
+    let newProducts = [...products];
+    if (type6++) {
+      newProducts = [...newProducts].filter((a) => a.ProductsType === 6);
     }
     return newProducts;
   };
@@ -156,12 +245,19 @@ function Products() {
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     let newProducts = [...products];
     newProducts = handleSearch(products, searchWord);
     newProducts = sortType(newProducts, sortbarType);
     newProducts = sortVendor(newProducts, sortbarVendor);
     newProducts = handleSort(newProducts, sortbarPrice);
     newProducts = priceSlice(newProducts, rangevalue);
+    newProducts = Type1(newProducts, type1);
+    newProducts = Type2(newProducts, type2);
+    newProducts = Type3(newProducts, type3);
+    newProducts = Type4(newProducts, type4);
+    newProducts = Type5(newProducts, type5);
+    newProducts = Type6(newProducts, type6);
     setDisplayProducts(newProducts);
   }, [
     searchWord,
@@ -170,7 +266,23 @@ function Products() {
     products,
     sortbarPrice,
     rangevalue,
+    type1,
+    type2,
+    type3,
+    type4,
+    type5,
+    type6,
   ]);
+
+  const spinner = (
+    <>
+      <div className="alan_spinner">
+        <div className="alan_deer">
+          <img src="img/product/820.gif" alt="" />
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <>
@@ -228,27 +340,99 @@ function Products() {
             <h2>依種類選擇</h2>
           </div>
           <div className="typeSelect">
-            <div className="type type1">
+            <div
+              className="type type1"
+              value={type1}
+              onClick={() => {
+                reset2();
+                reset3();
+                reset4();
+                reset5();
+                reset6();
+                scrollToSection();
+                setType1(type1 + 1);
+              }}
+            >
               <div className="typeimg typeimg2"></div>
               <span>絨毛玩具</span>
             </div>
-            <div className="type">
+            <div
+              className="type"
+              value={type2}
+              onClick={() => {
+                reset1();
+                reset3();
+                reset4();
+                reset5();
+                reset6();
+                scrollToSection();
+                setType2(type2 + 1);
+              }}
+            >
               <div className="typeimg typeimg3"></div>
               <span>擬真模型</span>
             </div>
-            <div className="type type1">
+            <div
+              className="type type1"
+              value={type3}
+              onClick={() => {
+                reset1();
+                reset2();
+                reset4();
+                reset5();
+                reset6();
+                scrollToSection();
+                setType3(type3 + 1);
+              }}
+            >
               <div className="typeimg"></div>
               <span>嬰兒背巾</span>
             </div>
-            <div className="type">
+            <div
+              className="type"
+              value={type4}
+              onClick={() => {
+                reset1();
+                reset2();
+                reset3();
+                reset5();
+                reset6();
+                scrollToSection();
+                setType4(type4 + 1);
+              }}
+            >
               <div className="typeimg typeimg5"></div>
               <span>文具用品</span>
             </div>
-            <div className="type type1">
+            <div
+              className="type type1"
+              value={type5}
+              onClick={() => {
+                reset1();
+                reset2();
+                reset3();
+                reset4();
+                reset6();
+                scrollToSection();
+                setType5(type5 + 1);
+              }}
+            >
               <div className="typeimg typeimg4"></div>
               <span>填充布偶</span>
             </div>
-            <div className="type">
+            <div
+              className="type"
+              value={type6}
+              onClick={() => {
+                reset1();
+                reset2();
+                reset3();
+                reset4();
+                reset5();
+                scrollToSection();
+                setType6(type6 + 1);
+              }}
+            >
               <div className="typeimg typeimg1"></div>
               <span>兒童衣飾</span>
             </div>
@@ -320,7 +504,7 @@ function Products() {
             </div>
           </div>
           <div className="productgroup">
-            <ProductsCard products={displayProducts} />
+            {isLoading ? spinner : <ProductsCard products={displayProducts} />}
           </div>
         </div>
       </div>

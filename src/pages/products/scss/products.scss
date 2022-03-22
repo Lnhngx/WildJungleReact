@@ -662,6 +662,34 @@ ul.slider-dots {
   font-size: 18px;
   cursor: pointer;
 }
+
+
+.alan_deer{
+  height: 160px;
+  width: 280px; 
+  object-fit: contain;
+  animation:spinner 3s ;
+}
+.alan_spinner{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes spinner {
+  0%{
+    position: absolute;
+    left: 0;
+  }
+  15%{left: 15%;}
+  30%{left: 30%;}
+  45%{left: 45%;}
+  60%{left: 60%;}
+  75%{left: 75%;}
+  90%{left: 90%;}
+  100%{left: 100%;}
+
+}
 @media screen and (min-width: 980px) {
   .productContainer {
     width: 100%;
