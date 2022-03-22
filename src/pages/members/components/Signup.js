@@ -1,5 +1,6 @@
 
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
+import Config from "../Config";
 
 
 
@@ -100,9 +101,17 @@ function Signup(){
             // console.log('4')
             return
         }
-        
-        
 
+        fetch(Config.TYSU_SIGNUP,{
+            method:'POST',
+            body:fd
+        }).then(r=>r.json()).then(obj=>{
+            console.log(obj)
+
+            if(obj.success){
+                
+            }
+        })
     }
 
 
