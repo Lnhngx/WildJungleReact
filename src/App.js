@@ -68,25 +68,6 @@ function App() {
 
   const [productsInOrder, setProductsInOrder] = useState(products);
 
-  const productCount = () => {
-    let totalCount = 0;
-    for (let i = 0; i < productsInOrder.length; i++) {
-      console.log(productsInOrder.length);
-      totalCount += productsInOrder[i].quantity;
-    }
-    return totalCount;
-  };
-
-  const total = () => {
-    let sum = 0;
-
-    for (let i = 0; i < productsInOrder.length; i++) {
-      sum += productsInOrder[i].quantity * productsInOrder[i].price;
-    }
-
-    return sum;
-  };
-
   const [toggleLottery, setToggleLottery] = useState(false);
   const openOrNot = { toggleLottery, setToggleLottery };
   return (
