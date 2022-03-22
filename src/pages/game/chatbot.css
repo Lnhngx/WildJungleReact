@@ -378,7 +378,7 @@
 }
 /* 以下是貼圖部分 */
 .sticker_message{
-        width: 225px;
+        width: 235px;
         /* height: 170px; */
         margin-left: 1.5rem;
         margin-right: 1.5rem;
@@ -400,6 +400,7 @@
     bottom: -200px;
     transition: 1s; 
     overflow-y: auto;
+    overflow-x: hidden;
 }
 .stickers_menu div{
     width: 33.3%;
