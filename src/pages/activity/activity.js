@@ -1,32 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./activity.scss";
 import * as Scroll from 'react-scroll';
 import { animateScroll as scroll } from 'react-scroll';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-const seatsW = 8;
-const seatsH = 8;
 
-let datas = [];
-for (let i = 0; i < seatsW; i++) {
-    datas[i] = [];
-    for (let j = 0; j < seatsH; j++) {
-        datas[i].push(
-            1
-        );
-    }
-};
-
-const renderSeats = () => {
-    return datas.map((data, i) => (
-        <div className="styleFlex">
-            {data.map((v, j) => (
-                <img onClick={() => { alert(i + ' ' + j); }} className="seats" src="/img/activity/chair.svg" alt="" />
-            ))}
-        </div>
-    ));
-};
 
 //seat
 
@@ -104,37 +83,37 @@ let datas3 = [{
     id: "Eagle",
     text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
     imgSrc: "/img/home/star_eagle.png",
-    className:"terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea1",
-    className2:"animalImg1"
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea1",
+    className2: "animalImg1"
 }, {
     id: "Shark",
     text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
     imgSrc: "/img/home/star_shark.png",
-    className:"terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea2",
-    className2:"animalImg2"
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea2",
+    className2: "animalImg2"
 }, {
     id: "Tiger",
     text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
     imgSrc: "/img/home/star_tiger.png",
-    className:"terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea3",
-    className2:"animalImg3"
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea3",
+    className2: "animalImg3"
 }, {
     id: "Elephant",
     text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
     imgSrc: "/img/home/star_elephant.png",
-    className:"terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea4",
-    className2:"animalImg4"
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea4",
+    className2: "animalImg4"
 }, {
     id: "White Fox",
     text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
     imgSrc: "/img/home/star_hitefox.png",
-    className:"terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea5",
-    className2:"animalImg5"
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea5",
+    className2: "animalImg5"
 }];
 
 const renderStaraAnimal = () => {
     return datas3.map((v, i) => (
-        <div className={v.className}>
+        <div key={i} onClick={() => { console.log(i) }} className={v.className}>
             <div className="demoArea">
                 <div className="imgBorder">
                     <img src={"/img/activity/animalBorder.svg"} alt="" />
@@ -164,8 +143,47 @@ const renderStaraAnimal = () => {
 };
 
 function Activity() {
+    const seatsW = 8;
+    const seatsH = 8;
+
+
+    let datas = [];
+    for (let i = 0; i < seatsW; i++) {
+        datas[i] = [];
+        for (let j = 0; j < seatsH; j++) {
+            datas[i].push(
+                1
+            );
+        }
+    };
+
+    const renderSeats = () => {
+        return datas.map((data, i) => (
+            <div className="styleFlex">
+                {data.map((v, j) => (
+                    <img onClick={() => { 
+
+                        const p = String.fromCharCode(65+i)+j;
+                        const ps = {...positions}
+
+                        if(ps[p]){
+                            delete ps[p];
+                            setPositions(ps)
+                        } else {
+                            setPositions({...ps, [p]:1})
+                        }
+                        
+                        
+                        // alert(i + ' ' + j); 
+                        }} className="seats" src="/img/activity/chair.svg" alt="" />
+                ))}
+            </div>
+        ));
+    };
+
     const [state, setState] = useState(false);
     const [state2, setState2] = useState(true);
+    const [positions, setPositions] = useState({})
     //area showout
 
     return (
@@ -308,14 +326,14 @@ function Activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物接觸</div>
                             </div>
-                            <div className="terry_show_viewmore">View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState(!state); if (!state) { scroll.scrollTo(8350) } }}>View More</div>
                         </div>
                         <div className="terry_show_area_img2">
                             <div className="terry_touchAreaImg"></div>
                         </div>
                     </div>
-
-                    <div className="terry_touch_imgArea">
+                    
+                    <div className={state ? "terry_touch_imgArea" : "areaDisplayNone"}>
                         <div className="imgAndNameGrop">
                             <div className="terry_touchshow1"></div>
                             <div className="name">海狗互動秀</div>
