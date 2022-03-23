@@ -681,13 +681,13 @@ ul.slider-dots {
     position: absolute;
     left: 0;
   }
-  15%{left: 15%;}
-  30%{left: 30%;}
-  45%{left: 45%;}
-  60%{left: 60%;}
-  75%{left: 75%;}
-  90%{left: 90%;}
-  100%{left: 100%;}
+  15%{left: 25%;}
+  30%{left: 50%;}
+  45%{left: 75%;}
+  60%{left: 100%;}
+  75%{left: 125%;}
+  90%{left: 150%;}
+  100%{left: 175%;}
 
 }
 @media screen and (min-width: 980px) {

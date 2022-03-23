@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./scss/productsdetail.scss";
 import StarRating from "./components/starRating";
 import Productsbackground from "./components/productsbackground";
@@ -8,10 +8,43 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import ProductCarousel from "./components/productCarousel";
 import { CarouselData } from "./components/productCarouselData";
+import { useEffect } from "react";
 
-function ProductsDetail() {
+function ProductsDetail(props) {
+  useEffect(() => {
+    fetch("http://localhost:4000/products", { method: "GET" })
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        console.log("成功獲得資料");
+      })
+      .catch((error) => {
+        console.log("錯誤了", error);
+      });
+  }, []);
+
+  const [products, setProducts] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
+  const location = useLocation();
+  
+
+
+
+  const click = function () {
+    const a = JSON.stringify(products);
+    
+    console.log();
+  };
+
+  const searchParams = new URLSearchParams(location.search);
+  const Sid = searchParams.get("id");
+
+  // 利用網址上的id參數找資料
+  const product = products[Sid - 1];
+
+
+
   return (
     <>
       <style jsx="true">{`
@@ -19,6 +52,7 @@ function ProductsDetail() {
           width: 0 !important;
         }
       `}</style>
+
       <div className="alan_bread">
         <ul className="alan_navbread">
           <li>
@@ -46,12 +80,15 @@ function ProductsDetail() {
           </li>
         </ul>
       </div>
+
+      {product && (
+        <>
       <div className="alan_detail">
         <div className="alan_productsdetail">
           {/* <div className="alan_main_product_img">
             <img src={require("./imgs/cloth-2 3.png")} alt="" />
           </div> */}
-          <ProductCarousel slides={CarouselData} />
+          <ProductCarousel slides={CarouselData} products={products}/>
         </div>
         <div className="alan_productTitle">
           <div className="alan_product_star">
@@ -65,8 +102,10 @@ function ProductsDetail() {
             </div>
           </div>
           <div className="alan_productName">
-            <span className="alan_englishName">Kid’s poncho</span>
-            <span className="alan_chineseName">保暖小獅王手套</span>
+            <span className="alan_englishName">
+              {product.ProductsVendor}
+            </span>
+            <span className="alan_chineseName">{product.ProductsName}</span>
           </div>
           <div className="alan_price">
             <div className="alan_product_reserve">
@@ -97,7 +136,7 @@ function ProductsDetail() {
               <button>
                 <i className="fas fa-shopping-cart"></i> 加入購物車
               </button>
-              <button>直接購買</button>
+              <button onClick={click}>直接購買</button>
             </div>
           </div>
           <div className="alan_hash">
@@ -136,6 +175,7 @@ function ProductsDetail() {
           </div>
         </div>
       </div>
+
       <div className="alan_information">
         <Tabs
           className={"alan_tabs"}
@@ -143,7 +183,7 @@ function ProductsDetail() {
           onSelect={(index) => setTabIndex(index)}
         >
           <TabList className={"alan_tablist"}>
-            <Tab className={"alan_tab1"}>
+            <Tab className={"alan_tab1"} onClick={click}>
               <div className="alan_space"></div>
               <span>商品資訊</span>
             </Tab>
@@ -182,6 +222,8 @@ function ProductsDetail() {
           </TabPanel>
         </Tabs>
       </div>
+      </>
+      )}
       <Productsbackground />
     </>
   );

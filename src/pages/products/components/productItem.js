@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function ProductItem(props) {
+  const { products } = props;
   const {
     ProductSid,
     ProductsName,
@@ -16,12 +17,13 @@ function ProductItem(props) {
     ProductsDate,
   } = props.products;
   let MainPic = `img/product/${ProductsMainPic}`;
- 
+
+
   return (
     <>
       <div className="productCard">
-        <Link to="">
-          <div className="cardImg">
+        <Link to={`/productsdetail?id=${props.products.ProductSid}`}>
+          <div className="cardImg" >
             <img className="" src={MainPic} alt="" />
           </div>
         </Link>

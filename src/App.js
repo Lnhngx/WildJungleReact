@@ -110,7 +110,7 @@ function App() {
           <Route path="/products">
             <Products />
           </Route>
-          <Route path="/productsdetail">
+          <Route path="/productsdetail" >
             <ProductsDetail />
           </Route>
           <Route path="/game/spot-level">
