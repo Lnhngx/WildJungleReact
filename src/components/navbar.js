@@ -3,6 +3,9 @@ import React from "react";
 import "../components/all.scss";
 
 function navbar(props) {
+  const {auth}=props
+  
+  
   return (
     <>
       <div className="navbar1">
@@ -17,7 +20,8 @@ function navbar(props) {
         <div className="navbarRight">
           <div className="navbarIcon">
             <a href="#/">
-              <i className="fas fa-user-friends"></i>
+              {auth ? <i className="fas fa-sign-out-alt"></i> : <i className="fas fa-user-friends"></i>}
+              
             </a>
             <a href="#/">
               <i className="fas fa-heart"></i>

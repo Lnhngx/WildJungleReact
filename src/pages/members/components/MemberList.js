@@ -1,12 +1,15 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
+import Config from "../Config"
 
 import MemberNavItem from './MemberNavItem'
 
 
 
 
-function MemberList(){
+function MemberList(props){
+  const {auth,account,token}=props
+
   const memberlist=['會員資料','訂單資訊','折價優惠','喜愛收藏']
 
   const navItem=['基本設定','分級資訊','信用卡管理','常用資訊']
@@ -21,9 +24,27 @@ function MemberList(){
   const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
 
 
+  const [sidData,setSidData]=useState({})
+  useEffect(()=>{
+    const getSidData=async ()=>{
+      await fetch(Config.TYSU_MEMBER_INFO+`${account.m_sid}`,{
+        method:'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(r=>r.json()).then(obj=>{
+          // console.log(obj)
+          setSidData(obj.info)
+        })
+      
+    }
+    getSidData()
+    
+  },[])
+
   return(
     
-      <div className="tysu_grade">
+    <div className="tysu_grade">
         <div className="tysu_gradeImg">
           <img src="/img/member/v.png" alt="" />
         </div>
