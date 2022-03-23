@@ -1,5 +1,5 @@
-import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { useState } from "react";
+import { Link, Route, BrowserRouter as Router, Switch,useHistory, useLocation,Redirect } from "react-router-dom";
+import { useState,useEffect } from "react";
 import React from "react";
 import { useContext } from "react";
 
@@ -19,7 +19,7 @@ import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
 import MultiChoice from "./pages/game/multiChoice-game.js";
-import Members from "./pages/members/members";
+// import Members from "./pages/members/members";
 import MemberLogin from "./pages/members/MemberLogin.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
 import MemberForgotPass from "./pages/members/MemberForgotPass";
@@ -68,7 +68,28 @@ const products = [
 
 function App() {
   // 全域狀態
-  //const [auth, setAuth] = useState(false)
+
+  // 是否登入
+  const [auth, setAuth] = useState(false)
+  const account=JSON.parse(localStorage.getItem('admin_account'))
+  const token=!! localStorage.getItem('admin_token')
+  // console.log('3:',auth===true)
+  useEffect(() => {
+    if (account.m_sid && token) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+    // console.log('1:',auth===true)
+  }, []);
+  // useEffect(()=>{
+  //   if(auth){
+  //     console.log(account.m_sid)
+  //   }
+  //   console.log('2:',auth===true)
+  // },[auth])
+
+
 
   const [productsInOrder, setProductsInOrder] = useState(products);
 
@@ -86,7 +107,7 @@ function App() {
   return (
     <Router>
       <>
-        <Navbar />
+        <Navbar auth={auth} setAuth={setAuth}/>
         <LotteryContext.Provider value={openOrNot}>
           <FixedRight />
         </LotteryContext.Provider>
@@ -143,8 +164,8 @@ function App() {
           <Route path="/members/signup">
             <MemberSignUp />
           </Route>
-          <Route path="/members/login">
-            <MemberLogin />
+          <Route exact path="/members/login">
+            <MemberLogin auth={auth} setAuth={setAuth}/>
           </Route>
           <Route path="/members/forgot">
             <MemberForgotPass />
@@ -153,10 +174,10 @@ function App() {
             <MemberPassChange />
           </Route>
           <Route path="/members/modify-member-info">
-            <MemberList />
+          {account.m_sid && token===true ?  <MemberList account={account} token={token}/> : <Redirect to="/members/signup"/>}      
           </Route>
           <Route path="/members">
-            <MemberLogin />
+            <MemberLogin setAuth={setAuth}/>
           </Route>
           <Route path="/lodging">
             <Lodging />

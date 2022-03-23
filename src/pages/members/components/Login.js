@@ -9,7 +9,8 @@ import MemberModal from './MemberModal';
 import Config from "../Config";
 import Keys from './../Keys';
 
-function Login(){
+function Login(props){
+  const {auth,setAuth}=props
   const history=useHistory();
 
 
@@ -80,6 +81,8 @@ function Login(){
         localStorage.setItem('admin_account',JSON.stringify(obj.account));
         localStorage.setItem('admin_token',obj.token);
         
+        // 傳回頂層登入與否的狀態
+        
         setSuccess('登入成功')
         handleShow();
         setTimeout(() => setShow(false), 1000);
@@ -129,9 +132,9 @@ function Login(){
               <div className="tysu_logHelp">
                 <button id="submit" className="tysu_btn_sign" onClick={handleOnClick}>登 入</button>
                 <div className="tysu_help">
-                  <Link to="#/" className="tysu_signText">
+                  <Link to="signup" className="tysu_signText">
                     <i className="fas fa-user-plus"></i>SIGN UP</Link>
-                  <Link to="#/" className="tysu_helpText">
+                  <Link to="forgot" className="tysu_helpText">
                     <i className="fas fa-question"></i>HELP</Link>
                     <MemberModal show={show} setShow={setShow} success={success} />
                 </div>
