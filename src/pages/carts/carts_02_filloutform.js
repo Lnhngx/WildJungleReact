@@ -5,7 +5,7 @@ import Filloutorder from "./components/Filloutform_order";
 import Deliveryhome from "./components/Delivery_home";
 import Deliveryconvenient from "./components/Delivery_convenient";
 
-function Cart02filloutform() {
+function Cartfilloutform() {
   return (
     <>
       <div className="stan_carts_main">
@@ -32,9 +32,9 @@ function Cart02filloutform() {
 
           <div className="stan_fof_flex_left">
             <select name="" id="" className="stan_select_group">
-              <option value="0">請選擇</option>
-              <option value="1">信用卡</option>
-              <option value="2">貨到付款</option>
+              <option value="">請選擇</option>
+              <option value="">信用卡</option>
+              <option value="">貨到付款</option>
             </select>
           </div>
 
@@ -56,4 +56,4 @@ function Cart02filloutform() {
   );
 }
 
-export default Cart02filloutform;
+export default Cartfilloutform;

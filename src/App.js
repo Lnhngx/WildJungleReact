@@ -26,9 +26,13 @@ import MemberForgotPass from "./pages/members/MemberForgotPass";
 import MemberPassChange from "./pages/members/MemberPassChange";
 import MemberList from "./pages/members/components/MemberList";
 import Carts from "./pages/carts/carts";
+import Cartsfilloutform from "./pages/carts/carts_02_filloutform";
+import Cartsfinishorder from "./pages/carts/carts_03_finishorder";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
+
+
 
 // 假資料，借放
 const products = [
@@ -37,28 +41,28 @@ const products = [
     image: "https://i.imgur.com/1GrakTl.jpg",
     name: "咖啡色 T-shirt",
     price: 300,
-    quantity: 50,
+    quantity: 3,
   },
   {
     sid: 2,
     image: "https://i.imgur.com/ba3tvGm.jpg",
     name: "白色 T-shirt",
     price: 200,
-    quantity: 50,
+    quantity: 3,
   },
   {
     sid: 3,
     image: "https://i.imgur.com/pHQ3xT3.jpg",
     name: "黑色 T-shirt",
     price: 450,
-    quantity: 50,
+    quantity: 3,
   },
   {
     sid: 4,
     image: "https://i.imgur.com/pHQ3xT3.jpg",
     name: "金色 T-shirt",
     price: 100,
-    quantity: 50,
+    quantity: 3,
   },
 ];
 
@@ -67,6 +71,15 @@ function App() {
   //const [auth, setAuth] = useState(false)
 
   const [productsInOrder, setProductsInOrder] = useState(products);
+
+  const productCount = () => {
+    let totalCount = 0;
+    for (let i = 0; i < productsInOrder.length; i++) {
+      console.log(productsInOrder.length);
+      totalCount += productsInOrder[i].quantity;
+    }
+    return totalCount;
+  };
 
   const [toggleLottery, setToggleLottery] = useState(false);
   const openOrNot = { toggleLottery, setToggleLottery };
@@ -114,6 +127,12 @@ function App() {
             <LotteryContext.Provider value={openOrNot}>
               <Game />
             </LotteryContext.Provider>
+          </Route>
+          <Route path="/carts/filloutform">
+            <Cartsfilloutform />
+          </Route>
+          <Route path="/carts/finishorder">
+            <Cartsfinishorder />
           </Route>
           <Route path="/carts">
             <Carts
