@@ -21,7 +21,7 @@ import ActivityLike from './ActivityLike'
 // likeNavItem=['商品','活動']
 
 function MemberNavItem(props){
-  const {memberlist,navItem,orderNavItem,discountNavItem,likeNavItem,actived,setNavState,navState}=props
+  const {memberlist,navItem,orderNavItem,discountNavItem,likeNavItem,actived,setNavState,navState,sidData}=props
 
   const [navActived,setNavActived]=useState(navState)
   // {navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'}
@@ -93,7 +93,7 @@ function MemberNavItem(props){
   </ul>
 
     {/* memberlist && 當前狀態的nav item皆符合才會渲染 */}
-    {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem} sidData={sidData}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : '' }

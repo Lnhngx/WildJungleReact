@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 
 
 
-function MemberInfo(){
+function MemberInfo(props){
+  const {sidData}=props
+
+  const [mData,setmData]=useState({})
+  useEffect(()=>{
+    if(Object.keys(sidData).length!==0){
+      // console.log(sidData)
+      setmData(sidData)
+    }
+  },[sidData])
+
+  const handleFieldChange=()=>{
+
+  }
+  
     return (<>
     <form id="tysu_form"  style={{paddingBottom:"10rem"}}>
       <table>
@@ -14,7 +28,12 @@ function MemberInfo(){
                 <span className="tysu_titleSpan">Email</span></label>
             </th>
             <td>
-              <input type="email" id="tysu_email" className="tysu_input" />
+              <input type="email" id="tysu_email" className="tysu_input"
+              disabled
+              readOnly 
+              defaultValue={mData.email}
+              onChange={handleFieldChange} 
+              name="name"/>
               <div id="emailHelp"></div>
             </td>
           </tr>

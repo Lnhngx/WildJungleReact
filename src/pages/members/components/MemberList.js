@@ -23,7 +23,7 @@ function MemberList(props){
   // const [navState,setNavState]=useState('基本設定')
   const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
 
-
+  // 取得後端資料
   const [sidData,setSidData]=useState({})
   useEffect(()=>{
     const getSidData=async ()=>{
@@ -33,7 +33,7 @@ function MemberList(props){
           'Content-Type': 'application/json'
         }
       }).then(r=>r.json()).then(obj=>{
-          // console.log(obj)
+          // console.log('MemberList-obj:',obj)
           setSidData(obj.info)
         })
       
@@ -61,6 +61,7 @@ function MemberList(props){
         <MemberNavItem memberlist={memberlist} navItem={navItem}  orderNavItem={orderNavItem} actived={actived} discountNavItem={discountNavItem} likeNavItem={likeNavItem} 
           setNavState={setNavState}
           navState={navState}
+          sidData={sidData}
         />
         <div className="tysu_memberBg">
           <img src="./../img/member/leaf_y.svg" alt="" />
