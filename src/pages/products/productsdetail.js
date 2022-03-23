@@ -23,9 +23,11 @@ function ProductsDetail() {
       fetch("http://localhost:4000/productsspec", { method: "GET" }),
       fetch("http://localhost:4000/productspic", { method: "GET" }),
     ])
-      .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json() , res3.json()]))
-      .then(([data1, data2 ,data3]) =>
-        Promise.all([setProducts(data1), setSpec(data2) , setPic(data3)])
+      .then(([res1, res2, res3]) =>
+        Promise.all([res1.json(), res2.json(), res3.json()])
+      )
+      .then(([data1, data2, data3]) =>
+        Promise.all([setProducts(data1), setSpec(data2), setPic(data3)])
       )
       .then(console.log("OK"))
       .catch((error) => {
@@ -43,7 +45,7 @@ function ProductsDetail() {
   // 利用網址上的id參數找資料
   const product = products[Sid - 1];
   const specs = spec[Sid - 1];
-  
+  const pics = pic[Sid - 1];
 
   return (
     <>
@@ -81,14 +83,14 @@ function ProductsDetail() {
         </ul>
       </div>
 
-      {product && specs && (
+      {product && specs && pics && (
         <>
           <div className="alan_detail">
             <div className="alan_productsdetail">
               {/* <div className="alan_main_product_img">
             <img src={require("./imgs/cloth-2 3.png")} alt="" />
           </div> */}
-              <ProductCarousel  pic={pic} />
+              <ProductCarousel pic={pic} setPic={setPic} />
             </div>
             <div className="alan_productTitle">
               <div className="alan_product_star">

@@ -4,16 +4,32 @@ import { useLocation, Link } from "react-router-dom";
 const ProductCarousel = (props) => {
   const [current, setCurrent] = useState(0);
   const pic = props.pic;
+  // const setPic = props.setPic;
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const Sid = searchParams.get("id");
 
   const pictrueArray = pic.filter((v) => v.ProductsPic === parseInt(Sid));
-  const img1 = `img/product/${pictrueArray[0]}`;
-  const img2 = `img/product/${pictrueArray[1]}`;
-  const img3 = `img/product/${pictrueArray[2]}`;
-  const img4 = `img/product/${pictrueArray[3]}`;
-  const img5 = `img/product/${pictrueArray[4]}`;
+  const img1 =
+    Boolean(pictrueArray[0]) === true
+      ? `img/product/${pictrueArray[0].PicName}`
+      : "";
+  const img2 =
+    Boolean(pictrueArray[1]) === true
+      ? `img/product/${pictrueArray[1].PicName}`
+      : "";
+  const img3 =
+    Boolean(pictrueArray[2]) === true
+      ? `img/product/${pictrueArray[2].PicName}`
+      : "";
+  const img4 =
+    Boolean(pictrueArray[3]) === true
+      ? `img/product/${pictrueArray[3].PicName}`
+      : "";
+  const img5 =
+    Boolean(pictrueArray[4]) === true
+      ? `img/product/${pictrueArray[4].PicName}`
+      : "";
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -24,18 +40,16 @@ const ProductCarousel = (props) => {
   };
 
   const change1 = () => {
-    console.log(pictrueArray[0].PicName);
-    console.log(pic);
-    setCurrent(1);
+    setCurrent(0);
   };
   const change2 = () => {
-    setCurrent(2);
+    setCurrent(1);
   };
   const change3 = () => {
-    setCurrent(3);
+    setCurrent(2);
   };
   const change4 = () => {
-    setCurrent(4);
+    setCurrent(3);
   };
 
   //const img5 = `img/product/${pictrueArray[4].PicName}`;
@@ -49,21 +63,29 @@ const ProductCarousel = (props) => {
 
   const CarouselData = [
     {
-      image: `${img1}`,
+      image: Boolean(`${img1}`) === true ? `${img1}` : " ",
     },
     {
-      image: `${img2}`,
+      image: Boolean(`${img2}`) === true ? `${img2}` : " ",
     },
     {
-      image: `${img3}`,
+      image: Boolean(`${img3}`) === true ? `${img3}` : " ",
     },
     {
-      image: `${img4}`,
+      image: Boolean(`${img4}`) === true ? `${img4}` : " ",
     },
     {
-      image: `${img5}`,
+      image: Boolean(`${img5}`) === true ? `${img5}` : " ",
     },
   ];
+
+  if (CarouselData[4].image === " ") {
+    CarouselData.pop();
+  }
+  if (CarouselData[3].image === " ") {
+    CarouselData.splice(-1, 1);
+  }
+
 
   const length = CarouselData.length;
   if (!Array.isArray(CarouselData) || CarouselData.length <= 0) {
@@ -72,6 +94,11 @@ const ProductCarousel = (props) => {
 
   return (
     <>
+      <style jsx="true">{`
+        img:not([src]) {
+          display: none;
+        }
+      `}</style>
       <section className="alan_slider">
         <div className="alan_leftbox" onClick={prevSlide}>
           <span className="alan_lefticon material-icons">chevron_left</span>
@@ -91,7 +118,7 @@ const ProductCarousel = (props) => {
                   <Link to="">
                     <div className="alan_product_imgli">
                       <img
-                        src={slider.image}
+                        src={slider.image === "" ? " " : slider.image}
                         alt=""
                         className="alan_products_img"
                       />
@@ -99,23 +126,23 @@ const ProductCarousel = (props) => {
                   </Link>
                 )}
               </div>
-              <div className="alan_product_img_icon">0{current + 1}/05</div>
+              <div className="alan_product_img_icon">0{current + 1}/0{index + 1}</div>
             </div>
           );
         })}
       </section>
-      <ul className="alan_product_img_ul">
+      <ul className="alan_product_img_ul" id="alanull">
         <li className="alan_product_img_li" onClick={change1}>
-          <img src={img1} alt="" />
+          <img src={Boolean(img1) === true ? img1 : " "} alt="" />
         </li>
         <li className="alan_product_img_li" onClick={change2}>
-          <img src={img2} alt="" />
+          <img src={Boolean(img2) === true ? img2 : " "} alt="" />
         </li>
         <li className="alan_product_img_li" onClick={change3}>
-          <img src={img3} alt="" />
+          <img src={Boolean(img3) === true ? img3 : " "} alt="" />
         </li>
         <li className="alan_product_img_li" onClick={change4}>
-          <img src={img4} alt="" />
+          <img src={Boolean(img4) === true ? img4 : null} alt="" />
         </li>
       </ul>
     </>
