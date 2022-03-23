@@ -4,10 +4,16 @@ import { useLocation, Link } from "react-router-dom";
 const ProductCarousel = (props) => {
   const [current, setCurrent] = useState(0);
   const pic = props.pic;
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const Sid = searchParams.get("id");
+
+  const pictrueArray = pic.filter((v) => v.ProductsPic === parseInt(Sid));
+  const img1 = `img/product/${pictrueArray[0]}`;
+  const img2 = `img/product/${pictrueArray[1]}`;
+  const img3 = `img/product/${pictrueArray[2]}`;
+  const img4 = `img/product/${pictrueArray[3]}`;
+  const img5 = `img/product/${pictrueArray[4]}`;
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -19,7 +25,7 @@ const ProductCarousel = (props) => {
 
   const change1 = () => {
     console.log(pictrueArray[0].PicName);
-    console.log(CarouselData.length);
+    console.log(pic);
     setCurrent(1);
   };
   const change2 = () => {
@@ -32,16 +38,6 @@ const ProductCarousel = (props) => {
     setCurrent(4);
   };
 
-
-  
-
-  
-  
-  const pictrueArray = pic.filter((v) => v.ProductsPic === parseInt(Sid));
-  const img1 = `img/product/${pictrueArray[0]}`;
-  const img2 = `img/product/${pictrueArray[1]}`;
-  const img3 = `img/product/${pictrueArray[2]}`;
-  const img4 = `img/product/${pictrueArray[3]}`;
   //const img5 = `img/product/${pictrueArray[4].PicName}`;
   // const Type1 = (products, type1) => {
   //   let newProducts = [...products];
@@ -51,26 +47,25 @@ const ProductCarousel = (props) => {
   //   return newProducts;
   // };
 
-
   const CarouselData = [
     {
-        image:`${img1}`
+      image: `${img1}`,
     },
     {
-        image:'img/product/cloth-3.png'
+      image: `${img2}`,
     },
     {
-        image:'img/product/cloth-4.png'
+      image: `${img3}`,
     },
     {
-        image:'img/product/cloth-5.png'
+      image: `${img4}`,
     },
     {
-        image:'img/product/cloth-6.png'
-    }
-]
+      image: `${img5}`,
+    },
+  ];
 
-const length = CarouselData.length;
+  const length = CarouselData.length;
   if (!Array.isArray(CarouselData) || CarouselData.length <= 0) {
     return null;
   }
