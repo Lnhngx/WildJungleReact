@@ -1,0 +1,17 @@
+.CarouselShow {
+    max-width: 1300px;
+    width: 100%;
+    min-height: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+  }
+  .child{
+    scroll-snap-align: start;
+  }
+  
+  .CarouselShow .item {
+    background: #f3f3f3;
+    text-align: center;
+  }
+  

@@ -7,7 +7,7 @@ function ProductCard(props) {
   return (
     <>
       {products.map((products, i) => {
-        return <ProductItem key={i} products={products}/>;
+        return <ProductItem key={products.ProductSid} products={products}/>;
       })}
     </>
   );

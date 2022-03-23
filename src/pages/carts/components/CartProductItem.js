@@ -11,7 +11,7 @@ function CartProductItem(props) {
             <img alt="" src={image} />
           </li>
           <li className="stan_ds_product">{name}</li>
-          <li className="stan_ds_product">{price}</li>
+          <li className="stan_ds_product">${price}</li>
           <li className="stan_ds_product stan_count_btn">
             <button
               className="stan_count_minus"
@@ -19,22 +19,22 @@ function CartProductItem(props) {
                 setQuantity(quantity - 1);
               }}
             >
-              <i class="fas fa-minus stan_btnicon"></i>
+              <i className="fas fa-minus stan_btnicon"></i>
             </button>
-            <input type="text" className="stan_btninput" value={quantity} />
+            <div className="stan_btninput">{quantity}</div>
             <button
               className="stan_count_add"
               onClick={() => {
                 setQuantity(quantity + 1);
               }}
             >
-              <i class="fas fa-plus stan_btnicon"></i>
+              <i className="fas fa-plus stan_btnicon"></i>
             </button>
           </li>
 
           <div className="stan_mo_product">
             <li>{name}</li>
-            <li>{price}</li>
+            <li>${price}</li>
             <li className="stan_count_btn">
               <button
                 className="stan_count_minus"
@@ -42,16 +42,16 @@ function CartProductItem(props) {
                   setQuantity(quantity - 1);
                 }}
               >
-                <i class="fas fa-minus stan_btnicon"></i>
+                <i className="fas fa-minus stan_btnicon"></i>
               </button>
-              <input type="text" className="stan_btninput" value={quantity} />
+              <div className="stan_btninput">{quantity}</div>
               <button
                 className="stan_count_add"
                 onClick={() => {
                   setQuantity(quantity + 1);
                 }}
               >
-                <i class="fas fa-plus stan_btnicon"></i>
+                <i className="fas fa-plus stan_btnicon"></i>
               </button>
             </li>
           </div>

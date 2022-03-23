@@ -16,12 +16,16 @@ function ProductItem(props) {
     ProductsDate,
   } = props.products;
   let MainPic = `img/product/${ProductsMainPic}`;
- 
+
+  const click = function(){
+    console.log(props.products)
+  }
+
   return (
     <>
       <div className="productCard">
-        <Link to="">
-          <div className="cardImg">
+        <Link to={`/productsdetail?id=${props.products.ProductSid}`} onClick={click}>
+          <div className="cardImg" >
             <img className="" src={MainPic} alt="" />
           </div>
         </Link>

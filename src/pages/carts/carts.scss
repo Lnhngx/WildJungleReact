@@ -443,6 +443,7 @@ $stan_height: 50px;
     }
 
     .stan_btninput {
+      border:1px solid $stan_black;
       width: 60px;
       font-size: 18px;
       text-align: center;
@@ -459,9 +460,16 @@ $stan_height: 50px;
       background-color: $stan_black;
       color: $stan_white;
       text-align: center;
+      border: 0px;
 
       .stan_btnicon {
         line-height: 25px;
+      }
+
+      &:hover{
+        transition: .3s;
+        background-color: $stan_color2;
+        color:$stan_black;
       }
     }
   }
@@ -507,13 +515,14 @@ $stan_height: 50px;
 
 .stan_checkout_area {
   width: 33%;
-  height: 35vh; //暫時
+  height: 38vh; //暫時
   background-color: $stan_white;
   font-size: 16px;
   font-weight: 600;
 
   @include mobile {
     width: 100%;
+    height: 22vh;
   }
 }
 
@@ -544,7 +553,7 @@ $stan_height: 50px;
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
   }
 
@@ -573,7 +582,7 @@ $stan_height: 50px;
 
   @include mobile {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 }
 
@@ -585,7 +594,7 @@ $stan_height: 50px;
   background-color: $stan_color2;
   font-size: 16px;
   font-weight: 600;
-
+  
   @include mobile {
     display: none;
   }
@@ -604,6 +613,11 @@ $stan_height: 50px;
     font-size: 16px;
     font-weight: 600;
   }
+}
+
+.stan_link,.stan_link:hover{
+  color: $stan_black;
+  text-decoration: none;
 }
 
 .stan_carts_middle {

@@ -1,6 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Checkarea() {
+function Checkarea(props) {
+  const { amount, setAmount } = props;
+
   return (
     <>
       <div className="stan_checkout_area">
@@ -9,7 +12,7 @@ function Checkarea() {
         <div className="stan_checkout">
           <ul>
             <li>總價</li>
-            <li>$2,996</li>
+            <li>${amount}</li>
           </ul>
           <ul>
             <li>預估運費</li>
@@ -22,12 +25,17 @@ function Checkarea() {
           <hr className="stan_checkouthr stan_hr" />
           <ul>
             <li>結帳金額</li>
-            <li>$3,096</li>
+            <li>${amount + 100}</li>
           </ul>
           <button className="stan_checkout_btn">前往結帳</button>
         </div>
       </div>
-      <button className="stan_checkout_btn2">前往結帳</button>
+
+      <Link to="/cartsfilloutform" className="stan_link">
+        <button className="stan_checkout_btn2" onClick={() => {setAmount(amount+100)}}>
+          前往結帳
+        </button>
+      </Link>
     </>
   );
 }
