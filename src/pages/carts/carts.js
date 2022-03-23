@@ -2,30 +2,17 @@ import React, { useState } from "react";
 import "./carts.scss";
 import Process01 from "./components/Process_01";
 import Checkarea from "./components/Checkarea";
-
-import Carts02filloutform from "./carts_02_filloutform";
-import Carts03finishorder from "./carts_03_finishorder";
 import CartProductItem from "./components/CartProductItem";
 
-function carts(props) {
+function Carts(props) {
+  const [amount, setAmount] = useState(0);
   const { productsInOrder, setProductsInOrder } = props;
-
-  const productCount = () => {
-    let totalCount = 0;
-    for (let i = 0; i < productsInOrder.length; i++) {
-      console.log(productsInOrder.length);
-      totalCount += productsInOrder[i].quantity;
-    }
-    return totalCount;
-  };
 
   const total = () => {
     let sum = 0;
-
     for (let i = 0; i < productsInOrder.length; i++) {
       sum += productsInOrder[i].quantity * productsInOrder[i].price;
     }
-
     return sum;
   };
 
@@ -60,20 +47,15 @@ function carts(props) {
             {productsInOrder.map((v, i) => {
               return (
                 <CartProductItem
+                  key={v.sid}
                   image={v.image}
                   name={v.name}
                   price={v.price}
                   quantity={v.quantity}
                   setQuantity={(newCount) => {
-                    //1. 先從原本的陣列拷貝出一個新陣列(在這上面處理)
-                    const newProductsInOrder = [...productsInOrder];
-
-                    //2. 運算處理：更新陣列中對應商品數量
-                    // 更新陣列中本商品索引值，如果小於1以1來更新
-                    newProductsInOrder[i].quantity = newCount < 1 ? 1 : newCount;
-
-                    //3. 設定回原本的狀態
-                    setProductsInOrder(newProductsInOrder);
+                    const newProInOrder = [...productsInOrder];
+                    newProInOrder[i].quantity = newCount < 1 ? 1 : newCount;
+                    setProductsInOrder(newProInOrder);
                   }}
                 />
               );
@@ -83,13 +65,11 @@ function carts(props) {
             <div className="stan_product_total">
               <ul>
                 <li></li>
-                <li>小計</li>
-                <li>${total()}</li>
               </ul>
             </div>
           </div>
           <div className="stan_block"></div>
-          <Checkarea productCount={productCount()}/>
+          <Checkarea amount={total()} setAmount={setAmount}/>
         </div>
       </div>
       <div className="stan_footerbgc"></div>
@@ -97,4 +77,4 @@ function carts(props) {
   );
 }
 
-export default carts;
+export default Carts;
