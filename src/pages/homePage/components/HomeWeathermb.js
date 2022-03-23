@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import HomeWeatherIcon from "./HomeWeatherIcon";
 
 const HomeWeathermb = () => {
   const [weatherElement, setweatherElement] = useState({
@@ -39,7 +40,10 @@ const HomeWeathermb = () => {
     <>
       <div className="ning_weatherbox_mb">
         <div className="ning_weathericon">
-          <span className="material-icons ning_cloudicon">cloud</span>
+        <HomeWeatherIcon 
+            currentWeatherCode={weatherElement.weatherCode}
+            moment="night"
+          />
         </div>
         <p className="ning_weather">{weatherElement.locationName}</p>
 

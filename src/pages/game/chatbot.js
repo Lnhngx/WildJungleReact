@@ -434,7 +434,7 @@ function Chatbot(){
             }}>
                 <i className="fas fa-bars"></i>
             </div>
-            <form onSubmit={(e)=>{
+            <form onSubmit={async (e)=>{
                 // 一樣持有按button與按鍵盤Enter就submit的功能，只是我阻止預設送出刷新頁面
                 e.preventDefault();
                 setToggleReply(true);
@@ -442,7 +442,7 @@ function Chatbot(){
                 let hour = getTime.getHours();
                 let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
                 let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
                 if(myChatbotInput.current.value){
                     // message = {
                     //                 id:1,
@@ -459,56 +459,55 @@ function Chatbot(){
                     newMessage.push(uploadTmp);
                     setMessage(newMessage);
                     // 下方是機器人回覆的部分
-                    if((myChatbotInput.current.value).indexOf('你好')!==-1){
-                        setTimeout(()=>{
-                            setToggleReply(false);
-                            let replyMessage = [...newMessage];
-                            const uploadTmp1 = { id:chat_id+2,
-                                            text:'你好啊，笨蛋(我可以跳著說嗎)',
-                                            type:'chatbot_reply',
-                                            time:timeNow,
-                                        } ;
-                            replyMessage.push(uploadTmp1);
-                            setMessage(replyMessage);
-                        },1000)
-                    }else{
-                        setTimeout(()=>{
-                            setToggleReply(false);
-                            let replyMessage = [...newMessage];
-                            const uploadTmp1 = { id:chat_id+2,
-                                            text:'我無法理解啊，笨蛋',
-                                            type:'chatbot_reply',
-                                            time:timeNow,
-                                        } ;
-                            replyMessage.push(uploadTmp1);
-                            setMessage(replyMessage);
-                        },1000)
-                    }
+                    await fetch('http://localhost:4000/chatbot',{
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({request:myChatbotInput.current.value})
+                    })
+                    .then(r=>r.json())
+                    .then(obj=>{
+                        // console.log(obj.results.respond)
+                        setToggleReply(false);
+                        let replyMessage = [...newMessage];
+                        const uploadTmp1 = { id:chat_id+2,
+                                        text:obj.results.respond,
+                                        type:'chatbot_reply',
+                                        time:timeNow,
+                                    } ;
+                        replyMessage.push(uploadTmp1);
+                        setMessage(replyMessage);
+                        })
                     // if((myChatbotInput.current.value).indexOf('你好')!==-1){
-                    //     let replyMessage = [...newMessage];
-                    //     console.log(newMessage)
-                    //     console.log(chat_id+2)
-                    //     const uploadTmp1 = { id:chat_id+2,
-                    //                     text:'你好啊，笨蛋(我可以跳著說嗎)',
-                    //                     type:'chatbot_reply',
-                    //                     time:timeNow,
-                    //                 } ;
-                    //     replyMessage.push(uploadTmp1);
-                    //     setMessage(replyMessage);
+                    //     setTimeout(()=>{
+                    //         setToggleReply(false);
+                    //         let replyMessage = [...newMessage];
+                    //         const uploadTmp1 = { id:chat_id+2,
+                    //                         text:'你好啊，笨蛋(我可以跳著說嗎)',
+                    //                         type:'chatbot_reply',
+                    //                         time:timeNow,
+                    //                     } ;
+                    //         replyMessage.push(uploadTmp1);
+                    //         setMessage(replyMessage);
+                    //     },1000)
                     // }else{
-                    //     let replyMessage = [...newMessage];
-                    //     const uploadTmp1 = { id:chat_id+2,
-                    //                     text:'我無法理解啊，笨蛋',
-                    //                     type:'chatbot_reply',
-                    //                     time:timeNow,
-                    //                 } ;
-                    //     replyMessage.push(uploadTmp1);
-                    //     setMessage(replyMessage);
+                    //     setTimeout(()=>{
+                    //         setToggleReply(false);
+                    //         let replyMessage = [...newMessage];
+                    //         const uploadTmp1 = { id:chat_id+2,
+                    //                         text:'我無法理解啊，笨蛋',
+                    //                         type:'chatbot_reply',
+                    //                         time:timeNow,
+                    //                     } ;
+                    //         replyMessage.push(uploadTmp1);
+                    //         setMessage(replyMessage);
+                    //     },1000)
                     // }
                     myChatbotInput.current.value = '';
                 }
             }}>
-                <input className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..." ref={myChatbotInput} />
+                <input name="request" id="request" className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..." ref={myChatbotInput} />
                 <button className="send"><i className="fas fa-paper-plane"></i></button>
             </form>
             <div className="sticker" onClick={()=>{setToggleSticker(!toggleSticker)}}><img src="/img/game/sticker.png" alt=""/></div>

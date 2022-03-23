@@ -1,9 +1,20 @@
 
-import React,{useState} from "react";
-
+import React,{useEffect, useState} from "react";
+import Config from "../Config";
+import MemberModal from './MemberModal'
+import {Form} from 'react-bootstrap'
+import { Link } from "react-router-dom";
 
 
 function Signup(){
+  
+
+    const [show, setShow] = useState(false);
+    const handleShow = () =>  {
+        setShow(true);
+    }
+    const [signSuccess,setSignSuccess]=useState('')
+
     // 欄位狀態
     const [fields,setFields]=useState({
         email:'',
@@ -12,6 +23,7 @@ function Signup(){
         birthday:'',
         password:'',
         confirmPassword:'',
+        checkbox:true,
     });
 
     // 錯誤訊息狀態
@@ -22,22 +34,28 @@ function Signup(){
         birthday:'',
         password:'',
         confirmPassword:'',
+        checkbox:'',
     })
 
     // 輸入欄位
     const handleFieldChange=(e)=>{
+        let newValue=e.target.value
+        
         // 1.拷貝 2.處理
-        const newData={...fields,[e.target.name]:e.target.value};
+        const updateFieldError={...fields,[e.target.name]:newValue};
         // 3.設定回原狀態
-        setFields(newData);
+        setFields(updateFieldError);
     }
 
     // 表單有更動時先清空
     const handleFormChange=(e)=>{
         const name=e.target.name;
 
-        const updateFieldError=name==='password' || name==='confirmPassword'
-        ? {...fieldErrors, password:'', confirmPassword:''} : {...fieldErrors,[name]:''}
+        const updateFieldError=name==='password' || name==='confirmPassword' || name==='checkbox'
+        ? {...fieldErrors, password:'', confirmPassword:'',checkbox:''} : {...fieldErrors,[name]:''}
+        // if(fieldErrors.checkbox===true){
+        //     setFieldErrors({...fieldErrors,[name]:''})
+        // }
         setFieldErrors(updateFieldError)
     }
 
@@ -55,17 +73,20 @@ function Signup(){
         const email=fd.get('email')
         const name=fd.get('name')
         const gender=fd.get('gender')
+        const birthday=fd.get('birthday')
         const password=fd.get('password')
         const confirmPassword=fd.get('confirmPassword')
-        
+        const checkbox=fd.get('checkbox')
+        console.log(!!checkbox)
         if(email.trim()==='' && name.trim()===''  && gender==='' && password==='' && confirmPassword===''){
             const updateFieldError={
                 ...fieldErrors,
                 email:'請輸入您的帳號/email',
                 name:'請輸入至少包含兩位字元',
                 gender:'請選擇一種',
+                birthday:'請確定您的生日',
                 password:'請檢查! 您的密碼與再次確認密碼不同',
-                confirmPassword:'請檢查! 您的密碼與再次確認密碼不同'
+                confirmPassword:'請檢查! 您的密碼與再次確認密碼不同',
             }
             setFieldErrors(updateFieldError);
             // console.log('1')
@@ -81,7 +102,7 @@ function Signup(){
             // console.log('2')
             return
         }
-        if(name.trim()==='' || name.length<3){
+        if(name.trim()==='' || name.length<2){
             const updateFieldError={
                 ...fieldErrors,
                 name:'請輸入至少兩位數的姓名'
@@ -100,13 +121,32 @@ function Signup(){
             // console.log('4')
             return
         }
-        
-        
+        if(fields.checkbox===false){
+            const updateFieldError={
+                ...fieldErrors,
+                checkbox:'須同意才能註冊',
+            }
+            setFieldErrors(updateFieldError);
+            return
+        }
 
+        fetch(Config.TYSU_SIGNUP,{
+            method:'POST',
+            body:fd
+        }).then(r=>r.json()).then(obj=>{
+            console.log(obj)
+            if(obj.success){
+                setSignSuccess('成功註冊')
+                handleShow(true)
+            }else{
+                setSignSuccess(obj.error || '此帳號已被註冊，如忘記密碼請點選忘記密碼')
+                handleShow(true)
+            }
+        })
     }
 
 
-
+    
     return(<>
     <h1 className="tysu_h1">SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
     <form id="tysu_form" name="form2"
@@ -164,7 +204,7 @@ function Signup(){
                     <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
                 </th>
                 <td>
-                    <input id="tysu_birth" type="date" className="tysu_input" value={fields.birthday} name="birthday" onChange={handleFieldChange} />
+                    <input id="tysu_birth" type="date" className="tysu_input" value={fields.birthday} name="birthday" max="2022-03-01" onChange={handleFieldChange} />
                     <div id="birthHelp">{fieldErrors.birthday}</div>
                 </td>
             </tr>
@@ -189,13 +229,33 @@ function Signup(){
                 </td>
 
             </tr>
+            <tr className="tysu_tr tysu_last">
+                <th></th>
+                <td>
+                    <Form.Check type="checkbox" id="tysu_iAgree" style={{textAlign:"left",marginLeft:"1.8rem"}}>
+                        <Form.Check.Input type="checkbox" name="checkbox" value={fields.checkbox} checked={fields.checkbox}
+                           onChange={()=>{
+                               if(fields.checkbox){
+                                setFields({...fields,checkbox:false})
+                               }else{
+                                setFields({...fields,checkbox:true}) 
+                               }
+                               
+                           }}
+                        />
+                        <Form.Check.Label>我同意<Link to="#">會員條款與隱私</Link></Form.Check.Label>
+                    </Form.Check>
+                    <div id="tysu_cfPassHelp">{fieldErrors.checkbox}</div>
+                </td>
+
+            </tr>
             <tr>
                 <th></th>
                 <td>
                     <div className="tysu_logHelp">
                         <button id="submit" className="tysu_btn_sign">註 冊</button>
-                        
                     </div>
+                    <MemberModal show={show} setShow={setShow} signSuccess={signSuccess} setSignSuccess={setSignSuccess} />
                 </td>
             </tr>
         </tbody>

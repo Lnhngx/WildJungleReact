@@ -595,3 +595,13 @@ input:-webkit-autofill:active,
     margin: 0 0 0 1rem;
   }
 }
+.tysu_modalTitle {
+  color: var(--tysu_color2);
+  font-weight: var(--tysu_fontWeight);
+}
+.tysu_modalBtn {
+  border: 0;
+  background-color: transparent;
+  color: #000;
+  font-size: 1.35rem;
+}

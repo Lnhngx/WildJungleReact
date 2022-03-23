@@ -1,5 +1,15 @@
 import React from "react";
 import "./tour.scss";
+import OrderList from "./components/OrderList";
+import CarouselShow from "./components/CarouselShow";
+import Assets from "./Assets/p6CVo6abkKGY.gif";
+
+
+
+
+
+
+
 
 function tour(){
     return(<>
@@ -40,9 +50,11 @@ function tour(){
             </figure>
         </div>
       </div>
-      <div className="Container" id="container2">
-        <div className="tourCenterIndustry">
-          <div className="tourCenterCard" id="Centerimg1">
+      <CarouselShow/>
+      {/* <div className="Container" id="container2"> */}
+        {/* <div className="tourCenterIndustry"> */}
+      
+          {/* <div className="tourCenterCard" id="Centerimg1">
             <div className="figure">
               <img src="/img/tour/hot/Elephant.jpg" alt="#/" />
             </div>   
@@ -70,11 +82,11 @@ function tour(){
             <h3 className="tourCardTwoText">馬來膜</h3> 
             <span className="tourCenterText" >（Malayan Tapir）</span>   
           </div>
-        
+         */}
          
     
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
       <div className="tourdescription">
        <div className="tourdescriptiongGuild">
          <div className="tourdescriptionGuild1">
@@ -117,13 +129,33 @@ function tour(){
          </div>
        </div> 
       </div>  
+     
       <div className="tourLife">
+      <div className="tourGuide1">
+            <div className="tourtextArea1">
+                <h2 style={{color: "black"}} className="tourH2">Jungle Tour</h2>
+                <p style={{color: "black"}} className="tourP1">園區導覽</p>
+c          </div>
+        </div>
+      <>
+
+      </>
+      <OrderList/>
+      <img src={Assets} alt="#/"/>
+     
+
+    
+      
+   
+  
         <div className="tourLifeTop">
         <div className="tourLifeToppic1"></div>
           <div className="tourLifeToppic">
             
           </div>
-          <div className="tourLifeTitle"></div>
+          <div className="tourLifeTitle">
+          
+          </div>
         </div>
       </div>  
     </div>

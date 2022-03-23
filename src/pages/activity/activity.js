@@ -1,35 +1,190 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./activity.scss";
 import * as Scroll from 'react-scroll';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import { animateScroll as scroll } from 'react-scroll';
+import Carousel from 'react-bootstrap/Carousel';
 
-const seatsW = 8;
-const seatsH = 8;
 
-let datas = [];
-for (let i = 0; i < seatsW; i++) {
-    datas[i] = [];
-    for (let j = 0; j < seatsH; j++) {
-        datas[i].push(
-            1
-        );
-    }
-}
 
-const renderSeats = () => {
-    return datas.map((data, i) => (
-        <div className="styleFlex">
-            {data.map((v, j) => (
-                <img onClick={() => { alert(i + ' ' + j) }} className="seats" src="/img/activity/chair.svg" alt="" />
-            ))}
+
+//seat
+
+let datas2 = [{
+    className1: "cardbg cardbg1",
+    className2: "sponsor_animalImg1",
+    className3: "sponsor_introduction_area",
+    className4: "sponsor_animalName",
+    className5: "sponsor_introductionText",
+    id: "Eagle",
+    text: "老鷹在四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少，已被列為臺灣保育類野生動物名錄中的二級珍貴稀有物種。",
+    buttonText: "我要認養！"
+}, {
+    className1: "cardbg cardbg2",
+    className2: "sponsor_animalImg2",
+    className3: "sponsor_introduction_area",
+    className4: "sponsor_animalName2",
+    className5: "sponsor_introductionText2",
+    id: "Shark",
+    text: "鲨鱼有高度流線、適合游泳的外型，全身覆滿了盾鳞，鳞除了保護鯊魚免於受傷或者被寄生蟲寄生，還可以增進它們的流體動力，讓它們游得更快速。鯊魚體側用於呼吸的鳃裂有五到七個。它們有數套可替換的牙齒。",
+    buttonText: "我要認養！"
+}, {
+    className1: "cardbg cardbg3",
+    className2: "sponsor_animalImg3",
+    className3: "sponsor_introduction_area",
+    className4: "sponsor_animalName",
+    className5: "sponsor_introductionText",
+    id: "Tiger",
+    text: "為貓科中繼虎和獅之後第三大物種，同時也是為西半球最大型以及最強健的貓科動物！外表型態和豹極為相似，但較粗壯，圓斑中有黑點，生態位也較像虎，體型介於虎和豹之間，貓科中的全能冠軍。",
+    buttonText: "我要認養！"
+}, {
+    className1: "cardbg cardbg4",
+    className2: "sponsor_animalImg4",
+    className3: "sponsor_introduction_area",
+    className4: "sponsor_animalName",
+    className5: "sponsor_introductionText",
+    id: "Elephant",
+    text: "頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛。象牙是長得特別長的上門齒。象鼻是由肌肉構成，非常靈活有力，末端上下各有一靈巧的指狀突起。",
+    buttonText: "我要認養！"
+}, {
+    className1: "cardbg cardbg5",
+    className2: "sponsor_animalImg5",
+    className3: "sponsor_introduction_area",
+    className4: "sponsor_animalName",
+    className5: "sponsor_introductionText",
+    id: "White Fox",
+    text: "吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。",
+    buttonText: "我要認養！"
+}, {
+    className1: "cardbg cardbg6",
+    className2: "sponsor_animalImg6",
+    className3: "sponsor_introduction_area",
+    className4: "sponsor_animalName",
+    className5: "sponsor_introductionText",
+    id: "Random",
+    text: "不知道要選哪隻可愛的動物嗎？猶豫了很久還是遲遲無法行動嗎？快點點選亂數抽取鍵幫您找到心中理想的動物吧！",
+    buttonText: "點我亂數抽取！"
+}];
+
+const renderCards = () => {
+    return datas2.map((v, i) => (
+        <div className={v.className1}>
+            <div className={v.className2}></div>
+            <div className={v.className3}>
+                <div className={v.className4}>{v.id}</div>
+                <div className={v.className5}>{v.text}</div>
+                <button key={i} onClick={() => { console.log(i) }}>{v.buttonText}</button>
+            </div>
         </div>
     ));
 };
 
 
+let datas3 = [{
+    id: "Eagle",
+    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    imgSrc: "/img/home/star_eagle.png",
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea1",
+    className2: "animalImg1"
+}, {
+    id: "Shark",
+    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    imgSrc: "/img/home/star_shark.png",
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea2",
+    className2: "animalImg2"
+}, {
+    id: "Tiger",
+    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    imgSrc: "/img/home/star_tiger.png",
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea3",
+    className2: "animalImg3"
+}, {
+    id: "Elephant",
+    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    imgSrc: "/img/home/star_elephant.png",
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea4",
+    className2: "animalImg4"
+}, {
+    id: "White Fox",
+    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    imgSrc: "/img/home/star_hitefox.png",
+    className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea5",
+    className2: "animalImg5"
+}];
+
+const renderStaraAnimal = () => {
+    return datas3.map((v, i) => (
+        <div key={i} onClick={() => { console.log(i) }} className={v.className}>
+            <div className="demoArea">
+                <div className="imgBorder">
+                    <img src={"/img/activity/animalBorder.svg"} alt="" />
+                    <div className="animalName">{v.id}</div>
+                </div>
+                <div className={v.className2}></div>
+            </div>
+            <div className="introduction_area">
+                <div className="sponsor_introductionText3">感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。</div>
+                <div className="selectAndButton_grop">
+                    <div className="sponsorSelect">
+                        <select>
+                            <option>選擇方案</option>
+                        </select>
+                        <select>
+                            <option>選擇金額</option>
+                        </select>
+                    </div>
+                    <div className="buttonGrop2">
+                        <button>加入購物車</button>
+                        <button>回上一步</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    ));
+};
+
 function Activity() {
+    const seatsW = 8;
+    const seatsH = 8;
+
+
+    let datas = [];
+    for (let i = 0; i < seatsW; i++) {
+        datas[i] = [];
+        for (let j = 0; j < seatsH; j++) {
+            datas[i].push(
+                1
+            );
+        }
+    };
+
+    const renderSeats = () => {
+        return datas.map((data, i) => (
+            <div className="styleFlex">
+                {data.map((v, j) => (
+                    <img onClick={() => { 
+
+                        const p = String.fromCharCode(65+i)+j;
+                        const ps = {...positions}
+
+                        if(ps[p]){
+                            delete ps[p];
+                            setPositions(ps)
+                        } else {
+                            setPositions({...ps, [p]:1})
+                        }
+                        
+                        
+                        // alert(i + ' ' + j); 
+                        }} className="seats" src="/img/activity/chair.svg" alt="" />
+                ))}
+            </div>
+        ));
+    };
+
     const [state, setState] = useState(false);
     const [state2, setState2] = useState(true);
+    const [positions, setPositions] = useState({})
+    //area showout
 
     return (
         <>
@@ -51,7 +206,7 @@ function Activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物表演秀</div>
                             </div>
-                            <div className="terry_show_viewmore" onClick={() => { setState(!state);setState2(true);scroll.scrollTo(710) }} >View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState(!state); setState2(true); if (!state) { scroll.scrollTo(710) } }} >View More</div>
                         </div>
                         <div className="terry_show_area_img"></div>
                     </div>
@@ -81,12 +236,12 @@ function Activity() {
                                 <select>
                                     <option>選擇人數</option>
                                 </select>
-                                <button onClick={() => { setState2(!state2);setState(!state) }}>訂位</button>
+                                <button onClick={() => { setState2(!state2); setState(!state) }}>訂位</button>
                             </div>
                         </div>
                     </div>
 
-                    <div className={state2?"areaDisplayNone":"terry_showBooking_area"}>
+                    <div className={state2 ? "areaDisplayNone" : "terry_showBooking_area"}>
                         <div className="tourAndNotice">
                             <div className="tourImage">
                                 <img src="/img/activity/tour1.png" alt="" />
@@ -107,7 +262,7 @@ function Activity() {
                             <div className="seatsArea">{renderSeats()}</div>
                             <div className="buttonGrop">
                                 <button>加入購物車</button>
-                                <button onClick={() => { setState(!state);setState2(true) }}>回上一步</button>
+                                <button onClick={() => { setState(!state); setState2(true) }}>回上一步</button>
                             </div>
                         </div>
                     </div>
@@ -124,78 +279,14 @@ function Activity() {
                             </div>
                             <div className="terry_show_viewmore">View More</div>
                         </div>
-                        <div className="terry_show_area_img1">
-                            {/* <img src="/img/activity/show3.jpeg" alt="" /> */}
-                        </div>
+                        <div className="terry_show_area_img1"></div>
                     </div>
                     <div className="terry_sponsor_cardsArea">
-
-                        <div className="cardbg cardbg1">
-                            <div className="sponsor_animalImg">
-                                {/* <img src="/img/home/star_eagle_bk.png" alt="" /> */}
-                            </div>
-                            <div className="sponsor_introduction_area">
-                                <div className="sponsor_animalName">Eagle</div>
-                                <div className="sponsor_introductionText">老鷹在四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少，已被列為臺灣保育類野生動物名錄中的二級珍貴稀有物種。</div>
-                                <button>我要認養！</button>
-                            </div>
-                        </div>
-
-                        <div className="cardbg cardbg2">
-                            <div className="sponsor_animalImg2">
-                                {/* <img src="/img/home/star_shark_bk.png" alt="" /> */}
-                            </div>
-                            <div className="sponsor_introduction_area">
-                                <div className="sponsor_animalName2">Shark</div>
-                                <div className="sponsor_introductionText2">鲨鱼有高度流線、適合游泳的外型，全身覆滿了盾鳞，鳞除了保護鯊魚免於受傷或者被寄生蟲寄生，還可以增進它們的流體動力，讓它們游得更快速。鯊魚體側用於呼吸的鳃裂有五到七個。它們有數套可替換的牙齒。</div>
-                                <button>我要認養！</button>
-                            </div>
-                        </div>
-
-                        <div className="cardbg cardbg3">
-                            <div className="sponsor_animalImg3">
-                                {/* <img src="/img/home/star_tiger_bk.png" alt="" /> */}
-                            </div>
-                            <div className="sponsor_introduction_area">
-                                <div className="sponsor_animalName">Tiger</div>
-                                <div className="sponsor_introductionText">為貓科中繼虎和獅之後第三大物種，同時也是為西半球最大型以及最強健的貓科動物！外表型態和豹極為相似，但較粗壯，圓斑中有黑點，生態位也較像虎，體型介於虎和豹之間，貓科中的全能冠軍。</div>
-                                <button>我要認養！</button>
-                            </div>
-                        </div>
-
-                        <div className="cardbg cardbg4">
-                            <div className="sponsor_animalImg4">
-                                {/* <img src="/img/home/star_elephant_bk.png" alt="" /> */}
-                            </div>
-                            <div className="sponsor_introduction_area">
-                                <div className="sponsor_animalName">Elephant</div>
-                                <div className="sponsor_introductionText">頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛。象牙是長得特別長的上門齒。象鼻是由肌肉構成，非常靈活有力，末端上下各有一靈巧的指狀突起。</div>
-                                <button>我要認養！</button>
-                            </div>
-                        </div>
-
-                        <div className="cardbg cardbg5">
-                            <div className="sponsor_animalImg5">
-                                {/* <img src="/img/home/star_hitefox_bk.png" alt="" /> */}
-                            </div>
-                            <div className="sponsor_introduction_area">
-                                <div className="sponsor_animalName">White Fox</div>
-                                <div className="sponsor_introductionText">吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。</div>
-                                <button>我要認養！</button>
-                            </div>
-                        </div>
-
-                        <div className="cardbg cardbg6">
-                            <div className="sponsor_animalImg6">?</div>
-                            <div className="sponsor_introduction_area">
-                                <div className="sponsor_animalName">Random</div>
-                                <div className="sponsor_introductionText">不知道要選哪隻可愛的動物嗎？猶豫了很久還是遲遲無法行動嗎？快點點選亂數抽取鍵幫您找到心中理想的動物吧！</div>
-                                <button>亂數抽取</button>
-                            </div>
-                        </div>
+                        {renderCards()}
                     </div>
 
-                    <div className="terry_sponsor_planSelectionArea">
+                    {renderStaraAnimal()}
+                    {/* <div className="terry_sponsor_planSelectionArea">
                         <div className="demoArea">
                             <div className="imgBorder">
                                 <img src="/img/activity/animalBorder.svg" alt="" />
@@ -222,7 +313,7 @@ function Activity() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/*02結束*/}
                     <div className="terry_touch_area">
@@ -235,23 +326,20 @@ function Activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物接觸</div>
                             </div>
-                            <div className="terry_show_viewmore">View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState(!state); if (!state) { scroll.scrollTo(8350) } }}>View More</div>
                         </div>
                         <div className="terry_show_area_img2">
                             <div className="terry_touchAreaImg"></div>
-                            {/* <img src="/img/activity/touch1.jpg" alt="" /> */}
                         </div>
                     </div>
-
-                    <div className="terry_touch_imgArea">
+                    
+                    <div className={state ? "terry_touch_imgArea" : "areaDisplayNone"}>
                         <div className="imgAndNameGrop">
                             <div className="terry_touchshow1"></div>
-                            {/* <img src="/img/activity/touchshow1.jpeg" alt="" /> */}
                             <div className="name">海狗互動秀</div>
                         </div>
                         <div className="imgAndNameGrop">
                             <div className="terry_touchshow2"></div>
-                            {/* <img src="/img/activity/touchshow2.jpg" alt="" /> */}
                             <div className="name">萌兔餵食體驗</div>
                         </div>
                     </div>
@@ -261,6 +349,6 @@ function Activity() {
                 </div>
             </div>
         </>)
-}
+};
 
 export default Activity;
