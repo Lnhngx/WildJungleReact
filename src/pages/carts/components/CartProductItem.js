@@ -44,7 +44,7 @@ function CartProductItem(props) {
               >
                 <i className="fas fa-minus stan_btnicon"></i>
               </button>
-              <input type="text" className="stan_btninput" defaultValue={quantity} />
+              <div className="stan_btninput">{quantity}</div>
               <button
                 className="stan_count_add"
                 onClick={() => {

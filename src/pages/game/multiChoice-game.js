@@ -5,11 +5,18 @@ import './multiChoice-game.css';
 function MultiChoice(){
     const [allQuestion,setAllQuestion] = useState([]);
     const [finish,setFinish] = useState(false);
+    const [answer,setAnswer] = useState([]);
     useEffect(()=>{        
         fetch('http://localhost:4000/game')
         .then(r=>r.json())
         .then(obj=>{
-            console.log(obj);
+            let newAnswer = [];
+            obj.map((v,i)=>{
+                newAnswer.push(v.yes)
+                console.log(newAnswer)
+                setAnswer(newAnswer)
+                // setAnswer(answer.push(v.yes));
+            })
             setAllQuestion(obj);
         })       
     },[])
