@@ -1,5 +1,7 @@
 .Carousel {
     position: relative;
+    height: 300px;
+  
   }
   
   .Carousel__railWrapper {
@@ -16,14 +18,14 @@
   .Carousel__btn--next {
     position: absolute;
     top: calc(50% - 6px);
-    height: 10px;
-    width: 10px;
+    height:20px;
+    width: 20px;
     background: transparent;
-    border-top: 2px solid rgb(243, 4, 4);
-    border-right: 2px solid rgb(247, 2, 2);
+    border-top: 5px solid rgb(250, 246, 246);
+    border-right: 5px solid rgb(252, 249, 249);
     z-index: 10;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 1.2rem;
   }
   
   .Carousel__btn--prev {

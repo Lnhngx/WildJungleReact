@@ -10,6 +10,7 @@ import Assets from "./Assets/p6CVo6abkKGY.gif";
 
 
 
+
 function tour(){
     return(<>
 
@@ -50,9 +51,10 @@ function tour(){
         </div>
       </div>
       <CarouselShow/>
-      {/* <div className="Container" id="container2">
-        <div className="tourCenterIndustry">
-          <div className="tourCenterCard" id="Centerimg1">
+      {/* <div className="Container" id="container2"> */}
+        {/* <div className="tourCenterIndustry"> */}
+      
+          {/* <div className="tourCenterCard" id="Centerimg1">
             <div className="figure">
               <img src="/img/tour/hot/Elephant.jpg" alt="#/" />
             </div>   
@@ -80,10 +82,10 @@ function tour(){
             <h3 className="tourCardTwoText">馬來膜</h3> 
             <span className="tourCenterText" >（Malayan Tapir）</span>   
           </div>
-        
+         */}
          
     
-        </div>
+        {/* </div>
       </div> */}
       <div className="tourdescription">
        <div className="tourdescriptiongGuild">

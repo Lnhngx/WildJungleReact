@@ -4,7 +4,7 @@ import './Carousel.scss'
 const Item = ({ children }) => <div>{children}</div>
 
 const CAROUSEL_ITEM = 'CAROUSEL_ITEM'
-const Carousel = ({ cols = 1, gap = 5, children }) => {
+const Carousel = ({ cols = 1, gap = 10, children }) => {
   const [currentPage, setCurrentPage] = useState(0)
   const itemList = React.Children.toArray(children).filter(
     child => child.type.displayName === CAROUSEL_ITEM
@@ -43,7 +43,7 @@ const Carousel = ({ cols = 1, gap = 5, children }) => {
           style={{
             gridTemplateColumns: `repeat(${page}, 100%)`,
             left: `calc(${-100 * currentPage}% - ${gap * currentPage}px)`,
-            gridColumnGap: `${gap}px`
+            gridColumnGap: `${gap}px`,
           }}
         >
           {itemSetList.map((set, i) => (
@@ -51,7 +51,7 @@ const Carousel = ({ cols = 1, gap = 5, children }) => {
               key={i}
               className="Carousel__ItemSet"
                 style={{
-                height:'250px',
+                height:'280px',
                 display: 'grid',
                 gridTemplateColumns: `repeat(${cols}, 1fr)`,
                 gridGap: `${gap}px`

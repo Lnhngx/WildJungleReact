@@ -6,7 +6,7 @@ import './CarouselShow.scss'
 function CarouselShow1 (){
     return(<>
   <div style={{height:'100%'}} className="CarouselShow">
-    <Carousel cols={4} gap={10}>
+    <Carousel cols={4} gap={20}>
       <Carousel.Item>
       <div className="tourCenterCard" id="Centerig1">
             <div className="figure">

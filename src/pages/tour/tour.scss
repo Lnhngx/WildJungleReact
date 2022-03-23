@@ -289,16 +289,8 @@ figcaption {
   object-fit: cover;
   object-position: 35%;
 }
-// .slide{
-//   width: 50%;
-//   clip-path: circle(40%);
-// }
-// .slide img{
-//   width:100%;
-// }
-.material-icons{
-  color:red;
-}
+
+
 .col-2 img{
   width: 400%;
   height: 100%;
@@ -373,6 +365,9 @@ figcaption {
   }
   .tourLife{
     margin-top: 300px;
+  }
+  .CarouselShow{
+    margin-left:'10rem';
   }
 
 }
