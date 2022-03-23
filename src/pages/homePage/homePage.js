@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ning.scss";
 import "./homepage.scss";
 import HomeCarousel from "./components/HomeCarousel";
@@ -12,13 +12,9 @@ import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-  const [people, setPeople] = useState(180);
-
-  // setInterval(function () {
-  //   setPeople(Math.floor(Math.random() * 20) + 180);
-  // }, 1000);
 
 
+  
   return (
     <>
       <HomeCarousel slides={CarouselData} />
@@ -28,13 +24,13 @@ function HomePage() {
           <div className="ning_Admissionbox">
             <div className="ning_AdmissionboxIcon">
               <div className="ning_iconsbox">
-                <span className="material-icons">groups</span>
+                <span className="material-icons peopleicon">groups</span>
               </div>
               <p className="ning_Admission">入園人數</p>
-              <p className="ning_AdmissionEn">Ticket</p>
+              <p className="ning_AdmissionEn">People</p>
             </div>
             <div className="ning_AdmissionCout">
-              <div className="ning_AdmissionNumber">{people}</div>
+              <div className="ning_AdmissionNumber">180</div>
               <p className="ning_AdmissionUnit">人</p>
             </div>
           </div>
@@ -46,7 +42,9 @@ function HomePage() {
           <div className="ning_ticketbox">
             <div className="ning_ticketboxIcon">
               <div className="ning_ticketicon">
-                <span className="material-icons">confirmation_number</span>
+                <span className="material-icons ticketicon">
+                  confirmation_number
+                </span>
               </div>
               <p className="ning_ticket">票券資訊</p>
               <p className="ning_ticketEn">Ticket</p>

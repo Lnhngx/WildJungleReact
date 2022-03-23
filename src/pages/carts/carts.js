@@ -9,6 +9,26 @@ import CartProductItem from "./components/CartProductItem";
 
 function carts(props) {
   const { productsInOrder, setProductsInOrder } = props;
+
+  const productCount = () => {
+    let totalCount = 0;
+    for (let i = 0; i < productsInOrder.length; i++) {
+      console.log(productsInOrder.length);
+      totalCount += productsInOrder[i].quantity;
+    }
+    return totalCount;
+  };
+
+  const total = () => {
+    let sum = 0;
+
+    for (let i = 0; i < productsInOrder.length; i++) {
+      sum += productsInOrder[i].quantity * productsInOrder[i].price;
+    }
+
+    return sum;
+  };
+
   return (
     <>
       <div className="stan_carts_main_ec">
@@ -64,12 +84,12 @@ function carts(props) {
               <ul>
                 <li></li>
                 <li>小計</li>
-                <li>$3,000</li>
+                <li>${total()}</li>
               </ul>
             </div>
           </div>
           <div className="stan_block"></div>
-          <Checkarea />
+          <Checkarea productCount={productCount()}/>
         </div>
       </div>
       <div className="stan_footerbgc"></div>

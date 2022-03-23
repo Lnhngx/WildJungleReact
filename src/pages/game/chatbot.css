@@ -214,6 +214,9 @@
     height: 100px;
     background-color: rgb(11,156,101);
 }
+.coupon_link:hover{
+    text-decoration: none;
+}
 .menu .adopt{  
     width: 33.3%;
     height: 100px;
@@ -413,13 +416,8 @@
     overflow: visible;
 }
 .stickers_menu div img:hover{
-    width: 150%;
+    transform: scale(1.05);
     height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-20%,-10%);
-    z-index: 999;
 }
 .stickers_menu div img{
     width: 87%;

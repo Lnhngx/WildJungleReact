@@ -1,12 +1,19 @@
-import {React} from "react";
+import { React } from "react";
 import { Link } from "react-router-dom";
-import * as Scroll from 'react-scroll';
-import {Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-import {LotteryContext} from '../App';
+import * as Scroll from "react-scroll";
+import {
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
+import { LotteryContext } from "../App";
 import { useContext } from "react";
 
 const FixedRight = () => {
-  const {toggleLottery,setToggleLottery} = useContext(LotteryContext);
+  const { toggleLottery, setToggleLottery } = useContext(LotteryContext);
   return (
     <>
       <div className="ning_rightflex">
@@ -18,17 +25,28 @@ const FixedRight = () => {
             </div>
           </div>
         </Link>
-        <div className="ning_game" onClick={()=>{
+        <div
+          className="ning_game"
+          onClick={() => {
             setToggleLottery(true);
-            }}>
-            <div className="ning_gameicon">
-              <span className="material-icons">sports_esports</span>
-              <p>刮刮樂遊戲</p>
-            </div>
+          }}
+        >
+          <div className="ning_gameicon">
+            <span className="material-icons">sports_esports</span>
+            <p>刮刮樂遊戲</p>
           </div>
+        </div>
       </div>
       <div className="backToTop">
-        <button  onClick={() => scroll.scrollToTop()}>
+        <button
+          onClick={() =>
+            scroll.scrollToTop({
+              duration: 500,
+              delay: 0,
+              smooth: "easeInOutQuart",
+            })
+          }
+        >
           <span className="span1">Click </span>
           <span className="span2">To </span>
           <span className="span3">

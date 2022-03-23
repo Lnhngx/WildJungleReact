@@ -10,6 +10,8 @@ function Lodging() {
   const [nocturnalbox, setNocturnalbox] = useState(0);
   const [tropicalbox, setTropicalbox] = useState(0);
 
+  //海洋房詳細資訊btn
+
   const oceanPush = () => {
     setOceanbox(oceanbox === 0 ? 1 : oceanbox - 1);
     setIcebox(0);
@@ -17,18 +19,27 @@ function Lodging() {
     setTropicalbox(0);
     //setOceanbox(!oceanPush)
   };
+
+  //冰原房詳細資訊btn
+
   const icePush = () => {
     setIcebox(icebox === 0 ? 1 : icebox - 1);
     setOceanbox(0);
     setNocturnalbox(0);
     setTropicalbox(0);
   };
+
+  //夜行房詳細資訊btn
+
   const nocturnalPush = () => {
     setNocturnalbox(nocturnalbox === 0 ? 1 : nocturnalbox - 1);
     setIcebox(0);
     setOceanbox(0);
     setTropicalbox(0);
   };
+
+  //熱帶房詳細資訊btn
+
   const tropicalPush = () => {
     setTropicalbox(tropicalbox === 0 ? 1 : tropicalbox - 1);
     setIcebox(0);
@@ -43,9 +54,82 @@ function Lodging() {
   const nocturnalimg = useRef();
   const tropicalimg = useRef();
 
+  //房間數量
+
+  const [oceancount, setOceancount] = useState(1);
+  const [icecount, setIcecount] = useState(1);
+  const [nocturnalcount, setNocturnalcount] = useState(1);
+  const [tropicalcount, setTropicalcount] = useState(1);
+
+  //加數量
+
+  const addoceancount = () => {
+    if (oceancount < 10) {
+      setOceancount(oceancount + 1);
+    } else {
+      setOceancount(oceancount);
+    }
+  };
+  const redoceancount = () => {
+    if (oceancount > 1) {
+      setOceancount(oceancount - 1);
+    } else {
+      setOceancount(oceancount);
+    }
+  };
+
+  const addicecount = () => {
+    if (icecount < 10) {
+      setIcecount(icecount + 1);
+    } else {
+      setIcecount(icecount);
+    }
+  };
+  const redicecount = () => {
+    if (icecount > 1) {
+      setIcecount(icecount - 1);
+    } else {
+      setIcecount(icecount);
+    }
+  };
+
+  const addnocturnalcount = () => {
+    if (nocturnalcount < 10) {
+      setNocturnalcount(nocturnalcount + 1);
+    } else {
+      setNocturnalcount(nocturnalcount);
+    }
+  };
+  const rednocturnalcount = () => {
+    if (nocturnalcount > 1) {
+      setNocturnalcount(nocturnalcount - 1);
+    } else {
+      setNocturnalcount(nocturnalcount);
+    }
+  };
+
+  const addtropicalcount = () => {
+    if (tropicalcount < 10) {
+      setTropicalcount(tropicalcount + 1);
+    } else {
+      setTropicalcount(tropicalcount);
+    }
+  };
+  const redtropicalcount = () => {
+    if (tropicalcount > 1) {
+      setTropicalcount(tropicalcount - 1);
+    } else {
+      setTropicalcount(tropicalcount);
+    }
+  };
+
+  //點擊評論
+
+  const [commentbox, setCommentbox] = useState(false);
+
   return (
     <>
-    <LodgingComment />
+    {commentbox === true ? <LodgingComment setCommentbox={setCommentbox}/> : ""}
       <div className="container mb_container">
         <div className="loding_titlebox">
           <div className="loding_title">
@@ -150,16 +234,24 @@ function Lodging() {
               <div className="lodging_oceanprice">
                 <p>房間定價</p>
                 <h3>
-                  <span>NT$</span>3200
+                  <span>NT$ </span>
+                  {3200 * oceancount}
                 </h3>
               </div>
             </div>
             <div className="lodging_oceanamount">
-              <button className="btn lodging_oceanminus">
+              <button
+                className="btn lodging_oceanminus"
+                onClick={redoceancount}
+              >
                 <i class="fas fa-minus"></i>
               </button>
-              <input type="text" value="1" className="lodging_oceanvalue" />
-              <button className="btn lodging_oceanplus">
+              <input
+                type="text"
+                value={oceancount}
+                className="lodging_oceanvalue"
+              />
+              <button className="btn lodging_oceanplus" onClick={addoceancount}>
                 <i class="fas fa-plus"></i>
               </button>
             </div>
@@ -187,12 +279,12 @@ function Lodging() {
         >
           <div className="lodging_oceandetail">
             <div className="ocean_introducebox">
-              <div className="ocean_introduce">
+              <div className="ocean_introduce" >
                 <h2>房型簡介</h2>
-                  <div className="ocean_score">
-                    <p>9.3</p>
-                  </div>
-                  <p>15則評論</p>
+                <div className="ocean_score">
+                  <p>9.3</p>
+                </div>
+                <p onClick={()=>{setCommentbox(true)}}>15則評論</p>
               </div>
               <div className="ocean_introducetext">
                 10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
@@ -389,16 +481,21 @@ function Lodging() {
                 <div className="lodging_iceprice">
                   <p>房間定價</p>
                   <h3>
-                    <span>NT$</span>4500
+                    <span>NT$</span>
+                    {4500 * icecount}
                   </h3>
                 </div>
               </div>
               <div className="lodging_iceamount">
-                <button className="btn lodging_iceminus">
+                <button className="btn lodging_iceminus" onClick={redicecount}>
                   <i class="fas fa-minus"></i>
                 </button>
-                <input type="text" value="1" className="lodging_icevalue" />
-                <button className="btn lodging_iceplus">
+                <input
+                  type="text"
+                  value={icecount}
+                  className="lodging_icevalue"
+                />
+                <button className="btn lodging_iceplus" onClick={addicecount}>
                   <i class="fas fa-plus"></i>
                 </button>
               </div>
@@ -636,20 +733,27 @@ function Lodging() {
                 <div className="lodging_nocturnalprice">
                   <p>房間定價</p>
                   <h3>
-                    <span>NT$</span>5500
+                    <span>NT$</span>
+                    {5500 * nocturnalcount}
                   </h3>
                 </div>
               </div>
               <div className="lodging_nocturnalamount">
-                <button className="btn lodging_nocturnalminus">
+                <button
+                  className="btn lodging_nocturnalminus"
+                  onClick={rednocturnalcount}
+                >
                   <i class="fas fa-minus"></i>
                 </button>
                 <input
                   type="text"
-                  value="1"
+                  value={nocturnalcount}
                   className="lodging_nocturnalvalue"
                 />
-                <button className="btn lodging_nocturnalplus">
+                <button
+                  className="btn lodging_nocturnalplus"
+                  onClick={addnocturnalcount}
+                >
                   <i class="fas fa-plus"></i>
                 </button>
               </div>
@@ -849,7 +953,7 @@ function Lodging() {
               <div className="lodging_tropicalprice">
                 <p>房間定價</p>
                 <h3>
-                  <span>NT$</span>5500
+                  <span>NT$</span>6500
                 </h3>
               </div>
             </div>
@@ -888,20 +992,27 @@ function Lodging() {
                 <div className="lodging_tropicalprice">
                   <p>房間定價</p>
                   <h3>
-                    <span>NT$</span>5500
+                    <span>NT$</span>
+                    {6500 * tropicalcount}
                   </h3>
                 </div>
               </div>
               <div className="lodging_tropicalamount">
-                <button className="btn lodging_tropicalminus">
+                <button
+                  className="btn lodging_tropicalminus"
+                  onClick={redtropicalcount}
+                >
                   <i class="fas fa-minus"></i>
                 </button>
                 <input
                   type="text"
-                  value="1"
+                  value={tropicalcount}
                   className="lodging_tropicalvalue"
                 />
-                <button className="btn lodging_tropicalplus">
+                <button
+                  className="btn lodging_tropicalplus"
+                  onClick={addtropicalcount}
+                >
                   <i class="fas fa-plus"></i>
                 </button>
               </div>
@@ -1045,7 +1156,6 @@ function Lodging() {
           </div>
         </div>
       </div>
-      
     </>
   );
 }
