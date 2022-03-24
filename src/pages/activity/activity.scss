@@ -42,6 +42,15 @@ $terry_black: #000000;
   justify-content: center;
 }
 
+.seatsClick {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(180deg) brightness(104%) contrast(97%);
+  width: 7%;
+  height: auto;
+  margin: 0.4% 1.4%;
+}
+
+
+
 // ---------------------共用---------------------
 
 .terry_bg {
@@ -189,7 +198,7 @@ $terry_black: #000000;
 }
 
 .terry_showIntroduction_area {
-  margin-top: 10%;
+  margin-top: 12%;
   display: flex;
 
   .terry_showIntroduction_img {
@@ -197,11 +206,44 @@ $terry_black: #000000;
     height: 700px;
     background: url("../../../public/img/activity/show2.jpg") center left/cover
       no-repeat;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover 10px;
-    }
+    // img {
+    //   width: 100%;
+    //   height: 100%;
+    //   object-fit: cover 10px;
+    // }
+  }
+  .terry_showIntroduction_img2 {
+    width: 70%;
+    height: 700px;
+    background: url("../../../public/img/activity/animalShow2.jpg") 60%/cover
+      no-repeat;
+    // img {
+    //   width: 100%;
+    //   height: 100%;
+    //   object-fit: cover 10px;
+    // }
+  }
+  .terry_showIntroduction_img3 {
+    width: 70%;
+    height: 700px;
+    background: url("../../../public/img/activity/animalShow3.jpg") center left/cover
+      no-repeat;
+    // img {
+    //   width: 100%;
+    //   height: 100%;
+    //   object-fit: cover 10px;
+    // }
+  }
+  .terry_showIntroduction_img4 {
+    width: 70%;
+    height: 700px;
+    background: url("../../../public/img/activity/animalShow4.jpg") center left/cover
+      no-repeat;
+    // img {
+    //   width: 100%;
+    //   height: 100%;
+    //   object-fit: cover 10px;
+    // }
   }
   .terry_showIntroduction_textArea {
     width: 50%;
@@ -764,21 +806,24 @@ $terry_black: #000000;
   }
   .animalImg1 {
     position: absolute;
-    background: url(../../../public/img/home/star_eagle.png) center center/contain no-repeat;
+    background: url(../../../public/img/home/star_eagle.png) center
+      center/contain no-repeat;
     width: 700px;
     height: 700px;
     bottom: 60px;
   }
   .animalImg2 {
     position: absolute;
-    background: url(../../../public/img/home/star_shark.png) 30%/contain no-repeat;
+    background: url(../../../public/img/home/star_shark.png) 30% / contain
+      no-repeat;
     width: 600px;
     height: 600px;
     bottom: 60px;
   }
   .animalImg3 {
     position: absolute;
-    background: url(../../../public/img/home/star_tiger.png) center center/contain no-repeat;
+    background: url(../../../public/img/home/star_tiger.png) center
+      center/contain no-repeat;
     width: 600px;
     height: 600px;
     bottom: 106px;
@@ -786,14 +831,16 @@ $terry_black: #000000;
   }
   .animalImg4 {
     position: absolute;
-    background: url(../../../public/img/home/star_elephant.png) center center/contain no-repeat;
+    background: url(../../../public/img/home/star_elephant.png) center
+      center/contain no-repeat;
     width: 600px;
     height: 600px;
     bottom: 90px;
   }
   .animalImg5 {
     position: absolute;
-    background: url(../../../public/img/home/star_hitefox.png) center center/contain no-repeat;
+    background: url(../../../public/img/home/star_hitefox.png) center
+      center/contain no-repeat;
     width: 650px;
     height: 650px;
     bottom: 70px;
