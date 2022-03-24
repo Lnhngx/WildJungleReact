@@ -105,14 +105,29 @@
     flex-direction: column;
     justify-content: center;
 }
+.q1_img{
+    position: absolute;
+    width: 200px;
+    height: auto;
+    left: 55%;
+}
+.q1_img2{
+    position: absolute;
+    width: 500px;
+    height: auto;
+    left: -30px;
+    bottom: -100px;
+    z-index: -2;
+}
 .psycho_bg h2{
     color: white;
     width: 100%;
-    font-size: 4rem;
+    font-size: 5rem;
+    font-weight: 600;
     font-family: sans-serif;
     text-align: center;
     margin-top: -10rem;
-    margin-bottom: 15rem;
+    margin-bottom: 10rem;
 }
 .psycho_btnGroup{
     width: 100%;
@@ -130,14 +145,13 @@
     font-family: sans-serif;
     background-color: transparent;
     color: #00b0bd;
-    padding: 15px 30px;
     cursor: pointer;
 }
 .psycho_leftBtn_cloud{
     width: 100%;
     height: auto;
     position: relative;
-    top: 90px;
+    top: 95px;
     left: 0;
     z-index: -1;
 }
@@ -145,7 +159,7 @@
     width: 100%;
     height: auto;
     position: relative;
-    top: 90px;
+    top: 95px;
     left: 0;
     z-index: -1;
 }
@@ -197,10 +211,12 @@
 }
 @keyframes psycho_row21_left {
     0%{
-        transform: translateX(-20.001%);
+        transform: translateX(-20.001%)
+        translateY(-800px);
     }
     50%{
-        transform: translateX(-6.667%);
+        transform: translateX(-6.667%)
+        translateY(-800px);
     }
     100%{
         transform: translateX(-6.667%)
@@ -209,10 +225,12 @@
 }
 @keyframes psycho_row21_right {
     0%{
-        transform: translateX(-20.001%);
+        transform: translateX(-20.001%)
+        translateY(-800px);
     }
     50%{
-        transform: translateX(-33.335%);
+        transform: translateX(-33.335%)
+        translateY(-800px);
     }
     100%{
         transform: translateX(-33.335%)
@@ -232,10 +250,12 @@
 }
 @keyframes psycho_row22_left {
     0%{
-        transform: translateX(-73.337%);
+        transform: translateX(-73.337%)
+        translateY(-800px);
     }
     50%{
-        transform: translateX(-60.003%);
+        transform: translateX(-60.003%)
+        translateY(-800px);
     }
     100%{
         transform: translateX(-60.003%)
@@ -244,10 +264,12 @@
 }
 @keyframes psycho_row22_right {
     0%{
-        transform: translateX(-73.337%);
+        transform: translateX(-73.337%)
+        translateY(-800px);
     }
     50%{
-        transform: translateX(-86.674%);
+        transform: translateX(-86.674%)
+        translateY(-800px);
     }
     100%{
         transform: translateX(-86.674%)
