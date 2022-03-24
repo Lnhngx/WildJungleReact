@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import './psycho-game.css';
 
 function PsychoGame(){
@@ -184,8 +185,29 @@ function PsychoGame(){
                     </div>
                     {/* 第四層結果 第1個 */}
                     <div className="psycho_result1">
-                        <div className="psycho_result_left"></div>
-                        <div className="psycho_result_right"></div>
+                        <div className="psycho_result_left">
+                            <p>懶散成性的</p>
+                            <h3>熊貓</h3>
+                            <img src="/img/game/psycho_material8.png" alt="" />
+                            <p>你遇到事情通常會先選擇逃避，不願意挑戰新事物</p>
+                            <p><span>65%</span>的人得到這個結果</p>
+                            <p>你未來一個月的幸運物是:</p>
+                            <h3>枕頭</h3>
+                            <Link
+                                    className="psycho_shopBtn" 
+                                    to= '/products'
+                                >
+                                    <p>前往購買</p>
+                                    <img src="/img/game/game_button.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="psycho_result_right">
+                            <p>神秘個性的</p>
+                            <h3>北極熊</h3>
+                            <img src="/img/game/psycho_material9.png" alt="" />
+                            <p>你與選到北極熊的人默契極佳哦!</p>
+                            <p>選到北極熊的人遇到事情通常十分冷靜，能有條理的找出關鍵點，並做出改善，只是平時非常高冷。</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -411,16 +411,93 @@
 }
 .psycho_result_left{
     width: 46%;
-    height: 700px;
+    height: 750px;
     background-color: rgb(27,119,84);
     border-radius: 30px;
+    text-align: center;
+    color: white;
 }
+.psycho_result_left p{
+    font-size: 2rem;
+    font-family: sans-serif;
+    margin-top: 2rem;
+}
+.psycho_result_left>p>span{
+    font-size: 3rem;
+    font-weight: 600;
+}
+.psycho_result_left h3{
+    font-size: 5rem;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.psycho_result_left img{
+    width: 40%;
+    height: auto;
+}
+.psycho_shopBtn{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 260px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+    bottom: 50px;
+    margin: 15px auto;
+}
+.psycho_shopBtn p{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-90%);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #eb5c37;
+    pointer-events: none;
+}
+.psycho_shopBtn img{
+    width: 100%;
+    height: auto;
+}
+/* 以下是右半部 */
 .psycho_result_right{
     width: 46%;
-    height: 700px;
+    height: 750px;
     background-color: rgb(235,92,55);
     border-radius: 30px;
+    text-align: center;
+    color: white;
 }
+.psycho_result_right p{
+    width: 100%;
+    font-size: 2rem;
+    font-family: sans-serif;
+    margin-top: 2rem;
+}
+.psycho_result_right p:nth-of-type(3){
+    width: 60%;
+    font-size: 2rem;
+    font-family: sans-serif;
+    margin-top: 2rem;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    margin: 32px auto;
+}
+.psycho_result_right h3{
+    font-size: 5rem;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.psycho_result_right img{
+    width: 25%;
+    height: auto;
+}
+
+
+
+
+
 .animals-footer{
     width: 100%; 
 }
