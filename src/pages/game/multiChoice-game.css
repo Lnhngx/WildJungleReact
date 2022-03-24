@@ -111,20 +111,71 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: gray;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+    transition: 0.7s;
+    transition-delay: 1s;
 }
+/* 以下是公布成績左半區域 */
 .boardLeft{
     width: 60%;
-    background-color: white;
+    height: 700px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.board_qaGroup{
+    width: 100%;
+    height: 200px;
+    /* background-color: #eb5c37; */
+    border-bottom: 2px solid rgb(32, 29, 29);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    position: relative;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: white;
+}
+.board_question{
+    font-size: 3rem;
+    padding-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+.userAns{
+    font-size: 2.5rem;
+    word-wrap: normal;
+    white-space: pre-wrap;
+}
+.rightAns{
+    font-size: 2.5rem;
+    word-wrap: normal;
+    white-space: pre-wrap;
+}
+.rightAns span{
+    color: red;
+}
+.goTour_btn{
+    width: 200px;
+    height: 40px;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgb(249,177,18);
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+.goTour_btn:hover{
+    background-color: gray;
 }
 /* 以下是公布成績右半區域 */
 .boardRight{
     width: 40%;
-    background-color: rgb(20, 77, 28);
     text-align: center;
     position: relative;
 }
@@ -134,7 +185,7 @@
     font-size: 6rem;
     color: red;
     position: absolute;
-    top: 100px;
+    top: 16%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -144,12 +195,12 @@
     font-size: 2rem;
     color: white;
     position: absolute;
-    top: 220px;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
 }
 .boardRight img{
-    width: 70%;
+    width: 60%;
     height: auto;
     margin-top: 3rem;
 }
@@ -257,7 +308,7 @@
     cursor: pointer;
 }
 .send_fianlAnswer:hover{
-    background-color: gray;;
+    background-color: gray;
 }
 .send_fianlAnswer i{
     transform: translateX(3px);

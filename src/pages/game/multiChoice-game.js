@@ -6,14 +6,19 @@ function MultiChoice(){
     const [allQuestion,setAllQuestion] = useState([]);
     const [finish,setFinish] = useState(false);
     const [answer,setAnswer] = useState([]);
-    useEffect(()=>{        
+    const [userAns,setUserAns] = useState([]);
+    const [toLeft,setToLeft] = useState(0);
+    const [correctNum,setCorrectNum] = useState(0);
+    const [point,setPoint] = useState(0);
+    const [review,setReview] = useState([]);
+    useEffect(()=>{   
         fetch('http://localhost:4000/game')
         .then(r=>r.json())
         .then(obj=>{
             let newAnswer = [];
             obj.map((v,i)=>{
                 newAnswer.push(v.yes)
-                console.log(newAnswer)
+                // console.log(newAnswer)
                 setAnswer(newAnswer)
                 // setAnswer(answer.push(v.yes));
             })
@@ -21,7 +26,6 @@ function MultiChoice(){
         })       
     },[])
     // 這是給按鈕的狀態，按了就會換下一題
-    const [toLeft,setToLeft] = useState(false);
     function move(toLeft){
         switch (toLeft){
             case 1:
@@ -56,6 +60,7 @@ function MultiChoice(){
                 return obj10;
             default:
                 const obj0 = {transform:'translateX(0)'}
+                return obj0;
         }
     }
     return(
@@ -84,7 +89,7 @@ function MultiChoice(){
             <div className="mc_container_game">
                 <div className="mc_game_border">
                     <ul className="mc_game_zone" style={move(toLeft)}>
-                        {allQuestion.map((v,i)=>{
+                        {allQuestion.map((v,i)=>{ 
                             if(i<9){
                             return(
                             <li className="choose_question">
@@ -92,18 +97,30 @@ function MultiChoice(){
                                 <div className="mc_btnGroup">
                                     <button onClick={()=>{
                                         setToLeft(i+1)
+                                        let current = [...userAns]
+                                        current.push(v.answers[0])
+                                        setUserAns(current)
                                     }}>{v.answers[0]}
                                     </button>
                                     <button onClick={()=>{
                                         setToLeft(i+1)
+                                        let current = [...userAns]
+                                        current.push(v.answers[1])
+                                        setUserAns(current)
                                     }}>{v.answers[1]}
                                     </button>
                                     <button onClick={()=>{
                                         setToLeft(i+1)
+                                        let current = [...userAns]
+                                        current.push(v.answers[2])
+                                        setUserAns(current)
                                     }}>{v.answers[2]}
                                     </button>
                                     <button onClick={()=>{
                                         setToLeft(i+1)
+                                        let current = [...userAns]
+                                        current.push(v.answers[3])
+                                        setUserAns(current)
                                     }}>{v.answers[3]}
                                     </button>
                                 </div>
@@ -116,21 +133,33 @@ function MultiChoice(){
                                     <button onClick={()=>{
                                         setToLeft(9)
                                         setFinish(true)
+                                        let current = [...userAns]
+                                        current.push(v.answers[0])
+                                        setUserAns(current)
                                     }}>{v.answers[0]}
                                     </button>
                                     <button onClick={()=>{
                                         setToLeft(9)
                                         setFinish(true)
+                                        let current = [...userAns]
+                                        current.push(v.answers[1])
+                                        setUserAns(current)
                                     }}>{v.answers[1]}
                                     </button>
                                     <button onClick={()=>{
                                         setToLeft(9)
                                         setFinish(true)
+                                        let current = [...userAns]
+                                        current.push(v.answers[2])
+                                        setUserAns(current)
                                     }}>{v.answers[2]}
                                     </button>
                                     <button onClick={()=>{
                                         setToLeft(9)
                                         setFinish(true)
+                                        let current = [...userAns]
+                                        current.push(v.answers[3])
+                                        setUserAns(current)
                                     }}>{v.answers[3]}
                                     </button>
                                 </div>
@@ -149,14 +178,35 @@ function MultiChoice(){
                             </div>
                         </li>*/}
                     </ul>
-                        <div className="mc_board" style={{display:toLeft===10?'flex':'none'}}>
-                            <div className="boardLeft"></div>
+                    {/* 這裡沒有只用透明度的原因是一樣會按到 */}
+                        <div className="mc_board" style={{opacity:toLeft===10?'1':'0',pointerEvents:toLeft===10?'all':'none'}}>
+                            <div className="boardLeft">
+                                {review.map((v,i)=>{
+                                    return(
+                                    <div className="board_qaGroup">
+                                    <div className="board_question">{v.number}.{v.question}</div>
+                                    <div className="userAns">你的答案:{v.userAns}</div>
+                                    <div className="rightAns">正確答案:<span>{v.rightAns}</span></div>
+                                    <Link to="/tour">
+                                        <div className="goTour_btn">查看小知識</div>
+                                    </Link>
+                                </div>
+                                )})}
+                                {/* <div className="board_qaGroup">
+                                    <div className="board_question">1.你的答案全錯你這個王八蛋</div>
+                                    <div className="userAns">你的答案:</div>
+                                    <div className="rightAns">正確答案:</div>
+                                    <Link to="/tour">
+                                        <div className="goTour_btn">查看小知識</div>
+                                    </Link>
+                                </div> */}
+                            </div>
                             <div className="boardRight">
-                                <div className="board_point">1000</div>
+                                <div className="board_point">{point}</div>
                                 <div className="board_pointText">WILDJUNGLE</div>
                                 <img src="/img/game/game-points.png" alt="" />
-                                <div className="correctNum">答對題數:<span>5</span></div>
-                                <div className="incorrectNum">答錯題數:<span>2</span></div>
+                                <div className="correctNum">答對題數:<span>{correctNum}</span></div>
+                                <div className="incorrectNum">答錯題數:<span>{10-correctNum}</span></div>
                                 <div className="board_btnGroup">
                                     <Link
                                         className="board_winBtn" 
@@ -176,6 +226,32 @@ function MultiChoice(){
                             </div>
                         </div>
                     <div className="send_fianlAnswer" style={{display:finish?'block':'none'}} onClick={()=>{
+                                        let counter = 0;
+                                        let current =[];
+                                        answer.map((v,i)=>{
+                                            if(v===userAns[i]){
+                                                counter++;
+                                            }else{
+                                                let template = {
+                                                                number:i+1,
+                                                                question:allQuestion[i].qcontent,
+                                                                userAns:userAns[i],
+                                                                rightAns:v,
+                                                            };
+                                                current.push(template);
+                                                setReview(current);
+                                            }
+                                        })
+                                        if(counter===10){
+                                            setPoint(50)
+                                        }else if(counter<10&&counter>5){
+                                            setPoint(35)
+                                        }else if(counter<=5){
+                                            setPoint(5)
+                                        }else if(counter===0){
+                                            setPoint(0)
+                                        }
+                                        setCorrectNum(counter);
                                         setToLeft(10)
                                         setFinish(false)
                                     }}>確認送出<i class="fas fa-arrow-right"></i></div>
