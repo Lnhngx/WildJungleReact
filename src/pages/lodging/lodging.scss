@@ -1698,10 +1698,12 @@ $ning-englishont: "Playfair Display", serif;
     padding-bottom: 2%;
     margin-bottom: 2%;
     border-bottom: 1px solid #ccc;
+    width: 100%;
   }
   .guestInformation {
     display: flex;
     align-items: center;
+    width: 35%;
   }
 
   .guestimg {
@@ -1749,11 +1751,18 @@ $ning-englishont: "Playfair Display", serif;
     color: #777;
     font-size: 1.6rem;
   }
+  .guestCommentTextbox {
+    width: 45%;
+  }
 
   .guestCommentText {
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: 1.2rem;
     font-family: $ning-chinesefont;
     margin-bottom: 0;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    text-align: center;
   }
 
   .guestScore {

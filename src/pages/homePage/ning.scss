@@ -123,7 +123,8 @@ $ning-englishont: "Playfair Display", serif;
     align-items: center;
   }
 
-  .peopleicon , .ticketicon {
+  .peopleicon,
+  .ticketicon {
     color: $ning-color3;
     font-size: 5rem;
     padding-left: 1.5px;
@@ -132,10 +133,10 @@ $ning-englishont: "Playfair Display", serif;
   .weathericon {
     width: 50px;
     height: 50px;
-    
-    svg{
+
+    svg {
       width: 90%;
-      stroke:$ning-color3;
+      stroke: $ning-color3;
     }
   }
 
@@ -559,21 +560,12 @@ $ning-englishont: "Playfair Display", serif;
     background-color: $ning-color5;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 10px;
-    position: relative;
-    margin: 0px;
-
-    img {
-      width: 60%;
-      object-fit: contain;
-      transition: 1s;
-    }
 
     div {
-      width: 35%;
-      position: absolute;
-      bottom: 5%;
-      right: 5%;
+      width: 45%;
+
       h3 {
         font-family: $ning-englishont;
         font-size: 3.5rem;
@@ -598,6 +590,16 @@ $ning-englishont: "Playfair Display", serif;
         height: 50px;
         margin-top: 20px;
       }
+    }
+  }
+
+  .ning_eagleimg {
+    width: 60%;
+    height: 100%;
+    transition: 1s;
+
+    img {
+      height: 100%;
     }
   }
 
@@ -613,20 +615,11 @@ $ning-englishont: "Playfair Display", serif;
     background-color: $ning-color1;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 10px;
-    position: relative;
-
-    img {
-      width: 60%;
-      margin-left: -18%;
-      transition: 1s;
-    }
 
     div {
-      width: 35%;
-      position: absolute;
-      bottom: 5%;
-      right: 5%;
+      width: 45%;
       h3 {
         font-family: $ning-englishont;
         font-size: 3.5rem;
@@ -651,6 +644,17 @@ $ning-englishont: "Playfair Display", serif;
         height: 50px;
         margin-top: 20px;
       }
+    }
+  }
+
+  .ning_elephantimg {
+    width: 60%;
+    height: 100%;
+    transition: 1s;
+    margin-left: -90px;
+
+    img {
+      height: 100%;
     }
   }
 
@@ -666,23 +670,13 @@ $ning-englishont: "Playfair Display", serif;
     background-color: $ning-color2;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 10px;
     overflow: hidden;
-    position: relative;
-
-    img {
-      width: 60%;
-      margin-bottom: -12%;
-      margin-left: -18%;
-      transition: 1s;
-      
-    }
 
     div {
-      width: 35%;
-      position: absolute;
-      bottom: 5%;
-      right: 5%;
+      width: 45%;
+
       h3 {
         font-family: $ning-englishont;
         font-size: 3.5rem;
@@ -710,6 +704,16 @@ $ning-englishont: "Playfair Display", serif;
     }
   }
 
+  .ning_tigerimg {
+    width: 60%;
+    height: 100%;
+    transition: 1s;
+    margin-left: -90px;
+
+    img {
+      height: 130%;
+    }
+  }
 
   .ning_sharkcardbox {
     width: 12.5%;
@@ -723,21 +727,12 @@ $ning-englishont: "Playfair Display", serif;
     background-color: $ning-color4;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 2%;
     overflow: hidden;
-    position: relative;
-
-    img {
-      width: 60%;
-      margin-left: -30%;
-      transition: 1s;
-    }
 
     div {
-      width: 35%;
-      position: absolute;
-      bottom: 5%;
-      right: 5%;
+      width: 45%;
 
       h3 {
         font-family: $ning-englishont;
@@ -766,6 +761,17 @@ $ning-englishont: "Playfair Display", serif;
     }
   }
 
+  .ning_sharkimg {
+    width: 60%;
+    height: 100%;
+    transition: 1s;
+    margin-left: -200px;
+
+    img {
+      height: 100%;
+    }
+  }
+
   .ning_hitefoxcardbox {
     width: 12.5%;
     overflow: hidden;
@@ -778,18 +784,12 @@ $ning-englishont: "Playfair Display", serif;
     background-color: #1297cf;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 2%;
     overflow: hidden;
-    left: 50%;
-
-    img {
-      width: 60%;
-      margin-left: -5%;
-      transition: 1s;
-    }
 
     div {
-      width: 35%;
+      width: 45%;
 
       h3 {
         font-family: $ning-englishont;
@@ -818,9 +818,24 @@ $ning-englishont: "Playfair Display", serif;
     }
   }
 
+  .ning_hitefoximg {
+    width: 60%;
+    height: 100%;
+    transition: 1s;
+    margin-left: -20px;
+
+    img {
+      height: 100%;
+
+    }
+  }
+
   /* */
 
-  .ning_eaglecard button:hover , .ning_elephantcard button:hover , .ning_sharkcard button:hover , .ning_hitefoxcard button:hover {
+  .ning_eaglecard button:hover,
+  .ning_elephantcard button:hover,
+  .ning_sharkcard button:hover,
+  .ning_hitefoxcard button:hover {
     background-color: $ning-color2;
   }
 
