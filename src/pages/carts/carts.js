@@ -6,13 +6,15 @@ import CartProductItem from "./components/CartProductItem";
 
 function Carts(props) {
   const [amount, setAmount] = useState(0);
-  const { productsInOrder, setProductsInOrder } = props;
-
+  const { productsInOrder, setProductsInOrder, setCartscount } = props;
   const total = () => {
     let sum = 0;
+    let count = 0;
     for (let i = 0; i < productsInOrder.length; i++) {
       sum += productsInOrder[i].quantity * productsInOrder[i].price;
+      count += productsInOrder[i].quantity;
     }
+    setCartscount(count);
     return sum;
   };
 
@@ -69,7 +71,7 @@ function Carts(props) {
             </div>
           </div>
           <div className="stan_block"></div>
-          <Checkarea amount={total()} setAmount={setAmount}/>
+          <Checkarea amount={total()} setAmount={setAmount} />
         </div>
       </div>
       <div className="stan_footerbgc"></div>

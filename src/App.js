@@ -1,5 +1,13 @@
-import { Link, Route, BrowserRouter as Router, Switch,useHistory, useLocation,Redirect } from "react-router-dom";
-import { useState,useEffect } from "react";
+import {
+  Link,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  useHistory,
+  useLocation,
+  Redirect,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
 import React from "react";
 import { useContext } from "react";
 
@@ -31,8 +39,6 @@ import Cartsfinishorder from "./pages/carts/carts_03_finishorder";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
-
-
 
 // 假資料，借放
 const products = [
@@ -70,12 +76,12 @@ function App() {
   // 全域狀態
 
   // 是否登入
-  const [auth, setAuth] = useState(false)
-  const account=JSON.parse(localStorage.getItem('admin_account'))
-  const token=!! localStorage.getItem('admin_token')
+  const [auth, setAuth] = useState(false);
+  const account = JSON.parse(localStorage.getItem("admin_account"));
+  const token = !!localStorage.getItem("admin_token");
   // console.log('3:',auth===true)
   useEffect(() => {
-    if (account&&token) {
+    if (account && token) {
       setAuth(true);
     } else {
       setAuth(false);
@@ -89,25 +95,15 @@ function App() {
   //   console.log('2:',auth===true)
   // },[auth])
 
-
-
   const [productsInOrder, setProductsInOrder] = useState(products);
-
-  const productCount = () => {
-    let totalCount = 0;
-    for (let i = 0; i < productsInOrder.length; i++) {
-      console.log(productsInOrder.length);
-      totalCount += productsInOrder[i].quantity;
-    }
-    return totalCount;
-  };
+  const [cartscount, setCartscount] = useState(0);
 
   const [toggleLottery, setToggleLottery] = useState(false);
   const openOrNot = { toggleLottery, setToggleLottery };
   return (
     <Router>
       <>
-        <Navbar auth={auth} setAuth={setAuth}/>
+        <Navbar auth={auth} setAuth={setAuth} />
         <LotteryContext.Provider value={openOrNot}>
           <FixedRight />
         </LotteryContext.Provider>
@@ -125,7 +121,7 @@ function App() {
           <Route path="/products">
             <Products />
           </Route>
-          <Route path="/productsdetail" >
+          <Route path="/productsdetail">
             <ProductsDetail />
           </Route>
           <Route path="/game/spot-level">
@@ -165,7 +161,7 @@ function App() {
             <MemberSignUp />
           </Route>
           <Route exact path="/members/login">
-            <MemberLogin auth={auth} setAuth={setAuth}/>
+            <MemberLogin auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/members/forgot">
             <MemberForgotPass />
@@ -174,10 +170,14 @@ function App() {
             <MemberPassChange />
           </Route>
           <Route path="/members/modify-member-info">
-          {account && token ?  <MemberList account={account} token={token}/> : <Redirect to="/members/login"/>}
+            {account && token ? (
+              <MemberList account={account} token={token} />
+            ) : (
+              <Redirect to="/members/login" />
+            )}
           </Route>
           <Route path="/members">
-            <MemberLogin setAuth={setAuth}/>
+            <MemberLogin setAuth={setAuth} />
           </Route>
           <Route path="/lodging">
             <Lodging />
