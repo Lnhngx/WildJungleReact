@@ -6,11 +6,13 @@ import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
     let chat_id = 1;
+    let agentChat_id = 0;
     const [toggleReply,setToggleReply] = useState(false);
     const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [toggleSticker,setToggleSticker] = useState(false);
     const [message,setMessage] = useState([{id:chat_id,text:'yo~ 我是熊貓有任何基礎問題都可以問我',type:'chatbot_reply'}]);
+    const [privateMessage,setPrivateMessage] = useState([]);
     const [weatherData,setWeatherData] = useState({});
     const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
@@ -21,7 +23,22 @@ function Chatbot(){
     useEffect(()=>{
         if(io){
             document.querySelector('.chat_area').innerHTML = '';
-            console.log('success connect!')
+            io.on('room message', function(msg) {
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...privateMessage];
+                const uploadTmp1 = { id:987,
+                                text: msg,
+                                type:'user_reply',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setPrivateMessage(replyMessage);
+            });
+            console.log('success connect!',io)
         }
     },[io])
     useEffect(()=>{
@@ -81,7 +98,7 @@ function Chatbot(){
             const obj0 = {transform:'translateX(0px)'};
             return obj0;    
         }
-    }  
+    } 
     return(
     <>
         <div className="chatbot_logo" 
@@ -112,6 +129,32 @@ function Chatbot(){
                 </div>
                 <div className="chatbot_time"></div>
             </div>
+            {/* 以下給之後跟專人客服對話的內容map出來 */}
+            {privateMessage.map((v,i)=>{
+                if(v.id===1){
+                    return(
+                        <div className="chatbot_reply">
+                            <div className="agentAvatar_wrap">
+                                <img src="/img/game/agent_avatar.png" alt="" className="agentChat_avatar" />
+                            </div>
+                            <div className="chatbot_message">
+                                {v.text}
+                            </div>
+                            <div className="chatbot_time">{v.time}</div>
+                        </div>
+                    )
+                }else{
+                    <div className="chatbot_reply">
+                            <div className="agentAvatar_wrap">
+                                <img src="/img/game/agent_avatar.png" alt="" className="agentChat_avatar" />
+                            </div>
+                            <div className="chatbot_message">
+                                {v.text}
+                            </div>
+                            <div className="chatbot_time">{v.time}</div>
+                        </div>
+                }
+            })}
             {message.map((v,i)=>{
                 if(v.id>1){
                     if(v.type==='stickers'){
@@ -422,6 +465,39 @@ function Chatbot(){
                 setMessage(replyMessage);
             }}><img src="/img/game/panda2.png" alt=""/></div>
         </div>
+        {/* 以下是專人客服的頭像(唯有socket.io連線時才會出現) */}
+        <div className="agent_chooseArea" style={{display:io?"flex":"none"}}>
+            <div className="service_agent">
+                <div className="agent_avatar" onClick={()=>{
+                    document.querySelector('.agent_chooseArea').style.display = 'none';
+                    let room = '教欽的告解室';
+                    io.emit('join',room,message=>{
+                        const getTime = new Date();
+                        let hour = getTime.getHours();
+                        let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                        let description = hour >= 12 ? '下午':'上午';
+                        let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
+                        let newPrivate = [...privateMessage];
+                        const uploadTmp = { id:agentChat_id+1,
+                                            text: message,
+                                            type:'robot_reply',
+                                            time:timeNow,
+                                        } ;
+                        newPrivate.push(uploadTmp);
+                        setPrivateMessage(newPrivate);
+                    });
+                }}><img src="/img/game/agent_avatar.png" alt=""/></div>
+                <div className="agent_connected"></div>
+            </div>
+            <div className="service_agent">
+                <div className="agent_avatar"></div>
+                <div className="agent_connected"></div>
+            </div>
+            <div className="service_agent">
+                <div className="agent_avatar"></div>
+                <div className="agent_connected"></div>
+            </div>
+        </div>
         <div className="tool_bar">
             <div className="rich_menu" onClick={()=>{
                 if(!toggleMenu){
@@ -437,74 +513,64 @@ function Chatbot(){
             <form onSubmit={async (e)=>{
                 // 一樣持有按button與按鍵盤Enter就submit的功能，只是我阻止預設送出刷新頁面
                 e.preventDefault();
-                setToggleReply(true);
                 const getTime = new Date();
                 let hour = getTime.getHours();
                 let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
                 let description = hour >= 12 ? '下午':'上午';
                 let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
-                if(myChatbotInput.current.value){
-                    // message = {
-                    //                 id:1,
-                    //                 text:'',
-                    //                 type:'chatbot_reply',
-                    //             };
-                    // 下方是使用者的提問
-                    let newMessage = [...message];
-                    const uploadTmp = { id:chat_id+1,
-                                        text:myChatbotInput.current.value,
-                                        type:'user_reply',
-                                        time:timeNow,
-                                    } ;
-                    newMessage.push(uploadTmp);
-                    setMessage(newMessage);
-                    // 下方是機器人回覆的部分
-                    await fetch('http://localhost:4000/chatbot',{
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({request:myChatbotInput.current.value})
-                    })
-                    .then(r=>r.json())
-                    .then(obj=>{
-                        // console.log(obj.results.respond)
-                        setToggleReply(false);
-                        let replyMessage = [...newMessage];
-                        const uploadTmp1 = { id:chat_id+2,
-                                        text:obj.results.respond,
-                                        type:'chatbot_reply',
-                                        time:timeNow,
-                                    } ;
-                        replyMessage.push(uploadTmp1);
-                        setMessage(replyMessage);
-                        })
-                    // if((myChatbotInput.current.value).indexOf('你好')!==-1){
-                    //     setTimeout(()=>{
-                    //         setToggleReply(false);
-                    //         let replyMessage = [...newMessage];
-                    //         const uploadTmp1 = { id:chat_id+2,
-                    //                         text:'你好啊，笨蛋(我可以跳著說嗎)',
-                    //                         type:'chatbot_reply',
-                    //                         time:timeNow,
-                    //                     } ;
-                    //         replyMessage.push(uploadTmp1);
-                    //         setMessage(replyMessage);
-                    //     },1000)
-                    // }else{
-                    //     setTimeout(()=>{
-                    //         setToggleReply(false);
-                    //         let replyMessage = [...newMessage];
-                    //         const uploadTmp1 = { id:chat_id+2,
-                    //                         text:'我無法理解啊，笨蛋',
-                    //                         type:'chatbot_reply',
-                    //                         time:timeNow,
-                    //                     } ;
-                    //         replyMessage.push(uploadTmp1);
-                    //         setMessage(replyMessage);
-                    //     },1000)
-                    // }
+                if(io){
+                    if(myChatbotInput.current.value){
+                        let newMessage = [...message];
+                        const uploadTmp = { id:chat_id+1,
+                                            text:myChatbotInput.current.value,
+                                            type:'user_reply',
+                                            time:timeNow,
+                                        } ;
+                        io.emit('room message', uploadTmp);
+                        newMessage.push(uploadTmp);
+                        setMessage(newMessage);
+                    }
                     myChatbotInput.current.value = '';
+                }else{
+                    setToggleReply(true);
+                    if(myChatbotInput.current.value){
+                        // message = {
+                        //                 id:1,
+                        //                 text:'',
+                        //                 type:'chatbot_reply',
+                        //             };
+                        // 下方是使用者的提問
+                        let newMessage = [...message];
+                        const uploadTmp = { id:chat_id+1,
+                                            text:myChatbotInput.current.value,
+                                            type:'user_reply',
+                                            time:timeNow,
+                                        } ;
+                        newMessage.push(uploadTmp);
+                        setMessage(newMessage);
+                        // 下方是機器人回覆的部分
+                        await fetch('http://localhost:4000/chatbot',{
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({request:myChatbotInput.current.value})
+                        })
+                        .then(r=>r.json())
+                        .then(obj=>{
+                            // console.log(obj.results.respond)
+                            setToggleReply(false);
+                            let replyMessage = [...newMessage];
+                            const uploadTmp1 = { id:chat_id+2,
+                                            text:obj.results.respond,
+                                            type:'chatbot_reply',
+                                            time:timeNow,
+                                        } ;
+                            replyMessage.push(uploadTmp1);
+                            setMessage(replyMessage);
+                            })
+                        myChatbotInput.current.value = '';
+                    }
                 }
             }}>
                 <input name="request" id="request" className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..." ref={myChatbotInput} />
@@ -517,3 +583,29 @@ function Chatbot(){
     )
 }
 export default Chatbot
+// --------------- 最初寫死的方法 --------------
+// if((myChatbotInput.current.value).indexOf('你好')!==-1){
+//     setTimeout(()=>{
+//         setToggleReply(false);
+//         let replyMessage = [...newMessage];
+//         const uploadTmp1 = { id:chat_id+2,
+//                         text:'你好啊，笨蛋(我可以跳著說嗎)',
+//                         type:'chatbot_reply',
+//                         time:timeNow,
+//                     } ;
+//         replyMessage.push(uploadTmp1);
+//         setMessage(replyMessage);
+//     },1000)
+// }else{
+//     setTimeout(()=>{
+//         setToggleReply(false);
+//         let replyMessage = [...newMessage];
+//         const uploadTmp1 = { id:chat_id+2,
+//                         text:'我無法理解啊，笨蛋',
+//                         type:'chatbot_reply',
+//                         time:timeNow,
+//                     } ;
+//         replyMessage.push(uploadTmp1);
+//         setMessage(replyMessage);
+//     },1000)
+// }
