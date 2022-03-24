@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './psycho-game.css';
 
 function PsychoGame(){
+    useEffect(()=>{
+        setTimeout(() => {
+            window.scrollTo({
+                top: 280,
+                behavior: 'smooth'
+            });
+        }, 0);
+    },[])
     return(
     <>
         <div className="psycho_container">
@@ -66,6 +74,8 @@ function PsychoGame(){
                                 <p>總會遲到個20<br />分鐘左右</p>
                             </button>
                         </div>
+                        <img className="q2_img" src="/img/game/psycho_material3.png" alt="" />
+                        <img className="q2_img2" src="/img/game/psycho_material4.png" alt="" />
                     </div>
                     {/* 第二題的開始 右邊*/}
                     <div className="psycho_q3">
@@ -76,7 +86,7 @@ function PsychoGame(){
                                 document.querySelector('.psycho_bg').style.animation = `psycho_row22_right 1s linear 1s forwards`;
                             }}>
                                 <img className="psycho_leftBtn_cloud" src="/img/game/psycho_leftBtn.png" alt=""/>
-                                <p>當天要<br/>盛裝出席</p>
+                                <p>當天要盛裝出席</p>
                             </button>
                             <button className="psycho_row22_left" onClick={()=>{
                                 document.querySelector('.psycho_bg').style.transform = `translateX(-73.337%) translateY(-800px)`;
@@ -86,6 +96,8 @@ function PsychoGame(){
                                 <p>幹麻想那麼多</p>
                             </button>
                         </div>
+                        <img className="q2_img" src="/img/game/psycho_material3.png" alt="" />
+                        <img className="q2_img2" src="/img/game/psycho_material4.png" alt="" />
                     </div>
                     {/* 第三題的開始 左左邊*/}
                     <div className="psycho_q4">
@@ -106,6 +118,9 @@ function PsychoGame(){
                                 <p>數不清的錢</p>
                             </button>
                         </div>
+                        <img className="q3_img" src="/img/game/psycho_material6.png" alt="" />
+                        <img className="q3_img2" src="/img/game/psycho_material5.png" alt="" />
+                        <img className="q3_img3" src="/img/game/psycho_material7.png" alt="" />
                     </div>
                     {/* 第三題的開始 左邊*/}
                     <div className="psycho_q5">

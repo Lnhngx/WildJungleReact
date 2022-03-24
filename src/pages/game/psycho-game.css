@@ -119,6 +119,57 @@
     bottom: -100px;
     z-index: -2;
 }
+.q2_img{
+    position: absolute;
+    width: 350px;
+    height: auto;
+    right: 500px;
+    bottom: -50px;
+    z-index: -2;
+}
+.q2_img2{
+    position: absolute;
+    width: 600px;
+    height: auto;
+    left: -10px;
+    bottom: 0px;
+    z-index: -2;
+}
+.q3_img{
+    position: absolute;
+    width: 350px;
+    height: auto;
+    right: -50px;
+    top: 100px;
+    z-index: -2;
+    transform: rotate(-60deg);
+}
+.q3_img2{
+    position: absolute;
+    width: 900px;
+    height: auto;
+    left: -10px;
+    bottom: -60px;
+    z-index: -2;
+}
+.q3_img3{
+    position: absolute;
+    width: 270px;
+    height: 455px;
+    left: 40px;
+    bottom: -60px;
+    z-index: -3;
+    animation: swag 5s linear alternate infinite ;
+    transform-origin: bottom center;
+}
+@keyframes swag {
+    from{
+        transform:rotate(10deg);
+    }
+    to{
+        transform:rotate(-10deg);
+    }
+}
 .psycho_bg h2{
     color: white;
     width: 100%;
@@ -289,10 +340,12 @@
 }
 @keyframes psycho_row31_left {
     0%{
-        transform: translateX(-6.667%);
+        transform: translateX(-6.667%)
+        translateY(-1600px);
     }
     50%{
-        transform: translateX(0%);
+        transform: translateX(0%)
+        translateY(-1600px);
     }
     100%{
         transform: translateX(0%)
@@ -301,10 +354,12 @@
 }
 @keyframes psycho_row31_right {
     0%{
-        transform: translateX(-6.667%);
+        transform: translateX(-6.667%)
+        translateY(-1600px);
     }
     50%{
-        transform: translateX(-13.334%);
+        transform: translateX(-13.334%)
+        translateY(-1600px);
     }
     100%{
         transform: translateX(-13.334%)
