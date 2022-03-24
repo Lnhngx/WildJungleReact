@@ -74,14 +74,14 @@ function App() {
   const account=JSON.parse(localStorage.getItem('admin_account'))
   const token=!! localStorage.getItem('admin_token')
   // console.log('3:',auth===true)
-  // useEffect(() => {
-  //   if (account.m_sid && token) {
-  //     setAuth(true);
-  //   } else {
-  //     setAuth(false);
-  //   }
-  //   // console.log('1:',auth===true)
-  // }, []);
+  useEffect(() => {
+    if (account&&token) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+    // console.log('1:',auth===true)
+  }, []);
   // useEffect(()=>{
   //   if(auth){
   //     console.log(account.m_sid)
@@ -174,7 +174,7 @@ function App() {
             <MemberPassChange />
           </Route>
           <Route path="/members/modify-member-info">
-          {token===true ?  <MemberList account={account} token={token}/> : <Redirect to="/members/signup"/>}      
+          {account && token ?  <MemberList account={account} token={token}/> : <Redirect to="/members/login"/>}
           </Route>
           <Route path="/members">
             <MemberLogin setAuth={setAuth}/>

@@ -7,17 +7,31 @@ function MemberInfo(props){
   const {sidData}=props
 
   const [mData,setmData]=useState({})
+  const [newData,setNewData]=useState({email:'',name:'',gender:'',birthday:'',password:'',address:''})
   useEffect(()=>{
     if(Object.keys(sidData).length!==0){
-      // console.log(sidData)
-      setmData(sidData)
+      console.log(sidData)
+      setmData(sidData);
+      setNewData({...newData,email:sidData.email,name:sidData.m_name,gender:sidData.gender,birthday:sidData.birthday.split('T')[0],address:sidData.m_address})
     }
-  },[sidData])
+  },[sidData]);
 
-  const handleFieldChange=()=>{
+  // 資料更改後設定給新的狀態儲存
+  const handleFieldChange=(e)=>{
+    const name=e.target.name;
+    const value=e.target.value;
+    const type=e.target.type;
+    
+    let newValue=value;
+    const updateFields={...mData,[name]:newValue}
+    setNewData(updateFields)
+  };
+  if(mData.birthday){
+    mData.birthday=mData.birthday.split('T')[0];
+  };
 
-  }
-  
+  const genderSelect=['男','女','未決定']
+
     return (<>
     <form id="tysu_form"  style={{paddingBottom:"10rem"}}>
       <table>
@@ -32,7 +46,6 @@ function MemberInfo(props){
               disabled
               readOnly 
               defaultValue={mData.email}
-              onChange={handleFieldChange} 
               name="name"/>
               <div id="emailHelp"></div>
             </td>
@@ -42,7 +55,9 @@ function MemberInfo(props){
               <label htmlFor="tysu_name">姓名<br /><span className="tysu_titleSpan">Name</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_name" className="tysu_input" />
+              <input type="text" id="tysu_name" className="tysu_input" name="name"
+              defaultValue={mData.m_name}
+              onChange={handleFieldChange}/>
               <div id="nameHelp"></div>
             </td>
           </tr>
@@ -51,7 +66,13 @@ function MemberInfo(props){
               <label htmlFor="tysu_gender">性別<br /><span className="tysu_titleSpan">Gender</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_gender" className="tysu_input" />
+            <select id="tysu_gender" className="tysu_input" name="gender" 
+            value={newData.gender}
+            onChange={handleFieldChange}>
+                    <option value="男">男性</option>
+                    <option value="女">女性</option>
+                    <option value="未決定">未決定</option>
+                    </select>
               <div id="genderHelp"></div>
             </td>
           </tr>
@@ -60,10 +81,18 @@ function MemberInfo(props){
               <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_birth" className="tysu_input tysu_year" maxLength="4" />年
-              <input type="text" className="tysu_input tysu_month" maxLength="2" />月
-              <input type="text" className="tysu_input tysu_date" maxLength="2" />日
+            <input id="tysu_birth" type="date" className="tysu_input" name="birthday" defaultValue={mData.birthday} max="2022-03-01" onChange={handleFieldChange} />
               <div id="birthHelp"></div>
+            </td>
+          </tr>
+          <tr className="tysu_tr">
+            <th>
+              <label htmlFor="tysu_adress">密碼<br />
+                <span className="tysu_titleSpan">Password</span></label>
+            </th>
+            <td>
+              <input type="text" id="tysu_pass" className="tysu_input" name="password" placeholder="如未填寫，維持原先密碼" defaultValue={''} onChange={handleFieldChange} />
+              <div id="tysu_adressHelp"></div>
             </td>
           </tr>
           <tr className="tysu_tr tysu_last">
@@ -72,7 +101,8 @@ function MemberInfo(props){
                 <span className="tysu_titleSpan">Adress</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_adress" className="tysu_input" />
+              <input type="text" id="tysu_adress" className="tysu_input" name="adress" defaultValue={mData.m_address}
+              onChange={handleFieldChange}/>
               <div id="tysu_adressHelp"></div>
             </td>
           </tr>
@@ -109,6 +139,7 @@ function MemberInfo(props){
             <td>
               <label htmlFor="tysu_gender">性別 Gender</label>
               <input type="text" id="tysu_gender" className="tysu_input" />
+              
               <div id="genderHelp"></div>
             </td>
           </tr>
