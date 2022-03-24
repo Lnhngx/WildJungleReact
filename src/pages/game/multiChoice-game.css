@@ -200,7 +200,7 @@
     transform: translateX(-50%);
 }
 .boardRight img{
-    width: 60%;
+    width: 50%;
     height: auto;
     margin-top: 3rem;
 }

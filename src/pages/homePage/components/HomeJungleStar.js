@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const HomeJungleStar = () => {
-
   const [eaglecard, setEaglecard] = useState(true);
   const [elephantcard, setelephantcard] = useState(false);
   const [tigercard, settigercard] = useState(false);
@@ -45,7 +44,6 @@ const HomeJungleStar = () => {
     sethitefoxcard(!hitefoxcard);
   };
 
-  const eagleimg = useRef();
 
   return (
     <>
@@ -53,13 +51,23 @@ const HomeJungleStar = () => {
         <h1 className="ning_TitleEnblack">Jungle Star</h1>
         <h2 className="ning_TitleChblack">明星動物認養</h2>
         <div className="ning_Junglestarcontainer">
-
-          <div className="ning_eaglecardbox" style={{ width: eaglecard === false && "12.5%" }} onClick={(eaglecard === true ? true : eaglePush )} >
-            <div className="ning_eaglecard" onClick={() => {
-                eagleimg.current.src =
-                  "img/home/star_eagle.png";
-              }}>
-              <img src="img/home/star_eagle_bk.png" alt="" style={{  marginLeft: eaglecard === false && "-18%" }} ref={eagleimg}/>
+          <div
+            className="ning_eaglecardbox"
+            style={{ width: eaglecard === false && "12.5%" }}
+            onClick={eaglecard === true ? true : eaglePush}
+          >
+            <div
+              className="ning_eaglecard"
+              
+            >
+              <div className="ning_eagleimg" style={{ marginLeft: eaglecard === false && "-18%" }}
+                  >
+                <img
+                  src={eaglecard === true ?  "img/home/star_eagle.png"  :"img/home/star_eagle_bk.png"}
+                  alt=""
+                  
+                />
+              </div>
               <div className="ning_starcardtext">
                 <h3 className="ning_starcardtitle">Eagle</h3>
                 <span>
@@ -70,9 +78,19 @@ const HomeJungleStar = () => {
             </div>
           </div>
 
-          <div className="ning_elephantcardbox" style={{ width: elephantcard === true && "50%" }} onClick={(elephantcard === true ? true : elephantPush )}>
+          <div
+            className="ning_elephantcardbox"
+            style={{ width: elephantcard === true && "50%" }}
+            onClick={elephantcard === true ? true : elephantPush}
+          >
             <div className="ning_elephantcard">
-              <img src="img/home/star_elephant_bk.png" alt=""  style={{  marginLeft: elephantcard  === true && "0" }}/>
+              <div className="ning_elephantimg" style={{ marginLeft: elephantcard === true && "0" }}>
+                <img
+                  src={elephantcard === true ?  "img/home/star_elephant.png"  :"img/home/star_elephant_bk.png"}
+                  alt=""
+                  
+                />
+              </div>
               <div className="ning_starcardtext">
                 <h3 className="ning_starcardtitle">Elephant</h3>
                 <span>
@@ -83,9 +101,19 @@ const HomeJungleStar = () => {
             </div>
           </div>
 
-          <div className="ning_tigercardbox" style={{ width: tigercard === true && "50%" }} onClick={(tigercard === true ? true : tigerPush )}>
+          <div
+            className="ning_tigercardbox"
+            style={{ width: tigercard === true && "50%" }}
+            onClick={tigercard === true ? true : tigerPush}
+          >
             <div className="ning_tigercard">
-              <img src="img/home/star_tiger_bk.png" alt="" style={{  marginLeft: tigercard === true && "0" }}/>
+              <div className="ning_tigerimg"  style={{ marginLeft: tigercard === true && "0" }}>
+                <img
+                  src={tigercard === true ?  "img/home/star_tiger.png"  :"img/home/star_tiger_bk.png"}
+                  alt=""
+                 
+                />
+              </div>
               <div className="ning_starcardtext">
                 <h3 className="ning_starcardtitle">Tiger</h3>
                 <span>
@@ -96,9 +124,19 @@ const HomeJungleStar = () => {
             </div>
           </div>
 
-          <div className="ning_sharkcardbox" style={{ width: sharkcard === true && "50%" }} onClick={(sharkcard === true ? true : sharkPush )}>
+          <div
+            className="ning_sharkcardbox"
+            style={{ width: sharkcard === true && "50%" }}
+            onClick={sharkcard === true ? true : sharkPush}
+          >
             <div className="ning_sharkcard">
-              <img src="img/home/star_shark_bk.png" alt="" style={{  marginLeft: sharkcard === true && "0" }}/>
+              <div className="ning_sharkimg" style={{ marginLeft: sharkcard === true && "0" }}>
+                <img
+                  src={sharkcard === true ?  "img/home/star_shark.png"  : "img/home/star_shark_bk.png"}
+                  alt=""
+                  
+                />
+              </div>
               <div className="ning_starcardtext">
                 <h3 className="ning_starcardtitle">Shark</h3>
                 <span>
@@ -109,10 +147,19 @@ const HomeJungleStar = () => {
             </div>
           </div>
 
-          <div className="ning_hitefoxcardbox" style={{ width: hitefoxcard === true && "50%" }} onClick={(hitefoxcard === true ? true : hitefoxPush )}>
+          <div
+            className="ning_hitefoxcardbox"
+            style={{ width: hitefoxcard === true && "50%" }}
+            onClick={hitefoxcard === true ? true : hitefoxPush}
+          >
             <div className="ning_hitefoxcardhd">
               <div className="ning_hitefoxcard">
-                <img src="img/home/star_hitefox_bk.png" alt="" style={{  marginLeft: hitefoxcard === true && "0" }}/>
+                <div
+                  className="ning_hitefoximg"
+                  style={{ marginLeft: hitefoxcard === true && "0" }}
+                >
+                  <img src= {hitefoxcard === true ?  "img/home/star_hitefox.png"  : "img/home/star_hitefox_bk.png"} alt="" />
+                </div>
                 <div className="ning_starcardtext">
                   <h3 className="ning_starcardtitle">Hitefox</h3>
                   <span>

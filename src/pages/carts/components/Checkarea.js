@@ -27,12 +27,27 @@ function Checkarea(props) {
             <li>結帳金額</li>
             <li>${amount + 100}</li>
           </ul>
-          <button className="stan_checkout_btn">前往結帳</button>
+
+          <Link to="/carts/filloutform" className="stan_link">
+            <button
+              className="stan_checkout_btn"
+              onClick={() => {
+                setAmount(amount + 100);
+              }}
+            >
+              前往結帳
+            </button>
+          </Link>
         </div>
       </div>
 
-      <Link to="/cartsfilloutform" className="stan_link">
-        <button className="stan_checkout_btn2" onClick={() => {setAmount(amount+100)}}>
+      <Link to="/carts/filloutform" className="stan_link">
+        <button
+          className="stan_checkout_btn2" 
+          onClick={() => {
+            setAmount(amount + 100);
+          }}
+        >
           前往結帳
         </button>
       </Link>

@@ -1,15 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+// import ScoreRangbox from "./ScoreRangbox";
+import CommentList from "./CommentList";
 const Range = Slider;
 
 const LodgingComment = (props) => {
+  const { setCommentbox } = props;
 
-  const {setCommentbox} = props
-  
   //關閉評論按鈕
   const [closebtn, setClosebtn] = useState(true);
-  
+
   //撰寫評論按鈕
   const [writecommen, setWritecommen] = useState(false);
 
@@ -18,6 +19,15 @@ const LodgingComment = (props) => {
   const [comfortablevalue, setComfortablevalue] = useState(1);
   const [facilityvalue, setFacilityvalue] = useState(1);
   const [CPValuevalue, setCPValuevalue] = useState(1);
+
+  //伺服器資料
+  const [data, setData] = useState([]);
+
+  //從伺服器來的原始資料
+  const [comments, setComments] = useState([]);
+
+  //用於網頁上經過處理(排序)後的資料
+  const [displayComments, setDisplayComments] = useState([]);
 
   const clickClosebtn = () => {
     setClosebtn(!closebtn);
@@ -33,6 +43,111 @@ const LodgingComment = (props) => {
     setClosebtn(!closebtn);
     setWritecommen(!writecommen);
   };
+
+  // 從伺服器載入資料
+  const getData = async () => {
+    const response = await fetch("http://localhost:4000/roomplatform/");
+    const obj = await response.json();
+    setData(obj);
+  };
+
+  useEffect(() => {
+    getData();
+    // setComments(data);
+    // setDisplayComments(data);
+  }, []);
+
+  useEffect(() => {
+    setComments(data);
+    setDisplayComments(data);
+  }, [data]);
+
+  //下面狀態是對應到不同的表單元素
+  const [scoreRange, setScoreRange] = useState(0);
+  //const scoreRangeTypes = ["所有評分", "9~10分", "6~8分", "3~5分", "0~2分"];
+
+  const [dateRange, setDateRange] = useState(0);
+  //const dateRangeTypes = ["住宿期間", "近半個月", "近半年", "近一年"];
+
+  // const [sortRange, setSortRange] = useState("排序依據");
+  // const sortRangeTypes = ["最高分至最低分", "最低分至最高分"];
+
+  //表單元素的處理方法
+
+  const checkRangeValue = (c, minValue, maxValue) => {
+    return (
+      Math.ceil(
+        (c.service_score +
+          c.clean_score +
+          c.comfort_score +
+          c.facility_score +
+          c.cpValue_score) /
+          5
+      ) >= minValue &&
+      Math.ceil(
+        (c.service_score +
+          c.clean_score +
+          c.comfort_score +
+          c.facility_score +
+          c.cpValue_score) /
+          5
+      ) <= maxValue
+    );
+  };
+
+
+  const handleScoreRange = (comments, scoreRange) => {
+    let newComments = [...comments];
+
+    // 處理成績區間選項
+
+    if (scoreRange === "1") {
+    
+      newComments = [...newComments].filter((c) => checkRangeValue(c, 9, 10));
+    }
+
+    if (scoreRange === "2") {
+      
+      newComments = [...newComments].filter((c) => checkRangeValue(c, 6, 8));
+    }
+
+    if (scoreRange === "3") {
+     
+      newComments = [...newComments].filter((c) => checkRangeValue(c, 3, 5));
+    }
+
+    if (scoreRange === "4") {
+      newComments = [...newComments].filter((c) => checkRangeValue(c, 0, 2));
+    }
+
+    
+
+    return newComments;
+  };
+
+  // const handleDateRange = (comments, dateRange) => {
+  //   let newComments = [...comments];
+
+  //   // 處理日期區間選項
+
+  //   if (dateRange === "1"){
+  //     newComments = [...comments].filter((c)=>
+      
+  //     if(c.start)
+      
+  //     )
+
+  //   }    
+  // };
+
+  useEffect(() => {
+    let newComments = [...comments];
+
+    // 處理價格區間選項
+    newComments = handleScoreRange(newComments, scoreRange);
+
+    setDisplayComments(newComments);
+  }, [scoreRange, comments]);
 
   return (
     <>
@@ -112,18 +227,27 @@ const LodgingComment = (props) => {
         <div className="commentline"></div>
         <div className="commentfilter">篩選條件</div>
         <div className="commentfilterbox">
-          <select className="selectScore">
-            <option>所有評分(15)</option>
-            <option>9~10分</option>
-            <option>6~8分</option>
-            <option>4~6分</option>
-            <option>0~3分</option>
+          {/* <ScoreRangbox scoreRange={scoreRange} setScoreRange={setScoreRange} /> */}
+          <select
+            className="selectScore"
+            value={scoreRange}
+            onChange={(e) => setScoreRange(e.target.value)}
+          >
+            <option value="0">所有評分(15)</option>
+            <option value="1">9~10分</option>
+            <option value="2">6~8分</option>
+            <option value="3">3~5分</option>
+            <option value="4">0~2分</option>
           </select>
-          <select className="selectDate">
-            <option>住宿期間</option>
-            <option>近三個月</option>
-            <option>近半年</option>
-            <option>近一年</option>
+          <select
+            className="selectDate"
+            value={dateRange}
+            onChange={(e) => setDateRange(e.target.value)}
+          >
+            <option value="0">住宿期間</option>
+            <option value="1">近三個月</option>
+            <option value="2">近半年</option>
+            <option value="3">近一年</option>
           </select>
           <select className="selectSort">
             <option>排序依據</option>
@@ -133,44 +257,7 @@ const LodgingComment = (props) => {
         </div>
         <div className="commentline"></div>
         <div className="guestComment">住客評論</div>
-        <div className="guestCommentwrap">
-          <div className="guestCommentbox">
-            <div className="guestInformation">
-              <div className="guestimg">
-                <img src="img/home/star_eagle.png" alt="" />
-              </div>
-              <div className="guestNameDate">
-                <div className="guestName">Karl</div>
-                <div className="cleckinDate">
-                  <span class="DateIcon material-icons">date_range</span>
-                  <p>
-                    1晚・<span>2021年4月</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="guestCommentText">乾淨舒適，下次還會再來！</div>
-            <p className="guestScore">9.2</p>
-          </div>
-          <div className="guestCommentbox">
-            <div className="guestInformation">
-              <div className="guestimg">
-                <img src="img/home/star_eagle.png" alt="" />
-              </div>
-              <div className="guestNameDate">
-                <div className="guestName">Karl</div>
-                <div className="cleckinDate">
-                  <span class="DateIcon material-icons">date_range</span>
-                  <p>
-                    1晚・<span>2021年4月</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="guestCommentText">乾淨舒適，下次還會再來！</div>
-            <p className="guestScore">9.2</p>
-          </div>
-        </div>
+        <CommentList comments={displayComments} />
       </div>
 
       <div

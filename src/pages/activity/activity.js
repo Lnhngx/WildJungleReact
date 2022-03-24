@@ -1,14 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./activity.scss";
-import * as Scroll from 'react-scroll';
-import { animateScroll as scroll } from 'react-scroll';
-import Carousel from 'react-bootstrap/Carousel';
+import { animateScroll as scroll, scroller } from 'react-scroll';
+// import Carousel from 'react-bootstrap/Carousel';
 
-
-
-
-//seat
-
+// sponsor-card
 let datas2 = [{
     className1: "cardbg cardbg1",
     className2: "sponsor_animalImg1",
@@ -65,20 +60,7 @@ let datas2 = [{
     buttonText: "點我亂數抽取！"
 }];
 
-const renderCards = () => {
-    return datas2.map((v, i) => (
-        <div className={v.className1}>
-            <div className={v.className2}></div>
-            <div className={v.className3}>
-                <div className={v.className4}>{v.id}</div>
-                <div className={v.className5}>{v.text}</div>
-                <button key={i} onClick={() => { console.log(i) }}>{v.buttonText}</button>
-            </div>
-        </div>
-    ));
-};
-
-
+// sponsor-demo
 let datas3 = [{
     id: "Eagle",
     text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
@@ -111,41 +93,12 @@ let datas3 = [{
     className2: "animalImg5"
 }];
 
-const renderStaraAnimal = () => {
-    return datas3.map((v, i) => (
-        <div key={i} onClick={() => { console.log(i) }} className={v.className}>
-            <div className="demoArea">
-                <div className="imgBorder">
-                    <img src={"/img/activity/animalBorder.svg"} alt="" />
-                    <div className="animalName">{v.id}</div>
-                </div>
-                <div className={v.className2}></div>
-            </div>
-            <div className="introduction_area">
-                <div className="sponsor_introductionText3">感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。</div>
-                <div className="selectAndButton_grop">
-                    <div className="sponsorSelect">
-                        <select>
-                            <option>選擇方案</option>
-                        </select>
-                        <select>
-                            <option>選擇金額</option>
-                        </select>
-                    </div>
-                    <div className="buttonGrop2">
-                        <button>加入購物車</button>
-                        <button>回上一步</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    ));
-};
+
 
 function Activity() {
     const seatsW = 8;
     const seatsH = 8;
-
+    const [cardChange, setCardChange] = useState(0)
 
     let datas = [];
     for (let i = 0; i < seatsW; i++) {
@@ -161,30 +114,94 @@ function Activity() {
         return datas.map((data, i) => (
             <div className="styleFlex">
                 {data.map((v, j) => (
-                    <img onClick={() => { 
+                    <img onClick={() => {
+                        //數字轉字母
+                        const p = String.fromCharCode(65 + i);
+                        const ps = { ...positions };
 
-                        const p = String.fromCharCode(65+i)+j;
-                        const ps = {...positions}
-
-                        if(ps[p]){
+                        if (ps[p]) {
                             delete ps[p];
-                            setPositions(ps)
+                            setPositions(ps);
                         } else {
-                            setPositions({...ps, [p]:1})
-                        }
-                        
-                        
+                            setPositions({ ...ps, [p]: (j + 1) })
+                        };
                         // alert(i + ' ' + j); 
-                        }} className="seats" src="/img/activity/chair.svg" alt="" />
+
+                        // setState3(!state3);
+                    }} className="seats" src="/img/activity/chair.svg" alt="" />
                 ))}
             </div>
         ));
     };
 
+
+    const renderCards = () => {
+        return datas2.map((v, i) => (
+            <div className={v.className1}>
+                <div className={v.className2}></div>
+                <div className={v.className3}>
+                    <div className={v.className4}>{v.id}</div>
+                    <div className={v.className5}>{v.text}</div>
+                    <button key={i} onClick={() => { setCardChange(i)
+                        console.log(i) }}>{v.buttonText}</button>
+                </div>
+            </div>
+        ));
+    };
+
+
+    const renderStaraAnimal = () => {
+        return datas3.filter((v,i) => i === cardChange).map((v, i) => (
+            <div key={i} onClick={() => { console.log(i) }} className={v.className}>
+                <div className="demoArea">
+                    <div className="imgBorder">
+                        <img src={"/img/activity/animalBorder.svg"} alt="" />
+                        <div className="animalName">{v.id}</div>
+                    </div>
+                    <div className={v.className2}></div>
+                </div>
+                <div className="introduction_area">
+                    <div className="sponsor_introductionText3">感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。</div>
+                    <div className="selectAndButton_grop">
+                        <div className="sponsorSelect">
+                            <select>
+                                <option>選擇方案</option>
+                            </select>
+                            <select>
+                                <option>選擇金額</option>
+                            </select>
+                        </div>
+                        <div className="buttonGrop2">
+                            <button>加入購物車</button>
+                            <button>回上一步</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ));
+    };
+
+
+    //area收合
     const [state, setState] = useState(false);
     const [state2, setState2] = useState(true);
+
+    //booking區變換
+    const [imgChange, setImgChange] = useState("terry_showIntroduction_img");
+    const [showTitleChange, setShowTitleChange] = useState("鯨豚表演秀");
+    const [showTextChange, setShowTextChange] = useState("各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～")
+
+    //位置點擊
     const [positions, setPositions] = useState({})
-    //area showout
+
+    const scrollToSection = () => {
+        scroller.scrollTo("terry_showIntroduction_textArea", {
+            duration: 800,
+            delay: 100,
+            smooth: "easeInOutQuart",
+            offset: 740,
+        });
+    };
 
     return (
         <>
@@ -206,29 +223,60 @@ function Activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物表演秀</div>
                             </div>
-                            <div className="terry_show_viewmore" onClick={() => { setState(!state); setState2(true); if (!state) { scroll.scrollTo(710) } }} >View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState(!state); setState2(true); if (!state) { scrollToSection() } }} >View More</div>
                         </div>
                         <div className="terry_show_area_img"></div>
                     </div>
 
                     <div className={state ? "terry_showIntroduction_area" : "areaDisplayNone"}>
-                        <div className="terry_showIntroduction_img">
-                            {/* <img src="/img/activity/show2.jpg" alt="" /> */}
+                        <div className={imgChange}>
                         </div>
-                        <div className={"terry_showIntroduction_textArea"}>
-                            <div className="showTitle">鯨豚表演秀</div>
-                            <div className="showIntroduction">各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～</div>
+                        <div className="terry_showIntroduction_textArea">
+                            <div className="showTitle">{showTitleChange}</div>
+                            <div className="showIntroduction">{showTextChange}</div>
                             <div className="showLocation"></div>
                             <div className="showLocation_text">河畔Ａ區</div>
                             <div className="showNotice"></div>
                             <div className="showNotice_text">
                                 1.本系統訂票成功時，每張票皆須收20元手續費。<br></br>
-                                2.每個帳號每筆交易最多可購買 6 張電影票劵。<br></br>
+                                2.每個帳號每筆交易最多可購買 6 張表演秀劵。<br></br>
                                 3.退換票須持購買證明及結帳信用卡至活動現場櫃檯辦理。<br></br>
                                 4.開演二十分鐘後不得入場。</div>
                             <div className="showSelect">
-                                <select>
+                                <select onChange={(e) => {
+                                    if (e.target.value === '1') {
+                                        setImgChange("terry_showIntroduction_img");
+                                        setShowTitleChange
+                                            ("鯨豚表演秀");
+                                        setShowTextChange
+                                            ("各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～");
+                                    } if (e.target.value === '2') {
+                                        setImgChange("terry_showIntroduction_img2");
+                                        setShowTitleChange
+                                            ("鱷魚餵食秀");
+                                        setShowTextChange
+                                            ("鱷魚們不時地探出頭來迎接大家，張開嘴的牠們不是為了嚇唬大家，是因為他沒有汗腺只能透過張嘴進行散熱。看了我們飼育員與鱷魚的互動，只會發現鱷魚根本只是住在沼澤的貓貓～搞不好回家還會吵著爸媽要養鱷魚當寵物呢！更多的互動都在表演秀裡頭！");
+                                    } if (e.target.value === '3') {
+                                        setImgChange("terry_showIntroduction_img3");
+                                        setShowTitleChange
+                                            ("熊貓吃播秀");
+                                        setShowTextChange
+                                            ("吃播是一種線上的直播模式，主要是在與觀眾互動的同時吃掉大量食物，約2010年時流行於韓國。一般通過網路廣播，如：Afreeca TV、YouTube、Twitch等串流媒體平台。動物園重金聘請動物界人氣最高的熊貓來與大家互動！來看看牠如何把食物吃得如此津津有味！更多的內容都在表演秀裡面～快來參加～～～");
+                                    } if (e.target.value === '4') {
+                                        setImgChange("terry_showIntroduction_img4");
+                                        setShowTitleChange
+                                            ("萌豹睡覺秀");
+                                        setShowTextChange
+                                            ("你知道嗎？如果一天睡八個小時，在你99歲的時候，你已經花了33年在睡覺了！有時候看別人吃東西會覺得好像比較好吃～睡覺也是一樣的道理喔！沒錯！本表演秀就是單純看平常帥氣鋒利的豹，用超可愛超萌的樣子睡覺！有趣吧！我覺得很有趣！來就對了！哈！");
+                                    };
+
+                                    console.log(e.target.value)
+                                }}>
                                     <option>選擇表演秀</option>
+                                    <option value="1" >鯨豚餵食秀</option>
+                                    <option value="2" >鱷魚餵食秀</option>
+                                    <option value="3" >熊貓吃播秀</option>
+                                    <option value="4" >萌豹睡覺秀</option>
                                 </select>
                                 <select>
                                     <option>選擇場次</option>
@@ -332,7 +380,7 @@ function Activity() {
                             <div className="terry_touchAreaImg"></div>
                         </div>
                     </div>
-                    
+
                     <div className={state ? "terry_touch_imgArea" : "areaDisplayNone"}>
                         <div className="imgAndNameGrop">
                             <div className="terry_touchshow1"></div>
