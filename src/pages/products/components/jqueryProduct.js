@@ -3,7 +3,10 @@ import { useEffect } from "react";
 import $ from "jquery";
 
 function JqueryProduct() {
-   useEffect(() => {
+
+
+
+  useEffect(() => {
     let page = 0;
     let myInterval = null;
 
@@ -14,6 +17,7 @@ function JqueryProduct() {
       $(".alan_img-wrap").css("transform", `translateX(${moveX}%)`);
     });
     $("#btn-left-area").click(function () {
+      console.log(page);
       page--;
       if (page < 0) page = 2;
       const moveX = page * -25;
@@ -29,6 +33,7 @@ function JqueryProduct() {
     });
 
     $("#btn-right-area").click(function () {
+      console.log(page);
       page++;
       const moveX = page * -25;
       $("ul.alan_img-wrap")
@@ -58,16 +63,19 @@ function JqueryProduct() {
       }, 2500);
     }
 
-    $("ul.alan_img-wrap").on("transitionend", function () {
+     
+
+    $(".alan_img-wrap").on("transitionend", function () {
       if (page >= 3) {
-        $("ul.alan_img-wrap")
+        $(".alan_img-wrap")
           .css("transition", "none")
           .css("transform", `translate(0px)`);
         page = 0;
       }
     });
+
     startInterval();
-    $(".slider").hover(
+    $(".alan_wrap").hover(
       function () {
         clearInterval(myInterval);
         $(".main").css("animation", "scalepic1 4s");
@@ -94,7 +102,7 @@ function JqueryProduct() {
     //     console.log("body width", $("body").width());
     //     console.log("body height", $("body").height());
     // })
-   }, []);
+  }, []);
   return (
     <>
       <div className="alan_wrap">

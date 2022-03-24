@@ -13,6 +13,7 @@ function ProductsDetail() {
   const [products, setProducts] = useState([]);
   const [spec, setSpec] = useState([]);
   const [pic, setPic] = useState([]);
+  const [label, setLabel] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
   const location = useLocation();
@@ -22,12 +23,18 @@ function ProductsDetail() {
       fetch("http://localhost:4000/products", { method: "GET" }),
       fetch("http://localhost:4000/productsspec", { method: "GET" }),
       fetch("http://localhost:4000/productspic", { method: "GET" }),
+      fetch("http://localhost:4000/productslabel", { method: "GET" }),
     ])
-      .then(([res1, res2, res3]) =>
-        Promise.all([res1.json(), res2.json(), res3.json()])
+      .then(([res1, res2, res3, res4]) =>
+        Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
       )
-      .then(([data1, data2, data3]) =>
-        Promise.all([setProducts(data1), setSpec(data2), setPic(data3)])
+      .then(([data1, data2, data3, data4]) =>
+        Promise.all([
+          setProducts(data1),
+          setSpec(data2),
+          setPic(data3),
+          setLabel(data4),
+        ])
       )
       .then(console.log("OK"))
       .catch((error) => {
@@ -36,7 +43,7 @@ function ProductsDetail() {
   }, []);
 
   const click = function () {
-    console.log(specs.productsWidth);
+    console.log(labels);
   };
 
   const searchParams = new URLSearchParams(location.search);
@@ -46,6 +53,7 @@ function ProductsDetail() {
   const product = products[Sid - 1];
   const specs = spec[Sid - 1];
   const pics = pic[Sid - 1];
+  const labels = label.filter((v) => v.ProductsLabel === parseInt(Sid));;
 
   return (
     <>
@@ -58,7 +66,7 @@ function ProductsDetail() {
       <div className="alan_bread">
         <ul className="alan_navbread">
           <li>
-            <Link to="">
+            <Link to="/products">
               <div className="alan_return"></div>
             </Link>
           </li>
@@ -83,7 +91,7 @@ function ProductsDetail() {
         </ul>
       </div>
 
-      {product && specs && pics && (
+      {product && specs && pics && labels && (
         <>
           <div className="alan_detail">
             <div className="alan_productsdetail">
@@ -153,12 +161,9 @@ function ProductsDetail() {
               <div className="alan_hash">
                 <div className="alan_hushtag">
                   <div className="alan_tagGroup">
-                    <span>#標籤名稱</span>
-                    <span>#標籤名稱</span>
-                    <span>#標籤名稱</span>
-                    <span>#標籤名稱</span>
-                    <span>#標籤名稱</span>
-                    <span>#標籤名稱</span>
+                    {labels.map((label, i) => {
+                      return <span key={i}>#{label.LabelName}</span>;
+                    })}
                   </div>
                   <div className="alan_tagIcon">
                     <a href="#/">

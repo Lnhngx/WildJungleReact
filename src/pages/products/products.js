@@ -13,7 +13,51 @@ import SortbarVendor from "./components/SortbarVendor";
 import SearchBar from "./components/Searchbar";
 import * as Scroll from "react-scroll";
 import { animateScroll as scroll, scroller } from "react-scroll";
-import { data } from "jquery";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  HatenaShareButton,
+  InstapaperShareButton,
+  LineShareButton,
+  LinkedinShareButton,
+  LivejournalShareButton,
+  MailruShareButton,
+  OKShareButton,
+  PinterestShareButton,
+  PocketShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TumblrShareButton,
+  TwitterShareButton,
+  ViberShareButton,
+  VKShareButton,
+  WhatsappShareButton,
+  WorkplaceShareButton,
+} from "react-share";
+import {
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  HatenaIcon,
+  InstapaperIcon,
+  LineIcon,
+  LinkedinIcon,
+  LivejournalIcon,
+  MailruIcon,
+  OKIcon,
+  PinterestIcon,
+  PocketIcon,
+  RedditIcon,
+  TelegramIcon,
+  TumblrIcon,
+  TwitterIcon,
+  ViberIcon,
+  VKIcon,
+  WeiboIcon,
+  WhatsappIcon,
+  WorkplaceIcon,
+} from "react-share";
+
 const Range = Slider;
 
 function Products() {
@@ -38,6 +82,20 @@ function Products() {
   const [type6, setType6] = useState(0);
 
   //const refresh = function(){ window.location.reload()};
+  const Allreset = function () {
+    setType1(0);
+    setType2(0);
+    setType3(0);
+    setType4(0);
+    setType5(0);
+    setType6(0);
+    setRangevalue(1500);
+    setSortbarPrice("");
+    setSortbarType("");
+    setSortbarVendor("");
+    setSearchWord("");
+  };
+
   const reset1 = function () {
     setType1(0);
   };
@@ -284,6 +342,35 @@ function Products() {
     </>
   );
 
+  // useEffect(() => {
+  //   window.fbAsyncInit = function () {
+  //     //SDK loaded, initialize it
+  //     window.FB.init({
+  //       xfbml: true,
+  //       version: "v12.0",
+  //     });
+  //     //JS SDK initialized
+  //     window.FB.XFBML.parse();
+  //   };
+
+  //   //load the JavaScript SDK
+  //   (function (d, s, id) {
+  //     var js,
+  //       fjs = d.getElementsByTagName(s)[0];
+  //     if (d.getElementById(id)) {
+  //       return;
+  //     }
+  //     js = d.createElement(s);
+  //     js.id = id;
+  //     js.src = "//connect.facebook.net/zh_TW/sdk.js";
+  //     fjs.parentNode.insertBefore(js, fjs);
+  //   })(document, "script", "facebook-jssdk");
+
+  //   if (window.FB) {
+  //     window.FB.XFBML.parse();
+  //   }
+  // }, []);
+
   return (
     <>
       <Productsbackground />
@@ -488,18 +575,43 @@ function Products() {
                 }}
               />
             </div>
+            <div className="alan_resetfilter">
+              <button onClick={Allreset}>重設篩選</button>
+            </div>
             <div className="filterIcon">
               <a href="#/">
-                <i className="fab fa-facebook-square"></i>
+                <FacebookShareButton
+                  url={"https://github.com/Lnhngx/WildJungleReact"}
+                  quote={"我在WildJungle發現好東西！"}
+                  hashtag={"#WildJungle"}
+                  description={"aiueo"}
+                >
+                  <FacebookIcon size={24}  />
+                </FacebookShareButton>
               </a>
               <a href="#/">
-                <i className="fab fa-twitter-square"></i>
+                <LineShareButton
+                  url={"https://github.com/Lnhngx/WildJungleReact"}
+                  title={"我在WildJungle發現好東西！"}
+                >
+                  <LineIcon size={24}  />
+                </LineShareButton>
               </a>
               <a href="#/">
-                <i className="fab fa-google-plus-square"></i>
+                <EmailShareButton
+                  url={"https://github.com/Lnhngx/WildJungleReact"}
+                  body={"我在WildJungle發現好東西！"}
+                  subject={"#WildJungle"}
+                >
+                  <EmailIcon size={24} />
+                </EmailShareButton>
               </a>
               <a href="#/">
-                <i className="fab fa-blogger"></i>
+                <TwitterShareButton
+                  url={"https://github.com/Lnhngx/WildJungleReact"}
+                >
+                  <TwitterIcon size={24}  />
+                </TwitterShareButton>
               </a>
             </div>
           </div>

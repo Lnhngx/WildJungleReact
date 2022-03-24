@@ -671,8 +671,8 @@ ul.slider-dots {
 }
 .alan_spinner{
   position: relative;
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 1000px;
 }
 
 @keyframes spinner {
@@ -687,8 +687,16 @@ ul.slider-dots {
   75%{left: 125%;}
   90%{left: 150%;}
   100%{left: 175%;}
-
 }
+.alan_resetfilter button{
+  margin-top: 12px;
+  width: 120px;
+  height: 30px;
+  font-family: "Noto Sans TC", sans-serif;
+  border: 1px solid black;
+  background-color: #ffffff;
+}
+
 @media screen and (min-width: 980px) {
   .productContainer {
     width: 100%;
@@ -790,7 +798,7 @@ ul.slider-dots {
   }
   .filter {
     width: 20%;
-    height: 400px;
+    height: 500px;
     padding: 20px;
     background-color: white;
   }
