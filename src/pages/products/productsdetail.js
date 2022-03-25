@@ -18,6 +18,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
+import TheReview from "./components/theReview";
 
 function ProductsDetail(props) {
   const [selection, setSelection] = useState("");
@@ -335,121 +336,7 @@ function ProductsDetail(props) {
                     </div>
                     <div className="alan_inputRight">
                       <div className="right_title">評論回覆：</div>
-                      <div className="alan_rightReview">
-                        <div className="alan_rightreview1">
-                          <div>
-                            來自：張曉明
-                            <br />
-                            評分：
-                            {Array.from({ length: 5 }, (v, i) => (
-                              <span key={i} style={{ color: "#eb5c37" }}>
-                                {Math.round(starValue) === i
-                                  ? "\u2606"
-                                  : "\u2605"}
-                              </span>
-                            ))}
-                          </div>
-                          <div>
-                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
-                          </div>
-                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
-                        </div>
-                        <div>
-                          <button>刪除</button>
-                        </div>
-                      </div>
-                      <div className="alan_rightReview">
-                        <div className="alan_rightreview1">
-                          <div>
-                            來自：張曉明
-                            <br />
-                            評分：
-                            {Array.from({ length: 5 }, (v, i) => (
-                              <span key={i} style={{ color: "#eb5c37" }}>
-                                {Math.round(starValue) === i
-                                  ? "\u2606"
-                                  : "\u2605"}
-                              </span>
-                            ))}
-                          </div>
-                          <div>
-                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
-                          </div>
-                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
-                        </div>
-                        <div>
-                          <button>刪除</button>
-                        </div>
-                      </div>
-                      <div className="alan_rightReview">
-                        <div className="alan_rightreview1">
-                          <div>
-                            來自：張曉明
-                            <br />
-                            評分：
-                            {Array.from({ length: 5 }, (v, i) => (
-                              <span key={i} style={{ color: "#eb5c37" }}>
-                                {Math.round(starValue) === i
-                                  ? "\u2606"
-                                  : "\u2605"}
-                              </span>
-                            ))}
-                          </div>
-                          <div>
-                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
-                          </div>
-                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
-                        </div>
-                        <div>
-                          <button>刪除</button>
-                        </div>
-                      </div>
-                      <div className="alan_rightReview">
-                        <div className="alan_rightreview1">
-                          <div>
-                            來自：張曉明
-                            <br />
-                            評分：
-                            {Array.from({ length: 5 }, (v, i) => (
-                              <span key={i} style={{ color: "#eb5c37" }}>
-                                {Math.round(starValue) === i
-                                  ? "\u2606"
-                                  : "\u2605"}
-                              </span>
-                            ))}
-                          </div>
-                          <div>
-                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
-                          </div>
-                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
-                        </div>
-                        <div>
-                          <button>刪除</button>
-                        </div>
-                      </div>
-                      <div className="alan_rightReview">
-                        <div className="alan_rightreview1">
-                          <div>
-                            來自：張曉明
-                            <br />
-                            評分：
-                            {Array.from({ length: 5 }, (v, i) => (
-                              <span key={i} style={{ color: "#eb5c37" }}>
-                                {Math.round(starValue) === i
-                                  ? "\u2606"
-                                  : "\u2605"}
-                              </span>
-                            ))}
-                          </div>
-                          <div>
-                            評論內容:跟預期有點落差，但還是可以使用
-                          </div>
-                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
-                        </div>
-                        <div>
-                          <button>刪除</button>
-                        </div>
-                      </div>
+                      <TheReview review={review} setReview={setReview} />
                     </div>
                   </div>
                 </div>
