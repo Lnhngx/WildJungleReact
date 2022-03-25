@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import Config from "../Config";
 
+import EditModal from './EditModal'
 
 function MemberInfo(props){
   const {sidData}=props
+
+
+  // Modal顯示與否
+  const [editModalShow,setEditModalShow]=useState(false)
+  const [editModalText,setEditModalText]=useState('')
 
   const [mData,setmData]=useState({})
   const [newData,setNewData]=useState({email:'',name:'',gender:'',birthday:'',password:'',address:''})
@@ -140,10 +146,11 @@ function MemberInfo(props){
                   取 消
                 </button>
               </div>
+              {<EditModal />}
             </td>
           </tr>
         </tbody>
-        <tbody  className="tysu_tBody2">
+        {/* <tbody  className="tysu_tBody2">
           <tr className="tysu_tr">
             <th></th>
             <td>
@@ -199,7 +206,7 @@ function MemberInfo(props){
               </div>
             </td>
           </tr>
-        </tbody>
+        </tbody> */}
       </table>
     </form>
 

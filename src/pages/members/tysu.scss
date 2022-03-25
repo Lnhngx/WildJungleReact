@@ -605,3 +605,28 @@ input:-webkit-autofill:active,
   color: #000;
   font-size: 1.35rem;
 }
+.tysu_editModal {
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.tysu_editModalFooter {
+  display: flex;
+  justify-content: space-around;
+  > .tysu_editModalBtn {
+    background-color: #f9b112;
+    width: 10rem;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    height: 50px;
+    color: white;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: var(--tysu_fontSize);
+    font-weight: 500;
+    margin: 1.4rem 0 10px 1.8rem;
+  }
+}
+.tysu_editModalBtn:hover {
+  background-color: var(--tysu_color2);
+}
