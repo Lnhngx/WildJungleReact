@@ -8,6 +8,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import ProductCarousel from "./components/productCarousel";
 import { useEffect } from "react";
+import * as Scroll from "react-scroll";
+import { animateScroll as scroll, scroller } from "react-scroll";
+import DetailPicture from "./components/detailPicture"
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -78,7 +81,18 @@ function ProductsDetail() {
   starValue /= reviewStar.length;
 
   const click = function () {
-    console.log(Math.ceil(starValue));
+    console.log();
+  };
+
+
+
+  const scrollToSection = () => {
+    scroller.scrollTo("alan_information", {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+      offset: -100,
+    });
   };
 
   return (
@@ -131,14 +145,12 @@ function ProductsDetail() {
                 <div className="alan_star">
                   {Array.from({ length: 5 }, (v, i) => (
                     <span key={i} style={{ color: "#eb5c37" }}>
-                      {Math.ceil(starValue) === i ? "\u2606" : "\u2605"}
+                      {Math.round(starValue) === i ? "\u2606" : "\u2605"}
                     </span>
                   ))}
                 </div>
-                <div className="alan_comment">
-                  <Link to="">
-                    <span>評分{starValue.toFixed(1)}/發表評論</span>
-                  </Link>
+                <div className="alan_comment" onClick={scrollToSection}>
+                  <span>評分獲得{starValue.toFixed(1)}/發表評論</span>
                 </div>
               </div>
               <div className="alan_productName">
@@ -278,20 +290,29 @@ function ProductsDetail() {
                     </div>
                     <div className="alan_infoContent">
                       <div className="alan_info1">
-                        {/* (1) 客製商品採小量客製接單，此產品 1 組即可訂製。
-                    (2)完成結帳且確認設計圖檔後，從開始製作到寄出商品為十至十三個工作日。
-                    (3)
-                    「加購圖檔編排」：將您提供的圖檔做完稿排版，依據您指定的擺放位置調整排版，素材需由您提供，並酌收每圖
-                    200 元的排版費用。
-                    (4)減少塑料對環境的傷害，重視動物與人類共存的重要性。
-                    [尺寸]兒童（目標參考年齡 1 歲半至 5 歲） [材質] 100% 滌綸 */}
+                        (1) 客製商品採小量客製接單，此產品 1 組即可訂製。
                       </div>
+                      <div className="alan_info1">
+                        (2)完成結帳且確認設計圖檔後，從開始製作到寄出商品為十至十三個工作日。
+                      </div>
+                      <div className="alan_info1">
+                        (3)「加購圖檔編排」：將您提供的圖檔做完稿排版，依據您指定的擺放位置調整排版，素材需由您提供，並酌收每圖
+                        200 元的排版費用。
+                      </div>
+                      <div className="alan_info1">
+                        (4)減少塑料對環境的傷害，重視動物與人類共存的重要性。
+                        [尺寸]兒童（目標參考年齡 1 歲半至 5 歲） [材質] 100%
+                        滌綸
+                      </div>
+                      <ul className="alan_productPic">
+                       <DetailPicture pic={pic} setPic={setPic}/>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </TabPanel>
               <TabPanel>
-                <h2>Any content 2</h2>
+                <input type="text" />
               </TabPanel>
             </Tabs>
           </div>
