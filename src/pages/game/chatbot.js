@@ -1,12 +1,13 @@
 import React from "react";
 import { useRef } from "react";
 import { useState,useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
 function Chatbot(){
     let chat_id = 1;
-    let agentChat_id = 0;
+    let agentChat_id = 1;
     const [toggleReply,setToggleReply] = useState(false);
     const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
@@ -17,30 +18,38 @@ function Chatbot(){
     const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
     const myChatbotInput = useRef(null);
+    const location = useLocation(); 
     const connectWebSocket = ()=>{
         setIo( webSocket('http://localhost:3001') );
     }
     useEffect(()=>{
+        let isMounted = true;
         if(io){
-            document.querySelector('.chat_area').innerHTML = '';
             io.on('room message', function(msg) {
-                const getTime = new Date();
-                let hour = getTime.getHours();
-                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                // 因為別台使用者傳過來的是一個打包好的物件，像是以下的模組
+                // { id:agentChat_id+1,
+                //     text:myChatbotInput.current.value,
+                //     type:'user_reply',
+                //     time:timeNow,
+                // } ;
                 let replyMessage = [...privateMessage];
-                const uploadTmp1 = { id:987,
-                                text: msg,
-                                type:'user_reply',
-                                time:timeNow,
-                            } ;
+                const uploadTmp1 = { id:msg.id,
+                                    text: msg.text,
+                                    type:'agent_reply',
+                                    time:msg.time,
+                                } ;
                 replyMessage.push(uploadTmp1);
-                setPrivateMessage(replyMessage);
+                if(isMounted){
+                    setPrivateMessage(replyMessage);
+                }
             });
-            console.log('success connect!',io)
+            // console.log('success connect!',io)
         }
-    },[io])
+        return () => {
+            isMounted = false;
+        };
+        
+    },[io,privateMessage])
     useEffect(()=>{
         const chat_area = document.querySelector('.chat_area');
         chat_area.scrollTo({top:chat_area.scrollHeight})
@@ -114,13 +123,13 @@ function Chatbot(){
             <div className="name">WILDJUNGLE</div>
             <div className="chatbot_close" onClick={()=>{
                 // document.querySelector('.chatbot_wrap').style.display = 'none';
-                setToggleChatbot(false)
+                setToggleChatbot(false);
             }}><i className="fas fa-times"></i></div>
             
         </div>
         <div className="chat_area">
             {/*--------------------------------------------------------------------------*/} 
-            <div className="chatbot_reply">
+            <div className="chatbot_reply" style={{display:io?'none':'flex'}}>
                 <div className="chatbot_avatar">
                     <img src="/img/game/chatbot_avatar.png" alt="" />
                 </div>
@@ -131,7 +140,7 @@ function Chatbot(){
             </div>
             {/* 以下給之後跟專人客服對話的內容map出來 */}
             {privateMessage.map((v,i)=>{
-                if(v.id===1){
+                if(v.id===0){
                     return(
                         <div className="chatbot_reply">
                             <div className="agentAvatar_wrap">
@@ -143,8 +152,9 @@ function Chatbot(){
                             <div className="chatbot_time">{v.time}</div>
                         </div>
                     )
-                }else{
-                    <div className="chatbot_reply">
+                }else if(v.type==='agent_reply'){
+                    return(
+                        <div className="chatbot_reply">
                             <div className="agentAvatar_wrap">
                                 <img src="/img/game/agent_avatar.png" alt="" className="agentChat_avatar" />
                             </div>
@@ -153,6 +163,19 @@ function Chatbot(){
                             </div>
                             <div className="chatbot_time">{v.time}</div>
                         </div>
+                    )
+                }else if(v.type==='user_reply'){
+                    return(
+                        <div className="user_reply">
+                            <div className="user_message">
+                                {v.text}
+                            </div>
+                            <div className="user_avatar">
+                                <i className="fas fa-user"></i>
+                            </div>
+                            <div className="user_time">{v.time}</div>
+                        </div>
+                    )
                 }
             })}
             {message.map((v,i)=>{
@@ -365,7 +388,10 @@ function Chatbot(){
                 </div>
                 <div className="text">查看天氣</div>
             </div>
-            <div className="phone" onClick={connectWebSocket}>
+            <div className="phone" onClick={()=>{
+                setMessage([])
+                connectWebSocket()
+            }}>
                 <div className="icon">
                     <i className="fas fa-headphones-alt"></i>
                 </div>
@@ -469,6 +495,10 @@ function Chatbot(){
         <div className="agent_chooseArea" style={{display:io?"flex":"none"}}>
             <div className="service_agent">
                 <div className="agent_avatar" onClick={()=>{
+                    document.querySelector('.menu').style.bottom = '-200px';
+                    setToggleMenu(false);
+                    myChatbotInput.current.focus();
+                    // 前兩句讓richMenu自動關起來
                     document.querySelector('.agent_chooseArea').style.display = 'none';
                     let room = '教欽的告解室';
                     io.emit('join',room,message=>{
@@ -478,9 +508,9 @@ function Chatbot(){
                         let description = hour >= 12 ? '下午':'上午';
                         let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
                         let newPrivate = [...privateMessage];
-                        const uploadTmp = { id:agentChat_id+1,
+                        const uploadTmp = { id:0,
                                             text: message,
-                                            type:'robot_reply',
+                                            type:'default_reply',
                                             time:timeNow,
                                         } ;
                         newPrivate.push(uploadTmp);
@@ -520,17 +550,17 @@ function Chatbot(){
                 let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
                 if(io){
                     if(myChatbotInput.current.value){
-                        let newMessage = [...message];
-                        const uploadTmp = { id:chat_id+1,
+                        let newMessage = [...privateMessage];
+                        const uploadTmp = { id:agentChat_id+1,
                                             text:myChatbotInput.current.value,
                                             type:'user_reply',
                                             time:timeNow,
                                         } ;
-                        io.emit('room message', uploadTmp);
                         newMessage.push(uploadTmp);
-                        setMessage(newMessage);
+                        setPrivateMessage(newMessage);
+                        io.emit('room message', uploadTmp);
+                        myChatbotInput.current.value = '';
                     }
-                    myChatbotInput.current.value = '';
                 }else{
                     setToggleReply(true);
                     if(myChatbotInput.current.value){
@@ -559,15 +589,17 @@ function Chatbot(){
                         .then(r=>r.json())
                         .then(obj=>{
                             // console.log(obj.results.respond)
-                            setToggleReply(false);
-                            let replyMessage = [...newMessage];
-                            const uploadTmp1 = { id:chat_id+2,
-                                            text:obj.results.respond,
-                                            type:'chatbot_reply',
-                                            time:timeNow,
-                                        } ;
-                            replyMessage.push(uploadTmp1);
-                            setMessage(replyMessage);
+                            setTimeout(()=>{
+                                setToggleReply(false);
+                                let replyMessage = [...newMessage];
+                                const uploadTmp1 = { id:chat_id+2,
+                                                text:obj.results.respond,
+                                                type:'chatbot_reply',
+                                                time:timeNow,
+                                            } ;
+                                replyMessage.push(uploadTmp1);
+                                setMessage(replyMessage);
+                            },1000)
                             })
                         myChatbotInput.current.value = '';
                     }
