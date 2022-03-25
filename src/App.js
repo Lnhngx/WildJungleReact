@@ -23,6 +23,7 @@ import Activity from "./pages/activity/activity";
 import Products from "./pages/products/products";
 import Game from "./pages/game/game";
 import SpotDiff from "./pages/game/spot-diff";
+import SpotDiff2 from "./pages/game/spot-diff2";
 import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
@@ -130,8 +131,11 @@ function App() {
           <Route path="/game/psycho-game">
             <PsychoGame />
           </Route>
-          <Route path="/game/spot-diff">
+          <Route exact path="/game/spot-diff">
             <SpotDiff />
+          </Route>
+          <Route exact path="/game/spot-diff2">
+            <SpotDiff2 />
           </Route>
           <Route path="/game/multi-choice">
             <MultiChoice />
@@ -139,7 +143,6 @@ function App() {
           <Route path="/game/start" component={GameStart}>
             {/* <GameStart /> */}
           </Route>
-
           <Route exact path="/game">
             <LotteryContext.Provider value={openOrNot}>
               <Game />
