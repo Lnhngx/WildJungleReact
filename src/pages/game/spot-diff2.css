@@ -379,7 +379,7 @@
 }
 /* 以下是(遊戲:眼力大挑戰第二題)正確答案的位置 */
 /* 圖中央企鵝沒眼睛 */
-.spot1 {
+.diff2_spot1 {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -388,7 +388,7 @@
     bottom: 15%;
 }
 /* 最左邊壓在地上的企鵝 */
-.spot2 {
+.diff2_spot2 {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -397,7 +397,7 @@
     top: 61%;
 }
 /* 中央高的那隻白眼睛 */
-.spot3 {
+.diff2_spot3 {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -406,7 +406,7 @@
     top: 15%;
 }
 /* 中間矮的那隻額頭上 */
-.spot4 {
+.diff2_spot4 {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -414,7 +414,7 @@
     left: 57%;
     top: 55%;
 }
-.spot5 {
+.diff2_spot5 {
     width: 35px;
     height: 35px;
     position: absolute;

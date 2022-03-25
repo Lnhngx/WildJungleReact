@@ -31,20 +31,20 @@ function SpotDiff2(){
         }, 0);
         document.querySelector('.cube').style.transform = `rotateX(-90deg) `; 
         document.querySelector('.up').style.animation = `chopacity .4s linear forwards`;
-        let countDownFrom = 30
+        let countDownFrom = 30;
         // 產生 Timer
-        // const countDownTimer = setInterval(() => {            
-        //     // 計算剩餘秒數
-        //     let remain = countDownFrom--;
-        //     setCountDown(remain < 0 ? 0 : remain)
-        //     // 檢查是否結束
-        //     if (remain <= 0) {
-        //         clearInterval(countDownTimer);
-        //         setFail(true);
-        //         return;
-        //     }
-        // }, 1000);
-        // setWinClean(countDownTimer);
+        const countDownTimer = setInterval(() => {            
+            // 計算剩餘秒數
+            let remain = countDownFrom--;
+            setCountDown(remain < 0 ? 0 : remain)
+            // 檢查是否結束
+            if (remain <= 0) {
+                clearInterval(countDownTimer);
+                setFail(true);
+                return;
+            }
+        }, 1000);
+        setWinClean(countDownTimer);
     }, []) 
     function getHint(){
         let temp_arr = [];
@@ -167,7 +167,7 @@ function SpotDiff2(){
                 <div className="game_zone">
                 {/* -------------- 左邊的圖片 -------------- */}
                     <div className="wrap_pic">
-                        <div className="spot1" style={{pointerEvents:spot1?'none':'all'}} onClick={
+                        <div className="diff2_spot1" style={{pointerEvents:spot1?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot1(true)
                                 setCountSuccess(countSuccess+1);
@@ -182,7 +182,7 @@ function SpotDiff2(){
                         >
                             <i className="far fa-circle" style={{display:spot1?'block':'none'}}></i>
                         </div>
-                        <div className="spot2" style={{pointerEvents:spot2?'none':'all'}} onClick={
+                        <div className="diff2_spot2" style={{pointerEvents:spot2?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot2(true)
                                 setCountSuccess(countSuccess+1);
@@ -197,7 +197,7 @@ function SpotDiff2(){
                         >
                             <i className="far fa-circle" style={{display:spot2?'block':'none'}}></i>
                         </div>
-                        <div className="spot3" style={{pointerEvents:spot3?'none':'all'}} onClick={
+                        <div className="diff2_spot3" style={{pointerEvents:spot3?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot3(true)
                                 setCountSuccess(countSuccess+1);
@@ -212,7 +212,7 @@ function SpotDiff2(){
                         >
                             <i className="far fa-circle" style={{display:spot3?'block':'none'}}></i>
                         </div>
-                        <div className="spot4" style={{pointerEvents:spot4?'none':'all'}} onClick={
+                        <div className="diff2_spot4" style={{pointerEvents:spot4?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot4(true)
                                 setCountSuccess(countSuccess+1);
@@ -227,7 +227,7 @@ function SpotDiff2(){
                         >
                             <i className="far fa-circle" style={{display:spot4?'block':'none'}}></i>
                         </div>
-                        <div className="spot5" style={{pointerEvents:spot5?'none':'all'}} onClick={
+                        <div className="diff2_spot5" style={{pointerEvents:spot5?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot5(true)
                                 setCountSuccess(countSuccess+1);
@@ -289,7 +289,7 @@ function SpotDiff2(){
                     </div>
                 {/* -------------- 右邊的圖片 -------------- */}
                     <div className="wrap1_pic">
-                        <div className="spot1" style={{pointerEvents:spot1?'none':'all'}} onClick={
+                        <div className="diff2_spot1" style={{pointerEvents:spot1?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot1(true)
                                 setCountSuccess(countSuccess+1);
@@ -305,7 +305,7 @@ function SpotDiff2(){
                             <i className="far fa-circle" style={{display:spot1?'block':'none'}}></i>
                         </div>
 
-                        <div className="spot2" style={{pointerEvents:spot2?'none':'all'}} onClick={
+                        <div className="diff2_spot2" style={{pointerEvents:spot2?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot2(true)
                                 setCountSuccess(countSuccess+1);
@@ -320,7 +320,7 @@ function SpotDiff2(){
                         >
                             <i className="far fa-circle" style={{display:spot2?'block':'none'}}></i>
                         </div>
-                        <div className="spot3" style={{pointerEvents:spot3?'none':'all'}} onClick={
+                        <div className="diff2_spot3" style={{pointerEvents:spot3?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot3(true)
                                 setCountSuccess(countSuccess+1);
@@ -335,7 +335,7 @@ function SpotDiff2(){
                         >
                             <i className="far fa-circle" style={{display:spot3?'block':'none'}}></i>
                         </div>
-                        <div className="spot4" style={{pointerEvents:spot4?'none':'all'}} onClick={
+                        <div className="diff2_spot4" style={{pointerEvents:spot4?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot4(true)
                                 setCountSuccess(countSuccess+1);
@@ -350,7 +350,7 @@ function SpotDiff2(){
                         >
                             <i className="far fa-circle" style={{display:spot4?'block':'none'}}></i>
                         </div>
-                        <div className="spot5" style={{pointerEvents:spot5?'none':'all'}} onClick={
+                        <div className="diff2_spot5" style={{pointerEvents:spot5?'none':'all'}} onClick={
                             ()=>{  
                                 setSpot5(true)
                                 setCountSuccess(countSuccess+1);
