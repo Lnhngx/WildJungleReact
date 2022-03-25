@@ -21,7 +21,15 @@ import ActivityLike from './ActivityLike'
 // likeNavItem=['商品','活動']
 
 function MemberNavItem(props){
-  const {memberlist,navItem,orderNavItem,discountNavItem,likeNavItem,actived,setNavState,navState,sidData}=props
+  const {memberlist,
+    navItem,
+    orderNavItem,
+    discountNavItem,
+    likeNavItem,
+    actived,
+    setNavState,
+    navState,
+    sidData}=props
 
   const [navActived,setNavActived]=useState(navState)
   // {navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'}

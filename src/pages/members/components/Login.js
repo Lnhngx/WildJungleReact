@@ -10,7 +10,7 @@ import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(props){
-  const {auth,setAuth}=props
+  const {auth,setAuth,account}=props
   const history=useHistory();
 
 
@@ -74,7 +74,7 @@ function Login(props){
         "g-recaptcha-response": token
       })
     }).then(res => res.json()).then(obj => {
-      console.log(obj);
+      // console.log(obj);
 
 
       if(obj.success){

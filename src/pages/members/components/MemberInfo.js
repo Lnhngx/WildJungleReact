@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
+import Config from "../Config";
 
-
+import EditModal from './EditModal'
 
 function MemberInfo(props){
   const {sidData}=props
+
+
+  // Modal顯示與否
+  const [editModalShow,setEditModalShow]=useState(false)
+  const [editModalText,setEditModalText]=useState('')
 
   const [mData,setmData]=useState({})
   const [newData,setNewData]=useState({email:'',name:'',gender:'',birthday:'',password:'',address:''})
@@ -12,7 +18,7 @@ function MemberInfo(props){
     if(Object.keys(sidData).length!==0){
       console.log(sidData)
       setmData(sidData);
-      setNewData({...newData,email:sidData.email,name:sidData.m_name,gender:sidData.gender,birthday:sidData.birthday.split('T')[0],address:sidData.m_address})
+      setNewData({...newData,email:sidData.email,name:sidData['m_name'],gender:sidData.gender,birthday:sidData.birthday.split('T')[0],address:sidData['m_address']})
     }
   },[sidData]);
 
@@ -26,12 +32,37 @@ function MemberInfo(props){
     const updateFields={...mData,[name]:newValue}
     setNewData(updateFields)
   };
+  // 生日格式僅保留為yyyy-MM-dd
   if(mData.birthday){
     mData.birthday=mData.birthday.split('T')[0];
   };
 
   const genderSelect=['男','女','未決定']
 
+  // console.log(newData.birthday.split('T')[0])
+  // 
+  function submitMemberInfoForm(e){
+    e.preventDefault();
+    // const setNewPassword=setNewData({...newData,password:mData.password});
+
+    fetch(Config.TYSU_MEMBER_INFO+mData.m_sid,{
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "email":mData.email,
+        "name":newData.name,
+        "gender":newData.gender,
+        "birthday":newData.birthday.split('T')[0],
+        "password":newData,
+        "address":newData.address
+      })
+    }).then(r=>r.json()).then(obj=>{
+      console.log(obj)
+    })
+
+  }
     return (<>
     <form id="tysu_form"  style={{paddingBottom:"10rem"}}>
       <table>
@@ -110,15 +141,16 @@ function MemberInfo(props){
             <th></th>
             <td>
               <div>
-                <button id="tysu_editBtn" className="tysu_editBtn">更 改</button>
-                <button id="tysu_cancelBtn" className="tysu_cancelBtn">
+                <button type="button" id="tysu_editBtn" className="tysu_editBtn"  onClick={submitMemberInfoForm}>更 改</button>
+                <button id="tysu_cancelBtn" className="tysu_cancelBtn" type="button" onClick={(e)=>{e.preventDefault()}}>
                   取 消
                 </button>
               </div>
+              {<EditModal />}
             </td>
           </tr>
         </tbody>
-        <tbody  className="tysu_tBody2">
+        {/* <tbody  className="tysu_tBody2">
           <tr className="tysu_tr">
             <th></th>
             <td>
@@ -174,7 +206,7 @@ function MemberInfo(props){
               </div>
             </td>
           </tr>
-        </tbody>
+        </tbody> */}
       </table>
     </form>
 
