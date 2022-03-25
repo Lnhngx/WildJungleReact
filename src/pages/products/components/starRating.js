@@ -24,7 +24,10 @@ function StarRating(props) {
   };
   const rate = (event) =>{
     setRating(event.target.getAttribute("star-id") || rating);
-    console.log(selection)}
+    console.log(selection)
+    props.setSelection(selection)
+    //子傳父
+  }
 
   return (
     <>
@@ -40,7 +43,8 @@ function StarRating(props) {
           <Star
             starId={i + 1}
             key={`star_${i + 1} `}
-            marked={selection ? selection >= i + 1 : rating >= i + 1}
+            marked={selection ? selection >= i + 1 : rating >= i + 1} selection={selection}
+            setSelection ={setSelection}
           />
         ))}
       </div>

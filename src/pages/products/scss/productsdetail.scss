@@ -353,11 +353,20 @@
   white-space: normal;
 }
 
-.alan_detailimg{
+.alan_detailimg {
   width: 100%;
 }
-.alan_detailimg img{
+.alan_detailimg img {
   width: 100%;
+}
+.alan_view {
+  width: 100%;
+  font-family: "Noto Sans TC", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
 }
 @media screen and (min-width: 980px) {
   .alan_detail {
@@ -505,14 +514,125 @@
   .alan_product_info1 {
     width: 50%;
   }
-  .alan_infoContent{
+  .alan_infoContent {
     width: 100%;
     //white-space:nowrap;
   }
-  .alan_information{
+  .alan_information {
     border-top: 1px solid;
   }
-  .alan_tab1, .alan_tab2{
+  .alan_tab1,
+  .alan_tab2 {
     width: 20%;
   }
+  .alan_review {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .alan_reviewInput {
+    width: 80%;
+    display: flex;
+  }
+  .alan_inputLeft {
+    margin-left: 80px;
+    max-height: 300px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eb5b3720;
+    box-shadow: 0 0 30px rgb(0 0 0 / 10%);
+  }
+  .left_title,
+  .right_title {
+    width: 70%;
+    height: 60px;
+    // display: flex;
+    // align-items: center;
+    text-align: center;
+    line-height: 3;
+    font-size: 24px;
+    margin: 12px 0 12px 0;
+    background-image: url(./../imgs/reviewback.png);
+    background-size: 100%;
+    background-position: 1px;
+  }
+  .right_title {
+    width: 30%;
+  }
+  .alan_LeftInputGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 200px;
+    padding-left: 30px;
+  }
+  .alan_left1 span {
+    font-size: 18px;
+    font-weight: 300;
+    margin: 0 5px 0 0px;
+  }
+  .alan_left2 span {
+    
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    margin: 0 5px 0 0px;
+  }
+  .alan_left2 {
+    width: 100%;
+  }
+  .alan_left2 textarea {
+    border-radius: 0;
+    width: 90%;
+  }
+  .alan_left2 textarea:focus{
+    outline:1px solid #eb5c37;
+  }
+  .alan_inputRight {
+    width: 70%;
+    margin-right: 80px;
+    background-color: #ffffff;
+    box-shadow: 0 0 30px rgb(0 0 0 / 10%);
+  }
+  .alan_LeftInputGroup button {
+    background: #eb5c37;
+    color: #ffffff;
+    margin-top: 12px;
+    font-size: 16px;
+    border: #2d3436;
+  }
+  .alan_rightReview{
+    width: 80%;
+    //height: 20%;
+    border:1px solid #2d3436;
+    margin-left: 10%;
+    margin-bottom: 4px;
+    padding-left: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .alan_rightReview:last-child{
+    margin-bottom: 40px;
+  }
+  .alan_rightReview>.alan_rightreview1{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-right: 12px;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  .alan_rightReview>div>button{
+    background: #eb5c37;
+    color: #ffffff;
+    font-size: 16px;
+    border: #2d3436;
+  } 
 }

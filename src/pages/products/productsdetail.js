@@ -10,7 +10,7 @@ import ProductCarousel from "./components/productCarousel";
 import { useEffect } from "react";
 import * as Scroll from "react-scroll";
 import { animateScroll as scroll, scroller } from "react-scroll";
-import DetailPicture from "./components/detailPicture"
+import DetailPicture from "./components/detailPicture";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -19,7 +19,9 @@ import {
 } from "react-share";
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 
-function ProductsDetail() {
+function ProductsDetail(props) {
+  const [selection, setSelection] = useState("");
+  //子傳父
   const [products, setProducts] = useState([]);
   const [spec, setSpec] = useState([]);
   const [pic, setPic] = useState([]);
@@ -81,10 +83,8 @@ function ProductsDetail() {
   starValue /= reviewStar.length;
 
   const click = function () {
-    console.log();
+    console.log(props);
   };
-
-
 
   const scrollToSection = () => {
     scroller.scrollTo("alan_information", {
@@ -305,14 +305,154 @@ function ProductsDetail() {
                         滌綸
                       </div>
                       <ul className="alan_productPic">
-                       <DetailPicture pic={pic} setPic={setPic}/>
+                        <DetailPicture pic={pic} setPic={setPic} />
                       </ul>
                     </div>
                   </div>
                 </div>
               </TabPanel>
               <TabPanel>
-                <input type="text" />
+                <div className="alan_view">
+                  <div className="alan_review">評論專區</div>
+                  <div className="alan_reviewInput">
+                    <div className="alan_inputLeft">
+                      <div className="left_title">輸入評論：</div>
+
+                      <form className="alan_LeftInputGroup" action="">
+                        <div className="alan_left1">
+                          <span>
+                            選擇分數:
+                            {selection === "" ? "請選擇" : `${selection}星`}
+                          </span>
+                          <StarRating setSelection={setSelection} />
+                        </div>
+                        <div className="alan_left2">
+                          <span>輸入內容:</span>
+                          <textarea></textarea>
+                        </div>
+                        <button>確認送出</button>
+                      </form>
+                    </div>
+                    <div className="alan_inputRight">
+                      <div className="right_title">評論回覆：</div>
+                      <div className="alan_rightReview">
+                        <div className="alan_rightreview1">
+                          <div>
+                            來自：張曉明
+                            <br />
+                            評分：
+                            {Array.from({ length: 5 }, (v, i) => (
+                              <span key={i} style={{ color: "#eb5c37" }}>
+                                {Math.round(starValue) === i
+                                  ? "\u2606"
+                                  : "\u2605"}
+                              </span>
+                            ))}
+                          </div>
+                          <div>
+                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
+                          </div>
+                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
+                        </div>
+                        <div>
+                          <button>刪除</button>
+                        </div>
+                      </div>
+                      <div className="alan_rightReview">
+                        <div className="alan_rightreview1">
+                          <div>
+                            來自：張曉明
+                            <br />
+                            評分：
+                            {Array.from({ length: 5 }, (v, i) => (
+                              <span key={i} style={{ color: "#eb5c37" }}>
+                                {Math.round(starValue) === i
+                                  ? "\u2606"
+                                  : "\u2605"}
+                              </span>
+                            ))}
+                          </div>
+                          <div>
+                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
+                          </div>
+                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
+                        </div>
+                        <div>
+                          <button>刪除</button>
+                        </div>
+                      </div>
+                      <div className="alan_rightReview">
+                        <div className="alan_rightreview1">
+                          <div>
+                            來自：張曉明
+                            <br />
+                            評分：
+                            {Array.from({ length: 5 }, (v, i) => (
+                              <span key={i} style={{ color: "#eb5c37" }}>
+                                {Math.round(starValue) === i
+                                  ? "\u2606"
+                                  : "\u2605"}
+                              </span>
+                            ))}
+                          </div>
+                          <div>
+                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
+                          </div>
+                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
+                        </div>
+                        <div>
+                          <button>刪除</button>
+                        </div>
+                      </div>
+                      <div className="alan_rightReview">
+                        <div className="alan_rightreview1">
+                          <div>
+                            來自：張曉明
+                            <br />
+                            評分：
+                            {Array.from({ length: 5 }, (v, i) => (
+                              <span key={i} style={{ color: "#eb5c37" }}>
+                                {Math.round(starValue) === i
+                                  ? "\u2606"
+                                  : "\u2605"}
+                              </span>
+                            ))}
+                          </div>
+                          <div>
+                            評論內容:跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用跟預期有點落差，但還是可以使用
+                          </div>
+                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
+                        </div>
+                        <div>
+                          <button>刪除</button>
+                        </div>
+                      </div>
+                      <div className="alan_rightReview">
+                        <div className="alan_rightreview1">
+                          <div>
+                            來自：張曉明
+                            <br />
+                            評分：
+                            {Array.from({ length: 5 }, (v, i) => (
+                              <span key={i} style={{ color: "#eb5c37" }}>
+                                {Math.round(starValue) === i
+                                  ? "\u2606"
+                                  : "\u2605"}
+                              </span>
+                            ))}
+                          </div>
+                          <div>
+                            評論內容:跟預期有點落差，但還是可以使用
+                          </div>
+                          <div>評論時間"2022-03-17T16:00:00.000Z"</div>
+                        </div>
+                        <div>
+                          <button>刪除</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </TabPanel>
             </Tabs>
           </div>
