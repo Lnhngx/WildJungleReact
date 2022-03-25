@@ -5,7 +5,7 @@ import Config from "../Config";
 import EditModal from './EditModal'
 
 function MemberInfo(props){
-  const {sidData}=props
+  const {sidData,account}=props
 
 
   // Modal顯示與否

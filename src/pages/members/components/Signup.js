@@ -204,7 +204,7 @@ function Signup(){
                     <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
                 </th>
                 <td>
-                    <input id="tysu_birth" type="date" className="tysu_input" value={fields.birthday} name="birthday" max="2022-03-01" onChange={handleFieldChange} />
+                    <input id="tysu_birth" type="date" className="tysu_input" name="birthday" value={fields.birthday} onChange={handleFieldChange} />
                     <div id="birthHelp">{fieldErrors.birthday}</div>
                 </td>
             </tr>
@@ -213,7 +213,7 @@ function Signup(){
                     <label htmlFor="tysu_pass">密碼<br /><span className="tysu_titleSpan">Password</span></label>
                 </th>
                 <td>
-                    <input type="text" id="tysu_pass" className="tysu_input" value={fields.password} onChange={handleFieldChange} name="password" />
+                    <input type="text" id="tysu_pass" className="tysu_input" name="password" value={fields.password} onChange={handleFieldChange} />
                     <div id="tysu_passHelp">{fieldErrors.password}</div>
                 </td>
 

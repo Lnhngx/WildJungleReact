@@ -169,12 +169,8 @@ function App() {
           <Route path="/members/password-change">
             <MemberPassChange />
           </Route>
-          <Route path="/members/modify-member-info">
-            {account && token ? (
+          <Route exact path="/members/modify-member-info">
               <MemberList account={account} token={token} />
-            ) : (
-              <Redirect to="/members/login" />
-            )}
           </Route>
           <Route path="/members">
             <MemberLogin setAuth={setAuth} />
