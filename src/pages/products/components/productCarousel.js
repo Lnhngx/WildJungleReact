@@ -115,7 +115,7 @@ const ProductCarousel = (props) => {
                 }
               >
                 {index === current && (
-                  <Link to="">
+                  
                     <div className="alan_product_imgli">
                       <img
                         src={slider.image === "" ? " " : slider.image}
@@ -123,7 +123,7 @@ const ProductCarousel = (props) => {
                         className="alan_products_img"
                       />
                     </div>
-                  </Link>
+                
                 )}
               </div>
               <div className="alan_product_img_icon">0{current + 1}/0{index + 1}</div>

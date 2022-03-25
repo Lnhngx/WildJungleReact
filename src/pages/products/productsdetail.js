@@ -10,7 +10,7 @@ import ProductCarousel from "./components/productCarousel";
 import { useEffect } from "react";
 import * as Scroll from "react-scroll";
 import { animateScroll as scroll, scroller } from "react-scroll";
-import DetailPicture from "./components/detailPicture"
+import DetailPicture from "./components/detailPicture";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -18,8 +18,11 @@ import {
   TwitterShareButton,
 } from "react-share";
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
+import TheReview from "./components/theReview";
 
-function ProductsDetail() {
+function ProductsDetail(props) {
+  const [selection, setSelection] = useState("");
+  //子傳父
   const [products, setProducts] = useState([]);
   const [spec, setSpec] = useState([]);
   const [pic, setPic] = useState([]);
@@ -81,10 +84,8 @@ function ProductsDetail() {
   starValue /= reviewStar.length;
 
   const click = function () {
-    console.log();
+    console.log(props);
   };
-
-
 
   const scrollToSection = () => {
     scroller.scrollTo("alan_information", {
@@ -305,14 +306,40 @@ function ProductsDetail() {
                         滌綸
                       </div>
                       <ul className="alan_productPic">
-                       <DetailPicture pic={pic} setPic={setPic}/>
+                        <DetailPicture pic={pic} setPic={setPic} />
                       </ul>
                     </div>
                   </div>
                 </div>
               </TabPanel>
               <TabPanel>
-                <input type="text" />
+                <div className="alan_view">
+                  <div className="alan_review">評論專區</div>
+                  <div className="alan_reviewInput">
+                    <div className="alan_inputLeft">
+                      <div className="left_title">輸入評論：</div>
+
+                      <form className="alan_LeftInputGroup" action="">
+                        <div className="alan_left1">
+                          <span>
+                            選擇分數:
+                            {selection === "" ? "請選擇" : `${selection}星`}
+                          </span>
+                          <StarRating setSelection={setSelection} />
+                        </div>
+                        <div className="alan_left2">
+                          <span>輸入內容:</span>
+                          <textarea></textarea>
+                        </div>
+                        <button>確認送出</button>
+                      </form>
+                    </div>
+                    <div className="alan_inputRight">
+                      <div className="right_title">評論回覆：</div>
+                      <TheReview review={review} setReview={setReview} />
+                    </div>
+                  </div>
+                </div>
               </TabPanel>
             </Tabs>
           </div>

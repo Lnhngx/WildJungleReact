@@ -47,7 +47,9 @@ function Navbar(props) {
           </a>
         </div>
         <div className="navbarLeft">
-          <h1 className="Title">WILD JUNGLE</h1>
+          <Link to="/#">
+            <h1 className="Title">WILD JUNGLE</h1>
+          </Link>
         </div>
         <div className="navbarRight">
           <div className="navbarIcon">
