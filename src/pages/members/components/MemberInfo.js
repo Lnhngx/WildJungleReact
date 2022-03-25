@@ -18,7 +18,12 @@ function MemberInfo(props){
     if(Object.keys(sidData).length!==0){
       console.log(sidData)
       setmData(sidData);
-      setNewData({...newData,email:sidData.email,name:sidData['m_name'],gender:sidData.gender,birthday:sidData.birthday.split('T')[0],address:sidData['m_address']})
+      setNewData({...newData,
+        email:sidData.email,
+        name:sidData['m_name'],
+        gender:sidData.gender,
+        birthday:sidData.birthday.split('T')[0],
+        address:sidData['m_address']})
     }
   },[sidData]);
 
@@ -131,10 +136,10 @@ function MemberInfo(props){
           <tr className="tysu_tr tysu_last">
             <th>
               <label htmlFor="tysu_adress">聯絡地址<br />
-                <span className="tysu_titleSpan">Adress</span></label>
+                <span className="tysu_titleSpan">Address</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_adress" className="tysu_input" name="adress" defaultValue={mData.m_address}
+              <input type="text" id="tysu_address" className="tysu_input" name="address" defaultValue={mData.m_address}
               onChange={handleFieldChange}/>
               <div id="tysu_adressHelp"></div>
             </td>

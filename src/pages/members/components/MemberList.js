@@ -42,7 +42,20 @@ function MemberList(props){
     }
     getSidData()
     
+
+    // const gradeImg=async ()=>{
+    //   await fetch('./../data/grade.json').then(r=>r.json()).then(obj=>{
+    //     console.log(obj)
+    //   })
+    // }
+  
+    // gradeImg()
   },[])
+
+
+  
+
+
 
   return(
     
