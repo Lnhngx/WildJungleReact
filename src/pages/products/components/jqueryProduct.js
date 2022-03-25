@@ -1,11 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import $ from "jquery";
 
 function JqueryProduct() {
-
-
-
   useEffect(() => {
     let page = 0;
     let myInterval = null;
@@ -63,8 +60,6 @@ function JqueryProduct() {
       }, 2500);
     }
 
-     
-
     $(".alan_img-wrap").on("transitionend", function () {
       if (page >= 3) {
         $(".alan_img-wrap")
@@ -74,7 +69,6 @@ function JqueryProduct() {
       }
     });
 
-    startInterval();
     $(".alan_wrap").hover(
       function () {
         clearInterval(myInterval);
@@ -93,7 +87,6 @@ function JqueryProduct() {
         startInterval();
       }
     );
-
     // $(window).scroll(function () {
     //     console.log("scrollTop", $(window).scrollTop());
     //     console.log("scrollLeft", $(window).scrollLeft());
@@ -102,7 +95,19 @@ function JqueryProduct() {
     //     console.log("body width", $("body").width());
     //     console.log("body height", $("body").height());
     // })
+   startInterval();
+    return () => {
+      $(".alan_img-wrap").off("transitionend", function () {
+        if (page >= 3) {
+          $(".alan_img-wrap")
+            .css("transition", "none")
+            .css("transform", `translate(0px)`);
+          page = 0;
+        }
+      });
+    };
   }, []);
+
   return (
     <>
       <div className="alan_wrap">

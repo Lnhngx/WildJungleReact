@@ -8,12 +8,20 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import ProductCarousel from "./components/productCarousel";
 import { useEffect } from "react";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LineShareButton,
+  TwitterShareButton,
+} from "react-share";
+import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 
 function ProductsDetail() {
   const [products, setProducts] = useState([]);
   const [spec, setSpec] = useState([]);
   const [pic, setPic] = useState([]);
   const [label, setLabel] = useState([]);
+  const [review, setReview] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
   const location = useLocation();
@@ -24,16 +32,24 @@ function ProductsDetail() {
       fetch("http://localhost:4000/productsspec", { method: "GET" }),
       fetch("http://localhost:4000/productspic", { method: "GET" }),
       fetch("http://localhost:4000/productslabel", { method: "GET" }),
+      fetch("http://localhost:4000/productsreview", { method: "GET" }),
     ])
-      .then(([res1, res2, res3, res4]) =>
-        Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
+      .then(([res1, res2, res3, res4, res5]) =>
+        Promise.all([
+          res1.json(),
+          res2.json(),
+          res3.json(),
+          res4.json(),
+          res5.json(),
+        ])
       )
-      .then(([data1, data2, data3, data4]) =>
+      .then(([data1, data2, data3, data4, data5]) =>
         Promise.all([
           setProducts(data1),
           setSpec(data2),
           setPic(data3),
           setLabel(data4),
+          setReview(data5),
         ])
       )
       .then(console.log("OK"))
@@ -42,10 +58,6 @@ function ProductsDetail() {
       });
   }, []);
 
-  const click = function () {
-    console.log(labels);
-  };
-
   const searchParams = new URLSearchParams(location.search);
   const Sid = searchParams.get("id");
 
@@ -53,7 +65,21 @@ function ProductsDetail() {
   const product = products[Sid - 1];
   const specs = spec[Sid - 1];
   const pics = pic[Sid - 1];
-  const labels = label.filter((v) => v.ProductsLabel === parseInt(Sid));;
+  const labels = label.filter((v) => v.ProductsLabel === parseInt(Sid));
+  const reviews = review.filter((v) => v.ProductsReview === parseInt(Sid));
+  const reviewStar = reviews.map((review, i) => {
+    return parseInt(review.ReviewStar);
+  });
+
+  let starValue = 0;
+  for (let i = 0; i < reviewStar.length; i++) {
+    starValue += reviewStar[i];
+  }
+  starValue /= reviewStar.length;
+
+  const click = function () {
+    console.log(Math.ceil(starValue));
+  };
 
   return (
     <>
@@ -91,7 +117,7 @@ function ProductsDetail() {
         </ul>
       </div>
 
-      {product && specs && pics && labels && (
+      {product && specs && pics && labels && reviews && (
         <>
           <div className="alan_detail">
             <div className="alan_productsdetail">
@@ -103,11 +129,15 @@ function ProductsDetail() {
             <div className="alan_productTitle">
               <div className="alan_product_star">
                 <div className="alan_star">
-                  <StarRating />
+                  {Array.from({ length: 5 }, (v, i) => (
+                    <span key={i} style={{ color: "#eb5c37" }}>
+                      {Math.ceil(starValue) === i ? "\u2606" : "\u2605"}
+                    </span>
+                  ))}
                 </div>
                 <div className="alan_comment">
                   <Link to="">
-                    <span>發表評論</span>
+                    <span>評分{starValue.toFixed(1)}/發表評論</span>
                   </Link>
                 </div>
               </div>
@@ -167,16 +197,38 @@ function ProductsDetail() {
                   </div>
                   <div className="alan_tagIcon">
                     <a href="#/">
-                      <i className="fab fa-facebook-square"></i>
+                      <FacebookShareButton
+                        url={"https://github.com/Lnhngx/WildJungleReact"}
+                        quote={"我在WildJungle發現好東西！"}
+                        hashtag={"#WildJungle"}
+                        description={"aiueo"}
+                      >
+                        <FacebookIcon size={24} />
+                      </FacebookShareButton>
                     </a>
                     <a href="#/">
-                      <i className="fab fa-twitter-square"></i>
+                      <LineShareButton
+                        url={"https://github.com/Lnhngx/WildJungleReact"}
+                        title={"我在WildJungle發現好東西！"}
+                      >
+                        <LineIcon size={24} />
+                      </LineShareButton>
                     </a>
                     <a href="#/">
-                      <i className="fab fa-google-plus-square"></i>
+                      <EmailShareButton
+                        url={"https://github.com/Lnhngx/WildJungleReact"}
+                        body={"我在WildJungle發現好東西！"}
+                        subject={"#WildJungle"}
+                      >
+                        <EmailIcon size={24} />
+                      </EmailShareButton>
                     </a>
                     <a href="#/">
-                      <i className="fab fa-blogger"></i>
+                      <TwitterShareButton
+                        url={"https://github.com/Lnhngx/WildJungleReact"}
+                      >
+                        <TwitterIcon size={24} />
+                      </TwitterShareButton>
                     </a>
                   </div>
                 </div>

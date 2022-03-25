@@ -16,47 +16,10 @@ import { animateScroll as scroll, scroller } from "react-scroll";
 import {
   EmailShareButton,
   FacebookShareButton,
-  HatenaShareButton,
-  InstapaperShareButton,
   LineShareButton,
-  LinkedinShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  OKShareButton,
-  PinterestShareButton,
-  PocketShareButton,
-  RedditShareButton,
-  TelegramShareButton,
-  TumblrShareButton,
   TwitterShareButton,
-  ViberShareButton,
-  VKShareButton,
-  WhatsappShareButton,
-  WorkplaceShareButton,
 } from "react-share";
-import {
-  EmailIcon,
-  FacebookIcon,
-  FacebookMessengerIcon,
-  HatenaIcon,
-  InstapaperIcon,
-  LineIcon,
-  LinkedinIcon,
-  LivejournalIcon,
-  MailruIcon,
-  OKIcon,
-  PinterestIcon,
-  PocketIcon,
-  RedditIcon,
-  TelegramIcon,
-  TumblrIcon,
-  TwitterIcon,
-  ViberIcon,
-  VKIcon,
-  WeiboIcon,
-  WhatsappIcon,
-  WorkplaceIcon,
-} from "react-share";
+import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 
 const Range = Slider;
 
@@ -586,7 +549,7 @@ function Products() {
                   hashtag={"#WildJungle"}
                   description={"aiueo"}
                 >
-                  <FacebookIcon size={24}  />
+                  <FacebookIcon size={24} />
                 </FacebookShareButton>
               </a>
               <a href="#/">
@@ -594,7 +557,7 @@ function Products() {
                   url={"https://github.com/Lnhngx/WildJungleReact"}
                   title={"我在WildJungle發現好東西！"}
                 >
-                  <LineIcon size={24}  />
+                  <LineIcon size={24} />
                 </LineShareButton>
               </a>
               <a href="#/">
@@ -610,7 +573,7 @@ function Products() {
                 <TwitterShareButton
                   url={"https://github.com/Lnhngx/WildJungleReact"}
                 >
-                  <TwitterIcon size={24}  />
+                  <TwitterIcon size={24} />
                 </TwitterShareButton>
               </a>
             </div>
