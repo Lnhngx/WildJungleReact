@@ -69,6 +69,7 @@ function Signup(){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        
         const fd=new FormData(e.target);
         const email=fd.get('email')
         const name=fd.get('name')
