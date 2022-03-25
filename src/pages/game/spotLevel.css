@@ -133,6 +133,7 @@
     border-radius: 50%;
     background-color: rgb(233, 226, 131);
     color: rgb(49, 40, 8);
+    cursor: pointer;
 }
 .wrap_level{
     width: 600px;

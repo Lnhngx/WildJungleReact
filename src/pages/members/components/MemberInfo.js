@@ -5,8 +5,8 @@ import Config from "../Config";
 import EditModal from './EditModal'
 
 function MemberInfo(props){
-  const {sidData}=props
-
+  const {sidData,account}=props
+  const sid=JSON.parse(localStorage.getItem('admin_account'))
 
   // Modal顯示與否
   const [editModalShow,setEditModalShow]=useState(false)
@@ -41,27 +41,29 @@ function MemberInfo(props){
 
   // console.log(newData.birthday.split('T')[0])
   // 
-  function submitMemberInfoForm(e){
+  async function submitMemberInfoForm(e){
     e.preventDefault();
     // const setNewPassword=setNewData({...newData,password:mData.password});
-
-    fetch(Config.TYSU_MEMBER_INFO+mData.m_sid,{
+    console.log(sid['m_sid'])
+    await fetch(Config.TYSU_MEMBER_INFO+sid['m_sid'],{
       method: 'POST',
       headers: {
+        "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
+        // "token":localStorage.getItem('admin_token'),
         "email":mData.email,
         "name":newData.name,
         "gender":newData.gender,
         "birthday":newData.birthday.split('T')[0],
-        "password":newData,
+        "password":newData.password,
         "address":newData.address
       })
     }).then(r=>r.json()).then(obj=>{
       console.log(obj)
     })
-
+//http://localhost:4000/members/edit/8
   }
     return (<>
     <form id="tysu_form"  style={{paddingBottom:"10rem"}}>

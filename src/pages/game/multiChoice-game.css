@@ -86,7 +86,7 @@
     width: calc(100% - 300px);
     height: 800px;
     margin: 40px auto;
-    background-color: rgb(26, 97, 13);
+    background-color: rgb(26,97,13);
     border-radius: 30px;
 }
 .mc_game_border{
@@ -127,7 +127,6 @@
 }
 .board_qaGroup{
     width: 100%;
-    height: 200px;
     /* background-color: #eb5c37; */
     border-bottom: 2px solid rgb(32, 29, 29);
     margin-top: 1rem;
@@ -141,6 +140,8 @@
     font-size: 3rem;
     padding-top: 1rem;
     margin-bottom: 2.5rem;
+    word-wrap: normal;
+    white-space: pre-wrap;
 }
 .userAns{
     font-size: 2.5rem;
@@ -153,7 +154,7 @@
     white-space: pre-wrap;
 }
 .rightAns span{
-    color: red;
+    color: rgb(250, 182, 35);
 }
 .goTour_btn{
     width: 200px;
@@ -276,7 +277,7 @@
     font-family: sans-serif;
     font-size: 2.5rem;
     font-weight: 600;
-    width: 350px;
+    width: 450px;
     height:90px;
     border: none;
     background-color: rgb(249,177,18);
@@ -327,6 +328,28 @@
     right: 80px;
     bottom: 80px;
     cursor: pointer;
+}
+.mc_video{
+    width: 100%;
+    height: 800px;
+    background-color: rgba(0, 0, 0, 0.808);
+    position: absolute;
+    z-index: 999;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mcVideo_closeBtn{
+    position: absolute;
+    right: 10%;
+    top: 4rem;
+    cursor: pointer;
+    z-index: 1000;
+}
+.mcVideo_closeBtn .fas.fa-times{
+    font-size: 3.5rem;
+    color: white;
 }
 .animals-footer{
     width: 100%; 

@@ -30,7 +30,7 @@
   width: 100%;
   position: relative;
 }
-.alan_slide{
+.alan_slide {
   transition: 0.5s;
 }
 .alan_slider {
@@ -86,7 +86,6 @@
 }
 .alan_product_img_li {
   width: 100%;
-  
 }
 .alan_product_img_li img {
   width: 100%;
@@ -275,7 +274,6 @@
   text-align: center;
 }
 .alan_space {
-  
   width: 100%;
   height: 50px;
 }
@@ -331,7 +329,36 @@
 .alan_info1 {
   width: 100%;
 }
+.alan_comment {
+  cursor: pointer;
+}
+.alan_product_info1 {
+  width: 100%;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 80px;
+}
+.alan_infotitle {
+  width: 20%;
+  border-bottom: 1px solid #2d3436;
+  font-size: 32px;
+  font-weight: 600;
+}
+.alan_infotitle span:nth-child(2) {
+  color: #eb5c37;
+}
+.alan_infoContent {
+  word-wrap: break-word;
+  white-space: normal;
+}
 
+.alan_detailimg{
+  width: 100%;
+}
+.alan_detailimg img{
+  width: 100%;
+}
 @media screen and (min-width: 980px) {
   .alan_detail {
     margin: 0 200px 0 200px;
@@ -474,5 +501,18 @@
   }
   .alan_hash {
     border: 0;
+  }
+  .alan_product_info1 {
+    width: 50%;
+  }
+  .alan_infoContent{
+    width: 100%;
+    //white-space:nowrap;
+  }
+  .alan_information{
+    border-top: 1px solid;
+  }
+  .alan_tab1, .alan_tab2{
+    width: 20%;
   }
 }

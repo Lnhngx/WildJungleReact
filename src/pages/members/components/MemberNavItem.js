@@ -22,6 +22,7 @@ import ActivityLike from './ActivityLike'
 
 function MemberNavItem(props){
   const {memberlist,
+    account,
     navItem,
     orderNavItem,
     discountNavItem,
@@ -101,7 +102,7 @@ function MemberNavItem(props){
   </ul>
 
     {/* memberlist && 當前狀態的nav item皆符合才會渲染 */}
-    {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem} sidData={sidData}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem} account={account} sidData={sidData}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : '' }

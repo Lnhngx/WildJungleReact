@@ -87,6 +87,7 @@ function Login(props){
         handleShow();
         setTimeout(() => setShow(false), 1000);
         setTimeout(() => history.push('/members/modify-member-info'), 1500);
+        console.log(obj.success)
       
         // alert('登入成功');
       }else{

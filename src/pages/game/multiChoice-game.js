@@ -11,6 +11,7 @@ function MultiChoice(){
     const [correctNum,setCorrectNum] = useState(0);
     const [point,setPoint] = useState(0);
     const [review,setReview] = useState([]);
+    const [help,setHelp] = useState(false);
     useEffect(()=>{   
         fetch('http://localhost:4000/game')
         .then(r=>r.json())
@@ -87,6 +88,17 @@ function MultiChoice(){
             <div className="game_title">冷知識大挑戰</div>
             <p className="game_profile">在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>300</span><br /><span>全部答對能拿到翻倍紅利哦</span></p>
             <div className="mc_container_game">
+            {/* 這是教學影片，點擊小幫手才會出現 */}
+                <div className="mc_video" style={{display:help?"flex":'none'}}>
+                    <div className="mcVideo_closeBtn" 
+                        onClick={()=>{setHelp(false)}}
+                    >
+                        <i className="fas fa-times"></i>
+                    </div>
+                    <video width="1500" height="700" controls>
+                        <source src="/img/game/wildJungle_qa.mp4" type="video/mp4" />
+                    </video>
+                </div>
                 <div className="mc_game_border">
                     <ul className="mc_game_zone" style={move(toLeft)}>
                         {allQuestion.map((v,i)=>{ 
@@ -95,32 +107,52 @@ function MultiChoice(){
                             <li className="choose_question">
                                 <h2>{i+1}.{v.qcontent}</h2>
                                 <div className="mc_btnGroup">
-                                    <button onClick={()=>{
-                                        setToLeft(i+1)
-                                        let current = [...userAns]
-                                        current.push(v.answers[0])
-                                        setUserAns(current)
+                                    <button onClick={(e)=>{
+                                        setToLeft(i+1);
+                                        let current = [...userAns];
+                                        current.push(v.answers[0]);
+                                        setUserAns(current);
+                                        if(answer[i]===v.answers[0]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[0]}
                                     </button>
-                                    <button onClick={()=>{
-                                        setToLeft(i+1)
-                                        let current = [...userAns]
-                                        current.push(v.answers[1])
-                                        setUserAns(current)
+                                    <button onClick={(e)=>{
+                                        setToLeft(i+1);
+                                        let current = [...userAns];
+                                        current.push(v.answers[1]);
+                                        setUserAns(current);
+                                        if(answer[i]===v.answers[1]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[1]}
                                     </button>
-                                    <button onClick={()=>{
-                                        setToLeft(i+1)
-                                        let current = [...userAns]
-                                        current.push(v.answers[2])
-                                        setUserAns(current)
+                                    <button onClick={(e)=>{
+                                        setToLeft(i+1);
+                                        let current = [...userAns];
+                                        current.push(v.answers[2]);
+                                        setUserAns(current);
+                                        if(answer[i]===v.answers[2]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[2]}
                                     </button>
-                                    <button onClick={()=>{
-                                        setToLeft(i+1)
-                                        let current = [...userAns]
-                                        current.push(v.answers[3])
-                                        setUserAns(current)
+                                    <button onClick={(e)=>{
+                                        setToLeft(i+1);
+                                        let current = [...userAns];
+                                        current.push(v.answers[3]);
+                                        setUserAns(current);
+                                        if(answer[i]===v.answers[3]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[3]}
                                     </button>
                                 </div>
@@ -130,36 +162,56 @@ function MultiChoice(){
                             <li className="choose_question">
                                 <h2>{i+1}.{v.qcontent}</h2>
                                 <div className="mc_btnGroup">
-                                    <button onClick={()=>{
+                                    <button onClick={(e)=>{
                                         setToLeft(9)
                                         setFinish(true)
                                         let current = [...userAns]
                                         current.push(v.answers[0])
-                                        setUserAns(current)
+                                        setUserAns(current);
+                                        if(answer[i]===v.answers[0]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[0]}
                                     </button>
-                                    <button onClick={()=>{
+                                    <button onClick={(e)=>{
                                         setToLeft(9)
                                         setFinish(true)
                                         let current = [...userAns]
                                         current.push(v.answers[1])
-                                        setUserAns(current)
+                                        setUserAns(current);
+                                        if(answer[i]===v.answers[1]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[1]}
                                     </button>
-                                    <button onClick={()=>{
+                                    <button onClick={(e)=>{
                                         setToLeft(9)
                                         setFinish(true)
                                         let current = [...userAns]
                                         current.push(v.answers[2])
                                         setUserAns(current)
+                                        if(answer[i]===v.answers[2]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[2]}
                                     </button>
-                                    <button onClick={()=>{
+                                    <button onClick={(e)=>{
                                         setToLeft(9)
                                         setFinish(true)
                                         let current = [...userAns]
                                         current.push(v.answers[3])
-                                        setUserAns(current)
+                                        setUserAns(current);
+                                        if(answer[i]===v.answers[3]){
+                                            e.target.style.background = 'rgb(27,200,5)';
+                                        }else{
+                                            e.target.style.background = 'red';
+                                        }
                                     }}>{v.answers[3]}
                                     </button>
                                 </div>
@@ -254,8 +306,8 @@ function MultiChoice(){
                                         setCorrectNum(counter);
                                         setToLeft(10)
                                         setFinish(false)
-                                    }}>確認送出<i class="fas fa-arrow-right"></i></div>
-                    <div className="mc_help">
+                                    }}>確認送出<i className="fas fa-arrow-right"></i></div>
+                    <div className="mc_help" onClick={()=>{setHelp(true)}}>
                         <i className="fas fa-question"></i>
                     </div>
                 </div>
