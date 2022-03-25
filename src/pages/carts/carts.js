@@ -1,23 +1,9 @@
-import React, { useState } from "react";
 import "./carts.scss";
 import Process01 from "./components/Process_01";
 import Checkarea from "./components/Checkarea";
 import CartProductItem from "./components/CartProductItem";
 
 function Carts(props) {
-  const [amount, setAmount] = useState(0);
-  const { productsInOrder, setProductsInOrder, setCartscount } = props;
-  const total = () => {
-    let sum = 0;
-    let count = 0;
-    for (let i = 0; i < productsInOrder.length; i++) {
-      sum += productsInOrder[i].quantity * productsInOrder[i].price;
-      count += productsInOrder[i].quantity;
-    }
-    setCartscount(count);
-    return sum;
-  };
-
   return (
     <>
       <div className="stan_carts_main_ec">
@@ -45,24 +31,7 @@ function Carts(props) {
               </ul>
               <div className="stan_blackhr"></div>
             </div>
-
-            {productsInOrder.map((v, i) => {
-              return (
-                <CartProductItem
-                  key={v.sid}
-                  image={v.image}
-                  name={v.name}
-                  price={v.price}
-                  quantity={v.quantity}
-                  setQuantity={(newCount) => {
-                    const newProInOrder = [...productsInOrder];
-                    newProInOrder[i].quantity = newCount < 1 ? 1 : newCount;
-                    setProductsInOrder(newProInOrder);
-                  }}
-                />
-              );
-            })}
-
+            <CartProductItem />
             {/* <CartLive /> */}
             <div className="stan_product_total">
               <ul>
@@ -71,7 +40,7 @@ function Carts(props) {
             </div>
           </div>
           <div className="stan_block"></div>
-          <Checkarea amount={total()} setAmount={setAmount} />
+          <Checkarea />
         </div>
       </div>
       <div className="stan_footerbgc"></div>
