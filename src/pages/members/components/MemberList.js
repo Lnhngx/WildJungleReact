@@ -10,6 +10,8 @@ import MemberNavItem from './MemberNavItem'
 function MemberList(props){
   const {auth,account,token}=props
 
+  const sid=JSON.parse(localStorage.getItem('admin_account'))
+
   const memberlist=['會員資料','訂單資訊','折價優惠','喜愛收藏']
 
   const navItem=['基本設定','分級資訊','信用卡管理','常用資訊']
@@ -27,7 +29,7 @@ function MemberList(props){
   const [sidData,setSidData]=useState({})
   useEffect(()=>{
     const getSidData=async ()=>{
-      await fetch(Config.TYSU_MEMBER_INFO+`${account.m_sid}`,{
+      await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
         method:'GET',
         headers: {
           'Content-Type': 'application/json'
