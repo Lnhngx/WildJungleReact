@@ -1,8 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 
-
-
 function DetailPicture(props) {
   const pic = props.pic;
   const location = useLocation();
@@ -13,7 +11,10 @@ function DetailPicture(props) {
     <>
       {Array.from({ length: pictrueArray.length }, (v, i) => (
         <li key={i} className="alan_detailimg">
-          <img src={require(`./../../../../public/img/product/${pictrueArray[i].PicName}`)} alt="" />
+          <img
+            src={require(`./../../../../public/img/product/${pictrueArray[i].PicName}`)}
+            alt=""
+          />
         </li>
       ))}
     </>
