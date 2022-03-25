@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-// import ScoreRangbox from "./ScoreRangbox";
 import CommentList from "./CommentList";
 const Range = Slider;
 
@@ -53,8 +52,6 @@ const LodgingComment = (props) => {
 
   useEffect(() => {
     getData();
-    // setComments(data);
-    // setDisplayComments(data);
   }, []);
 
   useEffect(() => {
@@ -69,7 +66,7 @@ const LodgingComment = (props) => {
   const [dateRange, setDateRange] = useState(0);
   //const dateRangeTypes = ["住宿期間", "近半個月", "近半年", "近一年"];
 
-  // const [sortRange, setSortRange] = useState("排序依據");
+  const [sortRange, setSortRange] = useState(0);
   // const sortRangeTypes = ["最高分至最低分", "最低分至最高分"];
 
   //表單元素的處理方法
@@ -95,24 +92,20 @@ const LodgingComment = (props) => {
     );
   };
 
-
   const handleScoreRange = (comments, scoreRange) => {
     let newComments = [...comments];
 
     // 處理成績區間選項
 
     if (scoreRange === "1") {
-    
       newComments = [...newComments].filter((c) => checkRangeValue(c, 9, 10));
     }
 
     if (scoreRange === "2") {
-      
       newComments = [...newComments].filter((c) => checkRangeValue(c, 6, 8));
     }
 
     if (scoreRange === "3") {
-     
       newComments = [...newComments].filter((c) => checkRangeValue(c, 3, 5));
     }
 
@@ -120,34 +113,91 @@ const LodgingComment = (props) => {
       newComments = [...newComments].filter((c) => checkRangeValue(c, 0, 2));
     }
 
-    
+    return newComments;
+  };
+
+  const handleDateRange = (comments, dateRange) => {
+    let newComments = [...comments];
+
+    // 處理日期區間選項
+
+    if (dateRange === "1") {
+      newComments = [...comments].filter(
+        (c) => Math.abs(new Date() - new Date(c.start)) <= 90 * 1000 * 3600 * 24
+      );
+    }
+
+    if (dateRange === "2") {
+      newComments = [...comments].filter(
+        (c) =>
+          Math.abs(new Date() - new Date(c.start)) <= 180 * 1000 * 3600 * 24
+      );
+    }
+
+    if (dateRange === "3") {
+      newComments = [...comments].filter(
+        (c) =>
+          Math.abs(new Date() - new Date(c.start)) <= 365 * 1000 * 3600 * 24
+      );
+    }
 
     return newComments;
   };
 
-  // const handleDateRange = (comments, dateRange) => {
-  //   let newComments = [...comments];
+  const handleSortRange = (comments, sortRange) => {
+    let newComments = [...comments];
 
-  //   // 處理日期區間選項
+    if (sortRange === "1") {
+      newComments = [...comments].sort((a, b) => Math.ceil(
+        (b.service_score +
+          b.clean_score +
+          b.comfort_score +
+          b.facility_score +
+          b.cpValue_score) /
+          5
+      ) - Math.ceil(
+        (a.service_score +
+          a.clean_score +
+          a.comfort_score +
+          a.facility_score +
+          a.cpValue_score) /
+          5
+      ))
+    }
 
-  //   if (dateRange === "1"){
-  //     newComments = [...comments].filter((c)=>
-      
-  //     if(c.start)
-      
-  //     )
+    if (sortRange === "2") {
+      newComments = [...comments].sort((a, b) => Math.ceil(
+        (a.service_score +
+          a.clean_score +
+          a.comfort_score +
+          a.facility_score +
+          a.cpValue_score) /
+          5
+      ) - Math.ceil(
+        (b.service_score +
+          b.clean_score +
+          b.comfort_score +
+          b.facility_score +
+          b.cpValue_score) /
+          5
+      ))
+    }
 
-  //   }    
-  // };
+    return newComments;
+  };
 
   useEffect(() => {
     let newComments = [...comments];
 
-    // 處理價格區間選項
+    // 處理分數區間選項
     newComments = handleScoreRange(newComments, scoreRange);
 
+    newComments = handleDateRange(newComments, dateRange);
+
+    newComments = handleSortRange(newComments, sortRange);
+
     setDisplayComments(newComments);
-  }, [scoreRange, comments]);
+  }, [scoreRange, comments, dateRange , sortRange]);
 
   return (
     <>
@@ -227,7 +277,6 @@ const LodgingComment = (props) => {
         <div className="commentline"></div>
         <div className="commentfilter">篩選條件</div>
         <div className="commentfilterbox">
-          {/* <ScoreRangbox scoreRange={scoreRange} setScoreRange={setScoreRange} /> */}
           <select
             className="selectScore"
             value={scoreRange}
@@ -249,10 +298,14 @@ const LodgingComment = (props) => {
             <option value="2">近半年</option>
             <option value="3">近一年</option>
           </select>
-          <select className="selectSort">
-            <option>排序依據</option>
-            <option>高分到低分</option>
-            <option>低分到高分</option>
+          <select
+            className="selectSort"
+            value={sortRange}
+            onChange={(e) => setSortRange(e.target.value)}
+          >
+            <option value="0">排序依據</option>
+            <option value="1">高分到低分</option>
+            <option value="2">低分到高分</option>
           </select>
         </div>
         <div className="commentline"></div>

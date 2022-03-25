@@ -65,12 +65,11 @@ $ning-englishont: "Playfair Display", serif;
     position: absolute;
   }
   .lodging_oceanimgwrap {
-    width: 24%;
+   
     left: 7%;
     bottom: 5%;
     position: absolute;
     display: flex;
-    justify-content: space-between;
   }
 
   .lodging_oceanimg1 {
@@ -80,6 +79,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 2 #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-right: 20px;
   }
 
   .lodging_oceanimg1 img {
@@ -94,6 +94,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 2 #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-right: 20px;
   }
 
   .lodging_oceanimg2 img {
@@ -443,12 +444,10 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .lodging_iceimgwrap {
-    width: 24%;
     right: 7%;
     bottom: 5%;
     position: absolute;
     display: flex;
-    justify-content: space-between;
   }
 
   .lodging_iceimg1 {
@@ -472,6 +471,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 2 #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-left: 20px;
   }
 
   .lodging_iceimg2 img {
@@ -486,6 +486,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 10px #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-left: 20px;
   }
 
   .lodging_iceimg3 img {
@@ -814,12 +815,10 @@ $ning-englishont: "Playfair Display", serif;
     position: absolute;
   }
   .lodging_nocturnalimgwrap {
-    width: 24%;
     left: 7%;
     bottom: 5%;
     position: absolute;
     display: flex;
-    justify-content: space-between;
   }
 
   .lodging_nocturnalimg1 {
@@ -829,6 +828,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 2 #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-right: 20px;
   }
 
   .lodging_nocturnalimg1 img {
@@ -843,6 +843,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 2 #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-right: 20px;
   }
 
   .lodging_nocturnalimg2 img {
@@ -1164,12 +1165,10 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .lodging_tropicalimgwrap {
-    width: 24%;
     right: 7%;
     bottom: 5%;
     position: absolute;
     display: flex;
-    justify-content: space-between;
   }
 
   .lodging_tropicalimg1 {
@@ -1179,6 +1178,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 2 #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    
   }
 
   .lodging_tropicalimg1 img {
@@ -1193,6 +1193,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 2 #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-left: 20px;
   }
 
   .lodging_tropicalimg2 img {
@@ -1207,6 +1208,7 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 10px #0000007b;
     border: 2px solid $ning-color3;
     cursor: pointer;
+    margin-left: 20px;
   }
 
   .lodging_tropicalimg3 img {
