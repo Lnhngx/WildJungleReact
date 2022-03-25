@@ -329,6 +329,28 @@
     bottom: 80px;
     cursor: pointer;
 }
+.mc_video{
+    width: 100%;
+    height: 800px;
+    background-color: rgba(0, 0, 0, 0.808);
+    position: absolute;
+    z-index: 999;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mcVideo_closeBtn{
+    position: absolute;
+    right: 10%;
+    top: 4rem;
+    cursor: pointer;
+    z-index: 1000;
+}
+.mcVideo_closeBtn .fas.fa-times{
+    font-size: 3.5rem;
+    color: white;
+}
 .animals-footer{
     width: 100%; 
 }
