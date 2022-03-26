@@ -473,6 +473,7 @@ function SpotDiff(){
                                 <Link
                                     className="win_btn" 
                                     to= '/game'
+                                    onClick={()=>{localStorage.setItem('level',1)}}
                                 >
                                     <p>回遊戲主頁</p>
                                     <img src="/img/game/game_button.png" alt="" />
@@ -480,6 +481,7 @@ function SpotDiff(){
                                 <Link
                                     className="win_btn"
                                     to= '/products' 
+                                    onClick={()=>{localStorage.setItem('level',1)}}
                                 >
                                     <p>點數馬上用</p>
                                     <img src="/img/game/game_button.png" alt="" />

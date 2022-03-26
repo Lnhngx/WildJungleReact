@@ -28,27 +28,26 @@ function SpotLevel(){
             <div className="container_level">
                 <div className="choose_levelTitle">選擇關卡</div>
                 <div className="wrap_level">
-                    <Link
-                        className="" 
-                        to= '/game/spot-diff'
-                    >
+                    <Link to= '/game/spot-diff'>
                         <div className="level_hexagon">
                             <div className="level_circle">1</div>
                         </div>            
                     </Link>
-                    <Link
-                        className="" 
-                        to= '/game/spot-diff2'
-                    >
+                    {/* 除了第一題，其他都是破完上一題才能完下一題 */}
+                    <Link to= '/game/spot-diff2' onClick={(e)=>{
+                        if(localStorage.getItem('level')<1){
+                            e.preventDefault();
+                        }
+                    }}>
                         <div className="level_hexagon">
-                            <div className="level_circle">2</div>
+                            <div className="level_circle" style={{background:localStorage.getItem('level')>=1?"rgb(233, 226, 131)":"gray",cursor:localStorage.getItem('level')>=1?"pointer":"not-allowed"}}>2</div>
                         </div>            
                     </Link>
                     <div className="level_hexagon">
-                        <div className="level_circle">3</div>
+                        <div className="level_circle" style={{background:localStorage.getItem('level')>=2?"rgb(233, 226, 131)":"gray",cursor:localStorage.getItem('level')>=2?"pointer":"not-allowed"}}>3</div>
                     </div>
                     <div className="level_hexagon">
-                        <div className="level_circle">4</div>
+                        <div className="level_circle" style={{background:localStorage.getItem('level')>=3?"rgb(233, 226, 131)":"gray",cursor:localStorage.getItem('level')>=3?"pointer":"not-allowed"}}>4</div>
                     </div>
                 </div>    
             </div>

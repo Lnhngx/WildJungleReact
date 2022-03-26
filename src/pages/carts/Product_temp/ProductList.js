@@ -68,6 +68,7 @@ function ProductList(props) {
                   const item = { ...v, quantity: 1 }
                   // 注意: 重覆加入會自動+1產品數量
                   addItem(item)
+                  console.log(item)
                   // 呈現跳出對話盒
                   showModal(v.name)
                 }}

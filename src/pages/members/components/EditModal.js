@@ -6,7 +6,7 @@ import Config from "../Config";
 
 function EditModal(props){
 // const [close, setClose] = useState(false);
-const {editModalShow,setEditModalShow,editModalText}=props;
+const {editModalShow,setEditModalShow,editModalText,forgotModalText}=props;
 
 // const [mDataProps,setMDataProps]=useState({})
 // useEffect(()=>{
@@ -33,13 +33,13 @@ const {editModalShow,setEditModalShow,editModalText}=props;
           <Modal.Title></Modal.Title>
           <button type="button" className="tysu_modalBtn" onClick={handleClose}><i className="fas fa-times"></i></button>
         </Modal.Header> */}
-        <Modal.Body className="tysu_editModal">{editModalText}</Modal.Body>
+        <Modal.Body className="tysu_editModal">{editModalText}{forgotModalText}</Modal.Body>
         <Modal.Footer className="tysu_editModalFooter">
-          <Button className="tysu_editModalBtn">
+          {/* <Button className="tysu_editModalBtn">
             確定
-          </Button>
+          </Button> */}
           <Button  className="tysu_editModalBtn" onClick={handleClose}>
-            取消
+            OK
           </Button>
         </Modal.Footer>
       </Modal>
