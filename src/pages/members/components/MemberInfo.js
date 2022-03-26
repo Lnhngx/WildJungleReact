@@ -20,10 +20,10 @@ function MemberInfo(props){
       setmData(sidData);
       setNewData({...newData,
         email:sidData.email,
-        name:sidData['m_name'],
+        name:sidData.m_name,
         gender:sidData.gender,
         birthday:sidData.birthday.split('T')[0],
-        address:sidData['m_address']})
+        address:sidData.m_address})
     }
   },[sidData]);
 
@@ -33,8 +33,8 @@ function MemberInfo(props){
     const value=e.target.value;
     const type=e.target.type;
     
-    let newValue=value;
-    const updateFields={...mData,[name]:newValue}
+    // let newValue=value;
+    const updateFields={...newData,[name]:value}
     setNewData(updateFields)
   };
   // 生日格式僅保留為yyyy-MM-dd
@@ -57,7 +57,7 @@ function MemberInfo(props){
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        // "token":localStorage.getItem('admin_token'),
+
         "email":mData.email,
         "name":newData.name,
         "gender":newData.gender,
@@ -93,8 +93,7 @@ function MemberInfo(props){
               <label htmlFor="tysu_name">姓名<br /><span className="tysu_titleSpan">Name</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_name" className="tysu_input" name="name"
-              defaultValue={mData.m_name}
+            <input type="text" id="tysu_name" className="tysu_input" name="name" defaultValue={newData.name} 
               onChange={handleFieldChange}/>
               <div id="nameHelp"></div>
             </td>
@@ -125,23 +124,23 @@ function MemberInfo(props){
           </tr>
           <tr className="tysu_tr">
             <th>
-              <label htmlFor="tysu_adress">密碼<br />
+              <label htmlFor="tysu_pass">密碼<br />
                 <span className="tysu_titleSpan">Password</span></label>
             </th>
             <td>
               <input type="text" id="tysu_pass" className="tysu_input" name="password" placeholder="如未填寫，維持原先密碼" defaultValue={''} onChange={handleFieldChange} />
-              <div id="tysu_adressHelp"></div>
+              <div id="tysu_passHelp"></div>
             </td>
           </tr>
           <tr className="tysu_tr tysu_last">
             <th>
-              <label htmlFor="tysu_adress">聯絡地址<br />
+              <label htmlFor="tysu_address">聯絡地址<br />
                 <span className="tysu_titleSpan">Address</span></label>
             </th>
             <td>
-              <input type="text" id="tysu_address" className="tysu_input" name="address" defaultValue={mData.m_address}
+            <input type="text" id="tysu_address" className="tysu_input" name="address" defaultValue={newData.address}
               onChange={handleFieldChange}/>
-              <div id="tysu_adressHelp"></div>
+              <div id="tysu_addressHelp"></div>
             </td>
           </tr>
           <tr>
@@ -197,9 +196,9 @@ function MemberInfo(props){
           <tr className="tysu_tr tysu_last">
             <th></th>
             <td>
-              <label htmlFor="tysu_adress">聯絡地址 Adress</label>
-              <input type="text" id="tysu_adress" className="tysu_input" />
-              <div id="tysu_adressHelp"></div>
+              <label htmlFor="tysu_address">聯絡地址 Address</label>
+              <input type="text" id="tysu_address" className="tysu_input" />
+              <div id="tysu_addressHelp"></div>
             </td>
           </tr>
           <tr>
