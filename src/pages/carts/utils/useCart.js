@@ -65,14 +65,14 @@ export const CartProvider = ({
 
   /**
    * 給定一id值，將這商品移出陣列中
-   * @param {string} id
+   * @param {string} sid
    * @returns {void}
    */
-  const removeItem = (id) => {
+  const removeItem = (sid) => {
     dispatch({
       type: 'REMOVE_ITEM',
       payload: {
-        id,
+        sid,
       },
     })
   }
@@ -101,37 +101,37 @@ export const CartProvider = ({
 
   /**
    * 給定一id值，回傳是否存在於購物車中
-   * @param {string} id
+   * @param {string} sid
    * @returns {boolean}
    */
-  const isInCart = (id) => {
-    return state.items.some((item) => item.id === id)
+  const isInCart = (sid) => {
+    return state.items.some((item) => item.sid === sid)
   }
 
   /**
    * 給定一id值，有尋找到商品時，設定quantity: quantity + 1
-   * @param {string} id
+   * @param {string} sid
    * @returns {void}
    */
-  const plusOne = (id) => {
+  const plusOne = (sid) => {
     return dispatch({
       type: 'PLUS_ONE',
       payload: {
-        id,
+        sid,
       },
     })
   }
 
   /**
    * 給定一id值，有尋找到商品時，設定quantity: quantity - 1，但 quantity 最小值為1
-   * @param {string} id
+   * @param {string} sid
    * @returns {void}
    */
-  const minusOne = (id) => {
+  const minusOne = (sid) => {
     return dispatch({
       type: 'MINUS_ONE',
       payload: {
-        id,
+        sid,
       },
     })
   }
