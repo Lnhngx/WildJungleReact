@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link,Redirect,useHistory  } from 'react-router-dom'
 import Config from "../Config"
 
 import MemberNavItem from './MemberNavItem'
@@ -9,6 +9,7 @@ import MemberNavItem from './MemberNavItem'
 
 function MemberList(props){
   const {auth,account,token}=props
+  // const history=useHistory();
 
   const sid=JSON.parse(localStorage.getItem('admin_account'))
 
@@ -55,35 +56,38 @@ function MemberList(props){
 
   
 
+  // if (auth){
+  //   // return (<Redirect to='/login'  />)
+  //   history.push('/login')
+  // }else{
 
-
-  return(
-    
-    <div className="tysu_grade">
-        <div className="tysu_gradeImg">
-          <img src="/img/member/v.png" alt="" />
+    return(
+      <div className="tysu_grade">
+          <div className="tysu_gradeImg">
+            <img src="/img/member/v.png" alt="" />
+          </div>
+        <div className="tysu_row">
+            <ul className="tysu_memberList">
+              {/* 點選memberList要設定回原狀態 */}
+              {memberlist.map((v,i)=>{
+                return <li key={i} onClick={(e)=>{
+                  setActived(v)
+                  setNavState({navItem:navItem[0],orderNavItem:orderNavItem[0],discountNavItem:discountNavItem[0],likeNavItem:likeNavItem[0]})
+                }} className={actived===v ?'active':''}><Link to="#/"  className="tysu_link">{v}</Link></li>
+              })}
+            </ul>
+          <MemberNavItem memberlist={memberlist} navItem={navItem}  orderNavItem={orderNavItem} actived={actived} discountNavItem={discountNavItem} likeNavItem={likeNavItem} 
+            setNavState={setNavState}
+            navState={navState}
+            sidData={sidData}
+          />
+          <div className="tysu_memberBg">
+            <img src="./../img/member/leaf_y.svg" alt="" />
+          </div>
+          
         </div>
-      <div className="tysu_row">
-          <ul className="tysu_memberList">
-            {/* 點選memberList要設定回原狀態 */}
-            {memberlist.map((v,i)=>{
-              return <li key={i} onClick={(e)=>{
-                setActived(v)
-                setNavState({navItem:navItem[0],orderNavItem:orderNavItem[0],discountNavItem:discountNavItem[0],likeNavItem:likeNavItem[0]})
-              }} className={actived===v ?'active':''}><Link to="#/"  className="tysu_link">{v}</Link></li>
-            })}
-          </ul>
-        <MemberNavItem memberlist={memberlist} navItem={navItem}  orderNavItem={orderNavItem} actived={actived} discountNavItem={discountNavItem} likeNavItem={likeNavItem} 
-          setNavState={setNavState}
-          navState={navState}
-          sidData={sidData}
-        />
-        <div className="tysu_memberBg">
-          <img src="./../img/member/leaf_y.svg" alt="" />
-        </div>
-        
       </div>
-    </div>
-  )
+    )
+  // }
 }
 export default MemberList

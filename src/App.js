@@ -29,9 +29,9 @@ import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
 import MultiChoice from "./pages/game/multiChoice-game.js";
 // import Members from "./pages/members/members";
-import MemberLogin from "./pages/members/MemberLogin.js";
+import Login from "./pages/members/components/Login.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
-import MemberForgotPass from "./pages/members/MemberForgotPass";
+import ForgotPass from "./pages/members/components/ForgotPass";
 import MemberPassChange from "./pages/members/MemberPassChange";
 import MemberList from "./pages/members/components/MemberList";
 import Carts from "./pages/carts/carts";
@@ -50,8 +50,10 @@ function App() {
 
   // 是否登入
   const [auth, setAuth] = useState(false);
+  
   const account = JSON.parse(localStorage.getItem("admin_account"));
   const token = !!localStorage.getItem("admin_token");
+  const [localState,setLocalState]=useState({"account":account,"token":token});
   // console.log('3:',auth===true)
   useEffect(() => {
     if (account && token) {
@@ -135,20 +137,20 @@ function App() {
                 <MemberSignUp />
               </Route>
               <Route exact path="/members/login">
-                <MemberLogin auth={auth} setAuth={setAuth} />
+                <Login auth={auth} setAuth={setAuth} />
               </Route>
               <Route path="/members/forgot">
-                <MemberForgotPass />
+                <ForgotPass />
               </Route>
               <Route path="/members/password-change">
                 <MemberPassChange />
               </Route>
               <Route exact path="/members/modify-member-info">
-                {/* {!!account && token ? <MemberList account={account} token={token} /> : <Redirect to="/members" /> } */}
-                <MemberList account={account} token={token} />
+                {localState.token ? <MemberList account={localState.account} token={localState.token} /> : <Redirect to="/members" /> }
+                {/* <MemberList account={account} token={token} /> */}
               </Route>
               <Route path="/members">
-                <MemberLogin setAuth={setAuth} />
+                <Login setAuth={setAuth} setLocalState={setLocalState}/>
               </Route>
               <Route path="/lodging">
                 <Lodging />

@@ -5,12 +5,14 @@ import {
   GoogleReCaptcha
 } from "react-google-recaptcha-v3";
 
+// import './members/tysu.scss'
+// import './members/members.css'
 import MemberModal from './MemberModal';
 import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(props){
-  const {auth,setAuth,account}=props
+  const {auth,setAuth,account,setLocalState}=props
   const history=useHistory();
 
 
@@ -82,7 +84,7 @@ function Login(props){
         localStorage.setItem('admin_token',obj.token);
         
         // 傳回頂層登入與否的狀態
-        
+        setLocalState({"token":true});
         setSuccess('登入成功')
         handleShow();
         setTimeout(() => setShow(false), 1000);
@@ -102,53 +104,55 @@ function Login(props){
   }
   
     return(<>
-    <h1 className="tysu_h1">LOGIN</h1>
-    <GoogleReCaptchaProvider reCaptchaKey={Keys.RECAPTCHA_KEY}>
-    <form name="form1" id="tysu_form">
-      <table>
-        <tbody>
-          <tr className="tysu_tr">
-            <th>
-              <label htmlFor="tysu_email">帳號 / 電子郵件<br />
-                <span className="tysu_titleSpan">Email</span></label>
-            </th>
-            <td>
-              <input type="email" id="tysu_email" className="tysu_input" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-              <div id="emailHelp"></div>
-            </td>
-          </tr>
+    <div className="tysu_contain">
+      <h1 className="tysu_h1">LOGIN</h1>
+      <GoogleReCaptchaProvider reCaptchaKey={Keys.RECAPTCHA_KEY}>
+      <form name="form1" id="tysu_form">
+        <table>
+          <tbody>
+            <tr className="tysu_tr">
+              <th>
+                <label htmlFor="tysu_email">帳號 / 電子郵件<br />
+                  <span className="tysu_titleSpan">Email</span></label>
+              </th>
+              <td>
+                <input type="email" id="tysu_email" className="tysu_input" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                <div id="emailHelp"></div>
+              </td>
+            </tr>
 
-          <tr className="tysu_tr tysu_last">
-            <th>
-              <label htmlFor="tysu_pass">密碼<br /><span className="tysu_titleSpan">Password</span></label>
-            </th>
-            <td>
-              <input type="text" id="tysu_pass" className="tysu_input" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-              <div id="tysu_passHelp"></div>
-            </td>
-          </tr>
-          <tr>
-            <th></th>
-            <td>
-              <div className="tysu_logHelp">
-                <button id="submit" className="tysu_btn_sign" onClick={handleOnClick}>登 入</button>
-                <div className="tysu_help">
-                  <Link to="signup" className="tysu_signText">
-                    <i className="fas fa-user-plus"></i>SIGN UP</Link>
-                  <Link to="forgot" className="tysu_helpText">
-                    <i className="fas fa-question"></i>HELP</Link>
-                    <MemberModal show={show} setShow={setShow} success={success} />
+            <tr className="tysu_tr tysu_last">
+              <th>
+                <label htmlFor="tysu_pass">密碼<br /><span className="tysu_titleSpan">Password</span></label>
+              </th>
+              <td>
+                <input type="text" id="tysu_pass" className="tysu_input" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+                <div id="tysu_passHelp"></div>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div className="tysu_logHelp">
+                  <button id="submit" className="tysu_btn_sign" onClick={handleOnClick}>登 入</button>
+                  <div className="tysu_help">
+                    <Link to="signup" className="tysu_signText">
+                      <i className="fas fa-user-plus"></i>SIGN UP</Link>
+                    <Link to="forgot" className="tysu_helpText">
+                      <i className="fas fa-question"></i>HELP</Link>
+                      <MemberModal show={show} setShow={setShow} success={success} />
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
-      <div className="tysu_loginBg">
-          <img src="./../img/member/leaf_g.svg" alt="" />
-      </div>
-    </GoogleReCaptchaProvider>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+        <div className="tysu_loginBg">
+            <img src="./../img/member/leaf_g.svg" alt="" />
+        </div>
+      </GoogleReCaptchaProvider>
+    </div>
     </>)
 }
 export default Login
