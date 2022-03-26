@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "./activity.scss";
 import { animateScroll as scroll, scroller } from 'react-scroll';
-// import Carousel from 'react-bootstrap/Carousel';
+import Carousel from 'react-bootstrap/Carousel';
 
 // sponsor-card
 let datas2 = [{
@@ -98,7 +98,7 @@ let datas3 = [{
 function Activity() {
     const seatsW = 8;
     const seatsH = 8;
-    const [cardChange, setCardChange] = useState(0)
+
 
     let datas = [];
     for (let i = 0; i < seatsW; i++) {
@@ -118,17 +118,30 @@ function Activity() {
                         //數字轉字母
                         const p = String.fromCharCode(65 + i);
                         const ps = { ...positions };
+                        const psed = { ...clickedPosition };
 
                         if (ps[p]) {
                             delete ps[p];
                             setPositions(ps);
-                        } else {
-                            setPositions({ ...ps, [p]: (j + 1) })
-                        };
-                        // alert(i + ' ' + j); 
+                            console.log("\\芋頭加持/給我跳出來啊!!!!!")
 
-                        // setState3(!state3);
-                    }} className="seats" src="/img/activity/chair.svg" alt="" />
+                            //className點擊
+                            if(!psed[i].findIndex((e)=>e===j)){
+                                console.log("\\E神加持/ 求你跳出來了.......")
+                                psed[i].splice(psed[i].findIndex((e)=>e===j),1);
+                                setClickedPosition({ ...psed });
+                            }
+                        } else {
+                            setPositions({ ...ps, [p]: (j + 1) });
+
+                            //className點擊
+                            if (!psed[i]) {
+                                psed[i] = [];
+                                psed[i].push(j);
+                                setClickedPosition({ ...psed })
+                            }
+                        };
+                    }} className={(clickedPosition[i] && clickedPosition[i].length > 0 && clickedPosition[i].some((n) => n === j)) ? "seatsClick" : "seats"} src="/img/activity/chair.svg" alt="" />
                 ))}
             </div>
         ));
@@ -142,8 +155,9 @@ function Activity() {
                 <div className={v.className3}>
                     <div className={v.className4}>{v.id}</div>
                     <div className={v.className5}>{v.text}</div>
-                    <button key={i} onClick={() => { setCardChange(i)
-                        console.log(i) }}>{v.buttonText}</button>
+                    <button key={i} onClick={() => {
+                        setCardChange(i); setState4(!state4); setState3(!state3); scrollToSection3();
+                    }}>{v.buttonText}</button>
                 </div>
             </div>
         ));
@@ -151,7 +165,7 @@ function Activity() {
 
 
     const renderStaraAnimal = () => {
-        return datas3.filter((v,i) => i === cardChange).map((v, i) => (
+        return datas3.filter((v, i) => i === cardChange).map((v, i) => (
             <div key={i} onClick={() => { console.log(i) }} className={v.className}>
                 <div className="demoArea">
                     <div className="imgBorder">
@@ -173,7 +187,7 @@ function Activity() {
                         </div>
                         <div className="buttonGrop2">
                             <button>加入購物車</button>
-                            <button>回上一步</button>
+                            <button onClick={() => { setState3(!state3); setState4(true); scrollToSection4() }}>回上一步</button>
                         </div>
                     </div>
                 </div>
@@ -182,24 +196,58 @@ function Activity() {
     };
 
 
-    //area收合
+    //01area收合
     const [state, setState] = useState(false);
     const [state2, setState2] = useState(true);
+    //02area收合
+    const [state3, setState3] = useState(false);
+    const [state4, setState4] = useState(true);
+    //03area收合
+    const [state5, setState5] = useState(false);
 
     //booking區變換
     const [imgChange, setImgChange] = useState("terry_showIntroduction_img");
     const [showTitleChange, setShowTitleChange] = useState("鯨豚表演秀");
-    const [showTextChange, setShowTextChange] = useState("各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～")
+    const [showTextChange, setShowTextChange] = useState("各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～");
+    const [locationChange, setLocationChange] = useState("冰原A區")
+    const [cardChange, setCardChange] = useState(0);
 
     //位置點擊
-    const [positions, setPositions] = useState({})
+    const [positions, setPositions] = useState({});
+    const [clickedPosition, setClickedPosition] = useState({});
+    const [seatClick, setSeatClick] = useState(false);
 
-    const scrollToSection = () => {
-        scroller.scrollTo("terry_showIntroduction_textArea", {
+    //scrollTo
+    const scrollToSection1 = () => {
+        scroller.scrollTo("terry_showIntroduction_img", {
+            duration: 1000,
+            delay: 200,
+            smooth: "easeInOutQuart",
+            offset: 750,
+        });
+    };
+    const scrollToSection2 = () => {
+        scroller.scrollTo("cardbg", {
+            duration: 1000,
+            delay: 200,
+            smooth: "easeInOutQuart",
+            offset: 800,
+        });
+    };
+    const scrollToSection3 = () => {
+        scroller.scrollTo("terry_sponsor_planSelectionArea", {
             duration: 800,
             delay: 100,
             smooth: "easeInOutQuart",
-            offset: 740,
+            offset: -130,
+        });
+    };
+    const scrollToSection4 = () => {
+        scroller.scrollTo("cardbg", {
+            duration: 800,
+            delay: 100,
+            smooth: "easeInOutQuart",
+            offset: 0,
         });
     };
 
@@ -223,7 +271,7 @@ function Activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物表演秀</div>
                             </div>
-                            <div className="terry_show_viewmore" onClick={() => { setState(!state); setState2(true); if (!state) { scrollToSection() } }} >View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState(!state); setState2(true); if (!state) { scrollToSection1() } }} >View More</div>
                         </div>
                         <div className="terry_show_area_img"></div>
                     </div>
@@ -235,7 +283,7 @@ function Activity() {
                             <div className="showTitle">{showTitleChange}</div>
                             <div className="showIntroduction">{showTextChange}</div>
                             <div className="showLocation"></div>
-                            <div className="showLocation_text">河畔Ａ區</div>
+                            <div className="showLocation_text">{locationChange}</div>
                             <div className="showNotice"></div>
                             <div className="showNotice_text">
                                 1.本系統訂票成功時，每張票皆須收20元手續費。<br></br>
@@ -250,24 +298,32 @@ function Activity() {
                                             ("鯨豚表演秀");
                                         setShowTextChange
                                             ("各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～");
+                                        setLocationChange
+                                            ("冰原A區");
                                     } if (e.target.value === '2') {
                                         setImgChange("terry_showIntroduction_img2");
                                         setShowTitleChange
                                             ("鱷魚餵食秀");
                                         setShowTextChange
                                             ("鱷魚們不時地探出頭來迎接大家，張開嘴的牠們不是為了嚇唬大家，是因為他沒有汗腺只能透過張嘴進行散熱。看了我們飼育員與鱷魚的互動，只會發現鱷魚根本只是住在沼澤的貓貓～搞不好回家還會吵著爸媽要養鱷魚當寵物呢！更多的互動都在表演秀裡頭！");
+                                        setLocationChange
+                                            ("熱帶B區");
                                     } if (e.target.value === '3') {
                                         setImgChange("terry_showIntroduction_img3");
                                         setShowTitleChange
                                             ("熊貓吃播秀");
                                         setShowTextChange
                                             ("吃播是一種線上的直播模式，主要是在與觀眾互動的同時吃掉大量食物，約2010年時流行於韓國。一般通過網路廣播，如：Afreeca TV、YouTube、Twitch等串流媒體平台。動物園重金聘請動物界人氣最高的熊貓來與大家互動！來看看牠如何把食物吃得如此津津有味！更多的內容都在表演秀裡面～快來參加～～～");
+                                        setLocationChange
+                                            ("夜行C區");
                                     } if (e.target.value === '4') {
                                         setImgChange("terry_showIntroduction_img4");
                                         setShowTitleChange
                                             ("萌豹睡覺秀");
                                         setShowTextChange
                                             ("你知道嗎？如果一天睡八個小時，在你99歲的時候，你已經花了33年在睡覺了！有時候看別人吃東西會覺得好像比較好吃～睡覺也是一樣的道理喔！沒錯！本表演秀就是單純看平常帥氣鋒利的豹，用超可愛超萌的樣子睡覺！有趣吧！我覺得很有趣！來就對了！哈！");
+                                        setLocationChange
+                                            ("海底D區");
                                     };
 
                                     console.log(e.target.value)
@@ -325,15 +381,16 @@ function Activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物認養</div>
                             </div>
-                            <div className="terry_show_viewmore">View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState3(!state3); setState4(true); if (!state3) { scrollToSection2() } }} >View More</div>
                         </div>
                         <div className="terry_show_area_img1"></div>
                     </div>
-                    <div className="terry_sponsor_cardsArea">
+                    <div className={state3 ? "terry_sponsor_cardsArea" : "areaDisplayNone"}>
                         {renderCards()}
                     </div>
-
-                    {renderStaraAnimal()}
+                    <div className={state4 ? "areaDisplayNone" : "terry_sponsor_planSelectionArea"}>
+                        {renderStaraAnimal()}
+                    </div>
                     {/* <div className="terry_sponsor_planSelectionArea">
                         <div className="demoArea">
                             <div className="imgBorder">
@@ -374,14 +431,14 @@ function Activity() {
                                 </div>
                                 <div className="terry_show_subtitle">動物接觸</div>
                             </div>
-                            <div className="terry_show_viewmore" onClick={() => { setState(!state); if (!state) { scroll.scrollTo(8350) } }}>View More</div>
+                            <div className="terry_show_viewmore" onClick={() => { setState5(!state5) }}>View More</div>
                         </div>
                         <div className="terry_show_area_img2">
                             <div className="terry_touchAreaImg"></div>
                         </div>
                     </div>
 
-                    <div className={state ? "terry_touch_imgArea" : "areaDisplayNone"}>
+                    {/* <div className={state5 ? "terry_touch_imgArea" : "areaDisplayNone"}>
                         <div className="imgAndNameGrop">
                             <div className="terry_touchshow1"></div>
                             <div className="name">海狗互動秀</div>
@@ -390,6 +447,84 @@ function Activity() {
                             <div className="terry_touchshow2"></div>
                             <div className="name">萌兔餵食體驗</div>
                         </div>
+                    </div> */}
+
+                    <div className={state5 ? "terry_carousel_area" : "areaDisplayNone"}>
+                        <Carousel>
+                            <Carousel.Item>
+                                <img
+                                    className="terry_touchshow d-block w-100"
+                                    src="/img/activity/touchshow2.jpg"
+                                    alt=""
+                                />
+                                <Carousel.Caption>
+                                    <div className="terry_p_bg">
+                                        <p>萌兔餵食體驗</p>
+                                    </div>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="terry_touchshow d-block w-100"
+                                    src="/img/activity/touchshow3.jpg"
+                                    alt=""
+                                />
+
+                                <Carousel.Caption>
+                                    <p>可愛小鹿餵食體驗</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="terry_touchshow d-block w-100"
+                                    src="/img/activity/touchshow4.jpg"
+                                    alt=""
+                                />
+
+                                <Carousel.Caption>
+                                    <p>
+                                        貓頭鷹接觸體驗
+                                    </p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="terry_touchshow d-block w-100"
+                                    src="/img/activity/touchshow5.jpg"
+                                    alt=""
+                                />
+
+                                <Carousel.Caption>
+                                    <p>
+                                        長頸鹿餵食體驗
+                                    </p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="terry_touchshow d-block w-100"
+                                    src="/img/activity/touchshow6.jpg"
+                                    alt=""
+                                />
+                                <Carousel.Caption>
+                                    <p>
+                                        鼬獾接觸體驗
+                                    </p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="terry_touchshow d-block w-100"
+                                    src="/img/activity/touchshow7.jpg"
+                                    alt=""
+                                />
+                                <Carousel.Caption>
+                                    <p>
+                                        袋鼠摸摸體驗
+                                    </p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
                     </div>
                 </div>
                 <div className="terry_animalImg_Area">
