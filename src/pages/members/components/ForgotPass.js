@@ -1,4 +1,6 @@
 import React,{useState}  from "react";
+import { Link,useHistory } from "react-router-dom";
+
 import Config from "../Config";
 import EditModal from './EditModal'
 
@@ -56,6 +58,10 @@ function ForgotPass(){
                         <td>
                             <div className="tysu_logHelp">
                                 <button type="button" id="submit" className="tysu_btn_sign" onClick={submitForgotPass}>發 送 驗 證 信</button>
+                            </div>
+                            <div className="tysu_help">
+                                <Link to="signup" className="tysu_signText">
+                                <i className="fas fa-user-plus"></i>SIGN UP</Link>
                             </div>
                         </td>
                         <EditModal editModalShow={editModalShow} setEditModalShow={setEditModalShow} forgotModalText={forgotModalText} />
