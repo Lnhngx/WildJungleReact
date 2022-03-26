@@ -11,8 +11,8 @@ function CartProductItem() {
           <div className="stan_product_space" key={v.sid}>
             <ul>
               <li className="">
-              <button className="stan_btndelete">
-                <i className="fas fa-times stan_btnicon"></i>
+              <button className="stan_btndelete" onClick={()=>{removeItem(v.sid)}}>
+                <i className="fas fa-times stan_btnicon_delete"></i>
                 </button>
               </li>
               <li>

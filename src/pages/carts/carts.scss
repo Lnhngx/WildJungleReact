@@ -427,6 +427,18 @@ $stan_height: 50px;
     }
   }
 
+  .stan_btndelete{
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    border: 0;
+    background-color: transparent;
+    .stan_btnicon_delete{
+      font-size: 22px;
+      line-height: 24px;
+    }
+  }
+
   .stan_blackhr {
     width: 100%;
     border: 1px solid $stan_black;
