@@ -21,8 +21,6 @@ import {
 } from "react-share";
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 
-const Range = Slider;
-
 function Products() {
   // 產品用的資料
   // 1. 從伺服器來的原始資料
@@ -35,7 +33,7 @@ function Products() {
   const [sortbarVendor, setSortbarVendor] = useState("");
   const [searchWord, setSearchWord] = useState("");
 
-  const [rangevalue, setRangevalue] = useState(8000);
+  const [rangevalue, setRangevalue] = useState([0, 6000]);
   const [isLoading, setIsLoading] = useState(false);
   const [type1, setType1] = useState(0);
   const [type2, setType2] = useState(0);
@@ -52,7 +50,7 @@ function Products() {
     setType4(0);
     setType5(0);
     setType6(0);
-    setRangevalue(8000);
+    setRangevalue([0, 6000]);
     setSortbarPrice("");
     setSortbarType("");
     setSortbarVendor("");
@@ -110,7 +108,11 @@ function Products() {
     let newProducts = [...products];
     if (newProducts) {
       newProducts = [...newProducts].filter(
-        (a) => a.ProductsPrice <= rangevalue
+        (a) => parseInt(rangevalue[0]) <= a.ProductsPrice
+      );
+
+      newProducts = [...newProducts].filter(
+        (a) => a.ProductsPrice <= parseInt(rangevalue[1])
       );
     }
     return newProducts;
@@ -506,16 +508,20 @@ function Products() {
               />
             </div>
             <div className="dragableinput">
-              <span>依價格 ${rangevalue}以下</span>
-              <Range
+              <span>
+                價格 ${rangevalue[0]}～ ${rangevalue[1]} 間
+              </span>
+              <Slider
+                range
                 className="alanslider"
                 marks={{
                   1: `$ 1`,
-                  8000: `$ 8000`,
+                  6000: `$ 6000`,
                 }}
                 min={1}
-                max={8000}
-                value={rangevalue}
+                max={6000}
+                defaultValue={[`${rangevalue[0]}`, `${rangevalue[1]}`]}
+                value={[`${rangevalue[0]}`, `${rangevalue[1]}`]}
                 onChange={setRangevalue}
                 //onAfterChange={setRangevalue}
                 handleStyle={{
