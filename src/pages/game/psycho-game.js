@@ -36,7 +36,10 @@ function PsychoGame(){
             <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span></p>
             <div className="container_psycho_game">               
                 <div className="psycho_bg">
-                     {/* -------第一題從這開始------- */}
+                {/* 以下是全域做移動的圖檔(魚群) */}
+                <img src="/img/game/psycho_material10.png" alt="" className="psycho_clownFish" />
+                <img src="/img/game/psycho_material11.png" alt="" className="psycho_atalanFish" />
+                    {/* -------第一題從這開始------- */}
                     <div className="psycho_q1">
                         <h2>第一次認識的人，你會...?</h2>
                         <div className="psycho_btnGroup">
