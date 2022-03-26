@@ -42,11 +42,11 @@ export const SecondCartProvider = ({
     })
   }
 
-  const removeItem = (id) => {
+  const removeItem = (sid) => {
     dispatch({
       type: 'REMOVE_ITEM',
       payload: {
-        id,
+        sid,
       },
     })
   }
@@ -64,26 +64,26 @@ export const SecondCartProvider = ({
     })
   }
 
-  const isInCart = (id) => {
-    return state.items.some((item) => item.id === id)
+  const isInCart = (sid) => {
+    return state.items.some((item) => item.sid === sid)
   }
 
-  const plusOne = (id) => {
+  const plusOne = (sid) => {
     return dispatch({
       type: 'PLUS_ONE',
       payload: {
-        id,
+        sid,
       },
     })
   }
   /**
-   * @param  {} id
+   * @param  {} sid
    */
-  const minusOne = (id) => {
+  const minusOne = (sid) => {
     return dispatch({
       type: 'MINUS_ONE',
       payload: {
-        id,
+        sid,
       },
     })
   }
