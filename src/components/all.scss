@@ -29,8 +29,8 @@ body {
   padding: 15px;
   font-weight: 600;
 }
-.navbarLeft a{
-  text-decoration:none;
+.navbarLeft a {
+  text-decoration: none;
   color: #eb5c37;
 }
 .navbar1 {
@@ -259,18 +259,18 @@ body {
   right: 14%;
   animation: link7 2.5s 1;
 }
-.leftside{
+.leftside {
   display: flex;
   flex-direction: column;
   font-weight: 900;
   font-size: 170px;
-  -webkit-text-stroke:1px #eb5c37;
+  -webkit-text-stroke: 1px #eb5c37;
   color: transparent;
   opacity: 0.3;
   padding-top: 40px;
   animation: link8 2.5s 1;
 }
-.leftside div:nth-child(2){
+.leftside div:nth-child(2) {
   margin-top: -80px;
   padding-left: 60px;
 }
@@ -350,10 +350,10 @@ body {
   0% {
     opacity: 0;
   }
-  50%{
+  50% {
     opacity: 0;
   }
-  80%{
+  80% {
     opacity: 0.5;
   }
   100% {
@@ -361,15 +361,15 @@ body {
   }
 }
 
-.leftside2{
+.leftside2 {
   bottom: 15%;
-  position:absolute;
+  position: absolute;
   font-size: 30px;
-  writing-mode:vertical-rl;
+  writing-mode: vertical-rl;
   animation: leftside2 2.5s 1;
 }
-.allright{
-  position:absolute;
+.allright {
+  position: absolute;
   bottom: 0;
   font-size: 20px;
 }
