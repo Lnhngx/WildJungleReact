@@ -244,7 +244,7 @@ function Lodging() {
                 className="btn lodging_oceanminus"
                 onClick={redoceancount}
               >
-                <i class="fas fa-minus"></i>
+                <i className="fas fa-minus"></i>
               </button>
               <input
                 type="text"
@@ -252,7 +252,7 @@ function Lodging() {
                 className="lodging_oceanvalue"
               />
               <button className="btn lodging_oceanplus" onClick={addoceancount}>
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
               </button>
             </div>
             <input
@@ -488,7 +488,7 @@ function Lodging() {
               </div>
               <div className="lodging_iceamount">
                 <button className="btn lodging_iceminus" onClick={redicecount}>
-                  <i class="fas fa-minus"></i>
+                  <i className="fas fa-minus"></i>
                 </button>
                 <input
                   type="text"
@@ -496,7 +496,7 @@ function Lodging() {
                   className="lodging_icevalue"
                 />
                 <button className="btn lodging_iceplus" onClick={addicecount}>
-                  <i class="fas fa-plus"></i>
+                  <i className="fas fa-plus"></i>
                 </button>
               </div>
               <input
@@ -743,7 +743,7 @@ function Lodging() {
                   className="btn lodging_nocturnalminus"
                   onClick={rednocturnalcount}
                 >
-                  <i class="fas fa-minus"></i>
+                  <i className="fas fa-minus"></i>
                 </button>
                 <input
                   type="text"
@@ -754,7 +754,7 @@ function Lodging() {
                   className="btn lodging_nocturnalplus"
                   onClick={addnocturnalcount}
                 >
-                  <i class="fas fa-plus"></i>
+                  <i className="fas fa-plus"></i>
                 </button>
               </div>
               <input
@@ -1002,7 +1002,7 @@ function Lodging() {
                   className="btn lodging_tropicalminus"
                   onClick={redtropicalcount}
                 >
-                  <i class="fas fa-minus"></i>
+                  <i className="fas fa-minus"></i>
                 </button>
                 <input
                   type="text"
@@ -1013,7 +1013,7 @@ function Lodging() {
                   className="btn lodging_tropicalplus"
                   onClick={addtropicalcount}
                 >
-                  <i class="fas fa-plus"></i>
+                  <i className="fas fa-plus"></i>
                 </button>
               </div>
               <input

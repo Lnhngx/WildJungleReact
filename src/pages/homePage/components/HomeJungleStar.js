@@ -1,5 +1,39 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import $ from "jquery";
+// import { Link } from "react-router-dom";
+
+const data = [
+  {
+    picture: "img/home/eagle_products01.jpg",
+  },
+  {
+    picture: "img/home/eagle_products02.jpg",
+  },
+  {
+    picture: "img/home/eagle_products03.jpg",
+  },
+  {
+    picture: "img/home/eagle_products04.jpg",
+  },
+  {
+    picture: "img/home/eagle_products05.jpeg",
+  },
+  {
+    picture: "img/home/eagle_products01.jpg",
+  },
+  {
+    picture: "img/home/eagle_products02.jpg",
+  },
+  {
+    picture: "img/home/eagle_products03.jpg",
+  },
+  {
+    picture: "img/home/eagle_products04.jpg",
+  },
+  {
+    picture: "img/home/eagle_products05.jpeg",
+  },
+];
 
 const HomeJungleStar = () => {
   const [eaglecard, setEaglecard] = useState(true);
@@ -44,6 +78,34 @@ const HomeJungleStar = () => {
     sethitefoxcard(!hitefoxcard);
   };
 
+  //動物商品
+
+  const [current, setCurrent] = useState(0);
+  const [leftcurrent, setleftCurrent] = useState(0);
+  const [rightcurrent, setrightCurrent] = useState(0);
+  const length = data.length;
+
+  const leftClick = () => {
+    if (current > 0) {
+      setCurrent(current - 1);
+      setrightCurrent(0);
+      setleftCurrent(leftcurrent + 1);
+    }
+  };
+
+
+  
+
+  const rightClick = () => {
+    if (current < length - 5) {
+      setCurrent(current + 1);
+      setleftCurrent(0);
+      setrightCurrent(rightcurrent + 1);
+    }
+    const moveX = rightcurrent * -10;
+    $(".ning_starproductwrap").css("transform", `translateX(${moveX}%)`);
+    console.log(moveX);
+  };
 
   return (
     <>
@@ -56,16 +118,18 @@ const HomeJungleStar = () => {
             style={{ width: eaglecard === false && "12.5%" }}
             onClick={eaglecard === true ? true : eaglePush}
           >
-            <div
-              className="ning_eaglecard"
-              
-            >
-              <div className="ning_eagleimg" style={{ marginLeft: eaglecard === false && "-18%" }}
-                  >
+            <div className="ning_eaglecard">
+              <div
+                className="ning_eagleimg"
+                style={{ marginLeft: eaglecard === false && "-18%" }}
+              >
                 <img
-                  src={eaglecard === true ?  "img/home/star_eagle.png"  :"img/home/star_eagle_bk.png"}
+                  src={
+                    eaglecard === true
+                      ? "img/home/star_eagle.png"
+                      : "img/home/star_eagle_bk.png"
+                  }
                   alt=""
-                  
                 />
               </div>
               <div className="ning_starcardtext">
@@ -84,11 +148,17 @@ const HomeJungleStar = () => {
             onClick={elephantcard === true ? true : elephantPush}
           >
             <div className="ning_elephantcard">
-              <div className="ning_elephantimg" style={{ marginLeft: elephantcard === true && "0" }}>
+              <div
+                className="ning_elephantimg"
+                style={{ marginLeft: elephantcard === true && "0" }}
+              >
                 <img
-                  src={elephantcard === true ?  "img/home/star_elephant.png"  :"img/home/star_elephant_bk.png"}
+                  src={
+                    elephantcard === true
+                      ? "img/home/star_elephant.png"
+                      : "img/home/star_elephant_bk.png"
+                  }
                   alt=""
-                  
                 />
               </div>
               <div className="ning_starcardtext">
@@ -107,11 +177,17 @@ const HomeJungleStar = () => {
             onClick={tigercard === true ? true : tigerPush}
           >
             <div className="ning_tigercard">
-              <div className="ning_tigerimg"  style={{ marginLeft: tigercard === true && "0" }}>
+              <div
+                className="ning_tigerimg"
+                style={{ marginLeft: tigercard === true && "0" }}
+              >
                 <img
-                  src={tigercard === true ?  "img/home/star_tiger.png"  :"img/home/star_tiger_bk.png"}
+                  src={
+                    tigercard === true
+                      ? "img/home/star_tiger.png"
+                      : "img/home/star_tiger_bk.png"
+                  }
                   alt=""
-                 
                 />
               </div>
               <div className="ning_starcardtext">
@@ -130,11 +206,17 @@ const HomeJungleStar = () => {
             onClick={sharkcard === true ? true : sharkPush}
           >
             <div className="ning_sharkcard">
-              <div className="ning_sharkimg" style={{ marginLeft: sharkcard === true && "0" }}>
+              <div
+                className="ning_sharkimg"
+                style={{ marginLeft: sharkcard === true && "0" }}
+              >
                 <img
-                  src={sharkcard === true ?  "img/home/star_shark.png"  : "img/home/star_shark_bk.png"}
+                  src={
+                    sharkcard === true
+                      ? "img/home/star_shark.png"
+                      : "img/home/star_shark_bk.png"
+                  }
                   alt=""
-                  
                 />
               </div>
               <div className="ning_starcardtext">
@@ -158,7 +240,14 @@ const HomeJungleStar = () => {
                   className="ning_hitefoximg"
                   style={{ marginLeft: hitefoxcard === true && "0" }}
                 >
-                  <img src= {hitefoxcard === true ?  "img/home/star_hitefox.png"  : "img/home/star_hitefox_bk.png"} alt="" />
+                  <img
+                    src={
+                      hitefoxcard === true
+                        ? "img/home/star_hitefox.png"
+                        : "img/home/star_hitefox_bk.png"
+                    }
+                    alt=""
+                  />
                 </div>
                 <div className="ning_starcardtext">
                   <h3 className="ning_starcardtitle">Hitefox</h3>
@@ -176,27 +265,27 @@ const HomeJungleStar = () => {
 
         <h3 className="ning_starproducts">相關動物商品</h3>
         <div className="ning_starproductbox">
-          <span className="ning_starcarousellefticon material-icons">
+          <span
+            className="ning_starcarousellefticon material-icons"
+            onClick={leftClick}
+          >
             chevron_left
           </span>
-          <span className="ning_starcarouselrighticon material-icons">
+          <span
+            className="ning_starcarouselrighticon material-icons"
+            onClick={rightClick}
+          >
             chevron_right
           </span>
-          <div className="ning_starproductwrap">
-            <div className="ning_starproductimg">
-              <img src="img/home/eagle_products01.jpg" alt="" />
-            </div>
-            <div className="ning_starproductimg">
-              <img src="img/home/eagle_products02.jpg" alt="" />
-            </div>
-            <div className="ning_starproductimg">
-              <img src="img/home/eagle_products03.jpg" alt="" />
-            </div>
-            <div className="ning_starproductimg">
-              <img src="img/home/eagle_products04.jpg" alt="" />
-            </div>
-            <div className="ning_starproductimg">
-              <img src="img/home/eagle_products05.jpeg" alt="" />
+          <div className="ning_starproducthiddenbox">
+            <div className="ning_starproductwrap">
+              {data.map((v, i) => {
+                return (
+                  <div className="ning_starproductimg">
+                    <img src={v.picture} alt="" />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

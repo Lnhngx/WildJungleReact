@@ -1,24 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import "./ning.scss";
 import "./homepage.scss";
 import HomeCarousel from "./components/HomeCarousel";
+// import Homevideo from "./components/Homevideo";
 import HomeWeather from "./components/HomeWeather";
 import HomeWeathermb from "./components/HomeWeathermb";
 import HomeJungleTour from "./components/HomeJungleTour";
 import HomeJungleStar from "./components/HomeJungleStar";
-import HomeTransportion from "./components/HomeTransportion";
-import HomeTransportionP from "./components/HomeTransportionP";
+// import HomeTransportion from "./components/HomeTransportion";
+// import HomeTransportionP from "./components/HomeTransportionP";
 import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-
-
-  
   return (
     <>
       <HomeCarousel slides={CarouselData} />
-
+      {/* <Homevideo /> */}
       <div className="ning_informationbox">
         <div className="ning_information">
           <div className="ning_Admissionbox">
@@ -259,8 +257,8 @@ function HomePage() {
         <div className="ning_transportionButton">
           <button className="ning_busButton btn">公車即時</button>
           <button className="ning_PButton btn">停車場</button>
-          <HomeTransportion />
-          <HomeTransportionP />
+          {/* <HomeTransportion />
+          <HomeTransportionP /> */}
         </div>
       </div>
     </>

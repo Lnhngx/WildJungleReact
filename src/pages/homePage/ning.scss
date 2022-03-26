@@ -14,6 +14,46 @@ $ning-englishont: "Playfair Display", serif;
 
 /* 輪播牆 */
 @media screen and (min-width: 376px) {
+  // .home_videoBox {
+  //   width: calc(100vw - calc(100vw - 100%));
+  //   height: 100vh;
+  //   background-color: $ning-color4;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   text-align: center;
+  //   position: relative;
+
+  //   video {
+  //     width: 100%;
+  //     height: 100%;
+  //     object-fit: cover;
+  //   }
+
+  //   img {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 100%;
+  //     height: 100%;
+  //     object-fit: cover;
+  //     user-select: none;
+  //     filter: invert(1);
+  //     mix-blend-mode: multiply;
+  //   }
+
+  //   .WJtitle {
+  //     position: absolute;
+  //     font-family: $ning-englishont;
+  //     font-size: 12rem;
+  //     font-weight: 900;
+  //     color:$ning-color3;
+  //     text-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+  //   }
+  // }
+
+  //------ 影片
+
   .ning_homeslider {
     position: relative;
     width: calc(100vw - calc(100vw - 100%));
@@ -64,6 +104,8 @@ $ning-englishont: "Playfair Display", serif;
     bottom: 10%;
     display: flex;
   }
+
+  // --------
 
   // .ning_homecarouselwrapimg li img {
   //   width: calc(100vw - calc(100vw - 100%));
@@ -826,7 +868,6 @@ $ning-englishont: "Playfair Display", serif;
 
     img {
       height: 100%;
-
     }
   }
 
@@ -853,9 +894,16 @@ $ning-englishont: "Playfair Display", serif;
     padding: 2% 0;
   }
 
-  .ning_starproductwrap {
+  .ning_starproducthiddenbox {
     width: 100%;
+    overflow: hidden;
+  }
+
+  .ning_starproductwrap {
+    width:200%;
     display: flex;
+    transition: 0.5s;
+    transform: translateX(0px);
   }
 
   .ning_starproductimg {
@@ -886,6 +934,7 @@ $ning-englishont: "Playfair Display", serif;
     top: 50%;
     transform: translateY(-50%);
     left: -5%;
+    cursor: pointer;
   }
 
   .ning_starcarouselrighticon {
@@ -895,6 +944,7 @@ $ning-englishont: "Playfair Display", serif;
     top: 50%;
     transform: translateY(-50%);
     right: -5%;
+    cursor: pointer;
   }
 
   /* Transportion 交通 */

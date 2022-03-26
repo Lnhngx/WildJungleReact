@@ -1,30 +1,40 @@
 import React, { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import Config from "../Config";
 
 function AdditionComment() {
   const Range = Slider;
 
-  const [cleanvalue, setCleanvalue] = useState(1);
-  const [servevalue, setServevalue] = useState(1);
-  const [comfortablevalue, setComfortablevalue] = useState(1);
-  const [facilityvalue, setFacilityvalue] = useState(1);
-  const [CPValuevalue, setCPValuevalue] = useState(1);
+  const [comments, setComments] = useState({
+    serve: "1",
+    clean: "1",
+    comfort: "1",
+    facility: "1",
+    cpValue: "1",
+    commentTextarea: "",
+  });
 
-  const whenSubmit = async (event) => {
-    event.preventDefault(); // 避免傳統方式送出表單
+  const onInputChange = (e) => {
+    setComments({...comments, [e.target.name]: e.target.value });
+  };
 
-    const fd = new FormData(document.form1);
-    const serve = fd.get("serve")
-    const clean = fd.get("clean")
-    const comfort = fd.get("comfort")
-    const facility = fd.get("facility")
-    const cpValue = fd.get("cpValue")
-    const commentTextarea = fd.get("commentTextarea")
+  // const [servevalue, setServevalue] = useState("1");
+  // const [cleanvalue, setCleanvalue] = useState("1");
+  // const [comfortablevalue, setComfortablevalue] = useState("1");
+  // const [facilityvalue, setFacilityvalue] = useState("1");
+  // const [CPvalue, setCPvalue] = useState("1");
+  // const [commentText, setCommentText] = useState("");
 
-    fetch("localhost:4000/roomform/room-comments-post", {
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 避免傳統方式送出表單
+
+    const fd = new FormData(e.target);
+
+    fetch(Config.COMMENT_ADD, {
       method: "POST",
-      body:fd})
+      body: fd,
+    })
       .then((r) => r.json())
       .then((obj) => {
         console.log(obj);
@@ -33,7 +43,7 @@ function AdditionComment() {
 
   return (
     <>
-      <form name="form1" onsubmit={whenSubmit}>
+      <form name="form1" onsubmit={handleSubmit}>
         <div className="orderInformationbox">
           <div className="orderInformation">訂購資訊</div>
           <div className="orderList">
@@ -59,13 +69,21 @@ function AdditionComment() {
                 <p className="ServeText">服務素質</p>
               </div>
               <div className="serveSliderBox">
-                <Range
+                <input
+                  type="text"
+                  id="serve"
+                  name="serve"
+                  value={comments.serve}
+                  onChange={onInputChange}
+                ></input>
+                {/* <Range
                   className="serveslider"
                   min={1.0}
                   max={10}
                   id="serve"
                   name="serve"
-                  onChange={setServevalue}
+                  value={comments.serve}
+                  onChange={onInputChange}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -82,8 +100,8 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                />
-                <div className="commentServeScore">{servevalue}</div>
+                /> */}
+                <div className="commentServeScore">{comments.serve}</div>
               </div>
             </div>
             <div className="commentCleanbox">
@@ -91,13 +109,21 @@ function AdditionComment() {
                 <p className="CleanText">清潔程度</p>
               </div>
               <div className="cleanSliderBox">
-                <Range
+                <input
+                  type="text"
+                  id="clean"
+                  name="clean"
+                  value={comments.clean}
+                  onChange={onInputChange}
+                ></input>
+                {/* <Range
                   className="cleanslider"
                   min={1.0}
                   max={10}
-                  onChange={setCleanvalue}
                   id="clean"
                   name="clean"
+                  value={comments.clean}
+                  onChange={onInputChange}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -114,8 +140,8 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                />
-                <div className="commentCleanScore">{cleanvalue}</div>
+                /> */}
+                <div className="commentCleanScore">{comments.clean}</div>
               </div>
             </div>
             <div className="commentComfortablebox">
@@ -123,13 +149,21 @@ function AdditionComment() {
                 <p className="ComfortableText">舒適程度</p>
               </div>
               <div className="comfortableSliderBox">
-                <Range
+                <input
+                  type="text"
+                  id="comfort"
+                  name="comfort"
+                  value={comments.comfort}
+                  onChange={onInputChange}
+                ></input>
+                {/* <Range
                   className="comfortableslider"
                   min={1.0}
                   max={10}
-                  id="comfortable"
-                  name="comfortable"
-                  onChange={setComfortablevalue}
+                  id="comfort"
+                  name="comfort"
+                  value={comments.comfort}
+                  onChange={onInputChange}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -146,9 +180,9 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                />
+                /> */}
                 <div className="commentComfortableScore">
-                  {comfortablevalue}
+                  {comments.comfort}
                 </div>
               </div>
             </div>
@@ -157,13 +191,21 @@ function AdditionComment() {
                 <p className="FacilityText">設施</p>
               </div>
               <div className="facilitySliderBox">
-                <Range
+                <input
+                  type="text"
+                  name="facility"
+                  id="facility"
+                  value={comments.facility}
+                  onChange={onInputChange}
+                ></input>
+                {/* <Range
                   className="facilityslider"
                   min={1.0}
                   max={10}
                   name="facility"
                   id="facility"
-                  onChange={setFacilityvalue}
+                  value={comments.facility}
+                  onChange={onInputChange}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -180,8 +222,8 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                />
-                <div className="commentFacilityScore">{facilityvalue}</div>
+                /> */}
+                <div className="commentFacilityScore">{comments.facility}</div>
               </div>
             </div>
             <div className="commentCPValuebox">
@@ -189,13 +231,21 @@ function AdditionComment() {
                 <p className="CPValueText">性價比</p>
               </div>
               <div className="CPValueSliderBox">
-                <Range
+                <input
+                  type="text"
+                  id="cpValue"
+                  name="cpValue"
+                  value={comments.cpValue}
+                  onChange={onInputChange}
+                ></input>
+                {/* <Range
                   className="CPValueslider"
                   min={1.0}
                   max={10}
                   id="cpValue"
                   name="cpValue"
-                  onChange={setCPValuevalue}
+                  value={comments.cpValue}
+                  onChange={onInputChange}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -212,8 +262,8 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                />
-                <div className="commentCPValueScore">{CPValuevalue}</div>
+                /> */}
+                <div className="commentCPValueScore">{comments.cpValue}</div>
               </div>
             </div>
             <div className="nullbox"></div>
@@ -225,14 +275,16 @@ function AdditionComment() {
           className="form-control commentTextareabox"
           id="commentTextarea"
           name="commentTextarea"
+          value={comments.commentTextarea}
+                  onChange={onInputChange}
           rows="5"
           placeholder="請輸入評論..."
         />
         <div className="commentbtngroup">
-          <button type="submit" className="btn commentbtn">
+          <button type="submit" id="submit" className="btn commentbtn">
             送出
           </button>
-          <button type="" className="btn cancelbtn">
+          <button type="reset" className="btn cancelbtn">
             取消
           </button>
         </div>

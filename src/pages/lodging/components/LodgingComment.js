@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Config from "../Config";
 import "rc-slider/assets/index.css";
 import CommentList from "./CommentList";
 import AdditionComment from "./AdditionComment"
@@ -40,7 +41,7 @@ const LodgingComment = (props) => {
 
   // 從伺服器載入資料
   const getData = async () => {
-    const response = await fetch("http://localhost:4000/roomplatform/");
+    const response = await fetch(Config.COMMENT_LIST);
     const obj = await response.json();
     setData(obj);
   };

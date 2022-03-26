@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { CarouselData } from "./CarouselData";
 import { Link } from "react-router-dom";
-import { ImageBackground } from "react-native";
+// import { ImageBackground } from "react-native";
 
 // const HomeCarousel = ({ slides }) => {
 
@@ -60,18 +60,18 @@ import { ImageBackground } from "react-native";
 //   );
 // };
 
-const ningColor = { "ningColor1": "#eb5c37",
-"ningColor2": "#f9b112",
-"ningColor3": "#ffffff",
-"ningColor4": "#000000",
-"ningColor5": "#1b7754",
-};
+// const ningColor = { "ningColor1": "#eb5c37",
+// "ningColor2": "#f9b112",
+// "ningColor3": "#ffffff",
+// "ningColor4": "#000000",
+// "ningColor5": "#1b7754",
+// };
 
 const HomeCarousel = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
 
-  const [dot, setDot] = useState(0);
+  // const [dot, setDot] = useState(0);
 
   const dotimg = useRef();
 
@@ -83,7 +83,6 @@ const HomeCarousel = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  console.log(current);
 
   if (!Array.isArray(slides) || slides.length <= 0) {
     return null;
