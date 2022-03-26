@@ -35,7 +35,7 @@ function Products() {
   const [sortbarVendor, setSortbarVendor] = useState("");
   const [searchWord, setSearchWord] = useState("");
 
-  const [rangevalue, setRangevalue] = useState(1500);
+  const [rangevalue, setRangevalue] = useState(8000);
   const [isLoading, setIsLoading] = useState(false);
   const [type1, setType1] = useState(0);
   const [type2, setType2] = useState(0);
@@ -52,7 +52,7 @@ function Products() {
     setType4(0);
     setType5(0);
     setType6(0);
-    setRangevalue(1500);
+    setRangevalue(8000);
     setSortbarPrice("");
     setSortbarType("");
     setSortbarVendor("");
@@ -511,10 +511,10 @@ function Products() {
                 className="alanslider"
                 marks={{
                   1: `$ 1`,
-                  3000: `$ 3000`,
+                  8000: `$ 8000`,
                 }}
                 min={1}
-                max={3000}
+                max={8000}
                 value={rangevalue}
                 onChange={setRangevalue}
                 //onAfterChange={setRangevalue}
