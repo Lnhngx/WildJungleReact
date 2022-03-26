@@ -85,6 +85,11 @@ const ProductCarousel = (props) => {
   if (CarouselData[3].image === " ") {
     CarouselData.splice(-1, 1);
   }
+  if (CarouselData[2].image === " ") {
+    CarouselData.splice(-1, 1);
+  }
+  
+  
 
 
   const length = CarouselData.length;
@@ -139,7 +144,7 @@ const ProductCarousel = (props) => {
           <img src={Boolean(img2) === true ? img2 : " "} alt="" />
         </li>
         <li className="alan_product_img_li" onClick={change3}>
-          <img src={Boolean(img3) === true ? img3 : " "} alt="" />
+          <img src={Boolean(img3) === true ? img3 : null} alt="" />
         </li>
         <li className="alan_product_img_li" onClick={change4}>
           <img src={Boolean(img4) === true ? img4 : null} alt="" />

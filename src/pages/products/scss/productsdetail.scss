@@ -352,9 +352,13 @@
   word-wrap: break-word;
   white-space: normal;
 }
-
+.alan_productPic{
+display: flex;
+flex-wrap: wrap;
+}
 .alan_detailimg {
-  width: 100%;
+  width: 50%;
+  padding: 12px 12px 0 0;
 }
 .alan_detailimg img {
   width: 100%;
