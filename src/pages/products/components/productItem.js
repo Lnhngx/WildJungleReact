@@ -18,7 +18,7 @@ function ProductItem(props) {
   let MainPic = `img/product/${ProductsMainPic}`;
 
   const click = function(){
-    console.log(props.products)
+    //console.log(props.products)
   }
 
   return (

@@ -1,20 +1,29 @@
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useParams } from "react-router-dom";
 
 function TheReview(props) {
+
   const review = props.review;
+  const member = props.member;
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const Sid = searchParams.get("id");
   const reviewArray = review.filter((v) => v.ProductsReview === parseInt(Sid));
-
+  const memberchose = member.filter((v) => v.ProductsReview === parseInt(Sid));
+  const memberName = memberchose.map((v) => v.m_name);
+  
+  
+  const click = () => {
+    console.log(memberchose);
+    console.log(memberName);
+  };
   return (
     <>
       {Array.from({ length: reviewArray.length }, (v, i) => (
-        <div className="alan_rightReview">
+        <div className="alan_rightReview" key={i}>
           <div className="alan_rightreview1">
             <div>
-              來自：張曉明
+              來自：{memberName[i]}
               <br />
               評分：{`${reviewArray[i].ReviewStar}`}
               <span style={{ color: "#eb5c37" }}>
@@ -37,7 +46,7 @@ function TheReview(props) {
             <div>評論時間:{reviewArray[i].ReviewDate}</div>
           </div>
           <div>
-            <button>刪除</button>
+            <button onClick={click}>刪除</button>
           </div>
         </div>
       ))}

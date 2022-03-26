@@ -28,6 +28,9 @@ function ProductsDetail(props) {
   const [pic, setPic] = useState([]);
   const [label, setLabel] = useState([]);
   const [review, setReview] = useState([]);
+  const [member, setMember] = useState([]);
+
+
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
   const location = useLocation();
@@ -39,23 +42,27 @@ function ProductsDetail(props) {
       fetch("http://localhost:4000/productspic", { method: "GET" }),
       fetch("http://localhost:4000/productslabel", { method: "GET" }),
       fetch("http://localhost:4000/productsreview", { method: "GET" }),
+      fetch("http://localhost:4000/productsmemberreview", { method: "GET" })
+
     ])
-      .then(([res1, res2, res3, res4, res5]) =>
+      .then(([res1, res2, res3, res4, res5,res6]) =>
         Promise.all([
           res1.json(),
           res2.json(),
           res3.json(),
           res4.json(),
           res5.json(),
+          res6.json()
         ])
       )
-      .then(([data1, data2, data3, data4, data5]) =>
+      .then(([data1, data2, data3, data4, data5,data6]) =>
         Promise.all([
           setProducts(data1),
           setSpec(data2),
           setPic(data3),
           setLabel(data4),
           setReview(data5),
+          setMember(data6)
         ])
       )
       .then(console.log("OK"))
@@ -77,6 +84,8 @@ function ProductsDetail(props) {
     return parseInt(review.ReviewStar);
   });
 
+
+
   let starValue = 0;
   for (let i = 0; i < reviewStar.length; i++) {
     starValue += reviewStar[i];
@@ -84,7 +93,8 @@ function ProductsDetail(props) {
   starValue /= reviewStar.length;
 
   const click = function () {
-    console.log(props);
+    //console.log(props);
+    console.log(member);
   };
 
   const scrollToSection = () => {
@@ -132,7 +142,7 @@ function ProductsDetail(props) {
         </ul>
       </div>
 
-      {product && specs && pics && labels && reviews && (
+      {product && specs && pics && labels && reviews && member && (
         <>
           <div className="alan_detail">
             <div className="alan_productsdetail">
@@ -336,7 +346,7 @@ function ProductsDetail(props) {
                     </div>
                     <div className="alan_inputRight">
                       <div className="right_title">評論回覆：</div>
-                      <TheReview review={review} setReview={setReview} />
+                      <TheReview review={review} setReview={setReview}  member={member} setMember={setMember}/>
                     </div>
                   </div>
                 </div>
