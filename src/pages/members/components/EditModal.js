@@ -35,11 +35,11 @@ const {editModalShow,setEditModalShow,editModalText}=props;
         </Modal.Header> */}
         <Modal.Body className="tysu_editModal">{editModalText}</Modal.Body>
         <Modal.Footer className="tysu_editModalFooter">
-          <Button className="tysu_editModalBtn">
+          {/* <Button className="tysu_editModalBtn">
             確定
-          </Button>
+          </Button> */}
           <Button  className="tysu_editModalBtn" onClick={handleClose}>
-            取消
+            OK
           </Button>
         </Modal.Footer>
       </Modal>

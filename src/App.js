@@ -46,6 +46,7 @@ import ProductsDetail from "./pages/products/productsdetail";
 
 function App() {
   // 全域狀態
+  const history=useHistory();
 
   // 是否登入
   const [auth, setAuth] = useState(false);
@@ -143,6 +144,7 @@ function App() {
                 <MemberPassChange />
               </Route>
               <Route exact path="/members/modify-member-info">
+                {/* {!!account && token ? <MemberList account={account} token={token} /> : <Redirect to="/members" /> } */}
                 <MemberList account={account} token={token} />
               </Route>
               <Route path="/members">

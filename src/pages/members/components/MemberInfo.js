@@ -67,6 +67,21 @@ function MemberInfo(props){
       })
     }).then(r=>r.json()).then(obj=>{
       console.log(obj)
+      if(obj.success){
+        // console.log(obj.info.trim() !=='')
+        if(obj.info.trim() !==''){
+          setEditModalText(obj.info);
+          setEditModalShow(true);
+        }else{
+        setEditModalText('已更新完成');
+        setEditModalShow(true);
+        }
+      }else{
+        setEditModalText(obj.error || '資料沒有更新' );
+        setEditModalShow(true);
+      }
+
+
     })
 //http://localhost:4000/members/edit/8
   }
@@ -152,7 +167,7 @@ function MemberInfo(props){
                   取 消
                 </button>
               </div>
-              {<EditModal />}
+              {<EditModal editModalShow={editModalShow} setEditModalShow={setEditModalShow} editModalText={editModalText} setEditModalText={setEditModalText} />}
             </td>
           </tr>
         </tbody>
