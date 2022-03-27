@@ -257,7 +257,7 @@ function Signup(){
                         <button id="submit" className="tysu_btn_sign">註 冊</button>
                         <div className="tysu_help">
                                 <Link to="login" className="tysu_signText">
-                                <i class="fas fa-user-friends"></i>LOGIN</Link>
+                                <i className="fas fa-user-friends"></i>LOGIN</Link>
                         </div>
                     </div>
                     <MemberModal show={show} setShow={setShow} signSuccess={signSuccess} setSignSuccess={setSignSuccess} />

@@ -28,7 +28,7 @@ import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
 import MultiChoice from "./pages/game/multiChoice-game.js";
-// import Members from "./pages/members/members";
+import MembersConfirm from "./pages/members/MembersConfirm";
 import Login from "./pages/members/components/Login.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
 import ForgotPass from "./pages/members/components/ForgotPass";
@@ -135,6 +135,9 @@ function App() {
               </Route>
               <Route path="/members/signup">
                 <MemberSignUp />
+              </Route>
+              <Route path="/members/confirm">
+                <MembersConfirm />
               </Route>
               <Route exact path="/members/login">
                 <Login auth={auth} setAuth={setAuth} />

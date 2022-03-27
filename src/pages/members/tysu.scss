@@ -51,6 +51,21 @@
   font-weight: 900;
   text-align: center;
 }
+.tysu_enter_h1 {
+  padding-top: 30px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-indent: 3px;
+  > .tysu_enter {
+    color: var(--tysu_color2);
+  }
+  > .tysu_enter:hover {
+    color: var(--tysu_color);
+    text-decoration: underline;
+  }
+}
 
 .tysu_memberBg {
   position: fixed;
