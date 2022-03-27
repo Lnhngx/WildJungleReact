@@ -1,61 +1,190 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Cards from 'react-credit-cards';
+ 
+// import './components/members/styles.scss'
+import {
+    formatCreditCardNumber,
+    formatCVC,
+    formatExpirationDate,
+    formatFormData,
+  } from './utils';
 
-function CreditcardAdd(){
-    return(<>
-        <div className='tysu_creditImg'>
-            <img className="tysu_gradePic" src="" alt="" />
-        </div>
-        <form id="tysu_form">
-            <table>
-                <tbody>
-                <tr className="tysu_tr">
-                    <th>
-                    <label htmlFor="tysu_creditCard">信用卡卡號<br />
-                        <span className="tysu_titleSpan">Credit Card Number</span></label>
-                    </th>
-                    <td>
-                        <input type="text" id="tysu_creditCard" className="tysu_input tysu_creditCard first" />
-                            <i className="far fa-window-minimize"></i>
-                        <input type="text" id="tysu_creditCard" className="tysu_input tysu_creditCard" />
-                            <i className="far fa-window-minimize"></i>
-                        <input type="text" id="tysu_creditCard" className="tysu_input tysu_creditCard" />
-                            <i className="far fa-window-minimize"></i>  
-                        <input type="text" id="tysu_creditCard" className="tysu_input tysu_creditCard" />
-                    </td>
-                </tr>
-                <tr className="tysu_tr">
-                    <th>
-                    <label htmlFor="tysu_expireDate">有效日期<br /><span className="tysu_titleSpan">Expire Date</span></label>
-                    </th>
-                    <td className="tysu_expireDateList">
-                    <div>
-                        <input type="text" id="tysu_expireDate" className="tysu_input tysu_month" maxLength="2"
-                        />月
-                        <input type="text" id="tysu_birth" className="tysu_input tysu_year tysu_creditYear" maxLength="4"
-                        />年
+
+import 'react-credit-cards/es/styles-compiled.css';
+import { render } from '@testing-library/react';
+
+export default class CreditcardAdd extends React.Component {
+    state = {
+      number: '',
+      name: '',
+      expiry: '',
+      cvc: '',
+      issuer: '',
+      focused: '',
+      formData: null,
+    };
+  
+    handleCallback = ({ issuer }, isValid) => {
+      if (isValid) {
+        this.setState({ issuer });
+      }
+    };
+  
+    handleInputFocus = ({ target }) => {
+      this.setState({
+        focused: target.name,
+      });
+    };
+  
+    handleInputChange = ({ target }) => {
+      if (target.name === 'number') {
+        target.value = formatCreditCardNumber(target.value);
+      } else if (target.name === 'expiry') {
+        target.value = formatExpirationDate(target.value);
+      } else if (target.name === 'cvc') {
+        target.value = formatCVC(target.value);
+      }
+  
+      this.setState({ [target.name]: target.value });
+    };
+  
+    handleSubmit =async( e) => {
+      e.preventDefault();
+      const { issuer } = this.state;
+      const formData = [...e.target.elements]
+        .filter(d => d.name)
+        .reduce((acc, d) => {
+          acc[d.name] = d.value;
+          return acc;
+        }, {});
+  
+      this.setState({ formData });
+    //   this.form.reset();
+    console.log(formData)
+    await fetch('http://localhost:4000/members/creditcard/add',{
+        method:'POST',
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(formData),
+    }).then(r=>r.json()).then(obj=>{
+        console.log(obj)
+    }        
+    )
+    };
+  
+    render() {
+        const { name, number, expiry, cvc, focused, issuer, formData } = this.state;
+    
+        return (
+            <div key="Payment">
+                <div className="App-payment">
+                    <Cards
+                        number={number}
+                        name={name}
+                        expiry={expiry}
+                        cvc={cvc}
+                        focused={focused}
+                        callback={this.handleCallback}
+                    />
+                </div>
+                <form ref={c => (this.form = c)} id="tysu_form" style={{maxWidth:"830px",margin:"0 auto"}} onSubmit={this.handleSubmit}>
+                    <table>
+                        <tbody>
+                            <tr className="tysu_tr">
+                                <th>
+                                    <label htmlFor="tysu_creditCard">信用卡卡號<br />
+                                        <span className="tysu_titleSpan">Credit Card Number</span></label>
+                                </th>
+                                <td>
+                                    <div className="form-group">
+                                    <input
+                                        type="tel"
+                                        name="number"
+                                        id="tysu_creditCard"
+                                        className="form-control tysu_input tysu_creditInput"
+                                        placeholder="Card Number"
+                                        pattern="[\d| ]{16,22}"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr className="tysu_tr">
+                                <th>
+                                    <label htmlFor="tysu_Cardname">持卡人姓名<br />
+                                        <span className="tysu_titleSpan">Cardholder Name</span></label>
+                                </th>
+                                <td>
+                                    <div className="form-group">
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        id="tysu_Cardname"
+                                        className="form-control tysu_input"
+                                        placeholder="Name"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr className="tysu_tr">
+                                <th>
+                                    <label htmlFor="tysu_expireDate">有效日期<br /><span className="tysu_titleSpan">Card Valid Thru</span></label>
+                                </th>
+                                <td className="tysu_expireDateList">
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <input
+                                            type="tel"
+                                            name="expiry"
+                                            id="tysu_expireDate"
+                                            className="form-control tysu_input tysu_code"
+                                            placeholder="Valid Thru"
+                                            pattern="\d\d/\d\d"
+                                            required
+                                            onChange={this.handleInputChange}
+                                            onFocus={this.handleInputFocus}
+                                            />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr  className="tysu_tr">
+                                <th>
+                                    <label htmlFor="tysu_code">檢查碼<br /><span className="tysu_titleSpan">Card Vaildation Code</span></label>
+                                </th>
+                                <td className="tysu_expireDateList">
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <input
+                                            type="tel"
+                                            name="cvc"
+                                            id="tysu_code"
+                                            className="form-control tysu_input tysu_code"
+                                            placeholder="CVC"
+                                            pattern="\d{3,4}"
+                                            required
+                                            onChange={this.handleInputChange}
+                                            onFocus={this.handleInputFocus}
+                                            />
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="issuer" value={issuer} />
+                                </td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                    <div className="tysu_btnGroup" style={{left:"5rem"}}>
+                        <button id="tysu_editBtn" className="tysu_editBtn">儲 存</button>
+                        <button id="tysu_cancelBtn" className="tysu_cancelBtn">取 消</button>
                     </div>
-                    
-                    </td>
-                </tr>
-                <tr className="tysu_tr tysu_last">
-                    <th>
-                    <label htmlFor="tysu_code">檢查碼<br /><span className="tysu_titleSpan">Card Vaildation Code</span></label>
-                    </th>
-                    <td className="tysu_codeContent">
-                        <div className="">
-                            <input type="text" id="tysu_code" className="tysu_input tysu_code" maxLength="3"
-                            />( 3-digital )
-                        </div>
-                    
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div className="tysu_btnGroup" style={{left:"5rem"}}>
-                <button id="tysu_editBtn" className="tysu_editBtn">更 改</button>
-                <button id="tysu_cancelBtn" className="tysu_cancelBtn">取 消</button>
+                </form>                
             </div>
-        </form>
-    </>)
-}
-export default CreditcardAdd;
+        );
+      }
+    }

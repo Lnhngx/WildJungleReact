@@ -127,6 +127,7 @@
 .tysu_input,
 .tysu_select {
   border: 0.8px solid #000;
+  border-radius: 0;
   width: calc(100% - 1.8rem);
   height: 4.16rem;
   margin: var(--tysu_inputMargin);
@@ -453,7 +454,22 @@ input:-webkit-autofill:active,
   position: relative;
   align-items: center;
 }
-
+.tysu_tr {
+  > .tysu_expireDateList {
+    > .row {
+      > .tysu_creditLabel {
+        color: #1b7754;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+.tysu_creditInput {
+  min-width: 450px;
+}
+.tysu_creditcardW {
+  width: 100%;
+}
 .tysu_creditImg {
   width: 32.12rem;
   height: 20.31rem;

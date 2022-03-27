@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import MemberInfo from './MemberInfo'
 import GradeInfo from './GradeInfo'
 import Creditcard from './Creditcard'
-// import CreditcardAdd from './CreditcardAdd'
+import CreditcardAdd from './CreditcardAdd'
 import AddressAdd from './AddressAdd'
 import OrderInfo from './OrderInfo'
 import OrderTicket from './OrderTicket'
@@ -104,7 +104,7 @@ function MemberNavItem(props){
     {/* memberlist && 當前狀態的nav item皆符合才會渲染 */}
     {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem} account={account} sidData={sidData}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : '' }
-    {actived===memberlist[0] && navState.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[2] ? <CreditcardAdd navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[0] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : '' }
