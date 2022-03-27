@@ -21,7 +21,7 @@ function tour(){
     <img src="/img/home/homebgcblack.svg" alt="" />
  </div>
      <div className="tourContainer">
-      <div className="tour_Group">
+      {/* <div className="tour_Group">
         <div className="tourGuide1">
             <div className="tourtextArea1">
                 <h2 className="tourH2">Jungle Tour</h2>
@@ -49,7 +49,7 @@ function tour(){
               <figcaption>冰原歷險</figcaption>
             </figure>
         </div>
-      </div>
+      </div> */}
       <CarouselShow/>
       {/* <div className="Container" id="container2"> */}
         {/* <div className="tourCenterIndustry"> */}
