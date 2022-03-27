@@ -1,37 +1,164 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import $ from "jquery";
 // import { Link } from "react-router-dom";
-
-const data = [
+const eagledata = [
   {
-    picture: "img/home/eagle_products01.jpg",
+    picture: "img/home/eagle_products/eagle_products01.jpg",
   },
   {
-    picture: "img/home/eagle_products02.jpg",
+    picture: "img/home/eagle_products/eagle_products02.jpg",
   },
   {
-    picture: "img/home/eagle_products03.jpg",
+    picture: "img/home/eagle_products/eagle_products03.jpg",
   },
   {
-    picture: "img/home/eagle_products04.jpg",
+    picture: "img/home/eagle_products/eagle_products04.jpg",
   },
   {
-    picture: "img/home/eagle_products05.jpeg",
+    picture: "img/home/eagle_products/eagle_products05.jpeg",
   },
   {
-    picture: "img/home/eagle_products01.jpg",
+    picture: "img/home/eagle_products/eagle_products01.jpg",
   },
   {
-    picture: "img/home/eagle_products02.jpg",
+    picture: "img/home/eagle_products/eagle_products02.jpg",
   },
   {
-    picture: "img/home/eagle_products03.jpg",
+    picture: "img/home/eagle_products/eagle_products03.jpg",
   },
   {
-    picture: "img/home/eagle_products04.jpg",
+    picture: "img/home/eagle_products/eagle_products04.jpg",
   },
   {
-    picture: "img/home/eagle_products05.jpeg",
+    picture: "img/home/eagle_products/eagle_products05.jpeg",
+  },
+];
+const elephantdata = [
+  {
+    picture: "img/home/elephant_products/elephant_products01.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products02.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products03.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products04.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products05.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products06.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products07.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products08.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products09.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products10.jpg",
+  },
+];
+const tigerdata = [
+  {
+    picture: "img/home/eagle_products/eagle_products01.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products02.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products03.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products04.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products05.jpeg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products01.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products02.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products03.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products04.jpg",
+  },
+  {
+    picture: "img/home/eagle_products/eagle_products05.jpeg",
+  },
+];
+const sharkdata = [
+  {
+    picture: "img/home/elephant_products/elephant_products01.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products02.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products03.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products04.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products05.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products06.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products07.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products08.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products09.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products10.jpg",
+  },
+];
+const hitefoxdata = [
+  {
+    picture: "img/home/elephant_products/elephant_products01.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products02.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products03.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products04.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products05.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products06.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products07.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products08.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products09.jpg",
+  },
+  {
+    picture: "img/home/elephant_products/elephant_products10.jpg",
   },
 ];
 
@@ -48,6 +175,8 @@ const HomeJungleStar = () => {
     settigercard(false);
     setsharkcard(false);
     sethitefoxcard(false);
+    setdata(eagledata);
+    setCurrent(0);
   };
   const elephantPush = () => {
     setEaglecard(false);
@@ -55,6 +184,8 @@ const HomeJungleStar = () => {
     settigercard(false);
     setsharkcard(false);
     sethitefoxcard(false);
+    setdata(elephantdata);
+    setCurrent(0);
   };
   const tigerPush = () => {
     setEaglecard(false);
@@ -62,6 +193,8 @@ const HomeJungleStar = () => {
     settigercard(!tigercard);
     setsharkcard(false);
     sethitefoxcard(false);
+    setdata(tigerdata);
+    setCurrent(0);
   };
   const sharkPush = () => {
     setEaglecard(false);
@@ -69,6 +202,8 @@ const HomeJungleStar = () => {
     settigercard(false);
     setsharkcard(!sharkcard);
     sethitefoxcard(false);
+    setdata(sharkdata);
+    setCurrent(0);
   };
   const hitefoxPush = () => {
     setEaglecard(false);
@@ -76,36 +211,39 @@ const HomeJungleStar = () => {
     settigercard(false);
     setsharkcard(false);
     sethitefoxcard(!hitefoxcard);
+    setdata(hitefoxdata);
+    setCurrent(0);
   };
 
   //動物商品
 
+  const [data, setdata] = useState(eagledata);
+
   const [current, setCurrent] = useState(0);
-  const [leftcurrent, setleftCurrent] = useState(0);
-  const [rightcurrent, setrightCurrent] = useState(0);
   const length = data.length;
 
-  const leftClick = () => {
+  function leftClick() {
     if (current > 0) {
       setCurrent(current - 1);
-      setrightCurrent(0);
-      setleftCurrent(leftcurrent + 1);
     }
-  };
+    return current;
+  }
 
-
-  
-
-  const rightClick = () => {
+  function rightClick() {
     if (current < length - 5) {
       setCurrent(current + 1);
-      setleftCurrent(0);
-      setrightCurrent(rightcurrent + 1);
     }
-    const moveX = rightcurrent * -10;
+    return current;
+  }
+
+  function carousel(v) {
+    const moveX = v * -10;
     $(".ning_starproductwrap").css("transform", `translateX(${moveX}%)`);
-    console.log(moveX);
-  };
+  }
+
+  useEffect(() => {
+    carousel(current);
+  }, [current]);
 
   return (
     <>
@@ -268,12 +406,14 @@ const HomeJungleStar = () => {
           <span
             className="ning_starcarousellefticon material-icons"
             onClick={leftClick}
+            style={{ color: current === 0 && "lightgray" }}
           >
             chevron_left
           </span>
           <span
             className="ning_starcarouselrighticon material-icons"
             onClick={rightClick}
+            style={{ color: current === length - 5 && "lightgray" }}
           >
             chevron_right
           </span>
@@ -283,6 +423,14 @@ const HomeJungleStar = () => {
                 return (
                   <div className="ning_starproductimg">
                     <img src={v.picture} alt="" />
+                    <div className="ning_productText">
+                      <div className="ning_productname">
+                        <p>老鷹皮雕短夾</p>
+                        <p>
+                          <span>售價 </span>NT$1200
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 );
               })}

@@ -104,7 +104,7 @@ function HomePage() {
                 <div className="ning_eventsdateline"></div>
                 <p className="ning_eventstour">熱帶雨林館</p>
                 <div className="ning_eventsimg">
-                  <img src="/img/home/activity03.jpg" alt="" />
+                  <img src="/img/home/activity_img/activity03.jpg" alt="" />
                 </div>
                 <div className="ning_eventsboxbottom">
                   <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
@@ -123,7 +123,7 @@ function HomePage() {
                 <div className="ning_eventsdateline"></div>
                 <p className="ning_eventstour">熱帶雨林館</p>
                 <div className="ning_eventsimg">
-                  <img src="/img/home/activity03.jpg" alt="" />
+                  <img src="/img/home/activity_img/activity03.jpg" alt="" />
                 </div>
                 <div className="ning_eventsboxbottom">
                   <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
@@ -142,7 +142,7 @@ function HomePage() {
                 <div className="ning_eventsdateline"></div>
                 <p className="ning_eventstour">熱帶雨林館</p>
                 <div className="ning_eventsimg">
-                  <img src="/img/home/activity03.jpg" alt="" />
+                  <img src="/img/home/activity_img/activity03.jpg" alt="" />
                 </div>
                 <div className="ning_eventsboxbottom">
                   <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
@@ -161,7 +161,7 @@ function HomePage() {
                 <div className="ning_eventsdateline"></div>
                 <p className="ning_eventstour">熱帶雨林館</p>
                 <div className="ning_eventsimg">
-                  <img src="/img/home/activity03.jpg" alt="" />
+                  <img src="/img/home/activity_img/activity03.jpg" alt="" />
                 </div>
                 <div className="ning_eventsboxbottom">
                   <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
@@ -180,7 +180,7 @@ function HomePage() {
                 <div className="ning_eventsdateline"></div>
                 <p className="ning_eventstour">熱帶雨林館</p>
                 <div className="ning_eventsimg">
-                  <img src="/img/home/activity03.jpg" alt="" />
+                  <img src="/img/home/activity_img/activity03.jpg" alt="" />
                 </div>
                 <div className="ning_eventsboxbottom">
                   <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
@@ -199,7 +199,7 @@ function HomePage() {
                 <div className="ning_eventsdateline"></div>
                 <p className="ning_eventstour">熱帶雨林館</p>
                 <div className="ning_eventsimg">
-                  <img src="/img/home/activity03.jpg" alt="" />
+                  <img src="/img/home/activity_img/activity03.jpg" alt="" />
                 </div>
                 <div className="ning_eventsboxbottom">
                   <p className="ning_eventstext">一起與浣熊近距離接觸吧 !</p>
