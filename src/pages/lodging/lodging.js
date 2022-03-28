@@ -1,4 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import Date from "./components/Date";
+import Config from "./Config";
 import { Link } from "react-router-dom";
 import "./lodging.scss";
 import "./lodging_mb.scss";
@@ -10,6 +12,12 @@ function Lodging() {
   const [nocturnalbox, setNocturnalbox] = useState(0);
   const [tropicalbox, setTropicalbox] = useState(0);
 
+  const [data, setData] = useState([]);
+
+  //傳送分數至子層
+
+  const [total, setTotal] = useState(0);
+
   //海洋房詳細資訊btn
 
   const oceanPush = () => {
@@ -18,6 +26,7 @@ function Lodging() {
     setNocturnalbox(0);
     setTropicalbox(0);
     //setOceanbox(!oceanPush)
+    getOceanData()
   };
 
   //冰原房詳細資訊btn
@@ -27,6 +36,7 @@ function Lodging() {
     setOceanbox(0);
     setNocturnalbox(0);
     setTropicalbox(0);
+    getIceData()
   };
 
   //夜行房詳細資訊btn
@@ -36,6 +46,7 @@ function Lodging() {
     setIcebox(0);
     setOceanbox(0);
     setTropicalbox(0);
+    getNocturnalData()
   };
 
   //熱帶房詳細資訊btn
@@ -45,6 +56,7 @@ function Lodging() {
     setIcebox(0);
     setOceanbox(0);
     setNocturnalbox(0);
+    getTropicalData()
   };
 
   //換照片
@@ -123,13 +135,128 @@ function Lodging() {
     }
   };
 
+  //抓取海洋房評論
+
+  const getOceanData = async () => {
+    const response = await fetch(Config.COMMENT_OCEANLIST);
+    const obj = await response.json();
+    setData(obj);
+  };
+
+  //抓取冰原房評論
+
+  const getIceData = async () => {
+    const response = await fetch(Config.COMMENT_ICELIST);
+    const obj = await response.json();
+    setData(obj);
+  };
+
+  //抓取夜行房評論
+
+  const getNocturnalData = async () => {
+    const response = await fetch(Config.COMMENT_NOCTURNALLIST);
+    const obj = await response.json();
+    setData(obj);
+  };
+
+  //抓取熱帶房評論
+
+  const getTropicalData = async () => {
+    const response = await fetch(Config.COMMENT_TROPICALLIST);
+    const obj = await response.json();
+    setData(obj);
+  };
+
+  // useEffect(() => {
+  //   getOceanData();
+  // }, []);
+
+  useEffect(() => {
+    setCoundata(data);
+  }, [data]);
+
+  //服務評分總和
+
+  function serviceTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].service_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  //清潔評分總和
+
+  function cleanTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].clean_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  //舒適評分總和
+
+  function comfortTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].comfort_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  //設備評分總和
+
+  function facilityTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].facility_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  //cp值評分總和
+
+  function cpValueTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].cpValue_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  useEffect(() => {
+    setTotal(
+      (serviceTotal(data) +
+        cleanTotal(data) +
+        comfortTotal(data) +
+        facilityTotal(data) +
+        cpValueTotal(data)) /
+        5
+    );
+  }, [data]);
+
   //點擊評論
 
   const [commentbox, setCommentbox] = useState(false);
+  const [countdata, setCoundata] = useState([]);
 
   return (
     <>
-    {commentbox === true ? <LodgingComment setCommentbox={setCommentbox}/> : ""}
+      {commentbox === true ? (
+        <LodgingComment
+          setCommentbox={setCommentbox}
+          data={data}
+          total={total}
+        />
+      ) : (
+        ""
+      )}
       <div className="container mb_container">
         <div className="loding_titlebox">
           <div className="loding_title">
@@ -255,6 +382,7 @@ function Lodging() {
                 <i className="fas fa-plus"></i>
               </button>
             </div>
+
             <input
               type="date"
               placeholder="入住日期"
@@ -279,12 +407,18 @@ function Lodging() {
         >
           <div className="lodging_oceandetail">
             <div className="ocean_introducebox">
-              <div className="ocean_introduce" >
+              <div className="ocean_introduce">
                 <h2>房型簡介</h2>
                 <div className="ocean_score">
-                  <p>9.3</p>
+                  <p>{total}</p>
                 </div>
-                <p onClick={()=>{setCommentbox(true)}}>15則評論</p>
+                <p
+                  onClick={() => {
+                    setCommentbox(true);
+                  }}
+                >
+                  {countdata.length}則評論
+                </p>
               </div>
               <div className="ocean_introducetext">
                 10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
@@ -526,14 +660,16 @@ function Lodging() {
             <div className="ice_introducebox">
               <div className="ice_introduce">
                 <h2>房型簡介</h2>
-                <Link to="">
-                  <div className="ice_score">
-                    <p>9.3</p>
-                  </div>
-                </Link>
-                <Link to="">
-                  <p>15則評論</p>
-                </Link>
+                <div className="ice_score">
+                  <p>{total}</p>
+                </div>
+                <p
+                  onClick={() => {
+                    setCommentbox(true);
+                  }}
+                >
+                  {countdata.length}則評論
+                </p>
               </div>
               <div className="ice_introducetext">
                 10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
@@ -784,14 +920,12 @@ function Lodging() {
             <div className="nocturnal_introducebox">
               <div className="nocturnal_introduce">
                 <h2>房型簡介</h2>
-                <Link to="">
-                  <div className="nocturnal_score">
-                    <p>9.3</p>
-                  </div>
-                </Link>
-                <Link to="">
-                  <p>15則評論</p>
-                </Link>
+                <div className="nocturnal_score">
+                  <p>{total}</p>
+                </div>
+                <p onClick={() => {
+                    setCommentbox(true);
+                  }}>{countdata.length}則評論</p>
               </div>
               <div className="nocturnal_introducetext">
                 10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
@@ -1043,14 +1177,12 @@ function Lodging() {
             <div className="tropical_introducebox">
               <div className="tropical_introduce">
                 <h2>房型簡介</h2>
-                <Link to="">
-                  <div className="tropical_score">
-                    <p>9.3</p>
-                  </div>
-                </Link>
-                <Link to="">
-                  <p>15則評論</p>
-                </Link>
+                <div className="tropical_score">
+                  <p>{total}</p>
+                </div>
+                <p onClick={() => {
+                    setCommentbox(true);
+                  }}>{countdata.length}則評論</p>
               </div>
               <div className="tropical_introducetext">
                 10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。

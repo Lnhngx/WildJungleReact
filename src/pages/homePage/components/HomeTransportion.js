@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 const HomeTransportion = () => {
 
   const [busElement, setbusElement] = useState({
-    locationName: "",
-    temperature: "",
-    weatherCode:0,
+    StopName: "",
+    RouteName: "",
+    EstimateTime:0,
   });
 
   useEffect(() => {
@@ -14,13 +14,14 @@ const HomeTransportion = () => {
 
   const east0_bus = () => {
     fetch(
-      "https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/0東?$format=JSON"
+      "https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/0%E6%9D%B1?$format=JSON"
     )
       .then((r) => r.json())
       .then((data) => {
+        console.log(data);
         // const busElements = data.StopUID.reduce(
         //   (neededElements, item) => {
-        //     if (["TPE152186"].includes(item.StopUID)) {
+        //     if (["TPE22806"].includes(item.StopUID)) {
         //       neededElements[item.StopUID] = item.StopUID;
         //     }
         //     return neededElements;
@@ -29,11 +30,12 @@ const HomeTransportion = () => {
         // );
         // setbusElement((prevState) => ({
         //   ...prevState,
-        //   locationName: locationData.locationName,
-        //   temperature: weatherElements.T.elementValue[0].value,
-        //   weatherCode: weatherElements.Wx.elementValue[1].value
+        //   StopName: busElements.StopName.Zh_tw,
+        //   RouteName: busElements.RouteName.Zh_tw,
+        //   EstimateTime: busElements.EstimateTime
         // }));
       });
+      
   };
 
   return (

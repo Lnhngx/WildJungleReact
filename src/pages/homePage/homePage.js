@@ -7,8 +7,8 @@ import HomeWeather from "./components/HomeWeather";
 import HomeWeathermb from "./components/HomeWeathermb";
 import HomeJungleTour from "./components/HomeJungleTour";
 import HomeJungleStar from "./components/HomeJungleStar";
-// import HomeTransportion from "./components/HomeTransportion";
-// import HomeTransportionP from "./components/HomeTransportionP";
+import HomeTransportion from "./components/HomeTransportion";
+import HomeTransportionP from "./components/HomeTransportionP";
 import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
@@ -257,8 +257,8 @@ function HomePage() {
         <div className="ning_transportionButton">
           <button className="ning_busButton btn">公車即時</button>
           <button className="ning_PButton btn">停車場</button>
-          {/* <HomeTransportion />
-          <HomeTransportionP /> */}
+          <HomeTransportion />
+          <HomeTransportionP />
         </div>
       </div>
     </>

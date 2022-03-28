@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Config from "../Config";
@@ -25,6 +25,7 @@ function AdditionComment() {
   // const [facilityvalue, setFacilityvalue] = useState("1");
   // const [CPvalue, setCPvalue] = useState("1");
   // const [commentText, setCommentText] = useState("");
+  
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 避免傳統方式送出表單
@@ -37,7 +38,6 @@ function AdditionComment() {
     })
       .then((r) => r.json())
       .then((obj) => {
-        console.log(obj);
       });
   };
 

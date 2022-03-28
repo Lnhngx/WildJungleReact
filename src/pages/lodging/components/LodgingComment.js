@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Config from "../Config";
 import "rc-slider/assets/index.css";
 import CommentList from "./CommentList";
-import AdditionComment from "./AdditionComment"
+import AdditionComment from "./AdditionComment";
 
 const LodgingComment = (props) => {
-  const { setCommentbox } = props;
+  const { setCommentbox, data ,total} = props;
 
   //關閉評論按鈕
   const [closebtn, setClosebtn] = useState(true);
@@ -14,9 +14,8 @@ const LodgingComment = (props) => {
   const [writecommen, setWritecommen] = useState(false);
 
 
-
   //伺服器資料
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   //從伺服器來的原始資料
   const [comments, setComments] = useState([]);
@@ -40,20 +39,89 @@ const LodgingComment = (props) => {
   };
 
   // 從伺服器載入資料
-  const getData = async () => {
-    const response = await fetch(Config.COMMENT_LIST);
-    const obj = await response.json();
-    setData(obj);
-  };
+  // const getData = async () => {
+  //   const response = await fetch(Config.COMMENT_LIST);
+  //   const obj = await response.json();
+  //   setData(obj);
+  // };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     setComments(data);
     setDisplayComments(data);
   }, [data]);
+
+  //服務評分總和
+
+ function serviceTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].service_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  const service = serviceTotal(data)
+
+  //清潔評分總和
+
+  function cleanTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].clean_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  const clean = cleanTotal(data)
+
+  //舒適評分總和
+
+  function comfortTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].comfort_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  const comfort = comfortTotal(data)
+
+  //設備評分總和
+
+  function facilityTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].facility_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  const facility = facilityTotal(data)
+
+  //cp值評分總和
+
+  function cpValueTotal(v) {
+    let Total = 0;
+    for (let i = 0; i < v.length; i++) {
+      Total += v[i].cpValue_score;
+      console.log(Total);
+    }
+    return Math.round(Total / v.length);
+  }
+
+  const cpValue = cpValueTotal(data)
+
+  // const allserviceScore =
+  //   serviceScore[0].service_score + serviceScore[1].service_score;
+  // console.log(allserviceScore);
 
   //下面狀態是對應到不同的表單元素
   const [scoreRange, setScoreRange] = useState(0);
@@ -144,39 +212,47 @@ const LodgingComment = (props) => {
     let newComments = [...comments];
 
     if (sortRange === "1") {
-      newComments = [...comments].sort((a, b) => Math.ceil(
-        (b.service_score +
-          b.clean_score +
-          b.comfort_score +
-          b.facility_score +
-          b.cpValue_score) /
-          5
-      ) - Math.ceil(
-        (a.service_score +
-          a.clean_score +
-          a.comfort_score +
-          a.facility_score +
-          a.cpValue_score) /
-          5
-      ))
+      newComments = [...comments].sort(
+        (a, b) =>
+          Math.ceil(
+            (b.service_score +
+              b.clean_score +
+              b.comfort_score +
+              b.facility_score +
+              b.cpValue_score) /
+              5
+          ) -
+          Math.ceil(
+            (a.service_score +
+              a.clean_score +
+              a.comfort_score +
+              a.facility_score +
+              a.cpValue_score) /
+              5
+          )
+      );
     }
 
     if (sortRange === "2") {
-      newComments = [...comments].sort((a, b) => Math.ceil(
-        (a.service_score +
-          a.clean_score +
-          a.comfort_score +
-          a.facility_score +
-          a.cpValue_score) /
-          5
-      ) - Math.ceil(
-        (b.service_score +
-          b.clean_score +
-          b.comfort_score +
-          b.facility_score +
-          b.cpValue_score) /
-          5
-      ))
+      newComments = [...comments].sort(
+        (a, b) =>
+          Math.ceil(
+            (a.service_score +
+              a.clean_score +
+              a.comfort_score +
+              a.facility_score +
+              a.cpValue_score) /
+              5
+          ) -
+          Math.ceil(
+            (b.service_score +
+              b.clean_score +
+              b.comfort_score +
+              b.facility_score +
+              b.cpValue_score) /
+              5
+          )
+      );
     }
 
     return newComments;
@@ -193,7 +269,8 @@ const LodgingComment = (props) => {
     newComments = handleSortRange(newComments, sortRange);
 
     setDisplayComments(newComments);
-  }, [scoreRange, comments, dateRange , sortRange]);
+  }, [scoreRange, comments, dateRange, sortRange]);
+  
 
   return (
     <>
@@ -208,8 +285,10 @@ const LodgingComment = (props) => {
         </div>
         <div className="commentTotalbox">
           <div className="commentTotalScorewrap">
-            <p className="commentTotalScore">9.3</p>
-            <p className="commentTotal">15則評論</p>
+            <p className="commentTotalScore">
+              {total}
+            </p>
+            <p className="commentTotal">{data.length}則評論</p>
           </div>
           <button className="writecomment btn" onClick={writecommentbtn}>
             撰寫評論
@@ -221,51 +300,51 @@ const LodgingComment = (props) => {
           <div className="Servebox">
             <div className="Serve">
               <p className="ServeText">服務素質</p>
-              <div className="ServeScore">9.0</div>
+              <div className="ServeScore">{service}</div>
             </div>
             <div className="ServeScroll">
               <div className="Scrollline"></div>
-              <div className="ServeScrollScore"></div>
+              <div className="ServeScrollScore" style={{ width: service*10+"%" }}></div>
             </div>
           </div>
           <div className="Cleanbox">
             <div className="Clean">
               <p className="CleanText">清潔程度</p>
-              <div className="CleanScore">9.0</div>
+              <div className="CleanScore">{clean}</div>
             </div>
             <div className="CleanScroll">
               <div className="Scrollline"></div>
-              <div className="CleanScrollScore"></div>
+              <div className="CleanScrollScore" style={{ width: clean*10+"%" }}></div>
             </div>
           </div>
           <div className="Comfortablebox">
             <div className="Comfortable">
               <p className="ComfortableText">舒適程度</p>
-              <div className="ComfortableScore">9.0</div>
+              <div className="ComfortableScore">{comfort}</div>
             </div>
             <div className="ComfortableScroll">
               <div className="Scrollline"></div>
-              <div className="ComfortableScrollScore"></div>
+              <div className="ComfortableScrollScore" style={{ width: comfort*10+"%" }}></div>
             </div>
           </div>
           <div className="Facilitybox">
             <div className="Facility">
               <p className="FacilityText">設施</p>
-              <div className="FacilityScore">9.0</div>
+              <div className="FacilityScore">{facility}</div>
             </div>
             <div className="FacilityScroll">
               <div className="Scrollline"></div>
-              <div className="FacilityScrollScore"></div>
+              <div className="FacilityScrollScore" style={{ width: facility*10+"%" }}></div>
             </div>
           </div>
           <div className="CPValuebox">
             <div className="CPValue">
               <p className="CPValueText">性價比</p>
-              <div className="CPValueScore">9.0</div>
+              <div className="CPValueScore">{cpValue}</div>
             </div>
             <div className="CPValueScroll">
               <div className="Scrollline"></div>
-              <div className="CPValueScrollScore"></div>
+              <div className="CPValueScrollScore" style={{ width: cpValue*10+"%" }}></div>
             </div>
           </div>
           <div className="nullbox"></div>

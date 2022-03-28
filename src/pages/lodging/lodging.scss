@@ -681,6 +681,7 @@ $ning-englishont: "Playfair Display", serif;
   .ice_introduce {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .ice_score {
       width: 50px;
@@ -1028,6 +1029,7 @@ $ning-englishont: "Playfair Display", serif;
   .nocturnal_introduce {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .nocturnal_score {
       width: 50px;
@@ -1374,6 +1376,7 @@ $ning-englishont: "Playfair Display", serif;
   .tropical_introduce {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .tropical_score {
       width: 50px;
@@ -1651,10 +1654,45 @@ $ning-englishont: "Playfair Display", serif;
     position: absolute;
   }
 
-  .ServeScrollScore,
-  .CleanScrollScore,
-  .ComfortableScrollScore,
-  .FacilityScrollScore,
+  .ServeScrollScore {
+    width: 90%;
+    height: 5px;
+    background-color: $ning-color2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+
+  .CleanScrollScore {
+    width: 90%;
+    height: 5px;
+    background-color: $ning-color2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .ComfortableScrollScore {
+    width: 90%;
+    height: 5px;
+    background-color: $ning-color2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  
+  .FacilityScrollScore {
+    width: 90%;
+    height: 5px;
+    background-color: $ning-color2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  
   .CPValueScrollScore {
     width: 90%;
     height: 5px;
