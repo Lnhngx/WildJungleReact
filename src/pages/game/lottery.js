@@ -84,8 +84,9 @@ function Lottery(props){
         const canvas_bottom = ctx_bottom.canvas;
         const image = new Image();
         const image_bottom = new Image();
-        image.src = "http://localhost:3000/img/game/lottery1.png";
-        image_bottom.src = "http://localhost:3000/img/game/lottery1-back.png"
+        const random_image = Math.floor(Math.random()*3+1)
+        image.src = `http://localhost:3000/img/game/lottery${random_image}.png`;
+        image_bottom.src = `http://localhost:3000/img/game/lottery${random_image}-back.png`
         image.onload = () => {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         };
