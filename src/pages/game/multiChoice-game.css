@@ -149,6 +149,7 @@
     white-space: pre-wrap;
 }
 .rightAns{
+    width: 75%;
     font-size: 2.5rem;
     word-wrap: normal;
     white-space: pre-wrap;

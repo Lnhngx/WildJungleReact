@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
-import { useContext } from "react";
 
 //頁首、頁尾、CSS
 import Navbar from "./components/navbar";
@@ -43,6 +42,7 @@ import ProductList from "./pages/carts/Product_temp/ProductList";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
+import Lottery from "./pages/game/lottery";
 
 function App() {
   // 全域狀態
@@ -54,33 +54,17 @@ function App() {
   const account = JSON.parse(localStorage.getItem("admin_account"));
   const token = !!localStorage.getItem("admin_token");
   const [localState,setLocalState]=useState({"account":account,"token":token});
-  // console.log('3:',auth===true)
-  useEffect(() => {
-    if (account && token) {
-      setAuth(true);
-    } else {
-      setAuth(false);
-    }
-    // console.log('1:',auth===true)
-  }, []);
-  // useEffect(()=>{
-  //   if(auth){
-  //     console.log(account.m_sid)
-  //   }
-  //   console.log('2:',auth===true)
-  // },[auth])
+  
 
   const [toggleLottery, setToggleLottery] = useState(false);
-  const openOrNot = { toggleLottery, setToggleLottery };
   return (
     <SecondCartProvider localStorageKey="secondCart">
       <CartProvider>
         <Router>
           <>
-            <Navbar auth={auth} setAuth={setAuth} />
-            <LotteryContext.Provider value={openOrNot}>
-              <FixedRight />
-            </LotteryContext.Provider>
+            <Navbar auth={auth} setAuth={setAuth} localState={localState} setLocalState={setLocalState}/>
+            <FixedRight setToggleLottery={setToggleLottery}/>
+            <Lottery toggleLottery={toggleLottery} setToggleLottery={setToggleLottery}/>
             {/* 路由表 */}
             <Switch>
               <Route exact path="/">
@@ -117,9 +101,7 @@ function App() {
                 {/* <GameStart /> */}
               </Route>
               <Route exact path="/game">
-                <LotteryContext.Provider value={openOrNot}>
-                  <Game />
-                </LotteryContext.Provider>
+                <Game />
               </Route>
               <Route path="/carts/filloutform">
                 <Cartsfilloutform />
@@ -140,7 +122,7 @@ function App() {
                 <MembersConfirm />
               </Route>
               <Route exact path="/members/login">
-                <Login auth={auth} setAuth={setAuth} />
+                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState}/>
               </Route>
               <Route path="/members/forgot">
                 <ForgotPass />
@@ -149,11 +131,11 @@ function App() {
                 <MemberPassChange />
               </Route>
               <Route exact path="/members/modify-member-info">
-                {localState.token ? <MemberList account={localState.account} token={localState.token} /> : <Redirect to="/members" /> }
+                {auth || localState.token ? <MemberList account={localState.account} token={localState.token} auth={auth} /> : <Redirect to="/members" /> }
                 {/* <MemberList account={account} token={token} /> */}
               </Route>
               <Route path="/members">
-                <Login setAuth={setAuth} setLocalState={setLocalState}/>
+                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState}/>
               </Route>
               <Route path="/lodging">
                 <Lodging />
@@ -183,8 +165,4 @@ function App() {
     </SecondCartProvider>
   );
 }
-export const LotteryContext = React.createContext({
-  toggleLottery: "false",
-  setToggleLottery: () => {},
-});
 export default App;

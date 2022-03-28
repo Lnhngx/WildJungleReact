@@ -312,6 +312,7 @@ function Chatbot(){
                 </div>    
                 <div className="text">立即訂票</div>
             </div>
+            {/* ------------ 我的優惠(分有無加入會員會有不同效果) ------------ */}
             {localStorage.admin_account===undefined &&
                 <div className="coupon" onClick={()=>{
                     let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員即可查看個人優惠");
@@ -352,7 +353,7 @@ function Chatbot(){
                 <div className="text">導覽簡介</div>
             </Link>
             </div>
-            
+            {/* -------------- 查看天氣 -------------- */}
             <div className="weather" onClick={
                 ()=>{
                     fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-E5452D5B-0C6B-437B-A34A-8EEC59F154DB&locationName=%E5%A4%A7%E5%AE%89%E5%8D%80&elementName=PoP12h,T,Wx')
@@ -500,7 +501,7 @@ function Chatbot(){
                     myChatbotInput.current.focus();
                     // 前兩句讓richMenu自動關起來
                     document.querySelector('.agent_chooseArea').style.display = 'none';
-                    let room = '教欽的告解室';
+                    let room = '熊貓的告解室';
                     io.emit('join',room,message=>{
                         const getTime = new Date();
                         let hour = getTime.getHours();
