@@ -6,7 +6,6 @@ import MemberNavItem from './MemberNavItem'
 
 
 
-
 function MemberList(props){
   const {auth,account,token}=props
   // const history=useHistory();
@@ -27,7 +26,8 @@ function MemberList(props){
   const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
 
   // 取得後端資料
-  const [sidData,setSidData]=useState({})
+  const [sidData,setSidData]=useState({});
+  
   useEffect(()=>{
     const getSidData=async ()=>{
       await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
@@ -36,35 +36,22 @@ function MemberList(props){
           'Content-Type': 'application/json'
         }
       }).then(r=>r.json()).then(obj=>{
-          // console.log('MemberList-obj:',obj)
-          setSidData(obj.info)
+          console.log('MemberList-obj:',obj)
+          setSidData(obj.info);
+          
         })
       
     }
-    getSidData()
+    getSidData();
     
-
-    // const gradeImg=async ()=>{
-    //   await fetch('./../data/grade.json').then(r=>r.json()).then(obj=>{
-    //     console.log(obj)
-    //   })
-    // }
+    
+  },[]);
   
-    // gradeImg()
-  },[])
-
-
-  
-
-  // if (auth){
-  //   // return (<Redirect to='/login'  />)
-  //   history.push('/login')
-  // }else{
 
     return(
       <div className="tysu_grade">
           <div className="tysu_gradeImg">
-            <img src="/img/member/v.png" alt="" />
+            <img src={"/img/member/"+sidData.img} alt="" />
           </div>
         <div className="tysu_row">
             <ul className="tysu_memberList">
@@ -76,10 +63,11 @@ function MemberList(props){
                 }} className={actived===v ?'active':''}><Link to="#/"  className="tysu_link">{v}</Link></li>
               })}
             </ul>
-          <MemberNavItem memberlist={memberlist} navItem={navItem}  orderNavItem={orderNavItem} actived={actived} discountNavItem={discountNavItem} likeNavItem={likeNavItem} 
+          <MemberNavItem memberlist={memberlist} navItem={navItem}  orderNavItem={orderNavItem} actived={actived} discountNavItem={discountNavItem} likeNavItem={likeNavItem}
             setNavState={setNavState}
             navState={navState}
             sidData={sidData}
+            setSidData={setSidData}
           />
           <div className="tysu_memberBg">
             <img src="./../img/member/leaf_y.svg" alt="" />

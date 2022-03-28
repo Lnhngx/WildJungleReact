@@ -136,7 +136,7 @@ function Login(props){
                 <div className="tysu_logHelp">
                   <button id="submit" className="tysu_btn_sign" onClick={handleOnClick}>登 入</button>
                   <div className="tysu_help">
-                    <Link to="signup" className="tysu_signText">
+                    <Link to="/members/signup" className="tysu_signText">
                       <i className="fas fa-user-plus"></i>SIGN UP</Link>
                     <Link to="forgot" className="tysu_helpText">
                       <i className="fas fa-question"></i>HELP</Link>
