@@ -5,7 +5,7 @@ import Config from "../Config";
 import EditModal from './EditModal'
 
 function MemberInfo(props){
-  const {sidData,account}=props
+  const {sidData,setSidData,account,dataAgain,setDataAgain}=props
   const sid=JSON.parse(localStorage.getItem('admin_account'))
 
   // Modal顯示與否
@@ -15,6 +15,7 @@ function MemberInfo(props){
   const [mData,setmData]=useState({})
   const [newData,setNewData]=useState({email:'',name:'',gender:'',birthday:'',password:'',address:''})
   useEffect(()=>{
+    console.log(dataAgain);
     if(Object.keys(sidData).length!==0){
       console.log(sidData)
       setmData(sidData);
@@ -25,7 +26,8 @@ function MemberInfo(props){
         birthday:sidData.birthday.split('T')[0],
         address:sidData.m_address})
     }
-  },[sidData]);
+    
+  },[sidData,dataAgain]);
 
   // 資料更改後設定給新的狀態儲存
   const handleFieldChange=(e)=>{
@@ -68,13 +70,16 @@ function MemberInfo(props){
     }).then(r=>r.json()).then(obj=>{
       console.log(obj)
       if(obj.success){
+        
+        console.log(newData);
+        
         // console.log(obj.info.trim() !=='')
         if(obj.info.trim() !==''){
           setEditModalText(obj.info);
           setEditModalShow(true);
         }else{
-        setEditModalText('已更新完成');
-        setEditModalShow(true);
+          setEditModalText('已更新完成');
+          setEditModalShow(true);
         }
       }else{
         setEditModalText(obj.error || '資料沒有更新' );
@@ -133,7 +138,7 @@ function MemberInfo(props){
               <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
             </th>
             <td>
-            <input id="tysu_birth" type="date" className="tysu_input" name="birthday" defaultValue={mData.birthday} max="2022-03-01" onChange={handleFieldChange} />
+            <input id="tysu_birth" type="date" className="tysu_input" name="birthday" defaultValue={mData.birthday} max="2022-03-01" pattern="yyyy-MM-dd" onChange={handleFieldChange} />
               <div id="birthHelp"></div>
             </td>
           </tr>

@@ -21,8 +21,8 @@ function MemberList(props){
 
   // 紀錄memberList的狀態
   const [actived,setActived]=useState('會員資料')
+  
   // 紀錄navItem狀態
-  // const [navState,setNavState]=useState('基本設定')
   const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
 
   // 取得後端資料
@@ -33,12 +33,12 @@ function MemberList(props){
       await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
         method:'GET',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+          "Content-Type": "application/json"
+        },
       }).then(r=>r.json()).then(obj=>{
-          console.log('MemberList-obj:',obj)
+          console.log('MemberList-obj:',obj);
           setSidData(obj.info);
-          
         })
       
     }
