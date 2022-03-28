@@ -280,11 +280,10 @@ function MultiChoice(){
                                                 .then(r=>r.json())
                                                 .then(obj=>{
                                                     console.log(obj)
-                                                    // alert('領取成功')
                                                 })
                                             }else{
                                                 e.preventDefault();
-                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員即可查看個人優惠");
+                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可使用紅利");
                                                 if(goRigister){
                                                     window.location.href = 'http://localhost:3000/members';
                                                 }else{
@@ -318,7 +317,7 @@ function MultiChoice(){
                                                 })
                                             }else{
                                                 e.preventDefault();
-                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員即可查看個人優惠");
+                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可使用紅利");
                                                 if(goRigister){
                                                     window.location.href = 'http://localhost:3000/members';
                                                 }else{
