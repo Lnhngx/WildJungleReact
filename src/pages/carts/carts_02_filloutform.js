@@ -124,7 +124,7 @@ function Cartfilloutform() {
           </div>
 
           
-          <div className="stan_fof_flex_left ">
+          <div className={state?"stan_fof_flex_left":"stan_pagedisplay"}>
             <div>
               <form className="stan_fof_form">
                 <table>
@@ -206,7 +206,7 @@ function Cartfilloutform() {
             </div>
           </div>
 
-          <div className="stan_fof_flex_left stan_convenient">
+          <div className={state3?"stan_fof_delipark":"stan_pagedisplay"}>
             <div>
               <form className="stan_fof_form">
                 <table>
