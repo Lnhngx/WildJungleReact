@@ -12,6 +12,7 @@ import {
 
 import 'react-credit-cards/es/styles-compiled.css';
 import { render } from '@testing-library/react';
+import Config from '../Config';
 
 export default class CreditcardAdd extends React.Component {
     state = {
@@ -61,7 +62,7 @@ export default class CreditcardAdd extends React.Component {
       this.setState({ formData });
     //   this.form.reset();
     console.log(formData)
-    await fetch('http://localhost:4000/members/creditcard/add',{
+    await fetch(Config.TYSU_CREDITCARD_ADD,{
         method:'POST',
         headers:{
             "Content-Type":"application/json"
@@ -154,7 +155,7 @@ export default class CreditcardAdd extends React.Component {
                                     </div>
                                 </td>
                             </tr>
-                            <tr  className="tysu_tr">
+                            <tr  className="tysu_tr tysu_last">
                                 <th>
                                     <label htmlFor="tysu_code">檢查碼<br /><span className="tysu_titleSpan">Card Vaildation Code</span></label>
                                 </th>

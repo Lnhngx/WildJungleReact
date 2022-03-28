@@ -3,11 +3,11 @@ import React,{useEffect, useState} from "react";
 import Config from "../Config";
 import MemberModal from './MemberModal'
 import {Form} from 'react-bootstrap'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 
 function Signup(){
-  
+    const history=useHistory();
 
     const [show, setShow] = useState(false);
     const handleShow = () =>  {
@@ -137,8 +137,9 @@ function Signup(){
         }).then(r=>r.json()).then(obj=>{
             console.log(obj)
             if(obj.success){
-                setSignSuccess('成功註冊')
-                handleShow(true)
+                setSignSuccess('成功註冊，請至您的信箱收取驗證信')
+                handleShow(true);
+                
             }else{
                 setSignSuccess(obj.error || '此帳號已被註冊，如忘記密碼請點選忘記密碼')
                 handleShow(true)

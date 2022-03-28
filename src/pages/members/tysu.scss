@@ -182,7 +182,7 @@ input:-webkit-autofill:active,
 #tysu_passHelp,
 #tysu_cfPassHelp,
 #tysu_codeHelp,
-#addressHelp {
+#tysu_addressHelp {
   margin: 0.3rem 0 0.3rem 2rem;
   height: 1rem;
   text-align: left;
@@ -225,7 +225,11 @@ input:-webkit-autofill:active,
 }
 .tysu_editBtn,
 .tysu_cancelBtn {
-  width: 160px;
+  width: 150px;
+  background-color: #000;
+}
+.tysu_infoeditBtn {
+  width: 30rem;
   background-color: #000;
 }
 

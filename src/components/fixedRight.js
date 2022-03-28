@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import * as Scroll from "react-scroll";
 import {
@@ -9,11 +9,7 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
-import { LotteryContext } from "../App";
-import { useContext } from "react";
-
-const FixedRight = () => {
-  const { toggleLottery, setToggleLottery } = useContext(LotteryContext);
+const FixedRight = (props) => {
   return (
     <>
       <div className="ning_rightflex">
@@ -28,7 +24,19 @@ const FixedRight = () => {
         <div
           className="ning_game"
           onClick={() => {
-            setToggleLottery(true);
+            const storage = localStorage.getItem('received');
+            const expireTime = JSON.parse(storage);
+            let nextTime =  expireTime===null ? 0 : expireTime.expire;
+            if(storage===undefined){
+              props.setToggleLottery(true);
+            }else{
+              if(new Date().getTime() > nextTime){
+                localStorage.removeItem('received');
+                props.setToggleLottery(true);
+              }else{
+                alert('一天只能玩一次');
+              }
+            }
           }}
         >
           <div className="ning_gameicon">

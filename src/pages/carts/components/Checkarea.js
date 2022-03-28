@@ -25,7 +25,7 @@ function Checkarea(props) {
           <hr className="stan_checkouthr stan_hr" />
           <ul>
             <li>結帳金額</li>
-            <li>${cart.cartTotal-100}</li>
+            <li>${cart.cartTotal>=100?cart.cartTotal-100:0}</li>
           </ul>
 
           <Link to="/carts/filloutform" className="stan_link">

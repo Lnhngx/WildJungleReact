@@ -9,7 +9,14 @@ import "react-tabs/style/react-tabs.css";
 import ProductCarousel from "./components/productCarousel";
 import { useEffect } from "react";
 import * as Scroll from "react-scroll";
-import { animateScroll as scroll, scroller } from "react-scroll";
+import {
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 import DetailPicture from "./components/detailPicture";
 import {
   EmailShareButton,
@@ -29,7 +36,13 @@ function ProductsDetail(props) {
   const [label, setLabel] = useState([]);
   const [review, setReview] = useState([]);
   const [member, setMember] = useState([]);
-
+  const [textarea, setTextarea] = useState("");
+  const [datetime, setDatetime] = useState(
+    new Date()
+      .toLocaleString({ city: "TAIWAN", timeZone: "Asia/Taipei" })
+      .slice(0, 19)
+      .replace("T", " ")
+  );
 
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
@@ -42,27 +55,26 @@ function ProductsDetail(props) {
       fetch("http://localhost:4000/productspic", { method: "GET" }),
       fetch("http://localhost:4000/productslabel", { method: "GET" }),
       fetch("http://localhost:4000/productsreview", { method: "GET" }),
-      fetch("http://localhost:4000/productsmemberreview", { method: "GET" })
-
+      fetch("http://localhost:4000/productsmemberreview", { method: "GET" }),
     ])
-      .then(([res1, res2, res3, res4, res5,res6]) =>
+      .then(([res1, res2, res3, res4, res5, res6]) =>
         Promise.all([
           res1.json(),
           res2.json(),
           res3.json(),
           res4.json(),
           res5.json(),
-          res6.json()
+          res6.json(),
         ])
       )
-      .then(([data1, data2, data3, data4, data5,data6]) =>
+      .then(([data1, data2, data3, data4, data5, data6]) =>
         Promise.all([
           setProducts(data1),
           setSpec(data2),
           setPic(data3),
           setLabel(data4),
           setReview(data5),
-          setMember(data6)
+          setMember(data6),
         ])
       )
       .then(console.log("OK"))
@@ -84,8 +96,6 @@ function ProductsDetail(props) {
     return parseInt(review.ReviewStar);
   });
 
-
-
   let starValue = 0;
   for (let i = 0; i < reviewStar.length; i++) {
     starValue += reviewStar[i];
@@ -97,13 +107,63 @@ function ProductsDetail(props) {
     console.log(member);
   };
 
-  const scrollToSection = () => {
-    scroller.scrollTo("alan_information", {
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-      offset: -100,
+  const scrollToWithContainer = () => {
+    let goToContainer = new Promise((resolve, reject) => {
+      Events.scrollEvent.register("end", () => {
+        resolve();
+        Events.scrollEvent.remove("end");
+      });
+
+      scroller.scrollTo("alan_information", {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
     });
+    goToContainer
+      .then(() =>
+        scroller.scrollTo("alan_tab2", {
+          duration: 800,
+          delay: 0,
+          smooth: "easeInOutQuart",
+          containerId: "alan_information",
+        })
+      )
+      .then(() => {
+        const alan_tab2 = document.querySelector(".alan_tab2");
+        alan_tab2.click();
+      });
+  };
+
+  const checkForm = function (event) {
+    event.preventDefault();
+
+    const fd = new FormData(document.form1);
+    console.log([...fd]);
+
+    const dataObj = {};
+    for (let i of fd) {
+      dataObj[i[0]] = i[1];
+    }
+
+    console.log({ dataObj });
+    fetch("", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ dataObj }),
+    })
+      .then((r) => {
+        r.json();
+        console.log(123);
+      })
+      .then((obj) => {
+        console.log(obj);
+        console.log(456);
+        //alert("新增成功");
+        //location.href = '/product-item/list'
+      });
   };
 
   return (
@@ -160,7 +220,7 @@ function ProductsDetail(props) {
                     </span>
                   ))}
                 </div>
-                <div className="alan_comment" onClick={scrollToSection}>
+                <div className="alan_comment" onClick={scrollToWithContainer}>
                   <span>評分獲得{starValue.toFixed(1)}/發表評論</span>
                 </div>
               </div>
@@ -267,13 +327,13 @@ function ProductsDetail(props) {
             </div>
           </div>
 
-          <div className="alan_information">
+          <div className="alan_information" id={"alan_information"}>
             <Tabs
               className={"alan_tabs"}
               selectedIndex={tabIndex}
               onSelect={(index) => setTabIndex(index)}
             >
-              <TabList className={"alan_tablist"}>
+              <TabList className={"alan_tablist"} id={"alan_tablist"}>
                 <Tab className={"alan_tab1"}>
                   <div className="alan_space"></div>
                   <span>商品資訊</span>
@@ -322,31 +382,70 @@ function ProductsDetail(props) {
                   </div>
                 </div>
               </TabPanel>
-              <TabPanel>
+              <TabPanel id={"alan_view"}>
                 <div className="alan_view">
                   <div className="alan_review">評論專區</div>
                   <div className="alan_reviewInput">
                     <div className="alan_inputLeft">
                       <div className="left_title">輸入評論：</div>
-
-                      <form className="alan_LeftInputGroup" action="">
+                      <form
+                        name="form1"
+                        className="alan_LeftInputGroup"
+                        action=""
+                        onSubmit={checkForm}
+                      >
                         <div className="alan_left1">
                           <span>
                             選擇分數:
-                            {selection === "" ? "請選擇" : `${selection}星`}
+                            {selection === " " ? "請選擇" : `${selection}星`}
                           </span>
-                          <StarRating setSelection={setSelection} />
+                          <StarRating
+                            setSelection={setSelection}
+                            value={`${selection}`}
+                            name="ReviewStar"
+                          />
+                          <input
+                            type="hidden"
+                            value={Sid}
+                            name="ProductsReview"
+                            id="ProductsReview"
+                          />
+                          <input
+                            type="hidden"
+                            value={`${selection}`}
+                            name="ReviewStar"
+                            id="ReviewStar"
+                          />
+                          <input
+                            type="hidden"
+                            value={datetime}
+                            name="ReviewDate"
+                            id="ReviewDate"
+                          />
                         </div>
                         <div className="alan_left2">
                           <span>輸入內容:</span>
-                          <textarea></textarea>
+                          <textarea
+                            id="Review"
+                            name="Review"
+                            placeholder="請輸入評論內容"
+                            // onChange={setTextarea}
+                            // value={textarea}
+                          ></textarea>
                         </div>
-                        <button>確認送出</button>
+                        <button type="submit" value="Submit">
+                          確認送出
+                        </button>
                       </form>
                     </div>
                     <div className="alan_inputRight">
                       <div className="right_title">評論回覆：</div>
-                      <TheReview review={review} setReview={setReview}  member={member} setMember={setMember}/>
+                      <TheReview
+                        review={review}
+                        setReview={setReview}
+                        member={member}
+                        setMember={setMember}
+                      />
                     </div>
                   </div>
                 </div>

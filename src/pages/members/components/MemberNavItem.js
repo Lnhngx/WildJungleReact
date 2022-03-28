@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
+import Config from '../Config';
+
 import MemberInfo from './MemberInfo'
 import GradeInfo from './GradeInfo'
 import Creditcard from './Creditcard'
@@ -30,11 +32,46 @@ function MemberNavItem(props){
     actived,
     setNavState,
     navState,
-    sidData}=props
+    sidData,
+    setSidData}=props
 
   const [navActived,setNavActived]=useState(navState)
   // {navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'}
- 
+  const sid=JSON.parse(localStorage.getItem('admin_account'))
+
+  // 點選navItem[0]重新抓取資料庫資料
+  const [dataAgain,setDataAgain]=useState({});
+
+  // useEffect(()=>{
+  //   if(navActived.navItem===navItem[0]){
+  //     const getSidDataAgain=async ()=>{
+  //       await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
+  //         method:'GET',
+  //           headers: {
+  //             'Content-Type': 'application/json'
+  //           }
+  //       }).then(r=>r.json()).then(obj=>{
+  //         // console.log(obj.info);
+  //         setDataAgain(obj.info);     
+  //       })
+  //     }
+  //     getSidDataAgain()
+  //   }
+  // },[])
+  
+  const getSidDataAgain=async ()=>{
+          await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
+            method: 'GET',
+            headers: {
+              "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+              "Content-Type": "application/json"
+            },
+          }).then(r=>r.json()).then(obj=>{
+            console.log(obj.info);
+            setSidData(obj.info);     
+          })
+        }
+
   
   return(<>
   <ul className="tysu_memberChild">
@@ -44,7 +81,11 @@ function MemberNavItem(props){
                 // console.log(e.target.innerHTML)
                 if(e.target.innerHTML===v){
                   setNavActived({...navActived,navItem:v})
-                  setNavState({...navState,navItem:e.target.innerHTML})
+                  setNavState({...navState,navItem:e.target.innerHTML});
+                  if(e.target.innerHTML===navItem[0]){
+                    getSidDataAgain();
+                    console.log('第一個');
+                  }
                 }
               }}>
                 <Link to="#"  className="tysu_link">{v}</Link>
@@ -102,7 +143,7 @@ function MemberNavItem(props){
   </ul>
 
     {/* memberlist && 當前狀態的nav item皆符合才會渲染 */}
-    {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem} account={account} sidData={sidData}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem} account={account} sidData={sidData} setSidData={setSidData} dataAgain={dataAgain} setDataAgain={setDataAgain} /> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[2] ? <CreditcardAdd navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : '' }

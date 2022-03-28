@@ -6,7 +6,6 @@ function CartProductItem() {
   return (
     <>
       {items.map((v, i) => {
-        console.log(items);
         return (
           <div className="stan_product_space" key={v.sid}>
             <ul>

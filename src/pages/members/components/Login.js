@@ -12,9 +12,9 @@ import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(props){
-  const {auth,setAuth,account,setLocalState}=props
+  const {auth,setAuth,account,localState,setLocalState}=props
   const history=useHistory();
-
+  const emailInput=useRef();
 
   // input欄位
   const [email,setEmail]=useState('');
@@ -51,6 +51,10 @@ function Login(props){
       console.log("google驗證");
     });
     
+    // 如果是已經登入狀態，email欄位自動帶入用戶帳號
+    if(auth || localState.token){
+      emailInput.current.value=localState.account.email
+    }
   }, []);
   
 
@@ -84,7 +88,7 @@ function Login(props){
         localStorage.setItem('admin_token',obj.token);
         
         // 傳回頂層登入與否的狀態
-        setLocalState({"token":true});
+        setAuth(true);
         setSuccess('登入成功')
         handleShow();
         setTimeout(() => setShow(false), 1000);
@@ -116,7 +120,7 @@ function Login(props){
                   <span className="tysu_titleSpan">Email</span></label>
               </th>
               <td>
-                <input type="email" id="tysu_email" className="tysu_input" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                <input ref={emailInput} type="email" id="tysu_email" className="tysu_input" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                 <div id="emailHelp"></div>
               </td>
             </tr>
@@ -136,7 +140,7 @@ function Login(props){
                 <div className="tysu_logHelp">
                   <button id="submit" className="tysu_btn_sign" onClick={handleOnClick}>登 入</button>
                   <div className="tysu_help">
-                    <Link to="signup" className="tysu_signText">
+                    <Link to="/members/signup" className="tysu_signText">
                       <i className="fas fa-user-plus"></i>SIGN UP</Link>
                     <Link to="forgot" className="tysu_helpText">
                       <i className="fas fa-question"></i>HELP</Link>

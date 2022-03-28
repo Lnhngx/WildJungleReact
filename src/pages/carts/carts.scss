@@ -677,12 +677,14 @@ $stan_height: 50px;
   .stan_filloutform_order_content {
     width: 100%;
     height: auto; //暫時
+    font-size: 30px;
     border: 1px solid;
     border-color: #c4c4c4 #c4c4c4 $stan_white #c4c4c4;
     background-color: $stan_white;
   }
   .stan_filloutform_order_product_title {
     @extend .stan_product_title;
+    
     padding-top: 20px;
   }
 
@@ -724,6 +726,9 @@ $stan_height: 50px;
       }
       .stan_order_product_pic {
         width: 66.66%;
+        img{
+          width: 50%;
+        }
         @include mobile {
           padding-left: 40%;
           width: 100%;
@@ -736,7 +741,7 @@ $stan_height: 50px;
       @include mobile {
         text-align: end;
         display: block;
-        width: 80%;
+        width: 100%;
         padding-right: 10%;
       }
 
@@ -895,6 +900,15 @@ $stan_height: 50px;
     }
   }
 }
+
+.stan_fof_delihome{
+  @extend .stan_fof_flex_left
+}
+
+.stan_pagedisplay{
+  display: none;
+}
+
 //
 //
 // -------------------------購物車第二頁-------------------------

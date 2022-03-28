@@ -1,11 +1,8 @@
 import React, {useEffect,useState} from "react";
 import { useRef } from "react";
 import './lottery.css';
-import {LotteryContext} from '../../App';
-import { useContext } from "react";
-function Lottery(){
+function Lottery(props){
     const [bonus,setBonus] = useState(0);
-    const {toggleLottery,setToggleLottery} = useContext(LotteryContext);
     const myCanvas = useRef(null);
     const myCanvas_bottom = useRef(null);
     // 利用useRef 抓到render出來的真實canvas
@@ -87,8 +84,9 @@ function Lottery(){
         const canvas_bottom = ctx_bottom.canvas;
         const image = new Image();
         const image_bottom = new Image();
-        image.src = "http://localhost:3000/img/game/lottery1.png";
-        image_bottom.src = "http://localhost:3000/img/game/lottery1-back.png"
+        const random_image = Math.floor(Math.random()*3+1)
+        image.src = `http://localhost:3000/img/game/lottery${random_image}.png`;
+        image_bottom.src = `http://localhost:3000/img/game/lottery${random_image}-back.png`
         image.onload = () => {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         };
@@ -125,9 +123,9 @@ function Lottery(){
     },[])
     return (
         <>  
-        <div className="lottery_container" style={toggle(toggleLottery)}>
+        <div className="lottery_container" style={toggle(props.toggleLottery)}>
             <div className="lottery_closeBtn" 
-            onClick={()=>{setToggleLottery(false)}}
+            onClick={()=>{props.setToggleLottery(false)}}
             >
                 <i className="fas fa-times"></i>
             </div>
@@ -138,7 +136,8 @@ function Lottery(){
                 <canvas ref={myCanvas} width="401" height='556'></canvas>
             </div>
             <button className="lottery_bonusBtn" onClick={async ()=>{
-            await fetch('http://localhost:4000/game-points', {
+            if(localStorage.admin_account!==undefined){
+                await fetch('http://localhost:4000/game-points', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json"
@@ -149,14 +148,19 @@ function Lottery(){
                             getTime_end:new Date(Date.now()+2592000000).toISOString().slice(0, 10),
                             bonus_status:'未使用',
                             m_id:JSON.parse(localStorage.admin_account).m_sid})
-                })
-                .then(r=>r.json())
-                .then(obj=>{
-                    console.log(obj)
-                    // alert('領取成功')
+                    })
+                    .then(r=>r.json())
+                    .then(obj=>{
+                        console.log(obj)
+                        localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
+                        // 帶會員到個人優惠頁面，跟亭勻確認網址
+                    })
+            }else{
+                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可領取獎勵");
+                if(goRigister){
+                    window.location.href = 'http://localhost:3000/members';
                 }
-                
-                )
+            }
             }}>查看獎勵</button>
         </div>
         </>

@@ -178,7 +178,7 @@ function SpotDiff(){
                 <img src="/img/game/cloud-right1.png" alt=""/> 
             </div>
             <div className="game_title">眼力大考驗</div>
-            <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span></p>
+            <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數500 !!!</span></p>
             <div className="container_game">
             <div className="camera">
                 <div className="cube">
@@ -463,7 +463,7 @@ function SpotDiff(){
                     {/* ---------------- 以下做遊戲成功畫面，完成後才會浮出 ---------------- */}
                     <div className="win_game" style={{display:win?'flex':'none'}}>
                         <div className="win_left">
-                            <div className="thou_point">1000</div>
+                            <div className="thou_point">500</div>
                             <div className="text_point">WILDJUNGLE</div>
                             <img src="/img/game/game-points.png" alt="" />
                         </div>
@@ -473,7 +473,34 @@ function SpotDiff(){
                                 <Link
                                     className="win_btn" 
                                     to= '/game'
-                                    onClick={()=>{localStorage.setItem('level',1)}}
+                                    onClick={(e)=>{
+                                        if(localStorage.admin_account!==undefined){
+                                                fetch('http://localhost:4000/game-points', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        "Content-Type": "application/json"
+                                                    },
+                                                    body: JSON.stringify({point_id:7,
+                                                            getTime_start:new Date().toISOString().slice(0, 10),
+                                                            getTime_end:new Date(Date.now()+2592000000).toISOString().slice(0, 10),
+                                                            bonus_status:'未使用',
+                                                            m_id:JSON.parse(localStorage.admin_account).m_sid})
+                                                })
+                                                .then(r=>r.json())
+                                                .then(obj=>{
+                                                    console.log(obj)
+                                                })
+                                            }else{
+                                                e.preventDefault();
+                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可使用紅利");
+                                                if(goRigister){
+                                                    window.location.href = 'http://localhost:3000/members';
+                                                }else{
+                                                    window.location.href = 'http://localhost:3000/game';
+                                                }
+                                            }
+                                        localStorage.setItem('level',1)
+                                    }}
                                 >
                                     <p>回遊戲主頁</p>
                                     <img src="/img/game/game_button.png" alt="" />
@@ -481,7 +508,34 @@ function SpotDiff(){
                                 <Link
                                     className="win_btn"
                                     to= '/products' 
-                                    onClick={()=>{localStorage.setItem('level',1)}}
+                                    onClick={(e)=>{
+                                        if(localStorage.admin_account!==undefined){
+                                                fetch('http://localhost:4000/game-points', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        "Content-Type": "application/json"
+                                                    },
+                                                    body: JSON.stringify({point_id:7,
+                                                            getTime_start:new Date().toISOString().slice(0, 10),
+                                                            getTime_end:new Date(Date.now()+2592000000).toISOString().slice(0, 10),
+                                                            bonus_status:'未使用',
+                                                            m_id:JSON.parse(localStorage.admin_account).m_sid})
+                                                })
+                                                .then(r=>r.json())
+                                                .then(obj=>{
+                                                    console.log(obj)
+                                                })
+                                            }else{
+                                                e.preventDefault();
+                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可使用紅利");
+                                                if(goRigister){
+                                                    window.location.href = 'http://localhost:3000/members';
+                                                }else{
+                                                    window.location.href = 'http://localhost:3000/products';
+                                                }
+                                            }
+                                        localStorage.setItem('level',1)
+                                        }}
                                 >
                                     <p>點數馬上用</p>
                                     <img src="/img/game/game_button.png" alt="" />
