@@ -14,8 +14,8 @@ function TheReview(props) {
   
   
   const click = () => {
-    console.log(memberchose);
-    console.log(memberName);
+    console.log(Array);
+    //console.log(memberName);
   };
   return (
     <>

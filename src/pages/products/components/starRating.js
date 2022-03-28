@@ -37,6 +37,7 @@ function StarRating(props) {
         //点击选中分数
         onClick={rate}
         onMouseOver={hoverOver}
+        onChange={(e) => setSelection(e.target.value)}
       >
         {/* 创建5个组件 */}
         {Array.from({ length: 5 }, (v, i) => (
