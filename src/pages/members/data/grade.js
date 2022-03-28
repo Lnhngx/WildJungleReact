@@ -1,11 +1,11 @@
-[
+const gradeData=[
     {
         "grade_sid": 1,
         "grade_name": "VIP",
         "count": 0,
         "amount": 0,
         "priceCut": "享一次免運",
-        "img": "v.png"
+        "image": "v.png"
     },
     {
         "grade_sid": 2,
@@ -13,7 +13,7 @@
         "count": 2,
         "amount": 1000,
         "priceCut": "購物享9折",
-        "img": "g.png"
+        "image": "g.png"
     },
     {
         "grade_sid": 3,
@@ -21,7 +21,7 @@
         "count": 4,
         "amount": 1500,
         "priceCut": "購物享85折",
-        "img": "p.png"
+        "image": "p.png"
     },
     {
         "grade_sid": 4,
@@ -29,6 +29,8 @@
         "count": 6,
         "amount": 2000,
         "priceCut": "購物享8折",
-        "img": "d.png"
+        "image": "d.png"
     }
 ]
+
+export {gradeData}

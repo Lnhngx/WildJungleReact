@@ -54,21 +54,7 @@ function App() {
   const account = JSON.parse(localStorage.getItem("admin_account"));
   const token = !!localStorage.getItem("admin_token");
   const [localState,setLocalState]=useState({"account":account,"token":token});
-  // console.log('3:',auth===true)
-  useEffect(() => {
-    if (localState.token) {
-      setAuth(true);
-    } else {
-      setAuth(false);
-    }
-    // console.log('1:',auth===true)
-  }, []);
-  // useEffect(()=>{
-  //   if(auth){
-  //     console.log(account.m_sid)
-  //   }
-  //   console.log('2:',auth===true)
-  // },[auth])
+  
 
   const [toggleLottery, setToggleLottery] = useState(false);
   return (
