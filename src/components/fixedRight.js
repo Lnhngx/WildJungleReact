@@ -26,10 +26,11 @@ const FixedRight = (props) => {
           onClick={() => {
             const storage = localStorage.getItem('received');
             const expireTime = JSON.parse(storage);
+            let nextTime =  expireTime===null ? 0 : expireTime.expire;
             if(storage===undefined){
               props.setToggleLottery(true);
             }else{
-              if(new Date().getTime() >= expireTime){
+              if(new Date().getTime() > nextTime){
                 localStorage.removeItem('received');
                 props.setToggleLottery(true);
               }else{
