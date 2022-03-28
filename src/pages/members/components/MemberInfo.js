@@ -168,9 +168,6 @@ function MemberInfo(props){
             <td>
               <div>
                 <button type="button" id="tysu_editBtn" className="tysu_editBtn"  onClick={submitMemberInfoForm}>更 改</button>
-                <button id="tysu_cancelBtn" className="tysu_cancelBtn" type="button" onClick={(e)=>{e.preventDefault()}}>
-                  取 消
-                </button>
               </div>
               {<EditModal editModalShow={editModalShow} setEditModalShow={setEditModalShow} editModalText={editModalText} setEditModalText={setEditModalText} />}
             </td>

@@ -137,7 +137,7 @@ function Signup(){
         }).then(r=>r.json()).then(obj=>{
             console.log(obj)
             if(obj.success){
-                setSignSuccess('成功註冊')
+                setSignSuccess('成功註冊，請至您的信箱收取驗證信')
                 handleShow(true)
             }else{
                 setSignSuccess(obj.error || '此帳號已被註冊，如忘記密碼請點選忘記密碼')

@@ -58,12 +58,12 @@ function Navbar(props) {
             
               {auth || localState.token ? (
                 <i className="fas fa-sign-out-alt tysu_logInOut" onClick={()=>{
-                  
+
                   localStorage.removeItem('admin_account');
                   localStorage.removeItem('admin_token');
                   setAuth(false);
                   setLocalState({"token":false});
-                  history.push('/members');
+                  // history.push('/members');
                 }}></i>
               ) : (
                 <i className="fas fa-user-friends tysu_logInOut" onClick={()=>{history.push('/members/login')}}></i>

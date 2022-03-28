@@ -30,7 +30,7 @@ const {show,setShow,success,signSuccess,setSignSuccess}=props;
       >
         {/* 網址列有 signup 才顯示 Modal.Header */}
         {signUrl.includes('signup') && <Modal.Header>
-          <Modal.Title className="tysu_modalTitle">Warning</Modal.Title>
+          <Modal.Title className="tysu_modalTitle">提醒!</Modal.Title>
           <button type="button" className="tysu_modalBtn" onClick={handleClose}><i className="fas fa-times"></i></button>
         </Modal.Header>}
         <Modal.Body className="tysu_modal">
