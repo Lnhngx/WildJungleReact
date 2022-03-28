@@ -10,6 +10,7 @@ function MultiChoice(){
     const [toLeft,setToLeft] = useState(0);
     const [correctNum,setCorrectNum] = useState(0);
     const [point,setPoint] = useState(0);
+    const [bonusSid,setBonusSid] = useState(0);
     const [review,setReview] = useState([]);
     const [help,setHelp] = useState(false);
     useEffect(()=>{   
@@ -86,7 +87,7 @@ function MultiChoice(){
                 <img src="/img/game/cloud-right1.png" alt=""/> 
             </div>
             <div className="game_title">冷知識大挑戰</div>
-            <p className="game_profile">在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>300</span><br /><span>全部答對能拿到翻倍紅利哦</span></p>
+            <p className="game_profile">在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>50</span><br /><span>全部答對能拿到翻倍紅利哦</span></p>
             <div className="mc_container_game">
             {/* 這是教學影片，點擊小幫手才會出現 */}
                 <div className="mc_video" style={{display:help?"flex":'none'}}>
@@ -263,13 +264,68 @@ function MultiChoice(){
                                     <Link
                                         className="board_winBtn" 
                                         to= '/game'
+                                        onClick={(e)=>{
+                                            if(localStorage.admin_account!==undefined&& point!==0){
+                                                fetch('http://localhost:4000/game-points', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        "Content-Type": "application/json"
+                                                    },
+                                                    body: JSON.stringify({point_id:bonusSid,
+                                                            getTime_start:new Date().toISOString().slice(0, 10),
+                                                            getTime_end:new Date(Date.now()+2592000000).toISOString().slice(0, 10),
+                                                            bonus_status:'未使用',
+                                                            m_id:JSON.parse(localStorage.admin_account).m_sid})
+                                                })
+                                                .then(r=>r.json())
+                                                .then(obj=>{
+                                                    console.log(obj)
+                                                    // alert('領取成功')
+                                                })
+                                            }else{
+                                                e.preventDefault();
+                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員即可查看個人優惠");
+                                                if(goRigister){
+                                                    window.location.href = 'http://localhost:3000/members';
+                                                }else{
+                                                    window.location.href = 'http://localhost:3000/game';
+                                                }
+                                            }
+                                        }}
                                     >
                                         <p>回遊戲主頁</p>
                                         <img src="/img/game/game_button.png" alt="" />
                                     </Link>
                                     <Link
                                         className="board_winBtn"
-                                        to= '/products' 
+                                        to= '/products'
+                                        onClick={(e)=>{
+                                            if(localStorage.admin_account!==undefined&& point!==0){
+                                                fetch('http://localhost:4000/game-points', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        "Content-Type": "application/json"
+                                                    },
+                                                    body: JSON.stringify({point_id:bonusSid,
+                                                            getTime_start:new Date().toISOString().slice(0, 10),
+                                                            getTime_end:new Date(Date.now()+2592000000).toISOString().slice(0, 10),
+                                                            bonus_status:'未使用',
+                                                            m_id:JSON.parse(localStorage.admin_account).m_sid})
+                                                })
+                                                .then(r=>r.json())
+                                                .then(obj=>{
+                                                    console.log(obj)
+                                                })
+                                            }else{
+                                                e.preventDefault();
+                                                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員即可查看個人優惠");
+                                                if(goRigister){
+                                                    window.location.href = 'http://localhost:3000/members';
+                                                }else{
+                                                    window.location.href = 'http://localhost:3000/products';
+                                                }
+                                            }
+                                        }}
                                     >
                                         <p>點數馬上用</p>
                                         <img src="/img/game/game_button.png" alt="" />
@@ -296,10 +352,13 @@ function MultiChoice(){
                                         })
                                         if(counter===10){
                                             setPoint(50)
+                                            setBonusSid(6)
                                         }else if(counter<10&&counter>5){
                                             setPoint(35)
+                                            setBonusSid(4)
                                         }else if(counter<=5){
                                             setPoint(5)
+                                            setBonusSid(1)
                                         }else if(counter===0){
                                             setPoint(0)
                                         }

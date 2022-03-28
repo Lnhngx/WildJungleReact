@@ -112,10 +112,10 @@
 }
 @keyframes swim2 {
     from{
-        left: 12%;
+        left: 16%;
     }
     to{
-        left: 5%;
+        left: 2%;
         /* top:1600px; */
     }
 }

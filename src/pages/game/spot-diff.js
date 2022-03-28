@@ -178,7 +178,7 @@ function SpotDiff(){
                 <img src="/img/game/cloud-right1.png" alt=""/> 
             </div>
             <div className="game_title">眼力大考驗</div>
-            <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數1000 !!!</span></p>
+            <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數500 !!!</span></p>
             <div className="container_game">
             <div className="camera">
                 <div className="cube">
@@ -463,7 +463,7 @@ function SpotDiff(){
                     {/* ---------------- 以下做遊戲成功畫面，完成後才會浮出 ---------------- */}
                     <div className="win_game" style={{display:win?'flex':'none'}}>
                         <div className="win_left">
-                            <div className="thou_point">1000</div>
+                            <div className="thou_point">500</div>
                             <div className="text_point">WILDJUNGLE</div>
                             <img src="/img/game/game-points.png" alt="" />
                         </div>
