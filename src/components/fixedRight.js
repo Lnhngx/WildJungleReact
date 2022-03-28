@@ -26,7 +26,14 @@ const FixedRight = (props) => {
         <div
           className="ning_game"
           onClick={() => {
-            props.setToggleLottery(true);
+            const storage = localStorage.getItem('received');
+            const expireTime = JSON.parse(storage).expire;
+            if(new Date().getTime() >= expireTime){
+              localStorage.removeItem('received');
+              props.setToggleLottery(true);
+            }else{
+              alert('一天只能玩一次');
+            }
           }}
         >
           <div className="ning_gameicon">
