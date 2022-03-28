@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
-import { useContext } from "react";
 
 //頁首、頁尾、CSS
 import Navbar from "./components/navbar";
@@ -43,6 +42,7 @@ import ProductList from "./pages/carts/Product_temp/ProductList";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
+import Lottery from "./pages/game/lottery";
 
 function App() {
   // 全域狀態
@@ -71,16 +71,14 @@ function App() {
   // },[auth])
 
   const [toggleLottery, setToggleLottery] = useState(false);
-  const openOrNot = { toggleLottery, setToggleLottery };
   return (
     <SecondCartProvider localStorageKey="secondCart">
       <CartProvider>
         <Router>
           <>
             <Navbar auth={auth} setAuth={setAuth} />
-            <LotteryContext.Provider value={openOrNot}>
-              <FixedRight />
-            </LotteryContext.Provider>
+            <FixedRight setToggleLottery={setToggleLottery}/>
+            <Lottery toggleLottery={toggleLottery} setToggleLottery={setToggleLottery}/>
             {/* 路由表 */}
             <Switch>
               <Route exact path="/">
@@ -117,9 +115,9 @@ function App() {
                 {/* <GameStart /> */}
               </Route>
               <Route exact path="/game">
-                <LotteryContext.Provider value={openOrNot}>
+                {/* <LotteryContext.Provider value={openOrNot}> */}
                   <Game />
-                </LotteryContext.Provider>
+                {/* </LotteryContext.Provider> */}
               </Route>
               <Route path="/carts/filloutform">
                 <Cartsfilloutform />
@@ -183,8 +181,4 @@ function App() {
     </SecondCartProvider>
   );
 }
-export const LotteryContext = React.createContext({
-  toggleLottery: "false",
-  setToggleLottery: () => {},
-});
 export default App;

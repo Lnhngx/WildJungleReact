@@ -1,11 +1,8 @@
 import React, {useEffect,useState} from "react";
 import { useRef } from "react";
 import './lottery.css';
-import {LotteryContext} from '../../App';
-import { useContext } from "react";
-function Lottery(){
+function Lottery(props){
     const [bonus,setBonus] = useState(0);
-    const {toggleLottery,setToggleLottery} = useContext(LotteryContext);
     const myCanvas = useRef(null);
     const myCanvas_bottom = useRef(null);
     // 利用useRef 抓到render出來的真實canvas
@@ -125,9 +122,9 @@ function Lottery(){
     },[])
     return (
         <>  
-        <div className="lottery_container" style={toggle(toggleLottery)}>
+        <div className="lottery_container" style={toggle(props.toggleLottery)}>
             <div className="lottery_closeBtn" 
-            onClick={()=>{setToggleLottery(false)}}
+            onClick={()=>{props.setToggleLottery(false)}}
             >
                 <i className="fas fa-times"></i>
             </div>

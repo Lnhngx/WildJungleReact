@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Chatbot from './chatbot';
-import Lottery from './lottery';
 import {useState} from 'react';
 import './game.css';
 function Game(){
@@ -108,7 +107,6 @@ function Game(){
 
 
         <Chatbot />
-        <Lottery />
             <div className="gameChoose_zone">
                 <div className="choose_spotGame" 
                     onMouseEnter={(e)=>{
