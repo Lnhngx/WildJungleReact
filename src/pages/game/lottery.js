@@ -152,11 +152,10 @@ function Lottery(props){
                     .then(r=>r.json())
                     .then(obj=>{
                         console.log(obj)
-                        localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 10000} ));
+                        localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
                         // 帶會員到個人優惠頁面，跟亭勻確認網址
                     })
             }else{
-                localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 60000} ));//---3/28測試用，要刪除此行
                 let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可領取獎勵");
                 if(goRigister){
                     window.location.href = 'http://localhost:3000/members';
