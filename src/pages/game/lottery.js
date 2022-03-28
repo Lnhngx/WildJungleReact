@@ -136,7 +136,8 @@ function Lottery(props){
                 <canvas ref={myCanvas} width="401" height='556'></canvas>
             </div>
             <button className="lottery_bonusBtn" onClick={async ()=>{
-            await fetch('http://localhost:4000/game-points', {
+            if(localStorage.admin_account!==undefined){
+                await fetch('http://localhost:4000/game-points', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json"
@@ -147,14 +148,19 @@ function Lottery(props){
                             getTime_end:new Date(Date.now()+2592000000).toISOString().slice(0, 10),
                             bonus_status:'未使用',
                             m_id:JSON.parse(localStorage.admin_account).m_sid})
-                })
-                .then(r=>r.json())
-                .then(obj=>{
-                    console.log(obj)
-                    // alert('領取成功')
+                    })
+                    .then(r=>r.json())
+                    .then(obj=>{
+                        console.log(obj)
+                        localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
+                        // 帶會員到個人優惠頁面，跟亭勻確認網址
+                    })
+            }else{
+                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可領取獎勵");
+                if(goRigister){
+                    window.location.href = 'http://localhost:3000/members';
                 }
-                
-                )
+            }
             }}>查看獎勵</button>
         </div>
         </>
