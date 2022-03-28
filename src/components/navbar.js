@@ -5,7 +5,7 @@ import "../components/all.scss";
 
 function Navbar(props) {
   const [nav, setNav] = useState(0);
-  const { auth,setAuth,localState } = props;
+  const { auth,setAuth,localState,setLocalState } = props;
   const history =useHistory();
 
   const close = function () {
@@ -62,6 +62,7 @@ function Navbar(props) {
                   localStorage.removeItem('admin_account');
                   localStorage.removeItem('admin_token');
                   setAuth(false);
+                  setLocalState({"token":false});
                   history.push('/members');
                 }}></i>
               ) : (

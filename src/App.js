@@ -62,7 +62,7 @@ function App() {
       <CartProvider>
         <Router>
           <>
-            <Navbar auth={auth} setAuth={setAuth} localState={localState}/>
+            <Navbar auth={auth} setAuth={setAuth} localState={localState} setLocalState={setLocalState}/>
             <FixedRight setToggleLottery={setToggleLottery}/>
             <Lottery toggleLottery={toggleLottery} setToggleLottery={setToggleLottery}/>
             {/* 路由表 */}
