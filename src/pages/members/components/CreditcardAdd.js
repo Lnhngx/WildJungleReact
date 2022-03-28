@@ -155,7 +155,7 @@ export default class CreditcardAdd extends React.Component {
                                     </div>
                                 </td>
                             </tr>
-                            <tr  className="tysu_tr">
+                            <tr  className="tysu_tr tysu_last">
                                 <th>
                                     <label htmlFor="tysu_code">檢查碼<br /><span className="tysu_titleSpan">Card Vaildation Code</span></label>
                                 </th>
