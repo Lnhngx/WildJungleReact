@@ -84,7 +84,7 @@ function Login(props){
         localStorage.setItem('admin_token',obj.token);
         
         // 傳回頂層登入與否的狀態
-        setLocalState({"token":true});
+        setAuth(true);
         setSuccess('登入成功')
         handleShow();
         setTimeout(() => setShow(false), 1000);

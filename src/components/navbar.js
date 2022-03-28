@@ -5,7 +5,7 @@ import "../components/all.scss";
 
 function Navbar(props) {
   const [nav, setNav] = useState(0);
-  const { auth } = props;
+  const { auth,setAuth } = props;
   const history =useHistory();
 
   const close = function () {
@@ -57,9 +57,15 @@ function Navbar(props) {
           <div className="navbarIcon">
             
               {auth ? (
-                <i className="fas fa-sign-out-alt tysu_logInOut" onClick={()=>{}}></i>
+                <i className="fas fa-sign-out-alt tysu_logInOut" onClick={()=>{
+                  
+                  localStorage.removeItem('admin_account');
+                  localStorage.removeItem('admin_token');
+                  setAuth(false);
+                  history.push('/members');
+                }}></i>
               ) : (
-                <i className="fas fa-user-friends" onClick={()=>{history.push('/login')}}></i>
+                <i className="fas fa-user-friends" onClick={()=>{history.push('/members/login')}}></i>
               )}
             
             <a href="#/">

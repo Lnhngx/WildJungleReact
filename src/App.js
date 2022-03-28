@@ -56,7 +56,7 @@ function App() {
   const [localState,setLocalState]=useState({"account":account,"token":token});
   // console.log('3:',auth===true)
   useEffect(() => {
-    if (account && token) {
+    if (localState.token) {
       setAuth(true);
     } else {
       setAuth(false);
@@ -138,7 +138,7 @@ function App() {
                 <MembersConfirm />
               </Route>
               <Route exact path="/members/login">
-                <Login auth={auth} setAuth={setAuth} />
+                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState}/>
               </Route>
               <Route path="/members/forgot">
                 <ForgotPass />
@@ -147,11 +147,11 @@ function App() {
                 <MemberPassChange />
               </Route>
               <Route exact path="/members/modify-member-info">
-                {localState.token ? <MemberList account={localState.account} token={localState.token} /> : <Redirect to="/members" /> }
+                {auth ? <MemberList account={localState.account} token={localState.token} auth={auth} /> : <Redirect to="/members" /> }
                 {/* <MemberList account={account} token={token} /> */}
               </Route>
               <Route path="/members">
-                <Login setAuth={setAuth} setLocalState={setLocalState}/>
+                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState}/>
               </Route>
               <Route path="/lodging">
                 <Lodging />
