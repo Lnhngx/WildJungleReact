@@ -122,7 +122,7 @@ function App() {
                 <MembersConfirm />
               </Route>
               <Route exact path="/members/login">
-                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState}/>
+                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState} localState={localState} account={account} />
               </Route>
               <Route path="/members/forgot">
                 <ForgotPass />
@@ -135,7 +135,7 @@ function App() {
                 {/* <MemberList account={account} token={token} /> */}
               </Route>
               <Route path="/members">
-                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState}/>
+                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState} localState={localState} account={account} />
               </Route>
               <Route path="/lodging">
                 <Lodging />

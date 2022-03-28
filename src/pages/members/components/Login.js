@@ -12,9 +12,9 @@ import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(props){
-  const {auth,setAuth,account,setLocalState}=props
+  const {auth,setAuth,account,localState,setLocalState}=props
   const history=useHistory();
-
+  const emailInput=useRef();
 
   // input欄位
   const [email,setEmail]=useState('');
@@ -51,6 +51,10 @@ function Login(props){
       console.log("google驗證");
     });
     
+    // 如果是已經登入狀態，email欄位自動帶入用戶帳號
+    if(auth || localState.token){
+      emailInput.current.value=localState.account.email
+    }
   }, []);
   
 
@@ -116,7 +120,7 @@ function Login(props){
                   <span className="tysu_titleSpan">Email</span></label>
               </th>
               <td>
-                <input type="email" id="tysu_email" className="tysu_input" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                <input ref={emailInput} type="email" id="tysu_email" className="tysu_input" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                 <div id="emailHelp"></div>
               </td>
             </tr>
