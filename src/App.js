@@ -62,7 +62,7 @@ function App() {
       <CartProvider>
         <Router>
           <>
-            <Navbar auth={auth} setAuth={setAuth} />
+            <Navbar auth={auth} setAuth={setAuth} localState={localState}/>
             <FixedRight setToggleLottery={setToggleLottery}/>
             <Lottery toggleLottery={toggleLottery} setToggleLottery={setToggleLottery}/>
             {/* 路由表 */}
@@ -131,7 +131,7 @@ function App() {
                 <MemberPassChange />
               </Route>
               <Route exact path="/members/modify-member-info">
-                {auth ? <MemberList account={localState.account} token={localState.token} auth={auth} /> : <Redirect to="/members" /> }
+                {auth || localState.token ? <MemberList account={localState.account} token={localState.token} auth={auth} /> : <Redirect to="/members" /> }
                 {/* <MemberList account={account} token={token} /> */}
               </Route>
               <Route path="/members">
