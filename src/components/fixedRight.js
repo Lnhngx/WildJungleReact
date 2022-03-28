@@ -9,8 +9,6 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
-
-
 const FixedRight = (props) => {
   return (
     <>
@@ -27,12 +25,16 @@ const FixedRight = (props) => {
           className="ning_game"
           onClick={() => {
             const storage = localStorage.getItem('received');
-            const expireTime = JSON.parse(storage).expire;
-            if(new Date().getTime() >= expireTime){
-              localStorage.removeItem('received');
+            const expireTime = JSON.parse(storage);
+            if(storage===undefined){
               props.setToggleLottery(true);
             }else{
-              alert('一天只能玩一次');
+              if(new Date().getTime() >= expireTime){
+                localStorage.removeItem('received');
+                props.setToggleLottery(true);
+              }else{
+                alert('一天只能玩一次');
+              }
             }
           }}
         >
