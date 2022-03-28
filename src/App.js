@@ -115,9 +115,7 @@ function App() {
                 {/* <GameStart /> */}
               </Route>
               <Route exact path="/game">
-                {/* <LotteryContext.Provider value={openOrNot}> */}
-                  <Game />
-                {/* </LotteryContext.Provider> */}
+                <Game />
               </Route>
               <Route path="/carts/filloutform">
                 <Cartsfilloutform />
