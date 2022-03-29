@@ -42,22 +42,10 @@ function MemberNavItem(props){
   // 點選navItem[0]重新抓取資料庫資料
   const [dataAgain,setDataAgain]=useState({});
 
-  // useEffect(()=>{
-  //   if(navActived.navItem===navItem[0]){
-  //     const getSidDataAgain=async ()=>{
-  //       await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
-  //         method:'GET',
-  //           headers: {
-  //             'Content-Type': 'application/json'
-  //           }
-  //       }).then(r=>r.json()).then(obj=>{
-  //         // console.log(obj.info);
-  //         setDataAgain(obj.info);     
-  //       })
-  //     }
-  //     getSidDataAgain()
-  //   }
-  // },[])
+  const [creditData,setCreditData]=useState({});
+  const [numCard,setNumCard]=useState('');
+
+  
   
   const getSidDataAgain=async ()=>{
           await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
@@ -71,7 +59,22 @@ function MemberNavItem(props){
             setSidData(obj.info);     
           })
         }
-
+  const getCreditData=async() =>{
+          await fetch(Config.TYSU_CREDITCARD_INFO+sidData.m_sid,{
+              method:'GET',
+              headers:{
+                  "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+                  "Content-Type":"application/json"
+              }
+          }).then(r=>r.json()).then(obj=>{
+              console.log(obj);
+              setCreditData(obj);
+              // console.log(obj.info.list);
+              // if(obj.success){
+              //   setNumCard(obj.info.list[0].credit_num);
+              // }
+          })
+  }
   
   return(<>
   <ul className="tysu_memberChild">
@@ -85,6 +88,10 @@ function MemberNavItem(props){
                   if(e.target.innerHTML===navItem[0]){
                     getSidDataAgain();
                     console.log('第一個');
+                  }
+                  if(e.target.innerHTML===navItem[2]){
+                    getCreditData();
+                    console.log('第二個');
                   }
                 }
               }}>
@@ -145,7 +152,7 @@ function MemberNavItem(props){
     {/* memberlist && 當前狀態的nav item皆符合才會渲染 */}
     {actived===memberlist[0] && navState.navItem===navItem[0] ? <MemberInfo navActived={navActived} navItem={navItem} account={account} sidData={sidData} setSidData={setSidData} dataAgain={dataAgain} setDataAgain={setDataAgain} /> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[1] ? <GradeInfo navActived={navActived} navItem={navItem}/> : '' }
-    {actived===memberlist[0] && navState.navItem===navItem[2] ? <CreditcardAdd navActived={navActived} navItem={navItem}/> : '' }
+    {actived===memberlist[0] && navState.navItem===navItem[2] ? <Creditcard navActived={navActived} navItem={navItem} account={account} sidData={sidData} setSidData={setSidData} creditData={creditData} setCreditData={setCreditData} numCard={numCard} setNumCard={setNumCard} getCreditData={getCreditData} /> : '' }
     {actived===memberlist[0] && navState.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[0] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : '' }

@@ -43,11 +43,28 @@ $terry_black: #000000;
 }
 
 .seatsClick {
-  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(180deg)
-    brightness(104%) contrast(97%);
+  filter: invert(1%) sepia(30%) saturate(4000%) hue-rotate(40deg)
+    brightness(70%) contrast(127%);
   width: 7%;
   height: auto;
   margin: 0.4% 1.4%;
+}
+.seat-disabled {
+  filter: invert(60%) sepia(20%) saturate(3000%) hue-rotate(300deg)
+    brightness(60%) contrast(180%);
+  width: 7%;
+  height: auto;
+  margin: 0.4% 1.4%;
+}
+
+.terry_show_area:hover {
+  box-shadow: 0px 0px 15px 2px rgb(233, 233, 233);
+}
+.terry_sponsor_area:hover {
+  box-shadow: 0px 0px 10px 2px rgba(233, 233, 233, 0.5);
+}
+.terry_touch_area:hover {
+  box-shadow: 0px 0px 10px 2px rgba(233, 233, 233, 0.5);
 }
 
 // ---------------------共用---------------------
@@ -1087,7 +1104,7 @@ $terry_black: #000000;
 
 .terry_carousel_area {
   margin: 5% auto;
-  width: 60%;
+  width: 90%;
   height: 500px;
   // outline: 1px solid white;
   p {
@@ -1096,5 +1113,4 @@ $terry_black: #000000;
     margin-top: 20%;
     text-align: center;
   }
-
 }

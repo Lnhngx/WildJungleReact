@@ -15,6 +15,11 @@ import { render } from '@testing-library/react';
 import Config from '../Config';
 
 export default class CreditcardAdd extends React.Component {
+    constructor(props) {
+        super(props);
+        this.inputElement = React.createRef();
+
+    }
     state = {
       number: '',
       name: '',
@@ -23,6 +28,7 @@ export default class CreditcardAdd extends React.Component {
       issuer: '',
       focused: '',
       formData: null,
+      
     };
   
     handleCallback = ({ issuer }, isValid) => {
@@ -60,19 +66,27 @@ export default class CreditcardAdd extends React.Component {
         }, {});
   
       this.setState({ formData });
-    //   this.form.reset();
-    console.log(formData)
-    await fetch(Config.TYSU_CREDITCARD_ADD,{
-        method:'POST',
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify(formData),
-    }).then(r=>r.json()).then(obj=>{
-        console.log(obj)
-    }        
-    )
+        //   this.form.reset();
+        console.log(formData)
+        await fetch(Config.TYSU_CREDITCARD_ADD,{
+            method:'POST',
+            headers:{
+                "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(formData),
+        }).then(r=>r.json()).then(obj=>{
+            console.log(obj);
+            if(obj.success){
+                this.props.setCreditData({...obj});
+                this.props.setShowTable(true);
+                this.props.setShowAdd(false);
+            }
+        }
+            
+        )
     };
+
   
     render() {
         const { name, number, expiry, cvc, focused, issuer, formData } = this.state;
@@ -182,7 +196,11 @@ export default class CreditcardAdd extends React.Component {
                     </table>
                     <div className="tysu_btnGroup" style={{left:"5rem"}}>
                         <button id="tysu_editBtn" className="tysu_editBtn">儲 存</button>
-                        <button id="tysu_cancelBtn" className="tysu_cancelBtn">取 消</button>
+                        <button id="tysu_cancelBtn" className="tysu_cancelBtn" onClick={(e)=>{
+                            // console.log(this.render()._self)
+                            this.props.setShowTable(true);
+                            this.props.setShowAdd(false);
+                        }}>取 消</button>
                     </div>
                 </form>                
             </div>

@@ -216,7 +216,7 @@ input:-webkit-autofill:active,
 .tysu_addBtn {
   width: 830px;
   background-color: var(--tysu_color);
-  margin: 1.5rem auto 0;
+  margin: 1.5rem auto 10rem;
 }
 
 .tysu_btn_sign {
@@ -418,19 +418,6 @@ input:-webkit-autofill:active,
   color: var(--tysu_color);
 }
 
-.tysu_creditCard {
-  width: 100px;
-  height: 50px;
-  margin: 1.8rem 0.2rem 1.8rem;
-  font-size: var(--tysu_fontSize);
-  border: 0.8px solid #000;
-  font-size: var(--tysu_fontSize);
-  outline: none;
-  background-color: transparent;
-}
-.tysu_creditCard.first {
-  margin: 1.8rem 0.2rem 0 1.8rem;
-}
 .tysu_expireDate,
 .tysu_codeContent {
   display: flex;
@@ -455,10 +442,37 @@ input:-webkit-autofill:active,
 .tysu_creditGroup {
   display: flex;
   width: 700px;
-  justify-content: center;
   margin: 0 auto;
-  position: relative;
   align-items: center;
+  justify-content: space-around;
+
+  > .tysu_cardcontent {
+    position: relative;
+
+    > .tysu_creditNum {
+      position: absolute;
+      left: 15%;
+      bottom: 0;
+      transform: translate(-15%, -25%);
+      color: #fff;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      //   outline: 1px solid red;
+
+      > div .tysu_creditCard {
+        width: 80px;
+        height: 50px;
+        margin: 0;
+        font-size: var(--tysu_fontSize);
+        border: 0.8px solid #fff6;
+        font-size: var(--tysu_fontSize);
+        color: #fff;
+        outline: none;
+        background-color: transparent;
+      }
+    }
+  }
 }
 .tysu_tr {
   > .tysu_expireDateList {
@@ -470,6 +484,14 @@ input:-webkit-autofill:active,
     }
   }
 }
+
+.tysu_creditT {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: var(--tysu_fontWeight);
+  color: var(--tysu_color2);
+}
+
 .tysu_creditInput {
   min-width: 450px;
 }
@@ -481,17 +503,9 @@ input:-webkit-autofill:active,
   height: 20.31rem;
   /* display: flex; */
   margin: 0 auto;
-  outline: 1px solid red;
+  // outline: 1px solid red;
 }
-.tysu_creditNum {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-}
+
 .tysu_Bank {
   position: absolute;
   left: 50%;
@@ -506,7 +520,7 @@ input:-webkit-autofill:active,
 .tysu_addressEdit {
   font-size: var(--tysu_fontSize);
   width: 32px;
-  padding: 32px;
+  text-align: center;
 }
 
 .tysu_list {
