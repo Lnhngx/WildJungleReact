@@ -1,8 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./scss/productsdetail.scss";
-import StarRating from "./components/starRating";
+
 import Productsbackground from "./components/productsbackground";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -26,6 +26,8 @@ import {
 } from "react-share";
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 import TheReview from "./components/theReview";
+import Form from "./components/Form";
+
 
 function ProductsDetail(props) {
   const [selection, setSelection] = useState("");
@@ -36,13 +38,18 @@ function ProductsDetail(props) {
   const [label, setLabel] = useState([]);
   const [review, setReview] = useState([]);
   const [member, setMember] = useState([]);
-  const [textarea, setTextarea] = useState("");
-  const [datetime, setDatetime] = useState(
-    new Date()
-      .toLocaleString({ city: "TAIWAN", timeZone: "Asia/Taipei" })
-      .slice(0, 19)
-      .replace("T", " ")
-  );
+  
+
+  const [commentsError, setCommentsError] = useState({
+    commentTextarea: "",
+  });
+
+  // const [datetime, setDatetime] = useState(
+  //   new Date()
+  //     .toLocaleString({ city: "TAIWAN", timeZone: "Asia/Taipei" })
+  //     .slice(0, 19)
+  //     .replace("T", " ")
+  // );
 
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
@@ -102,9 +109,10 @@ function ProductsDetail(props) {
   }
   starValue /= reviewStar.length;
 
+
   const click = function () {
     //console.log(props);
-    console.log(member);
+    console.log();
   };
 
   const scrollToWithContainer = () => {
@@ -135,36 +143,7 @@ function ProductsDetail(props) {
       });
   };
 
-  const checkForm = function (event) {
-    event.preventDefault();
-
-    const fd = new FormData(document.form1);
-    console.log([...fd]);
-
-    const dataObj = {};
-    for (let i of fd) {
-      dataObj[i[0]] = i[1];
-    }
-
-    console.log({ dataObj });
-    fetch("", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ dataObj }),
-    })
-      .then((r) => {
-        r.json();
-        console.log(123);
-      })
-      .then((obj) => {
-        console.log(obj);
-        console.log(456);
-        //alert("新增成功");
-        //location.href = '/product-item/list'
-      });
-  };
+  
 
   return (
     <>
@@ -388,55 +367,7 @@ function ProductsDetail(props) {
                   <div className="alan_reviewInput">
                     <div className="alan_inputLeft">
                       <div className="left_title">輸入評論：</div>
-                      <form
-                        name="form1"
-                        className="alan_LeftInputGroup"
-                        action=""
-                        onSubmit={checkForm}
-                      >
-                        <div className="alan_left1">
-                          <span>
-                            選擇分數:
-                            {selection === " " ? "請選擇" : `${selection}星`}
-                          </span>
-                          <StarRating
-                            setSelection={setSelection}
-                            value={`${selection}`}
-                            name="ReviewStar"
-                          />
-                          <input
-                            type="hidden"
-                            value={Sid}
-                            name="ProductsReview"
-                            id="ProductsReview"
-                          />
-                          <input
-                            type="hidden"
-                            value={`${selection}`}
-                            name="ReviewStar"
-                            id="ReviewStar"
-                          />
-                          <input
-                            type="hidden"
-                            value={datetime}
-                            name="ReviewDate"
-                            id="ReviewDate"
-                          />
-                        </div>
-                        <div className="alan_left2">
-                          <span>輸入內容:</span>
-                          <textarea
-                            id="Review"
-                            name="Review"
-                            placeholder="請輸入評論內容"
-                            // onChange={setTextarea}
-                            // value={textarea}
-                          ></textarea>
-                        </div>
-                        <button type="submit" value="Submit">
-                          確認送出
-                        </button>
-                      </form>
+                     <Form selection={selection} setSelection={setSelection}/>
                     </div>
                     <div className="alan_inputRight">
                       <div className="right_title">評論回覆：</div>
