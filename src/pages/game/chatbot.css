@@ -500,3 +500,106 @@
     margin-top: -1rem;
     margin-left: 70px;
 }
+/* 訂票用的卡片CSS */
+.chatbot_ticketsCard{
+    margin-left: 1.5rem;
+    width: 250px;
+    height: 350px;
+    border-radius: 10px;
+    background-color: white;
+}
+.chatbot_tCardTitle{
+    width: 100%;
+    height: 60px;
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(235,92,55);
+    color: rgb(250, 250, 250);
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 60px;
+    font-family: sans-serif;
+    font-weight: 800;
+}
+.chatbot_ticketAdult{
+    width: 100%;
+    height: 79px;
+    border-bottom: 1px dashed rgb(119, 118, 118);
+    display: flex;
+    align-items: center;
+}
+.chatbot_ticketStudent{
+    width: 100%;
+    height: 79px;
+    border-bottom: 1px dashed rgb(119, 118, 118);
+    display: flex;
+    align-items: center;
+}
+.chatbot_ticketOld{
+    width: 100%;
+    height: 79px;
+    display: flex;
+    align-items: center;
+}
+.chatbot_ticketFor{
+    width: 25%;
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: sans-serif;
+    color: gray;
+    text-align: center;
+    padding-left: 0.35rem;
+}
+.chatbot_ticketCountArea{
+    width: 66%;
+    display: flex;
+    margin-left: 1rem;
+}
+.chatbot_ticketMinus{
+    width: 40px;
+    height: 40px;
+    border: 1px solid gray;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.chatbot_ticketMinus i{
+    font-size: 1.8rem;
+    color: gray;
+}
+.chatbot_ticketNum{
+    width: 80px;
+    height: 40px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    color: rgb(88, 81, 81);
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.chatbot_ticketAdd{
+    width: 40px;
+    height: 40px;
+    border: 1px solid gray;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.chatbot_ticketAdd i{
+    font-size: 1.8rem;
+    color: gray;
+}
+.chatbot_ticketSend{
+    width: 100%;
+    height: 60px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(19, 87, 126);
+    color: rgb(250, 250, 250);
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 60px;
+    font-family: sans-serif;
+    font-weight: 800;
+    cursor: pointer;
+}
+

@@ -1,7 +1,6 @@
 import React from "react";
 import { useRef } from "react";
 import { useState,useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
@@ -12,13 +11,16 @@ function Chatbot(){
     const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [toggleSticker,setToggleSticker] = useState(false);
+    // const [toggleBuy,setToggleBuy] = useState(false);
     const [message,setMessage] = useState([{id:chat_id,text:'yo~ 我是熊貓有任何基礎問題都可以問我',type:'chatbot_reply'}]);
     const [privateMessage,setPrivateMessage] = useState([]);
     const [weatherData,setWeatherData] = useState({});
+    const [adultTicket,setAdultTicket] = useState(0);
+    const [studentTicket,setStudentTicket] = useState(0);
+    const [loveTicket,setLoveTicket] = useState(0);
     const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
-    const myChatbotInput = useRef(null);
-    const location = useLocation(); 
+    const myChatbotInput = useRef(null); 
     const connectWebSocket = ()=>{
         setIo( webSocket('http://localhost:3001') );
     }
@@ -180,7 +182,51 @@ function Chatbot(){
             })}
             {message.map((v,i)=>{
                 if(v.id>1){
-                    if(v.type==='stickers'){
+                    if(v.type === 'buyTicket'){
+                    return(
+                        <div className="chatbot_reply">
+                            <div className="chatbot_avatar">
+                                <img src="/img/game/chatbot_avatar.png" alt="" />
+                            </div>
+                            <div className="chatbot_ticketsCard">
+                                <div className="chatbot_tCardTitle">門票購買</div>
+                                <div className="chatbot_ticketAdult">
+                                    <div className="chatbot_ticketFor">全票:</div>
+                                    <div className="chatbot_ticketCountArea">
+                                        <div className="chatbot_ticketMinus" onClick={()=>{
+                                            if(adultTicket>=1)setAdultTicket(adultTicket-1)
+                                        }}><i class="fas fa-minus"></i></div>
+                                        <div className="chatbot_ticketNum">{adultTicket}</div>
+                                        <div className="chatbot_ticketAdd" onClick={()=>{setAdultTicket(adultTicket+1)}}><i class="fas fa-plus"></i></div>
+                                    </div>
+                                </div>
+                                <div className="chatbot_ticketStudent">
+                                    <div className="chatbot_ticketFor">學生票:</div>
+                                    <div className="chatbot_ticketCountArea">
+                                        <div className="chatbot_ticketMinus" onClick={()=>{
+                                            if(studentTicket>=1)setStudentTicket(studentTicket-1)
+                                        }}><i class="fas fa-minus"></i></div>
+                                        <div className="chatbot_ticketNum">{studentTicket}</div>
+                                        <div className="chatbot_ticketAdd" onClick={()=>{setStudentTicket(studentTicket+1)}}><i class="fas fa-plus"></i></div>
+                                    </div>
+                                </div>
+                                <div className="chatbot_ticketOld">
+                                    <div className="chatbot_ticketFor">愛心票:</div>
+                                    <div className="chatbot_ticketCountArea">
+                                        <div className="chatbot_ticketMinus" onClick={()=>{
+                                            if(loveTicket>=1)setLoveTicket(loveTicket-1)
+                                        }}><i class="fas fa-minus"></i></div>
+                                        <div className="chatbot_ticketNum">{loveTicket}</div>
+                                        <div className="chatbot_ticketAdd" onClick={()=>{setLoveTicket(loveTicket+1)}}><i class="fas fa-plus"></i></div>
+                                    </div>
+                                </div>
+                                <div className="chatbot_ticketSend">確認送出</div>
+                            </div>
+                            <div className="chatbot_time">{v.time}</div>
+                        </div>
+                        )
+                    }
+                    if(v.type === 'stickers'){
                         return(
                             <div className="user_reply" >
                                 <div className="sticker_message">
@@ -306,7 +352,21 @@ function Chatbot(){
         <div className="reply_hint" style={replyToggle(toggleReply)}>...</div>
     {/*------------- menu是浮起來的 -----------------*/}
         <div className="menu">
-            <div className="book" onClick={()=>{console.log(123456)}}>
+            <div className="book" onClick={()=>{
+                const getTime = new Date();
+                let hour = getTime.getHours();
+                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                let description = hour >= 12 ? '下午':'上午';
+                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+                let replyMessage = [...message];
+                const uploadTmp1 = { id:888,
+                                text: 'do something',
+                                type:'buyTicket',
+                                time:timeNow,
+                            } ;
+                replyMessage.push(uploadTmp1);
+                setMessage(replyMessage);
+            }}>
                 <div className="icon">
                     <i className="fas fa-ticket-alt"></i>
                 </div>    
