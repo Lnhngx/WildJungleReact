@@ -113,36 +113,39 @@ function Activity() {
     const renderSeats = () => {
         return datas.map((data, i) => (
             <div className="styleFlex">
-                {data.map((v, j) => (
-                    <img onClick={() => {
+                {data.map((v, j) => {
+                    const p = String.fromCharCode(65 + i) + (j + 1);
+                    return <img onClick={() => {
                         //數字轉字母
-                        const p = String.fromCharCode(65 + i);
                         const ps = { ...positions };
                         const psed = { ...clickedPosition };
 
                         if (ps[p]) {
                             delete ps[p];
                             setPositions(ps);
-                            console.log("\\芋頭加持/給我跳出來啊!!!!!")
 
-                            //className點擊
-                            if(!psed[i].findIndex((e)=>e===j)){
-                                console.log("\\E神加持/ 求你跳出來了.......")
-                                psed[i].splice(psed[i].findIndex((e)=>e===j),1);
-                                setClickedPosition({ ...psed });
-                            }
                         } else {
                             setPositions({ ...ps, [p]: (j + 1) });
-
-                            //className點擊
+                        };
+                        //點選替換className
+                        if (clickedPosition[i] && clickedPosition[i].length >= 0 && psed[i].findIndex((e) => e === j) !== -1) {
+                            psed[i].splice(psed[i].findIndex((e) => e === j), 1);
+                            setClickedPosition({ ...psed });
+                        } else {
                             if (!psed[i]) {
                                 psed[i] = [];
                                 psed[i].push(j);
                                 setClickedPosition({ ...psed })
+                            } else {
+                                psed[i].push(j);
+                                setClickedPosition({ ...psed })
                             }
-                        };
-                    }} className={(clickedPosition[i] && clickedPosition[i].length > 0 && clickedPosition[i].some((n) => n === j)) ? "seatsClick" : "seats"} src="/img/activity/chair.svg" alt="" />
-                ))}
+                        }
+
+                    }} className={seatData.includes(`${i}:${j}`) ? 'seat-disabled' :
+                        (clickedPosition[i] && clickedPosition[i].length > 0 && clickedPosition[i].some((n) => n === j)) ? "seatsClick" : "seats"}
+                        src="/img/activity/chair.svg" alt="" />
+                })}
             </div>
         ));
     };
@@ -215,7 +218,16 @@ function Activity() {
     //位置點擊
     const [positions, setPositions] = useState({});
     const [clickedPosition, setClickedPosition] = useState({});
-    const [seatClick, setSeatClick] = useState(false);
+
+    //座位驗證
+    const [seatData, setSeatData] = useState([]);
+    // useEffect(()=>{   
+    //     fetch('http://localhost:4000/activity')
+    //     .then(r=>r.json())
+    //     .then(obj=>{
+    //         console.log(obj)
+    //     })       
+    // },[])
 
     //scrollTo
     const scrollToSection1 = () => {
@@ -323,7 +335,7 @@ function Activity() {
                                         setShowTextChange
                                             ("你知道嗎？如果一天睡八個小時，在你99歲的時候，你已經花了33年在睡覺了！有時候看別人吃東西會覺得好像比較好吃～睡覺也是一樣的道理喔！沒錯！本表演秀就是單純看平常帥氣鋒利的豹，用超可愛超萌的樣子睡覺！有趣吧！我覺得很有趣！來就對了！哈！");
                                         setLocationChange
-                                            ("海底D區");
+                                            ("海洋D區");
                                     };
 
                                     console.log(e.target.value)
@@ -334,13 +346,44 @@ function Activity() {
                                     <option value="3" >熊貓吃播秀</option>
                                     <option value="4" >萌豹睡覺秀</option>
                                 </select>
-                                <select>
+                                <select onChange={(e) => {
+                                    console.log(e.target.value);
+                                    fetch('http://localhost:4000/activity', {
+                                        method: 'POST',
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({ "sid": e.target.value }),
+                                    }).then(r => r.json())
+                                        .then(obj => {
+                                            console.log('hiiiiiii', obj);
+                                            const seatArr = [];
+                                            obj.map((v, i) => {
+                                                console.log(v.seat);
+                                                seatArr.push(v.seat);
+                                                console.log(seatArr);
+                                            })
+                                            setSeatData(seatArr);
+                                        });
+                                }}>
                                     <option>選擇場次</option>
+                                    <option value="白晝A">白晝A(9:00~10:30)</option>
+                                    <option value="白晝B">白晝B(12:00~13:30)</option>
+                                    <option value="星光A">星光A(20:00~21:30)</option>
                                 </select>
                                 <select>
                                     <option>選擇人數</option>
+                                    <option>獨享(一人)</option>
+                                    <option>麻吉同行(兩人)</option>
+                                    <option>必有我師(三人)</option>
+                                    <option>麻將夥伴(四人)</option>
+                                    <option>偶像團體(五人)</option>
+                                    <option>會不會太多(六人)</option>
                                 </select>
-                                <button onClick={() => { setState2(!state2); setState(!state) }}>訂位</button>
+                                <button onClick={() => {
+                                    setState2(!state2);
+                                    setState(!state);
+                                }}>選位</button>
                             </div>
                         </div>
                     </div>
@@ -391,36 +434,8 @@ function Activity() {
                     <div className={state4 ? "areaDisplayNone" : "terry_sponsor_planSelectionArea"}>
                         {renderStaraAnimal()}
                     </div>
-                    {/* <div className="terry_sponsor_planSelectionArea">
-                        <div className="demoArea">
-                            <div className="imgBorder">
-                                <img src="/img/activity/animalBorder.svg" alt="" />
-                                <div className="animalName">Eagle</div>
-                            </div>
-                            <div className="animalImg">
-                                <img src="/img/home/star_eagle.png" alt="" />
-                            </div>
-                        </div>
-                        <div className="introduction_area">
-                            <div className="sponsor_introductionText3">感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。</div>
-                            <div className="selectAndButton_grop">
-                                <div className="sponsorSelect">
-                                    <select>
-                                        <option>選擇方案</option>
-                                    </select>
-                                    <select>
-                                        <option>選擇金額</option>
-                                    </select>
-                                </div>
-                                <div className="buttonGrop2">
-                                    <button>加入購物車</button>
-                                    <button>回上一步</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-
                     {/*02結束*/}
+
                     <div className="terry_touch_area">
                         <div className="terry_show_area_textArea">
                             <div className="terry_01">03</div>
