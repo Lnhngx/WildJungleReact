@@ -53,7 +53,8 @@ function Login(props){
     
     // 如果是已經登入狀態，email欄位自動帶入用戶帳號
     if(auth || localState.token){
-      emailInput.current.value=localState.account.email
+      emailInput.current.value=localState.account.email;
+      setEmail(emailInput.current.value)
     }
   }, []);
   

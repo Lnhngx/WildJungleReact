@@ -10,6 +10,9 @@ function ForgotPass(){
     const [editModalShow,setEditModalShow]=useState(false);
     const [forgotModalText,setForgotModalText]=useState('');
 
+
+    
+
     function submitForgotPass(e){
         e.preventDefault();
         
