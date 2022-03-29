@@ -3,11 +3,15 @@ import "./carts.scss";
 import Process02 from "./components/Process_02";
 import Filloutorder from "./components/Filloutform_order";
 import { useCart } from "./utils/useCart";
+import { Link } from "react-router-dom";
+import Credit from "../members/components/CreditcardAdd";
 
 function Cartfilloutform() {
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
   const [state3, setState3] = useState(false);
+  const [state4, setState4] = useState(false);
+  const [state5, setState5] = useState(false);
   const { cart } = useCart();
   return (
     <>
@@ -78,7 +82,8 @@ function Cartfilloutform() {
                 if (e.target.value === "1") {
                   setState(true);
                   setState2(false);
-                  setState2(false);
+                  setState3(false);
+                  console.log(1);
                 }
                 if (e.target.value === "2") {
                   setState2(true);
@@ -106,8 +111,14 @@ function Cartfilloutform() {
           <div className="stan_fof_flex_left">
             <select
               className="stan_select_group"
-              onChange={(e) => {
-                if (e.target.value === 1) {
+              onClick={(e) => {
+                if (e.target.value === "1") {
+                  setState4(true);
+                  setState5(false);
+                }
+                if (e.target.value === "2") {
+                  setState4(false);
+                  setState5(true);
                 }
               }}
             >
@@ -118,13 +129,14 @@ function Cartfilloutform() {
           </div>
 
           <div
-            className={state || state2 || state3 ? "stan_fof_flex" : "stan_pagedisplay"}
+            className={
+              state || state2 || state3 ? "stan_fof_flex" : "stan_pagedisplay"
+            }
           >
             <div className="stan_h3">收件人資料</div>
           </div>
 
-          
-          <div className={state?"stan_fof_flex_left":"stan_pagedisplay"}>
+          <div className={state ? "stan_fof_flex_left" : "stan_pagedisplay"}>
             <div>
               <form className="stan_fof_form">
                 <table>
@@ -206,7 +218,7 @@ function Cartfilloutform() {
             </div>
           </div>
 
-          <div className={state3?"stan_fof_delipark":"stan_pagedisplay"}>
+          <div className={state3 ? "stan_fof_delipark" : "stan_pagedisplay"}>
             <div>
               <form className="stan_fof_form">
                 <table>
@@ -271,9 +283,18 @@ function Cartfilloutform() {
             </div>
           </div>
 
+          {state4 ? <Credit /> : ""}
+
           <div className="stan_fof_btn">
-            <div className="stan_fof_btn_back">上一頁</div>
-            <div className="stan_fof_btn_next">完成結帳</div>
+            <Link to="/carts" className="stan_link stan_fof_btn_back">
+              <div>上一頁</div>
+            </Link>
+            <Link
+              to="/carts/finishorder"
+              className="stan_link stan_fof_btn_next"
+            >
+              <div>完成結帳</div>
+            </Link>
           </div>
         </div>
       </div>
