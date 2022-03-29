@@ -1,5 +1,5 @@
 
-import React,{useEffect, useState} from "react";
+import React,{useState} from "react";
 import Config from "../Config";
 import MemberModal from './MemberModal'
 import {Form} from 'react-bootstrap'
