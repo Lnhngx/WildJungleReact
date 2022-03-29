@@ -20,7 +20,7 @@ function Chatbot(){
     const [loveTicket,setLoveTicket] = useState(0);
     const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
-    const myChatbotInput = useRef(null); 
+    const myChatbotInput = useRef(null);
     const connectWebSocket = ()=>{
         setIo( webSocket('http://localhost:3001') );
     }
@@ -220,7 +220,27 @@ function Chatbot(){
                                         <div className="chatbot_ticketAdd" onClick={()=>{setLoveTicket(loveTicket+1)}}><i class="fas fa-plus"></i></div>
                                     </div>
                                 </div>
-                                <div className="chatbot_ticketSend">確認送出</div>
+                                <div className="chatbot_ticketSend" onClick={()=>{
+                                    const temp_arr = [{sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket },{sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket},{sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
+                                    // const sendAdult = {sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket };
+                                    // const sendStudent = {sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket};
+                                    // const sendLove = {sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket };
+                                    let template = temp_arr.filter(v=>v.quantity!==0)
+                                    console.log(template)
+                                    if(JSON.parse( localStorage.getItem('cart') ).length===0){
+                                        let current_arr = JSON.parse( localStorage.getItem('cart') );
+                                        template.forEach(v=>{
+                                            current_arr.push(v);
+                                        })
+                                        localStorage.setItem('cart',JSON.stringify(current_arr))
+                                    }else{
+                                        let current_arr = JSON.parse( localStorage.getItem('cart') )
+                                        template.forEach(v=>{
+                                            current_arr.push(v);
+                                        })
+                                        localStorage.setItem('cart',JSON.stringify(current_arr))
+                                    } 
+                                }}>確認送出</div>
                             </div>
                             <div className="chatbot_time">{v.time}</div>
                         </div>
@@ -353,6 +373,8 @@ function Chatbot(){
     {/*------------- menu是浮起來的 -----------------*/}
         <div className="menu">
             <div className="book" onClick={()=>{
+                document.querySelector('.menu').style.bottom = '-200px';
+                setToggleMenu(false);
                 const getTime = new Date();
                 let hour = getTime.getHours();
                 let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
