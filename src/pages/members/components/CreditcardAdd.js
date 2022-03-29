@@ -66,18 +66,25 @@ export default class CreditcardAdd extends React.Component {
         }, {});
   
       this.setState({ formData });
-    //   this.form.reset();
-    console.log(formData)
-    await fetch(Config.TYSU_CREDITCARD_ADD,{
-        method:'POST',
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify(formData),
-    }).then(r=>r.json()).then(obj=>{
-        console.log(obj)
-    }        
-    )
+        //   this.form.reset();
+        console.log(formData)
+        await fetch(Config.TYSU_CREDITCARD_ADD,{
+            method:'POST',
+            headers:{
+                "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(formData),
+        }).then(r=>r.json()).then(obj=>{
+            console.log(obj);
+            if(obj.success){
+                this.props.getCreditData();
+                this.props.setShowTable(true);
+                this.props.setShowAdd(false);
+            }
+        }
+            
+        )
     };
 
   

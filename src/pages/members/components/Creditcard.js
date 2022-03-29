@@ -4,14 +4,17 @@ import CreditcardAdd from './CreditcardAdd';
 import Config from '../Config';
 
 function Creditcard(props){
-    const {account,sidData,setSidData,creditData,setCreditData,numCard,setNumCard}=props
+    const {account,sidData,setSidData,creditData,setCreditData,numCard,setNumCard,getCreditData}=props
     
     const [showAdd,setShowAdd]=useState(false);
     const [showTable,setShowTable]=useState(true);
 
     let nd=numCard.slice(-4);
-    let creditDataTF=creditData;
-
+    // let creditDataTF=creditData;
+    const [creditDataTF,setcreditDataTF]=useState(creditData);
+    useEffect(() => {
+        getCreditData()
+    },[]);
 
 
     return(<>
@@ -57,7 +60,7 @@ function Creditcard(props){
             </tbody>
         </table> : ''}
         
-        {showAdd===false ? '' : <CreditcardAdd setShowAdd={setShowAdd} setShowTable={setShowTable} />}
+        {showAdd===false ? '' : <CreditcardAdd sidData={sidData} setShowAdd={setShowAdd} setShowTable={setShowTable} setCreditData={setCreditData} getCreditData={getCreditData} />}
         
     </>)
 }
