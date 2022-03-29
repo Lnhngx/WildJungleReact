@@ -26,16 +26,16 @@ function AdditionComment() {
     commentTextarea: "",
 })
 
-  const onInputChange = (e) => {
-    setComments({...comments, [e.target.name]: e.target.value.trim()});
-  };
+  // const onInputChange = (e) => {
+  //   setComments({...comments, [e.target.name]: e.target.value.trim()});
+  // };
 
-  // const [servevalue, setServevalue] = useState("1");
-  // const [cleanvalue, setCleanvalue] = useState("1");
-  // const [comfortablevalue, setComfortablevalue] = useState("1");
-  // const [facilityvalue, setFacilityvalue] = useState("1");
-  // const [CPvalue, setCPvalue] = useState("1");
-  // const [commentText, setCommentText] = useState("");
+  const [servevalue, setServevalue] = useState("1");
+  const [cleanvalue, setCleanvalue] = useState("1");
+  const [comfortablevalue, setComfortablevalue] = useState("1");
+  const [facilityvalue, setFacilityvalue] = useState("1");
+  const [CPvalue, setCPvalue] = useState("1");
+  const [commentText, setCommentText] = useState("");
 
   // 填寫錯誤時顯示
   const handleFormInvalid=(e)=>{
@@ -48,10 +48,8 @@ function AdditionComment() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 避免傳統方式送出表單
-
     const fd = new FormData(e.target);
     const commentTextarea=fd.get('commentTextarea')
-
     if(commentTextarea.trim()===''){
       const updateCommentsError={
           ...commentsError,
@@ -59,11 +57,17 @@ function AdditionComment() {
       }
       setCommentsError(updateCommentsError)
       return
-  }
+    }
 
     fetch(Config.COMMENT_ADD, {
       method: "POST",
-      body: fd,
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({serve:servevalue,
+                            clean:cleanvalue,
+                            comfort:comfortablevalue,
+                            facility:facilityvalue,
+                            cpValue:CPvalue,
+                            commentTextarea:commentText}),
     }).then(r=>r.json()).then(obj=>{console.log(obj)
         if(obj.success){
             setSignSuccess('感謝你的評語')
@@ -78,7 +82,7 @@ function AdditionComment() {
 
   return (
     <>
-      <form name="form1" onsubmit={handleSubmit} onInvalid={handleFormInvalid}>
+      <form name="form1" onSubmit={handleSubmit} onInvalid={handleFormInvalid}>
         <div className="orderInformationbox">
           <div className="orderInformation">訂購資訊</div>
           <div className="orderList">
@@ -117,8 +121,8 @@ function AdditionComment() {
                   max={10}
                   id="serve"
                   name="serve"
-                  value={comments.serve}
-                  onChange={onInputChange}
+                  value={servevalue}
+                  onChange={setServevalue}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -136,7 +140,7 @@ function AdditionComment() {
                     backgroundColor: "#f9b112",
                   }}
                 />
-                <div className="commentServeScore">{comments.serve}</div>
+                <div className="commentServeScore">{servevalue}</div>
               </div>
             </div>
             <div className="commentCleanbox">
@@ -157,8 +161,8 @@ function AdditionComment() {
                   max={10}
                   id="clean"
                   name="clean"
-                  value={comments.clean}
-                  onChange={onInputChange}
+                  value={cleanvalue}
+                  onChange={setCleanvalue}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -176,7 +180,7 @@ function AdditionComment() {
                     backgroundColor: "#f9b112",
                   }}
                 />
-                <div className="commentCleanScore">{comments.clean}</div>
+                <div className="commentCleanScore">{cleanvalue}</div>
               </div>
             </div>
             <div className="commentComfortablebox">
@@ -197,8 +201,8 @@ function AdditionComment() {
                   max={10}
                   id="comfort"
                   name="comfort"
-                  value={comments.comfort}
-                  onChange={onInputChange}
+                  value={comfortablevalue}
+                  onChange={setComfortablevalue}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -217,7 +221,7 @@ function AdditionComment() {
                   }}
                 />
                 <div className="commentComfortableScore">
-                  {comments.comfort}
+                  {comfortablevalue}
                 </div>
               </div>
             </div>
@@ -239,8 +243,8 @@ function AdditionComment() {
                   max={10}
                   name="facility"
                   id="facility"
-                  value={comments.facility}
-                  onChange={onInputChange}
+                  value={facilityvalue}
+                  onChange={setFacilityvalue}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -258,7 +262,7 @@ function AdditionComment() {
                     backgroundColor: "#f9b112",
                   }}
                 />
-                <div className="commentFacilityScore">{comments.facility}</div>
+                <div className="commentFacilityScore">{facilityvalue}</div>
               </div>
             </div>
             <div className="commentCPValuebox">
@@ -279,8 +283,8 @@ function AdditionComment() {
                   max={10}
                   id="cpValue"
                   name="cpValue"
-                  value={comments.cpValue}
-                  onChange={onInputChange}
+                  value={CPvalue}
+                  onChange={setCPvalue}
                   handleStyle={{
                     backgroundColor: "#ffffff",
                     opacity: 1,
@@ -298,7 +302,7 @@ function AdditionComment() {
                     backgroundColor: "#f9b112",
                   }}
                 />
-                <div className="commentCPValueScore">{comments.cpValue}</div>
+                <div className="commentCPValueScore">{CPvalue}</div>
               </div>
             </div>
             <div className="nullbox"></div>
@@ -310,12 +314,12 @@ function AdditionComment() {
           className="form-control commentTextareabox"
           id="commentTextarea"
           name="commentTextarea"
-          value={comments.commentTextarea}
-                  onChange={onInputChange}
+          value={commentText}
+          onChange={()=>{setCommentText(document.querySelector('#commentTextarea').value)}}
           rows="5"
           placeholder="請輸入評論..."
         />
-        <div className="textareaHelp">{commentsError.commentTextarea}</div>
+        <div className="textareaHelp">{commentsError}</div>
         <div className="commentbtngroup">
           <button type="submit" id="submit" className="btn commentbtn">
             送出
