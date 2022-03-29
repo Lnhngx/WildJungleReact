@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import Date from "./components/Date";
+// import Date from "./components/Date";
 import Config from "./Config";
 import { Link } from "react-router-dom";
 import "./lodging.scss";
@@ -672,7 +672,7 @@ function Lodging() {
                 </p>
               </div>
               <div className="ice_introducetext">
-                10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
+                15坪大的空間，寬敞舒適，有二大床與三單床可供選擇。進入客房，映入眼簾的是雪白的地毯及前米色的家飾，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在冰原的冒險遐想之中。
               </div>
               <h2>房型設備</h2>
               <div className="ice_equipment">
@@ -697,7 +697,7 @@ function Lodging() {
                 <div className="ice_other">
                   <p className="ice_othertitle">其他設備</p>
                   <p className="ice_othertext">
-                    一大床 (200*200cm)
+                    二大床 (200*200cm)
                     <br />
                     65吋電視
                     <br />
@@ -928,7 +928,7 @@ function Lodging() {
                   }}>{countdata.length}則評論</p>
               </div>
               <div className="nocturnal_introducetext">
-                10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
+                22坪大的空間，寬敞舒適，有二大床與四單床可供選擇。進入客房，映入眼簾的是灰黑質感的地毯及天花板點綴的星空，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在夜晚的冒險遐想之中。
               </div>
               <h2>房型設備</h2>
               <div className="nocturnal_equipment">
@@ -953,7 +953,7 @@ function Lodging() {
                 <div className="nocturnal_other">
                   <p className="nocturnal_othertitle">其他設備</p>
                   <p className="nocturnal_othertext">
-                    一大床 (200*200cm)
+                    二大床 (200*200cm)
                     <br />
                     65吋電視
                     <br />
@@ -1185,7 +1185,7 @@ function Lodging() {
                   }}>{countdata.length}則評論</p>
               </div>
               <div className="tropical_introducetext">
-                10坪大的空間，寬敞舒適，有一大床與二單床可供選擇。進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。
+                30坪大的空間，寬敞舒適，有三大床與五單床可供選擇。進入客房，映入眼簾的是熱帶叢林的壁畫及木製品打造的傢俱、擺設，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在叢林的冒險遐想之中。
               </div>
               <h2>房型設備</h2>
               <div className="tropical_equipment">
@@ -1210,7 +1210,7 @@ function Lodging() {
                 <div className="tropical_other">
                   <p className="tropical_othertitle">其他設備</p>
                   <p className="tropical_othertext">
-                    一大床 (200*200cm)
+                    三大床 (200*200cm)
                     <br />
                     65吋電視
                     <br />

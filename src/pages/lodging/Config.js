@@ -4,6 +4,6 @@ const config = {
     COMMENT_ICELIST: `${host}/roomplatform/room-comments-icelist/`,
     COMMENT_NOCTURNALLIST: `${host}/roomplatform/room-comments-nocturnallist/`,
     COMMENT_TROPICALLIST: `${host}/roomplatform/room-comments-tropicallist/`,
-    COMMENT_ADD: `${host}/roomplatform/api/room-comments-post/`,
+    COMMENT_ADD: `${host}/roomplatform//room-comments-post/`,
 };
 export default config;

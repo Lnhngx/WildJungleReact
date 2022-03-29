@@ -6,17 +6,28 @@ import Config from "../Config";
 function AdditionComment() {
   const Range = Slider;
 
+  const [show, setShow] = useState(false);
+  const handleShow = () =>  {
+      setShow(true);
+  }
+  const [signSuccess,setSignSuccess]=useState('')
+
   const [comments, setComments] = useState({
-    serve: "1",
-    clean: "1",
-    comfort: "1",
-    facility: "1",
-    cpValue: "1",
+    serve: 1,
+    clean: 1,
+    comfort: 1,
+    facility: 1,
+    cpValue: 1,
     commentTextarea: "",
   });
 
+  // 錯誤訊息狀態
+  const [commentsError, setCommentsError] = useState({
+    commentTextarea: "",
+})
+
   const onInputChange = (e) => {
-    setComments({...comments, [e.target.name]: e.target.value });
+    setComments({...comments, [e.target.name]: e.target.value.trim()});
   };
 
   // const [servevalue, setServevalue] = useState("1");
@@ -25,25 +36,49 @@ function AdditionComment() {
   // const [facilityvalue, setFacilityvalue] = useState("1");
   // const [CPvalue, setCPvalue] = useState("1");
   // const [commentText, setCommentText] = useState("");
+
+  // 填寫錯誤時顯示
+  const handleFormInvalid=(e)=>{
+    e.preventDefault()
+    const updateFieldError={...commentsError,[e.target.name]:e.target.validationMessage}
+    
+    setCommentsError(updateFieldError);
+}
   
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 避免傳統方式送出表單
 
     const fd = new FormData(e.target);
+    const commentTextarea=fd.get('commentTextarea')
+
+    if(commentTextarea.trim()===''){
+      const updateCommentsError={
+          ...commentsError,
+          name:'請給我們改善的意見，或鼓勵我們！'
+      }
+      setCommentsError(updateCommentsError)
+      return
+  }
 
     fetch(Config.COMMENT_ADD, {
       method: "POST",
       body: fd,
+    }).then(r=>r.json()).then(obj=>{console.log(obj)
+        if(obj.success){
+            setSignSuccess('感謝你的評語')
+            handleShow(true);
+            
+        }else{
+            setSignSuccess(obj.error || '未評論成功')
+            handleShow(true)
+        }
     })
-      .then((r) => r.json())
-      .then((obj) => {
-      });
-  };
+}
 
   return (
     <>
-      <form name="form1" onsubmit={handleSubmit}>
+      <form name="form1" onsubmit={handleSubmit} onInvalid={handleFormInvalid}>
         <div className="orderInformationbox">
           <div className="orderInformation">訂購資訊</div>
           <div className="orderList">
@@ -69,14 +104,14 @@ function AdditionComment() {
                 <p className="ServeText">服務素質</p>
               </div>
               <div className="serveSliderBox">
-                <input
+                {/* <input
                   type="text"
                   id="serve"
                   name="serve"
                   value={comments.serve}
                   onChange={onInputChange}
-                ></input>
-                {/* <Range
+                ></input> */}
+                <Range
                   className="serveslider"
                   min={1.0}
                   max={10}
@@ -100,7 +135,7 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                /> */}
+                />
                 <div className="commentServeScore">{comments.serve}</div>
               </div>
             </div>
@@ -109,14 +144,14 @@ function AdditionComment() {
                 <p className="CleanText">清潔程度</p>
               </div>
               <div className="cleanSliderBox">
-                <input
+                {/* <input
                   type="text"
                   id="clean"
                   name="clean"
                   value={comments.clean}
                   onChange={onInputChange}
-                ></input>
-                {/* <Range
+                ></input> */}
+                <Range
                   className="cleanslider"
                   min={1.0}
                   max={10}
@@ -140,7 +175,7 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                /> */}
+                />
                 <div className="commentCleanScore">{comments.clean}</div>
               </div>
             </div>
@@ -149,14 +184,14 @@ function AdditionComment() {
                 <p className="ComfortableText">舒適程度</p>
               </div>
               <div className="comfortableSliderBox">
-                <input
+                {/* <input
                   type="text"
                   id="comfort"
                   name="comfort"
                   value={comments.comfort}
                   onChange={onInputChange}
-                ></input>
-                {/* <Range
+                ></input> */}
+                <Range
                   className="comfortableslider"
                   min={1.0}
                   max={10}
@@ -180,7 +215,7 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                /> */}
+                />
                 <div className="commentComfortableScore">
                   {comments.comfort}
                 </div>
@@ -191,14 +226,14 @@ function AdditionComment() {
                 <p className="FacilityText">設施</p>
               </div>
               <div className="facilitySliderBox">
-                <input
+                {/* <input
                   type="text"
                   name="facility"
                   id="facility"
                   value={comments.facility}
                   onChange={onInputChange}
-                ></input>
-                {/* <Range
+                ></input> */}
+                <Range
                   className="facilityslider"
                   min={1.0}
                   max={10}
@@ -222,7 +257,7 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                /> */}
+                />
                 <div className="commentFacilityScore">{comments.facility}</div>
               </div>
             </div>
@@ -231,14 +266,14 @@ function AdditionComment() {
                 <p className="CPValueText">性價比</p>
               </div>
               <div className="CPValueSliderBox">
-                <input
+                {/* <input
                   type="text"
                   id="cpValue"
                   name="cpValue"
                   value={comments.cpValue}
                   onChange={onInputChange}
-                ></input>
-                {/* <Range
+                ></input> */}
+                <Range
                   className="CPValueslider"
                   min={1.0}
                   max={10}
@@ -262,7 +297,7 @@ function AdditionComment() {
                     height: "5px",
                     backgroundColor: "#f9b112",
                   }}
-                /> */}
+                />
                 <div className="commentCPValueScore">{comments.cpValue}</div>
               </div>
             </div>
@@ -280,6 +315,7 @@ function AdditionComment() {
           rows="5"
           placeholder="請輸入評論..."
         />
+        <div className="textareaHelp">{commentsError.commentTextarea}</div>
         <div className="commentbtngroup">
           <button type="submit" id="submit" className="btn commentbtn">
             送出
