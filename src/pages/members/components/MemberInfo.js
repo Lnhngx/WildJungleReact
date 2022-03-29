@@ -15,9 +15,9 @@ function MemberInfo(props){
   const [mData,setmData]=useState({})
   const [newData,setNewData]=useState({email:'',name:'',gender:'',birthday:'',password:'',address:''})
   useEffect(()=>{
-    console.log(dataAgain);
+    // console.log(dataAgain);
     if(Object.keys(sidData).length!==0){
-      console.log(sidData)
+      // console.log(sidData)
       setmData(sidData);
       setNewData({...newData,
         email:sidData.email,
@@ -68,7 +68,7 @@ function MemberInfo(props){
         "address":newData.address
       })
     }).then(r=>r.json()).then(obj=>{
-      console.log(obj)
+      // console.log(obj)
       if(obj.success){
         
         console.log(newData);
