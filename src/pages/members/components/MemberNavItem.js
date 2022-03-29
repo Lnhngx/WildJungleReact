@@ -69,9 +69,10 @@ function MemberNavItem(props){
           }).then(r=>r.json()).then(obj=>{
               console.log(obj);
               setCreditData(obj);
-              if(obj.success){
-                setNumCard(obj.info.list[0].credit_num);
-              }
+              // console.log(obj.info.list);
+              // if(obj.success){
+              //   setNumCard(obj.info.list[0].credit_num);
+              // }
           })
   }
   
@@ -90,6 +91,7 @@ function MemberNavItem(props){
                   }
                   if(e.target.innerHTML===navItem[2]){
                     getCreditData();
+                    console.log('第二個');
                   }
                 }
               }}>

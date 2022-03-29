@@ -78,7 +78,7 @@ export default class CreditcardAdd extends React.Component {
         }).then(r=>r.json()).then(obj=>{
             console.log(obj);
             if(obj.success){
-                this.props.getCreditData();
+                this.props.setCreditData({...obj});
                 this.props.setShowTable(true);
                 this.props.setShowAdd(false);
             }

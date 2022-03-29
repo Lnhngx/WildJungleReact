@@ -8,21 +8,34 @@ function Creditcard(props){
     
     const [showAdd,setShowAdd]=useState(false);
     const [showTable,setShowTable]=useState(true);
-
+    let nn=creditData;
     let nd=numCard.slice(-4);
-    // let creditDataTF=creditData;
-    const [creditDataTF,setcreditDataTF]=useState(creditData);
-    useEffect(() => {
-        getCreditData()
-    },[]);
+    console.log('nn',
+    nn)
+    
 
+    // nn.map((v,i)=>{
+    //     console.log(v)
+    // })
+    // const nn1=nn.map((v,i)=>{
+    //         console.log(v)
+    //     })
+    //     console.log('nn1',nn1)
+    // // let creditDataTF=creditData;
+    // const [creditDataTF,setcreditDataTF]=useState({});
+    // useEffect(() => {
+    //     if(Object.keys(creditData).length!==0){
+    //         setcreditDataTF(creditData)
+    //     }
+    // },[]);
+    // console.log(creditDataTF)
 
     return(<>
         {showTable===true ? <table  className="tysu_table">
             <tbody>
                 <tr>
                     <td>
-                        {creditDataTF.success===true ? (<div className="tysu_creditGroup">
+                        {(<div className="tysu_creditGroup">
                             <div className="tysu_creditDelete">
                                 <i className="fas fa-times"></i>
                             </div>
@@ -44,7 +57,7 @@ function Creditcard(props){
                             <div className="tysu_creditEdit">
                                 <i className="fas fa-edit"></i>
                             </div>
-                        </div>) : <div className="tysu_creditT">{creditDataTF.error || '尚未設定' }</div>
+                        </div>) }{ <div className="tysu_creditT">{ '尚未設定' }</div>
                         }
                         
                         <div >
