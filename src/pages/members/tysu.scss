@@ -200,7 +200,8 @@ input:-webkit-autofill:active,
 .tysu_cancelBtn,
 .tysu_gradeBtn,
 .tysu_addressBtn,
-.tysu_addBtn {
+.tysu_addBtn,
+.tysu_infoeditBtn {
   border: 0;
   background-color: none;
   outline: none;
@@ -230,6 +231,7 @@ input:-webkit-autofill:active,
 }
 .tysu_infoeditBtn {
   width: 30rem;
+  color: #fff;
   background-color: #000;
 }
 
