@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory,useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
 import "./scss/productsdetail.scss";
 
 import Productsbackground from "./components/productsbackground";
@@ -27,7 +27,7 @@ import {
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 import TheReview from "./components/theReview";
 import Form from "./components/Form";
-
+import { useCart } from "../carts/utils/useCart";
 
 function ProductsDetail(props) {
   const [selection, setSelection] = useState("");
@@ -38,7 +38,7 @@ function ProductsDetail(props) {
   const [label, setLabel] = useState([]);
   const [review, setReview] = useState([]);
   const [member, setMember] = useState([]);
-  
+
   // const [datetime, setDatetime] = useState(
   //   new Date()
   //     .toLocaleString({ city: "TAIWAN", timeZone: "Asia/Taipei" })
@@ -48,7 +48,7 @@ function ProductsDetail(props) {
 
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
-
+  const { addItem } = useCart();
 
   useEffect(() => {
     Promise.all([
@@ -138,7 +138,7 @@ function ProductsDetail(props) {
       });
   };
 
-  
+
 
   return (
     <>
@@ -239,7 +239,11 @@ function ProductsDetail(props) {
                   </div>
                 </div>
                 <div className="alan_buy">
-                  <button>
+                  <button onClick={() => {
+                    const item = { sid: Sid, image: pic, name: product.ProductsName, price: product.ProductsPrice, quantity: total }
+                    addItem(item);
+                    console.log(item);
+                  }}>
                     <i className="fas fa-shopping-cart"></i> 加入購物車
                   </button>
                   <button onClick={click}>直接購買</button>
@@ -362,7 +366,7 @@ function ProductsDetail(props) {
                   <div className="alan_reviewInput">
                     <div className="alan_inputLeft">
                       <div className="left_title">輸入評論：</div>
-                     <Form selection={selection} setSelection={setSelection}/>
+                      <Form selection={selection} setSelection={setSelection} />
                     </div>
                     <div className="alan_inputRight">
                       <div className="right_title">評論回覆：</div>
