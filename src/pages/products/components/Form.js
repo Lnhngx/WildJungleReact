@@ -15,16 +15,6 @@ function Form(props) {
   };
   const checkForm = function (event) {
     event.preventDefault();
-    // const fd = new FormData(document.form1);
-    // const commentTextarea = fd.get("Review");
-    // if (commentTextarea.trim() === "") {
-    //   const updateCommentsError = {
-    //     ...commentsError,
-    //     name: "請給我們改善的意見，或鼓勵我們！",
-    //   };
-    //   setCommentsError(updateCommentsError);
-    //   return;
-    // }
 
     fetch("http://localhost:4000/reviewproducts/add", {
       method: "POST",
@@ -53,7 +43,7 @@ function Form(props) {
         <div className="alan_left1">
           <span>
             選擇分數:
-            {selection === " " ? "請選擇" : `${selection}星`}
+            {selection === 0 || selection === "" ? "請選擇" : `${selection}星`}
           </span>
           <StarRating
             setSelection={setSelection}

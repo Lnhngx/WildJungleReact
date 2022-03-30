@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./scss/products.scss";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { Link } from "react-router-dom";
+import {useHistory, useLocation, Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
 import JqueryProduct from "./components/jqueryProduct";
 import EmailControl from "./components/theEmailControl";
@@ -84,6 +84,7 @@ function Products() {
       offset: -100,
     });
   };
+
 
   useEffect(() => {
     if (isLoading) {
@@ -335,6 +336,8 @@ function Products() {
   //     window.FB.XFBML.parse();
   //   }
   // }, []);
+
+
 
   return (
     <>

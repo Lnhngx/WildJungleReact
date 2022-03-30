@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useRef } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useState } from "react";
+import { useHistory,useLocation, Link } from "react-router-dom";
 import "./scss/productsdetail.scss";
 
 import Productsbackground from "./components/productsbackground";
@@ -39,11 +39,6 @@ function ProductsDetail(props) {
   const [review, setReview] = useState([]);
   const [member, setMember] = useState([]);
   
-
-  const [commentsError, setCommentsError] = useState({
-    commentTextarea: "",
-  });
-
   // const [datetime, setDatetime] = useState(
   //   new Date()
   //     .toLocaleString({ city: "TAIWAN", timeZone: "Asia/Taipei" })
@@ -53,7 +48,7 @@ function ProductsDetail(props) {
 
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
-  const location = useLocation();
+
 
   useEffect(() => {
     Promise.all([
@@ -89,7 +84,7 @@ function ProductsDetail(props) {
         console.log("錯誤了", error);
       });
   }, []);
-
+  const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const Sid = searchParams.get("id");
 
@@ -238,9 +233,9 @@ function ProductsDetail(props) {
                     <Link to="">
                       <i className="fas fa-heart"></i> 加入我的最愛
                     </Link>
-                    <Link to="">
+                    {/* <Link to="">
                       <i className="fas fa-plus"></i> 加入商品比較
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
                 <div className="alan_buy">
@@ -298,9 +293,9 @@ function ProductsDetail(props) {
                   <Link to="">
                     <i className="fas fa-heart"></i> 加入我的最愛
                   </Link>
-                  <Link to="">
+                  {/* <Link to="">
                     <i className="fas fa-plus"></i> 加入商品比較
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
