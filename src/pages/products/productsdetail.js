@@ -240,7 +240,7 @@ function ProductsDetail(props) {
                 </div>
                 <div className="alan_buy">
                   <button onClick={() => {
-                    const item = { sid: Sid, image: pic, name: product.ProductsName, price: product.ProductsPrice, quantity: total }
+                    const item = { sid: Sid, image: pic, name: product.ProductsName, price: product.ProductsPrice, quantity: total+1 }
                     addItem(item);
                     console.log(item);
                   }}>

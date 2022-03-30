@@ -15,14 +15,14 @@ function ProductItem(props) {
     ProductsPrice,
     ProductsDate,
   } = props.products;
-  const [heart, setHeart] = useState([{ ProductSid: "" }]);
+  // const [heart, setHeart] = useState([{ ProductSid: "" }]);
 
   let MainPic = `img/product/${ProductsMainPic}`;
 
-  const click =async function () {
-   await setHeart([{ProductSid:`${ProductSid}`}])
-   await  console.log(heart)
-  };
+  // const click =async function () {
+  //  await setHeart([{ProductSid:`${ProductSid}`}])
+  //  await  console.log(heart)
+  // };
 
 
   return (
@@ -46,7 +46,7 @@ function ProductItem(props) {
             <span>${ProductsPrice}</span>
           </Link>
           <div className="cardIcon">
-            <i className="fas fa-heart" onClick={click}></i>
+            <i className="fas fa-heart" ></i>
             <i className="fas fa-shopping-cart"></i>
           </div>
         </div>
