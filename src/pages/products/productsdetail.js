@@ -97,6 +97,7 @@ function ProductsDetail(props) {
   const reviewStar = reviews.map((review, i) => {
     return parseInt(review.ReviewStar);
   });
+  const pictrueArray = pic.filter((v) => v.ProductsPic === parseInt(Sid));
 
   let starValue = 0;
   for (let i = 0; i < reviewStar.length; i++) {
@@ -240,7 +241,7 @@ function ProductsDetail(props) {
                 </div>
                 <div className="alan_buy">
                   <button onClick={() => {
-                    const item = { sid: Sid, image: pic, name: product.ProductsName, price: product.ProductsPrice, quantity: total+1 }
+                    const item = { sid: Sid, image:pictrueArray[0].PicName, name: product.ProductsName, price: product.ProductsPrice, quantity: total+1 }
                     addItem(item);
                     console.log(item);
                   }}>

@@ -125,7 +125,7 @@ const ProductCarousel = (props) => {
                       <img
                         src={slider.image === "" ? " " : slider.image}
                         alt=""
-                        className="alan_products_img"
+                        className="alan_products_img" 
                       />
                     </div>
                 
