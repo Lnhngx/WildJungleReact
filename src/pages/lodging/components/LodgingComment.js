@@ -5,14 +5,14 @@ import CommentList from "./CommentList";
 import AdditionComment from "./AdditionComment";
 
 const LodgingComment = (props) => {
-  const { setCommentbox, data ,total, roomSid,roomName,setData,order} = props;
+  const { setCommentbox, data, total, roomSid, roomName, setData, order } =
+    props;
 
   //關閉評論按鈕
   const [closebtn, setClosebtn] = useState(true);
 
   //撰寫評論按鈕
   const [writecommen, setWritecommen] = useState(false);
-
 
   //伺服器資料
   // const [data, setData] = useState([]);
@@ -56,7 +56,7 @@ const LodgingComment = (props) => {
 
   //服務評分總和
 
- function serviceTotal(v) {
+  function serviceTotal(v) {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].service_score;
@@ -65,7 +65,7 @@ const LodgingComment = (props) => {
     return Math.round(Total / v.length);
   }
 
-  const service = serviceTotal(data)
+  const service = serviceTotal(data);
 
   //清潔評分總和
 
@@ -78,7 +78,7 @@ const LodgingComment = (props) => {
     return Math.round(Total / v.length);
   }
 
-  const clean = cleanTotal(data)
+  const clean = cleanTotal(data);
 
   //舒適評分總和
 
@@ -91,7 +91,7 @@ const LodgingComment = (props) => {
     return Math.round(Total / v.length);
   }
 
-  const comfort = comfortTotal(data)
+  const comfort = comfortTotal(data);
 
   //設備評分總和
 
@@ -104,7 +104,7 @@ const LodgingComment = (props) => {
     return Math.round(Total / v.length);
   }
 
-  const facility = facilityTotal(data)
+  const facility = facilityTotal(data);
 
   //cp值評分總和
 
@@ -117,7 +117,7 @@ const LodgingComment = (props) => {
     return Math.round(Total / v.length);
   }
 
-  const cpValue = cpValueTotal(data)
+  const cpValue = cpValueTotal(data);
 
   // const allserviceScore =
   //   serviceScore[0].service_score + serviceScore[1].service_score;
@@ -270,7 +270,6 @@ const LodgingComment = (props) => {
 
     setDisplayComments(newComments);
   }, [scoreRange, comments, dateRange, sortRange]);
-  
 
   return (
     <>
@@ -285,17 +284,27 @@ const LodgingComment = (props) => {
         </div>
         <div className="commentTotalbox">
           <div className="commentTotalScorewrap">
-            <p className="commentTotalScore">
-              {total}
-            </p>
+            <p className="commentTotalScore">{total}</p>
             <p className="commentTotal">{data.length}則評論</p>
           </div>
-          <button className="writecomment btn" onClick={writecommentbtn}>
+          <button
+            className={
+              order.length !== 0 ? "writecomment btn" : "nowritecomment btn"
+            }
+            onClick={writecommentbtn}
+          >
             撰寫評論
           </button>
         </div>
         <div className="commentline"></div>
-        <div className="commentScore">各項評分</div>
+        <div
+          className="commentScore"
+          onClick={() => {
+            console.log(order.length);
+          }}
+        >
+          各項評分
+        </div>
         <div className="commentScorebox">
           <div className="Servebox">
             <div className="Serve">
@@ -304,7 +313,10 @@ const LodgingComment = (props) => {
             </div>
             <div className="ServeScroll">
               <div className="Scrollline"></div>
-              <div className="ServeScrollScore" style={{ width: service*10+"%" }}></div>
+              <div
+                className="ServeScrollScore"
+                style={{ width: service * 10 + "%" }}
+              ></div>
             </div>
           </div>
           <div className="Cleanbox">
@@ -314,7 +326,10 @@ const LodgingComment = (props) => {
             </div>
             <div className="CleanScroll">
               <div className="Scrollline"></div>
-              <div className="CleanScrollScore" style={{ width: clean*10+"%" }}></div>
+              <div
+                className="CleanScrollScore"
+                style={{ width: clean * 10 + "%" }}
+              ></div>
             </div>
           </div>
           <div className="Comfortablebox">
@@ -324,7 +339,10 @@ const LodgingComment = (props) => {
             </div>
             <div className="ComfortableScroll">
               <div className="Scrollline"></div>
-              <div className="ComfortableScrollScore" style={{ width: comfort*10+"%" }}></div>
+              <div
+                className="ComfortableScrollScore"
+                style={{ width: comfort * 10 + "%" }}
+              ></div>
             </div>
           </div>
           <div className="Facilitybox">
@@ -334,7 +352,10 @@ const LodgingComment = (props) => {
             </div>
             <div className="FacilityScroll">
               <div className="Scrollline"></div>
-              <div className="FacilityScrollScore" style={{ width: facility*10+"%" }}></div>
+              <div
+                className="FacilityScrollScore"
+                style={{ width: facility * 10 + "%" }}
+              ></div>
             </div>
           </div>
           <div className="CPValuebox">
@@ -344,7 +365,10 @@ const LodgingComment = (props) => {
             </div>
             <div className="CPValueScroll">
               <div className="Scrollline"></div>
-              <div className="CPValueScrollScore" style={{ width: cpValue*10+"%" }}></div>
+              <div
+                className="CPValueScrollScore"
+                style={{ width: cpValue * 10 + "%" }}
+              ></div>
             </div>
           </div>
           <div className="nullbox"></div>
@@ -398,7 +422,15 @@ const LodgingComment = (props) => {
           </span>
         </div>
 
-        <AdditionComment setData={setData} roomSid={roomSid} roomName={roomName} setClosebtn= {setClosebtn} setWritecommen={setWritecommen} sendComments={props.sendComments} />
+        <AdditionComment
+          setData={setData}
+          roomSid={roomSid}
+          roomName={roomName}
+          setClosebtn={setClosebtn}
+          setWritecommen={setWritecommen}
+          sendComments={props.sendComments}
+          order={order}
+        />
       </div>
     </>
   );

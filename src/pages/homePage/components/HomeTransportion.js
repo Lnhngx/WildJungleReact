@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import FCMap from "./HomeMap";
 
 const HomeTransportion = () => {
-
   const [busElement, setbusElement] = useState({
     StopName: "",
     RouteName: "",
-    EstimateTime:0,
+    EstimateTime: 0,
   });
 
   useEffect(() => {
@@ -36,11 +35,19 @@ const HomeTransportion = () => {
         //   EstimateTime: busElements.EstimateTime
         // }));
       });
-      
   };
 
   return (
     <>
+      <div className="selectBusBox">
+        <select className="selectBus" value="" onChange="">
+          <option value="0">捷運大安站(信義)</option>
+          <option value="1">捷運大安站(復興)</option>
+          <option value="2">師大附中</option>
+          <option value="3">信義大安路口</option>
+          <option value="4">大安高工</option>
+        </select>
+      </div>
       <h3 className="ning_busstopname">捷運大安站(信義)</h3>
       <div className="ning_transportionbox">
         <div className="ning_busbox">
