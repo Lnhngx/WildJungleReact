@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
-
+import { Modal, Button } from 'react-bootstrap'
 //頁首、頁尾、CSS
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
@@ -59,6 +59,32 @@ function App() {
   
 
   const [toggleLottery, setToggleLottery] = useState(false);
+  const [modalBtn,setModalBtn] = useState('前往註冊');
+  const [modalText,setModalText] = useState('fjwiefjiejfiwjf<br/>naaaaaaa')
+  // 3/30測試用
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const ChatbotModal = (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header>
+        <Modal.Title>尚未註冊通知</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{modalText}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          繼續購物
+        </Button>
+        <Button
+          variant="primary"
+          onClick={() => {
+            window.location.href = "http://localhost:3000/members/signup"
+          }}
+        >
+          {modalBtn}
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
   return (
     <SecondCartProvider localStorageKey="secondCart">
       <CartProvider>
@@ -67,7 +93,8 @@ function App() {
             <Navbar auth={auth} setAuth={setAuth} localState={localState} setLocalState={setLocalState}/>
             <FixedRight setToggleLottery={setToggleLottery}/>
             <Lottery toggleLottery={toggleLottery} setToggleLottery={setToggleLottery}/>
-            <Chatbot/>
+            <Chatbot setShow={setShow}/>
+            {ChatbotModal}
             {/* 路由表 */}
             <Switch>
               <Route exact path="/">

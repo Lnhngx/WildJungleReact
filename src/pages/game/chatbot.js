@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
-function Chatbot(){
+function Chatbot(props){
     let chat_id = 1;
     let agentChat_id = 1;
     const [toggleReply,setToggleReply] = useState(false);
@@ -238,10 +238,11 @@ function Chatbot(){
                                             localStorage.setItem('cart',JSON.stringify(current_arr))
                                         } 
                                     }else{
-                                        let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員，才能至購物車");
-                                        if(goRigister){
-                                            window.location.href = 'http://localhost:3000/members/signup';
-                                        }
+                                        props.setShow(true);
+                                        // let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員，才能至購物車");
+                                        // if(goRigister){
+                                        //     window.location.href = 'http://localhost:3000/members/signup';
+                                        // }
                                     }
                                 }}>確認送出</div>
                             </div>
