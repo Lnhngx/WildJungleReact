@@ -7,7 +7,7 @@ import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";
 
 function Lodging() {
-  const sid=JSON.parse(localStorage.getItem('admin_account'))
+  const sid = JSON.parse(localStorage.getItem("admin_account"));
   const [oceanbox, setOceanbox] = useState(0);
   const [icebox, setIcebox] = useState(0);
   const [nocturnalbox, setNocturnalbox] = useState(0);
@@ -20,14 +20,16 @@ function Lodging() {
   const [total, setTotal] = useState(0);
 
   const roomNames = {
-    ocean: '海洋2人房型',
-    ice: '冰原3人房型',
-    nocturnal: '夜行4人房型',
-    tropical: '熱帶5人房型',
+    ocean: "海洋2人房型",
+    ice: "冰原3人房型",
+    nocturnal: "夜行4人房型",
+    tropical: "熱帶5人房型",
   };
 
-  const [roomName, setRoomName] = useState('');
+  const [roomName, setRoomName] = useState("");
   const [roomSid, setRoomSid] = useState(0);
+  const [order, setOrder] = useState([]);
+
   //海洋房詳細資訊btn
 
   const oceanPush = () => {
@@ -35,8 +37,9 @@ function Lodging() {
     setIcebox(0);
     setNocturnalbox(0);
     setTropicalbox(0);
+    setRoomSid(1);
     //setOceanbox(!oceanPush)
-    getOceanData()
+    getOceanData();
   };
 
   //冰原房詳細資訊btn
@@ -46,7 +49,8 @@ function Lodging() {
     setOceanbox(0);
     setNocturnalbox(0);
     setTropicalbox(0);
-    getIceData()
+    setRoomSid(2);
+    getIceData();
   };
 
   //夜行房詳細資訊btn
@@ -56,7 +60,8 @@ function Lodging() {
     setIcebox(0);
     setOceanbox(0);
     setTropicalbox(0);
-    getNocturnalData()
+    setRoomSid(3);
+    getNocturnalData();
   };
 
   //熱帶房詳細資訊btn
@@ -66,14 +71,12 @@ function Lodging() {
     setIcebox(0);
     setOceanbox(0);
     setNocturnalbox(0);
-    getTropicalData()
+    setRoomSid(4);
+    getTropicalData();
   };
 
-
-  const sendComments = form => {
-
+  const sendComments = (form) => {
     console.log(form);
-
   };
   //換照片
 
@@ -156,23 +159,27 @@ function Lodging() {
   const getOceanData = async () => {
     const response = await fetch(Config.COMMENT_OCEANLIST);
     const obj = await response.json();
-    setRoomName(roomNames['ocean']);
+    setRoomName(roomNames["ocean"]);
     setData(obj);
-    console.log('obj',obj);
+    //console.log("obj", obj);
 
     await fetch(Config.ORDER, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-       
-        m_sid:(sid?sid['m_sid']:1)
+        m_sid: sid ? sid["m_sid"] : 0,
       }),
     })
       .then((r) => r.json())
       .then((order) => {
-  
-    console.log('order',order);
-  })
+        // console.log("order", order);
+        if (order["room_sid"] === roomSid) {
+          setOrder(order);
+        }else {
+          setOrder([])
+        }
+        //console.log("order", order);
+      });
   };
 
   //抓取冰原房評論
@@ -180,23 +187,27 @@ function Lodging() {
   const getIceData = async () => {
     const response = await fetch(Config.COMMENT_ICELIST);
     const obj = await response.json();
-    setRoomName(roomNames['ice']);
+    setRoomName(roomNames["ice"]);
     setData(obj);
-    console.log('obj',obj);
+    //console.log("obj", obj);
 
     await fetch(Config.ORDER, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-       
-        m_sid:(sid?sid['m_sid']:1)
+        m_sid: sid ? sid["m_sid"] : 0,
       }),
     })
       .then((r) => r.json())
       .then((order) => {
-  
-    console.log('order',order);
-  })
+        //console.log("order", order);
+        if (order["room_sid"] === roomSid) {
+          setOrder(order);
+        }else {
+          setOrder([])
+        }
+       // console.log("order", order);
+      });
   };
 
   //抓取夜行房評論
@@ -204,23 +215,28 @@ function Lodging() {
   const getNocturnalData = async () => {
     const response = await fetch(Config.COMMENT_NOCTURNALLIST);
     const obj = await response.json();
-    setRoomName(roomNames['nocturnal']);
+    setRoomName(roomNames["nocturnal"]);
     setData(obj);
-    console.log('obj',obj);
+    //console.log("obj", obj);
 
     await fetch(Config.ORDER, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-       
-        m_sid:(sid?sid['m_sid']:1)
+        m_sid: sid ? sid["m_sid"] : 0,
       }),
     })
       .then((r) => r.json())
       .then((order) => {
-  
-    console.log('order',order);
-  })
+        // console.log("order", order);
+        if (order["room_sid"] === roomSid) {
+          setOrder(order);
+        }else {
+          setOrder([])
+        }
+        console.log("roomSid",roomSid)
+        //console.log("order", order);
+      });
   };
 
   //抓取熱帶房評論
@@ -228,23 +244,27 @@ function Lodging() {
   const getTropicalData = async () => {
     const response = await fetch(Config.COMMENT_TROPICALLIST);
     const obj = await response.json();
-    setRoomName(roomNames['tropical']);
+    setRoomName(roomNames["tropical"]);
     setData(obj);
-    console.log('obj',obj);
+    //console.log("obj", obj);
 
     await fetch(Config.ORDER, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-       
-        m_sid:(sid?sid['m_sid']:1)
+        m_sid: sid ? sid["m_sid"] : 0,
       }),
     })
       .then((r) => r.json())
       .then((order) => {
-  
-    console.log('order',order);
-  })
+        //console.log("order", order);
+        if (order["room_sid"] === roomSid) {
+          setOrder(order);
+        } else {
+          setOrder([])
+        }
+       // console.log("order", order);
+      });
   };
 
   // useEffect(() => {
@@ -254,6 +274,8 @@ function Lodging() {
   useEffect(() => {
     setCoundata(data);
   }, [data]);
+
+  
 
   //服務評分總和
 
@@ -330,13 +352,14 @@ function Lodging() {
     <>
       {commentbox === true ? (
         <LodgingComment
-          setData = {setData}
+          setData={setData}
           roomName={roomName}
-          roomSid = {roomSid}
+          roomSid={roomSid}
           setCommentbox={setCommentbox}
           data={data}
           total={total}
           sendComments={sendComments}
+          order={order}
         />
       ) : (
         ""
@@ -1009,10 +1032,14 @@ function Lodging() {
                 <div className="nocturnal_score">
                   <p>{total}</p>
                 </div>
-                <p onClick={() => {
-                  setRoomSid(3);
+                <p
+                  onClick={() => {
+                    setRoomSid(3);
                     setCommentbox(true);
-                  }}>{countdata.length}則評論</p>
+                  }}
+                >
+                  {countdata.length}則評論
+                </p>
               </div>
               <div className="nocturnal_introducetext">
                 22坪大的空間，寬敞舒適，有二大床與四單床可供選擇。進入客房，映入眼簾的是灰黑質感的地毯及天花板點綴的星空，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在夜晚的冒險遐想之中。
@@ -1267,10 +1294,14 @@ function Lodging() {
                 <div className="tropical_score">
                   <p>{total}</p>
                 </div>
-                <p onClick={() => {
-                  setRoomSid(4);
+                <p
+                  onClick={() => {
+                    setRoomSid(4);
                     setCommentbox(true);
-                  }}>{countdata.length}則評論</p>
+                  }}
+                >
+                  {countdata.length}則評論
+                </p>
               </div>
               <div className="tropical_introducetext">
                 30坪大的空間，寬敞舒適，有三大床與五單床可供選擇。進入客房，映入眼簾的是熱帶叢林的壁畫及木製品打造的傢俱、擺設，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在叢林的冒險遐想之中。

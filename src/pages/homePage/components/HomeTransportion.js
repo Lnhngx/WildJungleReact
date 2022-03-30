@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import FCMap from "./HomeMap";
 
 const HomeTransportion = () => {
 
@@ -155,7 +156,7 @@ const HomeTransportion = () => {
           </div>
         </div>
         <div className="ning_busmap">
-          <img src="img/home/busmap.jpg" alt="" />
+          <FCMap />
         </div>
       </div>
     </>
