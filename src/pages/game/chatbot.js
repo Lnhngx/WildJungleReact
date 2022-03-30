@@ -221,25 +221,28 @@ function Chatbot(){
                                     </div>
                                 </div>
                                 <div className="chatbot_ticketSend" onClick={()=>{
-                                    const temp_arr = [{sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket },{sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket},{sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
-                                    // const sendAdult = {sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket };
-                                    // const sendStudent = {sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket};
-                                    // const sendLove = {sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket };
-                                    let template = temp_arr.filter(v=>v.quantity!==0)
-                                    console.log(template)
-                                    if(JSON.parse( localStorage.getItem('cart') ).length===0){
-                                        let current_arr = JSON.parse( localStorage.getItem('cart') );
-                                        template.forEach(v=>{
-                                            current_arr.push(v);
-                                        })
-                                        localStorage.setItem('cart',JSON.stringify(current_arr))
+                                    if(localStorage.admin_account!==undefined){
+                                        const temp_arr = [{sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket },{sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket},{sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
+                                        let template = temp_arr.filter(v=>v.quantity!==0)
+                                        if(JSON.parse( localStorage.getItem('cart') ).length===0){
+                                            let current_arr = JSON.parse( localStorage.getItem('cart') );
+                                            template.forEach(v=>{
+                                                current_arr.push(v);
+                                            })
+                                            localStorage.setItem('cart',JSON.stringify(current_arr))
+                                        }else{
+                                            let current_arr = JSON.parse( localStorage.getItem('cart') )
+                                            template.forEach(v=>{
+                                                current_arr.push(v);
+                                            })
+                                            localStorage.setItem('cart',JSON.stringify(current_arr))
+                                        } 
                                     }else{
-                                        let current_arr = JSON.parse( localStorage.getItem('cart') )
-                                        template.forEach(v=>{
-                                            current_arr.push(v);
-                                        })
-                                        localStorage.setItem('cart',JSON.stringify(current_arr))
-                                    } 
+                                        let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員，才能至購物車");
+                                        if(goRigister){
+                                            window.location.href = 'http://localhost:3000/members/signup';
+                                        }
+                                    }
                                 }}>確認送出</div>
                             </div>
                             <div className="chatbot_time">{v.time}</div>

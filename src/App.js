@@ -44,6 +44,7 @@ import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
 import Lottery from "./pages/game/lottery";
 import MyDate from "./pages/lodging/components/MyDate";
+import Chatbot from "./pages/game/chatbot";
 
 function App() {
   // 全域狀態
@@ -66,6 +67,7 @@ function App() {
             <Navbar auth={auth} setAuth={setAuth} localState={localState} setLocalState={setLocalState}/>
             <FixedRight setToggleLottery={setToggleLottery}/>
             <Lottery toggleLottery={toggleLottery} setToggleLottery={setToggleLottery}/>
+            <Chatbot/>
             {/* 路由表 */}
             <Switch>
               <Route exact path="/">
