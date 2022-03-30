@@ -3,9 +3,14 @@ import { useCart } from "../utils/useCart";
 
 function CartProductItem() {
   const { items, plusOne, minusOne, removeItem} = useCart();
+  
+ 
+  
+
   return (
     <>
       {items.map((v, i) => {
+        const img1 =`img/product/${v.image}`
         return (
           <div className="stan_product_space" key={v.sid}>
             <ul>
@@ -15,7 +20,7 @@ function CartProductItem() {
                 </button>
               </li>
               <li>
-                <img alt="" src={v.image} />
+                <img alt="" src={img1} />
               </li>
               <li className="stan_ds_product">{v.name}</li>
               <li className="stan_ds_product">${v.price}</li>
