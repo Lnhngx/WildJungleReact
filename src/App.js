@@ -43,6 +43,7 @@ import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
 import Lottery from "./pages/game/lottery";
+import MyDate from "./pages/lodging/components/MyDate";
 
 function App() {
   // 全域狀態
@@ -69,6 +70,7 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <HomePage />
+                
               </Route>
               <Route path="/tour">
                 <Tour />
@@ -140,6 +142,7 @@ function App() {
               <Route path="/lodging">
                 <Lodging />
               </Route>
+              
               {/* 網址上的動態參數params 
           <Route path="/product-list/product-detail/:id?">
             <ProductDetail />

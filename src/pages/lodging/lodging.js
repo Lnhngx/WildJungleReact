@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-// import Date from "./components/Date";
+import MyDate from "./components/MyDate";
 import Config from "./Config";
 import { Link } from "react-router-dom";
 import "./lodging.scss";
@@ -7,6 +7,7 @@ import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";
 
 function Lodging() {
+  const sid=JSON.parse(localStorage.getItem('admin_account'))
   const [oceanbox, setOceanbox] = useState(0);
   const [icebox, setIcebox] = useState(0);
   const [nocturnalbox, setNocturnalbox] = useState(0);
@@ -18,6 +19,15 @@ function Lodging() {
 
   const [total, setTotal] = useState(0);
 
+  const roomNames = {
+    ocean: '海洋2人房型',
+    ice: '冰原3人房型',
+    nocturnal: '夜行4人房型',
+    tropical: '熱帶5人房型',
+  };
+
+  const [roomName, setRoomName] = useState('');
+  const [roomSid, setRoomSid] = useState(0);
   //海洋房詳細資訊btn
 
   const oceanPush = () => {
@@ -59,6 +69,12 @@ function Lodging() {
     getTropicalData()
   };
 
+
+  const sendComments = form => {
+
+    console.log(form);
+
+  };
   //換照片
 
   const oceanimg = useRef();
@@ -140,7 +156,23 @@ function Lodging() {
   const getOceanData = async () => {
     const response = await fetch(Config.COMMENT_OCEANLIST);
     const obj = await response.json();
+    setRoomName(roomNames['ocean']);
     setData(obj);
+    console.log('obj',obj);
+
+    await fetch(Config.ORDER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+       
+        m_sid:(sid?sid['m_sid']:1)
+      }),
+    })
+      .then((r) => r.json())
+      .then((order) => {
+  
+    console.log('order',order);
+  })
   };
 
   //抓取冰原房評論
@@ -148,7 +180,23 @@ function Lodging() {
   const getIceData = async () => {
     const response = await fetch(Config.COMMENT_ICELIST);
     const obj = await response.json();
+    setRoomName(roomNames['ice']);
     setData(obj);
+    console.log('obj',obj);
+
+    await fetch(Config.ORDER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+       
+        m_sid:(sid?sid['m_sid']:1)
+      }),
+    })
+      .then((r) => r.json())
+      .then((order) => {
+  
+    console.log('order',order);
+  })
   };
 
   //抓取夜行房評論
@@ -156,7 +204,23 @@ function Lodging() {
   const getNocturnalData = async () => {
     const response = await fetch(Config.COMMENT_NOCTURNALLIST);
     const obj = await response.json();
+    setRoomName(roomNames['nocturnal']);
     setData(obj);
+    console.log('obj',obj);
+
+    await fetch(Config.ORDER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+       
+        m_sid:(sid?sid['m_sid']:1)
+      }),
+    })
+      .then((r) => r.json())
+      .then((order) => {
+  
+    console.log('order',order);
+  })
   };
 
   //抓取熱帶房評論
@@ -164,7 +228,23 @@ function Lodging() {
   const getTropicalData = async () => {
     const response = await fetch(Config.COMMENT_TROPICALLIST);
     const obj = await response.json();
+    setRoomName(roomNames['tropical']);
     setData(obj);
+    console.log('obj',obj);
+
+    await fetch(Config.ORDER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+       
+        m_sid:(sid?sid['m_sid']:1)
+      }),
+    })
+      .then((r) => r.json())
+      .then((order) => {
+  
+    console.log('order',order);
+  })
   };
 
   // useEffect(() => {
@@ -250,9 +330,13 @@ function Lodging() {
     <>
       {commentbox === true ? (
         <LodgingComment
+          setData = {setData}
+          roomName={roomName}
+          roomSid = {roomSid}
           setCommentbox={setCommentbox}
           data={data}
           total={total}
+          sendComments={sendComments}
         />
       ) : (
         ""
@@ -382,8 +466,8 @@ function Lodging() {
                 <i className="fas fa-plus"></i>
               </button>
             </div>
-
-            <input
+            <MyDate />
+            {/* <input
               type="date"
               placeholder="入住日期"
               className="lodging_oceanincheck"
@@ -392,7 +476,7 @@ function Lodging() {
               type="date"
               placeholder="入住日期"
               className="lodging_oceanoutcheck"
-            ></input>
+            ></input> */}
             <button className="btn oceanreservation">預約訂房</button>
           </div>
         </div>
@@ -414,6 +498,7 @@ function Lodging() {
                 </div>
                 <p
                   onClick={() => {
+                    setRoomSid(1);
                     setCommentbox(true);
                   }}
                 >
@@ -665,6 +750,7 @@ function Lodging() {
                 </div>
                 <p
                   onClick={() => {
+                    setRoomSid(2);
                     setCommentbox(true);
                   }}
                 >
@@ -924,6 +1010,7 @@ function Lodging() {
                   <p>{total}</p>
                 </div>
                 <p onClick={() => {
+                  setRoomSid(3);
                     setCommentbox(true);
                   }}>{countdata.length}則評論</p>
               </div>
@@ -1181,6 +1268,7 @@ function Lodging() {
                   <p>{total}</p>
                 </div>
                 <p onClick={() => {
+                  setRoomSid(4);
                     setCommentbox(true);
                   }}>{countdata.length}則評論</p>
               </div>

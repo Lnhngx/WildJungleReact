@@ -5,7 +5,7 @@ import CommentList from "./CommentList";
 import AdditionComment from "./AdditionComment";
 
 const LodgingComment = (props) => {
-  const { setCommentbox, data ,total} = props;
+  const { setCommentbox, data ,total, roomSid,roomName,setData} = props;
 
   //關閉評論按鈕
   const [closebtn, setClosebtn] = useState(true);
@@ -398,7 +398,7 @@ const LodgingComment = (props) => {
           </span>
         </div>
 
-        <AdditionComment />
+        <AdditionComment setData={setData} roomSid={roomSid} roomName={roomName} setClosebtn= {setClosebtn} setWritecommen={setWritecommen} sendComments={props.sendComments} />
       </div>
     </>
   );
