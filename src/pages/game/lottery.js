@@ -112,10 +112,6 @@ function Lottery(props){
         // myCanvas_bottom.current.style.zIndex = '999';
         const ctx = myCanvas.current.getContext("2d");
         const ctx_bottom = myCanvas_bottom.current.getContext("2d");
-        ctx_bottom.font = "40px Arial";
-        ctx_bottom.fillStyle = 'whtie';
-        ctx_bottom.textAlign = 'center';
-        ctx_bottom.fillText('銘謝惠顧',myCanvas_bottom.width/2,myCanvas_bottom.height/2);
         myCanvas.current.addEventListener("mousedown",startPosition);
         window.addEventListener("mouseup",finishPosition);
         myCanvas.current.addEventListener("mousemove",draw);
