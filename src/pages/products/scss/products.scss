@@ -430,7 +430,7 @@ ul.slider-dots {
 .productCard:hover p {
   color: #eb5c37;
 }
-.cardIcon a:hover {
+.cardIcon i:hover {
   color: rgb(255, 57, 57);
 }
 
@@ -476,8 +476,9 @@ ul.slider-dots {
   justify-content: space-between;
   font-size: 20px;
 }
-.cardIcon a {
+.cardIcon i {
   margin: 0 15px 15px 15px;
+  cursor: pointer;
 }
 .backToTop {
   transition: 0.5s;
@@ -858,7 +859,7 @@ ul.slider-dots {
     font-size: 14px;
     justify-content: flex-end;
   }
-  .cardIcon a {
+  .cardIcon i {
     margin-bottom: 5px;
     margin-right: 10px;
   }
