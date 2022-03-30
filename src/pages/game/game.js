@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Chatbot from './chatbot';
 import {useState} from 'react';
 import './game.css';
 function Game(){
@@ -106,7 +105,6 @@ function Game(){
             <p className="game_profile">遊戲中你將要找出<span>5</span>個不同之處，利用滑鼠點擊圖片若正確會看到綠色圈圈。<br/>記住.....你只有<span>3</span>次錯誤的機會。<br/>抓緊時間吧，完成考驗將可以得到<span>紅利點數500 !!!</span></p>
 
 
-        <Chatbot />
             <div className="gameChoose_zone">
                 <div className="choose_spotGame" 
                     onMouseEnter={(e)=>{

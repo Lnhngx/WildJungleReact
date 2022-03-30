@@ -1,5 +1,5 @@
 
-import React,{useEffect, useState} from "react";
+import React,{useState} from "react";
 import Config from "../Config";
 import MemberModal from './MemberModal'
 import {Form} from 'react-bootstrap'
@@ -61,7 +61,7 @@ function Signup(){
 
     // 填寫錯誤時顯示
     const handleFormInvalid=(e)=>{
-        e.preventDefault()
+        e.preventDefault();
         const updateFieldError={...fieldErrors,[e.target.name]:e.target.validationMessage}
         
         setFieldErrors(updateFieldError);

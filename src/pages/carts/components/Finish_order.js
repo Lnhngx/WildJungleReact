@@ -1,6 +1,7 @@
 import React from "react";
 
-function Finishorder() {
+function Finishorder(props) {
+  const { name, phone, email, address, delivery, payment } = props;
   return (
     <>
       <div className="stan_fo_p">
@@ -16,33 +17,35 @@ function Finishorder() {
           <div className="stan_fo_buyerinfo">
             <div className="stan_fo_frame">
               <div className="stan_fo_title">收件人：</div>
-              <div className="stan_fo_content">林小明</div>
+              <div className="stan_fo_content">{name}</div>
             </div>
             <div className="stan_fo_frame">
               <div className="stan_fo_title">手機：</div>
-              <div className="stan_fo_content">0988123456</div>
+              <div className="stan_fo_content">{phone}</div>
             </div>
             <div className="stan_fo_frame">
               <div className="stan_fo_title">電子信箱：</div>
-              <div className="stan_fo_content">abc@gmail.com</div>
+              <div className="stan_fo_content">{email}</div>
             </div>
-            <div className="stan_fo_frame">
+            <div
+              className={
+                delivery === "園區取貨" ? "stan_pagedisplay" : "stan_fo_frame"
+              }
+            >
               <div className="stan_fo_title">運送地址：</div>
-              <div className="stan_fo_content">基隆市仁愛區仁一路100號5樓</div>
+              <div className="stan_fo_content">{address}</div>
             </div>
             <div className="stan_fo_frame">
               <div className="stan_fo_title">貨運方式：</div>
-              <div className="stan_fo_content">宅配</div>
+              <div className="stan_fo_content">{delivery}</div>
             </div>
             <div className="stan_fo_frame">
               <div className="stan_fo_title">付款方式：</div>
-              <div className="stan_fo_content">貨到付款</div>
+              <div className="stan_fo_content">{payment}</div>
             </div>
           </div>
         </div>
       </div>
-
-
     </>
   );
 }

@@ -6,12 +6,15 @@ import { useCart } from "./utils/useCart";
 import { Link } from "react-router-dom";
 import Credit from "../members/components/CreditcardAdd";
 
-function Cartfilloutform() {
-  const [state, setState] = useState(false);
-  const [state2, setState2] = useState(false);
-  const [state3, setState3] = useState(false);
-  const [state4, setState4] = useState(false);
-  const [state5, setState5] = useState(false);
+function Cartfilloutform(props) {
+  const [hode, setHode] = useState(false);
+  const [store, setStore] = useState(false);
+  const [park, setPark] = useState(false);
+  const [credit, setCredit] = useState(false);
+  const [cash, setCash] = useState(false);
+
+  const{setName,setPhone,setEmail,setAddress,setDelivery,setPayment}=props;
+
   const { cart } = useCart();
   return (
     <>
@@ -75,32 +78,35 @@ function Cartfilloutform() {
               className="stan_select_group"
               onChange={(e) => {
                 if (e.target.value === "0") {
-                  setState(false);
-                  setState2(false);
-                  setState3(false);
+                  setHode(false);
+                  setStore(false);
+                  setPark(false);
+                  setDelivery("");
                 }
-                if (e.target.value === "1") {
-                  setState(true);
-                  setState2(false);
-                  setState3(false);
-                  console.log(1);
+                if (e.target.value === "宅配") {
+                  setHode(true);
+                  setStore(false);
+                  setPark(false);
+                  setDelivery(e.target.value);
                 }
-                if (e.target.value === "2") {
-                  setState2(true);
-                  setState3(false);
-                  setState(false);
+                if (e.target.value === "超商取貨") {
+                  setStore(true);
+                  setPark(false);
+                  setHode(false);
+                  setDelivery(e.target.value);
                 }
-                if (e.target.value === "3") {
-                  setState3(true);
-                  setState2(false);
-                  setState(false);
+                if (e.target.value === "園區取貨") {
+                  setPark(true);
+                  setStore(false);
+                  setHode(false);
+                  setDelivery(e.target.value);
                 }
               }}
             >
               <option value="0">請選擇</option>
-              <option value="1">宅配</option>
-              <option value="2">超商取貨</option>
-              <option value="3">園區取貨</option>
+              <option value="宅配">宅配</option>
+              <option value="超商取貨">超商取貨</option>
+              <option value="園區取貨">園區取貨</option>
             </select>
           </div>
 
@@ -112,31 +118,38 @@ function Cartfilloutform() {
             <select
               className="stan_select_group"
               onClick={(e) => {
-                if (e.target.value === "1") {
-                  setState4(true);
-                  setState5(false);
+                if(e.target.value==="請選擇"){
+                  setCredit(false);
+                  setCash(false);
+                  setPayment("");
                 }
-                if (e.target.value === "2") {
-                  setState4(false);
-                  setState5(true);
+                if (e.target.value === "信用卡") {
+                  setCredit(true);
+                  setCash(false);
+                  setPayment(e.target.value)
+                }
+                if (e.target.value === "貨到付款") {
+                  setCredit(false);
+                  setCash(true);
+                  setPayment(e.target.value)
                 }
               }}
             >
               <option value="0">請選擇</option>
-              <option value="1">信用卡</option>
-              <option value="2">貨到付款</option>
+              <option value="信用卡">信用卡</option>
+              <option value="貨到付款">貨到付款</option>
             </select>
           </div>
 
           <div
             className={
-              state || state2 || state3 ? "stan_fof_flex" : "stan_pagedisplay"
+              hode || store || park ? "stan_fof_flex" : "stan_pagedisplay"
             }
           >
             <div className="stan_h3">收件人資料</div>
           </div>
 
-          <div className={state ? "stan_fof_flex_left" : "stan_pagedisplay"}>
+          <div className={hode ? "stan_fof_flex_left" : "stan_pagedisplay"}>
             <div>
               <form className="stan_fof_form">
                 <table>
@@ -154,6 +167,9 @@ function Cartfilloutform() {
                           type="text"
                           className="stan_fof_input"
                           required
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }}
                         />
                       </td>
                     </tr>
@@ -174,6 +190,9 @@ function Cartfilloutform() {
                           className="stan_fof_input"
                           pattern="[0-9]"
                           required
+                          onChange={(e) => {
+                            setPhone(e.target.value);
+                          }}
                         />
                       </td>
                     </tr>
@@ -192,6 +211,9 @@ function Cartfilloutform() {
                           id="email"
                           name="email"
                           className="stan_fof_input"
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
                         />
                       </td>
                     </tr>
@@ -209,6 +231,9 @@ function Cartfilloutform() {
                           type="text"
                           className="stan_fof_input"
                           required
+                          onChange={(e) => {
+                            setAddress(e.target.value);
+                          }}
                         />
                       </td>
                     </tr>
@@ -218,7 +243,7 @@ function Cartfilloutform() {
             </div>
           </div>
 
-          <div className={state3 ? "stan_fof_delipark" : "stan_pagedisplay"}>
+          <div className={park ? "stan_fof_delipark" : "stan_pagedisplay"}>
             <div>
               <form className="stan_fof_form">
                 <table>
@@ -236,6 +261,9 @@ function Cartfilloutform() {
                           type="text"
                           className="stan_fof_input"
                           required
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }}
                         />
                       </td>
                     </tr>
@@ -256,6 +284,9 @@ function Cartfilloutform() {
                           className="stan_fof_input"
                           pattern="[0-9]"
                           required
+                          onChange={(e) => {
+                            setPhone(e.target.value);
+                          }}
                         />
                       </td>
                     </tr>
@@ -274,6 +305,9 @@ function Cartfilloutform() {
                           id="email"
                           name="email"
                           className="stan_fof_input"
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
                         />
                       </td>
                     </tr>
@@ -283,7 +317,7 @@ function Cartfilloutform() {
             </div>
           </div>
 
-          {state4 ? <Credit /> : ""}
+          {credit ? <Credit /> : ""}
 
           <div className="stan_fof_btn">
             <Link to="/carts" className="stan_link stan_fof_btn_back">

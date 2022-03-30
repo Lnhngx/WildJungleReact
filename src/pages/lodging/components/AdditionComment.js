@@ -3,28 +3,28 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Config from "../Config";
 
-function AdditionComment() {
+function AdditionComment(props) {
   const Range = Slider;
 
-  const [show, setShow] = useState(false);
-  const handleShow = () =>  {
-      setShow(true);
-  }
-  const [signSuccess,setSignSuccess]=useState('')
+  // const [show, setShow] = useState(false);
+  // const handleShow = () => {
+  //   setShow(true);
+  // };
+  // const [signSuccess, setSignSuccess] = useState("");
 
-  const [comments, setComments] = useState({
-    serve: 1,
-    clean: 1,
-    comfort: 1,
-    facility: 1,
-    cpValue: 1,
-    commentTextarea: "",
-  });
+  // const [comments, setComments] = useState({
+  //   serve: 1,
+  //   clean: 1,
+  //   comfort: 1,
+  //   facility: 1,
+  //   cpValue: 1,
+  //   commentTextarea: "",
+  // });
 
   // 錯誤訊息狀態
   const [commentsError, setCommentsError] = useState({
     commentTextarea: "",
-})
+  });
 
   // const onInputChange = (e) => {
   //   setComments({...comments, [e.target.name]: e.target.value.trim()});
@@ -38,47 +38,91 @@ function AdditionComment() {
   const [commentText, setCommentText] = useState("");
 
   // 填寫錯誤時顯示
-  const handleFormInvalid=(e)=>{
-    e.preventDefault()
-    const updateFieldError={...commentsError,[e.target.name]:e.target.validationMessage}
-    
-    setCommentsError(updateFieldError);
-}
-  
+  const handleFormInvalid = (e) => {
+    e.preventDefault();
+    const updateFieldError = {
+      ...commentsError,
+      [e.target.name]: e.target.validationMessage,
+    };
 
-  const handleSubmit = (e) => {
+    setCommentsError(updateFieldError);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault(); // 避免傳統方式送出表單
+
+    // props.sendComments({
+    //   serve: servevalue,
+    //   clean: cleanvalue,
+    //   comfort: comfortablevalue,
+    //   facility: facilityvalue,
+    //   cpValue: CPvalue,
+    //   commentTextarea: commentText,
+    // });
+
+    // return;
     const fd = new FormData(e.target);
-    const commentTextarea=fd.get('commentTextarea')
-    if(commentTextarea.trim()===''){
-      const updateCommentsError={
-          ...commentsError,
-          name:'請給我們改善的意見，或鼓勵我們！'
-      }
-      setCommentsError(updateCommentsError)
-      return
+    const commentTextarea = fd.get("commentTextarea");
+    if (commentTextarea.trim() === "") {
+      const updateCommentsError = {
+        ...commentsError,
+        name: "請給我們改善的意見，或鼓勵我們！",
+      };
+      setCommentsError(updateCommentsError);
+      return;
     }
 
-    fetch(Config.COMMENT_ADD, {
+    const sid=JSON.parse(localStorage.getItem('admin_account'))
+
+    await fetch(Config.COMMENT_ADD, {
       method: "POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({serve:servevalue,
-                            clean:cleanvalue,
-                            comfort:comfortablevalue,
-                            facility:facilityvalue,
-                            cpValue:CPvalue,
-                            commentTextarea:commentText}),
-    }).then(r=>r.json()).then(obj=>{console.log(obj)
-        if(obj.success){
-            setSignSuccess('感謝你的評語')
-            handleShow(true);
-            
-        }else{
-            setSignSuccess(obj.error || '未評論成功')
-            handleShow(true)
-        }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        serve: servevalue,
+        clean: cleanvalue,
+        comfort: comfortablevalue,
+        facility: facilityvalue,
+        cpValue: CPvalue,
+        commentTextarea: commentText,
+        m_sid:(sid?sid['m_sid']:1)
+      }),
     })
-}
+      .then((r) => r.json())
+      .then((r) => {
+        const apiArray = [
+          0,
+          Config.COMMENT_OCEANLIST,
+          Config.COMMENT_ICELIST,
+          Config.COMMENT_NOCTURNALLIST,
+          Config.COMMENT_TROPICALLIST,
+        ];
+
+        console.log('apiArray[props.roomSid]',apiArray[props.roomSid]);
+        
+        fetch(apiArray[props.roomSid])
+        .then((res) => 
+          res.json()
+        ).then(res=>{
+          console.log('res',res);
+            props.setData(res);
+            props.setClosebtn(true);
+            props.setWritecommen(false);
+        }
+          
+          
+        );
+
+        // return fetch
+        // if (obj.success) {
+        //   setSignSuccess("感謝你的評語");
+        //   handleShow(true);
+        // } else {
+        //   setSignSuccess(obj.error || "未評論成功");
+        //   handleShow(true);
+        // }
+      })
+     
+  };
 
   return (
     <>
@@ -90,7 +134,7 @@ function AdditionComment() {
               訂單編號 : <span>20220222-2222ABC</span>
             </p>
             <p className="orderRoom">
-              入住房型 : <span>夜行4人房型</span>
+              入住房型 : <span>{props.roomName}</span>
             </p>
             <p className="orderCheckinDate">
               入住日期 : <span>2022/03/01</span>
@@ -315,11 +359,13 @@ function AdditionComment() {
           id="commentTextarea"
           name="commentTextarea"
           value={commentText}
-          onChange={()=>{setCommentText(document.querySelector('#commentTextarea').value)}}
+          onChange={() => {
+            setCommentText(document.querySelector("#commentTextarea").value);
+          }}
           rows="5"
           placeholder="請輸入評論..."
         />
-        <div className="textareaHelp">{commentsError}</div>
+        <div className="textareaHelp"></div>
         <div className="commentbtngroup">
           <button type="submit" id="submit" className="btn commentbtn">
             送出

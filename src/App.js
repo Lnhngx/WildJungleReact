@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
-
+import { Modal, Button } from "react-bootstrap";
 //頁首、頁尾、CSS
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
@@ -43,28 +43,74 @@ import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
 import Lottery from "./pages/game/lottery";
+import MyDate from "./pages/lodging/components/MyDate";
+import Chatbot from "./pages/game/chatbot";
 
 function App() {
   // 全域狀態
-  const history=useHistory();
+  const history = useHistory();
 
   // 是否登入
   const [auth, setAuth] = useState(false);
-  
+
   const account = JSON.parse(localStorage.getItem("admin_account"));
   const token = !!localStorage.getItem("admin_token");
-  const [localState,setLocalState]=useState({"account":account,"token":token});
-  
+  const [localState, setLocalState] = useState({
+    account: account,
+    token: token,
+  });
 
   const [toggleLottery, setToggleLottery] = useState(false);
+  const [modalBtn,setModalBtn] = useState('前往註冊');
+  const [modalText,setModalText] = useState('fjwiefjiejfiwjf<br/>naaaaaaa');
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const ChatbotModal = (
+    <Modal centered show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter">
+      <Modal.Header>
+        <Modal.Title>{localStorage.admin_account!==undefined?"商品已加入購物車":"尚未註冊通知"}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{localStorage.admin_account!==undefined? '商品已加入購物車請問您是否要前往購物車頁面':`尚未註冊通知`}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          繼續購物
+        </Button>
+        <Button
+          variant="primary"
+          onClick={() => {
+            window.location.href = "http://localhost:3000/members/signup"
+          }}
+        >
+          {modalBtn}
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [delivery, setDelivery] = useState("");
+  const [payment, setPayment] = useState("");
+
   return (
     <SecondCartProvider localStorageKey="secondCart">
       <CartProvider>
         <Router>
           <>
-            <Navbar auth={auth} setAuth={setAuth} localState={localState} setLocalState={setLocalState}/>
-            <FixedRight setToggleLottery={setToggleLottery}/>
-            <Lottery toggleLottery={toggleLottery} setToggleLottery={setToggleLottery}/>
+            <Navbar
+              auth={auth}
+              setAuth={setAuth}
+              localState={localState}
+              setLocalState={setLocalState}
+            />
+            <FixedRight setToggleLottery={setToggleLottery} />
+            <Lottery
+              toggleLottery={toggleLottery}
+              setToggleLottery={setToggleLottery}
+            />
+          <Chatbot setShow={setShow} setModalBtn={setModalBtn}/>
             {/* 路由表 */}
             <Switch>
               <Route exact path="/">
@@ -104,10 +150,24 @@ function App() {
                 <Game />
               </Route>
               <Route path="/carts/filloutform">
-                <Cartsfilloutform />
+                <Cartsfilloutform
+                  setName={setName}
+                  setPhone={setPhone}
+                  setEmail={setEmail}
+                  setAddress={setAddress}
+                  setDelivery={setDelivery}
+                  setPayment={setPayment}
+                />
               </Route>
               <Route path="/carts/finishorder">
-                <Cartsfinishorder />
+                <Cartsfinishorder
+                  name={name}
+                  phone={phone}
+                  email={email}
+                  address={address}
+                  delivery={delivery}
+                  payment={payment}
+                />
               </Route>
               <Route path="/carts/product_temp">
                 <ProductList />
@@ -122,7 +182,13 @@ function App() {
                 <MembersConfirm />
               </Route>
               <Route exact path="/members/login">
-                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState} localState={localState} account={account} />
+                <Login
+                  auth={auth}
+                  setAuth={setAuth}
+                  setLocalState={setLocalState}
+                  localState={localState}
+                  account={account}
+                />
               </Route>
               <Route path="/members/forgot">
                 <ForgotPass />
@@ -131,15 +197,30 @@ function App() {
                 <MemberPassChange />
               </Route>
               <Route exact path="/members/modify-member-info">
-                {auth || localState.token ? <MemberList account={localState.account} token={localState.token} auth={auth} /> : <Redirect to="/members" /> }
+                {auth || localState.token ? (
+                  <MemberList
+                    account={localState.account}
+                    token={localState.token}
+                    auth={auth}
+                  />
+                ) : (
+                  <Redirect to="/members" />
+                )}
                 {/* <MemberList account={account} token={token} /> */}
               </Route>
               <Route path="/members">
-                <Login auth={auth} setAuth={setAuth} setLocalState={setLocalState} localState={localState} account={account} />
+                <Login
+                  auth={auth}
+                  setAuth={setAuth}
+                  setLocalState={setLocalState}
+                  localState={localState}
+                  account={account}
+                />
               </Route>
               <Route path="/lodging">
                 <Lodging />
               </Route>
+
               {/* 網址上的動態參數params 
           <Route path="/product-list/product-detail/:id?">
             <ProductDetail />

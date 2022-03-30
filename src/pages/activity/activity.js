@@ -152,6 +152,7 @@ function Activity() {
 
 
     const renderCards = () => {
+
         return datas2.map((v, i) => (
             <div className={v.className1}>
                 <div className={v.className2}></div>
@@ -164,6 +165,7 @@ function Activity() {
                 </div>
             </div>
         ));
+
     };
 
 
@@ -408,7 +410,20 @@ function Activity() {
                             </div>
                             <div className="seatsArea">{renderSeats()}</div>
                             <div className="buttonGrop">
-                                <button>加入購物車</button>
+                                <button onClick={() => {
+                                    localStorage.getItem('secondCart');
+                                    console.log("localStorage:", localStorage.getItem('secondCart'));
+
+                                    const temp_arr = [{ sid: "s1", showName: showTitleChange, seats: positions }];
+
+                                    let current_arr = JSON.parse(localStorage.getItem('secondCart'));
+                                    temp_arr.forEach(v => {
+                                        current_arr.push(v);
+                                    })
+                                    localStorage.setItem('secondCart', JSON.stringify(current_arr));
+
+
+                                }}>加入購物車</button>
                                 <button onClick={() => { setState(!state); setState2(true) }}>回上一步</button>
                             </div>
                         </div>

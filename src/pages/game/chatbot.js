@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
-function Chatbot(){
+function Chatbot(props){
     let chat_id = 1;
     let agentChat_id = 1;
     const [toggleReply,setToggleReply] = useState(false);
@@ -222,24 +222,23 @@ function Chatbot(){
                                 </div>
                                 <div className="chatbot_ticketSend" onClick={()=>{
                                     const temp_arr = [{sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket },{sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket},{sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
-                                    // const sendAdult = {sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket };
-                                    // const sendStudent = {sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket};
-                                    // const sendLove = {sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket };
-                                    let template = temp_arr.filter(v=>v.quantity!==0)
-                                    console.log(template)
-                                    if(JSON.parse( localStorage.getItem('cart') ).length===0){
-                                        let current_arr = JSON.parse( localStorage.getItem('cart') );
-                                        template.forEach(v=>{
-                                            current_arr.push(v);
-                                        })
-                                        localStorage.setItem('cart',JSON.stringify(current_arr))
+                                    let template = temp_arr.filter(v=>v.quantity!==0) 
+                                    let current_arr = JSON.parse( localStorage.getItem('cart') );
+                                    template.forEach(v=>{
+                                        current_arr.push(v);
+                                    })
+                                    localStorage.setItem('cart',JSON.stringify(current_arr));
+                                    if(localStorage.admin_account!==undefined){
+                                        props.setModalBtn('前往結帳');
+                                        props.setShow(true);
                                     }else{
-                                        let current_arr = JSON.parse( localStorage.getItem('cart') )
-                                        template.forEach(v=>{
-                                            current_arr.push(v);
-                                        })
-                                        localStorage.setItem('cart',JSON.stringify(current_arr))
-                                    } 
+                                        props.setModalBtn('前往註冊');
+                                        props.setShow(true);
+                                        // let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員，才能至購物車");
+                                        // if(goRigister){
+                                        //     window.location.href = 'http://localhost:3000/members/signup';
+                                        // }
+                                    }
                                 }}>確認送出</div>
                             </div>
                             <div className="chatbot_time">{v.time}</div>
@@ -438,6 +437,8 @@ function Chatbot(){
             {/* -------------- 查看天氣 -------------- */}
             <div className="weather" onClick={
                 ()=>{
+                    document.querySelector('.menu').style.bottom = '-200px';
+                    setToggleMenu(false);
                     fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-E5452D5B-0C6B-437B-A34A-8EEC59F154DB&locationName=%E5%A4%A7%E5%AE%89%E5%8D%80&elementName=PoP12h,T,Wx')
                     .then(r=>r.json())
                     .then(obj=>{
