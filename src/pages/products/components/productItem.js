@@ -52,7 +52,7 @@ function ProductItem(props) {
             <i className="fas fa-shopping-cart" onClick={() => {
                       const item = {
                         sid: ""+ProductSid,
-                        image: ProductsMainPic,
+                        image:`img/product/${ProductsMainPic}`,
                         name:  ProductsName,
                         price: ProductsPrice,
                         quantity:1,

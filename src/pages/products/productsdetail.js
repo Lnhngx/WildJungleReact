@@ -60,8 +60,11 @@ function ProductsDetail(props) {
       price: product.ProductsPrice,
       quantity: 1,
     };
-    if(like===0){addItem(item)}
-    else{removeItem(item.sid)};
+    if (like === 0) {
+      addItem(item);
+    } else {
+      removeItem(item.sid);
+    }
   };
 
   useEffect(() => {
@@ -292,11 +295,19 @@ function ProductsDetail(props) {
                   </div>
                 </div>
                 <div className="alan_buy">
-                  <button onClick={() => {
-                    const item = { sid: Sid, image:`img/product/${pictrueArray[0].PicName}`, name: product.ProductsName, price: product.ProductsPrice, quantity: total+1 }
-                    addItem(item);
-                    console.log(item);
-                  }}>
+                  <button
+                    onClick={() => {
+                      const item = {
+                        sid: Sid,
+                        image: `img/product/${pictrueArray[0].PicName}`,
+                        name: product.ProductsName,
+                        price: product.ProductsPrice,
+                        quantity: total + 1,
+                      };
+                      addItem(item);
+                      console.log(item);
+                    }}
+                  >
                     <i className="fas fa-shopping-cart"></i> 加入購物車
                   </button>
                   <button onClick={click}>直接購買</button>
