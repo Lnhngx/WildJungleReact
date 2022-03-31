@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../utils/useCart";
 
-function Checkarea(props) {
+function CheckareaLive(props) {
   const { cart } = useCart();
   return (
     <>
@@ -24,7 +24,7 @@ function Checkarea(props) {
           <hr className="stan_checkouthr stan_hr" />
           <ul>
             <li>結帳金額</li>
-            <li>${cart.cartTotal+100}</li>
+            <li>${cart.cartTotal>=100?cart.cartTotal-100:0}</li>
           </ul>
 
           <Link to="/carts/filloutform" className="stan_link">
@@ -38,4 +38,4 @@ function Checkarea(props) {
   );
 }
 
-export default Checkarea;
+export default CheckareaLive;

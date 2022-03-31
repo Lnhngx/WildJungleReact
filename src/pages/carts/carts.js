@@ -1,10 +1,12 @@
 import "./carts.scss";
 import Process01 from "./components/Process_01";
-import Checkarea from "./components/Checkarea";
 import CartProductItem from "./components/CartProductItem";
 import CartShow from "./components/CartShow";
 import CartLive from "./components/CartLive";
-import React,{ useState } from "react";
+import Checkarea from "./components/Checkarea";
+import CheckareaShow from "./components/Checkarea_show";
+import CheckareaLive from "./components/Checkarea_live";
+import React, { useState } from "react";
 
 function Carts(props) {
   const [cartpro, setCartpro] = useState(true);
@@ -84,7 +86,15 @@ function Carts(props) {
             </div>
           </div>
           <div className="stan_block"></div>
-          <Checkarea />
+          <div className={cartpro ? "stan_checkout_area" : "stan_displaynone"}>
+            <Checkarea />
+          </div>
+          <div className={cartshow ? "stan_checkout_area" : "stan_displaynone"}>
+            <CheckareaShow />
+          </div>
+          <div className={cartlive ? "stan_checkout_area" : "stan_displaynone"}>
+            <CheckareaLive />
+          </div>
         </div>
       </div>
       <div className="stan_footerbgc"></div>
