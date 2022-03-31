@@ -3,7 +3,7 @@ import "./activity.scss";
 import { animateScroll as scroll, scroller } from 'react-scroll';
 import Carousel from 'react-bootstrap/Carousel';
 import { useSecondCart } from '../carts/utils/useSecondCart';
-// import { useThirdCart } from '../carts/utils/useThirdCart';
+import { useThirdCart } from '../carts/utils/useThirdCart';
 import { Modal, Button } from 'react-bootstrap';
 
 // sponsor-card
@@ -161,8 +161,8 @@ function Activity() {
     );
 
     //add to carts
-    const { addItem } = useSecondCart();
-    // const { addItem3 } = useThirdCart();
+    const secondcart = useSecondCart();
+    const thirdcart = useThirdCart();
 
     //scrollTo
     const scrollToSection1 = () => {
@@ -328,7 +328,7 @@ function Activity() {
                         <div className="buttonGrop2">
                             <button onClick={() => {
                                 const temp_arr = { sid: "s1", name: "動物認養方案-" + plan + "個月", price: planPrice, quantity: plan };
-                                addItem(temp_arr);
+                                thirdcart.addItem(temp_arr);
                             }}>加入購物車</button>
                             <button onClick={() => { setState3(!state3); setState4(true); scrollToSection4() }}>回上一步</button>
                         </div>
@@ -482,7 +482,7 @@ function Activity() {
                             <div className="buttonGrop">
                                 <button onClick={() => {
                                     const temp_arr = { sid: "s1", name: showTitleChange, image: `img/activity/show3.jpeg`, price: 50, quantity: Object.keys(positions).length, seats: positions };
-                                    addItem(temp_arr);
+                                    secondcart.addItem(temp_arr);
                                     setShow(true);
                                 }}>加入購物車</button>
                                 {ModalShow1}
