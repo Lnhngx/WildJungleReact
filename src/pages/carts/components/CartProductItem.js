@@ -10,7 +10,6 @@ function CartProductItem() {
   return (
     <>
       {items.map((v, i) => {
-        const img1 =`img/product/${v.image}`
         return (
           <div className="stan_product_space" key={v.sid}>
             <ul>
@@ -20,7 +19,7 @@ function CartProductItem() {
                 </button>
               </li>
               <li>
-                <img alt="" src={img1} />
+                <img alt="" src={v.image} />
               </li>
               <li className="stan_ds_product">{v.name}</li>
               <li className="stan_ds_product">${v.price}</li>
