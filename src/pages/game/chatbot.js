@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
+import {useCart} from "../carts/utils/useCart"
 function Chatbot(props){
     let chat_id = 1;
     let agentChat_id = 1;
@@ -20,6 +21,7 @@ function Chatbot(props){
     const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
     const myChatbotInput = useRef(null);
+    const {addItem}=useCart();
     const connectWebSocket = ()=>{
         setIo( webSocket('http://localhost:3001') );
     }
@@ -226,13 +228,11 @@ function Chatbot(props){
                                     </div>
                                 </div>
                                 <div className="chatbot_ticketSend" style={{pointerEvents:loveTicket+studentTicket+adultTicket!==0?"all":"none",background:loveTicket+studentTicket+adultTicket!==0?"rgb(19, 87, 126)":"gray"}}  onClick={()=>{
-                                    const temp_arr = [{sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket },{sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket},{sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
+                                    const temp_arr = [{sid: 998, image: "/zooTicket.jpg", name: "動物園門票:成人", price: 50, quantity:adultTicket },
+                                    {sid: 999, image: "/zooTicket.jpg", name: "動物園門票:學生", price: 30, quantity:studentTicket},
+                                    {sid: 1000, image: "/zooTicket.jpg", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
                                     let template = temp_arr.filter(v=>v.quantity!==0) 
-                                    let current_arr = JSON.parse( localStorage.getItem('cart') );
-                                    template.forEach(v=>{
-                                        current_arr.push(v);
-                                    })
-                                    localStorage.setItem('cart',JSON.stringify(current_arr));
+                                    template.forEach(v=>{addItem(v)})
                                     if(localStorage.admin_account!==undefined){
                                         props.setModalTitle("商品已加入購物車");
                                         props.setModalText("商品已加入購物車<span>!!</span><br/>請問您是否要直接至結帳頁面?");
@@ -243,10 +243,6 @@ function Chatbot(props){
                                         props.setModalText("您尚未加入會員<br/>請問您是否要先前往註冊頁面?");
                                         props.setModalBtn('前往註冊');
                                         props.setShow(true);
-                                        // let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員，才能至購物車");
-                                        // if(goRigister){
-                                        //     window.location.href = 'http://localhost:3000/members/signup';
-                                        // }
                                     }
                                 }}>確認送出</div>
                             </div>
