@@ -11,7 +11,6 @@ import {
 
 
 import 'react-credit-cards/es/styles-compiled.css';
-import { render } from '@testing-library/react';
 import Config from '../Config';
 
 export default class CreditcardAdd extends React.Component {

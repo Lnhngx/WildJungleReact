@@ -78,6 +78,7 @@ function MemberNavItem(props){
               if(obj.success){
                 // console.log(obj.info.list);
                 setCreditData(obj.info.list);
+                setLocalCredit(obj.info.list)
               }
               
           })

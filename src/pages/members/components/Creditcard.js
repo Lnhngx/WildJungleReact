@@ -4,11 +4,12 @@ import CreditcardAdd from './CreditcardAdd';
 import Config from '../Config';
 
 function Creditcard(props){
-    const {getCreditData,getCreditDataAgain,creditData,setCreditData,localCredit,setLocalCredit}=props
+    const {getCreditData,getCreditDataAgain,creditData,setCreditData,setLocalCredit}=props
     
     const [showAdd,setShowAdd]=useState(false);
     const [showTable,setShowTable]=useState(true);
 
+    // 資料庫資料設為狀態
     const [cdData,setCdData]=useState([]);
     
     
@@ -20,17 +21,43 @@ function Creditcard(props){
         
     },[creditData])
     
-      
+
+
+
     
-    
+
     return(<>
         {showTable===true ? <table  className="tysu_table">
             <tbody>
                 <tr>
                     <td>
-                        {creditData.length!==0 && creditData.map((v,i)=>{
-                           return <div key={'creditcard'+v.credit_sid} className= {v!==creditData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
-                                <div className="tysu_creditDelete" name={'delete'+v.credit_sid} >
+                        {cdData.length!==0 && cdData.map((v,i)=>{
+                           return <div key={'creditcard'+v.credit_sid} className= {v!==cdData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
+                                <div className="tysu_creditDelete" onClick={
+                                    async(e)=>{
+                                    // console.log(v.credit_sid)
+                                    await fetch(Config.TYSU_CREDITCARD_DELETE+v.credit_sid,{
+                                    method:'GET',
+                                    headers:{
+                                        // "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+                                        "Content-Type":"application/json"
+                                    },
+                                    // body:JSON.stringify(cdData.credit_sid)
+                                }).then(r=>r.json()).then(obj=>{
+                                    console.log(obj)
+                                    if(obj.success){
+                                        // console.log(obj.error);
+                                        const newArr=cdData.filter((k,t)=>{
+                                            return v.credit_sid!==k.credit_sid
+                                        })
+                                        setCdData(newArr);
+                                        setCreditData(newArr);
+                                    }else{
+                                        console.log(obj.error);
+                                    }
+                                });
+
+                                }}>
                                     <i className="fas fa-times"></i>
                                 </div>
                                 <div className="tysu_cardcontent">
@@ -48,12 +75,12 @@ function Creditcard(props){
                                         </div>
                                     </div>
                                 </div>
-                                <div className="tysu_creditEdit"  name={'edit'+v.credit_sid}>
+                                <div className="tysu_creditEdit"  name={v.credit_sid}>
                                     <i className="fas fa-edit"></i>
                                 </div>
                             </div>
                         }) }
-                        {!creditData.length && <div className="tysu_creditT">{ '尚未設定' }</div>
+                        {!cdData.length && <div className="tysu_creditT">{ '尚未設定' }</div>
                         }
                         
                         <div >

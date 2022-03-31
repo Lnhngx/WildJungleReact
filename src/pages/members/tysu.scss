@@ -456,17 +456,18 @@ input:-webkit-autofill:active,
       bottom: 0;
       transform: translate(-15%, -25%);
       color: #fff;
-      font-size: 1.5rem;
+      font-size: var(--tysu_fontSize);
       display: flex;
       align-items: center;
       //   outline: 1px solid red;
 
       > div .tysu_creditCard {
-        width: 80px;
+        width: 70px;
         height: 50px;
         margin: 0;
         font-size: var(--tysu_fontSize);
-        border: 0.8px solid #fff6;
+        border: 0;
+        // border: 0.8px solid #fff6;
         font-size: var(--tysu_fontSize);
         color: #fff;
         outline: none;
@@ -491,6 +492,7 @@ input:-webkit-autofill:active,
   font-size: 1.5rem;
   font-weight: var(--tysu_fontWeight);
   color: var(--tysu_color2);
+  padding: 3.5rem 0;
 }
 
 .tysu_creditInput {
@@ -500,8 +502,8 @@ input:-webkit-autofill:active,
   width: 100%;
 }
 .tysu_creditImg {
-  width: 32.12rem;
-  height: 20.31rem;
+  width: 25rem;
+  // height: 20.31rem;
   /* display: flex; */
   margin: 0 auto;
   // outline: 1px solid red;
