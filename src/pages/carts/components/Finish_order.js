@@ -29,7 +29,7 @@ function Finishorder(props) {
             </div>
             <div
               className={
-                delivery === "園區取貨" ? "stan_pagedisplay" : "stan_fo_frame"
+                delivery === "園區取貨" ? "stan_displaynone" : "stan_fo_frame"
               }
             >
               <div className="stan_fo_title">運送地址：</div>

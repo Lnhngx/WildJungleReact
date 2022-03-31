@@ -48,7 +48,24 @@ function ProductsDetail(props) {
 
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
-  const { addItem } = useCart();
+  const { addItem, removeItem } = useCart();
+  const [like, setLike] = useState(0);
+
+  const likela = () => {
+    like >= 1 ? setLike(0) : setLike(like + 1);
+    const item = {
+      sid: Sid,
+      image: pictrueArray[0].PicName,
+      name: product.ProductsName,
+      price: product.ProductsPrice,
+      quantity: 1,
+    };
+    if (like === 0) {
+      addItem(item);
+    } else {
+      removeItem(item.sid);
+    }
+  };
 
   useEffect(() => {
     Promise.all([
@@ -105,7 +122,6 @@ function ProductsDetail(props) {
   }
   starValue /= reviewStar.length;
 
-
   const click = function () {
     //console.log(props);
     console.log();
@@ -134,12 +150,11 @@ function ProductsDetail(props) {
         })
       )
       .then(() => {
-        const alan_tab2 = document.querySelector(".alan_tab2");
-        alan_tab2.click();
+        // const alan_tab2 = document.querySelector(".alan_tab2");
+        // alan_tab2.click();
+        setTabIndex(1);
       });
   };
-
-
 
   return (
     <>
@@ -157,22 +172,64 @@ function ProductsDetail(props) {
             </Link>
           </li>
           <li>
-            <Link to="">Item1 |</Link>
+            <Link
+              to="/products"
+              onClick={() => {
+                props.setSortbarType("1");
+              }}
+            >
+              Item1 |
+            </Link>
           </li>
           <li>
-            <Link to="">Item2 |</Link>
+            <Link
+              to="/products"
+              onClick={() => {
+                props.setSortbarType("2");
+              }}
+            >
+              Item2 |
+            </Link>
           </li>
           <li>
-            <Link to="">Item3 |</Link>
+            <Link
+              to="/products"
+              onClick={() => {
+                props.setSortbarType("3");
+              }}
+            >
+              Item3 |
+            </Link>
           </li>
           <li>
-            <Link to="">Item4 |</Link>
+            <Link
+              to="/products"
+              onClick={() => {
+                props.setSortbarType("4");
+              }}
+            >
+              Item4 |
+            </Link>
           </li>
           <li>
-            <Link to="">Item5 |</Link>
+            <Link
+              to="/products"
+              onClick={() => {
+                props.setSortbarType("5");
+              }}
+            >
+              Item5 |
+            </Link>
           </li>
           <li>
-            <Link to="">Item6</Link>
+            <Link
+              to="/products"
+              onClick={() => {
+                props.setSortbarType("6");
+              }}
+            >
+              Item6
+            </Link>
           </li>
         </ul>
       </div>
@@ -230,21 +287,27 @@ function ProductsDetail(props) {
                     <span>{total + 1}</span>
                     <button onClick={() => setTotal(total + 1)}>+</button>
                   </div>
-                  <div className="alan_hashlikedesk">
-                    <Link to="">
-                      <i className="fas fa-heart"></i> 加入我的最愛
-                    </Link>
+                  <div className="alan_hashlikedesk" onClick={likela}>
+                    <i className="fas fa-heart"></i> 加入我的最愛
                     {/* <Link to="">
                       <i className="fas fa-plus"></i> 加入商品比較
                     </Link> */}
                   </div>
                 </div>
                 <div className="alan_buy">
-                  <button onClick={() => {
-                    const item = { sid: Sid, image:`img/product/${pictrueArray[0].PicName}`, name: product.ProductsName, price: product.ProductsPrice, quantity: total+1 }
-                    addItem(item);
-                    console.log(item);
-                  }}>
+                  <button
+                    onClick={() => {
+                      const item = {
+                        sid: Sid,
+                        image: `img/product/${pictrueArray[0].PicName}`,
+                        name: product.ProductsName,
+                        price: product.ProductsPrice,
+                        quantity: total + 1,
+                      };
+                      addItem(item);
+                      console.log(item);
+                    }}
+                  >
                     <i className="fas fa-shopping-cart"></i> 加入購物車
                   </button>
                   <button onClick={click}>直接購買</button>

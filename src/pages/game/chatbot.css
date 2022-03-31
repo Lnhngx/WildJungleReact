@@ -445,11 +445,9 @@
     position: absolute;
     top: 100px;
     width: 100%;
-    height: 500px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    /* background-color: purple; */
 }
 .service_agent{
     top: 150px;
@@ -465,12 +463,16 @@
     background-color: rgb(128, 124, 124);
     cursor: pointer;
     overflow: hidden;
+    position: relative;
 }
 /* 這是選擇用的比較大 */
 .agent_avatar img{
-    width: 80%;
+    width: 95%;
     height: auto;
-    object-position: 5px 0px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-28%);
 }
 /* 這是對話內容的圖像比較小 */
 .agentAvatar_wrap{

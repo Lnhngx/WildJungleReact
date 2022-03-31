@@ -143,13 +143,13 @@ function Cartfilloutform(props) {
 
           <div
             className={
-              hode || store || park ? "stan_fof_flex" : "stan_pagedisplay"
+              hode || store || park ? "stan_fof_flex" : "stan_displaynone"
             }
           >
             <div className="stan_h3">收件人資料</div>
           </div>
 
-          <div className={hode ? "stan_fof_flex_left" : "stan_pagedisplay"}>
+          <div className={hode ? "stan_fof_flex_left" : "stan_displaynone"}>
             <div>
               <form className="stan_fof_form">
                 <table>
@@ -243,7 +243,7 @@ function Cartfilloutform(props) {
             </div>
           </div>
 
-          <div className={park ? "stan_fof_delipark" : "stan_pagedisplay"}>
+          <div className={park ? "stan_fof_delipark" : "stan_displaynone"}>
             <div>
               <form className="stan_fof_form">
                 <table>

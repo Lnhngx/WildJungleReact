@@ -276,6 +276,7 @@ $stan_height: 50px;
     line-height: 15px;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
 
     @include mobile {
       margin-top: 10px;
@@ -299,7 +300,7 @@ $stan_height: 50px;
     padding-right: 0%;
   }
 
-  li {
+  .stan_cart_click {
     margin-top: -1px;
     width: 24%;
     height: 9.6px;
@@ -309,6 +310,11 @@ $stan_height: 50px;
       width: 20%;
       height: 8px;
     }
+  }
+
+  .stan_cart_unclick{
+    @extend .stan_cart_click;
+    background-color: transparent;
   }
 }
 
@@ -465,6 +471,15 @@ $stan_height: 50px;
 
       @include mobile {
         width: 80px;
+      }
+    }
+
+    .stan_seats_out{
+      @extend .stan_btninput;
+      border: 0px;
+
+      @include mobile{
+        width: 100%;
       }
     }
     .stan_count_minus,
@@ -912,8 +927,12 @@ $stan_height: 50px;
   display: block;
 }
 
-.stan_pagedisplay {
+.stan_displaynone {
   display: none;
+}
+
+.stan_displayblock{
+  display: block;
 }
 
 //
