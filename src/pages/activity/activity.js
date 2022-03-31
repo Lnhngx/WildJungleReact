@@ -467,14 +467,10 @@ function Activity() {
                             <div className="seatsArea">{renderSeats()}</div>
                             <div className="buttonGrop">
                                 <button onClick={() => {
-<<<<<<< HEAD
-                                    const temp_arr = { sid: "s1", name: showTitleChange, price: 50, quantity: Object.keys(positions).length, seats: positions };
-=======
                                     // localStorage.getItem('secondCart');
                                     // console.log("localStorage:", localStorage.getItem('secondCart'));
 
                                     const temp_arr = { sid: "s1", name: showTitleChange,image:`img/activity/show3.jpeg`, price: 50, quantity: Object.keys(positions).length, seats: positions};
->>>>>>> refs/remotes/origin/main
                                     addItem(temp_arr);
                                     setShow(true);
                                     // alert('訂位完成！');
