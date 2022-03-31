@@ -12,7 +12,7 @@ function EditModal(props){
 
   const usp=new URLSearchParams(location.pathname);
   const pathurl=usp.has('/members/password-change')
-  console.log(pathurl)
+  // console.log(pathurl)
 
   const handleClose = () => {
     setEditModalShow(false);
