@@ -445,12 +445,9 @@
     position: absolute;
     top: 100px;
     width: 100%;
-    height: 500px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    z-index: -1;
-    /* background-color: purple; */
 }
 .service_agent{
     top: 150px;
