@@ -4,7 +4,7 @@ import Checkarea from "./components/Checkarea";
 import CartProductItem from "./components/CartProductItem";
 import CartShow from "./components/CartShow";
 import CartLive from "./components/CartLive";
-import { useState } from "react";
+import React,{ useState } from "react";
 
 function Carts(props) {
   const [cartpro, setCartpro] = useState(true);
