@@ -1,21 +1,33 @@
 import React from "react";
 import { useCart } from "../utils/useCart";
 
-function CartProductItem() {
-  const { items, plusOne, minusOne, removeItem} = useCart();
-  
- 
-  
+function CartProductItem(props) {
+  const { items, plusOne, minusOne, removeItem } = useCart();
 
   return (
     <>
+      <div className="stan_product_title">
+        <ul>
+          <li></li>
+          <li>商品種類</li>
+          <li>商品名稱</li>
+          <li>單價</li>
+          <li>數量</li>
+        </ul>
+        <div className="stan_blackhr"></div>
+      </div>
       {items.map((v, i) => {
         return (
           <div className="stan_product_space" key={v.sid}>
             <ul>
               <li className="">
-              <button className="stan_btndelete" onClick={()=>{removeItem(v.sid)}}>
-                <i className="fas fa-times stan_btnicon_delete"></i>
+                <button
+                  className="stan_btndelete"
+                  onClick={() => {
+                    removeItem(v.sid);
+                  }}
+                >
+                  <i className="fas fa-times stan_btnicon_delete"></i>
                 </button>
               </li>
               <li>

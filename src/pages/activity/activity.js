@@ -415,7 +415,7 @@ function Activity() {
                                     // localStorage.getItem('secondCart');
                                     // console.log("localStorage:", localStorage.getItem('secondCart'));
 
-                                    const temp_arr = { sid: "s1", name: showTitleChange, price: 50, quantity: Object.keys(positions).length, seats: positions};
+                                    const temp_arr = { sid: "s1", name: showTitleChange,image:`img/activity/show3.jpeg`, price: 50, quantity: Object.keys(positions).length, seats: positions};
                                     addItem(temp_arr);
 
                                     // let current_arr = JSON.parse(localStorage.getItem('secondCart'));

@@ -7,7 +7,7 @@ const SecondCartContext = createContext(null)
 export const SecondCartProvider = ({
   children,
   initialCartItems = [],
-  localStorageKey = 'cart',
+  localStorageKey = 'secondCart',
 }) => {
   //read from localStorage
   // if localStorage has value with this key then use it to initialCartItems
