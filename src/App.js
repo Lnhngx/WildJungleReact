@@ -47,6 +47,7 @@ import MyDate from "./pages/lodging/components/MyDate";
 import Chatbot from "./pages/game/chatbot";
 
 function App() {
+  const [sortbarType, setSortbarType] = useState("");
   // 全域狀態
   const history = useHistory();
 
@@ -123,10 +124,10 @@ function App() {
                 <Activity />
               </Route>
               <Route path="/products">
-                <Products />
+                <Products sortbarType={sortbarType} setSortbarType={setSortbarType}/>
               </Route>
               <Route path="/productsdetail">
-                <ProductsDetail />
+                <ProductsDetail setSortbarType={setSortbarType}/>
               </Route>
               <Route path="/game/spot-level">
                 <SpotLevel />

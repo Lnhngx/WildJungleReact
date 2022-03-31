@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./scss/products.scss";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import {useHistory, useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
 import JqueryProduct from "./components/jqueryProduct";
 import EmailControl from "./components/theEmailControl";
@@ -21,7 +21,7 @@ import {
 } from "react-share";
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 
-function Products() {
+function Products(props) {
   // 產品用的資料
   // 1. 從伺服器來的原始資料
   const [products, setProducts] = useState([]);
@@ -29,7 +29,7 @@ function Products() {
   const [displayProducts, setDisplayProducts] = useState([]);
 
   const [sortbarPrice, setSortbarPrice] = useState("");
-  const [sortbarType, setSortbarType] = useState("");
+  // const [sortbarType, setSortbarType] = useState("");
   const [sortbarVendor, setSortbarVendor] = useState("");
   const [searchWord, setSearchWord] = useState("");
 
@@ -52,7 +52,7 @@ function Products() {
     setType6(0);
     setRangevalue([0, 6000]);
     setSortbarPrice("");
-    setSortbarType("");
+    props.setSortbarType("");
     setSortbarVendor("");
     setSearchWord("");
   };
@@ -84,7 +84,19 @@ function Products() {
       offset: -100,
     });
   };
-
+  useEffect(() => {
+    const scrollToSection = () => {
+      scroller.scrollTo("productgroup", {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -100,
+      });
+    };
+    if (props.sortbarType > 0) {
+      scrollToSection();
+    }
+  }, [props.sortbarType]);
 
   useEffect(() => {
     if (isLoading) {
@@ -145,6 +157,7 @@ function Products() {
     if (type1++) {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 1);
     }
+
     return newProducts;
   };
   const Type2 = (products, type2) => {
@@ -152,6 +165,7 @@ function Products() {
     if (type2++) {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 2);
     }
+
     return newProducts;
   };
   const Type3 = (products, type3) => {
@@ -159,6 +173,7 @@ function Products() {
     if (type3++) {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 3);
     }
+
     return newProducts;
   };
   const Type4 = (products, type4) => {
@@ -166,6 +181,7 @@ function Products() {
     if (type4++) {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 4);
     }
+
     return newProducts;
   };
   const Type5 = (products, type5) => {
@@ -173,6 +189,7 @@ function Products() {
     if (type5++) {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 5);
     }
+
     return newProducts;
   };
   const Type6 = (products, type6) => {
@@ -187,21 +204,51 @@ function Products() {
     let newProducts = [...products];
     if (sortbarType === "1") {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 1);
+      setType2(0);
+      setType3(0);
+      setType4(0);
+      setType5(0);
+      setType6(0);
     }
     if (sortbarType === "2") {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 2);
+      setType1(0);
+      setType3(0);
+      setType4(0);
+      setType5(0);
+      setType6(0);
     }
     if (sortbarType === "3") {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 3);
+      setType1(0);
+      setType2(0);
+      setType4(0);
+      setType5(0);
+      setType6(0);
     }
     if (sortbarType === "4") {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 4);
+      setType1(0);
+      setType2(0);
+      setType3(0);
+      setType5(0);
+      setType6(0);
     }
     if (sortbarType === "5") {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 5);
+      setType1(0);
+      setType2(0);
+      setType3(0);
+      setType4(0);
+      setType6(0);
     }
     if (sortbarType === "6") {
       newProducts = [...newProducts].filter((a) => a.ProductsType === 6);
+      setType1(0);
+      setType2(0);
+      setType3(0);
+      setType4(0);
+      setType5(0);
     }
     if (sortbarType === "" && newProducts.length > 0) {
       newProducts = [...newProducts].sort(
@@ -272,7 +319,7 @@ function Products() {
     setIsLoading(true);
     let newProducts = [...products];
     newProducts = handleSearch(products, searchWord);
-    newProducts = sortType(newProducts, sortbarType);
+    newProducts = sortType(newProducts, props.sortbarType);
     newProducts = sortVendor(newProducts, sortbarVendor);
     newProducts = handleSort(newProducts, sortbarPrice);
     newProducts = priceSlice(newProducts, rangevalue);
@@ -285,7 +332,7 @@ function Products() {
     setDisplayProducts(newProducts);
   }, [
     searchWord,
-    sortbarType,
+    props.sortbarType,
     sortbarVendor,
     products,
     sortbarPrice,
@@ -336,8 +383,6 @@ function Products() {
   //     window.FB.XFBML.parse();
   //   }
   // }, []);
-
-
 
   return (
     <>
@@ -399,6 +444,7 @@ function Products() {
               className="type type1"
               value={type1}
               onClick={() => {
+                props.setSortbarType("");
                 reset2();
                 reset3();
                 reset4();
@@ -415,6 +461,7 @@ function Products() {
               className="type"
               value={type2}
               onClick={() => {
+                props.setSortbarType("");
                 reset1();
                 reset3();
                 reset4();
@@ -431,6 +478,7 @@ function Products() {
               className="type type1"
               value={type3}
               onClick={() => {
+                props.setSortbarType("");
                 reset1();
                 reset2();
                 reset4();
@@ -447,6 +495,7 @@ function Products() {
               className="type"
               value={type4}
               onClick={() => {
+                props.setSortbarType("");
                 reset1();
                 reset2();
                 reset3();
@@ -463,6 +512,7 @@ function Products() {
               className="type type1"
               value={type5}
               onClick={() => {
+                props.setSortbarType("");
                 reset1();
                 reset2();
                 reset3();
@@ -479,6 +529,7 @@ function Products() {
               className="type"
               value={type6}
               onClick={() => {
+                props.setSortbarType("");
                 reset1();
                 reset2();
                 reset3();
@@ -502,8 +553,8 @@ function Products() {
                 setSortbarPrice={setSortbarPrice}
               />
               <SortbarType
-                sortbarType={sortbarType}
-                setSortbarType={setSortbarType}
+                sortbarType={props.sortbarType}
+                setSortbarType={props.setSortbarType}
               />
               <SortbarVendor
                 sortbarVendor={sortbarVendor}
