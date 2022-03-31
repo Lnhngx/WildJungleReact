@@ -46,7 +46,6 @@ function Chatbot(props){
                     setPrivateMessage(replyMessage);
                 }
             });
-            // console.log('success connect!',io)
         }
         return () => {
             isMounted = false;
@@ -127,6 +126,9 @@ function Chatbot(props){
             <div className="chatbot_close" onClick={()=>{
                 // document.querySelector('.chatbot_wrap').style.display = 'none';
                 setToggleChatbot(false);
+                setPrivateMessage([]);
+                io.disconnect();
+                setIo(null);
             }}><i className="fas fa-times"></i></div>
             
         </div>
@@ -478,6 +480,7 @@ function Chatbot(props){
                 <div className="text">查看天氣</div>
             </div>
             <div className="phone" onClick={()=>{
+                // 當使用專人客服的功能時，會有自己的畫面，所以會先將與機器人的對話刪除
                 setMessage([])
                 connectWebSocket()
             }}>
@@ -609,7 +612,7 @@ function Chatbot(props){
                 <div className="agent_connected"></div>
             </div>
             <div className="service_agent">
-                <div className="agent_avatar"></div>
+                <div className="agent_avatar"><img src="/img/game/agent_avatar2.png" alt=""/></div>
                 <div className="agent_connected"></div>
             </div>
             <div className="service_agent">
