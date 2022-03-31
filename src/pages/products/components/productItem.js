@@ -51,7 +51,7 @@ function ProductItem(props) {
             <i className="fas fa-heart" ></i>
             <i className="fas fa-shopping-cart" onClick={() => {
                       const item = {
-                        sid: ProductSid,
+                        sid: ""+ProductSid,
                         image: ProductsMainPic,
                         name:  ProductsName,
                         price: ProductsPrice,
