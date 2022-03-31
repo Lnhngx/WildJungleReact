@@ -3,6 +3,7 @@ import "./activity.scss";
 import { animateScroll as scroll, scroller } from 'react-scroll';
 import Carousel from 'react-bootstrap/Carousel';
 import { useSecondCart } from '../carts/utils/useSecondCart';
+// import { useThirdCart } from '../carts/utils/useThirdCart';
 import { Modal, Button } from 'react-bootstrap';
 
 // sponsor-card
@@ -98,9 +99,107 @@ let datas3 = [{
 
 
 function Activity() {
+    //01area收合
+    const [state, setState] = useState(false);
+    const [state2, setState2] = useState(true);
+    //02area收合
+    const [state3, setState3] = useState(false);
+    const [state4, setState4] = useState(true);
+    //03area收合
+    const [state5, setState5] = useState(false);
+
+    //booking區變換
+    const [imgChange, setImgChange] = useState("terry_showIntroduction_img");
+    const [showTitleChange, setShowTitleChange] = useState("鯨豚表演秀");
+    const [showTextChange, setShowTextChange] = useState("各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～");
+    const [locationChange, setLocationChange] = useState("冰原A區")
+    const [cardChange, setCardChange] = useState(0);
+
+    //位置點擊
+    const [positions, setPositions] = useState({});
+    const [clickedPosition, setClickedPosition] = useState({});
+
+    //座位驗證
+    const [seatData, setSeatData] = useState([]);
+
+    //
+    const [plan, setPlan] = useState(0);
+    const [planPrice, setPlanPrice] = useState(0);
+
+    //modal
+    const [show, setShow] = useState(false);
+    const ModalShow1 = (
+        <Modal show={show} animation={false}>
+            <Modal.Body className="modal_text">
+                訂位資訊已加入購物車！期待您的蒞臨～<br />⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾
+            </Modal.Body>
+            <Modal.Footer className="">
+                <Button className="modal_button" onClick={() => {
+                    setShow(false);
+                    setState2(true);
+                }}>
+                    OK
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
+    const [show2, setShow2] = useState(false);
+    const ModalShow2 = (
+        <Modal show={show2} animation={false}>
+            <Modal.Body className="modal_text">
+                動物認養方案已加入購物車！非常感謝您的愛心～<br />\(⁎⁍̴̛ᴗ⁍̴̛⁎\)‼
+            </Modal.Body>
+            <Modal.Footer className="">
+                <Button className="modal_button" onClick={() => {
+                    setShow(false);
+                    setState4(true);
+                }}>
+                    OK
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
+
+    //add to carts
+    const { addItem } = useSecondCart();
+    // const { addItem3 } = useThirdCart();
+
+    //scrollTo
+    const scrollToSection1 = () => {
+        scroller.scrollTo("terry_showIntroduction_img", {
+            duration: 1000,
+            delay: 200,
+            smooth: "easeInOutQuart",
+            offset: 750,
+        });
+    };
+    const scrollToSection2 = () => {
+        scroller.scrollTo("cardbg", {
+            duration: 1000,
+            delay: 200,
+            smooth: "easeInOutQuart",
+            offset: 800,
+        });
+    };
+    const scrollToSection3 = () => {
+        scroller.scrollTo("terry_sponsor_planSelectionArea", {
+            duration: 800,
+            delay: 100,
+            smooth: "easeInOutQuart",
+            offset: -130,
+        });
+    };
+    const scrollToSection4 = () => {
+        scroller.scrollTo("cardbg", {
+            duration: 800,
+            delay: 100,
+            smooth: "easeInOutQuart",
+            offset: 0,
+        });
+    };
+
     const seatsW = 8;
     const seatsH = 8;
-    const { addItem } = useSecondCart();
 
     let datas = [];
     for (let i = 0; i < seatsW; i++) {
@@ -240,87 +339,6 @@ function Activity() {
     };
 
 
-
-    //01area收合
-    const [state, setState] = useState(false);
-    const [state2, setState2] = useState(true);
-    //02area收合
-    const [state3, setState3] = useState(false);
-    const [state4, setState4] = useState(true);
-    //03area收合
-    const [state5, setState5] = useState(false);
-
-    //booking區變換
-    const [imgChange, setImgChange] = useState("terry_showIntroduction_img");
-    const [showTitleChange, setShowTitleChange] = useState("鯨豚表演秀");
-    const [showTextChange, setShowTextChange] = useState("各位先生女士，大朋友小朋友，走過路過路過千萬不要錯過！超卡哇咦的海豚表演秀準備要開始啦～看看飼育員如何透過餵食讓鯨豚舞動牠曼妙的舞姿～活動期間也有機會可以和動物互動！準備一同享受與動物的快樂時光吧～");
-    const [locationChange, setLocationChange] = useState("冰原A區")
-    const [cardChange, setCardChange] = useState(0);
-
-    //位置點擊
-    const [positions, setPositions] = useState({});
-    const [clickedPosition, setClickedPosition] = useState({});
-
-    //座位驗證
-    const [seatData, setSeatData] = useState([]);
-
-    //
-    const [plan, setPlan] = useState(0);
-    const [planPrice, setPlanPrice] = useState(0);
-
-    //modal
-    const [show, setShow] = useState(false);
-
-    const ModalShow1 = (
-        <Modal show={show} animation={false}>
-            <Modal.Body className="modal_text">
-                訂位完成！期待您的蒞臨～<br/>⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾
-            </Modal.Body>
-            <Modal.Footer className="">
-                <Button className="modal_button" onClick={()=>{
-                    setShow(false);
-                    setState2(true);
-                }}>
-                    OK
-                </Button>
-            </Modal.Footer>
-        </Modal>
-    )
-
-    //scrollTo
-    const scrollToSection1 = () => {
-        scroller.scrollTo("terry_showIntroduction_img", {
-            duration: 1000,
-            delay: 200,
-            smooth: "easeInOutQuart",
-            offset: 750,
-        });
-    };
-    const scrollToSection2 = () => {
-        scroller.scrollTo("cardbg", {
-            duration: 1000,
-            delay: 200,
-            smooth: "easeInOutQuart",
-            offset: 800,
-        });
-    };
-    const scrollToSection3 = () => {
-        scroller.scrollTo("terry_sponsor_planSelectionArea", {
-            duration: 800,
-            delay: 100,
-            smooth: "easeInOutQuart",
-            offset: -130,
-        });
-    };
-    const scrollToSection4 = () => {
-        scroller.scrollTo("cardbg", {
-            duration: 800,
-            delay: 100,
-            smooth: "easeInOutQuart",
-            offset: 0,
-        });
-    };
-
     return (
         <>
             <div className="terry_bg">
@@ -396,7 +414,6 @@ function Activity() {
                                             ("海洋D區");
                                     };
 
-                                    console.log(e.target.value)
                                 }}>
                                     <option>選擇表演秀</option>
                                     <option value="1" >鯨豚餵食秀</option>
@@ -414,12 +431,9 @@ function Activity() {
                                         body: JSON.stringify({ "sid": e.target.value }),
                                     }).then(r => r.json())
                                         .then(obj => {
-                                            console.log('hiiiiiii', obj);
                                             const seatArr = [];
                                             obj.map((v, i) => {
-                                                console.log(v.seat);
                                                 seatArr.push(v.seat);
-                                                console.log(seatArr);
                                             })
                                             setSeatData(seatArr);
                                         });
@@ -467,14 +481,9 @@ function Activity() {
                             <div className="seatsArea">{renderSeats()}</div>
                             <div className="buttonGrop">
                                 <button onClick={() => {
-                                    // localStorage.getItem('secondCart');
-                                    // console.log("localStorage:", localStorage.getItem('secondCart'));
-
-                                    const temp_arr = { sid: "s1", name: showTitleChange,image:`img/activity/show3.jpeg`, price: 50, quantity: Object.keys(positions).length, seats: positions};
+                                    const temp_arr = { sid: "s1", name: showTitleChange, image: `img/activity/show3.jpeg`, price: 50, quantity: Object.keys(positions).length, seats: positions };
                                     addItem(temp_arr);
                                     setShow(true);
-                                    // alert('訂位完成！');
-
                                 }}>加入購物車</button>
                                 {ModalShow1}
                                 <button onClick={() => { setState(!state); setState2(true) }}>回上一步</button>
