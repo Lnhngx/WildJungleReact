@@ -3,41 +3,40 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Button } from "react-bootstrap";
+import jsSHA from "jssha";
 
 const demoDataFromServer = [
   {
     lat: 25.03335,
     lng: 121.5439,
     name: "捷運大安站(信義)",
-    bus: ["0東", 20, 22, 88, "88區間車", 204, 758, "信義幹線"],
+    StopID: "2282",
   },
   {
     lat: 25.0343027,
     lng: 121.5436188,
     name: "捷運大安站(復興)",
-    bus: [41, 226, 685, "685經吉林路", "復興幹線"],
+    StopID: "6995",
   },
   {
     lat: 25.0333694,
     lng: 121.5421572,
     name: "師大附中",
-    bus: ["0東", 20, 22, 88, "88區間車", 204, 758, "信義幹線"],
+    StopID: "2281",
   },
   {
     lat: 25.03328,
     lng: 121.54623,
     name: "信義大安路口",
-    bus: [226, 41, 685, "復興幹線"],
+    StopID: "2113",
   },
   {
     lat: 25.03245,
     lng: 121.54345,
     name: "大安高工",
-    bus: [278, "278區間車", 685, "685經吉林路", "S33懷恩專車", "復興幹線"],
+    StopID: "6996",
   },
 ];
-
-const Fuxing = [226, 41, 685, "復興幹線"];
 
 const customMarker = new L.Icon({
   iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
@@ -48,24 +47,25 @@ const customMarker = new L.Icon({
 
 const HomeTransportion = () => {
   const [selectValue, setselectValue] = useState(0);
-
-  const [busElement, setbusElement] = useState({
-    StopName: "",
-    RouteName: "",
-    EstimateTime: 0,
-  });
-
+  const [busData, setBusData] = useState([]);
   // useEffect(() => {
   //   east0_bus();
   // }, []);
 
-  function Fuxing_stop() {
+  //停車場資訊https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json
+
+  function Select_stop(StopID) {
     fetch(
-      `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/226?$format=JSON`
+      `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/PassThrough/Station/${StopID}?%24format=JSON`,
+      {
+        type: "GET",
+        dataType: "json",
+        headers: GetAuthorizationHeader(),
+      }
     )
       .then((r) => r.json())
       .then((data) => {
-        return console.log(data);
+        setBusData(data);
       });
 
     // .then((r) => r.json())
@@ -83,6 +83,27 @@ const HomeTransportion = () => {
     //     RouteName: busElements.RouteName.Zh_tw,
     //     EstimateTime: busElements.EstimateTime,
     //   }));
+  }
+  function GetAuthorizationHeader() {
+    var AppID = "b9ac9c283de045cc8641b8824169d3a5";
+    var AppKey = "UHKIgsSeTXUgt2FAKeKbVxyTGsw";
+
+    var GMTString = new Date().toGMTString();
+    var ShaObj = new jsSHA("SHA-1", "TEXT");
+    ShaObj.setHMACKey(AppKey, "TEXT");
+    ShaObj.update("x-date: " + GMTString);
+    var HMAC = ShaObj.getHMAC("B64");
+    var Authorization =
+      'hmac username="' +
+      AppID +
+      '", algorithm="hmac-sha1", headers="x-date", signature="' +
+      HMAC +
+      '"';
+
+    return {
+      Authorization: Authorization,
+      "X-Date": GMTString /*,'Accept-Encoding': 'gzip'*/,
+    }; //如果要將js運行在伺服器，可額外加入 'Accept-Encoding': 'gzip'，要求壓縮以減少網路傳輸資料量
   }
 
   const mapRef = useRef();
@@ -108,13 +129,9 @@ const HomeTransportion = () => {
     handleFlyTo();
   }, [selectValue]);
 
-  // didMount
   useEffect(() => {
-    // 連接資料庫
-    // 設定狀態
-    console.log("didmount");
-    setState(demoDataFromServer);
-  }, []);
+    Select_stop(demoDataFromServer[selectValue].StopID);
+  }, [selectValue]);
 
   return (
     <>
@@ -136,116 +153,28 @@ const HomeTransportion = () => {
       </h3>
       <div className="ning_transportionbox">
         <div className="ning_busbox">
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
-          <div className="ning_bus">
-            <p className="ning_bustime">
-              4<span>分鐘</span>
-            </p>
-            <p className="ning_busname">
-              信義幹線
-              <br />
-              <span>往臺北車站</span>
-            </p>
-          </div>
+          {busData.map((v, i) => {
+            const a =
+              v["StopStatus"] === 0
+                ? v["EstimateTime"] <= 90
+                  ? "將到站"
+                  : `${parseInt(v["EstimateTime"] / 60)}<span>分鐘</span>`
+                : "未發車";
+            return (
+              <div className="ning_bus">
+                <p
+                  className="ning_bustime"
+                  dangerouslySetInnerHTML={{ __html: a }}
+                  style={{ color: a === "將到站" && "red" }}
+                />
+                <p className="ning_busname">
+                  {v["RouteName"]["Zh_tw"]}
+                  <br />
+                  <span>{v["Direction"] === 0 ? "去程" : "返程"}</span>
+                </p>
+              </div>
+            );
+          })}
         </div>
         <div className="ning_busmap">
           <LeafletMap
@@ -259,7 +188,7 @@ const HomeTransportion = () => {
               url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
             />
 
-            {state.map(({ lat, lng, name }, index) => (
+            {demoDataFromServer.map(({ lat, lng, name }, index) => (
               <Marker position={[lat, lng]} icon={customMarker} key={index}>
                 <Popup>{name}</Popup>
               </Marker>

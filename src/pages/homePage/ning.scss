@@ -1044,6 +1044,7 @@ $ning-englishont: "Playfair Display", serif;
     width: 40%;
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
   }
 
   .ning_bus {
@@ -1058,9 +1059,10 @@ $ning-englishont: "Playfair Display", serif;
     height: 60px;
     border: 2px solid $ning-color4;
     border-radius: 30px;
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: $ning-chinesefont;
     text-align: center;
+    line-height: 60px;
     span {
       font-size: 1.6rem;
     }
