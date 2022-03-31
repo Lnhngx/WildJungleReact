@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import "./activity.scss";
 import { animateScroll as scroll, scroller } from 'react-scroll';
 import Carousel from 'react-bootstrap/Carousel';
-import {useSecondCart} from '../carts/utils/useSecondCart'
+import { useSecondCart } from '../carts/utils/useSecondCart';
+import { Modal, Button } from 'react-bootstrap';
 
 // sponsor-card
 let datas2 = [{
@@ -99,7 +100,7 @@ let datas3 = [{
 function Activity() {
     const seatsW = 8;
     const seatsH = 8;
-    const {addItem} = useSecondCart();
+    const { addItem } = useSecondCart();
 
     let datas = [];
     for (let i = 0; i < seatsW; i++) {
@@ -184,15 +185,52 @@ function Activity() {
                     <div className="sponsor_introductionText3">感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。</div>
                     <div className="selectAndButton_grop">
                         <div className="sponsorSelect">
-                            <select>
+                            <select onChange={(e) => {
+                                if (e.target.value === '1') {
+                                    setPlan(1);
+                                }
+                                if (e.target.value === '2') {
+                                    setPlan(3);
+                                }
+                                if (e.target.value === '3') {
+                                    setPlan(6);
+                                }
+                                if (e.target.value === '4') {
+                                    setPlan(12);
+                                }
+                            }}>
                                 <option>選擇方案</option>
+                                <option value="1">小資愛心(一個月)</option>
+                                <option value="2">低調奢華(三個月)</option>
+                                <option value="3">春風送暖(六個月)</option>
+                                <option value="4">大富大貴(十二個月)</option>
                             </select>
-                            <select>
+                            <select onChange={(e) => {
+                                if (e.target.value === '1') {
+                                    setPlanPrice(100);
+                                }
+                                if (e.target.value === '2') {
+                                    setPlanPrice(500);
+                                }
+                                if (e.target.value === '3') {
+                                    setPlanPrice(1000);
+                                }
+                                if (e.target.value === '4') {
+                                    setPlanPrice(2000);
+                                }
+                            }}>
                                 <option>選擇金額</option>
+                                <option value="1">新台幣100元</option>
+                                <option value="2">新台幣500元</option>
+                                <option value="3">新台幣1000元</option>
+                                <option value="4">新台幣2000元</option>
                             </select>
                         </div>
                         <div className="buttonGrop2">
-                            <button>加入購物車</button>
+                            <button onClick={() => {
+                                const temp_arr = { sid: "s1", name: "動物認養方案-" + plan + "個月", price: planPrice, quantity: plan };
+                                addItem(temp_arr);
+                            }}>加入購物車</button>
                             <button onClick={() => { setState3(!state3); setState4(true); scrollToSection4() }}>回上一步</button>
                         </div>
                     </div>
@@ -200,6 +238,7 @@ function Activity() {
             </div>
         ));
     };
+
 
 
     //01area收合
@@ -224,13 +263,29 @@ function Activity() {
 
     //座位驗證
     const [seatData, setSeatData] = useState([]);
-    // useEffect(()=>{   
-    //     fetch('http://localhost:4000/activity')
-    //     .then(r=>r.json())
-    //     .then(obj=>{
-    //         console.log(obj)
-    //     })       
-    // },[])
+
+    //
+    const [plan, setPlan] = useState(0);
+    const [planPrice, setPlanPrice] = useState(0);
+
+    //modal
+    const [show, setShow] = useState(false);
+
+    const ModalShow1 = (
+        <Modal show={show} animation={false}>
+            <Modal.Body className="modal_text">
+                訂位完成！期待您的蒞臨～<br/>⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾
+            </Modal.Body>
+            <Modal.Footer className="">
+                <Button className="modal_button" onClick={()=>{
+                    setShow(false);
+                    setState2(true);
+                }}>
+                    OK
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    )
 
     //scrollTo
     const scrollToSection1 = () => {
@@ -412,20 +467,13 @@ function Activity() {
                             <div className="seatsArea">{renderSeats()}</div>
                             <div className="buttonGrop">
                                 <button onClick={() => {
-                                    // localStorage.getItem('secondCart');
-                                    // console.log("localStorage:", localStorage.getItem('secondCart'));
-
-                                    const temp_arr = { sid: "s1", name: showTitleChange, price: 50, quantity: Object.keys(positions).length, seats: positions};
+                                    const temp_arr = { sid: "s1", name: showTitleChange, price: 50, quantity: Object.keys(positions).length, seats: positions };
                                     addItem(temp_arr);
-
-                                    // let current_arr = JSON.parse(localStorage.getItem('secondCart'));
-                                    // temp_arr.forEach(v => {
-                                    //     current_arr.push(v);
-                                    // })
-                                    // localStorage.setItem('secondCart', JSON.stringify(current_arr));
-
+                                    setShow(true);
+                                    // alert('訂位完成！');
 
                                 }}>加入購物車</button>
+                                {ModalShow1}
                                 <button onClick={() => { setState(!state); setState2(true) }}>回上一步</button>
                             </div>
                         </div>
