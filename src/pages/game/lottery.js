@@ -54,7 +54,7 @@ function Lottery(props){
     }
     function first_render (ctx, ctx_bottom,randomNum){
         let bonusText = '';
-        setBonus(randomNum)
+        setBonus(randomNum);
         switch (randomNum){
             case 0:
                 bonusText = '銘謝惠顧';
@@ -112,10 +112,6 @@ function Lottery(props){
         // myCanvas_bottom.current.style.zIndex = '999';
         const ctx = myCanvas.current.getContext("2d");
         const ctx_bottom = myCanvas_bottom.current.getContext("2d");
-        ctx_bottom.font = "40px Arial";
-        ctx_bottom.fillStyle = 'whtie';
-        ctx_bottom.textAlign = 'center';
-        ctx_bottom.fillText('銘謝惠顧',myCanvas_bottom.width/2,myCanvas_bottom.height/2);
         myCanvas.current.addEventListener("mousedown",startPosition);
         window.addEventListener("mouseup",finishPosition);
         myCanvas.current.addEventListener("mousemove",draw);
@@ -136,7 +132,11 @@ function Lottery(props){
                 <canvas ref={myCanvas} width="401" height='556'></canvas>
             </div>
             <button className="lottery_bonusBtn" onClick={async ()=>{
-            if(localStorage.admin_account!==undefined){
+                // 先判斷如果是銘謝惠顧，按鈕只會做關閉視窗的動作
+            if(bonus===0){
+                props.setToggleLottery(false);
+                localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
+            }else{   
                 await fetch('http://localhost:4000/game-points', {
                     method: 'POST',
                     headers: {
@@ -151,15 +151,11 @@ function Lottery(props){
                     })
                     .then(r=>r.json())
                     .then(obj=>{
-                        console.log(obj)
                         localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
+                        window.location.href = "http://localhost:3000/members/modify-member-info";
                         // 帶會員到個人優惠頁面，跟亭勻確認網址
                     })
-            }else{
-                let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員才可領取獎勵");
-                if(goRigister){
-                    window.location.href = 'http://localhost:3000/members';
-                }
+                
             }
             }}>查看獎勵</button>
         </div>

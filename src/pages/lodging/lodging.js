@@ -172,12 +172,21 @@ function Lodging() {
     })
       .then((r) => r.json())
       .then((order) => {
-        // console.log("order", order);
-        if (order["room_sid"] === roomSid) {
-          setOrder(order);
-        }else {
-          setOrder([])
+        // console.log('order time',new Date(order[0]['end']).getTime())
+        // console.log('現在時間',new Date().getTime())
+        // console.log(new Date().getTime()> new Date(order[0]['end']).getTime())
+        let arr = order.filter(v=>v["room_sid"]===1 && new Date().getTime()> new Date(v['end']).getTime())
+        // console.log(arr)
+        if(arr!==[]){
+          setOrder(arr);
+        }else{
+          setOrder([]);
         }
+        // if (order["room_sid"] === 1 ) {
+        //   setOrder(order);
+        // } else {
+        //   setOrder([]);
+        // }
         //console.log("order", order);
       });
   };
@@ -200,13 +209,14 @@ function Lodging() {
     })
       .then((r) => r.json())
       .then((order) => {
-        //console.log("order", order);
-        if (order["room_sid"] === roomSid) {
-          setOrder(order);
-        }else {
-          setOrder([])
+        // console.log("order", order);
+        let arr = order.filter(v=>v["room_sid"]===2 && new Date().getTime()> new Date(v['end']).getTime())
+        // console.log(arr)
+        if(arr!==[]){
+          setOrder(arr);
+        }else{
+          setOrder([]);
         }
-       // console.log("order", order);
       });
   };
 
@@ -229,13 +239,13 @@ function Lodging() {
       .then((r) => r.json())
       .then((order) => {
         // console.log("order", order);
-        if (order["room_sid"] === roomSid) {
-          setOrder(order);
-        }else {
-          setOrder([])
+        let arr = order.filter(v=>v["room_sid"]===3 && new Date().getTime()> new Date(v['end']).getTime())
+        // console.log(arr)
+        if(arr!==[]){
+          setOrder(arr);
+        }else{
+          setOrder([]);
         }
-        console.log("roomSid",roomSid)
-        //console.log("order", order);
       });
   };
 
@@ -258,12 +268,13 @@ function Lodging() {
       .then((r) => r.json())
       .then((order) => {
         //console.log("order", order);
-        if (order["room_sid"] === roomSid) {
-          setOrder(order);
-        } else {
-          setOrder([])
+        let arr = order.filter(v=>v["room_sid"]===4 && new Date().getTime()> new Date(v['end']).getTime())
+        // console.log(arr)
+        if(arr!==[]){
+          setOrder(arr);
+        }else{
+          setOrder([]);
         }
-       // console.log("order", order);
       });
   };
 
@@ -274,8 +285,6 @@ function Lodging() {
   useEffect(() => {
     setCoundata(data);
   }, [data]);
-
-  
 
   //服務評分總和
 

@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 import { Link } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
+import {useCart} from "../carts/utils/useCart"
 function Chatbot(props){
     let chat_id = 1;
     let agentChat_id = 1;
@@ -11,7 +12,6 @@ function Chatbot(props){
     const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
     const [toggleSticker,setToggleSticker] = useState(false);
-    // const [toggleBuy,setToggleBuy] = useState(false);
     const [message,setMessage] = useState([{id:chat_id,text:'yo~ 我是熊貓有任何基礎問題都可以問我',type:'chatbot_reply'}]);
     const [privateMessage,setPrivateMessage] = useState([]);
     const [weatherData,setWeatherData] = useState({});
@@ -21,6 +21,7 @@ function Chatbot(props){
     const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
     const myChatbotInput = useRef(null);
+    const {addItem}=useCart();
     const connectWebSocket = ()=>{
         setIo( webSocket('http://localhost:3001') );
     }
@@ -45,7 +46,6 @@ function Chatbot(props){
                     setPrivateMessage(replyMessage);
                 }
             });
-            // console.log('success connect!',io)
         }
         return () => {
             isMounted = false;
@@ -126,6 +126,9 @@ function Chatbot(props){
             <div className="chatbot_close" onClick={()=>{
                 // document.querySelector('.chatbot_wrap').style.display = 'none';
                 setToggleChatbot(false);
+                setPrivateMessage([]);
+                io.disconnect();
+                setIo(null);
             }}><i className="fas fa-times"></i></div>
             
         </div>
@@ -197,7 +200,9 @@ function Chatbot(props){
                                             if(adultTicket>=1)setAdultTicket(adultTicket-1)
                                         }}><i class="fas fa-minus"></i></div>
                                         <div className="chatbot_ticketNum">{adultTicket}</div>
-                                        <div className="chatbot_ticketAdd" onClick={()=>{setAdultTicket(adultTicket+1)}}><i class="fas fa-plus"></i></div>
+                                        <div className="chatbot_ticketAdd" onClick={()=>{
+                                            setAdultTicket(adultTicket+1);
+                                        }}><i class="fas fa-plus"></i></div>
                                     </div>
                                 </div>
                                 <div className="chatbot_ticketStudent">
@@ -207,7 +212,9 @@ function Chatbot(props){
                                             if(studentTicket>=1)setStudentTicket(studentTicket-1)
                                         }}><i class="fas fa-minus"></i></div>
                                         <div className="chatbot_ticketNum">{studentTicket}</div>
-                                        <div className="chatbot_ticketAdd" onClick={()=>{setStudentTicket(studentTicket+1)}}><i class="fas fa-plus"></i></div>
+                                        <div className="chatbot_ticketAdd" onClick={()=>{
+                                            setStudentTicket(studentTicket+1);
+                                        }}><i class="fas fa-plus"></i></div>
                                     </div>
                                 </div>
                                 <div className="chatbot_ticketOld">
@@ -217,27 +224,27 @@ function Chatbot(props){
                                             if(loveTicket>=1)setLoveTicket(loveTicket-1)
                                         }}><i class="fas fa-minus"></i></div>
                                         <div className="chatbot_ticketNum">{loveTicket}</div>
-                                        <div className="chatbot_ticketAdd" onClick={()=>{setLoveTicket(loveTicket+1)}}><i class="fas fa-plus"></i></div>
+                                        <div className="chatbot_ticketAdd" onClick={()=>{
+                                            setLoveTicket(loveTicket+1);
+                                        }}><i class="fas fa-plus"></i></div>
                                     </div>
                                 </div>
-                                <div className="chatbot_ticketSend" onClick={()=>{
-                                    const temp_arr = [{sid: 998, image: "", name: "動物園門票:成人", price: 50, quantity:adultTicket },{sid: 999, image: "", name: "動物園門票:學生", price: 30, quantity:studentTicket},{sid: 1000, image: "", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
+                                <div className="chatbot_ticketSend" style={{pointerEvents:loveTicket+studentTicket+adultTicket!==0?"all":"none",background:loveTicket+studentTicket+adultTicket!==0?"rgb(19, 87, 126)":"gray"}}  onClick={()=>{
+                                    const temp_arr = [{sid: 998, image: "/zooTicket.jpg", name: "動物園門票:成人", price: 50, quantity:adultTicket },
+                                    {sid: 999, image: "/zooTicket.jpg", name: "動物園門票:學生", price: 30, quantity:studentTicket},
+                                    {sid: 1000, image: "/zooTicket.jpg", name: "動物園門票:愛心", price: 20, quantity:loveTicket }];
                                     let template = temp_arr.filter(v=>v.quantity!==0) 
-                                    let current_arr = JSON.parse( localStorage.getItem('cart') );
-                                    template.forEach(v=>{
-                                        current_arr.push(v);
-                                    })
-                                    localStorage.setItem('cart',JSON.stringify(current_arr));
+                                    template.forEach(v=>{addItem(v)})
                                     if(localStorage.admin_account!==undefined){
+                                        props.setModalTitle("商品已加入購物車");
+                                        props.setModalText("商品已加入購物車<span>!!</span><br/>請問您是否要直接至結帳頁面?");
                                         props.setModalBtn('前往結帳');
                                         props.setShow(true);
                                     }else{
+                                        props.setModalTitle("尚未註冊通知");
+                                        props.setModalText("您尚未加入會員<br/>請問您是否要先前往註冊頁面?");
                                         props.setModalBtn('前往註冊');
                                         props.setShow(true);
-                                        // let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員，才能至購物車");
-                                        // if(goRigister){
-                                        //     window.location.href = 'http://localhost:3000/members/signup';
-                                        // }
                                     }
                                 }}>確認送出</div>
                             </div>
@@ -473,6 +480,7 @@ function Chatbot(props){
                 <div className="text">查看天氣</div>
             </div>
             <div className="phone" onClick={()=>{
+                // 當使用專人客服的功能時，會有自己的畫面，所以會先將與機器人的對話刪除
                 setMessage([])
                 connectWebSocket()
             }}>
@@ -604,7 +612,7 @@ function Chatbot(props){
                 <div className="agent_connected"></div>
             </div>
             <div className="service_agent">
-                <div className="agent_avatar"></div>
+                <div className="agent_avatar"><img src="/img/game/agent_avatar2.png" alt=""/></div>
                 <div className="agent_connected"></div>
             </div>
             <div className="service_agent">

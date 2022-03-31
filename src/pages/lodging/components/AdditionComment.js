@@ -37,6 +37,15 @@ function AdditionComment(props) {
   const [CPvalue, setCPvalue] = useState("1");
   const [commentText, setCommentText] = useState("");
 
+  const allClear = function () {
+    setServevalue("1");
+    setCleanvalue("1");
+    setComfortablevalue("1");
+    setFacilityvalue("1");
+    setCPvalue("1");
+    setCommentText("");
+  };
+
   // 填寫錯誤時顯示
   const handleFormInvalid = (e) => {
     e.preventDefault();
@@ -72,7 +81,7 @@ function AdditionComment(props) {
       return;
     }
 
-    const sid=JSON.parse(localStorage.getItem('admin_account'))
+    const sid = JSON.parse(localStorage.getItem("admin_account"));
 
     await fetch(Config.COMMENT_ADD, {
       method: "POST",
@@ -84,7 +93,7 @@ function AdditionComment(props) {
         facility: facilityvalue,
         cpValue: CPvalue,
         commentTextarea: commentText,
-        m_sid:(sid?sid['m_sid']:1)
+        m_sid: sid ? sid["m_sid"] : 1,
       }),
     })
       .then((r) => r.json())
@@ -97,20 +106,16 @@ function AdditionComment(props) {
           Config.COMMENT_TROPICALLIST,
         ];
 
-        console.log('apiArray[props.roomSid]',apiArray[props.roomSid]);
-        
+        console.log("apiArray[props.roomSid]", apiArray[props.roomSid]);
+
         fetch(apiArray[props.roomSid])
-        .then((res) => 
-          res.json()
-        ).then(res=>{
-          console.log('res',res);
+          .then((res) => res.json())
+          .then((res) => {
+            console.log("res", res);
             props.setData(res);
             props.setClosebtn(true);
             props.setWritecommen(false);
-        }
-          
-          
-        );
+          });
 
         // return fetch
         // if (obj.success) {
@@ -120,8 +125,7 @@ function AdditionComment(props) {
         //   setSignSuccess(obj.error || "未評論成功");
         //   handleShow(true);
         // }
-      })
-     
+      });
   };
 
   return (
@@ -131,16 +135,18 @@ function AdditionComment(props) {
           <div className="orderInformation">訂購資訊</div>
           <div className="orderList">
             <p className="orderNumber">
-              訂單編號 : <span>20220222-2222ABC</span>
+              訂單編號 : <span>{(props.order).length===0?"":props.order[0]["order_sid"]}</span>
             </p>
             <p className="orderRoom">
               入住房型 : <span>{props.roomName}</span>
             </p>
-            <p className="orderCheckinDate">
-              入住日期 : <span>2022/03/01</span>
+            <p
+              className="orderCheckinDate"
+            >
+              入住日期 : <span>{(props.order).length===0?"":props.order[0]["start"]}</span>
             </p>
             <p className="orderCheckoutDate">
-              退房日期 : <span>2022/03/02</span>
+              退房日期 : <span>{(props.order).length===0?"":props.order[0]["end"]}</span>
             </p>
           </div>
           <div className="commentline"></div>
@@ -370,8 +376,8 @@ function AdditionComment(props) {
           <button type="submit" id="submit" className="btn commentbtn">
             送出
           </button>
-          <button type="reset" className="btn cancelbtn">
-            取消
+          <button type="reset" className="btn cancelbtn" onClick={allClear}>
+            清除
           </button>
         </div>
       </form>

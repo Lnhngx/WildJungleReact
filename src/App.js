@@ -62,16 +62,19 @@ function App() {
   });
 
   const [toggleLottery, setToggleLottery] = useState(false);
-  const [modalBtn,setModalBtn] = useState('前往註冊');
-  const [modalText,setModalText] = useState('fjwiefjiejfiwjf<br/>naaaaaaa');
+  const [modalTitle,setModalTitle] = useState('');
+  const [modalBtn,setModalBtn] = useState('');
+  const [modalText,setModalText] = useState('');
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const ChatbotModal = (
     <Modal centered show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header>
-        <Modal.Title>{localStorage.admin_account!==undefined?"商品已加入購物車":"尚未註冊通知"}</Modal.Title>
+        <Modal.Title className="chatbot_modalTitle">{modalTitle}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{localStorage.admin_account!==undefined? '商品已加入購物車請問您是否要前往購物車頁面':`尚未註冊通知`}</Modal.Body>
+      <Modal.Body>
+        <p className="chatbot_modalBody" dangerouslySetInnerHTML={{__html: modalText}}/>
+        </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           繼續購物
@@ -79,7 +82,19 @@ function App() {
         <Button
           variant="primary"
           onClick={() => {
-            window.location.href = "http://localhost:3000/members/signup"
+            switch (modalBtn){
+              case "前往結帳":
+                window.location.href = "http://localhost:3000/carts";
+                break;
+              case "前往註冊":
+                window.location.href = "http://localhost:3000/members/signup";
+                break;
+              case "到遊戲頁":
+                window.location.href = "http://localhost:3000/game";
+                break;
+              default:
+                console.log(modalBtn);
+            }
           }}
         >
           {modalBtn}
@@ -106,12 +121,13 @@ function App() {
               localState={localState}
               setLocalState={setLocalState}
             />
-            <FixedRight setToggleLottery={setToggleLottery} />
+            <FixedRight setToggleLottery={setToggleLottery} setShow={setShow} setModalBtn={setModalBtn} setModalText={setModalText} setModalTitle={setModalTitle} />
             <Lottery
               toggleLottery={toggleLottery}
               setToggleLottery={setToggleLottery}
             />
-          <Chatbot setShow={setShow} setModalBtn={setModalBtn}/>
+            <Chatbot setShow={setShow} setModalBtn={setModalBtn} setModalText={setModalText} setModalTitle={setModalTitle}/>
+            {ChatbotModal}
             {/* 路由表 */}
             <Switch>
               <Route exact path="/">

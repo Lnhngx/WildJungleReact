@@ -5,16 +5,12 @@ import { useEffect } from 'react'
 import 'leaflet/dist/leaflet.css'
 
 const demoDataFromServer = [
-  { lat: 41.19197, lng: 25.33719 },
-  { lat: 41.26352, lng: 25.1471 },
-  { lat: 41.26365, lng: 25.24215 },
-  { lat: 41.26369, lng: 25.33719 },
-  { lat: 41.26365, lng: 25.43224 },
-  { lat: 41.26352, lng: 25.52728 },
-  { lat: 41.2633, lng: 25.62233 },
-  { lat: 41.263, lng: 25.71737 },
-  { lat: 41.3082, lng: 22.95892 },
-  { lat: 41.31041, lng: 23.054 },
+  { lat: 25.032935, lng: 121.5427002 , name:"捷運大安站(信義)"},
+  { lat: 25.033967, lng: 121.5433893 , name:"捷運大安站(復興)"},
+  { lat: 25.0334365, lng:121.5400901 , name:"師大附中"},
+  { lat: 25.0333056, lng: 121.5434491 , name:"信義大安路口"},
+  { lat: 25.031991, lng: 121.5412516 , name:"大安高工)"},
+
 ]
 
 const customMarker = new L.Icon({
@@ -43,6 +39,8 @@ function FCMap() {
 
   const [state, setState] = useState([])
 
+
+
   // didMount
   useEffect(() => {
     // 連接資料庫
@@ -53,8 +51,8 @@ function FCMap() {
 
   return (
     <LeafletMap
-      center={[42.733883, 25.48583]}
-      zoom={7}
+      center={[25.0339193,121.541218]}
+      zoom={30}
       style={{ height: '100vh' }}
     >
       <TileLayer
@@ -62,10 +60,10 @@ function FCMap() {
         url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
       />
 
-      {state.map(({ lat, lng }, index) => (
+      {state.map(({ lat, lng , name }, index) => (
         <Marker position={[lat, lng]} icon={customMarker} key={index}>
           <Popup>
-            {index + 1} is for popup with lat: {lat} and lon {lng}
+            {name}
           </Popup>
         </Marker>
       ))}

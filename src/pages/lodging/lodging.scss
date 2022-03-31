@@ -1579,6 +1579,17 @@ $ning-englishont: "Playfair Display", serif;
     background-color: $ning-color2;
     font-family: $ning-chinesefont;
   }
+  
+  .nowritecomment {
+    width: 120px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 0;
+    font-size: 1.3rem;
+    color: #999;
+    font-family: $ning-chinesefont;
+    pointer-events: none;
+  }
 
   .commentline {
     width: 100%;
@@ -1713,7 +1724,7 @@ $ning-englishont: "Playfair Display", serif;
   .selectDate,
   .selectSort {
     width: 30%;
-    height: 40px;
+    height: 50px;
     text-align: center;
     font-size: 1.2rem;
     font-family: $ning-chinesefont;

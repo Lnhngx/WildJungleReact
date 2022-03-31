@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import "./activity.scss";
 import { animateScroll as scroll, scroller } from 'react-scroll';
 import Carousel from 'react-bootstrap/Carousel';
+import {useSecondCart} from '../carts/utils/useSecondCart'
 
 // sponsor-card
 let datas2 = [{
@@ -98,7 +99,7 @@ let datas3 = [{
 function Activity() {
     const seatsW = 8;
     const seatsH = 8;
-
+    const {addItem} = useSecondCart();
 
     let datas = [];
     for (let i = 0; i < seatsW; i++) {
@@ -411,16 +412,17 @@ function Activity() {
                             <div className="seatsArea">{renderSeats()}</div>
                             <div className="buttonGrop">
                                 <button onClick={() => {
-                                    localStorage.getItem('secondCart');
-                                    console.log("localStorage:", localStorage.getItem('secondCart'));
+                                    // localStorage.getItem('secondCart');
+                                    // console.log("localStorage:", localStorage.getItem('secondCart'));
 
-                                    const temp_arr = [{ sid: "s1", showName: showTitleChange, seats: positions }];
+                                    const temp_arr = { sid: "s1", name: showTitleChange, price: 50, quantity: Object.keys(positions).length, seats: positions};
+                                    addItem(temp_arr);
 
-                                    let current_arr = JSON.parse(localStorage.getItem('secondCart'));
-                                    temp_arr.forEach(v => {
-                                        current_arr.push(v);
-                                    })
-                                    localStorage.setItem('secondCart', JSON.stringify(current_arr));
+                                    // let current_arr = JSON.parse(localStorage.getItem('secondCart'));
+                                    // temp_arr.forEach(v => {
+                                    //     current_arr.push(v);
+                                    // })
+                                    // localStorage.setItem('secondCart', JSON.stringify(current_arr));
 
 
                                 }}>加入購物車</button>

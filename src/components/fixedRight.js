@@ -24,18 +24,29 @@ const FixedRight = (props) => {
         <div
           className="ning_game"
           onClick={() => {
-            const storage = localStorage.getItem('received');
-            const expireTime = JSON.parse(storage);
-            let nextTime =  expireTime===null ? 0 : expireTime.expire;
-            if(storage===undefined){
-              props.setToggleLottery(true);
-            }else{
-              if(new Date().getTime() > nextTime){
-                localStorage.removeItem('received');
+            // 由右邊訂選欄的按鈕先判別使用者是否為會員，是的話，才可以玩
+            if(localStorage.admin_account!==undefined){
+              const storage = localStorage.getItem('received');
+              const expireTime = JSON.parse(storage);
+              let nextTime =  expireTime===null ? 0 : expireTime.expire;
+              if(storage===undefined){
                 props.setToggleLottery(true);
               }else{
-                alert('一天只能玩一次');
-              }
+                if(new Date().getTime() > nextTime){
+                  localStorage.removeItem('received');
+                  props.setToggleLottery(true);
+                }else{
+                  props.setModalTitle("遊戲規則通知");
+                  props.setModalText("一天只能玩一次，先玩玩別的小遊戲吧!");
+                  props.setModalBtn('到遊戲頁');
+                  props.setShow(true);
+                }
+              } 
+            }else{
+              props.setModalTitle("尚未註冊通知");
+              props.setModalText("請先加入會員才可以玩哦~<br/>請問您是否要先前往註冊頁面?");
+              props.setModalBtn('前往註冊');
+              props.setShow(true);
             }
           }}
         >
