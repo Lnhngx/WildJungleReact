@@ -88,6 +88,9 @@ function App() {
               case "前往註冊":
                 window.location.href = "http://localhost:3000/members/signup";
                 break;
+              case "到遊戲頁":
+                window.location.href = "http://localhost:3000/game";
+                break;
               default:
                 console.log(modalBtn);
             }
@@ -117,7 +120,7 @@ function App() {
               localState={localState}
               setLocalState={setLocalState}
             />
-            <FixedRight setToggleLottery={setToggleLottery} />
+            <FixedRight setToggleLottery={setToggleLottery} setShow={setShow} setModalBtn={setModalBtn} setModalText={setModalText} setModalTitle={setModalTitle} />
             <Lottery
               toggleLottery={toggleLottery}
               setToggleLottery={setToggleLottery}

@@ -36,11 +36,17 @@ const FixedRight = (props) => {
                   localStorage.removeItem('received');
                   props.setToggleLottery(true);
                 }else{
-                  alert('一天只能玩一次');
+                  props.setModalTitle("遊戲規則通知");
+                  props.setModalText("一天只能玩一次，先玩玩別的小遊戲吧!");
+                  props.setModalBtn('到遊戲頁');
+                  props.setShow(true);
                 }
               } 
             }else{
-              alert('請先加入會員才可以玩哦');
+              props.setModalTitle("尚未註冊通知");
+              props.setModalText("請先加入會員才可以玩哦~<br/>請問您是否要先前往註冊頁面?");
+              props.setModalBtn('前往註冊');
+              props.setShow(true);
             }
           }}
         >
