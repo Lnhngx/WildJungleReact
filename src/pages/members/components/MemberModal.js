@@ -1,12 +1,21 @@
 import React,{useState} from "react";
 import {Modal,Button} from 'react-bootstrap' ;
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function MemberModal(props){
+  const history=useHistory();
 // const [close, setClose] = useState(false);
 const {show,setShow,success,signSuccess,setSignSuccess}=props;
 
-  const handleClose = () => {setShow(false)};
+  const handleClose = () => {
+    
+    if(signSuccess.includes('成功註冊')){
+      setShow(false);
+      history.push('/members/login');
+    }else{
+      setShow(false)
+    }
+  };
 
 
   // 判斷網址列字串

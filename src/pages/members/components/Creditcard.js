@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 
 import CreditcardAdd from './CreditcardAdd';
+import CreditcardEdit from './CreditcardEdit';
 import Config from '../Config';
 
 function Creditcard(props){
@@ -9,9 +10,11 @@ function Creditcard(props){
     const [showAdd,setShowAdd]=useState(false);
     const [showTable,setShowTable]=useState(true);
 
+    const [editShow,setEditShow]=useState(false)
     // 資料庫資料設為狀態
     const [cdData,setCdData]=useState([]);
     
+    const [cardId,setCardId]=useState(null);
     
 
     useEffect(()=>{
@@ -21,18 +24,21 @@ function Creditcard(props){
         
     },[creditData])
     
-
+    // let newAr=Object.keys(cdData).map((v)=> cdData[v])
 
 
     
 
     return(<>
+    
+    {console.log('creditData',creditData)}
+    {console.log('cdData',cdData)}
         {showTable===true ? <table  className="tysu_table">
             <tbody>
                 <tr>
                     <td>
                         {cdData.length!==0 && cdData.map((v,i)=>{
-                           return <div key={'creditcard'+v.credit_sid} className= {v!==cdData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
+                           return <div key={i} className= {v!==cdData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
                                 <div className="tysu_creditDelete" onClick={
                                     async(e)=>{
                                     // console.log(v.credit_sid)
@@ -75,7 +81,14 @@ function Creditcard(props){
                                         </div>
                                     </div>
                                 </div>
-                                <div className="tysu_creditEdit"  name={v.credit_sid}>
+                                <div className="tysu_creditEdit" onClick={async (e)=>{
+                                    // setShowAdd(true)
+                                    setShowTable(false)
+
+                                    setEditShow(true)
+                                    setCardId(v);
+                                    console.log(v)
+                                }}>
                                     <i className="fas fa-edit"></i>
                                 </div>
                             </div>
@@ -96,7 +109,13 @@ function Creditcard(props){
             </tbody>
         </table> : ''}
         
-        {showAdd===false ? '' : <CreditcardAdd setShowAdd={setShowAdd} setShowTable={setShowTable} creditDat={creditData} setCreditData={setCreditData} getCreditData={getCreditData} setLocalCredit={setLocalCredit} getCreditDataAgain={getCreditDataAgain}/>}
+        {showAdd===false ? '' : <CreditcardAdd setShowAdd={setShowAdd} setShowTable={setShowTable} creditDat={creditData} setCreditData={setCreditData} getCreditData={getCreditData} setLocalCredit={setLocalCredit} getCreditDataAgain={getCreditDataAgain} cardId={cardId} setCardId={setCardId} cdData={cdData} 
+        setCdData={setCdData}
+
+        />}
+        {editShow===true && <CreditcardEdit  setEditShow={setEditShow} showAdd={showAdd} setShowAdd={setShowAdd} setShowTable={setShowTable} creditData={creditData} setCreditData={setCreditData} getCreditData={getCreditData} setLocalCredit={setLocalCredit} getCreditDataAgain={getCreditDataAgain} cardId={cardId} setCardId={setCardId} cdData={cdData} 
+        setCdData={setCdData}
+        />}
         
     </>)
 }
