@@ -4,7 +4,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
-import JqueryProduct from "./components/jqueryProduct";
+import ProductMain from "./components/ProductMain";
 import EmailControl from "./components/theEmailControl";
 import ProductsCard from "./components/productCard";
 import SortbarPrice from "./components/SortbarPrice";
@@ -415,7 +415,7 @@ function Products(props) {
                 alt=""
               />
             </div>
-            <JqueryProduct />
+            <ProductMain />
             {/* <img className="main" src="img/product/Sliderpic.jpeg" alt="" /> */}
             <div className="adNew">
               <div className="firstSpan">

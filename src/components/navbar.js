@@ -27,7 +27,7 @@ function Navbar(props) {
     menu.style.display = "none";
     const enter = document.querySelector(".enterTitle");
     enter.style.display = "block";
-    window.location.reload();
+    //window.location.reload();
   };
   const click = function () {
     const menu = document.querySelector(".theMenu");

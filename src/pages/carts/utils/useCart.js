@@ -4,19 +4,6 @@ import useLocalStorage from './useLocalstorage'
 
 const CartContext = createContext(null)
 
-// initialState = {
-//   items: [],
-//   isEmpty: true,
-//   totalItems: 0,
-//   cartTotal: 0,
-// }
-
-// item = {
-//   id: '',
-//   quantity: 0,
-//   name: '',
-//   price: 0,
-// }
 
 export const CartProvider = ({
   children,
@@ -56,6 +43,7 @@ export const CartProvider = ({
    * @param  {Object} item
    * @returns {void}
    */
+  
   const addItem = (item) => {
     dispatch({
       type: 'ADD_ITEM',
