@@ -1,7 +1,9 @@
 import React, {useEffect,useState} from "react";
 import { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import './lottery.css';
 function Lottery(props){
+    const history = useHistory();
     const [bonus,setBonus] = useState(0);
     const myCanvas = useRef(null);
     const myCanvas_bottom = useRef(null);
@@ -152,7 +154,9 @@ function Lottery(props){
                     .then(r=>r.json())
                     .then(obj=>{
                         localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
-                        window.location.href = "http://localhost:3000/members/modify-member-info";
+                        props.setToggleLottery(false)
+                        props.setActived('折價優惠');
+                        history.push('/members/modify-member-info');
                         // 帶會員到個人優惠頁面，跟亭勻確認網址
                     })
                 

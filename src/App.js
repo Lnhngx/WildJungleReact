@@ -40,7 +40,6 @@ import { CartProvider } from "./pages/carts/utils/useCart";
 import { SecondCartProvider } from "./pages/carts/utils/useSecondCart";
 import { ThirdCartProvider } from "./pages/carts/utils/useThirdCart";
 import { FourthCartProvider } from "./pages/carts/utils/useFourthCart";
-import ProductList from "./pages/carts/Product_temp/ProductList";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
@@ -89,6 +88,8 @@ function App() {
         <Button variant="secondary" onClick={handleClose}>
           繼續購物
         </Button>
+        {/* 如果modalBtn不是空字串才會出現兩顆按鈕 */}
+        {modalBtn!==""&&
         <Button
           variant="primary"
           onClick={() => {
@@ -109,10 +110,11 @@ function App() {
         >
           {modalBtn}
         </Button>
+      }
       </Modal.Footer>
     </Modal>
   );
-
+  const [actived,setActived]=useState('會員資料')
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -143,6 +145,7 @@ function App() {
                 <Lottery
                   toggleLottery={toggleLottery}
                   setToggleLottery={setToggleLottery}
+                  setActived={setActived}
                 />
                 <Chatbot
                   setShow={setShow}
@@ -212,9 +215,6 @@ function App() {
                       payment={payment}
                     />
                   </Route>
-                  <Route path="/carts/product_temp">
-                    <ProductList />
-                  </Route>
                   <Route path="/carts">
                     <Carts />
                   </Route>
@@ -245,6 +245,8 @@ function App() {
                         account={localState.account}
                         token={localState.token}
                         auth={auth}
+                        actived={actived}
+                        setActived={setActived}
                       />
                     ) : (
                       <Redirect to="/members" />

@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { animateScroll as scroll, scroller } from "react-scroll";
+import { useCart } from "../pages/carts/utils/useCart";
+import { useSecondCart } from "../pages/carts/utils/useSecondCart";
+import { useThirdCart } from "../pages/carts/utils/useThirdCart";
+import { useFourthCart } from "../pages/carts/utils/useFourthCart";
 import "../components/all.scss";
 
 function Navbar(props) {
+  const firstcart = useCart();
+  const secondcart = useSecondCart();
+  const thirdcart = useThirdCart();
+  const fourthcart = useFourthCart();
+  const allcartItems =
+    firstcart.cart.totalItems +
+    secondcart.cart.totalItems +
+    thirdcart.cart.totalItems +
+    fourthcart.cart.totalItems;
+
   const [nav, setNav] = useState(0);
   const { auth, setAuth, localState, setLocalState } = props;
   const history = useHistory();
@@ -77,10 +91,10 @@ function Navbar(props) {
             <a href="#/">
               <i className="fas fa-heart"></i>
             </a>
-            <a href="#/">
-              <Link to="/carts">
-                <i className="fas fa-shopping-cart"></i>
-              </Link>
+            <a href="/carts">
+              <i className="fas fa-shopping-cart stan_cartIcon">
+                <div className="stan_cartIcon_count">{allcartItems}</div>
+              </i>
             </a>
           </div>
           <div

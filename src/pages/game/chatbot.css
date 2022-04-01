@@ -511,14 +511,6 @@
     margin-top: -1rem;
     margin-left: 70px;
 }
-.agent_connected3{
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: rgb(82, 83, 85);
-    margin-top: -1rem;
-    margin-left: 70px;
-}
 /* 訂票用的卡片CSS */
 .chatbot_ticketsCard{
     margin-left: 1.5rem;

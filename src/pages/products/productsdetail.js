@@ -49,38 +49,7 @@ function ProductsDetail(props) {
   const [tabIndex, setTabIndex] = useState(0);
   const [total, setTotal] = useState(0);
   const { addItem } = useCart();
-  const [like, setLike] = useState(false);
 
-  window.addEventListener("onload", () => {
-    localStorage.setItem("like", JSON.stringify([]));
-  });
-
-  const likela = () => {
-    const current = JSON.parse(localStorage.getItem("like"));
-    const item = [...current];
-    if (current.includes(Sid)) {
-      let num = item.findIndex((v) => v === Sid);
-      if (num !== -1) {
-        item.splice(num, 1);
-      }
-      console.log("刪去");
-      localStorage.setItem("like", JSON.stringify(item));
-    } else {
-      item.push(Sid);
-      console.log("新增成功");
-      localStorage.setItem("like", JSON.stringify(item));
-    }
-  };
-
-  const changeColor = () => {
-    const current = JSON.parse(localStorage.getItem("like"));
-    const likeheart =document.getElementById("likeheart")
-    if (current.includes(Sid)) {
-      likeheart.style.color="red";
-    } else {
-      likeheart.style.color="black";
-    }
-  };
   useEffect(() => {
     Promise.all([
       fetch("http://localhost:4000/products", { method: "GET" }),
@@ -137,8 +106,8 @@ function ProductsDetail(props) {
   starValue /= reviewStar.length;
 
   const click = function () {
-    //console.log(props);
-    console.log(JSON.parse(localStorage.getItem("like")).includes(Sid));
+    const likeheart = document.getElementById("likeheart");
+    console.log(likeheart);
   };
 
   const scrollToWithContainer = () => {
@@ -168,6 +137,37 @@ function ProductsDetail(props) {
         // alan_tab2.click();
         setTabIndex(1);
       });
+  };
+
+  const changeColor = () => {
+    console.log(123)
+    const current = JSON.parse(localStorage.getItem("like"));
+    const likeheart = document.getElementById("likeheart");
+    if (current.includes(Sid)) {
+      likeheart.style.color = "red";
+    } else {
+      likeheart.style.color = "#2d3436";
+    }
+  };
+
+ 
+    
+
+  const likela = () => {
+    const current = JSON.parse(localStorage.getItem("like"));
+    const item = [...current];
+    if (current.includes(Sid)) {
+      let num = item.findIndex((v) => v === Sid);
+      if (num !== -1) {
+        item.splice(num, 1);
+      }
+      console.log("刪去");
+      localStorage.setItem("like", JSON.stringify(item));
+    } else {
+      item.push(Sid);
+      console.log("新增成功");
+      localStorage.setItem("like", JSON.stringify(item));
+    }
   };
 
   return (
@@ -301,7 +301,13 @@ function ProductsDetail(props) {
                     <span>{total + 1}</span>
                     <button onClick={() => setTotal(total + 1)}>+</button>
                   </div>
-                  <div className="alan_hashlikedesk" onClick={()=>{likela();changeColor()}}>
+                  <div
+                    className="alan_hashlikedesk"
+                    onClick={() => {
+                      likela();
+                      changeColor();
+                    }}
+                  >
                     <i id="likeheart" className="fas fa-heart"></i>
                     加入我的最愛
                     {/* <Link to="">
@@ -314,7 +320,7 @@ function ProductsDetail(props) {
                     onClick={() => {
                       const item = {
                         sid: Sid,
-                        image: `img/product/${pictrueArray[0].PicName}`,
+                        image: `/img/product/${pictrueArray[0].PicName}`,
                         name: product.ProductsName,
                         price: product.ProductsPrice,
                         quantity: total + 1,
@@ -325,7 +331,18 @@ function ProductsDetail(props) {
                   >
                     <i className="fas fa-shopping-cart"></i> 加入購物車
                   </button>
-                  <button onClick={click}>直接購買</button>
+                  <button  onClick={() => {
+                      const item = {
+                        sid: Sid,
+                        image: `/img/product/${pictrueArray[0].PicName}`,
+                        name: product.ProductsName,
+                        price: product.ProductsPrice,
+                        quantity: total + 1,
+                      };
+                      addItem(item);
+                      console.log(item);
+                      click()
+                    }}>直接購買</button>
                 </div>
               </div>
               <div className="alan_hash">
