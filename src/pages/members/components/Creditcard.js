@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 
 import CreditcardAdd from './CreditcardAdd';
-import CreditcardEdit from './CreditcardEdit';
+
 import Config from '../Config';
 
 function Creditcard(props){
@@ -81,16 +81,7 @@ function Creditcard(props){
                                         </div>
                                     </div>
                                 </div>
-                                <div className="tysu_creditEdit" onClick={async (e)=>{
-                                    // setShowAdd(true)
-                                    setShowTable(false)
-
-                                    setEditShow(true)
-                                    setCardId(v);
-                                    console.log(v)
-                                }}>
-                                    <i className="fas fa-edit"></i>
-                                </div>
+                                
                             </div>
                         }) }
                         {!cdData.length && <div className="tysu_creditT">{ '尚未設定' }</div>
@@ -113,9 +104,7 @@ function Creditcard(props){
         setCdData={setCdData}
 
         />}
-        {editShow===true && <CreditcardEdit  setEditShow={setEditShow} showAdd={showAdd} setShowAdd={setShowAdd} setShowTable={setShowTable} creditData={creditData} setCreditData={setCreditData} getCreditData={getCreditData} setLocalCredit={setLocalCredit} getCreditDataAgain={getCreditDataAgain} cardId={cardId} setCardId={setCardId} cdData={cdData} 
-        setCdData={setCdData}
-        />}
+        
         
     </>)
 }

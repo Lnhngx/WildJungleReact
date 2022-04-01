@@ -9,7 +9,7 @@
     bottom: 50px;
     cursor: pointer;
     overflow: hidden;
-    z-index: 999;
+    z-index: 1000;
 }
 .chatbot_logo img{
     width: 100%;
@@ -28,7 +28,7 @@
     right: 80px;
     bottom: 30px;
     box-shadow: 0 0 10px 0 rgb(153, 151, 151);
-    z-index: 1000;
+    z-index: 1010;
     overflow: hidden;
 }
 .chatbot_nav{

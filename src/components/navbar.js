@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory,useLocation } from "react-router-dom";
 import { animateScroll as scroll, scroller } from "react-scroll";
 import { useCart } from "../pages/carts/utils/useCart";
 import { useSecondCart } from "../pages/carts/utils/useSecondCart";
@@ -19,8 +19,9 @@ function Navbar(props) {
     fourthcart.cart.totalItems;
 
   const [nav, setNav] = useState(0);
-  const { auth, setAuth, localState, setLocalState } = props;
+  const { auth, setAuth, localState, setLocalState,setComeUrl } = props;
   const history = useHistory();
+  const location = useLocation();
 
   const close = function () {
     const menu = document.querySelector(".theMenu");
@@ -83,7 +84,10 @@ function Navbar(props) {
               <i
                 className="fas fa-user-friends tysu_logInOut"
                 onClick={() => {
+                  // console.log(location.pathname)
+                  setComeUrl(location.pathname)
                   history.push("/members/login");
+                  
                 }}
               ></i>
             )}
@@ -134,9 +138,9 @@ function Navbar(props) {
           <Link to="/game">
             <div>Animal Games</div>
           </Link>
-          <Link to="/members">
-            <div>Members</div>
-          </Link>
+          {auth || localState.token ? <Link to="/members/modify-member-info"> <div>Members</div>
+          </Link> : <Link to="/members"> <div>Members</div>
+          </Link>}
           <Link to="/carts">
             <div>Shopping Cart</div>
           </Link>
