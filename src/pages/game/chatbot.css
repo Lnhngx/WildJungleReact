@@ -441,9 +441,18 @@
     height: auto;
 }
 /* 專人客服的部分 */
+.agent_introduce{
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
 .agent_chooseArea{
     position: absolute;
-    top: 100px;
+    top: 57px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -498,7 +507,15 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: rgb(70, 247, 47);
+    background-color: rgb(70, 224, 50);
+    margin-top: -1rem;
+    margin-left: 70px;
+}
+.agent_connected3{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(82, 83, 85);
     margin-top: -1rem;
     margin-left: 70px;
 }

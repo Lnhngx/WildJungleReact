@@ -127,8 +127,10 @@ function Chatbot(props){
                 // document.querySelector('.chatbot_wrap').style.display = 'none';
                 setToggleChatbot(false);
                 setPrivateMessage([]);
-                io.disconnect();
-                setIo(null);
+                if(io){
+                    io.disconnect();
+                    setIo(null);
+                }
             }}><i className="fas fa-times"></i></div>
             
         </div>
@@ -585,6 +587,7 @@ function Chatbot(props){
         </div>
         {/* 以下是專人客服的頭像(唯有socket.io連線時才會出現) */}
         <div className="agent_chooseArea" style={{display:io?"flex":"none"}}>
+            <div className="agent_introduce">請選擇以下客服人員:</div>
             <div className="service_agent">
                 <div className="agent_avatar" onClick={()=>{
                     document.querySelector('.menu').style.bottom = '-200px';
@@ -612,12 +615,34 @@ function Chatbot(props){
                 <div className="agent_connected"></div>
             </div>
             <div className="service_agent">
-                <div className="agent_avatar"><img src="/img/game/agent_avatar2.png" alt=""/></div>
+                <div className="agent_avatar"  onClick={()=>{
+                    document.querySelector('.menu').style.bottom = '-200px';
+                    setToggleMenu(false);
+                    myChatbotInput.current.focus();
+                    // 前兩句讓richMenu自動關起來
+                    document.querySelector('.agent_chooseArea').style.display = 'none';
+                    let room = '大熊的告解室';
+                    io.emit('join',room,message=>{
+                        const getTime = new Date();
+                        let hour = getTime.getHours();
+                        let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                        let description = hour >= 12 ? '下午':'上午';
+                        let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
+                        let newPrivate = [...privateMessage];
+                        const uploadTmp = { id:0,
+                                            text: message,
+                                            type:'default_reply',
+                                            time:timeNow,
+                                        } ;
+                        newPrivate.push(uploadTmp);
+                        setPrivateMessage(newPrivate);
+                    });
+                }}><img src="/img/game/agent_avatar2.png" alt=""/></div>
                 <div className="agent_connected"></div>
             </div>
             <div className="service_agent">
                 <div className="agent_avatar"></div>
-                <div className="agent_connected"></div>
+                <div className="agent_connected3"></div>
             </div>
         </div>
         <div className="tool_bar">

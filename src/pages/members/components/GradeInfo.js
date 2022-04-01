@@ -5,16 +5,16 @@ function GradeInfo(){
         <ul className="tysu_memberChild">
             <li></li>
             <li className="tysu_gradeLi">
-                <img className="tysu_gradeSmall" src="/img/member/v.png" alt="" />
+                <img className="tysu_gradeSmall" src="/img/member/v_small.png" alt="" />
             </li>
             <li className="tysu_gradeLi">
-                <img className="tysu_gradeSmall" src="/img/member/g.png" alt="" />
+                <img className="tysu_gradeSmall" src="/img/member/g_small.png" alt="" />
             </li>
             <li className="tysu_gradeLi">
-                <img className="tysu_gradeSmall" src="/img/member/p.png" alt="" />
+                <img className="tysu_gradeSmall" src="/img/member/p_small.png" alt="" />
             </li>
             <li className="tysu_gradeLi">
-                <img className="tysu_gradeSmall" src="/img/member/d.png" alt="" />
+                <img className="tysu_gradeSmall" src="/img/member/d_small.png" alt="" />
             </li>
         </ul>
     

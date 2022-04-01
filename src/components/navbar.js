@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link,useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { animateScroll as scroll, scroller } from "react-scroll";
 import "../components/all.scss";
 
 function Navbar(props) {
   const [nav, setNav] = useState(0);
-  const { auth,setAuth,localState,setLocalState } = props;
-  const history =useHistory();
+  const { auth, setAuth, localState, setLocalState } = props;
+  const history = useHistory();
 
   const close = function () {
     const menu = document.querySelector(".theMenu");
@@ -39,7 +39,6 @@ function Navbar(props) {
     };
   }, [nav]);
 
-
   return (
     <>
       <div className="navbar1">
@@ -55,25 +54,33 @@ function Navbar(props) {
         </div>
         <div className="navbarRight">
           <div className="navbarIcon">
-            
-              {auth || localState.token ? (
-                <i className="fas fa-sign-out-alt tysu_logInOut" onClick={()=>{
-
-                  localStorage.removeItem('admin_account');
-                  localStorage.removeItem('admin_token');
+            {auth || localState.token ? (
+              <i
+                className="fas fa-sign-out-alt tysu_logInOut"
+                onClick={() => {
+                  localStorage.removeItem("admin_account");
+                  localStorage.removeItem("admin_token");
                   setAuth(false);
-                  setLocalState({"token":false});
+                  setLocalState({ token: false });
                   // history.push('/members');
-                }}></i>
-              ) : (
-                <i className="fas fa-user-friends tysu_logInOut" onClick={()=>{history.push('/members/login')}}></i>
-              )}
-            
+                }}
+              ></i>
+            ) : (
+              <i
+                className="fas fa-user-friends tysu_logInOut"
+                onClick={() => {
+                  history.push("/members/login");
+                }}
+              ></i>
+            )}
+
             <a href="#/">
               <i className="fas fa-heart"></i>
             </a>
             <a href="#/">
-              <i className="fas fa-shopping-cart"></i>
+              <Link to="/carts">
+                <i className="fas fa-shopping-cart"></i>
+              </Link>
             </a>
           </div>
           <div
