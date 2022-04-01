@@ -7,7 +7,7 @@ import {
   useLocation,
   Redirect,
 } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 //頁首、頁尾、CSS
@@ -44,7 +44,7 @@ import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
 import Lottery from "./pages/game/lottery";
-import MyDate from "./pages/lodging/components/MyDate";
+// import MyDate from "./pages/lodging/components/MyDate";
 import Chatbot from "./pages/game/chatbot";
 
 function App() {

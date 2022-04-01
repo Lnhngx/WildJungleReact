@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import MyDate from "./components/MyDate";
 import Config from "./Config";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./lodging.scss";
 import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";

@@ -30,7 +30,7 @@
 
 // export default MyDate;
 
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import _ from "lodash";
 
 const myYear = 2022;
@@ -89,36 +89,22 @@ function MyDate() {
       Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
       setCheck(Arr);
       setCount(1);
-    } else if(count === 1){
+    } else if (count === 1) {
       let Arr = [...check];
       if (new Date(new Date(e).getTime()).toLocaleDateString() > Arr[0]) {
         Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
         setCheck(Arr);
         setCount(0);
       } else {
-        Arr.splice(0,1);
+        Arr.splice(0, 1);
         Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
         setCheck(Arr);
       }
     }
+    
   }
 
-  // if (Arr.length >= 2) {
-
-  // }
-
-  // if (Arr.length === 2) {
-  //   if (Arr[1] > Arr[0]) {
-  //     setCheckIn(Arr[0]);
-  //     setCheckOut(Arr[1]);
-  //   }
-  //   if (Arr[1] < Arr[0]) {
-  //     setCheckIn(Arr[1]);
-  //     setCheckOut(Arr["_"]);
-  //     Arr.shift();
-  //   }
-  // }
-
+ 
   return (
     <>
       <h2 id="yearAndMonth" className="yearAndMonth">
@@ -148,7 +134,9 @@ function MyDate() {
                     <td
                       key={idx}
                       data-value={"2022/4/" + item}
-                      // style={{backgroundColor:checkIn===item.id && "#f9b112"}}
+                      // style={{
+                      //   backgroundColor:check[0]===
+                      // }}
                       onClick={(e) => checkDate(e.target.dataset.value)}
                     >
                       {item}
