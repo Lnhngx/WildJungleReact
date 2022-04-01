@@ -61,7 +61,9 @@ function App() {
     account: account,
     token: token,
   });
+
   const [commentbox, setCommentbox] = useState(false);
+
   const [toggleLottery, setToggleLottery] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalBtn, setModalBtn] = useState("");
@@ -236,6 +238,7 @@ function App() {
                       localState={localState}
                       account={account}
                       comeUrl={comeUrl}
+                      setCommentbox={setCommentbox}
                     />
                   </Route>
                   <Route path="/members/forgot">
@@ -266,6 +269,7 @@ function App() {
                       localState={localState}
                       account={account}
                       comeUrl={comeUrl}
+                      setCommentbox={setCommentbox}
                     />
                   </Route>
                   <Route path="/lodging">

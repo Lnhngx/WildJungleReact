@@ -12,7 +12,7 @@ import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(props){
-  const {auth,setAuth,account,localState,setLocalState,comeUrl}=props
+  const {auth,setAuth,account,localState,setLocalState,comeUrl,setCommentbox}=props
   const history=useHistory();
   const emailInput=useRef();
   
@@ -96,7 +96,10 @@ function Login(props){
         handleShow();
         setTimeout(() => setShow(false), 1000);
         setTimeout(() => {
-          if(comeUrl==='/carts' || comeUrl==='/lodging'){
+          if(comeUrl==='/carts'){
+            history.goBack();
+          }else if(comeUrl==='/lodging'){
+            // setCommentbox(true);
             history.goBack();
           }else{
             history.push('/members/modify-member-info')

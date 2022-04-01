@@ -69,6 +69,9 @@ function Navbar(props) {
         </div>
         <div className="navbarRight">
           <div className="navbarIcon">
+          <div className="tysu_logInfo">
+            <span >會員專區</span>
+          </div>
             {auth || localState.token ? (
               <i
                 className="fas fa-sign-out-alt tysu_logInOut"
