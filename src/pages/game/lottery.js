@@ -154,6 +154,7 @@ function Lottery(props){
                     .then(r=>r.json())
                     .then(obj=>{
                         localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
+                        props.setToggleLottery(false)
                         props.setActived('折價優惠');
                         history.push('/members/modify-member-info');
                         // 帶會員到個人優惠頁面，跟亭勻確認網址
