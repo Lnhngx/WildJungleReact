@@ -326,7 +326,7 @@ function ProductsDetail(props) {
                     onClick={() => {
                       const item = {
                         sid: Sid,
-                        image: `img/product/${pictrueArray[0].PicName}`,
+                        image: `/img/product/${pictrueArray[0].PicName}`,
                         name: product.ProductsName,
                         price: product.ProductsPrice,
                         quantity: total + 1,
@@ -340,7 +340,7 @@ function ProductsDetail(props) {
                   <button  onClick={() => {
                       const item = {
                         sid: Sid,
-                        image: `img/product/${pictrueArray[0].PicName}`,
+                        image: `/img/product/${pictrueArray[0].PicName}`,
                         name: product.ProductsName,
                         price: product.ProductsPrice,
                         quantity: total + 1,
