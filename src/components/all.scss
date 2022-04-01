@@ -1,4 +1,10 @@
 @import "~bootstrap/scss/bootstrap.scss";
+@mixin mobile {
+  @media screen and (max-width: 700px) {
+    @content;
+  }
+}
+
 html {
   font-size: 12px;
 }
@@ -61,10 +67,33 @@ body {
   font-size: 24px;
   text-align: center;
   line-height: 35px;
-  >.tysu_logInOut{
+  > .tysu_logInOut {
     color: #eb5c37;
   }
 }
+.stan_cartIcon {
+  position: relative;
+  .stan_cartIcon_count {
+    font-family: sans-serif;
+    position: absolute;
+    left: 13px;
+    top:-10px;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1.5px solid #ffffff;
+    background-color: #eb5c37;
+    @include mobile{
+      left: 18px;
+      top:-8px;
+    }
+  }
+}
+
 .footer {
   width: calc(100vw - calc(100vw - 100%));
   height: 28.6vw;
@@ -477,17 +506,17 @@ body {
     transform: scale(1);
   }
 }
-.chatbot_modalBody{
+.chatbot_modalBody {
   font-size: 1.25rem;
   font-weight: 600;
   font-family: sans-serif;
 }
-.chatbot_modalTitle{
+.chatbot_modalTitle {
   font-size: 1.5rem;
   font-weight: 600;
   font-family: sans-serif;
 }
-.chatbot_modalBody span{
+.chatbot_modalBody span {
   font-size: 1.5rem;
   color: red;
 }

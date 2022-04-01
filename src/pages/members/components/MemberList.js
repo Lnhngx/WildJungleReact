@@ -20,7 +20,7 @@ function MemberList(props){
   const likeNavItem=['商品','活動']
 
   // 紀錄memberList的狀態
-  const [actived,setActived]=useState('會員資料')
+  
   
   // 紀錄navItem狀態
   const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
@@ -80,12 +80,12 @@ function MemberList(props){
               {/* 點選memberList要設定回原狀態 */}
               {memberlist.map((v,i)=>{
                 return <li key={i} onClick={(e)=>{
-                  setActived(v)
+                  props.setActived(v)
                   setNavState({navItem:navItem[0],orderNavItem:orderNavItem[0],discountNavItem:discountNavItem[0],likeNavItem:likeNavItem[0]})
-                }} className={actived===v ?'active':''}><Link to="#/"  className="tysu_link">{v}</Link></li>
+                }} className={props.actived===v ?'active':''}><Link to="#/"  className="tysu_link">{v}</Link></li>
               })}
             </ul>
-          <MemberNavItem memberlist={memberlist} navItem={navItem}  orderNavItem={orderNavItem} actived={actived} discountNavItem={discountNavItem} likeNavItem={likeNavItem}
+          <MemberNavItem memberlist={memberlist} navItem={navItem}  orderNavItem={orderNavItem} actived={props.actived} discountNavItem={discountNavItem} likeNavItem={likeNavItem}
             setNavState={setNavState}
             navState={navState}
             sidData={sidData}
