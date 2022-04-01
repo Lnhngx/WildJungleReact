@@ -1,5 +1,5 @@
 import React ,{useEffect, useRef,useState} from "react";
-import { Link,useHistory } from "react-router-dom";
+import { Link,useHistory,useLocation } from "react-router-dom";
 import {
   GoogleReCaptchaProvider,
   GoogleReCaptcha
@@ -12,9 +12,11 @@ import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(props){
-  const {auth,setAuth,account,localState,setLocalState}=props
+  const {auth,setAuth,account,localState,setLocalState,comeUrl,setCommentbox}=props
   const history=useHistory();
   const emailInput=useRef();
+  
+
 
   // input欄位
   const [email,setEmail]=useState('');
@@ -52,10 +54,10 @@ function Login(props){
     });
     
     // 如果是已經登入狀態，email欄位自動帶入用戶帳號
-    if(auth || localState.token){
-      emailInput.current.value=localState.account.email;
-      setEmail(emailInput.current.value)
-    }
+    // if(auth || localState.token){
+    //   emailInput.current.value=localState.account.email;
+    //   setEmail(emailInput.current.value)
+    // }
   }, []);
   
 
@@ -93,7 +95,18 @@ function Login(props){
         setSuccess('登入成功')
         handleShow();
         setTimeout(() => setShow(false), 1000);
-        setTimeout(() => history.push('/members/modify-member-info'), 1500);
+        setTimeout(() => {
+          if(comeUrl==='/carts'){
+            history.goBack();
+          }else if(comeUrl==='/lodging'){
+            // setCommentbox(true);
+            history.goBack();
+          }else{
+            history.push('/members/modify-member-info')
+          }
+          
+        }, 1500);
+          
         console.log(obj.success)
       
         // alert('登入成功');

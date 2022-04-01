@@ -50,10 +50,10 @@ import Chatbot from "./pages/game/chatbot";
 function App() {
   const [sortbarType, setSortbarType] = useState("");
   // 全域狀態
-  const history = useHistory();
 
   // 是否登入
   const [auth, setAuth] = useState(false);
+  const [comeUrl,setComeUrl]=useState('');
 
   const account = JSON.parse(localStorage.getItem("admin_account"));
   const token = !!localStorage.getItem("admin_token");
@@ -61,6 +61,8 @@ function App() {
     account: account,
     token: token,
   });
+
+  const [commentbox, setCommentbox] = useState(false);
 
   const [toggleLottery, setToggleLottery] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -97,8 +99,8 @@ function App() {
               case "前往結帳":
                 window.location.href = "http://localhost:3000/carts";
                 break;
-              case "前往註冊":
-                window.location.href = "http://localhost:3000/members/signup";
+              case "前往登入":
+                window.location.href = "http://localhost:3000/members/login";
                 break;
               case "到遊戲頁":
                 window.location.href = "http://localhost:3000/game";
@@ -114,6 +116,8 @@ function App() {
       </Modal.Footer>
     </Modal>
   );
+  
+  // 紀錄memberList的狀態
   const [actived,setActived]=useState('會員資料')
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -134,6 +138,7 @@ function App() {
                   setAuth={setAuth}
                   localState={localState}
                   setLocalState={setLocalState}
+                  setComeUrl={setComeUrl}
                 />
                 <FixedRight
                   setToggleLottery={setToggleLottery}
@@ -152,6 +157,7 @@ function App() {
                   setModalBtn={setModalBtn}
                   setModalText={setModalText}
                   setModalTitle={setModalTitle}
+                  setActived={setActived}
                 />
                 {ChatbotModal}
                 {/* 路由表 */}
@@ -231,6 +237,8 @@ function App() {
                       setLocalState={setLocalState}
                       localState={localState}
                       account={account}
+                      comeUrl={comeUrl}
+                      setCommentbox={setCommentbox}
                     />
                   </Route>
                   <Route path="/members/forgot">
@@ -260,10 +268,12 @@ function App() {
                       setLocalState={setLocalState}
                       localState={localState}
                       account={account}
+                      comeUrl={comeUrl}
+                      setCommentbox={setCommentbox}
                     />
                   </Route>
                   <Route path="/lodging">
-                    <Lodging />
+                    <Lodging setCommentbox={setCommentbox} commentbox={commentbox}/>
                   </Route>
 
                   {/* 網址上的動態參數params 

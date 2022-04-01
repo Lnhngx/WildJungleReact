@@ -77,7 +77,7 @@ body {
     font-family: sans-serif;
     position: absolute;
     left: 13px;
-    top:-10px;
+    top: -10px;
     font-size: 12px;
     line-height: 14px;
     font-weight: 600;
@@ -87,9 +87,9 @@ body {
     border-radius: 50%;
     border: 1.5px solid #ffffff;
     background-color: #eb5c37;
-    @include mobile{
+    @include mobile {
       left: 18px;
-      top:-8px;
+      top: -8px;
     }
   }
 }
@@ -451,6 +451,8 @@ body {
 
   .navbarRight {
     display: flex;
+    position: relative;
+    outline: 1px solid white;
   }
   .navbarIcon {
     display: flex;

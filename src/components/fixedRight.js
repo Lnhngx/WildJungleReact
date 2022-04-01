@@ -43,9 +43,9 @@ const FixedRight = (props) => {
                 }
               } 
             }else{
-              props.setModalTitle("尚未註冊通知");
-              props.setModalText("請先加入會員才可以玩哦~<br/>請問您是否要先前往註冊頁面?");
-              props.setModalBtn('前往註冊');
+              props.setModalTitle("尚未登入通知");
+              props.setModalText("請先進行登入才可以玩哦~");
+              props.setModalBtn('前往登入');
               props.setShow(true);
             }
           }}
