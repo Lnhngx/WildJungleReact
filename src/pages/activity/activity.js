@@ -511,6 +511,7 @@ function Activity() {
                     <div className={state4 ? "areaDisplayNone" : "terry_sponsor_planSelectionArea"}>
                         {renderStaraAnimal()}
                     </div>
+                    {ModalShow1}
                     {/*02結束*/}
 
                     <div className="terry_touch_area">
@@ -518,10 +519,10 @@ function Activity() {
                             <div className="terry_01">03</div>
                             <div className="terry_title_grop">
                                 <div className="terry_title_grop2">
-                                    <div className="terry_show_title1">Animal</div>
-                                    <div className="terry_show_title2">Touch.</div>
+                                    <div className="terry_show_title1">Zoo</div>
+                                    <div className="terry_show_title2">Trivia.</div>
                                 </div>
-                                <div className="terry_show_subtitle">動物接觸</div>
+                                <div className="terry_show_subtitle">園區花絮</div>
                             </div>
                             <div className="terry_show_viewmore" onClick={() => { setState5(!state5) }}>View More</div>
                         </div>
@@ -549,11 +550,6 @@ function Activity() {
                                     src="/img/activity/touchshow2.jpg"
                                     alt=""
                                 />
-                                <Carousel.Caption>
-                                    <div className="terry_p_bg">
-                                        <p>萌兔餵食體驗</p>
-                                    </div>
-                                </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
@@ -561,10 +557,6 @@ function Activity() {
                                     src="/img/activity/touchshow3.jpg"
                                     alt=""
                                 />
-
-                                <Carousel.Caption>
-                                    <p>可愛小鹿餵食體驗</p>
-                                </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
@@ -573,11 +565,6 @@ function Activity() {
                                     alt=""
                                 />
 
-                                <Carousel.Caption>
-                                    <p>
-                                        貓頭鷹接觸體驗
-                                    </p>
-                                </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
@@ -586,11 +573,6 @@ function Activity() {
                                     alt=""
                                 />
 
-                                <Carousel.Caption>
-                                    <p>
-                                        長頸鹿餵食體驗
-                                    </p>
-                                </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
@@ -598,11 +580,7 @@ function Activity() {
                                     src="/img/activity/touchshow6.jpg"
                                     alt=""
                                 />
-                                <Carousel.Caption>
-                                    <p>
-                                        鼬獾接觸體驗
-                                    </p>
-                                </Carousel.Caption>
+
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
@@ -610,11 +588,7 @@ function Activity() {
                                     src="/img/activity/touchshow7.jpg"
                                     alt=""
                                 />
-                                <Carousel.Caption>
-                                    <p>
-                                        袋鼠摸摸體驗
-                                    </p>
-                                </Carousel.Caption>
+                                
                             </Carousel.Item>
                         </Carousel>
                     </div>
