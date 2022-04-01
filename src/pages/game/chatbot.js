@@ -20,6 +20,7 @@ function Chatbot(props){
     const [loveTicket,setLoveTicket] = useState(0);
     const [move,setMove] = useState(0);
     const [io,setIo] = useState(null);
+    const [pandaLimit,setPandaLimit] = useState(false);
     const myChatbotInput = useRef(null);
     const {addItem}=useCart();
     const connectWebSocket = ()=>{
@@ -28,6 +29,13 @@ function Chatbot(props){
     useEffect(()=>{
         let isMounted = true;
         if(io){
+            io.on('connection',(panda_total)=>{
+                if(panda_total<2){
+                    setPandaLimit(false);
+                }else{
+                    setPandaLimit(true);
+                }
+            })
             io.on('room message', function(msg) {
                 // 因為別台使用者傳過來的是一個打包好的物件，像是以下的模組
                 // { id:agentChat_id+1,
@@ -594,25 +602,34 @@ function Chatbot(props){
                     setToggleMenu(false);
                     myChatbotInput.current.focus();
                     // 前兩句讓richMenu自動關起來
-                    document.querySelector('.agent_chooseArea').style.display = 'none';
-                    let room = '熊貓的告解室';
-                    io.emit('join',room,message=>{
-                        const getTime = new Date();
-                        let hour = getTime.getHours();
-                        let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                        let description = hour >= 12 ? '下午':'上午';
-                        let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
-                        let newPrivate = [...privateMessage];
-                        const uploadTmp = { id:0,
-                                            text: message,
-                                            type:'default_reply',
-                                            time:timeNow,
-                                        } ;
-                        newPrivate.push(uploadTmp);
-                        setPrivateMessage(newPrivate);
-                    });
+                    if(pandaLimit){
+                        props.setModalTitle("專人客服通知");
+                        props.setModalText("由於我們是1對1服務,請您選取亮綠燈的同仁<br/>若目前皆為紅燈請見諒。");
+                        props.setModalBtn('');
+                        props.setShow(true);
+                    }else{
+                        document.querySelector('.agent_chooseArea').style.display = 'none';
+                        let room = '熊貓的告解室';
+                        // 這邊的room是將前端設定的房間名稱(純文字)，傳入後端做socket.join()
+                        // 而message會由後端整理好文字再傳回前端，丟入狀態渲染對話
+                        io.emit('join',room,message=>{
+                            const getTime = new Date();
+                            let hour = getTime.getHours();
+                            let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+                            let description = hour >= 12 ? '下午':'上午';
+                            let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`; 
+                            let newPrivate = [...privateMessage];
+                            const uploadTmp = { id:0,
+                                                text: message,
+                                                type:'default_reply',
+                                                time:timeNow,
+                                            } ;
+                            newPrivate.push(uploadTmp);
+                            setPrivateMessage(newPrivate);
+                        });
+                    }
                 }}><img src="/img/game/agent_avatar.png" alt=""/></div>
-                <div className="agent_connected"></div>
+                <div className="agent_connected" style={{background:pandaLimit?"red":"rgb(70, 224, 50)"}}></div>
             </div>
             <div className="service_agent">
                 <div className="agent_avatar"  onClick={()=>{
@@ -641,8 +658,8 @@ function Chatbot(props){
                 <div className="agent_connected"></div>
             </div>
             <div className="service_agent">
-                <div className="agent_avatar"></div>
-                <div className="agent_connected3"></div>
+                <div className="agent_avatar"><img src="/img/game/agent_avatar3.png" alt=""/></div>
+                <div className="agent_connected"></div>
             </div>
         </div>
         <div className="tool_bar">

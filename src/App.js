@@ -89,6 +89,8 @@ function App() {
         <Button variant="secondary" onClick={handleClose}>
           繼續購物
         </Button>
+        {/* 如果modalBtn不是空字串才會出現兩顆按鈕 */}
+        {modalBtn!==""&&
         <Button
           variant="primary"
           onClick={() => {
@@ -109,6 +111,7 @@ function App() {
         >
           {modalBtn}
         </Button>
+      }
       </Modal.Footer>
     </Modal>
   );
