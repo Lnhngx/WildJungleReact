@@ -77,10 +77,8 @@ function Navbar(props) {
             <a href="#/">
               <i className="fas fa-heart"></i>
             </a>
-            <a href="#/">
-              <Link to="/carts">
-                <i className="fas fa-shopping-cart"></i>
-              </Link>
+            <a href="/carts">
+              <i className="fas fa-shopping-cart"></i>
             </a>
           </div>
           <div
