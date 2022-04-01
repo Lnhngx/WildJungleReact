@@ -51,10 +51,10 @@ import Chatbot from "./pages/game/chatbot";
 function App() {
   const [sortbarType, setSortbarType] = useState("");
   // 全域狀態
-  const history = useHistory();
 
   // 是否登入
   const [auth, setAuth] = useState(false);
+  const [comeUrl,setComeUrl]=useState('');
 
   const account = JSON.parse(localStorage.getItem("admin_account"));
   const token = !!localStorage.getItem("admin_token");
@@ -135,6 +135,7 @@ function App() {
                   setAuth={setAuth}
                   localState={localState}
                   setLocalState={setLocalState}
+                  setComeUrl={setComeUrl}
                 />
                 <FixedRight
                   setToggleLottery={setToggleLottery}
@@ -235,6 +236,7 @@ function App() {
                       setLocalState={setLocalState}
                       localState={localState}
                       account={account}
+                      comeUrl={comeUrl}
                     />
                   </Route>
                   <Route path="/members/forgot">
@@ -264,6 +266,7 @@ function App() {
                       setLocalState={setLocalState}
                       localState={localState}
                       account={account}
+                      comeUrl={comeUrl}
                     />
                   </Route>
                   <Route path="/lodging">
