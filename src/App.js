@@ -40,7 +40,6 @@ import { CartProvider } from "./pages/carts/utils/useCart";
 import { SecondCartProvider } from "./pages/carts/utils/useSecondCart";
 import { ThirdCartProvider } from "./pages/carts/utils/useThirdCart";
 import { FourthCartProvider } from "./pages/carts/utils/useFourthCart";
-import ProductList from "./pages/carts/Product_temp/ProductList";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
@@ -215,9 +214,6 @@ function App() {
                       delivery={delivery}
                       payment={payment}
                     />
-                  </Route>
-                  <Route path="/carts/product_temp">
-                    <ProductList />
                   </Route>
                   <Route path="/carts">
                     <Carts />
