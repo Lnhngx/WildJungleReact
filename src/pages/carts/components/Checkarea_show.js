@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../utils/useCart";
+import { useSecondCart } from "../utils/useSecondCart";
 
-function Checkarea(props) {
-  const { cart } = useCart();
+function CheckareaShow(props) {
+  const { cart } = useSecondCart();
   return (
     <>
         <div className="stan_tempay">付款詳情</div>
@@ -14,17 +14,13 @@ function Checkarea(props) {
             <li>${cart.cartTotal}</li>
           </ul>
           <ul>
-            <li>預估運費</li>
-            <li>$100</li>
-          </ul>
-          <ul>
             <li>紅利折扣</li>
             <li>$0</li>
           </ul>
           <hr className="stan_checkouthr stan_hr" />
           <ul>
             <li>結帳金額</li>
-            <li>${cart.cartTotal+100}</li>
+            <li>${cart.cartTotal>=100?cart.cartTotal-100:0}</li>
           </ul>
 
           <Link to="/carts/filloutform" className="stan_link">
@@ -38,4 +34,4 @@ function Checkarea(props) {
   );
 }
 
-export default Checkarea;
+export default CheckareaShow;

@@ -8,23 +8,29 @@ function EditModal(props){
   const location=useLocation();
   const history=useHistory();
   
-  const {editModalShow,setEditModalShow,editModalText,forgotModalText,forgotPassText}=props;
+  const {editModalShow,setEditModalShow,editModalText,editCardModalText,forgotModalText,forgotPassText,setShowAdd,setShowTable,setEditShow}=props;
 
   const usp=new URLSearchParams(location.pathname);
   const pathurl=usp.has('/members/password-change')
-  console.log(pathurl)
+  // console.log(pathurl)
 
   const handleClose = () => {
     setEditModalShow(false);
     if(forgotPassText==='已更改成功，請重新登入'){
+      setShowAdd(false)
+      setShowTable(true)
       history.push('/members/login');
+    }
+    if(editCardModalText==='修改成功' || editCardModalText==='沒有變更'){      
+      setEditShow(false)
+      setShowTable(true)
     }
   };
 
   return (
     <>
       <Modal show={editModalShow} onHide={handleClose} animation={false} centered>
-        <Modal.Body className="tysu_editModal">{editModalText}{forgotModalText}{forgotPassText}</Modal.Body>
+        <Modal.Body className="tysu_editModal">{editModalText}{forgotModalText}{forgotPassText}{editCardModalText}</Modal.Body>
         <Modal.Footer className="tysu_editModalFooter">
           <Button  className="tysu_editModalBtn" onClick={handleClose}>
             OK

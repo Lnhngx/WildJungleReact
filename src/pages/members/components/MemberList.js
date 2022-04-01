@@ -25,8 +25,11 @@ function MemberList(props){
   // 紀錄navItem狀態
   const [navState,setNavState]=useState({navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'})
 
-  // 取得後端資料
+  // 取得會員基本資料
   const [sidData,setSidData]=useState({});
+  // 取得會員信用卡資料
+  const [creditData,setCreditData]=useState({});
+  
   
   useEffect(()=>{
     const getSidData=async ()=>{
@@ -40,11 +43,30 @@ function MemberList(props){
           console.log('MemberList-obj:',obj);
           setSidData(obj.info);
         })
-      
     }
     getSidData();
     
-    
+    const getCreditData=async() =>{
+      await fetch(Config.TYSU_CREDITCARD_INFO+sid.m_sid,{
+          method:'GET',
+          headers:{
+              "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+              "Content-Type":"application/json"
+          }
+      }).then(r=>r.json()).then(obj=>{
+          console.log('CreditCard:',obj);
+          
+          if(obj.success){
+            setCreditData(obj.info.list);
+            console.log(obj.info.list);
+            localStorage.setItem('wildjungle_creditcard',JSON.stringify(obj.info.list));
+            
+          }
+        
+      })
+    }
+    getCreditData();
+
   },[]);
   
 
@@ -68,6 +90,8 @@ function MemberList(props){
             navState={navState}
             sidData={sidData}
             setSidData={setSidData}
+            creditData={creditData}
+            setCreditData={setCreditData}
           />
           <div className="tysu_memberBg">
             <img src="./../img/member/leaf_y.svg" alt="" />

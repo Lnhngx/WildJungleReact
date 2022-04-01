@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ning.scss";
 import "./homepage.scss";
 import HomeCarousel from "./components/HomeCarousel";
@@ -13,6 +13,9 @@ import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
 function HomePage() {
+  
+  // const [transportionbtn, setTransportionbtn] = useState(true);
+
   return (
     <>
       <HomeCarousel slides={CarouselData} />
@@ -255,10 +258,14 @@ function HomePage() {
         <h1 className="ning_TitleEnblack">Transportion</h1>
         <h2 className="ning_TitleChblack">交通</h2>
         <div className="ning_transportionButton">
-          <button className="ning_busButton btn">公車即時</button>
+          <button className="ning_busButton btn" >公車即時</button>
           <button className="ning_PButton btn">停車場</button>
           <HomeTransportion />
-          <HomeTransportionP />
+          {/* {transportionbtn === true ? (
+            <HomeTransportion />
+          ) : (
+            <HomeTransportionP />
+          )} */}
         </div>
       </div>
     </>

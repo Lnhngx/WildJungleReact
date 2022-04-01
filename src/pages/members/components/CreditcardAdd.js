@@ -11,7 +11,6 @@ import {
 
 
 import 'react-credit-cards/es/styles-compiled.css';
-import { render } from '@testing-library/react';
 import Config from '../Config';
 
 export default class CreditcardAdd extends React.Component {
@@ -78,7 +77,16 @@ export default class CreditcardAdd extends React.Component {
         }).then(r=>r.json()).then(obj=>{
             console.log(obj);
             if(obj.success){
-                this.props.setCreditData({...obj});
+                const newCredit={...JSON.parse(localStorage.getItem('wildjungle_creditcard'),{...formData})}
+                localStorage.setItem('wildjungle_creditcard',JSON.stringify(newCredit))
+                // console.log(newCredit)
+
+                let newAr=Object.keys(newCredit).map((v)=> newCredit[v] )
+                // console.log(newAr)
+                this.props.setLocalCredit(newAr);
+                this.props.setCreditData(newAr);
+
+                this.props.getCreditDataAgain();
                 this.props.setShowTable(true);
                 this.props.setShowAdd(false);
             }
@@ -195,11 +203,12 @@ export default class CreditcardAdd extends React.Component {
                         </tbody>
                     </table>
                     <div className="tysu_btnGroup" style={{left:"5rem"}}>
-                        <button id="tysu_editBtn" className="tysu_editBtn">儲 存</button>
+                        <button type='submit' id="tysu_editBtn" className="tysu_editBtn" >儲 存</button>
                         <button id="tysu_cancelBtn" className="tysu_cancelBtn" onClick={(e)=>{
                             // console.log(this.render()._self)
                             this.props.setShowTable(true);
                             this.props.setShowAdd(false);
+                            
                         }}>取 消</button>
                     </div>
                 </form>                

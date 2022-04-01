@@ -61,10 +61,28 @@ $terry_black: #000000;
   box-shadow: 0px 0px 15px 2px rgb(233, 233, 233);
 }
 .terry_sponsor_area:hover {
-  box-shadow: 0px 0px 10px 2px rgba(233, 233, 233, 0.5);
+  box-shadow: 0px 0px 10px 2px rgb(233, 233, 233);
 }
 .terry_touch_area:hover {
-  box-shadow: 0px 0px 10px 2px rgba(233, 233, 233, 0.5);
+  box-shadow: 0px 0px 10px 2px rgb(233, 233, 233);
+}
+
+.modal_button {
+  width: 20%;
+  height: 40px;
+  border: none;
+  color: $terry_white;
+  background: #eb5c37;
+  font-family: "Noto Sans TC";
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.modal_text {
+  margin: 10px 0;
+  font-family: "Noto Sans TC";
+  font-size: 20px;
+  font-weight: 300;
 }
 
 // ---------------------共用---------------------
@@ -1088,7 +1106,7 @@ $terry_black: #000000;
 .terry_animalImg_Area {
   // width: 100%;
   // height: 600px;
-  outline: 2px solid white;
+  // outline: 2px solid white;
   // background: url("../../../public/animals-footer.png") center
   //   center/cover no-repeat;
   bottom: 0;

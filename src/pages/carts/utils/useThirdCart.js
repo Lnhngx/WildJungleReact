@@ -2,12 +2,12 @@ import React, { useReducer, useContext, createContext, useEffect } from 'react'
 import { reducer, init } from './cartReducer'
 import useLocalStorage from './useLocalstorage'
 
-const SecondCartContext = createContext(null)
+const ThirdCartContext = createContext(null)
 
-export const SecondCartProvider = ({
+export const ThirdCartProvider = ({
   children,
   initialCartItems = [],
-  localStorageKey = 'secondCart',
+  localStorageKey = 'thirdCart',
 }) => {
   //read from localStorage
   // if localStorage has value with this key then use it to initialCartItems
@@ -89,7 +89,7 @@ export const SecondCartProvider = ({
   }
 
   return (
-    <SecondCartContext.Provider
+    <ThirdCartContext.Provider
       value={{
         cart: state,
         items: state.items,
@@ -103,8 +103,8 @@ export const SecondCartProvider = ({
       }}
     >
       {children}
-    </SecondCartContext.Provider>
+    </ThirdCartContext.Provider>
   )
 }
 
-export const useSecondCart = () => useContext(SecondCartContext)
+export const useThirdCart = () => useContext(ThirdCartContext)
