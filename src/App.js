@@ -40,7 +40,6 @@ import { CartProvider } from "./pages/carts/utils/useCart";
 import { SecondCartProvider } from "./pages/carts/utils/useSecondCart";
 import { ThirdCartProvider } from "./pages/carts/utils/useThirdCart";
 import { FourthCartProvider } from "./pages/carts/utils/useFourthCart";
-import ProductList from "./pages/carts/Product_temp/ProductList";
 import Lodging from "./pages/lodging/lodging";
 import NotFoundPage from "./pages/NotPage/NotFoundPage";
 import ProductsDetail from "./pages/products/productsdetail";
@@ -98,8 +97,8 @@ function App() {
               case "前往結帳":
                 window.location.href = "http://localhost:3000/carts";
                 break;
-              case "前往註冊":
-                window.location.href = "http://localhost:3000/members/signup";
+              case "前往登入":
+                window.location.href = "http://localhost:3000/members/login";
                 break;
               case "到遊戲頁":
                 window.location.href = "http://localhost:3000/game";
@@ -216,9 +215,6 @@ function App() {
                       delivery={delivery}
                       payment={payment}
                     />
-                  </Route>
-                  <Route path="/carts/product_temp">
-                    <ProductList />
                   </Route>
                   <Route path="/carts">
                     <Carts />

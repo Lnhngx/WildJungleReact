@@ -251,6 +251,7 @@ $stan_height: 50px;
   height: auto; //暫時
   background-color: $stan_white;
   position: relative;
+  padding-bottom: 40px;
 
   @include mobile {
     width: 100%;
@@ -725,8 +726,10 @@ $stan_height: 50px;
 
     .stan_order_product_left {
       display: flex;
-      margin: 40px 0;
+      margin: 20px 0;
       align-items: center;
+      width: 100%;
+      height: auto;
       @include mobile {
         margin: 20px 0;
       }
@@ -744,7 +747,7 @@ $stan_height: 50px;
       .stan_order_product_pic {
         width: 66.66%;
         img {
-          width: 50%;
+          width: 80%;
         }
         @include mobile {
           padding-left: 40%;
@@ -1007,192 +1010,6 @@ $stan_height: 50px;
     }
   }
 }
-
-.stan_filloutform_order {
-  width: 100%;
-  height: auto;
-  border: 1px solid $stan_white;
-
-  .stan_filloutform_order_title {
-    height: 50px;
-    border: 1px solid $stan_color2;
-    background-color: $stan_color2;
-    font-size: 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 48%;
-    padding-right: 2%;
-    @include mobile {
-      font-size: 14px;
-      padding-left: 42%;
-    }
-    .stan_arrow_icon {
-      @include mobile {
-        font-size: 20px;
-      }
-    }
-  }
-
-  .stan_filloutform_order_content {
-    width: 100%;
-    height: auto; //暫時
-    font-size: 30px;
-    border: 1px solid;
-    border-color: #c4c4c4 #c4c4c4 $stan_white #c4c4c4;
-    background-color: $stan_white;
-    // border-bottom-color: #c4c4c4;
-  }
-  .stan_filloutform_order_product_title {
-    @extend .stan_product_title;
-
-    padding-top: 20px;
-  }
-
-  .stan_order_product {
-    padding: 0px 10%;
-    width: 100%;
-    font-weight: 600;
-    text-align: center;
-    display: flex;
-
-    @include mobile {
-      padding: 0px;
-    }
-
-    ul:nth-child(1) {
-      width: 30%;
-    }
-    ul:nth-child(2) {
-      width: 70%;
-    }
-
-    .stan_order_product_left {
-      display: flex;
-      margin: 40px 0;
-      align-items: center;
-      @include mobile {
-        margin: 20px 0;
-      }
-
-      li {
-        font-size: 16px;
-      }
-
-      .stan_order_product_sid {
-        width: 33.33%;
-        @include mobile {
-          display: none;
-        }
-      }
-      .stan_order_product_pic {
-        width: 66.66%;
-        img {
-          width: 50%;
-        }
-        @include mobile {
-          padding-left: 40%;
-          width: 100%;
-        }
-      }
-    }
-
-    .stan_order_product_right {
-      @extend .stan_order_product_left;
-      @include mobile {
-        text-align: end;
-        display: block;
-        width: 100%;
-        padding-right: 10%;
-      }
-
-      li:nth-child(1) {
-        width: 42%;
-        @include mobile {
-          width: 100%;
-        }
-      }
-      li:nth-child(2) {
-        width: 24%;
-        @include mobile {
-          width: 100%;
-        }
-      }
-      li:nth-child(3) {
-        width: 32%;
-        @include mobile {
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .stan_order_blackhr {
-    margin-bottom: -1px;
-    padding: 0 10%;
-    div {
-      display: block;
-      width: 100%;
-      border: 1px solid $stan_black;
-      justify-content: center;
-      @include mobile {
-        border-color: $stan_black;
-      }
-    }
-  }
-  .stan_filloutform_order_total {
-    padding: 0px 10%;
-    font-weight: 600;
-    text-align: center;
-    border: 1px solid;
-    border-color: $stan_white #c4c4c4 #c4c4c4 #c4c4c4;
-    background-color: $stan_white;
-
-    ul {
-      display: flex;
-      margin: 10px 0;
-      font-size: 16px;
-      background-color: $stan_white;
-
-      li:nth-child(1) {
-        width: 60%;
-        @include mobile {
-          display: none;
-        }
-      }
-      li:nth-child(2) {
-        width: 15%;
-        text-align: left;
-        @include mobile {
-          width: 50%;
-        }
-      }
-      li:nth-child(3) {
-        width: 15%;
-        text-align: right;
-        @include mobile {
-          width: 50%;
-        }
-      }
-    }
-    .stan_total_hr {
-      div:nth-child(1) {
-        width: 50%;
-        @include mobile {
-          width: 0%;
-        }
-      }
-      div:nth-child(2) {
-        width: 50%;
-        border: 1px solid $stan_black;
-        @include mobile {
-          width: 100%;
-        }
-      }
-    }
-  }
-}
-
 .stan_finishhr {
   border: 1px solid #c4c4c4;
 }
