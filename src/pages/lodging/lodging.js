@@ -6,9 +6,13 @@ import "./lodging.scss";
 import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";
 import { Modal, Button } from "react-bootstrap";
+import { useFourthCart } from "../carts/utils/useFourthCart";
 
 function Lodging(props) {
   const { setCommentbox, commentbox } = props;
+  const { addItem } = useFourthCart();
+  const [cartdate, setCartdate] = useState("");
+  const [cartdate2, setCartdate2] = useState("");
 
   const sid = JSON.parse(localStorage.getItem("admin_account"));
   const [oceanbox, setOceanbox] = useState(0);
@@ -367,7 +371,7 @@ function Lodging(props) {
         comfortTotal(data) +
         facilityTotal(data) +
         cpValueTotal(data)) /
-        5
+      5
     );
   }, [data]);
 
@@ -539,7 +543,7 @@ function Lodging(props) {
                 <i className="fas fa-plus"></i>
               </button>
             </div>
-            <MyDate />
+            <MyDate setCartdate={setCartdate} setCartdate2={setCartdate2} />
             {/* <input
               type="date"
               placeholder="入住日期"
@@ -550,7 +554,24 @@ function Lodging(props) {
               placeholder="入住日期"
               className="lodging_oceanoutcheck"
             ></input> */}
-            <button className="btn oceanreservation">預約訂房</button>
+            <button
+              className="btn oceanreservation"
+              onClick={() => {
+                const room = {
+                  sid: roomSid,
+                  image: `/img/lodging/ocean_style/oceanstyle01.jpeg`,
+                  name: roomName,
+                  price: 3200,
+                  quantity: oceancount,
+                  start: cartdate,
+                  end: cartdate2,
+                };
+                addItem(room);
+                console.log(room);
+              }}
+            >
+              預約訂房
+            </button>
           </div>
         </div>
 
@@ -801,7 +822,24 @@ function Lodging(props) {
                 placeholder="入住日期"
                 className="lodging_iceincheck"
               ></input>
-              <button className="btn icereservation">預約訂房</button>
+              <button
+                className="btn icereservation"
+                onClick={() => {
+                  const room = {
+                    sid: roomSid,
+                    image: `/img/lodging/icefield_style/ice_style01.jpeg`,
+                    name: roomName,
+                    price: 4500,
+                    quantity: icecount,
+                    start: cartdate,
+                    end: cartdate2,
+                  };
+                  addItem(room);
+                  console.log(room);
+                }}
+              >
+                預約訂房
+              </button>
             </div>
           </div>
         </div>
@@ -1062,7 +1100,24 @@ function Lodging(props) {
                 placeholder="入住日期"
                 className="lodging_nocturnalincheck"
               ></input>
-              <button className="btn nocturnalreservation">預約訂房</button>
+              <button
+                className="btn nocturnalreservation"
+                onClick={() => {
+                  const room = {
+                    sid: roomSid,
+                    image: `/img/lodging/nocturnal_style/nocturnal_style01.jpeg`,
+                    name: roomName,
+                    price: 5500,
+                    quantity: nocturnalcount,
+                    start: cartdate,
+                    end: cartdate2,
+                  };
+                  addItem(room);
+                  console.log(room);
+                }}
+              >
+                預約訂房
+              </button>
             </div>
           </div>
         </div>
@@ -1324,7 +1379,24 @@ function Lodging(props) {
                 placeholder="退房日期"
                 className="lodging_tropicaloutcheck"
               ></input>
-              <button className="btn tropicalreservation">預約訂房</button>
+              <button
+                className="btn tropicalreservation"
+                onClick={() => {
+                  const room = {
+                    sid: roomSid,
+                    image: `/img/lodging/tropical_style/tropical_style01.jpeg`,
+                    name: roomName,
+                    price: 6500,
+                    quantity: tropicalcount,
+                    start: cartdate,
+                    end: cartdate2,
+                  };
+                  addItem(room);
+                  console.log(room);
+                }}
+              >
+                預約訂房
+              </button>
             </div>
           </div>
         </div>

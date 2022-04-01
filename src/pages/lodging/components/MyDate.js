@@ -36,7 +36,8 @@ import _ from "lodash";
 const myYear = 2022;
 const myMonth = 4;
 
-function MyDate() {
+function MyDate(props) {
+  const { setCartdate, setCartdate2 } = props;
   // 呈現yearAndMonth
   const now = new Date();
   let dateTime = new Date();
@@ -101,10 +102,11 @@ function MyDate() {
         setCheck(Arr);
       }
     }
-    
   }
+  setCartdate(check[0]);
+  setCartdate2(check[1]);
 
- 
+
   return (
     <>
       <h2 id="yearAndMonth" className="yearAndMonth">
