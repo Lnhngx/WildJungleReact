@@ -115,7 +115,7 @@ function App() {
       </Modal.Footer>
     </Modal>
   );
-
+  const [actived,setActived]=useState('會員資料')
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -146,6 +146,7 @@ function App() {
                 <Lottery
                   toggleLottery={toggleLottery}
                   setToggleLottery={setToggleLottery}
+                  setActived={setActived}
                 />
                 <Chatbot
                   setShow={setShow}
@@ -248,6 +249,8 @@ function App() {
                         account={localState.account}
                         token={localState.token}
                         auth={auth}
+                        actived={actived}
+                        setActived={setActived}
                       />
                     ) : (
                       <Redirect to="/members" />
