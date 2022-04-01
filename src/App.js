@@ -61,7 +61,7 @@ function App() {
     account: account,
     token: token,
   });
-
+  const [commentbox, setCommentbox] = useState(false);
   const [toggleLottery, setToggleLottery] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalBtn, setModalBtn] = useState("");
@@ -263,7 +263,7 @@ function App() {
                     />
                   </Route>
                   <Route path="/lodging">
-                    <Lodging />
+                    <Lodging setCommentbox={setCommentbox} commentbox={commentbox}/>
                   </Route>
 
                   {/* 網址上的動態參數params 
