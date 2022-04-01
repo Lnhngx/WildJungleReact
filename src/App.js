@@ -114,6 +114,8 @@ function App() {
       </Modal.Footer>
     </Modal>
   );
+  
+  // 紀錄memberList的狀態
   const [actived,setActived]=useState('會員資料')
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");

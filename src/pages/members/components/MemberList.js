@@ -19,7 +19,7 @@ function MemberList(props){
   const discountNavItem=['紅利','折價券']
   const likeNavItem=['商品','活動']
 
-  // 紀錄memberList的狀態
+  
   
   
   // 紀錄navItem狀態
