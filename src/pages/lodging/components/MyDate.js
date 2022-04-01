@@ -1,6 +1,3 @@
-
-
-
 // function MyDate() {
 //   const [date, setDate] = useState(new Date());
 
@@ -42,9 +39,14 @@ const myMonth = 4;
 function MyDate() {
   // 呈現yearAndMonth
   const now = new Date();
+  let dateTime = new Date();
+  dateTime = dateTime.setDate(dateTime.getDate() + 1);
+  dateTime = new Date(dateTime);
 
-  const [checkIn,setCheckIn] = useState("_")
-  const [checkOut,setCheckOut] = useState("_")
+  const [check, setCheck] = useState([
+    now.toLocaleDateString(),
+    dateTime.toLocaleDateString(),
+  ]);
 
   // 要得到今天的西元年使用Date物件的getFullYear()，要得到月份使用getMonth()(注意回傳為 0~11)
   const nowY = myYear ? myYear : now.getFullYear();
@@ -79,15 +81,51 @@ function MyDate() {
   const daysDisplayArray = _.chunk(daysDataArray, 7);
 
   //
+  const [count, setCount] = useState(0);
+  function checkDate(e) {
+    if (count === 0) {
+      let Arr = [...check];
+      Arr.splice(0, 2);
+      Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
+      setCheck(Arr);
+      setCount(1);
+    } else if(count === 1){
+      let Arr = [...check];
+      if (new Date(new Date(e).getTime()).toLocaleDateString() > Arr[0]) {
+        Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
+        setCheck(Arr);
+        setCount(0);
+      } else {
+        Arr.splice(0,1);
+        Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
+        setCheck(Arr);
+      }
+    }
+  }
 
-  
+  // if (Arr.length >= 2) {
+
+  // }
+
+  // if (Arr.length === 2) {
+  //   if (Arr[1] > Arr[0]) {
+  //     setCheckIn(Arr[0]);
+  //     setCheckOut(Arr[1]);
+  //   }
+  //   if (Arr[1] < Arr[0]) {
+  //     setCheckIn(Arr[1]);
+  //     setCheckOut(Arr["_"]);
+  //     Arr.shift();
+  //   }
+  // }
 
   return (
     <>
       <h2 id="yearAndMonth" className="yearAndMonth">
-      <span>入住：</span>{nowY + "/" + nowM + "/" + checkIn }
-        <span> 退房：</span>{nowY + "/" + nowM + "/" + checkOut }
-        
+        <span>入住：</span>
+        {check[0]}
+        <span> 退房：</span>
+        {check[1]}
       </h2>
       <div className="ning_datebox">
         <table border="1" className="ning_table">
@@ -109,9 +147,10 @@ function MyDate() {
                   {v.map((item, idx) => (
                     <td
                       key={idx}
-                      data-value={item}
-                      style={{backgroundColor:checkIn }}
-                      onClick={(e) => setCheckIn(e.target.dataset.value)}>
+                      data-value={"2022/4/" + item}
+                      // style={{backgroundColor:checkIn===item.id && "#f9b112"}}
+                      onClick={(e) => checkDate(e.target.dataset.value)}
+                    >
                       {item}
                     </td>
                   ))}
