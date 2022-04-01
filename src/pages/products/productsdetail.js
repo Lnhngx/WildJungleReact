@@ -106,8 +106,7 @@ function ProductsDetail(props) {
   starValue /= reviewStar.length;
 
   const click = function () {
-    const likeheart = document.getElementById("likeheart");
-    console.log(likeheart);
+    console.log(window.localStorage.getItem("like"));
   };
 
   const scrollToWithContainer = () => {
@@ -140,7 +139,6 @@ function ProductsDetail(props) {
   };
 
   const changeColor = () => {
-    console.log(123)
     const current = JSON.parse(localStorage.getItem("like"));
     const likeheart = document.getElementById("likeheart");
     if (current.includes(Sid)) {
@@ -150,12 +148,18 @@ function ProductsDetail(props) {
     }
   };
 
- 
-    
+  window.addEventListener("load", () => {if(
+    window.localStorage.getItem("like") === null ||
+    window.localStorage.getItem("like") === []
+  ){
+    localStorage.setItem("like", JSON.stringify([]));
+  }
+  changeColor()});
 
   const likela = () => {
     const current = JSON.parse(localStorage.getItem("like"));
-    const item = [...current];
+    const likeheart = document.getElementById("likeheart");
+    let item = [...current];
     if (current.includes(Sid)) {
       let num = item.findIndex((v) => v === Sid);
       if (num !== -1) {
@@ -163,10 +167,12 @@ function ProductsDetail(props) {
       }
       console.log("刪去");
       localStorage.setItem("like", JSON.stringify(item));
+      likeheart.style.color = "#2d3436";
     } else {
       item.push(Sid);
       console.log("新增成功");
       localStorage.setItem("like", JSON.stringify(item));
+      likeheart.style.color = "red";
     }
   };
 
@@ -305,7 +311,6 @@ function ProductsDetail(props) {
                     className="alan_hashlikedesk"
                     onClick={() => {
                       likela();
-                      changeColor();
                     }}
                   >
                     <i id="likeheart" className="fas fa-heart"></i>
@@ -331,7 +336,8 @@ function ProductsDetail(props) {
                   >
                     <i className="fas fa-shopping-cart"></i> 加入購物車
                   </button>
-                  <button  onClick={() => {
+                  <button
+                    onClick={() => {
                       const item = {
                         sid: Sid,
                         image: `/img/product/${pictrueArray[0].PicName}`,
@@ -341,8 +347,11 @@ function ProductsDetail(props) {
                       };
                       addItem(item);
                       console.log(item);
-                      click()
-                    }}>直接購買</button>
+                      click();
+                    }}
+                  >
+                    直接購買
+                  </button>
                 </div>
               </div>
               <div className="alan_hash">

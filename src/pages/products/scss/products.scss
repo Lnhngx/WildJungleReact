@@ -79,8 +79,13 @@ ul.slider-dots {
   object-fit: cover;
   top: 0;
   z-index: 0;
+  //animation: scalepic 2.5s infinite;
+}
+
+.mainRun{
   animation: scalepic 2.5s infinite;
 }
+
 
 .white {
   width: 100%;

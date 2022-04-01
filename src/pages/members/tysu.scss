@@ -23,6 +23,25 @@
   --tysu_showdow: 0 0 3px #f9b01210;
   --tysu_inputMargin: 1.8rem 0 0 1.8rem;
 }
+.tysu_logInfo {
+  outline: 1px solid red;
+  width: 7rem;
+  height: 50px;
+  position: absolute;
+  bottom: -40px;
+  left: -8%;
+  font-size: 1.3rem;
+  background-color: var(--tysu_color2);
+  // border-radius: 20px;
+  display: flex;
+  
+
+   > span {
+    color: #fff;
+    font-weight: 300;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+}
 
 .tysu_contain {
   min-height: 100vh;

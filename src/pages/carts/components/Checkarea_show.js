@@ -14,13 +14,17 @@ function CheckareaShow(props) {
             <li>${cart.cartTotal}</li>
           </ul>
           <ul>
+          <li>預估運費</li>
+            <li>$0</li>
+            </ul>
+          <ul>
             <li>紅利折扣</li>
             <li>$0</li>
           </ul>
           <hr className="stan_checkouthr stan_hr" />
           <ul>
             <li>結帳金額</li>
-            <li>${cart.cartTotal>=100?cart.cartTotal-100:0}</li>
+            <li>${cart.cartTotal}</li>
           </ul>
 
           <Link to="/carts/filloutform" className="stan_link">
