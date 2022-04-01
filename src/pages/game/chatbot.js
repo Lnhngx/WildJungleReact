@@ -1,13 +1,14 @@
 import React from "react";
 import { useRef } from "react";
 import { useState,useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import  webSocket  from "socket.io-client";
 import './chatbot.css';
 import {useCart} from "../carts/utils/useCart"
 function Chatbot(props){
     let chat_id = 1;
     let agentChat_id = 1;
+    const history = useHistory();
     const [toggleReply,setToggleReply] = useState(false);
     const [toggleChatbot,setToggleChatbot] = useState(false);
     const [toggleMenu,setToggleMenu] = useState(false); 
@@ -117,7 +118,24 @@ function Chatbot(props){
             const obj0 = {transform:'translateX(0px)'};
             return obj0;    
         }
-    } 
+    }
+    // 機器人貼圖模組
+    function makeStickers(src){
+        setToggleSticker(!toggleSticker);
+        const getTime = new Date();
+        let hour = getTime.getHours();
+        let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
+        let description = hour >= 12 ? '下午':'上午';
+        let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
+        let replyMessage = [...message];
+        const uploadTmp1 = { id:999,
+                        text: src,
+                        type:'stickers',
+                        time:timeNow,
+                    } ;
+        replyMessage.push(uploadTmp1);
+        setMessage(replyMessage);
+    }
     return(
     <>
         <div className="chatbot_logo" 
@@ -251,9 +269,9 @@ function Chatbot(props){
                                         props.setModalBtn('前往結帳');
                                         props.setShow(true);
                                     }else{
-                                        props.setModalTitle("尚未註冊通知");
-                                        props.setModalText("您尚未加入會員<br/>請問您是否要先前往註冊頁面?");
-                                        props.setModalBtn('前往註冊');
+                                        props.setModalTitle("尚未登入通知");
+                                        props.setModalText("親愛的顧客<br/>請您先登入才可至購物車頁面?");
+                                        props.setModalBtn('前往登入');
                                         props.setShow(true);
                                     }
                                 }}>確認送出</div>
@@ -413,10 +431,11 @@ function Chatbot(props){
             {/* ------------ 我的優惠(分有無加入會員會有不同效果) ------------ */}
             {localStorage.admin_account===undefined &&
                 <div className="coupon" onClick={()=>{
-                    let goRigister = window.confirm("您尚未加入會員，請至註冊頁面成為會員即可查看個人優惠");
-                    if(goRigister){
-                        window.location.href = 'http://localhost:3000/members';
-                    }}}
+                    props.setModalTitle("尚未登入通知");
+                    props.setModalText("親愛的顧客<br/>請您先登入才可至購物車頁面?");
+                    props.setModalBtn('前往登入');
+                    props.setShow(true);
+                }}
                 >
                     <div className="icon">
                         <i className="fas fa-coins"></i>
@@ -425,13 +444,14 @@ function Chatbot(props){
                 </div>
             }
             {localStorage.admin_account!==undefined &&
-                <div className="coupon">
-                <Link to="/members" className="coupon_link">
+                <div className="coupon" onClick={()=>{
+                    props.setActived('折價優惠');
+                    history.push('/members/modify-member-info');
+                }}>
                     <div className="icon">
                         <i className="fas fa-coins"></i>
                     </div>
                     <div className="text">我的優惠</div>
-                </Link>
                 </div>
             }
             <div className="adopt">
@@ -502,95 +522,23 @@ function Chatbot(props){
         </div> 
         {/* 貼圖的也是浮起來的 */}
         <div className="stickers_menu" style={{bottom:toggleSticker?"50px":"-200px"}}>
-            <div onClick={()=>{
-                const getTime = new Date();
-                let hour = getTime.getHours();
-                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
-                let replyMessage = [...message];
-                const uploadTmp1 = { id:999,
-                                text: '/img/game/brownBear.png',
-                                type:'stickers',
-                                time:timeNow,
-                            } ;
-                replyMessage.push(uploadTmp1);
-                setMessage(replyMessage);
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
             }}><img src="/img/game/brownBear.png" alt=""/></div>
-            <div onClick={()=>{
-                const getTime = new Date();
-                let hour = getTime.getHours();
-                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
-                let replyMessage = [...message];
-                const uploadTmp1 = { id:999,
-                                text: '/img/game/brownBear2.png',
-                                type:'stickers',
-                                time:timeNow,
-                            } ;
-                replyMessage.push(uploadTmp1);
-                setMessage(replyMessage);
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
             }}><img src="/img/game/brownBear2.png" alt=""/></div>
-            <div onClick={()=>{
-                const getTime = new Date();
-                let hour = getTime.getHours();
-                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
-                let replyMessage = [...message];
-                const uploadTmp1 = { id:999,
-                                text: '/img/game/koala.png',
-                                type:'stickers',
-                                time:timeNow,
-                            } ;
-                replyMessage.push(uploadTmp1);
-                setMessage(replyMessage);
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
             }}><img src="/img/game/koala.png" alt=""/></div>
-            <div onClick={()=>{
-                const getTime = new Date();
-                let hour = getTime.getHours();
-                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
-                let replyMessage = [...message];
-                const uploadTmp1 = { id:999,
-                                text: '/img/game/polarBear.png',
-                                type:'stickers',
-                                time:timeNow,
-                            } ;
-                replyMessage.push(uploadTmp1);
-                setMessage(replyMessage);
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
             }}><img src="/img/game/polarBear.png" alt="" style={{transform:'translateY(20px)'}}/></div>
-            <div onClick={()=>{
-                const getTime = new Date();
-                let hour = getTime.getHours();
-                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
-                let replyMessage = [...message];
-                const uploadTmp1 = { id:999,
-                                text: '/img/game/panda.png',
-                                type:'stickers',
-                                time:timeNow,
-                            } ;
-                replyMessage.push(uploadTmp1);
-                setMessage(replyMessage);
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
             }}><img src="/img/game/panda.png" alt=""/></div>
-            <div onClick={()=>{
-                const getTime = new Date();
-                let hour = getTime.getHours();
-                let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
-                let description = hour >= 12 ? '下午':'上午';
-                let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
-                let replyMessage = [...message];
-                const uploadTmp1 = { id:999,
-                                text: '/img/game/panda2.png',
-                                type:'stickers',
-                                time:timeNow,
-                            } ;
-                replyMessage.push(uploadTmp1);
-                setMessage(replyMessage);
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
             }}><img src="/img/game/panda2.png" alt=""/></div>
         </div>
         {/* 以下是專人客服的頭像(唯有socket.io連線時才會出現) */}

@@ -7,7 +7,9 @@ import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";
 import { Modal, Button } from "react-bootstrap";
 
-function Lodging() {
+function Lodging(props) {
+  const { setCommentbox, commentbox } = props;
+
   const sid = JSON.parse(localStorage.getItem("admin_account"));
   const [oceanbox, setOceanbox] = useState(0);
   const [icebox, setIcebox] = useState(0);
@@ -395,7 +397,6 @@ function Lodging() {
 
   //點擊評論
 
-  const [commentbox, setCommentbox] = useState(false);
   const [countdata, setCoundata] = useState([]);
 
   return (

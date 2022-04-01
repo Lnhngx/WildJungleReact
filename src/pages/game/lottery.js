@@ -157,7 +157,6 @@ function Lottery(props){
                         props.setToggleLottery(false)
                         props.setActived('折價優惠');
                         history.push('/members/modify-member-info');
-                        // 帶會員到個人優惠頁面，跟亭勻確認網址
                     })
                 
             }

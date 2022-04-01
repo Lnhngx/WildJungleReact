@@ -101,7 +101,7 @@
     border-radius: 30px;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 999;
 }
 .fail_left{
     width: 45%;
@@ -173,7 +173,7 @@
     border-radius: 30px;
     top: 0px;
     left: 0px;
-    z-index: 1000;
+    z-index: 999;
 }
 .win_left{
     width: 45%;
@@ -524,16 +524,13 @@
     transform-origin: center center -25px;
 }
 .cube div{
-    
     width: 250px;
     height: 50px;
     position: absolute;
     color: white;
-    
 }
 .up{
-    /* background-color: rgba(236, 124, 19, 0.644); */
-    transform: rotateX(90deg) translateZ(25px)translateY(5px) ;
+    transform: rotateX(90deg) translateZ(25px) translateY(5px) ;
     text-align: center;
     font-size: 50px;
     line-height: 50px;
@@ -546,7 +543,6 @@
     text-align: center;
     font-size: 50px;
     line-height: 50px;
-    
 }
 @keyframes chopacity {
     from{
