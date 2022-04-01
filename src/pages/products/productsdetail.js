@@ -50,6 +50,12 @@ function ProductsDetail(props) {
   const [total, setTotal] = useState(0);
   const { addItem } = useCart();
 
+  window.addEventListener("", () => {
+    localStorage.setItem("like", JSON.stringify([]));
+  });
+
+
+
   useEffect(() => {
     Promise.all([
       fetch("http://localhost:4000/products", { method: "GET" }),
@@ -150,12 +156,12 @@ function ProductsDetail(props) {
     }
   };
 
- 
-    
+  
+
 
   const likela = () => {
     const current = JSON.parse(localStorage.getItem("like"));
-    const item = [...current];
+    let item = [...current];
     if (current.includes(Sid)) {
       let num = item.findIndex((v) => v === Sid);
       if (num !== -1) {
