@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./lodging.scss";
 import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";
+import { Modal, Button } from "react-bootstrap";
 
 function Lodging() {
   const sid = JSON.parse(localStorage.getItem("admin_account"));
@@ -175,11 +176,15 @@ function Lodging() {
         // console.log('order time',new Date(order[0]['end']).getTime())
         // console.log('現在時間',new Date().getTime())
         // console.log(new Date().getTime()> new Date(order[0]['end']).getTime())
-        let arr = order.filter(v=>v["room_sid"]===1 && new Date().getTime()> new Date(v['end']).getTime())
+        let arr = order.filter(
+          (v) =>
+            v["room_sid"] === 1 &&
+            new Date().getTime() > new Date(v["end"]).getTime()
+        );
         // console.log(arr)
-        if(arr!==[]){
+        if (arr !== []) {
           setOrder(arr);
-        }else{
+        } else {
           setOrder([]);
         }
         // if (order["room_sid"] === 1 ) {
@@ -210,11 +215,15 @@ function Lodging() {
       .then((r) => r.json())
       .then((order) => {
         // console.log("order", order);
-        let arr = order.filter(v=>v["room_sid"]===2 && new Date().getTime()> new Date(v['end']).getTime())
+        let arr = order.filter(
+          (v) =>
+            v["room_sid"] === 2 &&
+            new Date().getTime() > new Date(v["end"]).getTime()
+        );
         // console.log(arr)
-        if(arr!==[]){
+        if (arr !== []) {
           setOrder(arr);
-        }else{
+        } else {
           setOrder([]);
         }
       });
@@ -239,11 +248,15 @@ function Lodging() {
       .then((r) => r.json())
       .then((order) => {
         // console.log("order", order);
-        let arr = order.filter(v=>v["room_sid"]===3 && new Date().getTime()> new Date(v['end']).getTime())
+        let arr = order.filter(
+          (v) =>
+            v["room_sid"] === 3 &&
+            new Date().getTime() > new Date(v["end"]).getTime()
+        );
         // console.log(arr)
-        if(arr!==[]){
+        if (arr !== []) {
           setOrder(arr);
-        }else{
+        } else {
           setOrder([]);
         }
       });
@@ -268,11 +281,15 @@ function Lodging() {
       .then((r) => r.json())
       .then((order) => {
         //console.log("order", order);
-        let arr = order.filter(v=>v["room_sid"]===4 && new Date().getTime()> new Date(v['end']).getTime())
+        let arr = order.filter(
+          (v) =>
+            v["room_sid"] === 4 &&
+            new Date().getTime() > new Date(v["end"]).getTime()
+        );
         // console.log(arr)
-        if(arr!==[]){
+        if (arr !== []) {
           setOrder(arr);
-        }else{
+        } else {
           setOrder([]);
         }
       });
@@ -351,6 +368,30 @@ function Lodging() {
         5
     );
   }, [data]);
+
+  const [show, setShow] = useState(false);
+  const [state2, setState2] = useState(true);
+
+  const ModalShow1 = (
+    <Modal show={show} animation={false}>
+      <Modal.Body className="modal_text">
+        訂位完成！期待您的蒞臨～
+        <br />
+        ⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾
+      </Modal.Body>
+      <Modal.Footer className="">
+        <Button
+          className="modal_button"
+          onClick={() => {
+            setShow(false);
+            setState2(true);
+          }}
+        >
+          OK
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 
   //點擊評論
 
@@ -472,7 +513,6 @@ function Lodging() {
         >
           <div className="lodging_oceanwrap">
             <div className="lodging_oceantitle">
-              <h4>Ocean Style</h4>
               <h1>海洋2人房型</h1>
               <div className="lodging_oceanprice">
                 <p>房間定價</p>
