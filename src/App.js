@@ -155,6 +155,7 @@ function App() {
                   setModalBtn={setModalBtn}
                   setModalText={setModalText}
                   setModalTitle={setModalTitle}
+                  setActived={setActived}
                 />
                 {ChatbotModal}
                 {/* 路由表 */}
