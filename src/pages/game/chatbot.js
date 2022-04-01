@@ -251,9 +251,9 @@ function Chatbot(props){
                                         props.setModalBtn('前往結帳');
                                         props.setShow(true);
                                     }else{
-                                        props.setModalTitle("尚未註冊通知");
-                                        props.setModalText("您尚未加入會員<br/>請問您是否要先前往註冊頁面?");
-                                        props.setModalBtn('前往註冊');
+                                        props.setModalTitle("尚未登入通知");
+                                        props.setModalText("親愛的顧客<br/>請您先登入才可至購物車頁面?");
+                                        props.setModalBtn('前往登入');
                                         props.setShow(true);
                                     }
                                 }}>確認送出</div>

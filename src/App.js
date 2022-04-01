@@ -97,8 +97,8 @@ function App() {
               case "前往結帳":
                 window.location.href = "http://localhost:3000/carts";
                 break;
-              case "前往註冊":
-                window.location.href = "http://localhost:3000/members/signup";
+              case "前往登入":
+                window.location.href = "http://localhost:3000/members/login";
                 break;
               case "到遊戲頁":
                 window.location.href = "http://localhost:3000/game";
