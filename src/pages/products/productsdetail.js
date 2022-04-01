@@ -331,7 +331,18 @@ function ProductsDetail(props) {
                   >
                     <i className="fas fa-shopping-cart"></i> 加入購物車
                   </button>
-                  <button onClick={click}>直接購買</button>
+                  <button  onClick={() => {
+                      const item = {
+                        sid: Sid,
+                        image: `img/product/${pictrueArray[0].PicName}`,
+                        name: product.ProductsName,
+                        price: product.ProductsPrice,
+                        quantity: total + 1,
+                      };
+                      addItem(item);
+                      console.log(item);
+                      click()
+                    }}>直接購買</button>
                 </div>
               </div>
               <div className="alan_hash">
