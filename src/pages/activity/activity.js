@@ -151,7 +151,7 @@ function Activity() {
             </Modal.Body>
             <Modal.Footer className="">
                 <Button className="modal_button" onClick={() => {
-                    setShow(false);
+                    setShow2(false);
                     setState4(true);
                 }}>
                     OK
@@ -328,7 +328,7 @@ function Activity() {
                         <div className="buttonGrop2">
                             <button onClick={() => {
                                 const temp_arr = { sid: "s1", name: "動物認養方案-" + plan + "個月", price: planPrice, quantity: plan };
-                                thirdcart.addItem(temp_arr);
+                                thirdcart.addItem(temp_arr);setShow2(true);
                             }}>加入購物車</button>
                             <button onClick={() => { setState3(!state3); setState4(true); scrollToSection4() }}>回上一步</button>
                         </div>
@@ -511,7 +511,7 @@ function Activity() {
                     <div className={state4 ? "areaDisplayNone" : "terry_sponsor_planSelectionArea"}>
                         {renderStaraAnimal()}
                     </div>
-                    {ModalShow1}
+                    {ModalShow2}
                     {/*02結束*/}
 
                     <div className="terry_touch_area">
@@ -588,7 +588,7 @@ function Activity() {
                                     src="/img/activity/touchshow7.jpg"
                                     alt=""
                                 />
-                                
+
                             </Carousel.Item>
                         </Carousel>
                     </div>
