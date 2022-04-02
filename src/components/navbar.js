@@ -90,7 +90,7 @@ function Navbar(props) {
                   onClick={() => {
                     // console.log(location.pathname)
                     setComeUrl(location.pathname)
-                    history.push("/members/login");
+                    history.push("/members");
                   }}
                 ></i>
               </>
