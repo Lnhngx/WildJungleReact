@@ -5,6 +5,8 @@
   "dependencies": {
     "@ashthornton/asscroll": "^2.0.4",
     "@emailjs/browser": "^3.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@react-native-community/slider": "^4.0.0-rc.3",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",

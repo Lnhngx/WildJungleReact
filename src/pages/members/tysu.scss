@@ -24,22 +24,29 @@
   --tysu_inputMargin: 1.8rem 0 0 1.8rem;
 }
 .tysu_logInfo {
-  outline: 1px solid red;
+  // outline: 1px solid red;
   width: 7rem;
-  height: 50px;
   position: absolute;
-  bottom: -40px;
-  left: -8%;
+  bottom: -75px;
+  left: -10%;
   font-size: 1.3rem;
-  background-color: var(--tysu_color2);
-  // border-radius: 20px;
-  display: flex;
-  
 
-   > span {
-    color: #fff;
-    font-weight: 300;
-    font-family: "Noto Sans TC", sans-serif;
+  > ul {
+    margin: 0;
+    border: 0.2px solid var(--tysu_color2);
+
+    > li {
+      color: #fff;
+      // outline: 1px solid red;
+      font-weight: 300;
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: var(--tysu_color2);
+      padding: 2px 0;
+      margin: 1px 1px;
+    }
+    > li:hover {
+      background-color: var(--tysu_color);
+    }
   }
 }
 

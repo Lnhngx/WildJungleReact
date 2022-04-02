@@ -6,6 +6,8 @@ import { useSecondCart } from "../pages/carts/utils/useSecondCart";
 import { useThirdCart } from "../pages/carts/utils/useThirdCart";
 import { useFourthCart } from "../pages/carts/utils/useFourthCart";
 import "../components/all.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 function Navbar(props) {
   const firstcart = useCart();
@@ -22,6 +24,8 @@ function Navbar(props) {
   const { auth, setAuth, localState, setLocalState,setComeUrl } = props;
   const history = useHistory();
   const location = useLocation();
+  // 登入後的選單狀態
+  const [showOut,setShowOut]=useState(false);
 
   const close = function () {
     const menu = document.querySelector(".theMenu");
@@ -54,6 +58,7 @@ function Navbar(props) {
     };
   }, [nav]);
 
+
   return (
     <>
       <div className="navbar1">
@@ -69,32 +74,42 @@ function Navbar(props) {
         </div>
         <div className="navbarRight">
           <div className="navbarIcon">
-          <div className="tysu_logInfo">
-            <span >會員專區</span>
-          </div>
             {auth || localState.token ? (
-              <i
-                className="fas fa-sign-out-alt tysu_logInOut"
-                onClick={() => {
-                  localStorage.removeItem("admin_account");
-                  localStorage.removeItem("admin_token");
-                  setAuth(false);
-                  setLocalState({ token: false });
-                  // history.push('/members');
-                }}
-              ></i>
+              <>
+                <FontAwesomeIcon icon={faHouse} className="tysu_logInOut" onClick={() => {
+                  if(showOut){
+                    setShowOut(false)
+                  }else{
+                    setShowOut(true)
+                  }
+                  }}/>
+              </>
             ) : (
-              <i
-                className="fas fa-user-friends tysu_logInOut"
-                onClick={() => {
-                  // console.log(location.pathname)
-                  setComeUrl(location.pathname)
-                  history.push("/members/login");
-                  
-                }}
-              ></i>
+              <>
+                <i className="fas fa-user-friends tysu_logInOut"
+                  onClick={() => {
+                    // console.log(location.pathname)
+                    setComeUrl(location.pathname)
+                    history.push("/members/login");
+                  }}
+                ></i>
+              </>
             )}
-
+            {showOut && <div className="tysu_logInfo">
+              <ul>
+                <li onClick={()=>{
+                  history.push('/members/modify-member-info')
+                  setShowOut(false)
+                }}>會員專區</li>
+                <li  onClick={()=>{
+                  localStorage.removeItem("admin_account");
+                    localStorage.removeItem("admin_token");
+                    setAuth(false);
+                    setLocalState({ token: false });
+                    setShowOut(false);
+                }}>登出</li>
+              </ul>
+            </div>}
             <a href="#/">
               <i className="fas fa-heart"></i>
             </a>
