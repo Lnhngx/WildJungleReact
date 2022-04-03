@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Config from '../Config';
 
-function ConvenienceStore(){
+function ConvenienceStoreAdd(){
 
     const [cityData,setCityData]=useState([]);
     const [citySelect,setCitySelect]=useState('01');
@@ -11,7 +11,7 @@ function ConvenienceStore(){
     const [areaName,setAreaName]=useState('松山區');
 
     const [storeData,setStoreData]=useState([]);
-    const [storeName,setStoreName]=useState('上弘');
+    const [storeName,setStoreName]=useState('上弘(台北市松山區敦化北路168號B2)');
 
     
     useEffect(()=>{
@@ -68,11 +68,7 @@ function ConvenienceStore(){
     <table className='tysu_table'>
         <tbody>
             <tr className="tysu_tr tysu_last" >
-                <th>
-                    {/* <div className="tysu_creditDelete" style={{padding:"0 5px"}}>
-                        <i className="fas fa-times"></i>
-                    </div> */}
-                </th>
+                <th></th>
                 <td className="tysu_addressTitle" style={{padding:"0 15px"}}>
                     <label htmlFor="tysu_address">7-11 取貨門市<br /><span className="tysu_titleSpan">convenience store</span></label>
                 </td>
@@ -122,7 +118,7 @@ function ConvenienceStore(){
                         }} >
                         {storeData.map((v,i)=>{
                             return(<React.Fragment key={i}>
-                                    <option value={v.storeName}>{v.storeName+'店('+v.storeAddress+')'}</option>
+                                    <option value={v.storeName+'('+v.storeAddress+')'}>{v.storeName+'店('+v.storeAddress+')'}</option>
                                 </React.Fragment>)
                             {/* storeAddress: "台北市松山區復興北路35號"
                                 storeCity: "台北市"
@@ -139,32 +135,34 @@ function ConvenienceStore(){
                 </td>
                
             </tr>
-            {/* <tr className="tysu_tr tysu_last">
-                <th>
-                    <div className="tysu_creditDelete">
-                        <i className="fas fa-times"></i>
-                    </div>
-                </th>
-                <td className="tysu_addressTitle">
-
-                    <label htmlFor="tysu_address">取貨門市2<br /><span className="tysu_titleSpan">convenience store2</span></label>
-                </td>
-                <td>
-                    <input type="text" id="tysu_address" className="tysu_input" />
-                    <div id="tysu_addressHelp"></div>
-                </td>
-            </tr> */}
         </tbody>
     </table>
     <div className="tysu_btnCenter">
         <button id="tysu_addBtn" className="tysu_addBtn" onClick={(e)=>{
             e.preventDefault()
-            
+            const save711=async()=>{
+                await fetch(Config.TYSU_711_Add,{
+                    method: 'POST',
+                    headers: {
+                        "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "city":cityName,
+                        "area":areaName,
+                        "store":storeName
+                    })
+                }).then(r=>r.json()).then(obj=>{
+                    console.log(obj)
+                })
+            }
+            save711()
+
         }}>
-            {/* <i className="fas fa-plus"></i> */}儲 存
+            儲 存
         </button>
     </div>
     </>)
     
 }
-export default ConvenienceStore;
+export default ConvenienceStoreAdd;

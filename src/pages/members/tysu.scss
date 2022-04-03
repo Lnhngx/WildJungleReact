@@ -710,3 +710,11 @@ input:-webkit-autofill:active,
 .tysu_editModalBtn:hover {
   background-color: var(--tysu_color2);
 }
+
+.tysu_input.city,
+.tysu_input.area {
+  width: 105px;
+}
+.tysu_input.store {
+  width: 400px;
+}
