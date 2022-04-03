@@ -18,6 +18,14 @@ function DiscountPoints(props){
                 </tr>
             </thead>
             <tbody>
+                {pointData.length===0 && <tr className="tysu_orderText">
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td className="tysu_creditT">沒有資料</td>
+                    <td></td>
+                    <td></td>
+                </tr>}
                 {pointData.map((v,i)=>{
                     return(<tr key={i} className="tysu_orderTr tysu_orderText">
                         <th>{i+1}</th>

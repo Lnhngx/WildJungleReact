@@ -2,7 +2,7 @@ import React from "react";
 
 function DiscountTicket(){
     return(<>
-        <table className="tysu_table">
+        <table className="tysu_table"  style={{marginBottom:"50rem"}}>
             <thead>
                 <tr className="tysu_orderTr">
                     <th style={{width: "42px"}}></th>
@@ -17,12 +17,12 @@ function DiscountTicket(){
             <tbody>
                 <tr className="tysu_orderTr tysu_orderText">
                     <th>1</th>
-                    <td>R77C98</td>
-                    <td className="tysu_orderBg">2月生日禮</td>
+                    <td>R33C98</td>
+                    <td className="tysu_orderBg">1月生日禮</td>
                     <td>$100</td>
                     <td>$100</td>
-                    <td>2022/02/28</td>
-                    <td>未使用</td>
+                    <td>2022/01/31</td>
+                    <td>已過期</td>
                 </tr>
             </tbody>
         </table>

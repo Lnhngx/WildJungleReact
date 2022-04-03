@@ -15,7 +15,7 @@ function AddressAdd(){
                 </td>
                 <td>
                     <input type="text" id="tysu_address" className="tysu_input" />
-                    <div id="addressHelp"></div>
+                    <div id="tysu_addressHelp"></div>
                 </td>
                 <td>
                     <div className="tysu_creditEdit">
@@ -35,7 +35,7 @@ function AddressAdd(){
                 </td>
                 <td>
                     <input type="text" id="tysu_address" className="tysu_input" />
-                    <div id="addressHelp"></div>
+                    <div id="tysu_addressHelp"></div>
                 </td>
                 <td>
                     <div className="tysu_creditEdit">
