@@ -123,13 +123,13 @@ function MemberInfo(props){
               <label htmlFor="tysu_gender">性別<br /><span className="tysu_titleSpan">Gender</span></label>
             </th>
             <td>
-            <select id="tysu_gender" className="tysu_input" name="gender" 
-            value={newData.gender}
-            onChange={handleFieldChange}>
+              <select id="tysu_gender" className="tysu_input" name="gender" 
+              value={newData.gender}
+              onChange={handleFieldChange}>
                     <option value="男">男性</option>
                     <option value="女">女性</option>
                     <option value="未決定">未決定</option>
-                    </select>
+              </select>
               <div id="genderHelp"></div>
             </td>
           </tr>

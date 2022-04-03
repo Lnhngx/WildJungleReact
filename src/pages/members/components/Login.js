@@ -99,7 +99,7 @@ function Login(props){
           if(comeUrl==='/carts'){
             history.goBack();
           }else if(comeUrl==='/lodging'){
-            // setCommentbox(true);
+            setCommentbox(false);
             history.goBack();
           }else{
             history.push('/members/modify-member-info')
