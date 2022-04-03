@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ning.scss";
 import "./homepage.scss";
 import HomeCarousel from "./components/HomeCarousel";
@@ -12,9 +12,44 @@ import HomeTransportionP from "./components/HomeTransportionP";
 import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
+
 function HomePage() {
-  
+
   // const [transportionbtn, setTransportionbtn] = useState(true);
+  const [popularEvent, setPopularEvent] = useState([]);
+  
+  useEffect(() => {
+    fetch('http://localhost:4000/popularevents')
+      .then(r => r.json())
+      .then(obj => {
+        setPopularEvent(obj);
+      })
+  }, [])
+
+  const renderPopularEvents = () => {
+    console.log("第30行：",popularEvent);
+    return popularEvent.map((v, i) => {
+      <div key={i} className="col-4">
+        <div className="ning_eventsbox">
+          <p className="ning_eventsday">{v.actDate}</p>
+          <p className="ning_eventsyear">2022</p>
+          <div className="ning_eventsdateline"></div>
+          <p className="ning_eventstour">{v.actLocation}</p>
+          <div className="ning_eventsimg">
+            <img src={v.actImage} alt="" />
+          </div>
+          <div className="ning_eventsboxbottom">
+            <p className="ning_eventstext">{v.actIntroduce}</p>
+            <div className="ning_eventsgo">
+              <span className="material-icons">east</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    })
+  }
+
 
   return (
     <>
@@ -99,7 +134,9 @@ function HomePage() {
           <h2 className="ning_TitleChblack">熱門活動一覽</h2>
         </div>
         <div className="row">
-          <div className="col-4">
+        { popularEvent.length > 0 && renderPopularEvents() }
+
+          {/* <div className="col-4">
             <Link to="">
               <div className="ning_eventsbox">
                 <p className="ning_eventsday">05.16</p>
@@ -212,7 +249,10 @@ function HomePage() {
                 </div>
               </div>
             </Link>
-          </div>
+          </div> */}
+
+
+
           <div className="ning_buttonbox">
             <button className="btn ning_viewmorebtn">
               <p className="ning_viewmorebtntext">View More</p>
@@ -220,6 +260,7 @@ function HomePage() {
             </button>
           </div>
         </div>
+
         <div className="ning_Accommodation">
           <h1 className="ning_TitleEnblack">Accommodation</h1>
           <h2 className="ning_TitleChblack">風格住宿</h2>
