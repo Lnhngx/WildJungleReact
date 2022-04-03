@@ -5,10 +5,14 @@ function ConvenienceStore(){
 
     const [cityData,setCityData]=useState([]);
     const [citySelect,setCitySelect]=useState('01');
-    const [cityName,setCityName]=useState('');
+    const [cityName,setCityName]=useState('台北市');
 
     const [areaSelect,setAreaSelect]=useState([]);
+    const [areaName,setAreaName]=useState('');
 
+
+
+    
     useEffect(()=>{
         const get711CityData=async()=>{
             await fetch(Config.TYSU_CITY,{
@@ -17,7 +21,7 @@ function ConvenienceStore(){
                     "Content-Type":"application/json"
                 }
             }).then(r=>r.json()).then(obj=>{
-                // console.log(obj)
+                console.log(obj)
                 setCityData(obj);
             })
         }
@@ -33,13 +37,30 @@ function ConvenienceStore(){
                     "Content-Type":"application/x-www-form-urlencoded"
                 },
             }).then(r=>r.json()).then(obj=>{
+                setAreaName(obj.result[0])
                 console.log(obj.result)
                 setAreaSelect(obj.result)
             })
         }
-        get711AreaData()
+        get711AreaData();
     },[citySelect])
     
+    useEffect(()=>{
+        const get711StoreData=async()=>{
+            await fetch(Config.TYSU_711_STORE+'?city='+cityName+'&area='+areaName,{
+                method:'GET',
+                headers:{
+                    "Content-Type":"application/x-www-form-urlencoded"
+                },
+            }).then(r=>r.json()).then(obj=>{
+                console.log(obj.result)
+                
+            })
+        }
+        get711StoreData();
+        
+        
+    },[areaSelect])
 
     return(<>
     <table className='tysu_table'>
@@ -59,7 +80,14 @@ function ConvenienceStore(){
                     onChange={(e)=>{
                         console.log(e.target.value)
                         setCitySelect(e.target.value);
-                        setCityName(e.target.innerHTML)
+                        let n=cityData.filter((v,i)=>{
+                            return v.areaID===e.target.value
+                        })
+                        if(n.length!==0){
+                            console.log(n)
+                            setCityName(n[0].area)
+                        }
+                        // setCityName(e.target.innerHTML)
                     }}
                      >
                         {cityData.map((v,i)=>{
@@ -69,7 +97,14 @@ function ConvenienceStore(){
 
                         })}
                     </select>
-                    <select id="tysu_address" className="tysu_input" >
+                    <select id="tysu_address" className="tysu_input"
+                        value={areaName}
+                        onChange={(e)=>{
+                            // console.log(cityName);
+                            // console.log(e.target.value);
+                            setAreaName(e.target.value);
+                        }}
+                     >
                         {areaSelect.map((v,i)=>{
                             return(<React.Fragment key={i}>
                                     <option value={v}>{v}</option>

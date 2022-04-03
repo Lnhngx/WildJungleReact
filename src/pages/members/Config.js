@@ -14,6 +14,7 @@ const Config={
     TYSU_BONUS_INFO:`${host}/members/bonus/list/`,
     TYSU_CITY:`${host}/members/city/api`,
     TYSU_AREA:`${host}/members/711-areas/api/`,
+    TYSU_711_STORE:`${host}/members/711-oneareastores/api`,
 }
 
 export default Config;
