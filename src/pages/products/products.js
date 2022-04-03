@@ -639,7 +639,7 @@ function Products(props) {
             </div>
           </div>
           <div className="productgroup">
-            {isLoading ? spinner : <ProductsCard products={displayProducts} />}
+            {isLoading ? spinner : <ProductsCard products={displayProducts}  />}
           </div>
         </div>
       </div>

@@ -59,6 +59,14 @@ function Navbar(props) {
   }, [nav]);
 
 
+  window.addEventListener("load", () => {if(
+    window.localStorage.getItem("like") === null ||
+    window.localStorage.getItem("like") === []
+  ){
+    localStorage.setItem("like", JSON.stringify([]));
+  }});
+
+
   return (
     <>
       <div className="navbar1">
