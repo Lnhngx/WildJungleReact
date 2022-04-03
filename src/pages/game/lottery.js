@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import './lottery.css';
 function Lottery(props){
+    const {pointData,setPointData}=props;
     const history = useHistory();
     const [bonus,setBonus] = useState(0);
     const myCanvas = useRef(null);
@@ -153,8 +154,18 @@ function Lottery(props){
                     })
                     .then(r=>r.json())
                     .then(obj=>{
+                        // console.log(obj)
+                        let newAr=pointData.unshift({
+                            bonusList_sid:obj.id,
+                            bonus_status: obj.info.bonus_status,
+                            getTime_end: obj.info.getTime_end,
+                            getTime_start: obj.info.getTime_start,
+                            name: "遊戲闖關",
+                            number: obj.info.number
+                        })
+                        setPointData(pointData);
                         localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
-                        props.setToggleLottery(false)
+                        props.setToggleLottery(false);
                         props.setActived('折價優惠');
                         history.push('/members/modify-member-info');
                     })

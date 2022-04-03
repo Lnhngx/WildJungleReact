@@ -10,7 +10,7 @@ function Creditcard(props){
     const [showAdd,setShowAdd]=useState(false);
     const [showTable,setShowTable]=useState(true);
 
-    const [editShow,setEditShow]=useState(false)
+
     // 資料庫資料設為狀態
     const [cdData,setCdData]=useState([]);
     

@@ -7,7 +7,7 @@ import MemberNavItem from './MemberNavItem'
 
 
 function MemberList(props){
-  const {auth,account,token}=props
+  const {auth,account,token,pointData,setPointData}=props
   // const history=useHistory();
 
   const sid=JSON.parse(localStorage.getItem('admin_account'))
@@ -31,6 +31,7 @@ function MemberList(props){
   const [creditData,setCreditData]=useState({});
   
   
+
   useEffect(()=>{
     const getSidData=async ()=>{
       await fetch(Config.TYSU_MEMBER_INFO+`${sid.m_sid}`,{
@@ -58,14 +59,28 @@ function MemberList(props){
           
           if(obj.success){
             setCreditData(obj.info.list);
-            console.log(obj.info.list);
-            localStorage.setItem('wildjungle_creditcard',JSON.stringify(obj.info.list));
-            
+            // console.log(obj.info.list);
+            localStorage.setItem('wildjungle_creditcard',JSON.stringify(obj.info.list)); 
           }
-        
       })
     }
     getCreditData();
+
+    const getPointData=async()=>{
+      await fetch(Config.TYSU_BONUS_INFO+sid.m_sid,{
+        method:'GET',
+        headers:{
+          "Content-Type":"application/json"
+        }
+      }).then(r=>r.json()).then(obj=>{
+        console.log('BonusPoint:',obj)
+        if(obj.success){
+          setPointData(obj.info);
+        }
+
+      })
+    }
+    getPointData()
 
   },[]);
   
@@ -92,6 +107,8 @@ function MemberList(props){
             setSidData={setSidData}
             creditData={creditData}
             setCreditData={setCreditData}
+            pointData={pointData}
+            setPointData={setPointData}
           />
           <div className="tysu_memberBg">
             <img src="./../img/member/leaf_y.svg" alt="" />

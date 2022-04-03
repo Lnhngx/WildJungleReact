@@ -72,43 +72,22 @@ const HomeCarousel = () => {
     "img/home/carousel/carousel04.jpg",
     "img/home/carousel/carousel05.jpg",
   ];
-  let i = 0;
 
   const next = () => {
-    console.log("1", i);
-    if (i < 5) {
-      img.current.src = backImg[i + 1];
-      i++;
-      console.log("2", i);
-      setCount(i);
-    }
-    if (i === 5) {
-      i = 0;
-      img.current.src = backImg[i];
-    }
-    console.log("3", i);
-    setCount(i);
+    setCount(count === length - 1 ? 0 : count + 1);
+    img.current.src = backImg[count];
   };
 
   const prev = () => {
-    console.log(i);
-    if (i > -1) {
-      img.current.src = backImg[i - 1];
-      i--;
-      console.log(i);
-      setCount(i);
-    }
-    if (i === -1) {
-      i = 4;
-      img.current.src = backImg[i];
-    }
-    console.log(i);
-    setCount(i);
+    setCount(count === 0 ? length - 1 : count - 1);
+    img.current.src = backImg[count];
   };
 
+  const length = backImg.length;
+  if (!Array.isArray(backImg) || backImg.length <= 0) {
+    return null;
+  }
 
-
-  
   return (
     <>
       <div className="carousel">

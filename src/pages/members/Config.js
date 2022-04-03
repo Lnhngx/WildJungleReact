@@ -11,6 +11,7 @@ const Config={
     TYSU_CREDITCARD_INFO:`${host}/members/creditcard/`,
     TYSU_CREDITCARD_ADD:`${host}/members/creditcard/add`,
     TYSU_CREDITCARD_DELETE:`${host}/members/creditcard/delete/`,
+    TYSU_BONUS_INFO:`${host}/members//bonus/list/`,
 }
 
 export default Config;
