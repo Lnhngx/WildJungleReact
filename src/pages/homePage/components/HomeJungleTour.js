@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const HomeJungleTour = () => {
-
   /* 換照片 */
   const tourmap = useRef();
 
@@ -17,65 +16,71 @@ const HomeJungleTour = () => {
         </div>
         <div className="ning_JungleTourmapbox">
           <div className="ning_JungleTourmap">
-            <img src="/img/home/tropicalmap.svg" alt="" ref={tourmap}/>
+            <img src="/img/home/tropicalmap.svg" alt="" ref={tourmap} />
           </div>
           <div className="ning_Jungletourimgbox">
-            <Link to="">
-              <div className="ning_Jungletropical">
-                <div className="ning_tourboxhd">
-                  <img
-                    className="ning_Jungletropicalimg"
-                    src="/img/home/tropical.jpg"
-                    alt=""
-                    onMouseMove={()=>{tourmap.current.src =
-                  "/img/home/tropicalmap.svg"}}
-                  />
+            <div className="ning_Jungle">
+              <Link to="/tour">
+                <div className="ning_Jungletropical">
+                  <div className="ning_tourboxhd">
+                    <img
+                      className="ning_Jungletropicalimg"
+                      src="/img/home/tropical.jpg"
+                      alt=""
+                      onMouseMove={() => {
+                        tourmap.current.src = "/img/home/tropicalmap.svg";
+                      }}
+                    />
+                  </div>
+                  <p>熱帶雨林館</p>
                 </div>
-                <p>熱帶雨林館</p>
-              </div>
-            </Link>
-            <Link to="">
-              <div className="ning_JungleOcean">
-                <div className="ning_tourboxhd">
-                  <img
-                    className="ning_JungleOceanimg"
-                    src="/img/home/Ocean.jpg"
-                    alt=""
-                    onMouseMove={()=>{tourmap.current.src =
-                  "/img/home/Oceanmap.svg"}}
-                  />
+              </Link>
+              <Link to="/tour">
+                <div className="ning_JungleOcean">
+                  <div className="ning_tourboxhd">
+                    <img
+                      className="ning_JungleOceanimg"
+                      src="/img/home/Ocean.jpg"
+                      alt=""
+                      onMouseMove={() => {
+                        tourmap.current.src = "/img/home/Oceanmap.svg";
+                      }}
+                    />
+                  </div>
+                  <p>海底世界館</p>
                 </div>
-                <p>海底世界館</p>
-              </div>
-            </Link>
-            <Link to="">
-              <div className="ning_Junglenocturnal">
-                <div className="ning_tourboxhd">
-                  <img
-                    className="ning_Junglenocturnalimg"
-                    src="/img/home/nocturnal.jpg"
-                    alt=""
-                    onMouseMove={()=>{tourmap.current.src =
-                  "/img/home/nocturnalmap.svg"}}
-                  />
+              </Link>
+              <Link to="/tour">
+                <div className="ning_Junglenocturnal">
+                  <div className="ning_tourboxhd">
+                    <img
+                      className="ning_Junglenocturnalimg"
+                      src="/img/home/nocturnal.jpg"
+                      alt=""
+                      onMouseMove={() => {
+                        tourmap.current.src = "/img/home/nocturnalmap.svg";
+                      }}
+                    />
+                  </div>
+                  <p>夜行動物館</p>
                 </div>
-                <p>夜行動物館</p>
-              </div>
-            </Link>
-            <Link to="">
-              <div className="ning_Jungleice">
-                <div className="ning_tourboxhd">
-                  <img
-                    className="ning_Jungleiceimg"
-                    src="/img/home/ice.jpg"
-                    alt=""
-                    onMouseMove={()=>{tourmap.current.src =
-                  "/img/home/icemap.svg"}}
-                  />
+              </Link>
+              <Link to="/tour">
+                <div className="ning_Jungleice">
+                  <div className="ning_tourboxhd">
+                    <img
+                      className="ning_Jungleiceimg"
+                      src="/img/home/ice.jpg"
+                      alt=""
+                      onMouseMove={() => {
+                        tourmap.current.src = "/img/home/icemap.svg";
+                      }}
+                    />
+                  </div>
+                  <p>冰原歷險館</p>
                 </div>
-                <p>冰原歷險館</p>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

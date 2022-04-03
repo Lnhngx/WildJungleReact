@@ -55,7 +55,7 @@ function HomePage() {
     <>
       <HomeCarousel slides={CarouselData} />
       {/* <Homevideo /> */}
-      <div className="ning_informationbox">
+      {/* <div className="ning_informationbox">
         <div className="ning_information">
           <div className="ning_Admissionbox">
             <div className="ning_AdmissionboxIcon">
@@ -124,7 +124,7 @@ function HomePage() {
             <p className="ning_ticketprice">$50/$30/$20</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <HomeJungleTour />
 

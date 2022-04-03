@@ -154,6 +154,7 @@ $ning-englishont: "Playfair Display", serif;
       font-size: 2.5rem;
       font-family: $ning-chinesefont;
       color: $ning-color4;
+      margin-bottom: 0;
       margin-left: 2%;
       span {
         font-size: 1.4rem;
@@ -165,7 +166,10 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_oceanwrap {
     width: 60%;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: end;
 
     h4 {
       font-family: $ning-englishont;
@@ -227,28 +231,26 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_datebox {
-    width: 100%;
+    width: 60%;
     font-family: $ning-chinesefont;
-    display: flex;
-    justify-content: end;
+  
   }
 
   .ning_table {
-    width: 60%;
+    width: 100%;
     height: 200px;
     border: 1px solid $ning-color4;
     text-align: center;
 
     .ning_tr {
-     background-color:$ning-color2;
-     border: 1px solid $ning-color4;
+      background-color: $ning-color2;
+      border: 1px solid $ning-color4;
       th {
         padding: 5px 0;
         color: $ning-color3;
       }
     }
   }
-
 
   .ning_tbody td:hover {
     background-color: #f9b012b0;
@@ -279,23 +281,19 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_oceanlist3 {
     display: flex;
     justify-content: space-between;
-
+    width: 30%;
+    text-align: left;
     p {
-      width: 100%;
       font-family: $ning-chinesefont;
       font-size: 1.2rem;
       font-weight: 400;
       color: $ning-color4;
-      margin: 2% 0;
+      margin:6% 0;
     }
+    
   }
 
-  .lodging_oceanlist1 p:nth-child(1),
-  .lodging_oceanlist2 p:nth-child(1),
-  .lodging_oceanlist3 p:nth-child(1) {
-    margin-left: 70%;
-    text-align: left;
-  }
+  
 
   .ocean_introducebox {
     width: 35%;
@@ -652,23 +650,19 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_icelist1,
   .lodging_icelist2,
   .lodging_icelist3 {
+    width: 30%;
     display: flex;
+    justify-content: space-between;
     p {
-      width: 100%;
       font-family: $ning-chinesefont;
       font-size: 1.2rem;
       font-weight: 400;
       color: $ning-color4;
-      margin: 2% 0;
+      margin: 6% 0;
     }
   }
 
-  .lodging_icelist1 p:nth-child(2),
-  .lodging_icelist2 p:nth-child(2),
-  .lodging_icelist3 p:nth-child(2) {
-    text-align: right;
-    margin-right: 70%;
-  }
+ 
 
   .ice_introducebox {
     width: 35%;
@@ -926,7 +920,10 @@ $ning-englishont: "Playfair Display", serif;
   }
   .lodging_nocturnalwrap {
     width: 60%;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: end;
 
     h4 {
       font-family: $ning-englishont;
@@ -982,7 +979,7 @@ $ning-englishont: "Playfair Display", serif;
     height: 50px;
     background-color: $ning-color4;
     color: $ning-color3;
-    margin-top: 10%;
+    margin-top: 5%;
     border-radius: 0;
     font-family: $ning-chinesefont;
     font-size: 1.2rem;
@@ -999,24 +996,20 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_nocturnallist1,
   .lodging_nocturnallist2,
   .lodging_nocturnallist3 {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    text-align: left;
     p {
-      width: 100%;
       font-family: $ning-chinesefont;
       font-size: 1.2rem;
       font-weight: 400;
       color: $ning-color4;
-      margin: 2% 0;
+      margin:6% 0;
     }
-    display: flex;
-    justify-content: space-between;
+    
   }
 
-  .lodging_nocturnallist1 p:nth-child(1),
-  .lodging_nocturnallist2 p:nth-child(1),
-  .lodging_nocturnallist3 p:nth-child(1) {
-    margin-left: 70%;
-    text-align: left;
-  }
 
   .nocturnal_introducebox {
     width: 35%;
@@ -1347,23 +1340,18 @@ $ning-englishont: "Playfair Display", serif;
   .lodging_tropicallist1,
   .lodging_tropicallist2,
   .lodging_tropicallist3 {
+    width: 30%;
     display: flex;
+    justify-content: space-between;
     p {
-      width: 100%;
       font-family: $ning-chinesefont;
       font-size: 1.2rem;
       font-weight: 400;
       color: $ning-color4;
-      margin: 2% 0;
+      margin: 6% 0;
     }
   }
 
-  .lodging_tropicallist1 p:nth-child(2),
-  .lodging_tropicallist2 p:nth-child(2),
-  .lodging_tropicallist3 p:nth-child(2) {
-    text-align: right;
-    margin-right: 70%;
-  }
 
   .tropical_introducebox {
     width: 35%;
@@ -2036,93 +2024,95 @@ $ning-englishont: "Playfair Display", serif;
     background-color: $ning-color2;
   }
 
+  
+
   //DATE css
 
-  .react-calendar {
-    width: 400px;
-    max-width: 100%;
-    background-color: #fff;
-    color: #222;
-    border-radius: 8px;
-    font-family: $ning-chinesefont;
-    line-height: 1.125em;
-  }
-  .react-calendar__navigation button {
-    color: $ning-color1;
-    min-width: 44px;
-    background: none;
-    font-size: 16px;
-    margin-top: 8px;
-  }
-  .react-calendar__navigation button:enabled:hover,
-  .react-calendar__navigation button:enabled:focus {
-    background-color: #f8f8fa;
-  }
-  .react-calendar__navigation button[disabled] {
-    background-color: #f0f0f0;
-  }
-  abbr[title] {
-    text-decoration: none;
-  }
-  /* .react-calendar__month-view__days__day--weekend {
-  color: #d10000;
- } */
-  .react-calendar__tile:enabled:hover,
-  .react-calendar__tile:enabled:focus {
-    background: #f8f8fa;
-    color: $ning-color1;
-    border-radius: 6px;
-  }
-  .react-calendar__tile--now {
-    background: #eb5b374b;
-    border-radius: 6px;
-    font-weight: bold;
-    color: $ning-color1;
-  }
-  .react-calendar__tile--now:enabled:hover,
-  .react-calendar__tile--now:enabled:focus {
-    background: #eb5b374b;
-    border-radius: 6px;
-    font-weight: bold;
-    color: $ning-color1;
-  }
-  .react-calendar__tile--hasActive:enabled:hover,
-  .react-calendar__tile--hasActive:enabled:focus {
-    background: #f8f8fa;
-  }
-  .react-calendar__tile--active {
-    background: $ning-color1;
-    border-radius: 6px;
-    font-weight: bold;
-    color: white;
-  }
-  .react-calendar__tile--active:enabled:hover,
-  .react-calendar__tile--active:enabled:focus {
-    background: $ning-color1;
-    color: white;
-  }
-  .react-calendar--selectRange .react-calendar__tile--hover {
-    background-color: #f8f8fa;
-  }
-  .react-calendar__tile--range {
-    background: #f8f8fa;
-    color: $ning-color1;
-    border-radius: 0;
-  }
-  .react-calendar__tile--rangeStart {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    background: $ning-color1;
-    color: white;
-  }
-  .react-calendar__tile--rangeEnd {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    background: $ning-color1;
-    color: white;
-  }
+  //   .react-calendar {
+  //     width: 400px;
+  //     max-width: 100%;
+  //     background-color: #fff;
+  //     color: #222;
+  //     border-radius: 8px;
+  //     font-family: $ning-chinesefont;
+  //     line-height: 1.125em;
+  //   }
+  //   .react-calendar__navigation button {
+  //     color: $ning-color1;
+  //     min-width: 44px;
+  //     background: none;
+  //     font-size: 16px;
+  //     margin-top: 8px;
+  //   }
+  //   .react-calendar__navigation button:enabled:hover,
+  //   .react-calendar__navigation button:enabled:focus {
+  //     background-color: #f8f8fa;
+  //   }
+  //   .react-calendar__navigation button[disabled] {
+  //     background-color: #f0f0f0;
+  //   }
+  //   abbr[title] {
+  //     text-decoration: none;
+  //   }
+  //   /* .react-calendar__month-view__days__day--weekend {
+  //   color: #d10000;
+  //  } */
+  //   .react-calendar__tile:enabled:hover,
+  //   .react-calendar__tile:enabled:focus {
+  //     background: #f8f8fa;
+  //     color: $ning-color1;
+  //     border-radius: 6px;
+  //   }
+  //   .react-calendar__tile--now {
+  //     background: #eb5b374b;
+  //     border-radius: 6px;
+  //     font-weight: bold;
+  //     color: $ning-color1;
+  //   }
+  //   .react-calendar__tile--now:enabled:hover,
+  //   .react-calendar__tile--now:enabled:focus {
+  //     background: #eb5b374b;
+  //     border-radius: 6px;
+  //     font-weight: bold;
+  //     color: $ning-color1;
+  //   }
+  //   .react-calendar__tile--hasActive:enabled:hover,
+  //   .react-calendar__tile--hasActive:enabled:focus {
+  //     background: #f8f8fa;
+  //   }
+  //   .react-calendar__tile--active {
+  //     background: $ning-color1;
+  //     border-radius: 6px;
+  //     font-weight: bold;
+  //     color: white;
+  //   }
+  //   .react-calendar__tile--active:enabled:hover,
+  //   .react-calendar__tile--active:enabled:focus {
+  //     background: $ning-color1;
+  //     color: white;
+  //   }
+  //   .react-calendar--selectRange .react-calendar__tile--hover {
+  //     background-color: #f8f8fa;
+  //   }
+  //   .react-calendar__tile--range {
+  //     background: #f8f8fa;
+  //     color: $ning-color1;
+  //     border-radius: 0;
+  //   }
+  //   .react-calendar__tile--rangeStart {
+  //     border-top-right-radius: 0;
+  //     border-bottom-right-radius: 0;
+  //     border-top-left-radius: 6px;
+  //     border-bottom-left-radius: 6px;
+  //     background: $ning-color1;
+  //     color: white;
+  //   }
+  //   .react-calendar__tile--rangeEnd {
+  //     border-top-left-radius: 0;
+  //     border-bottom-left-radius: 0;
+  //     border-top-right-radius: 6px;
+  //     border-bottom-right-radius: 6px;
+  //     background: $ning-color1;
+  //     color: white;
+  //   }
 }

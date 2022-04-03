@@ -181,7 +181,7 @@ const HomeTransportion = () => {
             ref={mapRef}
             center={[25.0330456, 121.5436104]}
             zoom={16}
-            style={{ height: "100vh" }}
+            style={{ height: "100%" }}
           >
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

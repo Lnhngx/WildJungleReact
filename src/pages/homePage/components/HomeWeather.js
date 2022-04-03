@@ -49,7 +49,6 @@ const HomeWeather = () => {
             moment="night"
           />
           <p className="ning_weather">{weatherElement.locationName}</p>
-          <p className="ning_weatherEn">Weather</p>
         </div>
         <div className="ning_weatherCout">
           <div className="ning_weatherNumber">{weatherElement.temperature}</div>
