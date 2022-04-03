@@ -118,9 +118,13 @@ function Activity() {
     //位置點擊
     const [positions, setPositions] = useState({});
     const [clickedPosition, setClickedPosition] = useState({});
+    console.log(Object.keys(positions).length)
 
     //座位驗證
     const [seatData, setSeatData] = useState([]);
+
+    //判斷人數
+    const [person, setPerson] = useState(0);
 
     //
     const [plan, setPlan] = useState(0);
@@ -233,15 +237,26 @@ function Activity() {
                             psed[i].splice(psed[i].findIndex((e) => e === j), 1);
                             setClickedPosition({ ...psed });
                         } else {
-                            if (!psed[i]) {
-                                psed[i] = [];
-                                psed[i].push(j);
-                                setClickedPosition({ ...psed })
+                            if (Object.keys(positions).length > person) {
+                                alert("選取座位超過上限！")
+                                return
                             } else {
-                                psed[i].push(j);
-                                setClickedPosition({ ...psed })
+                                if (!psed[i]) {
+                                    psed[i] = [];
+                                    psed[i].push(j);
+                                    setClickedPosition({ ...psed });
+                                } else {
+                                    psed[i].push(j);
+                                    setClickedPosition({ ...psed });
+                                }
                             }
                         }
+
+                        // //驗證訂位人數
+                        // if (Object.keys(positions).length > person) {
+                        //     alert("選取座位超過上限！")
+                        //     return
+                        // }
 
                     }} className={seatData.includes(`${i}:${j}`) ? 'seat-disabled' :
                         (clickedPosition[i] && clickedPosition[i].length > 0 && clickedPosition[i].some((n) => n === j)) ? "seatsClick" : "seats"}
@@ -328,7 +343,7 @@ function Activity() {
                         <div className="buttonGrop2">
                             <button onClick={() => {
                                 const temp_arr = { sid: "s1", name: "動物認養方案-" + plan + "個月", price: planPrice, quantity: plan };
-                                thirdcart.addItem(temp_arr);setShow2(true);
+                                thirdcart.addItem(temp_arr); setShow2(true);
                             }}>加入購物車</button>
                             <button onClick={() => { setState3(!state3); setState4(true); scrollToSection4() }}>回上一步</button>
                         </div>
@@ -443,14 +458,33 @@ function Activity() {
                                     <option value="白晝B">白晝B(12:00~13:30)</option>
                                     <option value="星光A">星光A(20:00~21:30)</option>
                                 </select>
-                                <select>
+                                <select onChange={(e) => {
+                                    if (e.target.value === "1") {
+                                        setPerson(1)
+                                    }
+                                    if (e.target.value === "2") {
+                                        setPerson(2)
+                                    }
+                                    if (e.target.value === "3") {
+                                        setPerson(3)
+                                    }
+                                    if (e.target.value === "4") {
+                                        setPerson(4)
+                                    }
+                                    if (e.target.value === "5") {
+                                        setPerson(5)
+                                    }
+                                    if (e.target.value === "6") {
+                                        setPerson(6)
+                                    }
+                                }}>
                                     <option>選擇人數</option>
-                                    <option>獨享(一人)</option>
-                                    <option>麻吉同行(兩人)</option>
-                                    <option>必有我師(三人)</option>
-                                    <option>麻將夥伴(四人)</option>
-                                    <option>偶像團體(五人)</option>
-                                    <option>會不會太多(六人)</option>
+                                    <option value="1">獨享(一人)</option>
+                                    <option value="2">麻吉同行(兩人)</option>
+                                    <option value="3">必有我師(三人)</option>
+                                    <option value="4">麻將夥伴(四人)</option>
+                                    <option value="5">偶像團體(五人)</option>
+                                    <option value="6">會不會太多(六人)</option>
                                 </select>
                                 <button onClick={() => {
                                     setState2(!state2);
@@ -486,7 +520,7 @@ function Activity() {
                                     setShow(true);
                                 }}>加入購物車</button>
                                 {ModalShow1}
-                                <button onClick={() => { setState(!state); setState2(true) }}>回上一步</button>
+                                <button onClick={() => { setState(!state); setState2(true); setPositions({}); setClickedPosition({}); setPerson(0) }}>回上一步</button>
                             </div>
                         </div>
                     </div>
