@@ -83,29 +83,34 @@ function MyDate(props) {
 
   //
   const [count, setCount] = useState(0);
+  const [checkTime, setcheckTime] = useState([]);
+  const [checkColor, setCheckColor] = useState("");
+  console.log(checkColor);
   function checkDate(e) {
+    setCheckColor(e.target.className)
     if (count === 0) {
       let Arr = [...check];
       Arr.splice(0, 2);
-      Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
+      Arr.push(new Date(new Date(e.target.dataset.value).getTime()).toLocaleDateString());
       setCheck(Arr);
+      setcheckTime(new Date(e.target.dataset.value).getTime());
       setCount(1);
     } else if (count === 1) {
       let Arr = [...check];
-      if (new Date(new Date(e).getTime()).toLocaleDateString() > Arr[0]) {
-        Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
+      if (new Date(e.target.dataset.value).getTime() > checkTime) {
+        Arr.push(new Date(new Date(e.target.dataset.value).getTime()).toLocaleDateString());
         setCheck(Arr);
         setCount(0);
       } else {
         Arr.splice(0, 1);
-        Arr.push(new Date(new Date(e).getTime()).toLocaleDateString());
+        Arr.push(new Date(new Date(e.target.dataset.value).getTime()).toLocaleDateString());
         setCheck(Arr);
       }
     }
   }
   setCartdate(check[0]);
   setCartdate2(check[1]);
-
+  console.log(check);
 
   return (
     <>
@@ -135,11 +140,9 @@ function MyDate(props) {
                   {v.map((item, idx) => (
                     <td
                       key={idx}
+                      className={item}
                       data-value={"2022/4/" + item}
-                      // style={{
-                      //   backgroundColor:check[0]===
-                      // }}
-                      onClick={(e) => checkDate(e.target.dataset.value)}
+                      onClick={(e) => checkDate(e)}
                     >
                       {item}
                     </td>

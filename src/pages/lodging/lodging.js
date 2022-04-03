@@ -22,6 +22,8 @@ function Lodging(props) {
 
   const [data, setData] = useState([]);
 
+  // const [stayDay, setStayDay] = useState([]);
+
   //傳送分數至子層
 
   const [total, setTotal] = useState(0);
@@ -315,7 +317,6 @@ function Lodging(props) {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].service_score;
-      console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -326,7 +327,6 @@ function Lodging(props) {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].clean_score;
-      console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -337,7 +337,6 @@ function Lodging(props) {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].comfort_score;
-      console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -348,7 +347,6 @@ function Lodging(props) {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].facility_score;
-      console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -359,7 +357,6 @@ function Lodging(props) {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].cpValue_score;
-      console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -371,9 +368,13 @@ function Lodging(props) {
         comfortTotal(data) +
         facilityTotal(data) +
         cpValueTotal(data)) /
-      5
+        5
     );
   }, [data]);
+
+  //點擊評論
+
+  const [countdata, setCoundata] = useState([]);
 
   const [show, setShow] = useState(false);
   const [state2, setState2] = useState(true);
@@ -399,9 +400,13 @@ function Lodging(props) {
     </Modal>
   );
 
-  //點擊評論
+  // let totalDay;
 
-  const [countdata, setCoundata] = useState([]);
+  // if (stayDay.length === 2) {
+  //   totalDay = new Date(stayDay[1]).getDay() - new Date(stayDay[0]).getDay();
+  // } else {
+  //   totalDay = 0;
+  // }
 
   return (
     <>
@@ -523,7 +528,7 @@ function Lodging(props) {
                 <p>房間定價</p>
                 <h3>
                   <span>NT$ </span>
-                  {3200 * oceancount}
+                  {3200}
                 </h3>
               </div>
             </div>
@@ -543,7 +548,12 @@ function Lodging(props) {
                 <i className="fas fa-plus"></i>
               </button>
             </div>
-            <MyDate setCartdate={setCartdate} setCartdate2={setCartdate2} />
+            {oceanbox === 1 ? (
+              <MyDate setCartdate={setCartdate} setCartdate2={setCartdate2} />
+            ) : (
+              ""
+            )}
+
             {/* <input
               type="date"
               placeholder="入住日期"
@@ -789,13 +799,12 @@ function Lodging(props) {
           >
             <div className="lodging_icewrap">
               <div className="lodging_icetitle">
-                <h4>IceField Style</h4>
                 <h1>冰原3人房型</h1>
                 <div className="lodging_iceprice">
                   <p>房間定價</p>
                   <h3>
                     <span>NT$</span>
-                    {4500 * icecount}
+                    {4500}
                   </h3>
                 </div>
               </div>
@@ -812,7 +821,12 @@ function Lodging(props) {
                   <i className="fas fa-plus"></i>
                 </button>
               </div>
-              <input
+              {icebox === 1 ? (
+                <MyDate setCartdate={setCartdate} setCartdate2={setCartdate2} />
+              ) : (
+                ""
+              )}
+              {/* <input
                 type="date"
                 placeholder="入住日期"
                 className="lodging_iceincheck"
@@ -821,7 +835,7 @@ function Lodging(props) {
                 type="date"
                 placeholder="入住日期"
                 className="lodging_iceincheck"
-              ></input>
+              ></input> */}
               <button
                 className="btn icereservation"
                 onClick={() => {
@@ -1022,7 +1036,6 @@ function Lodging(props) {
         >
           <div className="lodging_nocturnalwrap">
             <div className="lodging_nocturnaltitle">
-              <h4>Nocturnal Style</h4>
               <h1>夜行4人房型</h1>
               <div className="lodging_nocturnalprice">
                 <p>房間定價</p>
@@ -1032,6 +1045,7 @@ function Lodging(props) {
               </div>
             </div>
             <div className="lodging_nocturnalline"></div>
+            
             <div className="lodging_nocturnallist1">
               <p>坪數</p>
               <p>22坪</p>
@@ -1061,13 +1075,12 @@ function Lodging(props) {
           >
             <div className="lodging_nocturnalwrap">
               <div className="lodging_nocturnaltitle">
-                <h4>Nocturnal Style</h4>
                 <h1>夜行4人房型</h1>
                 <div className="lodging_nocturnalprice">
                   <p>房間定價</p>
                   <h3>
                     <span>NT$</span>
-                    {5500 * nocturnalcount}
+                    {5500}
                   </h3>
                 </div>
               </div>
@@ -1090,7 +1103,17 @@ function Lodging(props) {
                   <i className="fas fa-plus"></i>
                 </button>
               </div>
-              <input
+              
+                {nocturnalbox === 1 ? (
+                  <MyDate
+                    setCartdate={setCartdate}
+                    setCartdate2={setCartdate2}
+                  />
+                ) : (
+                  ""
+                )}
+              
+              {/* <input
                 type="date"
                 placeholder="入住日期"
                 className="lodging_nocturnalincheck"
@@ -1099,7 +1122,7 @@ function Lodging(props) {
                 type="date"
                 placeholder="入住日期"
                 className="lodging_nocturnalincheck"
-              ></input>
+              ></input> */}
               <button
                 className="btn nocturnalreservation"
                 onClick={() => {
@@ -1340,7 +1363,6 @@ function Lodging(props) {
           >
             <div className="lodging_tropicalwrap">
               <div className="lodging_tropicaltitle">
-                <h4>Tropical Style</h4>
                 <h1>熱帶5人房型</h1>
                 <div className="lodging_tropicalprice">
                   <p>房間定價</p>
@@ -1369,7 +1391,12 @@ function Lodging(props) {
                   <i className="fas fa-plus"></i>
                 </button>
               </div>
-              <input
+              {tropicalbox === 1 ? (
+                <MyDate setCartdate={setCartdate} setCartdate2={setCartdate2} />
+              ) : (
+                ""
+              )}
+              {/* <input
                 type="date"
                 placeholder="入住日期"
                 className="lodging_tropicalincheck"
@@ -1378,7 +1405,7 @@ function Lodging(props) {
                 type="date"
                 placeholder="退房日期"
                 className="lodging_tropicaloutcheck"
-              ></input>
+              ></input> */}
               <button
                 className="btn tropicalreservation"
                 onClick={() => {
