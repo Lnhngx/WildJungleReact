@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
+import {
+  Magnifier,
+  GlassMagnifier,
+  SideBySideMagnifier,
+  PictureInPictureMagnifier,
+  MOUSE_ACTIVATION,
+  TOUCH_ACTIVATION,
+} from "react-image-magnifiers";
 
 const ProductCarousel = (props) => {
   const [current, setCurrent] = useState(0);
@@ -88,9 +96,6 @@ const ProductCarousel = (props) => {
   if (CarouselData[2].image === " ") {
     CarouselData.splice(-1, 1);
   }
-  
-  
-
 
   const length = CarouselData.length;
   if (!Array.isArray(CarouselData) || CarouselData.length <= 0) {
@@ -120,18 +125,21 @@ const ProductCarousel = (props) => {
                 }
               >
                 {index === current && (
-                  
-                    <div className="alan_product_imgli">
-                      <img
-                        src={slider.image === "" ? " " : slider.image}
-                        alt=""
-                        className="alan_products_img" 
-                      />
-                    </div>
-                
+                  <div className="alan_product_imgli">
+                    <GlassMagnifier
+                      className="alan_products_img"
+                      imageSrc={slider.image === "" ? " " : slider.image}
+                      imageAlt="Example"
+                      allowOverflow={true}
+                      magnifierSize={"200px"}
+                      largeImageSrc={slider.image === "" ? " " : slider.image}
+                    />
+                  </div>
                 )}
               </div>
-              <div className="alan_product_img_icon">0{current + 1}/0{index + 1}</div>
+              <div className="alan_product_img_icon">
+                0{current + 1}/0{index + 1}
+              </div>
             </div>
           );
         })}

@@ -392,10 +392,13 @@ flex-wrap: wrap;
     //max-height: 680px;
     //width: calc(100% - 157px);
   }
-  .alan_slide img {
+  .alan_products_img>img{
     width: 100%;
-    height: 100%;
-    object-fit: scale-down;
+    max-height: 600px;
+    object-fit: contain;
+  }
+  .alan_products_img>div>img{
+    width: 1800px !important;
   }
   // .alan_main_product_img {
   //   display: flex;
