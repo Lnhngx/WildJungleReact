@@ -62,6 +62,8 @@ function App() {
     token: token,
   });
 
+  const [pointData,setPointData]=useState([])
+
   const [commentbox, setCommentbox] = useState(false);
 
   const [toggleLottery, setToggleLottery] = useState(false);
@@ -119,6 +121,8 @@ function App() {
   
   // 紀錄memberList的狀態
   const [actived,setActived]=useState('會員資料')
+  
+  
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -151,6 +155,8 @@ function App() {
                   toggleLottery={toggleLottery}
                   setToggleLottery={setToggleLottery}
                   setActived={setActived}
+                  pointData={pointData}
+                  setPointData={setPointData}
                 />
                 <Chatbot
                   setShow={setShow}
@@ -255,6 +261,8 @@ function App() {
                         auth={auth}
                         actived={actived}
                         setActived={setActived}
+                        pointData={pointData}
+                        setPointData={setPointData}
                       />
                     ) : (
                       <Redirect to="/members" />

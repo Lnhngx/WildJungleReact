@@ -6,7 +6,6 @@ import Config from '../Config';
 import MemberInfo from './MemberInfo'
 import GradeInfo from './GradeInfo'
 import Creditcard from './Creditcard'
-import CreditcardAdd from './CreditcardAdd'
 import AddressAdd from './AddressAdd'
 import OrderInfo from './OrderInfo'
 import OrderTicket from './OrderTicket'
@@ -36,7 +35,8 @@ function MemberNavItem(props){
     setSidData,
     creditData,
     setCreditData,
-
+    pointData,
+    setPointData
   }=props
 
   const [navActived,setNavActived]=useState(navState)
@@ -166,7 +166,7 @@ function MemberNavItem(props){
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[2] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[3] ? <ConvenienceStore navActived={navActived} orderNavItem={orderNavItem}/> : '' }
-    {actived===memberlist[2] && navState.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem}/> : '' }
+    {actived===memberlist[2] && navState.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem} pointData={pointData} setPointData={setPointData} /> : '' }
     {actived===memberlist[2] && navState.discountNavItem===discountNavItem[1] ? <DiscountTicket navActived={navActived} discountNavItem={discountNavItem}/> : '' }
     {actived===memberlist[3] && navState.likeNavItem===likeNavItem[0] ? <ProductLike navActived={navActived} likeNavItem={likeNavItem}/> : '' }
     {actived===memberlist[3] && navState.likeNavItem===likeNavItem[1] ? <ActivityLike navActived={navActived} likeNavItem={likeNavItem}/> : '' }

@@ -1,8 +1,12 @@
 import React from "react";
 
-function DiscountPoints(){
+function DiscountPoints(props){
+    const {pointData}=props;
+
+ 
     return(<>
-        <table className="tysu_table">
+    {console.log(pointData)}
+        <table className="tysu_table" style={{marginBottom:"50rem"}}>
             <thead>
                 <tr className="tysu_orderTr">
                     <th style={{width: "42px"}}></th>
@@ -14,14 +18,17 @@ function DiscountPoints(){
                 </tr>
             </thead>
             <tbody>
-                <tr className="tysu_orderTr tysu_orderText">
-                    <th>1</th>
-                    <td>P77C98</td>
-                    <td className="tysu_orderBg">遊戲闖關</td>
-                    <td>5</td>
-                    <td>2022/06/01~2022/08/01</td>
-                    <td>未使用</td>
-                </tr>
+                {pointData.map((v,i)=>{
+                    return(<tr key={i} className="tysu_orderTr tysu_orderText">
+                        <th>{i+1}</th>
+                        <td>P77C{v.bonusList_sid}</td>
+                        <td className="tysu_orderBg">{v.name}</td>
+                        <td>{v.number}</td>
+                        <td>{v.getTime_start+'~'+v.getTime_end}</td>
+                        <td>{v.bonus_status}</td>
+                    </tr>)
+                })}
+                
             </tbody>
         </table>
     </>)
