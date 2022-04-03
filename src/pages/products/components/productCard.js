@@ -3,7 +3,7 @@ import ProductItem from "./productItem";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function ProductCard(props) {
-  const { products, spinner} = props;
+  const { products} = props;
 
   const [scroll, setScroll] = useState({
     items: Array.from(products.filter((v, i) => i < 6)),
