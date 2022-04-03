@@ -63,7 +63,7 @@ import HomeWeather from "./HomeWeather";
 const HomeCarousel = () => {
   const img = useRef();
 
-const [count , setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const backImg = [
     "img/home/carousel/carousel01.jpg",
@@ -80,14 +80,14 @@ const [count , setCount] = useState(0)
       img.current.src = backImg[i + 1];
       i++;
       console.log("2", i);
-      setCount(i)
+      setCount(i);
     }
     if (i === 5) {
       i = 0;
       img.current.src = backImg[i];
     }
     console.log("3", i);
-    setCount(i)
+    setCount(i);
   };
 
   const prev = () => {
@@ -96,16 +96,19 @@ const [count , setCount] = useState(0)
       img.current.src = backImg[i - 1];
       i--;
       console.log(i);
-      setCount(i)
+      setCount(i);
     }
     if (i === -1) {
       i = 4;
       img.current.src = backImg[i];
     }
     console.log(i);
-    setCount(i)
+    setCount(i);
   };
 
+
+
+  
   return (
     <>
       <div className="carousel">
@@ -165,7 +168,7 @@ const [count , setCount] = useState(0)
             <img
               src="/img/home/carousel/carousel01.jpg"
               alt=""
-              className={ count === 0 ? "thumbnail active" : "thumbnail"}
+              className={count === 0 ? "thumbnail active" : "thumbnail"}
             ></img>
             <img
               src="/img/home/carousel/carousel02.jpg"
