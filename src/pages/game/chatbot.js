@@ -628,8 +628,14 @@ function Chatbot(props){
         <div className="tool_bar">
             <div className="rich_menu" onClick={()=>{
                 if(!toggleMenu){
-                    document.querySelector('.menu').style.bottom = '50px'
-                    setToggleMenu(true)
+                    if(toggleSticker){
+                        setToggleSticker(false);
+                        document.querySelector('.menu').style.bottom = '50px'
+                        setToggleMenu(true)
+                    }else{
+                        document.querySelector('.menu').style.bottom = '50px'
+                        setToggleMenu(true)
+                    }
                 }else{
                     document.querySelector('.menu').style.bottom = '-200px'
                     setToggleMenu(false)
