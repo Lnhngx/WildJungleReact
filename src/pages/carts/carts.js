@@ -119,7 +119,7 @@ function Carts(props) {
             <CheckareaShow />
           </div>
           <div className={cartadopt ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaShow />
+            <CheckareaAdopt />
           </div>
           <div className={cartlive ? "stan_checkout_area" : "stan_displaynone"}>
             <CheckareaLive />

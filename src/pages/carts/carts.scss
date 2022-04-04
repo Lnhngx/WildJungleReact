@@ -549,14 +549,14 @@ $stan_height: 50px;
 
 .stan_checkout_area {
   width: 33%;
-  height: 38vh; //暫時
+  height: auto; //暫時
   background-color: $stan_white;
   font-size: 16px;
   font-weight: 600;
 
   @include mobile {
     width: 100%;
-    height: 22vh;
+    height: auto;
   }
 }
 
@@ -566,7 +566,7 @@ $stan_height: 50px;
   @include mobile {
     display: flex;
     justify-content: center;
-    margin: 2% 0px;
+    margin: 1% 0px;
   }
 }
 .stan_temline {
@@ -581,6 +581,7 @@ $stan_height: 50px;
 .stan_checkout {
   padding: 8% 10% 12% 10%;
   line-height: 30px;
+  height: auto;
 
   @include mobile {
     padding-top: 3%;
@@ -621,7 +622,7 @@ $stan_height: 50px;
 }
 
 .stan_checkout_btn {
-  margin-top: 30px;
+  margin-top: 5%;
   width: 100%;
   height: 50px;
   border: 0px;
@@ -634,12 +635,21 @@ $stan_height: 50px;
   }
 }
 
+.stan_checkout_btn2_block{
+  display: none;
+  @include mobile{
+    display: block;
+    background-color: #ececec;
+    width: 100%;
+    height: 20px;
+  }
+}
+
 .stan_checkout_btn2 {
   display: none;
 
   @include mobile {
     display: block;
-    margin: 20px 0;
     width: 100%;
     height: 50px;
     border: 0px;
