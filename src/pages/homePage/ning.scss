@@ -527,7 +527,7 @@ $ning-englishont: "Playfair Display", serif;
     text-align: center;
     margin-left: -5px;
     padding-top: 5px;
-    margin-top: 90px;
+    //margin-top: 90px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
     border: 2px solid $ning-color3;
     cursor: pointer;
@@ -550,8 +550,8 @@ $ning-englishont: "Playfair Display", serif;
 
   .ning_rightflex {
     position: fixed;
-    z-index: 8888;
-    top: 150px;
+    //z-index: 8888;
+    top: 250px;
     right: 0px;
   }
 
