@@ -63,6 +63,7 @@ $stan_height: 50px;
 .stan_arrow_icon {
   color: $stan_black;
   font-size: 25px;
+  padding-top: 10px;
 }
 .stan_h3 {
   font-size: 20px;
@@ -259,7 +260,7 @@ $stan_height: 50px;
 }
 
 .stan_product_selector {
-  padding-left:5%;
+  padding-left: 5%;
   padding-right: 5%;
   width: 100%;
   display: flex;
@@ -314,9 +315,7 @@ $stan_height: 50px;
     }
   }
 
-
-
-  .stan_cart_unclick{
+  .stan_cart_unclick {
     @extend .stan_cart_click;
     background-color: transparent;
   }
@@ -356,6 +355,224 @@ $stan_height: 50px;
   .stan_blackhr {
     width: 100%;
     border: 1px solid $stan_black;
+  }
+}
+
+.stan_product_title_livd {
+  padding: 0px 5%;
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+
+  ul {
+    display: flex;
+    li {
+      font-size: 16px;
+    }
+    li:nth-child(1) {
+      width: 10%;
+    }
+    li:nth-child(2) {
+      width: 20%;
+    }
+    li:nth-child(3) {
+      width: 20%;
+    }
+    li:nth-child(4) {
+      width: 25%;
+    }
+    li:nth-child(5) {
+      width: 15%;
+    }
+    li:nth-child(6) {
+      width: 15%;
+    }
+  }
+  @include mobile {
+    padding: 0px;
+    display: none;
+  }
+  .stan_blackhr {
+    width: 100%;
+    border: 1px solid $stan_black;
+  }
+}
+
+.stan_live_space {
+  padding: 0px 5%;
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+  @include mobile {
+    padding: 0px;
+  }
+
+  ul {
+    display: flex;
+    margin: 5px 0;
+    align-items: center;
+    @include mobile {
+      margin: 20px 0;
+    }
+    li {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    li:nth-child(1) {
+      width: 10%;
+      @include mobile {
+        width: 10%;
+      }
+    }
+    li:nth-child(2) {
+      width: 20%;
+      img {
+        width: 100%;
+      }
+      @include mobile {
+        width: 30%;
+      }
+    }
+    li:nth-child(3) {
+      width: 20%;
+    }
+    li:nth-child(4) {
+      width: 25%;
+    }
+    li:nth-child(5) {
+      width: 15%;
+    }
+    li:nth-child(6) {
+      width: 15%;
+    }
+    .stan_ds_product {
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .stan_mo_product {
+      display: none;
+      @include mobile {
+        display: block;
+        text-align: left;
+        width: 40%;
+        padding-left: 20px;
+      }
+
+      li {
+        margin: 5px 0;
+        font-size: 16px;
+      }
+      li:nth-child(1) {
+        @include mobile {
+          width: 100%;
+        }
+      }
+      li:nth-child(2) {
+        @include mobile {
+          width: 100%;
+        }
+      }
+      li:nth-child(3) {
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
+    .stan_mo_product2 {
+      display: none;
+      @include mobile {
+        display: block;
+        width: auto;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 20px;
+      }
+
+      li {
+        font-size: 16px;
+      }
+      li:nth-child(1) {
+        @include mobile {
+          width: 100%;
+        }
+      }
+      li:nth-child(2) {
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .stan_btndelete {
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    border: 0;
+    background-color: transparent;
+    .stan_btnicon_delete {
+      font-size: 22px;
+      line-height: 24px;
+    }
+  }
+
+  .stan_blackhr {
+    width: 100%;
+    border: 1px solid $stan_black;
+  }
+
+  .stan_count_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 30px;
+
+    @include mobile {
+      justify-content: start;
+    }
+
+    .stan_btninput {
+      border: 1px solid $stan_black;
+      width: 60px;
+      font-size: 18px;
+      text-align: center;
+      margin: 0 3px;
+
+      @include mobile {
+        width: 80px;
+      }
+    }
+
+    .stan_seats_out {
+      @extend .stan_btninput;
+      border: 0px;
+
+      @include mobile {
+        width: 100%;
+      }
+    }
+    .stan_count_minus,
+    .stan_count_add {
+      width: 28px;
+      height: 28px;
+      background-color: $stan_black;
+      color: $stan_white;
+      text-align: center;
+      border: 0px;
+
+      .stan_btnicon {
+        line-height: 25px;
+      }
+
+      &:hover {
+        transition: 0.3s;
+        background-color: $stan_color2;
+        color: $stan_black;
+      }
+    }
   }
 }
 
@@ -479,11 +696,11 @@ $stan_height: 50px;
       }
     }
 
-    .stan_seats_out{
+    .stan_seats_out {
       @extend .stan_btninput;
       border: 0px;
 
-      @include mobile{
+      @include mobile {
         width: 100%;
       }
     }
@@ -635,9 +852,9 @@ $stan_height: 50px;
   }
 }
 
-.stan_checkout_btn2_block{
+.stan_checkout_btn2_block {
   display: none;
-  @include mobile{
+  @include mobile {
     display: block;
     background-color: #ececec;
     width: 100%;
@@ -948,7 +1165,7 @@ $stan_height: 50px;
   display: none;
 }
 
-.stan_displayblock{
+.stan_displayblock {
   display: block;
 }
 
