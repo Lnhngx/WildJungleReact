@@ -13,9 +13,44 @@ const FixedRight = (props) => {
 
 const [open , setOpen]=useState(false)
 
+const [adultcount , setAdultcount] = useState(1)
+const [studentcount , setstudentcount] = useState(1)
+const [lovecount , setlovecount] = useState(1)
+
 const tickeBtn = () =>{
   setOpen(!open)
 }
+
+const addAdultcount = () => { 
+    setAdultcount(adultcount + 1);
+};
+const redAdultcount = () => {
+  if(adultcount>1){
+    setAdultcount(adultcount - 1);
+  }
+};
+
+const addstudentcount = () => {
+  
+    setstudentcount(studentcount + 1);
+ 
+};
+const redstudentcount = () => {
+  if(studentcount>1){
+    setstudentcount(studentcount - 1);
+  }
+};
+
+const addlovecount = () => {
+  
+    setlovecount(lovecount + 1);
+ 
+};
+const redlovecount = () => {
+  if(lovecount>1){
+    setlovecount(lovecount - 1);
+  }
+};
 
   return (
     <>
@@ -34,11 +69,11 @@ const tickeBtn = () =>{
               <h4 className="AdultTicketprice">$50</h4>
             </div>
             <div className="AdultTicketBtn">
-              <button className="btn addBtn">
+              <button className="btn redBtn" onClick={redAdultcount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" value="1" className="AdultTicketvalue" />
-              <button className="btn redBtn">
+              <input type="text" value={adultcount} className="AdultTicketvalue" />
+              <button className="btn addBtn" onClick={addAdultcount}>
                 <i className="fas fa-plus"></i>
               </button>
             </div>
@@ -47,11 +82,11 @@ const tickeBtn = () =>{
               <h4 className="studentTicketprice">$30</h4>
             </div>
             <div className="studentTicketBtn">
-              <button className="btn addBtn">
+              <button className="btn redBtn" onClick={redstudentcount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" value="1" className="studentTicketvalue" />
-              <button className="btn redBtn">
+              <input type="text" value={studentcount} className="studentTicketvalue" />
+              <button className="btn addBtn" onClick={addstudentcount}>
                 <i className="fas fa-plus"></i>
               </button>
             </div>
@@ -60,11 +95,11 @@ const tickeBtn = () =>{
               <h4 className="loveTicketprice">$20</h4>
             </div>
             <div className="loveTicketBtn">
-              <button className="btn addBtn">
+              <button className="btn redBtn" onClick={redlovecount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" value="1" className="loveTicketvalue" />
-              <button className="btn redBtn">
+              <input type="text" value={lovecount} className="loveTicketvalue" />
+              <button className="btn addBtn"  onClick={addlovecount}>
                 <i className="fas fa-plus"></i>
               </button>
             </div>

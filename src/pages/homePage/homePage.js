@@ -55,7 +55,6 @@ function HomePage() {
   return (
     <>
       <HomeCarousel slides={CarouselData} />
-      {/* <Homevideo /> */}
       {/* <div className="ning_informationbox">
         <div className="ning_information">
           <div className="ning_Admissionbox">
