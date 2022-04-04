@@ -155,12 +155,12 @@ $ning-englishont: "Playfair Display", serif;
     }
 
     @keyframes back {
-      100%{
+      100% {
         background-position: 2000px 0;
       }
     }
 
-    h2{
+    h2 {
       font-size: 3rem;
       font-weight: 700;
       color: $ning-color3;
@@ -426,11 +426,10 @@ $ning-englishont: "Playfair Display", serif;
     margin-top: 15px;
   }
 
-  .ning_Jungle{
+  .ning_Jungle {
     width: 100%;
     display: flex;
     justify-content: center;
-
   }
 
   .ning_Jungletropical {
@@ -499,8 +498,28 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   /* 釘選購票、紅利遊戲 */
+  .ning_buyticketBox {
+    display: flex;
+    position: fixed;
+    z-index: 8888;
+    top: 150px;
+    right: -250px;
+    transition: 0.5s;
+  }
 
-  .ning_buyticket,
+  .ning_buyticket {
+    background-color: $ning-color2;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    margin-left: -5px;
+    padding-top: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    border: 2px solid $ning-color3;
+    cursor: pointer;
+  }
+
+  
   .ning_game {
     background-color: $ning-color2;
     width: 70px;
@@ -508,7 +527,7 @@ $ning-englishont: "Playfair Display", serif;
     text-align: center;
     margin-left: -5px;
     padding-top: 5px;
-    margin-top: 30px;
+    margin-top: 90px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
     border: 2px solid $ning-color3;
     cursor: pointer;
@@ -535,6 +554,83 @@ $ning-englishont: "Playfair Display", serif;
     top: 150px;
     right: 0px;
   }
+
+  .ticketForm {
+    width: 250px;
+    height: 400px;
+    background-color: $ning-color3;
+    h2 {
+      text-align: center;
+      font-family: $ning-chinesefont;
+      color: $ning-color3;
+      background-color: $ning-color4;
+      font-size: 1.8rem;
+      line-height: 5rem;
+      margin-bottom: 20px;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      font-family: $ning-chinesefont;
+      color: $ning-color4;
+    }
+
+    .AdultTicketvalue , .studentTicketvalue , .loveTicketvalue {
+      width: 60px;
+      height: 40px;
+      border: 1px solid $ning-color4;
+      border-radius: 0%;
+       font-size: 1.5rem;
+      font-family: $ning-chinesefont;
+      text-align: center;
+    }
+
+    .addBtn , .redBtn {
+      width: 40px;
+      height: 40px;
+      border-radius: 0%;
+      background-color: $ning-color4;
+    }
+
+    i {
+      color: $ning-color3;
+    }
+
+    .AdultTicket,
+    .studentTicket,
+    .loveTicket {
+      display: flex;
+      align-items: center;
+    }
+
+    .AdultTicketBtn,
+    .studentTicketBtn,
+    .loveTicketBtn {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+
+  }
+
+  .ticketType {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .goPay {
+    width: 200px;
+    height: 40px;
+    background-color: $ning-color2;
+    color: $ning-color3;
+    border-radius: 0%;
+    font-family: $ning-chinesefont;
+    font-size: 1.5rem;font-weight: 500;
+  }
+
+  
 
   /* Popular Events 熱門活動 */
 

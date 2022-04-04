@@ -75,12 +75,12 @@ const HomeCarousel = () => {
 
   const next = () => {
     setCount(count === length - 1 ? 0 : count + 1);
-    img.current.src = backImg[count];
+    img.current.src = backImg[count === length - 1 ? 0 : count + 1];
   };
 
   const prev = () => {
     setCount(count === 0 ? length - 1 : count - 1);
-    img.current.src = backImg[count];
+    img.current.src = backImg[count === 0 ? length - 1 : count - 1];
   };
 
   const length = backImg.length;
@@ -92,10 +92,10 @@ const HomeCarousel = () => {
     <>
       <div className="carousel">
         <img src="img/home/carousel/carousel01.jpg" alt="" ref={img} />
-        <div className="welcome">
+        {/* <div className="welcome">
           <h2>WELCOME</h2>
           <h1>Wild Jungle</h1>
-        </div>
+        </div> */}
         <div className="zooDetail">
           <div className="info">
             <div className="ning_Admissionbox">
