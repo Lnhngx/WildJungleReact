@@ -116,6 +116,7 @@
   font-weight: var(--tysu_fontWeight);
   font-size: var(--tysu_fontSize);
   vertical-align: middle;
+  position: relative;
 }
 
 .tysu_tr span {
@@ -203,6 +204,15 @@ input:-webkit-autofill:active,
   width: 7.5rem;
   margin: 0 0.5rem;
 }
+
+.tysu_see {
+  position: absolute;
+  right: 5%;
+  top: 45%;
+  font-size: var(--tysu_fontSize);
+  color: #777;
+}
+
 #emailHelp,
 #nameHelp,
 #genderHelp,

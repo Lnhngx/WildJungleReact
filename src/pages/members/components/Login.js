@@ -22,7 +22,8 @@ function Login(props){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
 
-  const [passType,setPasstype]=useState('password');
+  const [passType,setPassType]=useState('password');
+  const [visible,setVisible]=useState(false);
   
   const captcha = useRef(null);
 
@@ -127,8 +128,17 @@ function Login(props){
                   <label htmlFor="tysu_pass">密碼<br /><span className="tysu_titleSpan">Password</span></label>
                 </th>
                 <td>
-                  <input type={passType} id="tysu_pass" className="tysu_input" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-                  <div id="tysu_passHelp"></div>
+                    <input type={passType} id="tysu_pass" className="tysu_input" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} />
+                        {visible ? (<i className="fas fa-eye tysu_see" onClick={()=>{
+                            setPassType('password')
+                            setVisible(false);
+                        }}></i>) :
+                        (<i className="fas fa-eye-slash tysu_see"  onClick={()=>{
+                            
+                            setPassType('text')
+                            setVisible(true);
+                        }}></i>)}
+                    <div id="tysu_passHelp"></div>
                 </td>
               </tr>
               <tr  className="tysu_tr tysu_last">
