@@ -15,7 +15,15 @@ function DiscountTicket(){
                 </tr>
             </thead>
             <tbody>
-                <tr className="tysu_orderTr tysu_orderText">
+                <tr className="tysu_tr tysu_last">
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td><div className="tysu_creditT">尚未獲得</div></td>
+                    <td></td>
+                    <td></td>
+                </tr> 
+                {/* <tr className="tysu_orderTr tysu_orderText">
                     <th>1</th>
                     <td>R33C98</td>
                     <td className="tysu_orderBg">1月生日禮</td>
@@ -23,7 +31,7 @@ function DiscountTicket(){
                     <td>$100</td>
                     <td>2022/01/31</td>
                     <td>已過期</td>
-                </tr>
+                </tr> */}
             </tbody>
         </table>
     </>)

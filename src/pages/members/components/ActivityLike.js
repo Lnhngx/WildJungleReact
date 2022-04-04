@@ -13,7 +13,7 @@ function ActivityLike(){
                 </tr>
             </thead>
             <tbody>
-                <tr className="tysu_orderTr tysu_orderText">
+                {/* <tr className="tysu_orderTr tysu_orderText">
                     <th>1</th>
                     <td className="tysu_orderBg">餵食秀</td>
                     <td>海豚表演</td>
@@ -22,10 +22,11 @@ function ActivityLike(){
                         <button id="tysu_likeBtn" className="tysu_likeBtn tysu_likeCart">加入購物車</button>
                         <button id="tysu_likeBtn" className="tysu_likeBtn tysu_likeCancel">取消收藏</button>
                     </td>
-                </tr>
+                </tr> */}
             </tbody>
         </table>
-        <nav className="tysu_filterSelect tysu_btnPages">
+        <div className="tysu_creditT" style={{marginBottom:"50rem"}}>尚未加入唷!</div>
+        {/* <nav className="tysu_filterSelect tysu_btnPages">
             <ul className="tysu_pageGroup" style={{marginLeft:"63.2px"}}>
                 <li className="tysu_pageItem">
                     <a className="tysu_pageLink" href="#/">
@@ -44,7 +45,7 @@ function ActivityLike(){
             <ul>
                 <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
             </ul>
-        </nav>
+        </nav> */}
     </>)
 }
 export default ActivityLike
