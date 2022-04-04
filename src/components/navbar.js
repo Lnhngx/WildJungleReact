@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory,useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { animateScroll as scroll, scroller } from "react-scroll";
 import { useCart } from "../pages/carts/utils/useCart";
 import { useSecondCart } from "../pages/carts/utils/useSecondCart";
@@ -14,18 +14,19 @@ function Navbar(props) {
   const secondcart = useSecondCart();
   const thirdcart = useThirdCart();
   const fourthcart = useFourthCart();
-  const allcartItems =
+  const allcartItems = (
     firstcart.cart.totalItems +
     secondcart.cart.totalItems +
     thirdcart.cart.totalItems +
-    fourthcart.cart.totalItems;
+    fourthcart.cart.totalItems)
+
 
   const [nav, setNav] = useState(0);
-  const { auth, setAuth, localState, setLocalState,setComeUrl } = props;
+  const { auth, setAuth, localState, setLocalState, setComeUrl } = props;
   const history = useHistory();
   const location = useLocation();
   // 登入後的選單狀態
-  const [showOut,setShowOut]=useState(false);
+  const [showOut, setShowOut] = useState(false);
 
   const close = function () {
     const menu = document.querySelector(".theMenu");
@@ -59,12 +60,14 @@ function Navbar(props) {
   }, [nav]);
 
 
-  window.addEventListener("load", () => {if(
-    window.localStorage.getItem("like") === null ||
-    window.localStorage.getItem("like") === []
-  ){
-    localStorage.setItem("like", JSON.stringify([]));
-  }});
+  window.addEventListener("load", () => {
+    if (
+      window.localStorage.getItem("like") === null ||
+      window.localStorage.getItem("like") === []
+    ) {
+      localStorage.setItem("like", JSON.stringify([]));
+    }
+  });
 
 
   return (
@@ -85,12 +88,12 @@ function Navbar(props) {
             {auth || localState.token ? (
               <>
                 <FontAwesomeIcon icon={faHouse} className="tysu_logInOut" onClick={() => {
-                  if(showOut){
+                  if (showOut) {
                     setShowOut(false)
-                  }else{
+                  } else {
                     setShowOut(true)
                   }
-                  }}/>
+                }} />
               </>
             ) : (
               <>
@@ -105,16 +108,16 @@ function Navbar(props) {
             )}
             {showOut && <div className="tysu_logInfo">
               <ul>
-                <li onClick={()=>{
+                <li onClick={() => {
                   history.push('/members/modify-member-info')
                   setShowOut(false)
                 }}>會員專區</li>
-                <li  onClick={()=>{
+                <li onClick={() => {
                   localStorage.removeItem("admin_account");
-                    localStorage.removeItem("admin_token");
-                    setAuth(false);
-                    setLocalState({ token: false });
-                    setShowOut(false);
+                  localStorage.removeItem("admin_token");
+                  setAuth(false);
+                  setLocalState({ token: false });
+                  setShowOut(false);
                 }}>登出</li>
               </ul>
             </div>}
@@ -123,7 +126,7 @@ function Navbar(props) {
             </a>
             <a href="/carts">
               <i className="fas fa-shopping-cart stan_cartIcon">
-                <div className="stan_cartIcon_count">{allcartItems}</div>
+                <div className={allcartItems >= 10 ? "stan_cartIcon_count_over10" : "stan_cartIcon_count"}>{allcartItems}</div>
               </i>
             </a>
           </div>

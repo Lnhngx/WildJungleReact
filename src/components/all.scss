@@ -78,21 +78,26 @@ body {
     position: absolute;
     left: 13px;
     top: -10px;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 17px;
     font-weight: 600;
     color: #ffffff;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    border: 1.5px solid #ffffff;
+    border: 1px solid #ffffff;
     background-color: #eb5c37;
     @include mobile {
       left: 18px;
       top: -8px;
     }
   }
+  .stan_cartIcon_count_over10{
+    @extend .stan_cartIcon_count;
+    font-size: 12px;
+  }
 }
+
 
 .footer {
   width: calc(100vw - calc(100vw - 100%));

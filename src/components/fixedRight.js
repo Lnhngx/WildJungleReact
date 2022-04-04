@@ -10,18 +10,70 @@ import {
   scroller,
 } from "react-scroll";
 const FixedRight = (props) => {
+
+const [open , setOpen]=useState(false)
+
+const tickeBtn = () =>{
+  setOpen(!open)
+}
+
   return (
     <>
-      <div className="ning_rightflex">
-        <Link to="">
-          <div className="ning_buyticket">
-            <div className="ning_buyticketicon">
-              <span className="material-icons">confirmation_number</span>
-              <p>立即訂票</p>
-            </div>
+      <div className="ning_buyticketBox"  style={{right:open===true && "0px",zIndex:open===true && "8889"}}>
+        <div className="ning_buyticket">
+          <div className="ning_buyticketicon" onClick={tickeBtn}>
+            <span className="material-icons">confirmation_number</span>
+            <p >立即訂票</p>
           </div>
-        </Link>
-        <div
+        </div>
+        <div className="ticketForm">
+          <h2>入園門票</h2>
+          <div className="ticketType">
+            <div className="AdultTicket">
+              <h4>全票</h4>
+              <h4 className="AdultTicketprice">$50</h4>
+            </div>
+            <div className="AdultTicketBtn">
+              <button className="btn addBtn">
+                <i className="fas fa-minus"></i>
+              </button>
+              <input type="text" value="1" className="AdultTicketvalue" />
+              <button className="btn redBtn">
+                <i className="fas fa-plus"></i>
+              </button>
+            </div>
+            <div className="studentTicket">
+              <h4>學生票</h4>
+              <h4 className="studentTicketprice">$30</h4>
+            </div>
+            <div className="studentTicketBtn">
+              <button className="btn addBtn">
+                <i className="fas fa-minus"></i>
+              </button>
+              <input type="text" value="1" className="studentTicketvalue" />
+              <button className="btn redBtn">
+                <i className="fas fa-plus"></i>
+              </button>
+            </div>
+            <div className="loveTicket">
+              <h4>愛心票</h4>
+              <h4 className="loveTicketprice">$20</h4>
+            </div>
+            <div className="loveTicketBtn">
+              <button className="btn addBtn">
+                <i className="fas fa-minus"></i>
+              </button>
+              <input type="text" value="1" className="loveTicketvalue" />
+              <button className="btn redBtn">
+                <i className="fas fa-plus"></i>
+              </button>
+            </div>
+            <button className="btn goPay">立即結帳</button>
+          </div>
+        </div>
+      </div>
+      <div className="ning_rightflex">
+      <div
           className="ning_game"
           onClick={() => {
             // 由右邊訂選欄的按鈕先判別使用者是否為會員，是的話，才可以玩
