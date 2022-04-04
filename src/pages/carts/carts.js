@@ -2,9 +2,11 @@ import "./carts.scss";
 import Process01 from "./components/Process_01";
 import CartProductItem from "./components/CartProductItem";
 import CartShow from "./components/CartShow";
+import CartAdopt from "./components/CartAdopt";
 import CartLive from "./components/CartLive";
 import Checkarea from "./components/Checkarea";
 import CheckareaShow from "./components/Checkarea_show";
+import CheckareaAdopt from "./components/Checkarea_adopt";
 import CheckareaLive from "./components/Checkarea_live";
 import React, { useState } from "react";
 
@@ -12,6 +14,7 @@ function Carts(props) {
   const [cartpro, setCartpro] = useState(true);
   const [cartshow, setCartshow] = useState(false);
   const [cartlive, setCartlive] = useState(false);
+  const [cartadopt, setCartadopt] = useState(false);
 
   return (
     <>
@@ -27,7 +30,7 @@ function Carts(props) {
                     setCartpro(true);
                     setCartshow(false);
                     setCartlive(false);
-                    console.log(e.target.value);
+                    setCartadopt(false);
                   }
                 }}
               >
@@ -40,6 +43,7 @@ function Carts(props) {
                     setCartpro(false);
                     setCartshow(true);
                     setCartlive(false);
+                    setCartadopt(false);
                   }
                 }}
               >
@@ -51,6 +55,20 @@ function Carts(props) {
                   if (e.target.value == "3") {
                     setCartpro(false);
                     setCartshow(false);
+                    setCartadopt(true);
+                    setCartlive(false);
+                  }
+                }}
+              >
+                認養方案
+              </li>
+              <li
+                value="4"
+                onClick={(e) => {
+                  if (e.target.value == "4") {
+                    setCartpro(false);
+                    setCartshow(false);
+                    setCartadopt(false);
                     setCartlive(true);
                   }
                 }}
@@ -67,6 +85,9 @@ function Carts(props) {
                 className={cartshow ? "stan_cart_click" : "stan_cart_unclick"}
               ></li>
               <li
+                className={cartadopt ? "stan_cart_click" : "stan_cart_unclick"}
+              ></li>
+              <li
                 className={cartlive ? "stan_cart_click" : "stan_cart_unclick"}
               ></li>
             </ul>
@@ -80,6 +101,11 @@ function Carts(props) {
               <CartShow />
             </div>
             <div
+              className={cartadopt ? "stan_displayblock" : "stan_displaynone"}
+            >
+              <CartAdopt />
+            </div>
+            <div
               className={cartlive ? "stan_displayblock" : "stan_displaynone"}
             >
               <CartLive />
@@ -90,6 +116,9 @@ function Carts(props) {
             <Checkarea />
           </div>
           <div className={cartshow ? "stan_checkout_area" : "stan_displaynone"}>
+            <CheckareaShow />
+          </div>
+          <div className={cartadopt ? "stan_checkout_area" : "stan_displaynone"}>
             <CheckareaShow />
           </div>
           <div className={cartlive ? "stan_checkout_area" : "stan_displaynone"}>

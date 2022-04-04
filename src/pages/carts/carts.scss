@@ -259,8 +259,8 @@ $stan_height: 50px;
 }
 
 .stan_product_selector {
-  padding-left: 10%;
-  padding-right: 25%;
+  padding-left:5%;
+  padding-right: 5%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -288,8 +288,8 @@ $stan_height: 50px;
 }
 
 .stan_forcus_selector {
-  padding-left: 10%;
-  padding-right: 25%;
+  padding-left: 5%;
+  padding-right: 5%;
   margin-bottom: 5%;
   width: 100%;
   display: flex;
@@ -303,15 +303,18 @@ $stan_height: 50px;
 
   .stan_cart_click {
     margin-top: -1px;
-    width: 24%;
+    width: 20%;
     height: 9.6px;
     background-color: $stan_black;
+    transition: 1s;
 
     @include mobile {
       width: 20%;
       height: 8px;
     }
   }
+
+
 
   .stan_cart_unclick{
     @extend .stan_cart_click;
@@ -324,6 +327,7 @@ $stan_height: 50px;
   width: 100%;
   font-weight: 600;
   text-align: center;
+
   ul {
     display: flex;
     li {
