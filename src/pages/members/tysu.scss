@@ -162,6 +162,9 @@
   outline: none;
   background-color: transparent;
 }
+.recaptcha {
+  margin: 1.8rem 0 0 2.3rem;
+}
 .tysu_input::placeholder {
   color: var(--tysu_color5);
 }
@@ -208,13 +211,18 @@ input:-webkit-autofill:active,
 #tysu_passHelp,
 #tysu_cfPassHelp,
 #tysu_codeHelp,
-#tysu_addressHelp {
+#tysu_addressHelp,
+#tysu_recaptchaHelp {
   margin: 0.3rem 0 0.3rem 2rem;
   height: 1rem;
   text-align: left;
   font-size: 0.6rem;
   line-height: 1rem;
   color: var(--tysu_color2);
+}
+#tysu_recaptchaHelp {
+  font-size: 1.2rem;
+  margin-left: 2.3rem;
 }
 .tysu_last {
   border-bottom: 0;

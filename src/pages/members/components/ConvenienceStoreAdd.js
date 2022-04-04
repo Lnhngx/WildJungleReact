@@ -11,7 +11,7 @@ function ConvenienceStoreAdd(){
     const [areaName,setAreaName]=useState('松山區');
 
     const [storeData,setStoreData]=useState([]);
-    const [storeName,setStoreName]=useState('上弘(台北市松山區敦化北路168號B2)');
+    const [storeName,setStoreName]=useState('');
 
     
     useEffect(()=>{
@@ -60,8 +60,7 @@ function ConvenienceStoreAdd(){
             })
         }
         get711StoreData();
-        
-        
+  
     },[areaName])
 
     return(<>
@@ -120,16 +119,14 @@ function ConvenienceStoreAdd(){
                             return(<React.Fragment key={i}>
                                     <option value={v.storeName+'('+v.storeAddress+')'}>{v.storeName+'店('+v.storeAddress+')'}</option>
                                 </React.Fragment>)
-                            {/* storeAddress: "台北市松山區復興北路35號"
-                                storeCity: "台北市"
-                                storeFax: "(02)27402897"
-                                storeID: "906209"
-                                storeName: "樂得"
-                                storeTele: "(02)27401886"
-                                storeTown: "松山區" */}
-                            {/* console.log(v) */}
-                            
                         })}
+                        {/* storeAddress: "台北市松山區復興北路35號"
+                            storeCity: "台北市"
+                            storeFax: "(02)27402897"
+                            storeID: "906209"
+                            storeName: "樂得"
+                            storeTele: "(02)27401886"
+                            storeTown: "松山區" */}
                     </select>
                     <div id="tysu_addressHelp"></div>
                 </td>
