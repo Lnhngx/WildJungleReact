@@ -540,6 +540,21 @@ function Chatbot(props){
             <div onClick={(e)=>{
                 makeStickers(e.currentTarget.children[0].src);
             }}><img src="/img/game/panda2.png" alt=""/></div>
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
+            }}><img src="/img/game/panda3.png" alt=""/></div>
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
+            }}><img src="/img/game/panda4.png" alt=""/></div>
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
+            }}><img src="/img/game/bp_bear.png" alt=""/></div>
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
+            }}><img src="/img/game/brownBear3.png" alt=""/></div>
+            <div onClick={(e)=>{
+                makeStickers(e.currentTarget.children[0].src);
+            }}><img src="/img/game/brownBear4.png" alt=""/></div>
         </div>
         {/* 以下是專人客服的頭像(唯有socket.io連線時才會出現) */}
         <div className="agent_chooseArea" style={{display:io?"flex":"none"}}>
@@ -688,9 +703,19 @@ function Chatbot(props){
                 }
             }}>
                 <input name="request" id="request" className="robot_input" type="text" placeholder="想問我什麼就寫在這吧..." ref={myChatbotInput} />
-                <button className="send"><i className="fas fa-paper-plane"></i></button>
+                <button className="send" onClick={(e)=>{
+                    if(myChatbotInput.current.value===""){
+                        e.preventDefault()
+                    }
+                }}><i className="fas fa-paper-plane"></i></button>
             </form>
-            <div className="sticker" onClick={()=>{setToggleSticker(!toggleSticker)}}><img src="/img/game/sticker.png" alt=""/></div>
+            <div className="sticker" onClick={()=>{
+                setToggleSticker(!toggleSticker);
+                document.querySelector('.menu').style.bottom = '-200px';
+                setToggleMenu(false);
+            }}>
+                <img src="/img/game/sticker.png" alt=""/>
+            </div>
         </div> 
     </div>
     </>

@@ -399,34 +399,35 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    height: 200px;
     position: absolute;
+    align-items: center;
     bottom: -200px;
     transition: 1s; 
     overflow-y: auto;
     overflow-x: hidden;
 }
 .stickers_menu div{
-    width: 33.3%;
+    width: 30%;
     height: 100px;
+    margin: 10px 0.6rem;
     cursor: pointer;
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 .stickers_menu div:hover{
     overflow: visible;
 }
 .stickers_menu div img:hover{
-    transform: scale(1.05);
+    transform: scale(1.15);
     height: auto;
 }
 .stickers_menu div img{
-    width: 87%;
+    width: 75%;
     height: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
 .sticker{
     position: absolute;
