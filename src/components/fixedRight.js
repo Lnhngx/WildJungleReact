@@ -19,7 +19,7 @@ const tickeBtn = () =>{
 
   return (
     <>
-      <div className="ning_buyticketBox"  style={{right:open===true && "0px"}}>
+      <div className="ning_buyticketBox"  style={{right:open===true && "0px",zIndex:open===true && "8888"}}>
         <div className="ning_buyticket">
           <div className="ning_buyticketicon" onClick={tickeBtn}>
             <span className="material-icons">confirmation_number</span>
