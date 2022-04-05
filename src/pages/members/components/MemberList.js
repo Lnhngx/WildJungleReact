@@ -7,7 +7,7 @@ import MemberNavItem from './MemberNavItem'
 
 
 function MemberList(props){
-  const {auth,account,token,pointData,setPointData}=props
+  const {auth,account,token,pointData,setPointData,likeAddCard,setLikeAddCart}=props
   // const history=useHistory();
 
   const sid=JSON.parse(localStorage.getItem('admin_account'))
@@ -126,6 +126,8 @@ function MemberList(props){
             setPointData={setPointData}
             user711Data={user711Data}
             setUser711Data={setUser711Data}
+            likeAddCard={likeAddCard}
+            setLikeAddCart={setLikeAddCart}
           />
           <div className="tysu_memberBg">
             <img src="./../img/member/leaf_y.svg" alt="" />

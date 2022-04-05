@@ -14,6 +14,7 @@ const Config={
     TYSU_BONUS_INFO:`${host}/members/bonus/list/`,
     TYSU_CITY:`${host}/members/city/api`,
     TYSU_AREA:`${host}/members/711-areas/api/`,
+    TYSU_PRODUCT_LIKE:`${host}/members/product-like`,
     TYSU_711_STORE:`${host}/members/711-oneareastores/api`,
     TYSU_711_Add:`${host}/members/convenience-store`,
     TYSU_711_DELETE:`${host}/members/convenience-store-delete`,

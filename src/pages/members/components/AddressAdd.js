@@ -4,7 +4,12 @@ function AddressAdd(){
     return(<>
     <table className='tysu_table'>
         <tbody>
-            <tr className="tysu_tr" >
+            <tr>
+                <th></th>
+                <td><div className="tysu_creditT">{ '尚未設定' }</div></td>
+            </tr>
+            
+            {/* <tr className="tysu_tr" >
                 <th>
                     <div className="tysu_creditDelete">
                         <i className="fas fa-times"></i>
@@ -43,7 +48,7 @@ function AddressAdd(){
                     </div>
                 </td>
                 
-            </tr>
+            </tr> */}
         </tbody>
     </table>
     <div className="tysu_btnCenter">

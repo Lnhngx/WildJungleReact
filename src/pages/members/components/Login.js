@@ -162,7 +162,7 @@ function Login(props){
                     <div className="tysu_help">
                       <Link to="/members/signup" className="tysu_signText">
                         <i className="fas fa-user-plus"></i>SIGN UP</Link>
-                      <Link to="forgot" className="tysu_helpText">
+                      <Link to="/members/forgot" className="tysu_helpText">
                         <i className="fas fa-question"></i>HELP</Link>
                         <MemberModal show={show} setShow={setShow} success={success} />
                     </div>

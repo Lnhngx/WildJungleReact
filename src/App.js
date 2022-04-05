@@ -130,6 +130,9 @@ function App() {
   const [delivery, setDelivery] = useState("");
   const [payment, setPayment] = useState("");
 
+  // 喜愛收藏要加入購物車的產品
+  const [likeAddCard,setLikeAddCart]=useState();
+
   return (
     <FourthCartProvider localStorage="fourthCart">
       <ThirdCartProvider localStorage="thirdCart">
@@ -263,6 +266,8 @@ function App() {
                         setActived={setActived}
                         pointData={pointData}
                         setPointData={setPointData}
+                        likeAddCard={likeAddCard}
+                        setLikeAddCart={setLikeAddCart}
                       />
                     ) : (
                       <Redirect to="/members" />
