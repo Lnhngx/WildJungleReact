@@ -16,6 +16,11 @@ function Carts(props) {
   const [cartlive, setCartlive] = useState(false);
   const [cartadopt, setCartadopt] = useState(false);
 
+  if (localStorage.getItem("admin_account") !== undefined) {
+    const member_sid = JSON.parse(localStorage.getItem("admin_account"));
+  };
+
+
   return (
     <>
       <div className="stan_carts_main_ec">
@@ -87,8 +92,7 @@ function Carts(props) {
               <li
                 className={cartadopt ? "stan_cart_click" : "stan_cart_unclick"}
               ></li>
-              <li
-                className={cartlive ? "stan_cart_click" : "stan_cart_unclick"}
+              <li className={cartlive ? "stan_cart_click" : "stan_cart_unclick"}
               ></li>
             </ul>
 

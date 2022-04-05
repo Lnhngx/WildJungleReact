@@ -12,10 +12,15 @@ function Cartfilloutform(props) {
   const [park, setPark] = useState(false);
   const [credit, setCredit] = useState(false);
   const [cash, setCash] = useState(false);
+  const [bank, setBank] = useState(false);
 
-  const{setName,setPhone,setEmail,setAddress,setDelivery,setPayment}=props;
+  const { setName, setPhone, setEmail, setAddress, setDelivery, setPayment } = props;
+
 
   const { cart } = useCart();
+
+
+
   return (
     <>
       <div className="stan_carts_main">
@@ -65,7 +70,7 @@ function Cartfilloutform(props) {
               <ul>
                 <li></li>
                 <li>結帳金額</li>
-                <li>${cart.cartTotal >= 100 ? cart.cartTotal - 100 : 0}</li>
+                <li>${cart.cartTotal + 100}</li>
               </ul>
             </div>
           </div>
@@ -118,26 +123,36 @@ function Cartfilloutform(props) {
             <select
               className="stan_select_group"
               onClick={(e) => {
-                if(e.target.value==="請選擇"){
+                if (e.target.value === "0") {
                   setCredit(false);
                   setCash(false);
+                  setBank(false);
                   setPayment("");
                 }
-                if (e.target.value === "信用卡") {
-                  setCredit(true);
-                  setCash(false);
+                if (e.target.value === "貨到付款") {
+                  setCash(true);
+                  setBank(false);
+                  setCredit(false);
                   setPayment(e.target.value)
                 }
-                if (e.target.value === "貨到付款") {
+                if (e.target.value === "銀行轉帳") {
+                  setCash(false);
+                  setBank(true);
                   setCredit(false);
-                  setCash(true);
+                  setPayment(e.target.value)
+                }
+                if (e.target.value === "信用卡") {
+                  setCash(false);
+                  setBank(false);
+                  setCredit(true);
                   setPayment(e.target.value)
                 }
               }}
             >
               <option value="0">請選擇</option>
-              <option value="信用卡">信用卡</option>
-              <option value="貨到付款">貨到付款</option>
+              <option value="1">貨到付款</option>
+              <option value="2">銀行轉帳</option>
+              <option value="3">信用卡</option>
             </select>
           </div>
 
