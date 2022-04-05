@@ -79,11 +79,13 @@ export default class CreditcardAdd extends React.Component {
             if(obj.success){
                 const newCredit={...JSON.parse(localStorage.getItem('wildjungle_creditcard'),{...formData})}
                 localStorage.setItem('wildjungle_creditcard',JSON.stringify(newCredit))
-                // console.log(newCredit)
+                console.log(newCredit)
 
                 let newAr=Object.keys(newCredit).map((v)=> newCredit[v] )
-                // console.log(newAr)
-                this.props.setLocalCredit(newAr);
+                console.log(newAr)
+                // this.props.setLocalCredit(newAr);
+                newAr.push({credit_sid: obj.info, credit_num: formData.number, credit_name: formData.name, credit_date: formData.expiry, credit_code:formData.cvc});
+                console.log(newAr)
                 this.props.setCreditData(newAr);
 
                 this.props.getCreditDataAgain();

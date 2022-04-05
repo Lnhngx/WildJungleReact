@@ -68,7 +68,7 @@ function MemberNavItem(props){
           })
         }
   const getCreditDataAgain=async() =>{
-          await fetch(Config.TYSU_CREDITCARD_INFO+sidData.m_sid,{
+          await fetch(Config.TYSU_CREDITCARD_INFO+sid.m_sid,{
               method:'GET',
               headers:{
                   "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
@@ -86,6 +86,9 @@ function MemberNavItem(props){
               
           })
   }
+
+
+ 
   
   return(<>
   <ul className="tysu_memberChild">

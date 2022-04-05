@@ -17,12 +17,12 @@ function Creditcard(props){
     const [cardId,setCardId]=useState(null);
     
 
-    useEffect(()=>{
-        if(Object.keys(creditData).length!==0){
-            setCdData(creditData);
-        }
+    // useEffect(()=>{
+    //     if(Object.keys(creditData).length!==0){
+    //         setCdData(creditData);
+    //     }
         
-    },[creditData])
+    // },[creditData])
     
     // let newAr=Object.keys(cdData).map((v)=> cdData[v])
 
@@ -32,13 +32,14 @@ function Creditcard(props){
     return(<>
     
     {console.log('creditData',creditData)}
-    {console.log('cdData',cdData)}
+    {/* {console.log('cdData',cdData)} */}
         {showTable===true ? <table  className="tysu_table">
             <tbody>
                 <tr>
                     <td>
-                        {cdData.length!==0 && cdData.map((v,i)=>{
-                           return <div key={i} className= {v!==cdData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
+                        {!creditData.length || creditData==='' ? <div className="tysu_creditT">{ '尚未設定' }</div>
+                            : creditData.map((v,i)=>{
+                           return <div key={i} className= {v!==creditData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
                                 <div className="tysu_creditDelete" onClick={
                                     async(e)=>{
                                     // console.log(v.credit_sid)
@@ -48,15 +49,15 @@ function Creditcard(props){
                                         // "Authorization": 'Bearer '+localStorage.getItem('admin_token'), 
                                         "Content-Type":"application/json"
                                     },
-                                    // body:JSON.stringify(cdData.credit_sid)
+                                    // body:JSON.stringify(creditData.credit_sid)
                                 }).then(r=>r.json()).then(obj=>{
                                     console.log(obj)
                                     if(obj.success){
                                         // console.log(obj.error);
-                                        const newArr=cdData.filter((k,t)=>{
+                                        const newArr=creditData.filter((k,t)=>{
                                             return v.credit_sid!==k.credit_sid
                                         })
-                                        setCdData(newArr);
+                                        // setCdData(newArr);
                                         setCreditData(newArr);
                                     }else{
                                         console.log(obj.error);
@@ -84,8 +85,7 @@ function Creditcard(props){
                                 
                             </div>
                         }) }
-                        {!cdData.length && <div className="tysu_creditT">{ '尚未設定' }</div>
-                        }
+                        
                         
                         <div >
                             <button id="tysu_addBtn" className="tysu_addBtn" onClick={()=>{

@@ -28,7 +28,7 @@ function MemberList(props){
   // 取得會員基本資料
   const [sidData,setSidData]=useState({});
   // 取得會員信用卡資料
-  const [creditData,setCreditData]=useState({});
+  const [creditData,setCreditData]=useState([]);
   
   const [user711Data,setUser711Data]=useState({});
   
