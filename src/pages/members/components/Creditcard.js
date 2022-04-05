@@ -39,10 +39,10 @@ function Creditcard(props){
                     <td>
                         {!creditData.length || creditData==='' ? <div className="tysu_creditT">{ '尚未設定' }</div>
                             : creditData.map((v,i)=>{
-                           return <div key={i} className= {v!==creditData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
+                           return <div key={v.credit_sid} className= {v!==creditData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
                                 <div className="tysu_creditDelete" onClick={
                                     async(e)=>{
-                                    // console.log(v.credit_sid)
+                                    console.log(v.credit_sid)
                                     await fetch(Config.TYSU_CREDITCARD_DELETE+v.credit_sid,{
                                     method:'GET',
                                     headers:{
@@ -51,37 +51,41 @@ function Creditcard(props){
                                     },
                                     // body:JSON.stringify(creditData.credit_sid)
                                 }).then(r=>r.json()).then(obj=>{
-                                    console.log(obj)
-                                    if(obj.success){
-                                        // console.log(obj.error);
+                                //     console.log(obj)
+                                //     if(obj.success){
+                                //         // console.log(obj.error);
                                         const newArr=creditData.filter((k,t)=>{
                                             return v.credit_sid!==k.credit_sid
                                         })
-                                        // setCdData(newArr);
+                                        console.log(newArr)
+                                //         // setCdData(newArr);
                                         setCreditData(newArr);
-                                    }else{
-                                        console.log(obj.error);
-                                    }
+                                //     }else{
+                                //         console.log(obj.error);
+                                //     }
                                 });
 
                                 }}>
                                     <i className="fas fa-times"></i>
                                 </div>
-                                <div className="tysu_cardcontent">
-                                    <img className="tysu_creditImg" src="/img/member/creditcard.png" alt="" />
-                                    <div className="tysu_creditNum">
-                                        <div>****&nbsp;-&nbsp;</div>
-                                        <div>****&nbsp;-&nbsp;</div>
-                                        <div>****&nbsp;-&nbsp;</div>
-                                        <div>
-                                            <input type="text" id="tysu_creditCard" className="tysu_input tysu_creditCard"
-                                            disabled
-                                            readOnly
-                                            defaultValue={v.credit_num.slice(15)}
-                                            />
+                                
+                                   <div className="tysu_cardcontent">
+                                        <img className="tysu_creditImg" src="/img/member/creditcard.png" alt="" />
+                                        <div className="tysu_creditNum">
+                                            <div>****&nbsp;-&nbsp;</div>
+                                            <div>****&nbsp;-&nbsp;</div>
+                                            <div>****&nbsp;-&nbsp;</div>
+                                            <div>
+                                                <input type="text" id="tysu_creditCard" className="tysu_input tysu_creditCard"
+                                                disabled
+                                                readOnly
+                                                defaultValue={v.credit_num.slice(15)}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                
+                                
                                 
                             </div>
                         }) }
