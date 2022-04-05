@@ -72,7 +72,7 @@ const redlovecount = () => {
               <button className="btn redBtn" onClick={redAdultcount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" value={adultcount} className="AdultTicketvalue" />
+              <input type="text" defaultValue={adultcount} className="AdultTicketvalue" />
               <button className="btn addBtn" onClick={addAdultcount}>
                 <i className="fas fa-plus"></i>
               </button>
@@ -85,7 +85,7 @@ const redlovecount = () => {
               <button className="btn redBtn" onClick={redstudentcount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" value={studentcount} className="studentTicketvalue" />
+              <input type="text" defaultValue={studentcount} className="studentTicketvalue" />
               <button className="btn addBtn" onClick={addstudentcount}>
                 <i className="fas fa-plus"></i>
               </button>
@@ -98,7 +98,7 @@ const redlovecount = () => {
               <button className="btn redBtn" onClick={redlovecount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" value={lovecount} className="loveTicketvalue" />
+              <input type="text" defaultValue={lovecount} className="loveTicketvalue" />
               <button className="btn addBtn"  onClick={addlovecount}>
                 <i className="fas fa-plus"></i>
               </button>

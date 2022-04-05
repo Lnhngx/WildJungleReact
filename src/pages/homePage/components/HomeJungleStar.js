@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
+import { Link } from "react-scroll";
 // import { Link } from "react-router-dom";
 const eagledata = [
   {
@@ -392,7 +393,9 @@ const HomeJungleStar = () => {
                   <span>
                     吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。
                   </span>
-                  <button className="adoptbtn btn">我要認養！</button>
+                  <Link to="/activity">
+                    <button className="adoptbtn btn">我要認養！</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -421,8 +424,10 @@ const HomeJungleStar = () => {
             <div className="ning_starproductwrap">
               {data.map((v, i) => {
                 return (
-                  <div className="ning_starproductimg">
-                    <img src={v.picture} alt="" />
+                  <>
+                    <div className="ning_starproductimg">
+                      <img src={v.picture} alt="" />
+                    </div>
                     <div className="ning_productText">
                       <div className="ning_productname">
                         <p>老鷹皮雕短夾</p>
@@ -431,7 +436,7 @@ const HomeJungleStar = () => {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </>
                 );
               })}
             </div>

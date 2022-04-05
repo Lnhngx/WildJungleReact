@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Button } from "react-bootstrap";
 import jsSHA from "jssha";
 
 const demoDataFromServer = [
@@ -48,6 +47,12 @@ const customMarker = new L.Icon({
 const HomeTransportion = () => {
   const [selectValue, setselectValue] = useState(0);
   const [busData, setBusData] = useState([]);
+  const [bustimeData, setBustimeData] = useState([]);
+  const [busgostopData, setBusgostopData] = useState([]);
+  const [busbackstopData, setBusbackstopData] = useState([]);
+  const [busgotimeData, setBusgotimeData] = useState([]);
+  const [busbacktimeData, setBusbacktimeData] = useState([]);
+  const [smallbusname, setSmallbusname] = useState("");
   // useEffect(() => {
   //   east0_bus();
   // }, []);
@@ -68,22 +73,41 @@ const HomeTransportion = () => {
         setBusData(data);
       });
 
-    // .then((r) => r.json())
-    // .then((data) => {
-    //   console.log(data);
-    //   const busElements = data.StopUID.reduce((neededElements, item) => {
-    //     if (["TPE22806"].includes(item.StopUID)) {
-    //       neededElements[item.StopUID] = item.StopUID;
-    //     }
-    //     return neededElements;
-    //   }, {});
-    //   setbusElement((prevState) => ({
-    //     ...prevState,
-    //     StopName: busElements.StopName.Zh_tw,
-    //     RouteName: busElements.RouteName.Zh_tw,
-    //     EstimateTime: busElements.EstimateTime,
-    //   }));
+    // https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/${v}?%24format=JSON
   }
+  function getBusAllstop(v) {
+    setSmallbusname(v);
+    fetch(
+      `https://ptx.transportdata.tw/MOTC/v2/Bus/DisplayStopOfRoute/City/Taipei/${v}?%24format=JSON`,
+      {
+        type: "GET",
+        dataType: "json",
+        headers: GetAuthorizationHeader(),
+      }
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        setBusgostopData(data[0]["Stops"]);
+        setBusbackstopData(data[1]["Stops"]);
+      });
+
+    fetch(
+      `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/${v}?%24format=JSON`,
+      {
+        type: "GET",
+        dataType: "json",
+        headers: GetAuthorizationHeader(),
+      }
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        // console.log(data);
+        // setBustimeData(data);
+        setBusgotimeData(data.filter((v) => v["Direction"] === 0));
+        setBusbacktimeData(data.filter((v) => v["Direction"] === 1));
+      });
+  }
+
   function GetAuthorizationHeader() {
     var AppID = "b9ac9c283de045cc8641b8824169d3a5";
     var AppKey = "UHKIgsSeTXUgt2FAKeKbVxyTGsw";
@@ -133,6 +157,11 @@ const HomeTransportion = () => {
     Select_stop(demoDataFromServer[selectValue].StopID);
   }, [selectValue]);
 
+  // useEffect(() => {
+  //   setBusgotimeData(bustimeData.filter((v) => v["Direction"] === 0));
+  //   setBusbacktimeData(bustimeData.filter((v) => v["Direction"] === 1));
+  // }, [bustimeData]);
+
   return (
     <>
       <div className="selectBusBox">
@@ -147,6 +176,54 @@ const HomeTransportion = () => {
           <option value="3">信義大安路口</option>
           <option value="4">大安高工</option>
         </select>
+      </div>
+      <h3 className="ning_smallbusname">{smallbusname}</h3>
+      <div className="ning_smallbusBox">
+        <div className="ning_smallbusGo">
+          <h4>去程</h4>
+          {busgostopData.map((v, i) => {
+            let btd = busgotimeData.filter(
+              (c) => c["StopName"]["Zh_tw"] === v["StopName"]["Zh_tw"]
+            );
+            console.log(busgotimeData);
+            const a =
+              btd["StopStatus"] === 0
+                ? btd["EstimateTime"] <= 90
+                  ? "將到站"
+                  : `${parseInt(btd["EstimateTime"] / 60)}<span>分鐘</span>`
+                : "未發車";
+            return (
+              <>
+                <div className="ning_smallbusStop">
+                  <div className="pulsing-animation"></div>
+                  <p className="ning_smallbusStopname">
+                    {v["StopName"]["Zh_tw"]}
+                  </p>
+                  <p
+                    className="ning_smallbusStopTime"
+                    dangerouslySetInnerHTML={{ __html: a }}
+                  ></p>
+                </div>
+              </>
+            );
+          })}
+        </div>
+        <div className="ning_smallbusBack">
+          <h4>返程</h4>
+          {busbackstopData.map((v, i) => {
+            return (
+              <>
+                <div className="ning_smallbusStop">
+                  <div className="pulsing-animation"></div>
+                  <p className="ning_smallbusStopname">
+                    {v["StopName"]["Zh_tw"]}
+                  </p>
+                  <p className="ning_smallbusStopTime"></p>
+                </div>
+              </>
+            );
+          })}
+        </div>
       </div>
       <h3 className="ning_busstopname">
         {demoDataFromServer[selectValue]["name"]}
@@ -165,9 +242,15 @@ const HomeTransportion = () => {
                 <p
                   className="ning_bustime"
                   dangerouslySetInnerHTML={{ __html: a }}
-                  style={{ color: a === "將到站" && "red" }}
+                  style={{
+                    color: a === "將到站" && "#f9b112",
+                    borderColor: a === "將到站" && "#f9b112",
+                  }}
                 />
-                <p className="ning_busname">
+                <p
+                  className="ning_busname"
+                  onClick={() => getBusAllstop(v["RouteName"]["Zh_tw"])}
+                >
                   {v["RouteName"]["Zh_tw"]}
                   <br />
                   <span>{v["Direction"] === 0 ? "去程" : "返程"}</span>
