@@ -1,6 +1,6 @@
 .Carousel {
     position: relative;
-    height: 300px;
+    // height: 300px;
   
   }
   
@@ -34,9 +34,18 @@
   }
   
   .Carousel__btn--next {
-    right: -15px;
+    right: -100px;
     transform: rotate(45deg);
   }
   .figure{
-    max-height: 200px;
+    max-height: 250px;
+  }
+  .Carousel__railWrapper{
+    width: 100%;
+  }
+
+  @media screen and (min-width: 980px) {
+    .Carousel__railWrapper {
+      width: 105%;
+    }
   }

@@ -11,6 +11,12 @@ const Carousel = ({ cols = 1, gap = 10, children }) => {
   )
 
   const itemSetList = itemList.reduce((result, item, i) => {
+    const mobileDevice = ['Android', 'webOS', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 'Windows Phone']
+    let isMobileDevice = mobileDevice.some(e => navigator.userAgent.match(e))
+    if (isMobileDevice) {
+      cols = 2;
+      gap = 10;
+    }
     if (i % cols === 0) {
       result.push([<Item key={i}>{item}</Item>])
     } else {
@@ -56,7 +62,6 @@ const Carousel = ({ cols = 1, gap = 10, children }) => {
                 gridTemplateColumns: `repeat(${cols}, 1fr)`,
                 gridGap: `${gap}px`
               }}
-              // `repeat(${cols}, 1fr)`
             >
               {set}
             </div>
