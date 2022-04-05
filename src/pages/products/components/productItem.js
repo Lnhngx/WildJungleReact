@@ -26,6 +26,24 @@ function ProductItem(props) {
   //  await  console.log(heart)
   // };
 
+  const likela = () => {
+    const current = JSON.parse(localStorage.getItem("like"));
+    let item = [...current];
+    if (current.includes(""+ProductSid)) {
+      let num = item.findIndex((v) => v === ""+ProductSid);
+      if (num !== -1) {
+        item.splice(num, 1);
+      }
+      console.log("刪去");
+      localStorage.setItem("like", JSON.stringify(item));
+    } else {
+      item.push(""+ProductSid);
+      console.log("新增成功");
+      localStorage.setItem("like", JSON.stringify(item));
+    }
+  };
+
+
 
   return (
     <>
@@ -48,7 +66,7 @@ function ProductItem(props) {
             <span>${ProductsPrice}</span>
           </Link>
           <div className="cardIcon">
-            <i className="fas fa-heart" ></i>
+            <i className="fas fa-heart" onClick={likela}></i>
             <i className="fas fa-shopping-cart" onClick={() => {
                       const item = {
                         sid: ""+ProductSid,
