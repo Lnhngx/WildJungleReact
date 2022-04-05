@@ -150,9 +150,9 @@ function Cartfilloutform(props) {
               }}
             >
               <option value="0">請選擇</option>
-              <option value="1">貨到付款</option>
-              <option value="2">銀行轉帳</option>
-              <option value="3">信用卡</option>
+              <option value="貨到付款">貨到付款</option>
+              <option value="銀行轉帳">銀行轉帳</option>
+              <option value="信用卡">信用卡</option>
             </select>
           </div>
 
