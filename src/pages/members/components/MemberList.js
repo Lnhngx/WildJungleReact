@@ -30,6 +30,7 @@ function MemberList(props){
   // 取得會員信用卡資料
   const [creditData,setCreditData]=useState({});
   
+  const [user711Data,setUser711Data]=useState({});
   
 
   useEffect(()=>{
@@ -82,6 +83,20 @@ function MemberList(props){
     }
     getPointData()
 
+
+    const getUser711=async()=>{
+      await fetch(Config.TYSU_711_Add+'?m_id='+sid['m_sid'],{
+          method:'GET',
+          headers:{
+              "Content-Type":"application/x-www-form-urlencoded"
+          }
+      }).then(r=>r.json()).then(obj=>{
+          console.log('User711:',obj)
+          setUser711Data(obj);
+      })
+  }
+  getUser711()
+  
   },[]);
   
 
@@ -109,6 +124,8 @@ function MemberList(props){
             setCreditData={setCreditData}
             pointData={pointData}
             setPointData={setPointData}
+            user711Data={user711Data}
+            setUser711Data={setUser711Data}
           />
           <div className="tysu_memberBg">
             <img src="./../img/member/leaf_y.svg" alt="" />

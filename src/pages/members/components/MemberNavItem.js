@@ -37,7 +37,9 @@ function MemberNavItem(props){
     creditData,
     setCreditData,
     pointData,
-    setPointData
+    setPointData,
+    user711Data,
+    setUser711Data
   }=props
 
   const [navActived,setNavActived]=useState(navState)
@@ -166,7 +168,7 @@ function MemberNavItem(props){
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[0] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[2] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
-    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[3] ? <ConvenienceStoreAdd navActived={navActived} orderNavItem={orderNavItem}/> : '' }
+    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[3] ? <ConvenienceStore navActived={navActived} orderNavItem={orderNavItem} user711Data={user711Data} setUser711Data={setUser711Data}/> : '' }
     {actived===memberlist[2] && navState.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem} pointData={pointData} setPointData={setPointData} /> : '' }
     {actived===memberlist[2] && navState.discountNavItem===discountNavItem[1] ? <DiscountTicket navActived={navActived} discountNavItem={discountNavItem}/> : '' }
     {actived===memberlist[3] && navState.likeNavItem===likeNavItem[0] ? <ProductLike navActived={navActived} likeNavItem={likeNavItem}/> : '' }

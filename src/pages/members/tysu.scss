@@ -724,6 +724,9 @@ input:-webkit-autofill:active,
     font-weight: 500;
     margin: 1.4rem 0 10px 1.8rem;
   }
+  > .tysu_storeModalBtn {
+    margin: 0 0;
+  }
 }
 .tysu_editModalBtn:hover {
   background-color: var(--tysu_color2);
@@ -735,4 +738,8 @@ input:-webkit-autofill:active,
 }
 .tysu_input.store {
   width: 400px;
+}
+.tysu_address_input {
+  width: 20rem;
+  background-color: #eee;
 }

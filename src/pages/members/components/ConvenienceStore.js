@@ -1,170 +1,101 @@
 import React, { useEffect, useState } from 'react';
 import Config from '../Config';
 
-function ConvenienceStore(){
+import ConvenienceStoreAdd from './ConvenienceStoreAdd'
 
-    const [cityData,setCityData]=useState([]);
-    const [citySelect,setCitySelect]=useState('01');
-    const [cityName,setCityName]=useState('台北市');
-
-    const [areaSelect,setAreaSelect]=useState([]);
-    const [areaName,setAreaName]=useState('松山區');
-
-    const [storeData,setStoreData]=useState([]);
-    const [storeName,setStoreName]=useState('上弘');
+function ConvenienceStore(props){
+    const {user711Data,setUser711Data}=props
+    
+    // props fetch的資料將data(array)設為狀態
+    const [user711D,setUser711D]=useState([]);
+    // 切換為新增畫面
+    const [showStoreAdd,setShowStoreAdd]=useState(false);
 
     
     useEffect(()=>{
-        const get711CityData=async()=>{
-            await fetch(Config.TYSU_CITY,{
-                method:"GET",
-                headers:{
-                    "Content-Type":"application/json"
-                }
-            }).then(r=>r.json()).then(obj=>{
-                // console.log(obj)
-                setCityData(obj);
-            })
+        if(Object.keys(user711Data).length!==0){
+            setUser711D(user711Data.info);
+            
         }
-        get711CityData()
+    },[user711Data,user711D])
 
-    },[])
-
-    useEffect(()=>{
-        const get711AreaData=async()=>{
-            await fetch(Config.TYSU_AREA+citySelect,{
-                method:'GET',
-                headers:{
-                    "Content-Type":"application/x-www-form-urlencoded"
-                },
-            }).then(r=>r.json()).then(obj=>{
-                // console.log(obj.result)
-                setAreaSelect(obj.result)
-                setAreaName(obj.result[0])
-            })
-        }
-        get711AreaData();
-    },[citySelect])
-    
-    useEffect(()=>{
-        const get711StoreData=async()=>{
-            await fetch(Config.TYSU_711_STORE+'?city='+cityName+'&area='+areaName,{
-                method:'GET',
-                headers:{
-                    "Content-Type":"application/x-www-form-urlencoded"
-                },
-            }).then(r=>r.json()).then(obj=>{
-                // console.log(obj.result);
-                setStoreData(obj.result);
-                
-            })
-        }
-        get711StoreData();
-        
-        
-    },[areaName])
 
     return(<>
-    <table className='tysu_table'>
-        <tbody>
-            <tr className="tysu_tr tysu_last" >
-                <th>
-                    {/* <div className="tysu_creditDelete" style={{padding:"0 5px"}}>
-                        <i className="fas fa-times"></i>
-                    </div> */}
-                </th>
-                <td className="tysu_addressTitle" style={{padding:"0 15px"}}>
-                    <label htmlFor="tysu_address">7-11 取貨門市<br /><span className="tysu_titleSpan">convenience store</span></label>
-                </td>
-                <td>
-                    <select id="tysu_address" className="tysu_input city"
-                    value={citySelect}
-                    onChange={(e)=>{
-                        console.log(e.target.value)
-                        setCitySelect(e.target.value);
-                        let n=cityData.filter((v,i)=>{
-                            return v.areaID===e.target.value
-                        })
-                        if(n.length!==0){
-                            console.log(n)
-                            setCityName(n[0].area)
-                        }
-                        // setCityName(e.target.innerHTML)
-                    }}
-                     >
-                        {cityData.map((v,i)=>{
-                                return(<React.Fragment key={i}>
-                                    <option value={v['areaID']}>{v['area']}</option>
-                                </React.Fragment>)
+    {console.log(user711Data)}
+    {console.log(user711D)}
+        {showStoreAdd===false && (<>
+            <table className='tysu_table'>
+                <tbody>
+                    {user711D.length!==0 ? user711D.map((v,i)=>{
+                        return (<tr key={i} className="tysu_tr">
+                        <th>
+                            <div className="tysu_creditDelete" onClick={(e)=>{
+                                // console.log(v["store_sid"])
+                                const deleteStore=async()=>{
+                                    await fetch(Config.TYSU_711_DELETE,{
+                                        method:'POST',
+                                        headers:{
+                                            "Content-Type":"application/json"
+                                        },
+                                        body:JSON.stringify({
+                                            "store_sid":v['store_sid']
+                                        })
+                                    }).then(r=>r.json()).then(obj=>{
+                                        console.log('刪除',obj)
+                                        if(obj.success){
+                                            let newAr=user711D.filter((k,j)=>{
+                                                return v['store_sid']!==k['store_sid']
+                                            })
+                                            console.log(newAr)
+                                            setUser711Data({...user711Data,"error":newAr})
+                                            setUser711D(newAr)
+                                        }else{
+                                            console.log('NO')
+                                        }
+                                    })
+                                }
+                                deleteStore();
+                            }}>
+                                <i className="fas fa-times"></i>
+                            </div>
+                        </th>
+                        <td className="tysu_addressTitle"  style={{padding:"0 15px"}}>
+                            <label htmlFor="tysu_address">7-11 取貨門市【{i+1}】<br /><span className="tysu_titleSpan">convenience store</span></label>
+                        </td>
+                        <td>
+                            <input type="text" id="tysu_address" className="tysu_input tysu_address_input" 
+                            disabled
+                            value={v.store_name}/>
+                            <div id="tysu_addressHelp"></div>
+                        </td>
+                    </tr>)
+                    }) : <tr></tr>}
 
-                        })}
-                    </select>
-                    <select id="tysu_address" className="tysu_input area"
-                        value={areaName}
-                        onChange={(e)=>{
-                            // console.log(cityName);
-                            console.log(e.target.value);
-                            setAreaName(e.target.value);
-                            
-
-                        }}
-                     >
-                        {areaSelect.map((v,i)=>{
-                            return(<React.Fragment key={i}>
-                                    <option value={v}>{v}</option>
-                                </React.Fragment>)
-                        })}
-                    </select>
-                    <select id="tysu_address" className="tysu_input store"
-                        value={storeName}
-                        onChange={(e)=>{
-                            setStoreName(e.target.value)
-                        }} >
-                        {storeData.map((v,i)=>{
-                            return(<React.Fragment key={i}>
-                                    <option value={v.storeName}>{v.storeName+'店('+v.storeAddress+')'}</option>
-                                </React.Fragment>)
-                            {/* storeAddress: "台北市松山區復興北路35號"
-                                storeCity: "台北市"
-                                storeFax: "(02)27402897"
-                                storeID: "906209"
-                                storeName: "樂得"
-                                storeTele: "(02)27401886"
-                                storeTown: "松山區" */}
-                            {/* console.log(v) */}
-                            
-                        })}
-                    </select>
-                    <div id="tysu_addressHelp"></div>
-                </td>
-               
-            </tr>
-            {/* <tr className="tysu_tr tysu_last">
-                <th>
-                    <div className="tysu_creditDelete">
-                        <i className="fas fa-times"></i>
-                    </div>
-                </th>
-                <td className="tysu_addressTitle">
-
-                    <label htmlFor="tysu_address">取貨門市2<br /><span className="tysu_titleSpan">convenience store2</span></label>
-                </td>
-                <td>
-                    <input type="text" id="tysu_address" className="tysu_input" />
-                    <div id="tysu_addressHelp"></div>
-                </td>
-            </tr> */}
-        </tbody>
-    </table>
-    <div className="tysu_btnCenter">
-        <button id="tysu_addBtn" className="tysu_addBtn" onClick={(e)=>{
-            e.preventDefault()
-            
-        }}>
-            {/* <i className="fas fa-plus"></i> */}儲 存
-        </button>
-    </div>
-    </>)
-    
-}
+                    {!user711D.length && (
+                        <tr className="tysu_tr tysu_last">
+                            <th></th>
+                            <td><div className="tysu_creditT">尚未設定</div></td>
+                        </tr>    
+                    )}
+                </tbody>
+            </table>
+            <div className="tysu_btnCenter">
+                <button id="tysu_addBtn" className="tysu_addBtn" onClick={(e)=>{
+                    e.preventDefault()
+                    setShowStoreAdd(true)
+                }}>
+                    <i className="fas fa-plus"></i>
+                </button>
+            </div>
+        </>)}
+        {showStoreAdd &&　<ConvenienceStoreAdd showStoreAdd={showStoreAdd}
+            setShowStoreAdd={setShowStoreAdd} 
+            user711Data={user711Data}
+            setUser711Data={setUser711Data}
+            user711D={user711D}
+            setUser711D={setUser711D}
+        />}
+        
+        
+    </>)}
 export default ConvenienceStore;
