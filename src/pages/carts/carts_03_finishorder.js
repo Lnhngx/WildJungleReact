@@ -1,70 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./carts.scss";
 import Process03 from "./components/Process_03";
 import Filloutorder from "./components/Filloutform_order";
 import Finishorder from "./components/Finish_order";
-import { useCart } from "./utils/useCart";
-import Config from "./Config";
 
 function Cartsfinishorder(props) {
-  const { cart } = useCart();
   const { name, phone, email, address, delivery, payment } = props;
-  const m_sid = (JSON.parse(localStorage.getItem("admin_account"))).m_sid;
-  const [deliverytodb, setDeliverytodb] = useState("1");
-  const [paymenttodb, setPaymenttodb] = useState("1");
-  const [totaltodb, setTotaltodb] = useState(cart.cartTotal + 100);
-  const data = { m_sid: m_sid, payment_sid: paymenttodb, amount: totaltodb };
-
-
-  // fetch(Config.INSERT_CART_PRODUCT, {
-  //   method: 'POST',
-  //   headers: { "Content-Type": "application/json" },
-  //   body: data,
-  // }).then(r => r.json())
-  //   .then(obj => {
-  //     console.log("success");
-  //   });
-
-
-
-
-
-  const data2 = {}
-
-
-
-
-
-
-  // switch (delivery) {
-  //   case "宅配":
-  //     console.log(1)
-  //     return setDeliverytodb(1);
-  //   case "超商取貨":
-  //     console.log(2)
-  //     return setDeliverytodb(2);
-  //   case "園區取貨":
-  //     console.log(3)
-  //     return setDeliverytodb(3);
-  //   default:
-  //     return;
-  // }
-
-  // switch (payment) {
-  //   case "宅配":
-  //     console.log(1)
-  //     return setPaymenttodb(1);
-  //   case "超商取貨":
-  //     console.log(2)
-  //     return setPaymenttodb(2);
-  //   case "園區取貨":
-  //     console.log(3)
-  //     return setPaymenttodb(3);
-  //   default:
-  //     return;
-  // }
-
-
 
   return (
     <>

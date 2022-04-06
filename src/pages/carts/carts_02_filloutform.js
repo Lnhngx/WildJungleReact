@@ -5,6 +5,7 @@ import Filloutorder from "./components/Filloutform_order";
 import { useCart } from "./utils/useCart";
 import { Link } from "react-router-dom";
 import Credit from "../members/components/CreditcardAdd";
+import Config from "./Config";
 
 function Cartfilloutform(props) {
   const [hode, setHode] = useState(false);
@@ -14,12 +15,20 @@ function Cartfilloutform(props) {
   const [cash, setCash] = useState(false);
   const [bank, setBank] = useState(false);
 
-  const { setName, setPhone, setEmail, setAddress, setDelivery, setPayment } = props;
-
+  const { setName, setPhone, setEmail, setAddress, setDelivery, setPayment } =
+    props;
 
   const { cart } = useCart();
-
-
+  const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
+  const [deliverytodb, setDeliverytodb] = useState("1");
+  const [paymenttodb, setPaymenttodb] = useState("1");
+  const [totaltodb, setTotaltodb] = useState(cart.cartTotal + 100);
+  const data = {
+    m_sid: m_sid,
+    payment_sid: paymenttodb,
+    amount: totaltodb,
+  };
+  const data2 = JSON.parse(localStorage.getItem("cart"));
 
   return (
     <>
@@ -93,18 +102,21 @@ function Cartfilloutform(props) {
                   setStore(false);
                   setPark(false);
                   setDelivery(e.target.value);
+                  setDeliverytodb(1);
                 }
                 if (e.target.value === "超商取貨") {
                   setStore(true);
                   setPark(false);
                   setHode(false);
                   setDelivery(e.target.value);
+                  setDeliverytodb(2);
                 }
                 if (e.target.value === "園區取貨") {
                   setPark(true);
                   setStore(false);
                   setHode(false);
                   setDelivery(e.target.value);
+                  setDeliverytodb(3);
                 }
               }}
             >
@@ -133,19 +145,22 @@ function Cartfilloutform(props) {
                   setCash(true);
                   setBank(false);
                   setCredit(false);
-                  setPayment(e.target.value)
+                  setPayment(e.target.value);
+                  setPaymenttodb(1);
                 }
                 if (e.target.value === "銀行轉帳") {
                   setCash(false);
                   setBank(true);
                   setCredit(false);
-                  setPayment(e.target.value)
+                  setPayment(e.target.value);
+                  setPaymenttodb(2);
                 }
                 if (e.target.value === "信用卡") {
                   setCash(false);
                   setBank(false);
                   setCredit(true);
-                  setPayment(e.target.value)
+                  setPayment(e.target.value);
+                  setPaymenttodb(3);
                 }
               }}
             >
@@ -341,6 +356,20 @@ function Cartfilloutform(props) {
             <Link
               to="/carts/finishorder"
               className="stan_link stan_fof_btn_next"
+              onClick={() => {
+                fetch(Config.INSERT_CART_ORDER, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    order: data,
+                    order_detail_product: data2,
+                  }),
+                })
+                  .then((r) => r.json())
+                  .then((obj) => {
+                    console.log(obj);
+                  });
+              }}
             >
               <div>完成結帳</div>
             </Link>
