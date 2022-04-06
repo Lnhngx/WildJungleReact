@@ -217,10 +217,10 @@ function Activity() {
 
     const renderSeats = () => {
         return datas.map((data, i) => (
-            <div className="styleFlex">
+            <div className="styleFlex" key={i}>
                 {data.map((v, j) => {
                     const p = String.fromCharCode(65 + i) + (j + 1);
-                    return <img onClick={() => {
+                    return <img key={j} onClick={() => {
                         //數字轉字母
                         const ps = { ...positions };
                         const psed = { ...clickedPosition };
@@ -270,7 +270,7 @@ function Activity() {
     const renderCards = () => {
 
         return datas2.map((v, i) => (
-            <div className={v.className1}>
+            <div className={v.className1} key={i} >
                 <div className={v.className2}></div>
                 <div className={v.className3}>
                     <div className={v.className4}>{v.id}</div>
