@@ -58,39 +58,39 @@ let datas2 = [{
     className3: "sponsor_introduction_area",
     className4: "sponsor_animalName",
     className5: "sponsor_introductionText",
-    id: "Random",
-    text: "不知道要選哪隻可愛的動物嗎？猶豫了很久還是遲遲無法行動嗎？快點點選亂數抽取鍵幫您找到心中理想的動物吧！",
-    buttonText: "點我亂數抽取！"
+    id: "Coming soon",
+    text: "下一個明星動物正在票選中，還請耐心等待下一個明星動物的誕生！",
+    buttonText: "敬請期待！"
 }];
 
 // sponsor-demo
 let datas3 = [{
     id: "Eagle",
-    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    text: "我是本動物園的明星動物，老鷹！感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。同時也希望這個世界上有更多像您一樣有愛的人！",
     imgSrc: "/img/home/star_eagle.png",
     className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea1",
     className2: "animalImg1"
 }, {
     id: "Shark",
-    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    text: "我是本動物園的明星動物，鯊鯊！感謝您在眾多動物中選擇了我，您好像蠻有品味的喔～而且願意發揮愛心來認養動物的人真是太讓人喜歡了吧！在此代表全體動物獻上萬分謝意。我們會讓這個動物園越來越壯大，並且將知識帶給更多的人～",
     imgSrc: "/img/home/star_shark.png",
     className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea2",
     className2: "animalImg2"
 }, {
     id: "Tiger",
-    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    text: "我是本動物園的明星動物，美洲獅！感謝您在眾多動物中選擇了我，我還以為冷酷的外表會嚇走不少人呢，看來您是一個非常眼光獨到的人喔！而且願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
     imgSrc: "/img/home/star_tiger.png",
     className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea3",
     className2: "animalImg3"
 }, {
     id: "Elephant",
-    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    text: "我是本動物園的明星動物，非洲象！感謝您在眾多動物中選擇了我，別看我好像體型很巨大，但我其實內心非常纖細且溫柔～也非常感謝願意發揮愛心來認養動物的人，真是太讓人尊敬了！在此代表全體動物獻上萬分謝意，感謝您的愛心。",
     imgSrc: "/img/home/star_elephant.png",
     className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea4",
     className2: "animalImg4"
 }, {
     id: "White Fox",
-    text: "感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。",
+    text: "我是本動物園的明星動物，雪狐！感謝您在眾多動物中選擇了我，看來我可愛俏皮的樣子已經成功擄獲您的芳心了呢～在此感謝願意發揮愛心來認養動物的您，真是太讓人尊敬了！同時也代表全體動物獻上萬分謝意，您的小小愛心即將成為蝴蝶效應，會漸漸讓這個世界更美好！",
     imgSrc: "/img/home/star_hitefox.png",
     className: "terry_sponsor_planSelectionArea terry_sponsor_planSelectionArea5",
     className2: "animalImg5"
@@ -237,7 +237,7 @@ function Activity() {
                             psed[i].splice(psed[i].findIndex((e) => e === j), 1);
                             setClickedPosition({ ...psed });
                         } else {
-                            if (Object.keys(positions).length > person) {
+                            if (Object.keys(positions).length >= person) {
                                 alert("選取座位超過上限！")
                                 return
                             } else {
@@ -296,7 +296,7 @@ function Activity() {
                     <div className={v.className2}></div>
                 </div>
                 <div className="introduction_area">
-                    <div className="sponsor_introductionText3">感謝您在眾多動物中選擇了我，願意發揮愛心來認養動物的人真是太讓人尊敬了！在此代表全體動物獻上萬分謝意。</div>
+                    <div className="sponsor_introductionText3">{v.text}</div>
                     <div className="selectAndButton_grop">
                         <div className="sponsorSelect">
                             <select onChange={(e) => {
