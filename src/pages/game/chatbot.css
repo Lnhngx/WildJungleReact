@@ -257,7 +257,6 @@
     position: absolute;
     bottom: 0;
     line-height: 50px;
-    box-shadow: 0 -2px 5px rgba(117, 114, 114, 0.897);
 }
 .robot_input {   
     width: 350px;
@@ -307,6 +306,7 @@
     font-family: sans-serif;
     position: relative;
     transition: 0.7s;
+    margin-left: 2rem;
 }
 .weather_card {
     border-radius: 10px;
@@ -363,7 +363,7 @@
 }
 .chatbot_toLeft i{
     font-size: 3rem;
-    color: rgba(255, 255, 255, 0.562);
+    color: rgba(255, 255, 255);
 }
 .chatbot_toRight{
     position: absolute;
@@ -377,7 +377,7 @@
 }
 .chatbot_toRight i{
     font-size: 3rem;
-    color: rgba(255, 255, 255, 0.562);
+    color: rgba(255, 255, 255);
 }
 /* 以下是貼圖部分 */
 .sticker_message{
@@ -525,11 +525,12 @@
 }
 /* 訂票用的卡片CSS */
 .chatbot_ticketsCard{
-    margin-left: 1.5rem;
     width: 250px;
     height: 350px;
     border-radius: 10px;
     background-color: white;
+    margin-left: 1rem;
+    margin-top: 2rem;
     margin-bottom: 0.5rem;
 }
 .chatbot_tCardTitle{
