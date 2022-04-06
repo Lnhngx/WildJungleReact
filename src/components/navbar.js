@@ -60,6 +60,8 @@ function Navbar(props) {
   }, [nav]);
 
 
+
+
   window.addEventListener("load", () => {
     if (
       window.localStorage.getItem("like") === null ||
@@ -121,7 +123,7 @@ function Navbar(props) {
                 }}>登出</li>
               </ul>
             </div>}
-            <a href="#/">
+            <a href="/members/modify-member-info">
               <i className="fas fa-heart"></i>
             </a>
             <a href="/carts">

@@ -6,7 +6,7 @@ function ProductCard(props) {
   const { products} = props;
 
   const [scroll, setScroll] = useState({
-    items: Array.from(products.filter((v, i) => i < 6)),
+    items: Array.from(products.filter((v, i) => i <= 6)),
     hasMore: true,
   });
 
@@ -15,10 +15,10 @@ function ProductCard(props) {
       setScroll({
         items: scroll.items.concat(
           Array.from(
-            scroll.items.length < 100
+            scroll.items.length < 105
               ? products.filter((v, i) =>
-                  i < products.length
-                    ? scroll.items.length < i && i < scroll.items.length + 10
+                  i <= products.length
+                    ? scroll.items.length <= i && i <= scroll.items.length + 10
                     : products.length
                 )
               : products

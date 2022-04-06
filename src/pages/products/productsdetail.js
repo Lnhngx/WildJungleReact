@@ -80,6 +80,17 @@ function ProductsDetail(props) {
         ])
       )
       .then(console.log("OK"))
+      .then(
+        () => {
+          const current = JSON.parse(localStorage.getItem("like"));
+          const likeheart = document.getElementById("likeheart");
+          if (current.includes(Sid)) {
+            likeheart.style.color = "#eb5c37";
+          } else {
+            likeheart.style.color = "#2d3436";
+          }
+        }
+      )
       .catch((error) => {
         console.log("錯誤了", error);
       });
@@ -142,7 +153,7 @@ function ProductsDetail(props) {
     const current = JSON.parse(localStorage.getItem("like"));
     const likeheart = document.getElementById("likeheart");
     if (current.includes(Sid)) {
-      likeheart.style.color = "red";
+      likeheart.style.color = "#eb5c37";
     } else {
       likeheart.style.color = "#2d3436";
     }
@@ -172,7 +183,7 @@ function ProductsDetail(props) {
       item.push(Sid);
       console.log("新增成功");
       localStorage.setItem("like", JSON.stringify(item));
-      likeheart.style.color = "red";
+      likeheart.style.color = "#eb5c37";
     }
   };
 
@@ -309,6 +320,7 @@ function ProductsDetail(props) {
                   </div>
                   <div
                     className="alan_hashlikedesk"
+                    id="alan_hashlikedesk"
                     onClick={() => {
                       likela();
                     }}
