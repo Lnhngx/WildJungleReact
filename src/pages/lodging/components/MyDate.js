@@ -30,7 +30,7 @@
 
 // export default MyDate;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import _ from "lodash";
 
 const myYear = 2022;
@@ -99,7 +99,7 @@ function MyDate(props) {
       setCount(1);
       //console.log(Arr);
       //colorArr.push(e.target)
-      e.target.style.backgroundColor = "#f9b112";
+      //e.target.style.backgroundColor = "#f9b112";
     } else if (count === 1) {
       if (new Date(e.target.dataset.value).getTime() > checkTime) {
         let Arr = [...check];
@@ -124,13 +124,10 @@ function MyDate(props) {
       }
       //colorArr.push(e.target)
     }
-
+    e.target.style.backgroundColor = "#f9b112";
     colorArr.push(e.target.innerHTML);
-    
-  console.log(colorArr)
-  
+    console.log(e.target.dataset.value, check[0]);
   }
-  
 
   setCartdate(check[0]);
   setCartdate2(check[1]);
@@ -172,6 +169,7 @@ function MyDate(props) {
                       className={item}
                       data-value={"2022/4/" + item}
                       onClick={(e) => checkDate(e)}
+                      style={"2022/4/" + item === check[0] ||"2022/4/" + item===check[1] ? {backgroundColor:"#f9b112"} : "2022/4/" + item > check[0] && "2022/4/" + item < check[1] ? {backgroundColor:"brown"}:{ backgroundColor:"white"} }
                     >
                       {item}
                     </td>
