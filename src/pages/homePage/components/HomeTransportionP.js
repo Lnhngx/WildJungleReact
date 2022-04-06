@@ -2,42 +2,40 @@ import React, { useState, useEffect, useRef } from "react";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Button } from "react-bootstrap";
+import jsSHA from "jssha";
 
 const demoDataFromServer = [
   {
-    lat: 25.03335,
-    lng: 121.5439,
-    name: "捷運大安站(信義)",
-    bus: ["0東", 20, 22, 88, "88區間車", 204, 758, "信義幹線"],
+    lat: 25.0326049,
+    lng: 121.5340312,
+    name: "大安森林公園地下停車場",
+    CarParkID: "056",
   },
   {
-    lat: 25.0343027,
-    lng: 121.5436188,
-    name: "捷運大安站(復興)",
-    bus: [41, 226, 685, "685經吉林路", "復興幹線"],
+    lat: 25.0327172,
+    lng: 121.5387954,
+    name: "大安高工地下停車場",
+    CarParkID: "037",
   },
   {
-    lat: 25.0333694,
-    lng: 121.5421572,
-    name: "師大附中",
-    bus: ["0東", 20, 22, 88, "88區間車", 204, 758, "信義幹線"],
+    lat: 25.0224801,
+    lng: 121.5461995,
+    name: "附中公園地下停車場",
+    CarParkID: "031",
   },
   {
-    lat: 25.03328,
-    lng: 121.54623,
-    name: "信義大安路口",
-    bus: [226, 41, 685, "復興幹線"],
+    lat: 25.0296371,
+    lng: 121.529425,
+    name: "金華公園地下停車場",
+    CarParkID: "024",
   },
   {
-    lat: 25.03245,
-    lng: 121.54345,
-    name: "大安高工",
-    bus: [278, "278區間車", 685, "685經吉林路", "S33懷恩專車", "復興幹線"],
+    lat: 25.0337836,
+    lng: 121.5414,
+    name: "龍門國中地下停車場",
+    CarParkID: "080",
   },
 ];
-
-const Fuxing = [226, 41, 685, "復興幹線"];
 
 const customMarker = new L.Icon({
   iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
@@ -48,12 +46,8 @@ const customMarker = new L.Icon({
 
 const HomeTransportionP = () => {
   const [selectValue, setselectValue] = useState(0);
-
-  const [busElement, setbusElement] = useState({
-    StopName: "",
-    RouteName: "",
-    EstimateTime: 0,
-  });
+  const [seatData, setSeatData] = useState([]);
+  const [PData, setPData] = useState([]);
 
   // useEffect(() => {
   //   east0_bus();
@@ -61,34 +55,42 @@ const HomeTransportionP = () => {
 
   //停車場資訊https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json
 
-  function Fuxing_stop() {
+  function Select_P(CarParkID) {
     fetch(
-      "https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/226?$format=JSON"
+      "https://traffic.transportdata.tw/MOTC/v1/Parking/OffStreet/CarPark/City/Taipei?$&$format=JSON"
     )
       .then((r) => r.json())
       .then((data) => {
+        // setData(data);
+        const ParksData = data.CarParks;
+        const ParksElements = ParksData.reduce((neededElements, item) => {
+          if ([CarParkID].includes(item.CarParkID)) {
+            neededElements[item.CarParkID] = item;
+          }
+          return neededElements;
+        }, {});
         console.log(data);
+        setPData(ParksElements[CarParkID]);
       });
 
-    // .then((r) => r.json())
-    // .then((data) => {
-    //   console.log(data);
-    //   const busElements = data.StopUID.reduce((neededElements, item) => {
-    //     if (["TPE22806"].includes(item.StopUID)) {
-    //       neededElements[item.StopUID] = item.StopUID;
-    //     }
-    //     return neededElements;
-    //   }, {});
-    //   setbusElement((prevState) => ({
-    //     ...prevState,
-    //     StopName: busElements.StopName.Zh_tw,
-    //     RouteName: busElements.RouteName.Zh_tw,
-    //     EstimateTime: busElements.EstimateTime,
-    //   }));
+    fetch(
+      "https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json"
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        const SeatsData = data.data.park;
+        const SeatsElements = SeatsData.reduce((neededElements, item) => {
+          if ([CarParkID].includes(item.id)) {
+            neededElements[item.id] = item;
+          }
+          return neededElements;
+        }, {});
+        setSeatData(SeatsElements[CarParkID]);
+        
+      });
   }
 
   const mapRef = useRef();
-  const [state, setState] = useState([]);
 
   function handleFlyTo() {
     const { current = {} } = mapRef;
@@ -111,18 +113,10 @@ const HomeTransportionP = () => {
   }, [selectValue]);
 
   useEffect(() => {
-    if (selectValue === 1) {
-      Fuxing_stop();
-    }
+    Select_P(demoDataFromServer[selectValue].CarParkID);
   }, [selectValue]);
 
-  // didMount
-  useEffect(() => {
-    // 連接資料庫
-    // 設定狀態
-    console.log("didmount");
-    setState(demoDataFromServer);
-  }, []);
+  // useEffect(() => {setPData(Data.filter((v, i) => { return v["CarParks"]["CarParkID"] ===demoDataFromServer[selectValue].CarParkID}))}, []);
 
   return (
     <>
@@ -132,33 +126,53 @@ const HomeTransportionP = () => {
           value={selectValue}
           onChange={(e) => setselectValue(e.target.value)}
         >
-          <option value="0">安祥公園旁停車場</option>
+          <option value="0">大安森林公園地下停車場</option>
           <option value="1">大安高工地下停車場</option>
-          <option value="2">千里亭復興南路停車場</option>
-          <option value="3">俥亭信義大安停車場</option>
-          <option value="4">附中公園停車場</option>
+          <option value="2">附中公園地下停車場</option>
+          <option value="3">金華公園地下停車場</option>
+          <option value="4">龍門國中地下停車場</option>
         </select>
       </div>
       <h3 className="ning_busstopname">
         {demoDataFromServer[selectValue]["name"]}
       </h3>
       <div className="ning_transportionbox">
-        <div className="ning_busbox">
-          
+        <div className="ning_Pbox">
+          <div className="ning_PTotalBox">
+            <p className="ning_PTotal">總汽車位：</p>
+            <span>{PData["Description"]}</span>
+          </div>
+          <div className="ning_PTotalBox">
+            <p className="ning_PTotal">尚有汽車位：</p>
+            <span className="ning_PAvailablecar">{seatData["availablecar"]}</span>
+          </div>
+          <div className="ning_PTotalBox">
+            <p className="ning_PTotal">地址：</p>
+            <span>{PData["Address"]}</span>
+          </div>
+          <div className="ning_PTotalBox">
+            <p className="ning_PTotal">費率：</p>
+            <span>{PData["FareDescription"]}</span>
+          </div>
+          <div className="ning_PTotalBox">
+            <p className="ning_PTotal">電話：</p>
+            <span>{PData["Telephone"]}</span>
+          </div>
         </div>
+
         <div className="ning_busmap">
           <LeafletMap
             ref={mapRef}
             center={[25.0330456, 121.5436104]}
             zoom={16}
-            style={{ height: "100vh" }}
+            style={{ height: "100%" }}
           >
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
             />
 
-            {state.map(({ lat, lng, name }, index) => (
+            {demoDataFromServer.map(({ lat, lng, name }, index) => (
               <Marker position={[lat, lng]} icon={customMarker} key={index}>
                 <Popup>{name}</Popup>
               </Marker>
