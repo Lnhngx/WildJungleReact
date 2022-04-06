@@ -249,18 +249,18 @@ function Activity() {
     document.querySelector(".terryselect").style.color = "white";
   };
   const color2 = () => {
-    document.querySelector(".terryselect").style.color = "black";
+    document.querySelector(".terryselect2").style.color = "black";
   };
 
   const color3 = () => {
-    document.querySelector(".terryselect").style.color = "white";
+    document.querySelector(".terryselect2").style.color = "white";
   };
   const color4 = () => {
-    document.querySelector(".terryselect").style.color = "black";
+    document.querySelector(".terryselect3").style.color = "black";
   };
 
   const color5 = () => {
-    document.querySelector(".terryselect").style.color = "white";
+    document.querySelector(".terryselect3").style.color = "white";
   };
 
 
@@ -429,7 +429,8 @@ function Activity() {
                 <button
                   onClick={() => {
                     const temp_arr = {
-                      sid: "s1",
+                      sid: plan,
+                      image:`/img/activity/meme_cat.png`,
                       name: "動物認養方案-" + plan + "個月",
                       price: planPrice,
                       quantity: plan,
@@ -659,7 +660,7 @@ function Activity() {
                     const temp_arr = {
                       sid: "s1",
                       name: showTitleChange,
-                      image: `img/activity/show3.jpeg`,
+                      image: `/img/activity/show3.jpeg`,
                       price: 50,
                       quantity: Object.keys(positions).length,
                       seats: positions,
