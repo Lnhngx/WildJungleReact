@@ -7,7 +7,7 @@ import MemberNavItem from './MemberNavItem'
 
 
 function MemberList(props){
-  const {auth,account,token,pointData,setPointData,likeAddCard,setLikeAddCart}=props
+  const {auth,account,token,pointData,setPointData,likeAddCard,setLikeAddCart,likeListData,setLikeListData}=props
   // const history=useHistory();
 
   const sid=JSON.parse(localStorage.getItem('admin_account'))
@@ -29,11 +29,10 @@ function MemberList(props){
   const [sidData,setSidData]=useState({});
   // 取得會員信用卡資料
   const [creditData,setCreditData]=useState([]);
-  // 取得會員收藏資料
-  const [likeListData,setLikeListData]=useState([]);
+  
   // 取得會員超商設定
   const [user711Data,setUser711Data]=useState({});
-  localStorage.setItem('like',JSON.stringify(likeListData));
+  
 
   useEffect(()=>{
     const getSidData=async ()=>{
@@ -85,6 +84,7 @@ function MemberList(props){
     }
     getPointData()
 
+    
     const getLikeList=async ()=>{
       await fetch(Config.TYSU_PRODUCT_LIKE_INFO+sid.m_sid,{
         method: 'GET',
@@ -94,10 +94,11 @@ function MemberList(props){
       }).then(r=>r.json()).then(obj=>{
         console.log('LikeList:',obj)
         if(obj.success){
-          setLikeListData(obj.info)}
+          setLikeListData(obj.info);
+          
+        }
+          
       });
-
-
     }
     getLikeList()
 
@@ -116,7 +117,7 @@ function MemberList(props){
   
   },[]);
   
-
+  localStorage.setItem('like',JSON.stringify(likeListData));
     return(
       <div className="tysu_grade">
           <div className="tysu_gradeImg">

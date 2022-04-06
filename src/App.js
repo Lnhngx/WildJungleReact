@@ -7,7 +7,7 @@ import {
   useLocation,
   Redirect,
 } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 //頁首、頁尾、CSS
@@ -27,6 +27,7 @@ import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
 import MultiChoice from "./pages/game/multiChoice-game.js";
+import Config from "./pages/members/Config"
 import MembersConfirm from "./pages/members/MembersConfirm";
 import Login from "./pages/members/components/Login.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
@@ -132,6 +133,13 @@ function App() {
 
   // 喜愛收藏要加入購物車的產品
   const [likeAddCard,setLikeAddCart]=useState();
+
+  // 取得會員收藏資料
+  const [likeListData,setLikeListData]=useState([]);
+  
+  
+  
+
 
   return (
     <FourthCartProvider localStorage="fourthCart">
@@ -248,6 +256,8 @@ function App() {
                       account={account}
                       comeUrl={comeUrl}
                       setCommentbox={setCommentbox}
+                      likeListData={likeListData}
+                      setLikeListData={setLikeListData}
                     />
                   </Route>
                   <Route path="/members/forgot">
@@ -268,6 +278,8 @@ function App() {
                         setPointData={setPointData}
                         likeAddCard={likeAddCard}
                         setLikeAddCart={setLikeAddCart}
+                        likeListData={likeListData}
+                        setLikeListData={setLikeListData}
                       />
                     ) : (
                       <Redirect to="/members" />
@@ -283,6 +295,8 @@ function App() {
                       account={account}
                       comeUrl={comeUrl}
                       setCommentbox={setCommentbox}
+                      likeListData={likeListData}
+                      setLikeListData={setLikeListData}
                     />
                   </Route>
                   <Route path="/lodging">
