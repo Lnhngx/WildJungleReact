@@ -245,6 +245,12 @@ function Activity() {
     document.querySelector(".terryselect").style.color = "black";
   };
 
+  const color1 = () => {
+    document.querySelector(".terryselect").style.color = "black";
+  };
+
+
+
   const renderSeats = () => {
     return datas.map((data, i) => (
       <div className="styleFlex" key={i}>
@@ -491,8 +497,10 @@ function Activity() {
                 4.開演二十分鐘後不得入場。
               </div>
               <div className="showSelect">
-                <select className="terryselect"
-                onClick={color}
+                <select
+                  className="terryselect"
+                  onClick={color}
+                  onPointerOut={color1}
                   onChange={(e) => {
                     if (e.target.value === "1") {
                       setImgChange("terry_showIntroduction_img");
@@ -535,6 +543,9 @@ function Activity() {
                   <option value="4">萌豹睡覺秀</option>
                 </select>
                 <select
+                  className="terryselect"
+                  onClick={color}
+                  onPointerOut={color1}
                   onChange={(e) => {
                     console.log(e.target.value);
                     fetch("http://localhost:4000/activity", {
@@ -560,6 +571,9 @@ function Activity() {
                   <option value="星光A">星光A(20:00~21:30)</option>
                 </select>
                 <select
+                  className="terryselect"
+                  onClick={color}
+                  onPointerOut={color1}
                   onChange={(e) => {
                     if (e.target.value === "1") {
                       setPerson(1);
