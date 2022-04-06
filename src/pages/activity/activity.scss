@@ -210,14 +210,14 @@ $terry_black: #000000;
     line-height: 40px;
   }
   .terry_title_grop {
-    margin-top: 6%;
+    margin-top: 25%;
     flex-grow: 2;
   }
 }
 
 .terry_show_area_img {
   width: 75%;
-  height: 450px;
+  height: 550px;
   // outline: 2px solid $terry_white;
   background: url("../../../public/img/activity/show1.jpg") center center/cover
     no-repeat;
@@ -348,6 +348,7 @@ $terry_black: #000000;
     .showSelect {
       display: flex;
       flex-direction: column;
+      margin-top: 8%;
       select {
         width: auto;
         height: 50px;
@@ -555,7 +556,7 @@ $terry_black: #000000;
 .terry_sponsor_area {
   .terry_show_area_img1 {
     width: 75%;
-    height: 450px;
+    height: 550px;
     // outline: 2px solid $terry_white;
     background: url("../../../public/img/activity/show3.jpeg") center
       bottom/cover no-repeat;
@@ -653,38 +654,37 @@ $terry_black: #000000;
     position: relative;
   }
   .sponsor_animalImg1 {
-    background: url(../../../public/img/home/star_eagle_bk.png) center
-      center/cover;
+    background: url(../../../public/img/home/star_eagle_bk.png) 2% / contain no-repeat;
     width: 100%;
     height: auto;
   }
   .sponsor_animalImg2 {
-    background: url(../../../public/img/home/star_shark_bk.png) -60% / contain no-repeat;
+    background: url(../../../public/img/home/star_shark_bk.png) 0% / contain no-repeat;
     width: 100%;
     height: auto;
   }
   .sponsor_animalImg3 {
-    background: url(../../../public/img/home/star_tiger_bk.png) -20% center / contain
+    background: url(../../../public/img/home/star_tiger_bk.png) 4% / contain
       no-repeat;
     width: 100%;
     height: auto;
   }
   .sponsor_animalImg4 {
-    background: url(../../../public/img/home/star_elephant_bk.png) -20% center /
+    background: url(../../../public/img/home/star_elephant_bk.png) 8% /
       contain no-repeat;
     width: 100%;
     height: auto;
     margin-top: 30px;
   }
   .sponsor_animalImg5 {
-    background: url(../../../public/img/home/star_hitefox_bk.png) -10% center / contain
+    background: url(../../../public/img/home/star_hitefox_bk.png) 8% / contain
       no-repeat;
     width: 100%;
     height: auto;
     margin-top: 20px;
   }
   .sponsor_animalImg6 {
-    background: url(../../../public/img/activity/questionMark.svg) -20% center /
+    background: url(../../../public/img/activity/questionMark.svg) 4% /
       contain no-repeat;
     width: 100%;
     height: auto;
@@ -842,43 +842,45 @@ $terry_black: #000000;
     position: absolute;
     background: url(../../../public/img/home/star_eagle.png) center
       center/contain no-repeat;
-    width: 700px;
-    height: 700px;
-    bottom: 60px;
+    width: 900px;
+    height: 900px;
+    bottom: 80px;
   }
   .animalImg2 {
     position: absolute;
     background: url(../../../public/img/home/star_shark.png) 30% / contain
       no-repeat;
-    width: 600px;
-    height: 600px;
-    bottom: 60px;
+    width: 800px;
+    height: 800px;
+    bottom: 70px;
+    left: 10px;
   }
   .animalImg3 {
     position: absolute;
     background: url(../../../public/img/home/star_tiger.png) center
       center/contain no-repeat;
-    width: 600px;
-    height: 600px;
-    bottom: 106px;
+    width: 800px;
+    height: 800px;
+    bottom: 15.5%;
     left: 30px;
   }
   .animalImg4 {
     position: absolute;
     background: url(../../../public/img/home/star_elephant.png) center
       center/contain no-repeat;
-    width: 600px;
-    height: 600px;
-    bottom: 90px;
+    width: 800px;
+    height: 800px;
+    bottom: 110px;
+    left: 30px;
   }
   .animalImg5 {
     position: absolute;
     background: url(../../../public/img/home/star_hitefox.png) center
       center/contain no-repeat;
-    width: 650px;
-    height: 650px;
-    bottom: 70px;
-    left: 10px;
+    width: 850px;
+    height: 850px;
+    bottom: 100px;
+    left: 6px;
   }
   .introduction_area {
     display: flex;
@@ -1006,7 +1008,7 @@ $terry_black: #000000;
   justify-content: space-between;
   .terry_show_area_img2 {
     width: 75%;
-    height: 450px;
+    height: 550px;
     // outline: 2px solid $terry_white;
     background: url("../../../public/img/activity/touch1.jpg") center
       center/cover no-repeat;
@@ -1104,20 +1106,19 @@ $terry_black: #000000;
   }
 }
 .terry_animalImg_Area {
-  // width: 100%;
+  width: 100%;
   // height: 600px;
   // outline: 2px solid white;
   // background: url("../../../public/animals-footer.png") center
   //   center/cover no-repeat;
-  bottom: 0;
-  margin-top: 10%;
+  margin-top: 20%;
   img {
     // outline: 1px solid white;
     width: 100%;
     height: auto;
   }
   @include mobile {
-    margin-top: 10%;
+    margin-top: -10%;
   }
 }
 
