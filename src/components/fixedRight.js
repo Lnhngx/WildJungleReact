@@ -160,6 +160,8 @@ const FixedRight = (props) => {
         <div
           className="ning_game"
           onClick={() => {
+            let top = window.pageYOffset + 60
+            document.querySelector('.lottery_container').style.top = top+'px';
             // 由右邊訂選欄的按鈕先判別使用者是否為會員，是的話，才可以玩
             if (localStorage.admin_account !== undefined) {
               const storage = localStorage.getItem("received");
