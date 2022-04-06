@@ -246,7 +246,21 @@ function Activity() {
   };
 
   const color1 = () => {
-    document.querySelector(".terryselect").style.color = "black";
+    document.querySelector(".terryselect").style.color = "white";
+  };
+  const color2 = () => {
+    document.querySelector(".terryselect2").style.color = "black";
+  };
+
+  const color3 = () => {
+    document.querySelector(".terryselect2").style.color = "white";
+  };
+  const color4 = () => {
+    document.querySelector(".terryselect3").style.color = "black";
+  };
+
+  const color5 = () => {
+    document.querySelector(".terryselect3").style.color = "white";
   };
 
 
@@ -414,13 +428,14 @@ function Activity() {
               <div className="buttonGrop2">
                 <button
                   onClick={() => {
-                    const temp_arr = {
-                      sid: "s1",
+                    const temp_arr3 = {
+                      sid: plan,
+                      image:`/img/activity/show3.jpeg`,
                       name: "動物認養方案-" + plan + "個月",
                       price: planPrice,
                       quantity: plan,
                     };
-                    thirdcart.addItem(temp_arr);
+                    thirdcart.addItem(temp_arr3);
                     setShow2(true);
                   }}
                 >
@@ -543,9 +558,9 @@ function Activity() {
                   <option value="4">萌豹睡覺秀</option>
                 </select>
                 <select
-                  className="terryselect"
-                  onClick={color}
-                  onPointerOut={color1}
+                  className="terryselect2"
+                  onClick={color2}
+                  onPointerOut={color3}
                   onChange={(e) => {
                     console.log(e.target.value);
                     fetch("http://localhost:4000/activity", {
@@ -571,9 +586,9 @@ function Activity() {
                   <option value="星光A">星光A(20:00~21:30)</option>
                 </select>
                 <select
-                  className="terryselect"
-                  onClick={color}
-                  onPointerOut={color1}
+                  className="terryselect3"
+                  onClick={color4}
+                  onPointerOut={color5}
                   onChange={(e) => {
                     if (e.target.value === "1") {
                       setPerson(1);
@@ -645,7 +660,7 @@ function Activity() {
                     const temp_arr = {
                       sid: "s1",
                       name: showTitleChange,
-                      image: `img/activity/show3.jpeg`,
+                      image: `/img/activity/meme_cat.png`,
                       price: 50,
                       quantity: Object.keys(positions).length,
                       seats: positions,
