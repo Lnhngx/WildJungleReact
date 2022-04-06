@@ -1366,19 +1366,51 @@ $ning-englishont: "Playfair Display", serif;
     box-shadow: 0 0 0 #ffffff00;
   }
 
-  .ning_busstopname,
+  .ning_busstopname {
+    color: $ning-color1;
+    font-size: 2rem;
+    font-family: $ning-chinesefont;
+    margin: 2% 0;
+  }
+
   .ning_smallbusname {
     color: $ning-color1;
     font-size: 2rem;
     font-family: $ning-chinesefont;
-    margin: 3% 0;
   }
 
-  .ning_busbox {
+  .ning_busbox  {
     width: 40%;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+  }
+
+  .ning_Pbox {
+    width: 40%;
+    
+  }
+
+  .ning_PTotalBox {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    p{
+      width: 30%;
+      font-size: 1.6rem;
+      font-family: $ning-chinesefont;
+    }
+
+    span {
+      width: 70%;
+      font-size: 1.8rem;
+      font-family: $ning-chinesefont;
+      white-space:pre-wrap; 
+    }
+  }
+
+  .ning_PAvailablecar {
+    color: $ning-color1;
   }
 
   .ning_bus {
@@ -1386,6 +1418,12 @@ $ning-englishont: "Playfair Display", serif;
     display: flex;
     justify-content: space-between;
     margin: 5px 0;
+  }
+
+  .ning_smallbusInfo {
+    width: 50%;
+    height: 500px;
+    overflow-y: scroll;
   }
 
   .ning_bustime {
@@ -1431,12 +1469,14 @@ $ning-englishont: "Playfair Display", serif;
   //公車路線細節
 
   .ning_smallbusBox {
-    width: 45%;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    position: relative;
   }
 
   .ning_smallbusGo {
-    width: 50%;
+    width: 45%;
     h4 {
       font-family: $ning-chinesefont;
       font-size: 1.8rem;
@@ -1445,12 +1485,22 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_smallbusBack {
-    width: 50%;
+    width: 45%;
     h4 {
       font-family: $ning-chinesefont;
       font-size: 1.8rem;
       color: $ning-color4;
     }
+  }
+
+  .businfoClose {
+    color: $ning-color3;
+    position:absolute;
+    right:20px;
+    top:0;
+    border-radius: 50%;
+    background-color: $ning-color4;
+    cursor: pointer;
   }
 
   .ning_smallbusStop {

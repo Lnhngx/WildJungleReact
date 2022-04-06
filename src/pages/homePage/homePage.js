@@ -14,7 +14,7 @@ import { CarouselData } from "./components/CarouselData";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-  // const [transportionbtn, setTransportionbtn] = useState(true);
+  const [transportionbtn, setTransportionbtn] = useState(true);
   const [popularEvent, setPopularEvent] = useState([]);
 
   useEffect(() => {
@@ -195,14 +195,15 @@ function HomePage() {
         <h1 className="ning_TitleEnblack">Transportion</h1>
         <h2 className="ning_TitleChblack">交通</h2>
         <div className="ning_transportionButton">
-          <button className="ning_busButton btn">公車即時</button>
-          <button className="ning_PButton btn">停車場</button>
-          <HomeTransportion />
-          {/* {transportionbtn === true ? (
+          <button className="ning_busButton btn" onClick={()=>setTransportionbtn(true)}>公車即時</button>
+          <button className="ning_PButton btn" onClick={()=>setTransportionbtn(false)}>停車場</button>
+          {/* <HomeTransportion /> */}
+          {transportionbtn === true ? (
             <HomeTransportion />
           ) : (
             <HomeTransportionP />
-          )} */}
+          )}
+          {/* <HomeTransportionP /> */}
         </div>
       </div>
     </>

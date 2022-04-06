@@ -53,11 +53,16 @@ const HomeTransportion = () => {
   const [busgotimeData, setBusgotimeData] = useState([]);
   const [busbacktimeData, setBusbacktimeData] = useState([]);
   const [smallbusname, setSmallbusname] = useState("");
+  const [busInfo, setbusInfo] = useState(false);
   // useEffect(() => {
   //   east0_bus();
   // }, []);
 
   //停車場資訊https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_allavailable.json
+
+  function clickbtn() {
+    setbusInfo(!busInfo);
+  }
 
   function Select_stop(StopID) {
     fetch(
@@ -75,7 +80,9 @@ const HomeTransportion = () => {
 
     // https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/${v}?%24format=JSON
   }
+  
   function getBusAllstop(v) {
+    setbusInfo(!busInfo);
     setSmallbusname(v);
     fetch(
       `https://ptx.transportdata.tw/MOTC/v2/Bus/DisplayStopOfRoute/City/Taipei/${v}?%24format=JSON`,
@@ -102,9 +109,9 @@ const HomeTransportion = () => {
       .then((r) => r.json())
       .then((data) => {
         // console.log(data);
-        // setBustimeData(data);
-        setBusgotimeData(data.filter((v) => v["Direction"] === 0));
-        setBusbacktimeData(data.filter((v) => v["Direction"] === 1));
+        setBustimeData(data);
+        // setBusgotimeData(data.filter((v) => v["Direction"] === 0));
+        // setBusbacktimeData(data.filter((v) => v["Direction"] === 1));
       });
   }
 
@@ -131,7 +138,6 @@ const HomeTransportion = () => {
   }
 
   const mapRef = useRef();
-  const [state, setState] = useState([]);
 
   function handleFlyTo() {
     const { current = {} } = mapRef;
@@ -157,10 +163,10 @@ const HomeTransportion = () => {
     Select_stop(demoDataFromServer[selectValue].StopID);
   }, [selectValue]);
 
-  // useEffect(() => {
-  //   setBusgotimeData(bustimeData.filter((v) => v["Direction"] === 0));
-  //   setBusbacktimeData(bustimeData.filter((v) => v["Direction"] === 1));
-  // }, [bustimeData]);
+  useEffect(() => {
+    setBusgotimeData(bustimeData.filter((v) => v["Direction"] === 0));
+    setBusbacktimeData(bustimeData.filter((v) => v["Direction"] === 1));
+  }, [bustimeData]);
 
   return (
     <>
@@ -177,63 +183,18 @@ const HomeTransportion = () => {
           <option value="4">大安高工</option>
         </select>
       </div>
-      <h3 className="ning_smallbusname">{smallbusname}</h3>
-      <div className="ning_smallbusBox">
-        <div className="ning_smallbusGo">
-          <h4>去程</h4>
-          {busgostopData.map((v, i) => {
-            let btd = busgotimeData.filter(
-              (c) => c["StopName"]["Zh_tw"] === v["StopName"]["Zh_tw"]
-            );
-            console.log(busgotimeData);
-            const a =
-              btd["StopStatus"] === 0
-                ? btd["EstimateTime"] <= 90
-                  ? "將到站"
-                  : `${parseInt(btd["EstimateTime"] / 60)}<span>分鐘</span>`
-                : "未發車";
-            return (
-              <>
-                <div className="ning_smallbusStop">
-                  <div className="pulsing-animation"></div>
-                  <p className="ning_smallbusStopname">
-                    {v["StopName"]["Zh_tw"]}
-                  </p>
-                  <p
-                    className="ning_smallbusStopTime"
-                    dangerouslySetInnerHTML={{ __html: a }}
-                  ></p>
-                </div>
-              </>
-            );
-          })}
-        </div>
-        <div className="ning_smallbusBack">
-          <h4>返程</h4>
-          {busbackstopData.map((v, i) => {
-            return (
-              <>
-                <div className="ning_smallbusStop">
-                  <div className="pulsing-animation"></div>
-                  <p className="ning_smallbusStopname">
-                    {v["StopName"]["Zh_tw"]}
-                  </p>
-                  <p className="ning_smallbusStopTime"></p>
-                </div>
-              </>
-            );
-          })}
-        </div>
-      </div>
       <h3 className="ning_busstopname">
         {demoDataFromServer[selectValue]["name"]}
       </h3>
       <div className="ning_transportionbox">
-        <div className="ning_busbox">
+        <div
+          className="ning_busbox"
+          style={{ display: busInfo === true && "none" }}
+        >
           {busData.map((v, i) => {
             const a =
               v["StopStatus"] === 0
-                ? v["EstimateTime"] <= 90
+                ? v["EstimateTime"] <= 120
                   ? "將到站"
                   : `${parseInt(v["EstimateTime"] / 60)}<span>分鐘</span>`
                 : "未發車";
@@ -258,6 +219,51 @@ const HomeTransportion = () => {
               </div>
             );
           })}
+        </div>
+
+        <div
+          className="ning_smallbusInfo"
+          style={{ display: busInfo === false && "none" }}
+        >
+          <h3 className="ning_smallbusname">{smallbusname}</h3>
+          <div className="ning_smallbusBox">
+            <span className="businfoClose material-icons" onClick={clickbtn}>
+              close
+            </span>
+
+            <div className="ning_smallbusGo">
+              <h4>去程</h4>
+              {busgostopData.map((v, i) => {
+                return (
+                  <>
+                    <div className="ning_smallbusStop">
+                      <div className="pulsing-animation"></div>
+                      <p className="ning_smallbusStopname">
+                        {v["StopName"]["Zh_tw"]}
+                      </p>
+                      <p className="ning_smallbusStopTime"></p>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+            <div className="ning_smallbusBack">
+              <h4>返程</h4>
+              {busbackstopData.map((v, i) => {
+                return (
+                  <>
+                    <div className="ning_smallbusStop">
+                      <div className="pulsing-animation"></div>
+                      <p className="ning_smallbusStopname">
+                        {v["StopName"]["Zh_tw"]}
+                      </p>
+                      <p className="ning_smallbusStopTime"></p>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </div>
         </div>
         <div className="ning_busmap">
           <LeafletMap

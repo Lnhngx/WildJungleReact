@@ -21,6 +21,7 @@ const HomeWeather = () => {
       .then((r) => r.json())
       .then((data) => {
         const locationData = data.records.locations[0].location[0];
+        
 
         const weatherElements = locationData.weatherElement.reduce(
           (neededElements, item) => {
