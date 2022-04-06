@@ -7,7 +7,7 @@ import {
   useLocation,
   Redirect,
 } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 //頁首、頁尾、CSS
@@ -27,7 +27,7 @@ import GameStart from "./pages/game/gameStart";
 import SpotLevel from "./pages/game/spotLevel";
 import PsychoGame from "./pages/game/psycho-game";
 import MultiChoice from "./pages/game/multiChoice-game.js";
-import Config from "./pages/members/Config"
+import Config from "./pages/members/Config";
 import MembersConfirm from "./pages/members/MembersConfirm";
 import Login from "./pages/members/components/Login.js";
 import MemberSignUp from "./pages/members/MemberSignUp";
@@ -54,7 +54,7 @@ function App() {
 
   // 是否登入
   const [auth, setAuth] = useState(false);
-  const [comeUrl,setComeUrl]=useState('');
+  const [comeUrl, setComeUrl] = useState("");
 
   const account = JSON.parse(localStorage.getItem("admin_account"));
   const token = !!localStorage.getItem("admin_token");
@@ -63,7 +63,7 @@ function App() {
     token: token,
   });
 
-  const [pointData,setPointData]=useState([])
+  const [pointData, setPointData] = useState([]);
 
   const [commentbox, setCommentbox] = useState(false);
 
@@ -94,36 +94,35 @@ function App() {
           繼續購物
         </Button>
         {/* 如果modalBtn不是空字串才會出現兩顆按鈕 */}
-        {modalBtn!==""&&
-        <Button
-          variant="primary"
-          onClick={() => {
-            switch (modalBtn) {
-              case "前往結帳":
-                window.location.href = "http://localhost:3000/carts";
-                break;
-              case "前往登入":
-                window.location.href = "http://localhost:3000/members/login";
-                break;
-              case "到遊戲頁":
-                window.location.href = "http://localhost:3000/game";
-                break;
-              default:
-                console.log(modalBtn);
-            }
-          }}
-        >
-          {modalBtn}
-        </Button>
-      }
+        {modalBtn !== "" && (
+          <Button
+            variant="primary"
+            onClick={() => {
+              switch (modalBtn) {
+                case "前往結帳":
+                  window.location.href = "http://localhost:3000/carts";
+                  break;
+                case "前往登入":
+                  window.location.href = "http://localhost:3000/members/login";
+                  break;
+                case "到遊戲頁":
+                  window.location.href = "http://localhost:3000/game";
+                  break;
+                default:
+                  console.log(modalBtn);
+              }
+            }}
+          >
+            {modalBtn}
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );
-  
+
   // 紀錄memberList的狀態
-  const [actived,setActived]=useState('會員資料')
-  
-  
+  const [actived, setActived] = useState("會員資料");
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -132,11 +131,11 @@ function App() {
   const [payment, setPayment] = useState("");
 
   // 喜愛收藏要加入購物車的產品
-  const [likeAddCard,setLikeAddCart]=useState();
+  const [likeAddCard, setLikeAddCart] = useState();
 
   // 取得會員收藏資料
-  const [likeListData,setLikeListData]=useState([]);
-  
+  const [likeListData, setLikeListData] = useState([]);
+
   // if(auth || localState.token){
   //   localStorage.setItem('like',JSON.stringify(likeListData));
   // }
@@ -152,14 +151,13 @@ function App() {
   //       if(obj.success){
   //         setLikeListData(obj.info);
   //       }
-          
+
   //     })
-        
-        
+
   //   }
   //   getLikeList()
   // },[])
-  localStorage.setItem('like',JSON.stringify(likeListData))
+  localStorage.setItem("like", JSON.stringify(likeListData));
 
   return (
     <FourthCartProvider localStorage="fourthCart">
@@ -212,10 +210,16 @@ function App() {
                     <Products
                       sortbarType={sortbarType}
                       setSortbarType={setSortbarType}
+                      likeListData={likeListData}
+                      setLikeListData={setLikeListData}
                     />
                   </Route>
                   <Route path="/productsdetail">
-                    <ProductsDetail setSortbarType={setSortbarType} />
+                    <ProductsDetail
+                      setSortbarType={setSortbarType}
+                      likeListData={likeListData}
+                      setLikeListData={setLikeListData}
+                    />
                   </Route>
                   <Route path="/game/spot-level">
                     <SpotLevel />
@@ -320,7 +324,10 @@ function App() {
                     />
                   </Route>
                   <Route path="/lodging">
-                    <Lodging setCommentbox={setCommentbox} commentbox={commentbox}/>
+                    <Lodging
+                      setCommentbox={setCommentbox}
+                      commentbox={commentbox}
+                    />
                   </Route>
 
                   {/* 網址上的動態參數params 

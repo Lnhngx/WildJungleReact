@@ -95,6 +95,7 @@ function MyDate(props) {
       setCheck(Arr);
       setcheckTime(new Date(e.target.dataset.value).getTime());
       setCount(1);
+      console.log(Arr)
     } else if (count === 1) {
       let Arr = [...check];
       if (new Date(e.target.dataset.value).getTime() > checkTime) {
@@ -110,12 +111,12 @@ function MyDate(props) {
   }
   setCartdate(check[0]);
   setCartdate2(check[1]);
-  console.log(check);
+  
 
   return (
     <>
       <h2 id="yearAndMonth" className="yearAndMonth">
-        <span>入住：</span>
+        <span onClick={()=>{console.log()}}>入住：</span>
         {check[0]}
         <span> 退房：</span>
         {check[1]}
