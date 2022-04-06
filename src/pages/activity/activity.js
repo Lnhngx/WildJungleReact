@@ -242,7 +242,7 @@ function Activity() {
   }
 
   const color = () => {
-    document.querySelector(".showSelect").style.color = "black";
+    document.querySelector(".terryselect").style.color = "black";
   };
 
   const renderSeats = () => {
@@ -491,7 +491,8 @@ function Activity() {
                 4.開演二十分鐘後不得入場。
               </div>
               <div className="showSelect">
-                <select onClick={color}
+                <select className="terryselect"
+                onClick={color}
                   onChange={(e) => {
                     if (e.target.value === "1") {
                       setImgChange("terry_showIntroduction_img");
