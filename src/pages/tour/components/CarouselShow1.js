@@ -2,7 +2,9 @@ import ReactDOM from 'react-dom'
 import Carousel from './Carousel'
 import './CarouselShow.scss'
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+
+
+
 
 let hot = ["亞洲象","鯨頭鸛","水豚","馬來貘","大猩猩","彩虹巨嘴鳥","樹懶","穿山甲"];
 let hotEN = ["Elephas maximus","Shoebill","Capybara","Malayan Tapir","Gorilla","Ramphastos sulfuratus","Folivora","Manidae"];
@@ -15,11 +17,11 @@ let HotDescriptions = [
 "(學名:Ramphastos sulfuratus)又名厚嘴巨嘴鳥或厚嘴鵎鵼,是一種羽色鮮艷的巨嘴鳥,也是貝里斯的國鳥,主要分布於墨西哥南部至巴拿馬一帶的中美地峽。彩虹巨嘴鳥連同其喙長42-55厘米。牠們色彩鮮艷的喙長12-15厘米,約佔全長的三分之一。雖然其喙似乎很大及笨重,但骨骼是呈海綿狀及中空,並由角質素所覆蓋。喙表面呈綠色,尖端紅色,兩側橙色。",
 "(學名:Folivora)哺乳綱異關節總目披毛目下樹懶亞目動物的通稱,包括有樹懶科和二趾樹懶科。其移動速度非常地慢,只有每分鐘4米(0.24km/h)的速度,在地面上是只有每分鐘2米(0.12km/h)的速度。如果不慎掉到地面,容易成為其他肉食性動物的獵物,然而牠們具有游泳的能力。共有兩科六種,分布於南美洲及中美洲的熱帶雨林中,雖然外觀上相似,但兩科之間的分別頗大。雖然被稱為二趾與三趾樹懶,但其實所有現存的樹懶均有3根腳趾,主要差異在於,二趾樹懶的前臂上僅有二指。樹懶的粗毛夾縫中長有與其互利共生的綠藻,提供很好的保護色,而樹懶有時也會取食身上的綠藻作為營養來源。而這些綠藻也是樹懶蛾的食物來源,有些種類的樹懶蛾甚至只能在樹懶身上發現。絕種的樹懶包括地懶,其中體型最大的大地懶全長可達6米(20英尺),相當於現今的非洲象。",
 "(學名:Manidae,也稱鯪鯉科)中國古稱鯪魚、鯪鯉、鯪鱧,是穿山甲科的一類哺乳動物的統稱,屬鱗甲目(Pholidota)下唯一的科,現存3屬8種,分佈在亞洲和非洲的熱帶及亞熱帶地區。它們從頭到尾披覆著魚鱗般的角質甲片,穴居夜行,以白蟻為主食。"]
-let ice = ["雪狐","馴鹿","北極熊","斑海豹","企鵝","白大角羊","雪貂","豎琴海豹"];
-let iceEN = ["Vulpes lagopus","redfoxRangifer tarandus","Ursus maritimus","Harbor seal","Ovis dalli","geochelone","Gulo gulo","Pagophilus groenlandicus"];
+let ice = ["馴鹿","雪狐","北極熊","斑海豹","企鵝","白大角羊","雪貂","豎琴海豹"];
+let iceEN = ["redfoxRangifer tarandus","Vulpes lagopus","Ursus maritimus","Harbor seal","Ovis dalli","geochelone","Gulo gulo","Pagophilus groenlandicus"];
 let IceDescriptions =[
-"(學名:Vulpes lagopus)別名雪狐或白狐,在寒冷的北極凍原地區是常見的小型犬科動物,由於其毛皮是市場上的高檔貨,因此成了人們競相獵捕的目標。 北極狐額面狹,吻部很尖,耳短而圓,頰後部生長毛,腳底部也密生長毛,所以適於在冰雪地上行走,尾毛蓬鬆,尖端白色,身體略小於赤狐。",
 "(學名Rangifer tarandus),又名角鹿。是鹿科馴鹿屬下的唯一一種動物。不同的馴鹿亞種之間的形態有很大差距。總的來說,生活在南部地區的馴鹿要比北部的同類體形更大。馴鹿的肩寬可以達到120厘米,身長在1.5米到2.3米之間。雄性和雌性之間也有體形差異,某些亞種的雄性體形可以達到雌性的兩倍,但雄性和雌性馴鹿頭上都長角,這也是馴鹿區別於其它鹿種的顯著特點之一,長角分枝繁複,有時超過30叉,寬大的鹿蹄可避免陷入雪地中,懸蹄發達,行走時腳關節會發出特殊聲響,可在暴風雪或永夜時,為後方的馴鹿提示位置,極短的尾巴可避免熱量流失。",
+"(學名:Vulpes lagopus)別名雪狐或白狐,在寒冷的北極凍原地區是常見的小型犬科動物,由於其毛皮是市場上的高檔貨,因此成了人們競相獵捕的目標。 北極狐額面狹,吻部很尖,耳短而圓,頰後部生長毛,腳底部也密生長毛,所以適於在冰雪地上行走,尾毛蓬鬆,尖端白色,身體略小於赤狐。",
 "(學名:Ursus maritimus,意即「海熊」)又稱 白熊 或 冰熊,北極熊是一種能在惡劣酷寒的環境下生存的動物,其活動範圍主要在北冰洋、即北極圈附近,而最南則可以在有浮冰出沒的地方找到牠們他們大約會在四點到十點間出現(現時找到牠們的最南點為加拿大的哈德森灣最南處的詹姆士灣)。而最北可以在北緯88度找到牠們,牠們分布在北極點。國際自然保護聯盟中的物種存續委員會把北極熊的棲息地劃分為十九個地域以做科學研究目的,分佈在五個國家:阿拉斯加(美國)、加拿大、俄羅斯、挪威、格陵蘭(丹麥)",
 "(學名:Phoca largha)斑海豹是中國國家一級保護動物。由於斑海豹在沿海岸線的環境活動,有時需要到礁石或海岸上休息、換毛,沿海環境的變化對其生存有一定影響。比如渤海油田的開發讓沿岸自然環境發生變化,噪音和污染物增多,船隻活動頻繁,這都對斑海豹產生了不利影響",
 "(學名:Sphenisciformes)企鵝科(Spheniscidae),是一種不會飛的鳥類。主要生活在南半球,目前已知全世界的企鵝共有19種,另有兩種已滅絕。多數分布在南極地區,而其中環企鵝屬的漢波德企鵝、麥哲倫企鵝與黑腳企鵝分布在緯度較低的溫帶地區,至於加拉帕戈斯企鵝的分布則更接近赤道；完全生活在極地的只有皇帝企鵝及阿德利企鵝兩種",
@@ -87,32 +89,31 @@ function ChangeDescription (i){
   if (state === "ice") {
     document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/0"+i+".jpg";
     document.getElementById("TourDescriptionTitle").innerHTML=ice[i-1];
-    // document.getElementById("TourDescriptionText").innerHTML=iceEN[i-1];
     document.getElementById("TourDescriptionText").innerHTML=IceDescriptions[i-1];
   }
   if (state === "hot") {
     document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/0"+i+".jpg";
     document.getElementById("TourDescriptionTitle").innerHTML=hot[i-1];
-    //document.getElementById("TourDescriptionText").innerHTML=hotEN[i-1];
     document.getElementById("TourDescriptionText").innerHTML=HotDescriptions[i-1];
   }
   if (state === "nocturnal") {
     document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/0"+i+".jpg";
     document.getElementById("TourDescriptionTitle").innerHTML=nocturnal[i-1];
-    // document.getElementById("TourDescriptionText").innerHTML=nocturnalEN[i-1];
     document.getElementById("TourDescriptionText").innerHTML=nocturnalDescriptions[i-1];
   }
   if (state === "Ocean") {
     document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/0"+i+".jpg";
     document.getElementById("TourDescriptionTitle").innerHTML=Ocean[i-1];
-    // document.getElementById("TourDescriptionText").innerHTML=OceanEN[i-1];
     document.getElementById("TourDescriptionText").innerHTML=oceanDescriptions[i-1];
   }
 }
 
 
 function CarouselShow1 (){
-
+// 開關
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(true);
+  const [state3, setState3] = useState(true);
   const tourmap = useRef();
 
     return(<>
@@ -131,7 +132,8 @@ function CarouselShow1 (){
               <img src="/img/home/tropical.jpg" alt="#/" 
                   onMouseMove={()=>{tourmap.current.src =
                   "/img/home/tropicalmap.svg"}}
-                  onClick={()=>{ChangeMap("hot") }}
+                  onClick={()=>{ChangeMap("hot"); 
+                }}
               /> 
               <figcaption>熱帶雨林</figcaption>
             </figure>
@@ -166,7 +168,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-            onClick={()=>{ChangeDescription(1)}}>
+            onClick={()=>{ChangeDescription(1);setState2(!state2);setState(!state)}}>
               <img src="/img/tour/hot/01.jpg"  id="Centerig1" alt="#/"/>
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN1" >亞洲象</h3> 
@@ -176,7 +178,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-              onClick={()=>{ChangeDescription(2)}}>
+              onClick={()=>{ChangeDescription(2);setState3(!state3);setState(!state)}}>
               <img src="/img/tour/hot/02.jpg" id="Centerig2" alt="#/"/>
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN2">鯨頭鸛</h3> 
@@ -186,7 +188,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-              onClick={()=>{ChangeDescription(3)}}>
+              onClick={()=>{ChangeDescription(3);}}>
               <img src="/img/tour/hot/03.jpg" id="Centerig3" alt="#/" />
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN3" >水豚</h3> 
@@ -287,8 +289,69 @@ function CarouselShow1 (){
             </div>
         </div>
         </div> 
-      </div>  
+      </div>
 
+      <div className={state2 ? "tourDisplayNone" : "tour_showBooking_area"}>
+        <div className="tourGuide1">
+            <div className="tourtextArea1">
+                <h2 style={{color: "black"}} className="tourH2">Jungle Tour</h2>
+                <p style={{color: "black"}} className="tourP1">園區導覽</p>
+            </div>
+        </div>
+        <div className="wrap">
+        <div className="Touritem">
+            <img src="/img/tour/an1.jpeg" alt=""/>
+          <div className="txt">
+            <h2>一個美麗的牧群</h2>
+            <p>Pyi Mai 和她的母親 Kham Moon 與嬰兒 Chaba、Bun Ma</p>
+          </div>
+        </div>
+        <div className="Touritem">
+          <img src="/img/tour/010-elephant-sky-walk-single-day-visit15737371131884.jpeg" alt=""/>
+          <div className="txt">
+            <h2>大象空中步道 - 單日遊</h2>
+            <p>享受一整天的大象自然公園之旅，包括參加我們特別的“Hands Off”項目。觀察我們獲救的大像生活在他們選擇的象群中，了解他們的個人歷史。</p>
+        </div>
+        </div>
+        <div className="Touritem">
+            <img src="./img/tour/GluayHom_5.jpeg" alt=""/>
+          <div className="txt">
+            <h2>公牛大象膠坎</h2>
+            <p>Gluay Hom 是一個 10 歲的男性，在幼年時，Gluay Hom 與他的母親分開，被訓練成馬戲團的大象。</p>
+          </div>
+        </div>     
+        <div className="Touritem">
+          <img src="/img/tour/CareForElephants_18.jpeg" alt="＃/"/>
+          <div className="txt">
+            <h2>為什麼我們要照顧大象？</h2>
+            <p>大象有很多健康問題，尤其是老大象掉牙的時候。牙齒脫落是死亡的主要原因。隨著最後一顆臼齒開始分解，咀嚼和消化食物變得越來越困難。處於這種困境的大象經常死於飢餓或營養不良。</p>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div className={state3 ? "tourDisplayNone" : "tour_showBooking_area"}>
+        <div className="tourGuide1">
+            <div className="tourtextArea1">
+                <h2 style={{color: "black"}} className="tourH2">Jungle Tour</h2>
+                <p style={{color: "black"}} className="tourP1">園區導覽</p>
+            </div>
+        </div>
+        <div className="wrap">
+        <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
+            <img style={{}}src="/img/tour/p6CVo6abkKGY.gif" alt=""/>
+          <div className="txt">
+            <h2>捕食</h2>
+            <p>當北極狐聞到在窩裡的旅鼠氣味或聽到旅鼠的尖叫聲時，它會迅速地挖掘位於雪下面的旅鼠窩。
+
+            等到扒得差不多時，北極狐會突然高高跳起，借著躍起的力量，用腿將雪做的鼠窩壓塌，將一窩旅鼠一網打盡，逐個吃掉它們。
+            </p>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+ 
 </>)
 }
 const rootElement = document.getElementById('root')
