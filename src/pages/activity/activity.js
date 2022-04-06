@@ -246,7 +246,21 @@ function Activity() {
   };
 
   const color1 = () => {
+    document.querySelector(".terryselect").style.color = "white";
+  };
+  const color2 = () => {
     document.querySelector(".terryselect").style.color = "black";
+  };
+
+  const color3 = () => {
+    document.querySelector(".terryselect").style.color = "white";
+  };
+  const color4 = () => {
+    document.querySelector(".terryselect").style.color = "black";
+  };
+
+  const color5 = () => {
+    document.querySelector(".terryselect").style.color = "white";
   };
 
 
@@ -543,9 +557,9 @@ function Activity() {
                   <option value="4">萌豹睡覺秀</option>
                 </select>
                 <select
-                  className="terryselect"
-                  onClick={color}
-                  onPointerOut={color1}
+                  className="terryselect2"
+                  onClick={color2}
+                  onPointerOut={color3}
                   onChange={(e) => {
                     console.log(e.target.value);
                     fetch("http://localhost:4000/activity", {
@@ -571,9 +585,9 @@ function Activity() {
                   <option value="星光A">星光A(20:00~21:30)</option>
                 </select>
                 <select
-                  className="terryselect"
-                  onClick={color}
-                  onPointerOut={color1}
+                  className="terryselect3"
+                  onClick={color4}
+                  onPointerOut={color5}
                   onChange={(e) => {
                     if (e.target.value === "1") {
                       setPerson(1);
