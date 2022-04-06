@@ -134,6 +134,7 @@ function App() {
   const [likeAddCard, setLikeAddCart] = useState();
 
   // 取得會員收藏資料
+<<<<<<< HEAD
   const [likeListData, setLikeListData] = useState([]);
 
   // if(auth || localState.token){
@@ -158,6 +159,31 @@ function App() {
   //   getLikeList()
   // },[])
   localStorage.setItem("like", JSON.stringify(likeListData));
+=======
+  // const [likeListData,setLikeListData]=useState([]);
+  
+  
+  // useEffect(() => {
+    
+  //     const getLikeList=async ()=>{
+  //       await fetch(Config.TYSU_PRODUCT_LIKE_INFO+account.m_sid,{
+  //         method: 'GET',
+  //         headers: {
+  //           "Content-Type":"application/json"
+  //         }
+  //       }).then(r=>r.json()).then(obj=>{
+  //         console.log('LikeList:',obj)
+  //         if(obj.success){
+  //           localStorage.setItem('like',JSON.stringify(obj.info))
+  //         }
+  //       })    
+  //     }
+  //     getLikeList()
+    
+  // },[])
+  
+  
+>>>>>>> bcc800b07f6ddbc9ef178067c1e9c4ab80304deb
 
   return (
     <FourthCartProvider localStorage="fourthCart">
@@ -210,6 +236,7 @@ function App() {
                     <Products
                       sortbarType={sortbarType}
                       setSortbarType={setSortbarType}
+<<<<<<< HEAD
                       likeListData={likeListData}
                       setLikeListData={setLikeListData}
                     />
@@ -220,6 +247,15 @@ function App() {
                       likeListData={likeListData}
                       setLikeListData={setLikeListData}
                     />
+=======
+                      
+                    />
+                  </Route>
+                  <Route path="/productsdetail">
+                    <ProductsDetail setSortbarType={setSortbarType} 
+
+                      />
+>>>>>>> bcc800b07f6ddbc9ef178067c1e9c4ab80304deb
                   </Route>
                   <Route path="/game/spot-level">
                     <SpotLevel />
@@ -280,8 +316,8 @@ function App() {
                       account={account}
                       comeUrl={comeUrl}
                       setCommentbox={setCommentbox}
-                      likeListData={likeListData}
-                      setLikeListData={setLikeListData}
+                      // likeListData={likeListData}
+                      // setLikeListData={setLikeListData}
                     />
                   </Route>
                   <Route path="/members/forgot">
@@ -302,8 +338,8 @@ function App() {
                         setPointData={setPointData}
                         likeAddCard={likeAddCard}
                         setLikeAddCart={setLikeAddCart}
-                        likeListData={likeListData}
-                        setLikeListData={setLikeListData}
+                        // likeListData={likeListData}
+                        // setLikeListData={setLikeListData}
                       />
                     ) : (
                       <Redirect to="/members" />
@@ -319,8 +355,8 @@ function App() {
                       account={account}
                       comeUrl={comeUrl}
                       setCommentbox={setCommentbox}
-                      likeListData={likeListData}
-                      setLikeListData={setLikeListData}
+                      // likeListData={likeListData}
+                      // setLikeListData={setLikeListData}
                     />
                   </Route>
                   <Route path="/lodging">

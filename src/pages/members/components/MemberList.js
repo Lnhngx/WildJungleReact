@@ -85,24 +85,7 @@ function MemberList(props){
     getPointData()
 
     
-    const getLikeList=async ()=>{
-      await fetch(Config.TYSU_PRODUCT_LIKE_INFO+sid.m_sid,{
-        method: 'GET',
-        headers: {
-          "Content-Type":"application/json"
-        }
-      }).then(r=>r.json()).then(obj=>{
-        console.log('LikeList:',obj)
-        if(obj.success){
-          setLikeListData(obj.info);
-          // localStorage.setItem('like',JSON.stringify(obj.info))
-        }
-          
-      })
-        
-        
-    }
-    getLikeList()
+    
 
     const getUser711=async()=>{
       await fetch(Config.TYSU_711_Add+'?m_id='+sid['m_sid'],{
@@ -118,10 +101,28 @@ function MemberList(props){
     // getUser711()
   
   },[]);
+
+  //   useEffect(() => {
+  //   const getLikeList=async ()=>{
+  //     await fetch(Config.TYSU_PRODUCT_LIKE_INFO+sid.m_sid,{
+  //       method: 'GET',
+  //       headers: {
+  //         "Content-Type":"application/json"
+  //       }
+  //     }).then(r=>r.json()).then(obj=>{
+  //       console.log('LikeList:',obj);
+  //       if(obj.success){
+  //         localStorage.setItem('like',JSON.stringify(obj.info))
+  //       }
+  //     })    
+  //   }
+  //   getLikeList()
   
-  
+  // },[])
+
 
     return(
+
       <div className="tysu_grade">
           <div className="tysu_gradeImg">
             <img src={"/img/member/"+sidData.img} alt="" />

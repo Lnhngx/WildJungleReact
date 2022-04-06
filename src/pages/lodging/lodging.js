@@ -541,7 +541,7 @@ function Lodging(props) {
               </button>
               <input
                 type="text"
-                defaultValue={oceancount}
+                value={oceancount}
                 className="lodging_oceanvalue"
               />
               <button className="btn lodging_oceanplus" onClick={addoceancount}>
@@ -814,7 +814,7 @@ function Lodging(props) {
                 </button>
                 <input
                   type="text"
-                  defaultValue={icecount}
+                  value={icecount}
                   className="lodging_icevalue"
                 />
                 <button className="btn lodging_iceplus" onClick={addicecount}>
@@ -1093,7 +1093,7 @@ function Lodging(props) {
                 </button>
                 <input
                   type="text"
-                  defaultValue={nocturnalcount}
+                  value={nocturnalcount}
                   className="lodging_nocturnalvalue"
                 />
                 <button
@@ -1381,7 +1381,7 @@ function Lodging(props) {
                 </button>
                 <input
                   type="text"
-                  defaultValue={tropicalcount}
+                  value={tropicalcount}
                   className="lodging_tropicalvalue"
                 />
                 <button
