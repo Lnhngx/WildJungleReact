@@ -428,14 +428,14 @@ function Activity() {
               <div className="buttonGrop2">
                 <button
                   onClick={() => {
-                    const temp_arr = {
+                    const temp_arr3 = {
                       sid: plan,
-                      image:`/img/activity/meme_cat.png`,
+                      image:`/img/activity/show3.jpeg`,
                       name: "動物認養方案-" + plan + "個月",
                       price: planPrice,
                       quantity: plan,
                     };
-                    thirdcart.addItem(temp_arr);
+                    thirdcart.addItem(temp_arr3);
                     setShow2(true);
                   }}
                 >
@@ -660,7 +660,7 @@ function Activity() {
                     const temp_arr = {
                       sid: "s1",
                       name: showTitleChange,
-                      image: `/img/activity/show3.jpeg`,
+                      image: `/img/activity/meme_cat.png`,
                       price: 50,
                       quantity: Object.keys(positions).length,
                       seats: positions,
