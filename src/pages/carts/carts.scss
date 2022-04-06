@@ -766,7 +766,8 @@ $stan_height: 50px;
 
 .stan_checkout_area {
   width: 33%;
-  height: auto; //暫時
+  min-height: auto; //暫時
+  max-height: 35vh;
   background-color: $stan_white;
   font-size: 16px;
   font-weight: 600;
