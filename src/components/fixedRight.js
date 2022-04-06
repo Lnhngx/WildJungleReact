@@ -9,56 +9,60 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
+import { useCart } from "../../src/pages/carts/utils/useCart";
+
 const FixedRight = (props) => {
+  const [open, setOpen] = useState(false);
 
-const [open , setOpen]=useState(false)
+  const [adultcount, setAdultcount] = useState(0);
+  const [studentcount, setStudentcount] = useState(0);
+  const [lovecount, setLovecount] = useState(0);
 
-const [adultcount , setAdultcount] = useState(1)
-const [studentcount , setstudentcount] = useState(1)
-const [lovecount , setlovecount] = useState(1)
+  const tickeBtn = () => {
+    setOpen(!open);
+  };
 
-const tickeBtn = () =>{
-  setOpen(!open)
-}
-
-const addAdultcount = () => { 
+  const addAdultcount = () => {
     setAdultcount(adultcount + 1);
-};
-const redAdultcount = () => {
-  if(adultcount>1){
-    setAdultcount(adultcount - 1);
-  }
-};
+  };
+  const redAdultcount = () => {
+    if (adultcount > 0) {
+      setAdultcount(adultcount - 1);
+    }
+  };
 
-const addstudentcount = () => {
-  
-    setstudentcount(studentcount + 1);
- 
-};
-const redstudentcount = () => {
-  if(studentcount>1){
-    setstudentcount(studentcount - 1);
-  }
-};
+  const addstudentcount = () => {
+    setStudentcount(studentcount + 1);
+  };
+  const redstudentcount = () => {
+    if (studentcount > 0) {
+      setStudentcount(studentcount - 1);
+    }
+  };
 
-const addlovecount = () => {
-  
-    setlovecount(lovecount + 1);
- 
-};
-const redlovecount = () => {
-  if(lovecount>1){
-    setlovecount(lovecount - 1);
-  }
-};
+  const addlovecount = () => {
+    setLovecount(lovecount + 1);
+  };
+  const redlovecount = () => {
+    if (lovecount > 0) {
+      setLovecount(lovecount - 1);
+    }
+  };
+  const { addItem } = useCart();
 
   return (
     <>
-      <div className="ning_buyticketBox"  style={{right:open===true && "0px",zIndex:open===true && "8889"}}>
+      <div
+        className="ning_buyticketBox"
+        style={{
+          right: open === true && "0px",
+          zIndex: open === true && "8889",
+        }}
+      >
         <div className="ning_buyticket">
           <div className="ning_buyticketicon" onClick={tickeBtn}>
             <span className="material-icons">confirmation_number</span>
-            <p >立即訂票</p>
+            <p>立即訂票</p>
           </div>
         </div>
         <div className="ticketForm">
@@ -72,7 +76,11 @@ const redlovecount = () => {
               <button className="btn redBtn" onClick={redAdultcount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" defaultValue={adultcount} className="AdultTicketvalue" />
+              <input
+                type="text"
+                value={adultcount}
+                className="AdultTicketvalue"
+              />
               <button className="btn addBtn" onClick={addAdultcount}>
                 <i className="fas fa-plus"></i>
               </button>
@@ -85,7 +93,11 @@ const redlovecount = () => {
               <button className="btn redBtn" onClick={redstudentcount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" defaultValue={studentcount} className="studentTicketvalue" />
+              <input
+                type="text"
+                value={studentcount}
+                className="studentTicketvalue"
+              />
               <button className="btn addBtn" onClick={addstudentcount}>
                 <i className="fas fa-plus"></i>
               </button>
@@ -98,41 +110,78 @@ const redlovecount = () => {
               <button className="btn redBtn" onClick={redlovecount}>
                 <i className="fas fa-minus"></i>
               </button>
-              <input type="text" defaultValue={lovecount} className="loveTicketvalue" />
-              <button className="btn addBtn"  onClick={addlovecount}>
+              <input
+                type="text"
+                value={lovecount}
+                className="loveTicketvalue"
+              />
+              <button className="btn addBtn" onClick={addlovecount}>
                 <i className="fas fa-plus"></i>
               </button>
             </div>
-            <button className="btn goPay">立即結帳</button>
+            <button
+              className="btn goPay"
+              onClick={() => {
+                const temp_arr123 = [
+                  {
+                    sid: 998,
+                    image: "/zooTicket.jpg",
+                    name: "動物園門票:成人",
+                    price: 50,
+                    quantity: adultcount,
+                  },
+                  {
+                    sid: 999,
+                    image: "/zooTicket.jpg",
+                    name: "動物園門票:學生",
+                    price: 30,
+                    quantity: studentcount,
+                  },
+                  {
+                    sid: 1000,
+                    image: "/zooTicket.jpg",
+                    name: "動物園門票:愛心",
+                    price: 20,
+                    quantity: lovecount,
+                  },
+                ];
+                let template = temp_arr123.filter((v) => v.quantity !== 0);
+                template.forEach((v) => {
+                  addItem(v);
+                });
+              }}
+            >
+              立即結帳
+            </button>
           </div>
         </div>
       </div>
       <div className="ning_rightflex">
-      <div
+        <div
           className="ning_game"
           onClick={() => {
             // 由右邊訂選欄的按鈕先判別使用者是否為會員，是的話，才可以玩
-            if(localStorage.admin_account!==undefined){
-              const storage = localStorage.getItem('received');
+            if (localStorage.admin_account !== undefined) {
+              const storage = localStorage.getItem("received");
               const expireTime = JSON.parse(storage);
-              let nextTime =  expireTime===null ? 0 : expireTime.expire;
-              if(storage===undefined){
+              let nextTime = expireTime === null ? 0 : expireTime.expire;
+              if (storage === undefined) {
                 props.setToggleLottery(true);
-              }else{
-                if(new Date().getTime() > nextTime){
-                  localStorage.removeItem('received');
+              } else {
+                if (new Date().getTime() > nextTime) {
+                  localStorage.removeItem("received");
                   props.setToggleLottery(true);
-                }else{
+                } else {
                   props.setModalTitle("遊戲規則通知");
                   props.setModalText("一天只能玩一次，先玩玩別的小遊戲吧!");
-                  props.setModalBtn('到遊戲頁');
+                  props.setModalBtn("到遊戲頁");
                   props.setShow(true);
                 }
-              } 
-            }else{
+              }
+            } else {
               props.setModalTitle("尚未登入通知");
               props.setModalText("請先進行登入才可以玩哦~");
-              props.setModalBtn('前往登入');
+              props.setModalBtn("前往登入");
               props.setShow(true);
             }
           }}
