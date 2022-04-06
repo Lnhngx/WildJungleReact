@@ -52,12 +52,12 @@ let nocturnalDescriptions=[
 "(學名:Geochelone)在生物分類學上是陸龜科象龜屬的俗稱。象龜分佈於非洲到亞洲。該屬下線僅有2個種:印度星龜(Geochelone elegans)緬甸星龜(Geochelone platynota)",
 "(學名:Hystrix)是齧齒目豪豬科的一屬又稱箭豬,是一類披有尖刺的齧齒目,可以用來防禦掠食者。豪豬是齧齒目中體型第三大的,僅次於水豚及河狸,但與刺蝟不同。大部份豪豬約長60—90公分,尾巴長20—25公分,重5—16公斤。牠們圓潤及行動緩慢。豪豬有褐色、灰色及白色。不同豪豬物種的刺有不同的形狀,不過所有都是改變了的毛髮,表面上有一層角質素,嵌入在皮膚的肌肉組織。舊大陸豪豬(豪豬科)的刺是一束束的,而新大陸豪豬(美洲豪豬科)的刺則是與毛髮夾雜在一起。豪豬的刺銳利,很易脫落,會刺入攻擊者中。牠們的刺有倒鉤,可以掛在皮膚上,很難除去。牠們的刺長75公釐及闊2公釐。若刺鉤在攻擊者的組織上,在正常的肌肉運動下,倒鉤會令刺插得更深,每日可以深入約幾公釐。曾有掠食者因被刺刺中及感染而死去,在死去後刺仍會繼續嵌入體內。古代相信豪豬可以擲出牠們刺來攻擊敵人,但其實是錯誤的。",
 "(學名:Strigiformes)梟、貓頭鷹,是鴞形目(的鳥類。鴞形目是鳥綱中的目。眼睛大,嘴短而粗壯前端成鉤狀。相對於頭部碩大的雙目均向前是本目鳥類共有且區別於其他鳥類的特徵,頭部正面的羽毛排列成面盤,部分種類具有耳狀羽毛。鴞形目在除南極洲以外所有的大洲都有分布,其中大部分物種為夜行性肉食性動物。貓頭鷹在西方的愛琴海和基督教文化中是「幸運、智慧」的象徵,而在中國文化中卻有「厄運、恐怖」的意義,這恰巧與蝙蝠在中西文化中的定位正好相反。"
-]
+];
 
 function ChangeMap (state){
   for (let i = 1; i <= 8; i++){
     document.getElementById("Centerig"+i).src = "/img/tour/"+state+"/0"+i+".jpg";
-    document.getElementsByClassName('figure')[i-1].setAttribute('id',state)
+    document.getElementsByClassName('figure')[i-1].setAttribute('id',state);
   }
   if (state === "hot") {
     for(let i=0; i<hot.length; i++){
@@ -107,15 +107,50 @@ function ChangeDescription (i){
     document.getElementById("TourDescriptionText").innerHTML=oceanDescriptions[i-1];
   }
 }
+function showdescription(i){
+  let showstateno = [false,false,false,false,false,false,false,false];
+  let showstatus = [false, false, false,false];
+  let state = document.getElementsByClassName('figure')[i-1].attributes['id'].nodeValue;
+  switch (state) {
+    case "hot" : 
+      showstatus[0] = true;
+      break;
+    case "ice" : 
+      showstatus[1] = true;
+      break;
+    case "Ocean" :
+      showstatus[2] = true;
+      break;
+    case "nocturnal" :
+      showstatus[3] = true;
+      break;
+    default :
+      break;
+  }
+  showstateno[i-1] = true;
+  document.getElementById("hotno1").classList.add("tourDisplayNone");
+  document.getElementById("iceno2").classList.add("tourDisplayNone");
+  document.getElementById("iceno3").classList.add("tourDisplayNone");
 
+  if(showstateno[0] && showstatus[0]){
+    document.getElementById("hotno1").classList.remove("tourDisplayNone");
+    document.getElementById("iceno2").classList.add("tourDisplayNone");
+    document.getElementById("iceno3").classList.add("tourDisplayNone");
+  }
+  if(showstateno[1] && showstatus[1]){
+    document.getElementById("iceno2").classList.remove("tourDisplayNone");
+    document.getElementById("hotno1").classList.add("tourDisplayNone");
+    document.getElementById("iceno3").classList.add("tourDisplayNone");
+  }
+  if(showstateno[2] && showstatus[1]){
+    document.getElementById("iceno3").classList.remove("tourDisplayNone");
+    document.getElementById("iceno2").classList.add("tourDisplayNone");
+    document.getElementById("hotno1").classList.add("tourDisplayNone");
+  }
+}
 
 function CarouselShow1 (){
-// 開關
-  const [state, setState] = useState(false);
-  const [state2, setState2] = useState(true);
-  const [state3, setState3] = useState(true);
   const tourmap = useRef();
-
     return(<>
       <div className="tour_Group">
         <div className="tourGuide1">
@@ -168,7 +203,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-            onClick={()=>{ChangeDescription(1);setState2(!state2);setState(!state)}}>
+            onClick={()=>{ChangeDescription(1);showdescription(1)}}>
               <img src="/img/tour/hot/01.jpg"  id="Centerig1" alt="#/"/>
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN1" >亞洲象</h3> 
@@ -178,7 +213,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-              onClick={()=>{ChangeDescription(2);setState3(!state3);setState(!state)}}>
+              onClick={()=>{ChangeDescription(2);showdescription(2)}}>
               <img src="/img/tour/hot/02.jpg" id="Centerig2" alt="#/"/>
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN2">鯨頭鸛</h3> 
@@ -188,7 +223,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-              onClick={()=>{ChangeDescription(3);}}>
+              onClick={()=>{ChangeDescription(3);showdescription(3)}}>
               <img src="/img/tour/hot/03.jpg" id="Centerig3" alt="#/" />
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN3" >水豚</h3> 
@@ -198,7 +233,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-            onClick={()=>{ChangeDescription(4)}}>
+            onClick={()=>{ChangeDescription(4);showdescription(4)}}>
               <img src="/img/tour/hot/04.jpg" id="Centerig4" alt="#/" />
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN4">馬來膜</h3> 
@@ -208,7 +243,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-            onClick={()=>{ChangeDescription(5)}}>
+            onClick={()=>{ChangeDescription(5);showdescription(5)}}>
               <img src="/img/tour/hot/05.jpg" id="Centerig5" alt="#/" />
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN5">大猩猩</h3> 
@@ -218,7 +253,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-            onClick={()=>{ChangeDescription(6)}}>
+            onClick={()=>{ChangeDescription(6);showdescription(6)}}>
               <img src="/img/tour/hot/06.jpg" id="Centerig6" alt="#/" />
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN6" >彩虹巨嘴鳥</h3> 
@@ -228,7 +263,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-            onClick={()=>{ChangeDescription(7)}}>
+            onClick={()=>{ChangeDescription(7);showdescription(7)}}>
               <img src="/img/tour/hot/07.jpg" id="Centerig7" alt="#/" />
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN7">樹懶</h3> 
@@ -238,7 +273,7 @@ function CarouselShow1 (){
       <Carousel.Item>
       <div className="tourCenterCard">
             <div className="figure" id='hot'
-            onClick={()=>{ChangeDescription(8)}}>
+            onClick={()=>{ChangeDescription(8);showdescription(8)}}>
               <img src="/img/tour/hot/08.jpg" id="Centerig8" alt="#/" />
             </div>   
             <h3 className="tourCardTwoText" id="CenterigCN8">穿山甲</h3> 
@@ -291,7 +326,7 @@ function CarouselShow1 (){
         </div> 
       </div>
 
-      <div className={state2 ? "tourDisplayNone" : "tour_showBooking_area"}>
+      <div id="hotno1" className= "tourDisplayNone tour_showBooking_area">
         <div className="tourGuide1">
             <div className="tourtextArea1">
                 <h2 style={{color: "black"}} className="tourH2">Jungle Tour</h2>
@@ -329,7 +364,7 @@ function CarouselShow1 (){
         </div>
         </div>
       </div>
-      <div className={state3 ? "tourDisplayNone" : "tour_showBooking_area"}>
+      <div id="iceno2" className= "tourDisplayNone tour_showBooking_area">
         <div className="tourGuide1">
             <div className="tourtextArea1">
                 <h2 style={{color: "black"}} className="tourH2">Jungle Tour</h2>
@@ -339,19 +374,74 @@ function CarouselShow1 (){
         <div className="wrap">
         <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
             <img style={{}}src="/img/tour/p6CVo6abkKGY.gif" alt=""/>
-          <div className="txt">
+          {/* <div className="txt1">
             <h2>捕食</h2>
-            <p>當北極狐聞到在窩裡的旅鼠氣味或聽到旅鼠的尖叫聲時，它會迅速地挖掘位於雪下面的旅鼠窩。
-
+            <p style={{color: "black"}} >當北極狐聞到在窩裡的旅鼠氣味或聽到旅鼠的尖叫聲時，它會迅速地挖掘位於雪下面的旅鼠窩。
+            等到扒得差不多時，北極狐會突然高高跳起，借著躍起的力量，用腿將雪做的鼠窩壓塌，將一窩旅鼠一網打盡，逐個吃掉它們。
+            </p>
+          </div> */}
+        </div>
+        <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
+        <div className="txt1">
+            <h2 style={{color:'#f9b112'}}>捕食</h2>
+            <p style={{color: "black",whiteSpace:'break-spaces'}} >當北極狐聞到在窩裡的旅鼠氣味或聽到旅鼠的尖叫聲時，它會迅速地挖掘位於雪下面的旅鼠窩。
             等到扒得差不多時，北極狐會突然高高跳起，借著躍起的力量，用腿將雪做的鼠窩壓塌，將一窩旅鼠一網打盡，逐個吃掉它們。
             </p>
           </div>
         </div>
+        {/* <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
+            <img style={{}}src="/img/tour/p6CVo6abkKGY.gif" alt=""/>
+          <div className="txt1">
+            <h2>捕食</h2>
+            <p style={{color: "black"}} >當北極狐聞到在窩裡的旅鼠氣味或聽到旅鼠的尖叫聲時，它會迅速地挖掘位於雪下面的旅鼠窩。
+            等到扒得差不多時，北極狐會突然高高跳起，借著躍起的力量，用腿將雪做的鼠窩壓塌，將一窩旅鼠一網打盡，逐個吃掉它們。
+            </p>
+          </div>
+        </div> */}
         </div>
       </div>
-
-
- 
+      <div id="iceno3" className= "tourDisplayNone tour_showBooking_area">
+        <div className="tourGuide1">
+            <div className="tourtextArea1">
+                <h2 style={{color: "black"}} className="tourH2">Jungle Tour</h2>
+                <p style={{color: "black"}} className="tourP1">園區導覽</p>
+            </div>
+        </div>
+        <div style={{flexWrap:'wrap'}} className="wrap">
+        <div style={{width:'50%'}} className="Touritem">
+            <img style={{objectFit:'cover', objectPosition:'50%'}}
+            src="/img/tour/ice/001.jpg" alt=""/>
+          <div className="txt">
+            <h2>北極熊</h2>
+            <p>唯一一種比其他種類的熊更長並且具有適合游泳的流線型的海熊。因為北極冰是多刺的，所以它有毛來保護腳底。它還具有防止滑倒和保護雙腳免受低溫影響的作用。</p>
+          </div>
+        </div>
+        <div style={{width:'50%'}} className="Touritem">
+        <img style={{objectFit:'cover', objectPosition:'55%'}}
+            src="/img/tour/ice/002.jpg" alt=""/>
+          <div className="txt">
+            <h2>北極熊</h2>
+            <p>一般在動物園裡看到的北極熊都是在水池裡游泳或是在岸上走來走去的模樣，餵食秀可是不能錯過的熱門節目，可以看見北極熊元氣滿滿地潛入水中覓食的模樣。</p>
+        </div>
+        </div>
+        <div style={{width:'50%'}}  className="Touritem">
+        <img style={{objectFit:'cover', objectPosition:'55%'}}
+            src="/img/tour/ice/003.jpeg" alt=""/>
+          <div className="txt">
+            <h2>貝殼之眼</h2>
+            <p>感覺就好像變成小海豹一樣偷偷觀察天敵北極熊的</p>
+          </div>
+        </div>     
+        <div style={{width:'50%'}} className="Touritem">
+        <img style={{objectFit:'cover', objectPosition:'55%'}}
+            src="/img/tour/ice/005.jpeg" alt=""/>
+          <div className="txt">
+            <h2>餵食秀</h2>
+            <p>這天的餵食秀是11點開始，在餵食秀開始15分鐘前過來的話能夠卡到不錯的欣賞位置。</p>
+          </div>
+        </div>
+        </div>
+      </div>
 </>)
 }
 const rootElement = document.getElementById('root')
