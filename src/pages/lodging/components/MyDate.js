@@ -169,7 +169,7 @@ function MyDate(props) {
                       className={item}
                       data-value={"2022/4/" + item}
                       onClick={(e) => checkDate(e)}
-                      style={"2022/4/" + item === check[0] ||"2022/4/" + item===check[1] ? {backgroundColor:"#f9b112"} : "2022/4/" + item > check[0] && "2022/4/" + item < check[1] ? {backgroundColor:"brown"}:{ backgroundColor:"white"} }
+                      style={ Date.parse("2022/4/" + item) === Date.parse(check[0]) || Date.parse("2022/4/" + item)===Date.parse(check[1]) ? {backgroundColor:"#f9b112"} : Date.parse("2022/4/"+item) > Date.parse(check[0]) &&Date.parse("2022/4/"+ item) < Date.parse(check[1]) ? {backgroundColor:"brown"}:{ backgroundColor:"white"} }
                     >
                       {item}
                     </td>
