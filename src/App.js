@@ -137,9 +137,29 @@ function App() {
   // 取得會員收藏資料
   const [likeListData,setLikeListData]=useState([]);
   
-  
-  
-
+  // if(auth || localState.token){
+  //   localStorage.setItem('like',JSON.stringify(likeListData));
+  // }
+  // useEffect(()=>{
+  //   const getLikeList=async ()=>{
+  //     await fetch(Config.TYSU_PRODUCT_LIKE_INFO+account.m_sid,{
+  //       method: 'GET',
+  //       headers: {
+  //         "Content-Type":"application/json"
+  //       }
+  //     }).then(r=>r.json()).then(obj=>{
+  //       console.log('LikeList:',obj)
+  //       if(obj.success){
+  //         setLikeListData(obj.info);
+  //       }
+          
+  //     })
+        
+        
+  //   }
+  //   getLikeList()
+  // },[])
+  localStorage.setItem('like',JSON.stringify(likeListData))
 
   return (
     <FourthCartProvider localStorage="fourthCart">

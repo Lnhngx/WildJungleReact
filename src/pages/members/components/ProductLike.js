@@ -4,7 +4,7 @@ import Config from "../Config";
 function ProductLike(props){
     const {likeAddCard,setLikeAddCart,likeListData,setLikeListData}=props;
     const sid=JSON.parse(localStorage.getItem('admin_account'))
-
+    const likes=JSON.parse(localStorage.getItem('like'))
     
     // 取得資料庫所有商品列表
     const [productLikeData,setProductLikeData]=useState([]);
@@ -28,7 +28,7 @@ function ProductLike(props){
     
     let newAr=[]
     productLikeData.forEach(el=>{
-        likeListData.forEach(v=>{
+        likes.forEach(v=>{
             // console.log(el['ProductSid']===Number(v))
             if(el['ProductSid']===Number(v)){
                 newAr.push(el)
@@ -38,7 +38,7 @@ function ProductLike(props){
     })
     
     return(<>
-{/* {console.log(())} */}
+{/* {console.log(newAr)} */}
         <table className="tysu_table">
             <thead>
                 <tr className="tysu_orderTr">

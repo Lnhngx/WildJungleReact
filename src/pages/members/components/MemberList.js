@@ -95,10 +95,12 @@ function MemberList(props){
         console.log('LikeList:',obj)
         if(obj.success){
           setLikeListData(obj.info);
-          
+          // localStorage.setItem('like',JSON.stringify(obj.info))
         }
           
-      });
+      })
+        
+        
     }
     getLikeList()
 
@@ -117,7 +119,8 @@ function MemberList(props){
   
   },[]);
   
-  localStorage.setItem('like',JSON.stringify(likeListData));
+  
+
     return(
       <div className="tysu_grade">
           <div className="tysu_gradeImg">
