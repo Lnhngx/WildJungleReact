@@ -450,6 +450,9 @@
     padding-left: 2rem;
     margin-bottom: 1rem;
     color: white;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
 }
 .agent_chooseArea{
     position: absolute;
@@ -458,6 +461,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+.exit_agent{
+    width: 50px;
+    cursor: pointer;
+}
+.exit_agent i{
+    font-size:2rem;
+    color: white;
 }
 .service_agent{
     top: 150px;
