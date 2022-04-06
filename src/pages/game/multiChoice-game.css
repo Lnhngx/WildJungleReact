@@ -103,6 +103,7 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     transition: 1s;
+    transition-delay: .5s; /*順序要注意:delay放後面*/
 }
 /* mc_board是總成績畫面 */
 .mc_board{
