@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
 import Carousel from './Carousel'
 import './CarouselShow.scss'
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 
 
@@ -64,24 +64,36 @@ function ChangeMap (state){
       document.getElementById("CenterigCN"+(i+1)).innerHTML=hot[i];
       document.getElementById("CenterigEN"+(i+1)).innerHTML=hotEN[i];
     }
+    document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/01.jpg";
+    document.getElementById("TourDescriptionTitle").innerHTML=hot[0];
+    document.getElementById("TourDescriptionText").innerHTML=HotDescriptions[0];
   }
   if (state === "Ocean") {
     for(let i=0; i<Ocean.length; i++){
       document.getElementById("CenterigCN"+(i+1)).innerHTML=Ocean[i];
       document.getElementById("CenterigEN"+(i+1)).innerHTML=OceanEN[i];
     }
+    document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/01.jpg";
+    document.getElementById("TourDescriptionTitle").innerHTML=Ocean[0];
+    document.getElementById("TourDescriptionText").innerHTML=oceanDescriptions[0];
   }
   if (state === "nocturnal") {
     for(let i=0; i<nocturnal.length; i++){
       document.getElementById("CenterigCN"+(i+1)).innerHTML=nocturnal[i];
       document.getElementById("CenterigEN"+(i+1)).innerHTML=nocturnalEN[i];
     }
+    document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/01.jpg";
+    document.getElementById("TourDescriptionTitle").innerHTML=nocturnal[0];
+    document.getElementById("TourDescriptionText").innerHTML=nocturnalDescriptions[0];
   }  
   if (state === "ice") {
     for(let i=0; i<ice.length; i++){
       document.getElementById("CenterigCN"+(i+1)).innerHTML=ice[i];
       document.getElementById("CenterigEN"+(i+1)).innerHTML=iceEN[i];
     }
+    document.getElementById("TourDescriptionpic1").src = "/img/tour/"+state+"/01.jpg";
+    document.getElementById("TourDescriptionTitle").innerHTML=ice[0];
+    document.getElementById("TourDescriptionText").innerHTML=IceDescriptions[0];
   }   
 }
 function ChangeDescription (i){
@@ -134,18 +146,12 @@ function showdescription(i){
 
   if(showstateno[0] && showstatus[0]){
     document.getElementById("hotno1").classList.remove("tourDisplayNone");
-    document.getElementById("iceno2").classList.add("tourDisplayNone");
-    document.getElementById("iceno3").classList.add("tourDisplayNone");
   }
   if(showstateno[1] && showstatus[1]){
     document.getElementById("iceno2").classList.remove("tourDisplayNone");
-    document.getElementById("hotno1").classList.add("tourDisplayNone");
-    document.getElementById("iceno3").classList.add("tourDisplayNone");
   }
   if(showstateno[2] && showstatus[1]){
     document.getElementById("iceno3").classList.remove("tourDisplayNone");
-    document.getElementById("iceno2").classList.add("tourDisplayNone");
-    document.getElementById("hotno1").classList.add("tourDisplayNone");
   }
 }
 

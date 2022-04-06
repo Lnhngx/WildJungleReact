@@ -1,10 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./tour.scss";
-import OrderList from "./components/OrderList";
 import CarouselShow from "./components/CarouselShow1";
-import Assets from "./Assets/p6CVo6abkKGY.gif";
-import { Link } from "react-router-dom";
-import { Modal, Button } from 'react-bootstrap';
 
 function tour(){
     return(<>
