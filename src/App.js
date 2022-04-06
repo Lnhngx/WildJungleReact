@@ -134,32 +134,6 @@ function App() {
   const [likeAddCard, setLikeAddCart] = useState();
 
   // 取得會員收藏資料
-<<<<<<< HEAD
-  const [likeListData, setLikeListData] = useState([]);
-
-  // if(auth || localState.token){
-  //   localStorage.setItem('like',JSON.stringify(likeListData));
-  // }
-  // useEffect(()=>{
-  //   const getLikeList=async ()=>{
-  //     await fetch(Config.TYSU_PRODUCT_LIKE_INFO+account.m_sid,{
-  //       method: 'GET',
-  //       headers: {
-  //         "Content-Type":"application/json"
-  //       }
-  //     }).then(r=>r.json()).then(obj=>{
-  //       console.log('LikeList:',obj)
-  //       if(obj.success){
-  //         setLikeListData(obj.info);
-  //       }
-
-  //     })
-
-  //   }
-  //   getLikeList()
-  // },[])
-  localStorage.setItem("like", JSON.stringify(likeListData));
-=======
   // const [likeListData,setLikeListData]=useState([]);
   
   
@@ -183,7 +157,6 @@ function App() {
   // },[])
   
   
->>>>>>> bcc800b07f6ddbc9ef178067c1e9c4ab80304deb
 
   return (
     <FourthCartProvider localStorage="fourthCart">
@@ -236,18 +209,6 @@ function App() {
                     <Products
                       sortbarType={sortbarType}
                       setSortbarType={setSortbarType}
-<<<<<<< HEAD
-                      likeListData={likeListData}
-                      setLikeListData={setLikeListData}
-                    />
-                  </Route>
-                  <Route path="/productsdetail">
-                    <ProductsDetail
-                      setSortbarType={setSortbarType}
-                      likeListData={likeListData}
-                      setLikeListData={setLikeListData}
-                    />
-=======
                       
                     />
                   </Route>
@@ -255,7 +216,6 @@ function App() {
                     <ProductsDetail setSortbarType={setSortbarType} 
 
                       />
->>>>>>> bcc800b07f6ddbc9ef178067c1e9c4ab80304deb
                   </Route>
                   <Route path="/game/spot-level">
                     <SpotLevel />

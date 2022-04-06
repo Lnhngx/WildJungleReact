@@ -97,7 +97,8 @@ function MyDate(props) {
       setCheck(Arr);
       setcheckTime(new Date(e.target.dataset.value).getTime());
       setCount(1);
-      console.log(Arr);
+      //console.log(Arr);
+      //colorArr.push(e.target)
       e.target.style.backgroundColor = "#f9b112";
     } else if (count === 1) {
       if (new Date(e.target.dataset.value).getTime() > checkTime) {
@@ -121,12 +122,15 @@ function MyDate(props) {
         setcheckTime(new Date(e.target.dataset.value).getTime());
         setCount(1);
       }
+      //colorArr.push(e.target)
     }
 
     colorArr.push(e.target.innerHTML);
     
+  console.log(colorArr)
+  
   }
-  console.log(colorArr);
+  
 
   setCartdate(check[0]);
   setCartdate2(check[1]);
@@ -136,7 +140,7 @@ function MyDate(props) {
       <h2 id="yearAndMonth" className="yearAndMonth">
         <span
           onClick={() => {
-            console.log(check[0], check[1]);
+            //console.log(check[0], check[1]);
           }}
         >
           入住：
