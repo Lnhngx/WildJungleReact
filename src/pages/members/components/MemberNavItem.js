@@ -41,9 +41,12 @@ function MemberNavItem(props){
     user711Data,
     setUser711Data,
     likeAddCard,
-    setLikeAddCart
+    setLikeAddCart,
+    likeListData,
+    setLikeListData
   }=props
 
+  
   const [navActived,setNavActived]=useState(navState)
   // {navItem:'基本設定',orderNavItem:'訂單查詢',discountNavItem:'紅利',likeNavItem:'商品'}
   const sid=JSON.parse(localStorage.getItem('admin_account'))
@@ -176,7 +179,7 @@ function MemberNavItem(props){
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[3] ? <ConvenienceStore navActived={navActived} orderNavItem={orderNavItem} user711Data={user711Data} setUser711Data={setUser711Data}/> : '' }
     {actived===memberlist[2] && navState.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem} pointData={pointData} setPointData={setPointData} /> : '' }
     {actived===memberlist[2] && navState.discountNavItem===discountNavItem[1] ? <DiscountTicket navActived={navActived} discountNavItem={discountNavItem}/> : '' }
-    {actived===memberlist[3] && navState.likeNavItem===likeNavItem[0] ? <ProductLike navActived={navActived} likeNavItem={likeNavItem} likeAddCard={likeAddCard} setLikeAddCart={setLikeAddCart} /> : '' }
+    {actived===memberlist[3] && navState.likeNavItem===likeNavItem[0] ? <ProductLike navActived={navActived} likeNavItem={likeNavItem} likeAddCard={likeAddCard} setLikeAddCart={setLikeAddCart} likeListData={likeListData} setLikeListData={setLikeListData}/> : '' }
     {actived===memberlist[3] && navState.likeNavItem===likeNavItem[1] ? <ActivityLike navActived={navActived} likeNavItem={likeNavItem}/> : '' }
 
   </>)

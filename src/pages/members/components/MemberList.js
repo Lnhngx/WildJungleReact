@@ -29,9 +29,11 @@ function MemberList(props){
   const [sidData,setSidData]=useState({});
   // 取得會員信用卡資料
   const [creditData,setCreditData]=useState([]);
-  
+  // 取得會員收藏資料
+  const [likeListData,setLikeListData]=useState([]);
+  // 取得會員超商設定
   const [user711Data,setUser711Data]=useState({});
-  
+  localStorage.setItem('like',JSON.stringify(likeListData));
 
   useEffect(()=>{
     const getSidData=async ()=>{
@@ -83,6 +85,21 @@ function MemberList(props){
     }
     getPointData()
 
+    const getLikeList=async ()=>{
+      await fetch(Config.TYSU_PRODUCT_LIKE_INFO+sid.m_sid,{
+        method: 'GET',
+        headers: {
+          "Content-Type":"application/json"
+        }
+      }).then(r=>r.json()).then(obj=>{
+        console.log('LikeList:',obj)
+        if(obj.success){
+          setLikeListData(obj.info)}
+      });
+
+
+    }
+    getLikeList()
 
     const getUser711=async()=>{
       await fetch(Config.TYSU_711_Add+'?m_id='+sid['m_sid'],{
@@ -94,8 +111,8 @@ function MemberList(props){
           console.log('User711:',obj)
           setUser711Data(obj);
       })
-  }
-  getUser711()
+    }
+    // getUser711()
   
   },[]);
   
@@ -128,6 +145,8 @@ function MemberList(props){
             setUser711Data={setUser711Data}
             likeAddCard={likeAddCard}
             setLikeAddCart={setLikeAddCart}
+            likeListData={likeListData}
+            setLikeListData={setLikeListData}
           />
           <div className="tysu_memberBg">
             <img src="./../img/member/leaf_y.svg" alt="" />
