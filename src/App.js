@@ -239,31 +239,26 @@ function App() {
                     <Game />
                   </Route>
                   <Route path="/carts/filloutform">
-<<<<<<< HEAD
-  <Cartsfilloutform
-    name={name}
-    phone={phone}
-    email={email}
-    address={address}
-    delivery={delivery}
-    payment={payment}
-=======
                     {auth || localState.token ? (<Cartsfilloutform
->>>>>>> 0c14519fbaf9cdd9b9dbaeb0108a2ef12aef6e19
-    setName={setName}
-    setPhone={setPhone}
-    setEmail={setEmail}
-    setAddress={setAddress}
-    setDelivery={setDelivery}
-    setPayment={setPayment}
-  />) : (
-    <Redirect to="/members" />
-  )
-}
-                    
-                  </Route >
+                      name={name}
+                      phone={phone}
+                      email={email}
+                      address={address}
+                      delivery={delivery}
+                      payment={payment}
+                      setName={setName}
+                      setPhone={setPhone}
+                      setEmail={setEmail}
+                      setAddress={setAddress}
+                      setDelivery={setDelivery}
+                      setPayment={setPayment}
+                    />) : (
+                      <Redirect to="/members" />
+                    )
+                    }
+                  </Route>
                   <Route path="/carts/finishorder">
-                  {auth || localState.token ? (<Cartsfinishorder
+                    {auth || localState.token ? (<Cartsfinishorder
                       name={name}
                       phone={phone}
                       email={email}
@@ -273,7 +268,7 @@ function App() {
                     />) : (
                       <Redirect to="/members" />
                     )}
-                    
+
                   </Route>
                   <Route path="/carts">
                     {auth || localState.token ? (<Carts />) : (
@@ -345,7 +340,7 @@ function App() {
                     />
                   </Route>
 
-{/* 網址上的動態參數params 
+                  {/* 網址上的動態參數params 
           <Route path="/product-list/product-detail/:id?">
             <ProductDetail />
           </Route>
@@ -359,11 +354,11 @@ function App() {
             <Home auth={auth} />
           </Route>
           */}
-<Route path="*">
-  <NotFoundPage />
-</Route>
+                  <Route path="*">
+                    <NotFoundPage />
+                  </Route>
                 </Switch >
-  <Footer />
+                <Footer />
               </>
             </Router >
           </CartProvider >
