@@ -36,14 +36,14 @@ function CartAdopt() {
               <li className="stan_ds_product">{v.name}</li>
               <li className="stan_ds_product">${v.price}</li>
               <li className="stan_ds_product stan_count_btn">
-                {/* <div className="stan_seats_out">{seats}</div> */}
+                <i className="fas fa-edit stan_btnicon_delete"></i>
               </li>
 
               <div className="stan_mo_product">
                 <li>{v.name}</li>
                 <li>${v.price}</li>
                 <li className="stan_count_btn">
-                  {/* {seats} */}
+                  <i className="fas fa-edit stan_btnicon_delete"></i>
                 </li>
               </div>
             </ul>
