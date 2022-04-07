@@ -68,7 +68,7 @@ function ProductLike(props){
                     return (<tr key={v.ProductSid} className="tysu_orderTr tysu_orderText" name={v.ProductSid}>
                         <th>{i+1}</th>
                         <td>
-                            <img  style={{width:"110px"}} src={'/img/product/'+v.ProductsMainPic} alt="" />
+                            <img className="tysu_likeImg" src={'/img/product/'+v.ProductsMainPic} alt="" />
                         </td>
                         <td className="tysu_orderBg">{v.ProductsName}</td>
                         <td>${v.ProductsPrice}</td>
