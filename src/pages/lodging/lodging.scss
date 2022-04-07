@@ -253,7 +253,8 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_tbody td:hover {
-    background-color: #f9b012b0;
+    outline: 1px solid $ning-color2;
+    cursor:pointer;
   }
 
   .lodging_oceandetailbtn,
@@ -603,8 +604,8 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_iceminus,
   .lodging_iceplus {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-color: $ning-color4;
     color: $ning-color3;
     border-radius: 0;
@@ -612,7 +613,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_icevalue {
     width: 60px;
-    height: 30px;
+    height: 50px;
     border-radius: 0;
     border: 1px solid $ning-color4;
     font-size: 18px;
@@ -949,8 +950,8 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_nocturnalminus,
   .lodging_nocturnalplus {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-color: $ning-color4;
     color: $ning-color3;
     border-radius: 0;
@@ -958,7 +959,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_nocturnalvalue {
     width: 60px;
-    height: 30px;
+    height: 50px;
     border-radius: 0;
     border: 1px solid $ning-color4;
     font-size: 18px;
@@ -1293,8 +1294,8 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_tropicalminus,
   .lodging_tropicalplus {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-color: $ning-color4;
     color: $ning-color3;
     border-radius: 0;
@@ -1302,7 +1303,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .lodging_tropicalvalue {
     width: 60px;
-    height: 30px;
+    height: 50px;
     border-radius: 0;
     border: 1px solid $ning-color4;
     font-size: 18px;

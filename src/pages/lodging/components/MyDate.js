@@ -30,7 +30,7 @@
 
 // export default MyDate;
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import _ from "lodash";
 
 const myYear = 2022;
@@ -169,7 +169,25 @@ function MyDate(props) {
                       className={item}
                       data-value={"2022/4/" + item}
                       onClick={(e) => checkDate(e)}
-                      style={ Date.parse("2022/4/" + item) === Date.parse(check[0]) || Date.parse("2022/4/" + item)===Date.parse(check[1]) ? {backgroundColor:"#f9b112"} : Date.parse("2022/4/"+item) > Date.parse(check[0]) &&Date.parse("2022/4/"+ item) < Date.parse(check[1]) ? {backgroundColor:"#ffe8b5"}:{ backgroundColor:"white"} }
+                      style={
+                        Date.parse("2022/4/" + item) < new Date().setDate(new Date().getDate() -1)
+                          ? {
+                              backgroundColor: "#dddddd",
+                              cursor: "not-allowed",
+                              pointerEvents: "none",
+                              
+                            }
+                          : Date.parse("2022/4/" + item) ===
+                              Date.parse(check[0]) ||
+                            Date.parse("2022/4/" + item) ===
+                              Date.parse(check[1])
+                          ? { backgroundColor: "#f9b112" }
+                          : Date.parse("2022/4/" + item) >
+                              Date.parse(check[0]) &&
+                            Date.parse("2022/4/" + item) < Date.parse(check[1])
+                          ? { backgroundColor: "#ffe8b5" }
+                          : { backgroundColor: "white" }
+                      }
                     >
                       {item}
                     </td>

@@ -140,7 +140,7 @@ const HomeCarousel = () => {
           </div>
         </div>
         <div className="zooslider">
-          <span class="material-icons" onClick={prev}>
+          <span className="material-icons" onClick={prev}>
             west
           </span>
           <div className="preview">
@@ -170,7 +170,7 @@ const HomeCarousel = () => {
               className={count === 4 ? "thumbnail active" : "thumbnail"}
             ></img>
           </div>
-          <span class="material-icons" onClick={next}>
+          <span className="material-icons" onClick={next}>
             east
           </span>
         </div>
