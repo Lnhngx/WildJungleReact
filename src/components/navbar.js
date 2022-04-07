@@ -115,6 +115,7 @@ function Navbar(props) {
                   setShowOut(false)
                 }}>會員專區</li>
                 <li onClick={() => {
+                  localStorage.setItem("like",JSON.stringify([]))
                   localStorage.removeItem("admin_account");
                   localStorage.removeItem("admin_token");
                   setAuth(false);
