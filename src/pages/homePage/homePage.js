@@ -3,15 +3,15 @@ import "./ning.scss";
 import "./homepage.scss";
 import HomeCarousel from "./components/HomeCarousel";
 // import Homevideo from "./components/Homevideo";
-import HomeWeather from "./components/HomeWeather";
-import HomeWeathermb from "./components/HomeWeathermb";
+// import HomeWeather from "./components/HomeWeather";
+// import HomeWeathermb from "./components/HomeWeathermb";
 import Accommodation from "./components/Accommodation";
 import HomeJungleTour from "./components/HomeJungleTour";
 import HomeJungleStar from "./components/HomeJungleStar";
 import HomeTransportion from "./components/HomeTransportion";
 import HomeTransportionP from "./components/HomeTransportionP";
 import { CarouselData } from "./components/CarouselData";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function HomePage() {
   const [transportionbtn, setTransportionbtn] = useState(true);
