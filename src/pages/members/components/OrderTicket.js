@@ -53,26 +53,28 @@ function OrderTicket() {
                     {v.order_date.slice(0, 10).split("-").join("") +
                       v.order_sid}</a>
                 </td>
-                <td className="tysu_orderBg">WildJungle入園門票</td>
+                {typeof v.product_name==='string'?
+                <td className="tysu_orderBg"><div>{v.product_name}</div></td>:
+                <td className="tysu_orderBg"><div>{v.product_name.join('\n')}</div></td>}
                 <td>${v.product_price}</td>
                 <td>{v.product_quantity}</td>
                 <td rowSpan="0">${v.amount}</td>
                 <td>{v.order_date.slice(0, 10)}</td>
                 <td>未使用</td>
               </tr>
-              <tr className="tysu_orderTr tysu_orderText">
+              {/* <tr className="tysu_orderTr tysu_orderText">
                 <td className="tysu_orderBg">動物餵食秀</td>
                 <td>$100</td>
                 <td>2</td>
                 <td>2022/02/08</td>
                 <td>已過期</td>
-              </tr>
+              </tr> */}
             </tbody>
           );
         })}
 
         <tbody>
-          <tr className="tysu_orderTr tysu_orderText">
+          {/* <tr className="tysu_orderTr tysu_orderText">
             <th>2</th>
             <td>
               <a href="#/">A220201777889</a>
@@ -83,7 +85,7 @@ function OrderTicket() {
             <td>$105</td>
             <td>2022/01/08</td>
             <td>已使用</td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
       <nav className="tysu_filterSelect tysu_btnPages">
