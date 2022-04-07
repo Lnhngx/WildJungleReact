@@ -12,12 +12,7 @@ function ConvenienceStore(props){
     const [showStoreAdd,setShowStoreAdd]=useState(false);
 
     
-    useEffect(()=>{
-        if(Object.keys(user711Data).length!==0){
-            setUser711D(user711Data.info);
-            
-        }
-    },[user711Data])
+    
 
 
     useEffect(()=>{
@@ -30,11 +25,17 @@ function ConvenienceStore(props){
             })
             const obj=await r.json()
             console.log('again 711 obj',obj)
-            // setUser711Data(obj);
+            setUser711D(obj.info);
             
           }
           get711Again()
-    },[user711D])
+    },[])
+    useEffect(()=>{
+        if(Object.keys(user711Data).length!==0){
+            setUser711D(user711Data.info);
+            
+        }
+    },[user711Data])
 
     return(<>
     {/* {console.log(user711Data)} */}

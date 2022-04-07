@@ -187,7 +187,7 @@ function MemberList(props){
           setUser711Data(obj);
       })
     }
-    // getUser711()
+    getUser711()
   
   },[]);
 

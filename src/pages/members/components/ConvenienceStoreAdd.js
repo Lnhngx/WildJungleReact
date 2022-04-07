@@ -147,7 +147,7 @@ function ConvenienceStoreAdd(props){
                             // console.log(event.target)
                             if(event.target.name==='store'){
                                 console.log(event.target.value)
-                                // setStoreName(event.target.value);
+                                setStoreName(event.target.value);
                             }
                         }} >
                         {storeData.map((v,i)=>{
