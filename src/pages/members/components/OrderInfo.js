@@ -59,7 +59,11 @@ function OrderInfo() {
                       v.order_sid}
                   </a>
                 </td>
-                <td className="tysu_orderBg">{v.product_name}</td>
+                {/* {console.log(typeof v.product_name==='string')} */}
+                {typeof v.product_name==='string'?
+                <td className="tysu_orderBg"><div>{v.product_name}</div></td>:
+                <td className="tysu_orderBg"> <div>{v.product_name.join(' ')}</div></td>}
+                
                 <td>${v.product_price}</td>
                 <td>{v.product_quantity}</td>
                 <td>
