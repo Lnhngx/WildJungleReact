@@ -168,7 +168,10 @@ function ProductsDetail(props) {
   changeColor()});
 
   const likela = () => {
-    const current = JSON.parse(localStorage.getItem("like"));
+    let current = [];
+    if(localStorage.getItem("like")){
+      current = JSON.parse(localStorage.getItem("like"));
+    }
     const likeheart = document.getElementById("likeheart");
     let item = [...current];
     if (current.includes(Sid)) {
