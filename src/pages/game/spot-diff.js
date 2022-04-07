@@ -22,6 +22,7 @@ function SpotDiff(){
     let [clicked , left , top ] = spotWrong;
     let [clicked1 , left1 , top1 ] = spot1Wrong;
     let [clicked2 , left2 , top2 ] = spot2Wrong;
+    
     useEffect(() => {
         setTimeout(() => {
             window.scrollTo({
@@ -449,6 +450,7 @@ function SpotDiff(){
                                     <img src="/img/game/game_button.png" alt="" />
                                 </Link>
                                 <Link
+                                    to="/game/spot-diff"
                                     className="fail_btn" 
                                     onClick={()=>{
                                         window.location.reload()
@@ -552,7 +554,8 @@ function SpotDiff(){
                         <div className="help">
                             <i className="fas fa-question"></i>
                         </div>
-                        <Link to="/game/spot-level" className="list">
+                        {/* 這邊跳回選關卡頁面也必須停止狀態改變，否則會出現警告（無法更新已卸載的元件） */}
+                        <Link to="/game/spot-level" className="list" onClick={()=>{clearInterval(winClean)}}>
                             <i className="fas fa-list-ul"></i>
                         </Link>
                     </div>

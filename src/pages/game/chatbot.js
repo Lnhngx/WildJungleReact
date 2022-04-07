@@ -378,7 +378,7 @@ function Chatbot(props){
                         {/* console.log('我是機器人的代表') */}
                         return(
                         
-                        <div className="chatbot_reply" key={v.id}>
+                        <div className="chatbot_reply" key={i}>
                             <div className="chatbot_avatar">
                                 <img src="/img/game/chatbot_avatar.png" alt="" />
                             </div>
@@ -391,7 +391,7 @@ function Chatbot(props){
                     }else{
                         {/* console.log('我是使用者的代表') */}
                         return ( 
-                            <div className="user_reply" key={v.id}>
+                            <div className="user_reply" key={i}>
                                             <div className="user_message">
                                                 {v.text}
                                             </div>

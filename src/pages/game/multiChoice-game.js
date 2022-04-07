@@ -105,7 +105,7 @@ function MultiChoice(){
                         {allQuestion.map((v,i)=>{ 
                             if(i<9){
                             return(
-                            <li className="choose_question">
+                            <li className="choose_question" key={i}>
                                 <h2>{i+1}.{v.qcontent}</h2>
                                 <div className="mc_btnGroup">
                                     <button onClick={(e)=>{
@@ -160,7 +160,7 @@ function MultiChoice(){
                             </li>)
                             }else{
                                 return(
-                            <li className="choose_question">
+                            <li className="choose_question" key={i}>
                                 <h2>{i+1}.{v.qcontent}</h2>
                                 <div className="mc_btnGroup">
                                     <button onClick={(e)=>{
@@ -236,7 +236,7 @@ function MultiChoice(){
                             <div className="boardLeft">
                                 {review.map((v,i)=>{
                                     return(
-                                    <div className="board_qaGroup">
+                                    <div className="board_qaGroup" key={i}>
                                     <div className="board_question">{v.number}.{v.question}</div>
                                     <div className="userAns">你的答案:{v.userAns}</div>
                                     <div className="rightAns">正確答案:<span>{v.rightAns}</span></div>
