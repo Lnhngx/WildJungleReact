@@ -2024,4 +2024,51 @@ $ning-englishont: "Playfair Display", serif;
   .cancelbtn:hover {
     background-color: $ning-color2;
   }
+
+  .room_Modalyesbtn {
+    width: 80px;
+    height: 40px;
+    background-color: $ning-color2;
+    font-size: 1.3rem;
+    font-family: $ning-chinesefont;
+    color: $ning-color4;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  .room_Modalnobtn {
+    width: 80px;
+    height: 40px;
+    background-color: $ning-color4;
+    font-size: 1.3rem;
+    font-family: $ning-chinesefont;
+    color: $ning-color3;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  .room_ModalTitle {
+    font-size: 2rem;
+    font-family: $ning-chinesefont;
+    color: $ning-color4;
+  }
+
+  .room_ModalBody{
+    font-size: 1.5rem;
+    font-family: $ning-chinesefont;
+    color: $ning-color4;
+  }
+
+  .room_Modalyesbtn:hover {
+    background-color: $ning-color4;
+    color: $ning-color3;
+  }
+
+  .room_Modalnobtn:hover {
+    background-color: $ning-color4;
+    font-size: 1.3rem;
+    font-family: $ning-chinesefont;
+    color: $ning-color3;
+  }
+
 }

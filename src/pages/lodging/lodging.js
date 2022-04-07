@@ -5,7 +5,7 @@ import Config from "./Config";
 import "./lodging.scss";
 import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";
-import { Modal, Button } from "react-bootstrap";
+// import { Modal, Button } from "react-bootstrap";
 import { useFourthCart } from "../carts/utils/useFourthCart";
 
 function Lodging(props) {
@@ -38,6 +38,29 @@ function Lodging(props) {
   const [roomName, setRoomName] = useState("");
   const [roomSid, setRoomSid] = useState(0);
   const [order, setOrder] = useState([]);
+
+  // const [show, setShow] = useState(false);
+
+
+  // const ModalShow = (
+  //   <Modal show={show} animation={false}>
+  //     <Modal.Header>
+  //       <Modal.Title className="room_ModalTitle">加入購物車</Modal.Title>
+  //     </Modal.Header>
+  //     <Modal.Body className="room_ModalBody">訂房資訊已加入購物車！</Modal.Body>
+  //     <Modal.Footer>
+  //       <Button
+  //         className="room_Modalyesbtn"
+  //         onClick={setShow(false)}
+  //       >
+  //         繼續購物
+  //       </Button>
+  //       <Button className="room_Modalnobtn" onClick={()=>{window.location.href = "http://localhost:3000/carts";}}>
+  //         前往購物車
+  //       </Button>
+  //     </Modal.Footer>
+  //   </Modal>
+  // );
 
   //海洋房詳細資訊btn
 
@@ -376,30 +399,6 @@ function Lodging(props) {
 
   const [countdata, setCoundata] = useState([]);
 
-  const [show, setShow] = useState(false);
-  const [state2, setState2] = useState(true);
-
-  const ModalShow1 = (
-    <Modal show={show} animation={false}>
-      <Modal.Body className="modal_text">
-        訂位完成！期待您的蒞臨～
-        <br />
-        ⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾
-      </Modal.Body>
-      <Modal.Footer className="">
-        <Button
-          className="modal_button"
-          onClick={() => {
-            setShow(false);
-            setState2(true);
-          }}
-        >
-          OK
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
-
   // let totalDay;
 
   // if (stayDay.length === 2) {
@@ -539,7 +538,7 @@ function Lodging(props) {
                 <i className="fas fa-minus"></i>
               </button>
               <input
-              readOnly
+                readOnly
                 type="text"
                 value={oceancount}
                 className="lodging_oceanvalue"
@@ -582,6 +581,7 @@ function Lodging(props) {
             >
               預約訂房
             </button>
+            {/* {ModalShow} */}
           </div>
         </div>
 
@@ -812,7 +812,7 @@ function Lodging(props) {
                   <i className="fas fa-minus"></i>
                 </button>
                 <input
-                readOnly
+                  readOnly
                   type="text"
                   value={icecount}
                   className="lodging_icevalue"
@@ -854,6 +854,7 @@ function Lodging(props) {
               >
                 預約訂房
               </button>
+              {/* {ModalShow} */}
             </div>
           </div>
         </div>
@@ -1045,7 +1046,7 @@ function Lodging(props) {
               </div>
             </div>
             <div className="lodging_nocturnalline"></div>
-            
+
             <div className="lodging_nocturnallist1">
               <p>坪數</p>
               <p>22坪</p>
@@ -1091,7 +1092,7 @@ function Lodging(props) {
                   <i className="fas fa-minus"></i>
                 </button>
                 <input
-                readOnly
+                  readOnly
                   type="text"
                   value={nocturnalcount}
                   className="lodging_nocturnalvalue"
@@ -1103,16 +1104,13 @@ function Lodging(props) {
                   <i className="fas fa-plus"></i>
                 </button>
               </div>
-              
-                {nocturnalbox === 1 ? (
-                  <MyDate
-                    setCartdate={setCartdate}
-                    setCartdate2={setCartdate2}
-                  />
-                ) : (
-                  ""
-                )}
-              
+
+              {nocturnalbox === 1 ? (
+                <MyDate setCartdate={setCartdate} setCartdate2={setCartdate2} />
+              ) : (
+                ""
+              )}
+
               {/* <input
                 type="date"
                 placeholder="入住日期"
@@ -1141,6 +1139,7 @@ function Lodging(props) {
               >
                 預約訂房
               </button>
+              {/* {ModalShow} */}
             </div>
           </div>
         </div>
@@ -1368,7 +1367,7 @@ function Lodging(props) {
                   <p>房間定價</p>
                   <h3>
                     <span>NT$</span>
-                    {(6500 * tropicalcount).toString()}
+                    6500
                   </h3>
                 </div>
               </div>
@@ -1380,7 +1379,7 @@ function Lodging(props) {
                   <i className="fas fa-minus"></i>
                 </button>
                 <input
-                readOnly
+                  readOnly
                   type="text"
                   value={tropicalcount}
                   className="lodging_tropicalvalue"
@@ -1425,6 +1424,7 @@ function Lodging(props) {
               >
                 預約訂房
               </button>
+              {/* {ModalShow} */}
             </div>
           </div>
         </div>

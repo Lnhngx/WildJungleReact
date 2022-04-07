@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Config from "../Config";
+// import { Modal, Button } from "react-bootstrap";
 
 function AdditionComment(props) {
   const Range = Slider;
+
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   // const [show, setShow] = useState(false);
   // const handleShow = () => {
@@ -135,7 +141,7 @@ function AdditionComment(props) {
           <div className="orderInformation">訂購資訊</div>
           <div className="orderList">
             <p className="orderNumber">
-              訂單編號 : <span>{(props.order).length===0?"":props.order[0]["order_sid"]}</span>
+            訂單編號 : <span>{(props.order).length===0?"":props.order[0]["order_sid"]}</span>
             </p>
             <p className="orderRoom">
               入住房型 : <span>{props.roomName}</span>
@@ -143,10 +149,10 @@ function AdditionComment(props) {
             <p
               className="orderCheckinDate"
             >
-              入住日期 : <span>{(props.order).length===0?"":props.order[0]["start"]}</span>
+            入住日期 : <span>{(props.order).length===0?"":props.order[0]["start"]}</span>
             </p>
             <p className="orderCheckoutDate">
-              退房日期 : <span>{(props.order).length===0?"":props.order[0]["end"]}</span>
+            退房日期 : <span>{(props.order).length===0?"":props.order[0]["end"]}</span>
             </p>
           </div>
           <div className="commentline"></div>
@@ -373,9 +379,31 @@ function AdditionComment(props) {
         />
         <div className="textareaHelp"></div>
         <div className="commentbtngroup">
-          <button type="submit" id="submit" className="btn commentbtn">
+        <button type="submit" id="submit" className="btn commentbtn">
+        送出
+          </button>
+          {/* <button type="button" className="btn commentbtn" onClick={handleShow}>
             送出
           </button>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header >
+              <Modal.Title className="room_ModalTitle">送出</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="room_ModalBody">確定要送出這筆評論嗎？</Modal.Body>
+            <Modal.Footer>
+              <Button
+                className="room_Modalyesbtn"
+                onClick={handleClose}
+                type="submit"
+                id="submit"
+              >
+                確定
+              </Button>
+              <Button className="room_Modalnobtn" onClick={handleClose}>
+                取消
+              </Button>
+            </Modal.Footer>
+          </Modal> */}
           <button type="reset" className="btn cancelbtn" onClick={allClear}>
             清除
           </button>
