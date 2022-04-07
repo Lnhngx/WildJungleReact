@@ -27,8 +27,11 @@ function Cartfilloutform(props) {
     m_sid: m_sid,
     payment_sid: paymenttodb,
     amount: totaltodb,
+    status: "未付款",
   };
   const data2 = JSON.parse(localStorage.getItem("cart"));
+
+  
 
   return (
     <>
