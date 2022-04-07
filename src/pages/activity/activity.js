@@ -41,7 +41,7 @@ let datas2 = [{
     className4: "sponsor_animalName",
     className5: "sponsor_introductionText",
     id: "Elephant",
-    text: "頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛。象牙是長得特別長的上門齒。象鼻是由肌肉構成，非常靈活有力，末端上下各有一靈巧的指狀突起。",
+    text: "頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛。象牙是長得特別長的上門齒。象鼻是由肌肉構成，非常靈活有力。",
     buttonText: "我要認養！"
 }, {
     className1: "cardbg cardbg5",
@@ -50,7 +50,7 @@ let datas2 = [{
     className4: "sponsor_animalName",
     className5: "sponsor_introductionText",
     id: "White Fox",
-    text: "吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。",
+    text: "吻部很尖，耳短而圓，臉頰後部及腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。",
     buttonText: "我要認養！"
 }, {
     className1: "cardbg cardbg6",
@@ -59,7 +59,7 @@ let datas2 = [{
     className4: "sponsor_animalName",
     className5: "sponsor_introductionText",
     id: "Coming soon",
-    text: "下一個明星動物正在票選中，還請耐心等待下一個明星動物的誕生！",
+    text: "感謝您蒞臨動物園，下一個明星動物正在票選階段中，我們也像您一樣等不及想要知道下一個人氣王會是誰～還請留意官網的公告且期待下一個明星動物的誕生！",
     buttonText: "敬請期待！"
 }];
 

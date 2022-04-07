@@ -654,12 +654,14 @@ $terry_black: #000000;
     position: relative;
   }
   .sponsor_animalImg1 {
-    background: url(../../../public/img/home/star_eagle_bk.png) 2% / contain no-repeat;
+    background: url(../../../public/img/home/star_eagle_bk.png) 2% / contain
+      no-repeat;
     width: 100%;
     height: auto;
   }
   .sponsor_animalImg2 {
-    background: url(../../../public/img/home/star_shark_bk.png) 0% / contain no-repeat;
+    background: url(../../../public/img/home/star_shark_bk.png) 0% / contain
+      no-repeat;
     width: 100%;
     height: auto;
   }
@@ -670,8 +672,8 @@ $terry_black: #000000;
     height: auto;
   }
   .sponsor_animalImg4 {
-    background: url(../../../public/img/home/star_elephant_bk.png) 8% /
-      contain no-repeat;
+    background: url(../../../public/img/home/star_elephant_bk.png) 8% / contain
+      no-repeat;
     width: 100%;
     height: auto;
     margin-top: 30px;
@@ -684,8 +686,8 @@ $terry_black: #000000;
     margin-top: 20px;
   }
   .sponsor_animalImg6 {
-    background: url(../../../public/img/activity/questionMark.svg) 4% /
-      contain no-repeat;
+    background: url(../../../public/img/activity/questionMark.svg) 4% / contain
+      no-repeat;
     width: 100%;
     height: auto;
     margin-top: 20px;
@@ -698,7 +700,7 @@ $terry_black: #000000;
     width: 47%;
     height: 100%;
     right: 0;
-    padding: 15% 5% 5% 0;
+    padding: 10% 5% 5% 0;
     .sponsor_animalName {
       width: auto;
       color: $terry_white;
@@ -710,12 +712,12 @@ $terry_black: #000000;
     .sponsor_introductionText {
       font-family: "Noto Sans TC";
       font-weight: 300;
-      font-size: 14px;
+      font-size: 18px;
       word-wrap: normal;
       white-space: pre-wrap;
       color: $terry_white;
       text-indent: 2em;
-      padding-top: 10%;
+      padding-top: 5%;
       flex-grow: 2;
     }
     .sponsor_animalName2 {
@@ -729,12 +731,12 @@ $terry_black: #000000;
     .sponsor_introductionText2 {
       font-family: "Noto Sans TC";
       font-weight: 300;
-      font-size: 14px;
+      font-size: 18px;
       word-wrap: normal;
       white-space: pre-wrap;
       color: $terry_black;
       text-indent: 2em;
-      padding-top: 10%;
+      padding-top: 5%;
       flex-grow: 2;
     }
     button {
@@ -792,9 +794,11 @@ $terry_black: #000000;
       }
       .sponsor_introductionText {
         font-size: 15px;
+        margin-top: 8%;
       }
       .sponsor_introductionText2 {
         font-size: 15px;
+        margin-top: 8%;
       }
       .sponsor_introductionText3 {
         font-size: 15px;
@@ -842,45 +846,45 @@ $terry_black: #000000;
     position: absolute;
     background: url(../../../public/img/home/star_eagle.png) center
       center/contain no-repeat;
-    width: 900px;
-    height: 900px;
+    width: 55%;
+    height: 100%;
     bottom: 80px;
   }
   .animalImg2 {
     position: absolute;
     background: url(../../../public/img/home/star_shark.png) 30% / contain
       no-repeat;
-    width: 800px;
-    height: 800px;
-    bottom: 70px;
+    width: 50%;
+    height: 100%;
+    bottom: 80px;
     left: 10px;
   }
   .animalImg3 {
     position: absolute;
     background: url(../../../public/img/home/star_tiger.png) center
       center/contain no-repeat;
-    width: 800px;
-    height: 800px;
-    bottom: 15.5%;
-    left: 30px;
+    width: 40%;
+    height: 100%;
+    bottom: 12.5%;
+    left: 80px;
   }
   .animalImg4 {
     position: absolute;
     background: url(../../../public/img/home/star_elephant.png) center
       center/contain no-repeat;
-    width: 800px;
-    height: 800px;
-    bottom: 110px;
-    left: 30px;
+    width: 45%;
+    height: 100%;
+    bottom: 85px;
+    left: 75px;
   }
   .animalImg5 {
     position: absolute;
     background: url(../../../public/img/home/star_hitefox.png) center
       center/contain no-repeat;
-    width: 850px;
-    height: 850px;
-    bottom: 100px;
-    left: 6px;
+    width: 45%;
+    height: 100%;
+    bottom: 65px;
+    left: 40px;
   }
   .introduction_area {
     display: flex;
