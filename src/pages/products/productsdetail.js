@@ -24,7 +24,7 @@ import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 import TheReview from "./components/theReview";
 import Form from "./components/Form";
 import { useCart } from "../carts/utils/useCart";
-
+import Confetti from "react-dom-confetti";
 function ProductsDetail(props) {
   const [selection, setSelection] = useState("");
   //子傳父
@@ -34,6 +34,7 @@ function ProductsDetail(props) {
   const [label, setLabel] = useState([]);
   const [review, setReview] = useState([]);
   const [member, setMember] = useState([]);
+  const [con, setCon] = useState({ confetti: false });
 
   // const [datetime, setDatetime] = useState(
   //   new Date()
@@ -177,6 +178,7 @@ function ProductsDetail(props) {
       likeheart.style.color = "#2d3436";
       // props.setLikeListData(item);
       // console.log(props.likeListData);
+      setCon({ confetti: false});
     } else {
       item.push(Sid);
       console.log("新增成功");
@@ -184,7 +186,22 @@ function ProductsDetail(props) {
       likeheart.style.color = "#eb5c37";
       // props.setLikeListData(item);
       // console.log(props.likeListData);
+      setCon({ confetti: true });
     }
+  };
+
+  const config = {
+    angle: 90,
+    spread: 50,
+    startVelocity: 40,
+    elementCount: 150,
+    dragFriction: 0.1,
+    duration: 750,
+    stagger: 0,
+    width: "10px",
+    height: "10px",
+    perspective: "500px",
+    colors: ["#eb5c37"],
   };
 
   return (
@@ -325,6 +342,7 @@ function ProductsDetail(props) {
                       likela();
                     }}
                   >
+                  <Confetti active={con.confetti} config={config} />
                     <i id="likeheart" className="fas fa-heart"></i>
                     加入我的最愛
                     {/* <Link to="">
