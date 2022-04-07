@@ -33,7 +33,7 @@ function CommentItem(props) {
             <div className="guestNameDate">
               <div className="guestName">{m_name}</div>
               <div className="cleckinDate">
-                <span class="DateIcon material-icons">date_range</span>
+                <span className="DateIcon material-icons">date_range</span>
                 <p>
                   {Math.abs(new Date(end) - new Date(start)) /
                     (1000 * 3600 * 24)}
@@ -57,7 +57,7 @@ function CommentItem(props) {
           </p>
         </div>
         <div className={navigation? "navigation active" : "navigation" } onClick={clickNav}  >
-          <span><i class="far fa-edit"></i></span>
+          <span><i className="far fa-edit"></i></span>
           <span><i className="far fa-trash-alt"></i></span>
         </div>
       </div>

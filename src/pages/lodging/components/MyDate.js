@@ -126,7 +126,7 @@ function MyDate(props) {
     }
     e.target.style.backgroundColor = "#f9b112";
     colorArr.push(e.target.innerHTML);
-    console.log(e.target.dataset.value, check[0]);
+    //console.log(e.target.dataset.value, check[0]);
   }
 
   setCartdate(check[0]);
