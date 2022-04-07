@@ -180,7 +180,7 @@ const HomeJungleStar = () => {
         seteagledata(eagle);
         setdata(eagle);
         setdata2(eagledata2);
-        
+
         let elephant = [...obj].filter((v, i) => {
           return v.ProductsMainPic.includes("Elephant");
         });
@@ -284,7 +284,9 @@ const HomeJungleStar = () => {
                 <span>
                   老鷹在四、五十年前，曾是臺灣常見的猛禽，如今由於棲息地的道路開發、非法捕捉飼養、農藥及殺蟲劑施灑、捕食中毒老鼠或鳥類等，數量大幅減少...
                 </span>
-                <button className="adoptbtn btn">我要認養！</button>
+                <Link to="/activity">
+                  <button className="adoptbtn btn">我要認養！</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -313,7 +315,9 @@ const HomeJungleStar = () => {
                 <span>
                   頭大脖子短，身軀龐大，四肢長呈圓柱狀，腳短而平，腳底有用來支撐身軀重量的彈性組織，尾巴末端有蓬鬆的毛。皮膚為黯淡的棕灰色，長著稀疏的黑色剛毛...
                 </span>
-                <button className="adoptbtn btn">我要認養！</button>
+                <Link to="/activity">
+                  <button className="adoptbtn btn">我要認養！</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -342,7 +346,9 @@ const HomeJungleStar = () => {
                 <span>
                   為貓科中繼虎和獅之後第三大物種，同時也是為西半球最大型以及最強健的貓科動物！外表型態和豹極為相似，但較粗壯，圓斑中有黑點，生態位也較像虎，體型介於虎和豹之間，貓科中的全能冠軍。
                 </span>
-                <button className="adoptbtn btn">我要認養！</button>
+                <Link to="/activity">
+                  <button className="adoptbtn btn">我要認養！</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -371,7 +377,9 @@ const HomeJungleStar = () => {
                 <span>
                   鲨鱼有高度流線、適合游泳的外型，全身覆滿了盾鳞，鳞除了保護鯊魚免於受傷或者被寄生蟲寄生，還可以增進它們的流體動力，讓它們游得更快速。鯊魚體側用於呼吸的鳃裂有五到七個。它們有數套可替換的牙齒。
                 </span>
-                <button className="adoptbtn btn">我要認養！</button>
+                <Link to="/activity">
+                  <button className="adoptbtn btn">我要認養！</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -402,8 +410,8 @@ const HomeJungleStar = () => {
                     吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。
                   </span>
                   <Link to="/activity">
-                    <button className="adoptbtn btn">我要認養！</button>
-                  </Link>
+                  <button className="adoptbtn btn">我要認養！</button>
+                </Link>
                 </div>
               </div>
             </div>

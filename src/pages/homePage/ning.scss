@@ -1374,6 +1374,13 @@ $ning-englishont: "Playfair Display", serif;
     color: $ning-color1;
     font-size: 2rem;
     font-family: $ning-chinesefont;
+    margin-bottom: 5px;
+  }
+
+  .ning_no {
+    color: #ffffff;
+    height: 2rem;
+    margin-bottom: 5px;
   }
 
   .ning_busbox  {
@@ -1441,10 +1448,14 @@ $ning-englishont: "Playfair Display", serif;
     width: 45%;
     font-family: $ning-chinesefont;
     font-size: 1.8rem;
+    cursor: pointer;
     span {
       font-size: 1.2rem;
       color: #777;
     }
+  }
+  .ning_busname:hover {
+    color: $ning-color1;
   }
 
   .ning_busmap {
@@ -1476,7 +1487,7 @@ $ning-englishont: "Playfair Display", serif;
     width: 45%;
     h4 {
       font-family: $ning-chinesefont;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: $ning-color5;
     }
   }
@@ -1485,7 +1496,7 @@ $ning-englishont: "Playfair Display", serif;
     width: 45%;
     h4 {
       font-family: $ning-chinesefont;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: $ning-color4;
     }
   }
@@ -1544,9 +1555,6 @@ $ning-englishont: "Playfair Display", serif;
     margin-bottom: 0;
   }
 
-  .ning_smallbusBack {
-    width: 50%;
-  }
 
   .ning_smallbusStop {
     display: flex;

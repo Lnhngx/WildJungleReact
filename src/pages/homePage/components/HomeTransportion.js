@@ -237,13 +237,14 @@ const HomeTransportion = () => {
           className="ning_smallbusInfo"
           style={{ display: busInfo === false && "none" }}
         >
-          <h3 className="ning_smallbusname">{smallbusname}</h3>
+          
           <div className="ning_smallbusBox">
             <span className="businfoClose material-icons" onClick={clickbtn}>
               close
             </span>
 
             <div className="ning_smallbusGo">
+            <h3 className="ning_smallbusname">{smallbusname}</h3>
               <h4>去程</h4>
               {busgostopData.map((v, i) => {
                 return (
@@ -266,6 +267,7 @@ const HomeTransportion = () => {
               })}
             </div>
             <div className="ning_smallbusBack">
+            <h3 className="ning_no"></h3>
               <h4>返程</h4>
               {busbackstopData.map((v, i) => {
                 return (
