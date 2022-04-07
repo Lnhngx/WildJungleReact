@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./carts.scss";
 import Process02 from "./components/Process_02";
 import Filloutorder from "./components/Filloutform_order";
@@ -15,23 +15,40 @@ function Cartfilloutform(props) {
   const [cash, setCash] = useState(false);
   const [bank, setBank] = useState(false);
 
-  const { setName, setPhone, setEmail, setAddress, setDelivery, setPayment } =
+  const { setName, setPhone, setEmail, setAddress, setDelivery, setPayment, name, phone, email, address, delivery, payment } =
     props;
 
+  const [paymenttodb, setPaymenttodb] = useState("1");
+  const receive_data = { name: name, phone: phone, email: email, address: address, delivery: delivery, payment: payment }
   const { cart } = useCart();
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
-  const [deliverytodb, setDeliverytodb] = useState("1");
-  const [paymenttodb, setPaymenttodb] = useState("1");
-  const [totaltodb, setTotaltodb] = useState(cart.cartTotal + 100);
+  const [bonus, setBonus] = useState(0);
+  useEffect(() => {
+    const temp = async () => {
+      await fetch(Config.GET_BONUSPOINTS, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ m_sid: m_sid }),
+      })
+        .then((r) => r.json())
+        .then((obj) => {
+          setBonus(obj);
+        });
+    };
+    temp();
+  }, []);
+
+  const realtotal = cart.cartTotal + 100 - Math.ceil(bonus / 10);
+
   const data = {
     m_sid: m_sid,
     payment_sid: paymenttodb,
-    amount: totaltodb,
+    amount: realtotal,
     status: "未付款",
   };
   const data2 = JSON.parse(localStorage.getItem("cart"));
 
-  
+
 
   return (
     <>
@@ -72,7 +89,7 @@ function Cartfilloutform(props) {
               <ul>
                 <li></li>
                 <li>紅利折扣</li>
-                <li>$0</li>
+                <li>${Math.ceil(bonus / 10)}</li>
               </ul>
               <ul className="stan_total_hr">
                 <div></div>
@@ -82,7 +99,7 @@ function Cartfilloutform(props) {
               <ul>
                 <li></li>
                 <li>結帳金額</li>
-                <li>${cart.cartTotal + 100}</li>
+                <li>${realtotal}</li>
               </ul>
             </div>
           </div>
@@ -105,21 +122,18 @@ function Cartfilloutform(props) {
                   setStore(false);
                   setPark(false);
                   setDelivery(e.target.value);
-                  setDeliverytodb(1);
                 }
                 if (e.target.value === "超商取貨") {
                   setStore(true);
                   setPark(false);
                   setHode(false);
                   setDelivery(e.target.value);
-                  setDeliverytodb(2);
                 }
                 if (e.target.value === "園區取貨") {
                   setPark(true);
                   setStore(false);
                   setHode(false);
                   setDelivery(e.target.value);
-                  setDeliverytodb(3);
                 }
               }}
             >
@@ -366,6 +380,7 @@ function Cartfilloutform(props) {
                   body: JSON.stringify({
                     order: data,
                     order_detail_product: data2,
+                    receive_data: receive_data,
                   }),
                 })
                   .then((r) => r.json())

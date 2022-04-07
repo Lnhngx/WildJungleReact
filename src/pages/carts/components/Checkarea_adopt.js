@@ -19,12 +19,12 @@ function CheckareaAdopt(props) {
         </ul>
         <ul>
           <li>紅利折扣</li>
-          <li>$0</li>
+          <li>${Math.ceil(props.bonus/10)}</li>
         </ul>
         <hr className="stan_checkouthr stan_hr" />
         <ul>
           <li>結帳金額</li>
-          <li>${cart.cartTotal}</li>
+          <li>${cart.cartTotal>0?cart.cartTotal-Math.ceil(props.bonus/10):0}</li>
         </ul>
 
         <Link to="/carts/filloutform" className="stan_link">

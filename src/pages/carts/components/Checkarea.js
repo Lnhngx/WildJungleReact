@@ -15,16 +15,16 @@ function Checkarea(props) {
         </ul>
         <ul>
           <li>預估運費</li>
-          <li>$100</li>
+          <li>${cart.cartTotal>0?100:0}</li>
         </ul>
         <ul>
           <li>紅利折扣</li>
-          <li>$0</li>
+          <li>${Math.ceil(props.bonus/10)}</li>
         </ul>
         <hr className="stan_checkouthr stan_hr" />
         <ul>
           <li>結帳金額</li>
-          <li>${cart.cartTotal + 100}</li>
+          <li>${cart.cartTotal>0?cart.cartTotal+100-Math.ceil(props.bonus/10):0}</li>
         </ul>
 
         <Link to="/carts/filloutform" className="stan_link">

@@ -8,7 +8,7 @@ import Checkarea from "./components/Checkarea";
 import CheckareaShow from "./components/Checkarea_show";
 import CheckareaAdopt from "./components/Checkarea_adopt";
 import CheckareaLive from "./components/Checkarea_live";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Config from "./Config";
 
 function Carts(props) {
@@ -16,22 +16,22 @@ function Carts(props) {
   const [cartshow, setCartshow] = useState(false);
   const [cartlive, setCartlive] = useState(false);
   const [cartadopt, setCartadopt] = useState(false);
-  // const m_sid="";
-  // if (localStorage.getItem("admin_account") !== undefined) {
-  //   m_sid = JSON.parse(localStorage.getItem("admin_account"));
-  //   console.log(m_sid);
-  // };
-
-  // const bonus=0;
-  // fetch(Config.GET_BONUSPOINTS, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(m_sid),
-  //   })
-  //   .then((r) => r.json())
-  //   .then((obj) => {
-  //     obj=bonus;
-  //   });
+  const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
+  const [bonus,setBonus] = useState(0);
+  useEffect(() => {
+    const temp = async () => {
+      await fetch(Config.GET_BONUSPOINTS, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ m_sid: m_sid }),
+      })
+        .then((r) => r.json())
+        .then((obj) => {
+          setBonus(obj);
+        });
+    };
+    temp();
+  }, []);
 
   return (
     <>
@@ -129,16 +129,16 @@ function Carts(props) {
           </div>
           <div className="stan_block"></div>
           <div className={cartpro ? "stan_checkout_area" : "stan_displaynone"}>
-            <Checkarea />
+            <Checkarea bonus={bonus}/>
           </div>
           <div className={cartshow ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaShow />
+            <CheckareaShow bonus={bonus}/>
           </div>
           <div className={cartadopt ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaAdopt />
+            <CheckareaAdopt bonus={bonus}/>
           </div>
           <div className={cartlive ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaLive />
+            <CheckareaLive bonus={bonus}/>
           </div>
         </div>
       </div>
