@@ -135,6 +135,11 @@
 .tysu_orderTr {
   font-weight: var(--tysu_fontWeight);
   border-bottom: 1px solid #000;
+  div{
+    width: 180px;
+    white-space: pre;
+    margin: 0 auto;
+  }
 }
 
 .tysu_orderTr th,

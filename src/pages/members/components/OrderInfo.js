@@ -62,7 +62,7 @@ function OrderInfo() {
                 {/* {console.log(typeof v.product_name==='string')} */}
                 {typeof v.product_name==='string'?
                 <td className="tysu_orderBg"><div>{v.product_name}</div></td>:
-                <td className="tysu_orderBg"> <div>{v.product_name.join(' ')}</div></td>}
+                <td className="tysu_orderBg"> <div>{v.product_name.join('\n')}</div></td>}
                 
                 <td>${v.product_price}</td>
                 <td>{v.product_quantity}</td>
