@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState,useRef } from "react"
 import { Link,Redirect,useHistory  } from 'react-router-dom'
 import Config from "../Config"
 
@@ -8,7 +8,96 @@ import MemberNavItem from './MemberNavItem'
 
 function MemberList(props){
   const {auth,account,token,pointData,setPointData,likeAddCard,setLikeAddCart,likeListData,setLikeListData}=props
-  // const history=useHistory();
+  
+  const tysuBg=useRef();
+  let lastposition = 0;
+  let last;
+  function doSomething(scrollPos) {
+    console.log("notice1");
+    // 依據捲動位置進行某些操作
+    // tysuBg.style.background = "red";
+    // d.style.position = "absolute";
+    // tysuBg.style.bottom = "50%";
+    // console.log(tysuBg.style);
+  }
+  function doSomething2(scrollPos) {
+    // console.log("----");
+    // tysuBg.style.background = "black";
+    // tysuBg.style.bottom = "0";
+  }
+  // useEffect(() => {
+  //   window.addEventListener("scroll", function () {
+  //     lastposition = window.scrollY;
+  //     // last = tysuBg.offsetTop;
+  //     const oo=tysuBg.current.offsetTop;
+  //     // console.log("lastposition", lastposition);
+  //     console.log(oo);
+  //     if (lastposition - oo > "470") {
+  //       window.requestAnimationFrame(function () {
+  //         doSomething(lastposition);
+  //       });
+  //     } else {
+  //       window.requestAnimationFrame(function () {
+  //         doSomething2(lastposition);
+  //       });
+  //     }
+  //   });
+  // },[])
+  
+  const [offset, setOffset] = useState(0);
+
+    useEffect(() => {
+        const onScroll = () => setOffset(window.pageYOffset);
+        // clean up code
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+        
+    }, []);
+    useEffect(() => {
+      // console.log(offset);
+      console.log('tysuBg', tysuBg.current.scrollTop ); 
+      console.log('scrollTop', tysuBg.current.offsetTop); 
+      console.log('window', window.scrollY); 
+        console.log('offset',offset); 
+      // if(offset>900){
+      //   // console.log('tysuBg:',tysuBg.current.style.offset="0")
+        
+      //   // tysuBg.current.style.position="absolute";
+      //   // tysuBg.current.style.bottom="22rem"
+      // }else if(offset<1500){
+      //   tysuBg.current.style.bottom="-3rem"
+      // }
+      if(offset-tysuBg.current.offsetTop>700){
+        // console.log('tysuBg:',tysuBg.current.style.offset="0")
+        
+        // tysuBg.current.style.position="absolute";
+        // tysuBg.current.style.bottom="22rem"
+      }else{
+        tysuBg.current.style.bottom="-3rem"
+      }
+      
+    },[offset])
+    // console.log(tysuBg.current.style)
+    
+
+  // const prevScrollY = useRef(0);
+  // const [goingUp, setGoingUp] = useState(false);
+
+  // const onScroll = (e) => {
+  //   const currentScrollY = e.target.scrollTop;
+  //   if (prevScrollY.current < currentScrollY && goingUp) {
+  //     setGoingUp(false);
+  //   }
+  //   if (prevScrollY.current > currentScrollY && !goingUp) {
+  //     setGoingUp(true);
+  //   }
+  //   prevScrollY.current = currentScrollY;
+  //   console.log(goingUp, currentScrollY);
+  // };
+
+
+
 
   const sid=JSON.parse(localStorage.getItem('admin_account'))
 
@@ -153,7 +242,7 @@ function MemberList(props){
             likeListData={likeListData}
             setLikeListData={setLikeListData}
           />
-          <div className="tysu_memberBg">
+          <div className="tysu_memberBg" ref={tysuBg}>
             <img src="./../img/member/leaf_y.svg" alt="" />
           </div>
           

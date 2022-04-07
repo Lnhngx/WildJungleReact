@@ -38,8 +38,12 @@ function ProductItem(props) {
   // }, []);
 
   const likela = () => {
-    const current = JSON.parse(localStorage.getItem("like"));
-    //const alanheart = document.querySelectorAll(".alanheart");
+    let current = [];
+    if(localStorage.getItem("like")){
+      current = JSON.parse(localStorage.getItem("like"));
+    }
+
+    const alanheart = document.querySelectorAll(".alanheart");
     let item = [...current];
     if (current.includes("" + ProductSid)) {
       let num = item.findIndex((v) => v === "" + ProductSid);

@@ -197,7 +197,7 @@ function Chatbot(props){
             {privateMessage.map((v,i)=>{
                 if(v.id===0){
                     return(
-                        <div className="chatbot_reply">
+                        <div className="chatbot_reply" key={i}>
                             <div className="agentAvatar_wrap">
                                 <img src={changeAvatar()} alt="" className="agentChat_avatar" />
                             </div>
@@ -209,7 +209,7 @@ function Chatbot(props){
                     )
                 }else if(v.type==='agent_reply'){
                     return(
-                        <div className="chatbot_reply">
+                        <div className="chatbot_reply" key={i}>
                             <div className="agentAvatar_wrap">
                                 <img src={changeAvatar()} alt="" className="agentChat_avatar" />
                             </div>
@@ -221,7 +221,7 @@ function Chatbot(props){
                     )
                 }else if(v.type==='user_reply'){
                     return(
-                        <div className="user_reply">
+                        <div className="user_reply" key={i}>
                             <div className="user_message">
                                 {v.text}
                             </div>
@@ -237,7 +237,7 @@ function Chatbot(props){
                 if(v.id>1){
                     if(v.type === 'buyTicket'){
                     return(
-                        <div className="chatbot_reply">
+                        <div className="chatbot_reply" key={i}>
                             <div className="chatbot_avatar">
                                 <img src="/img/game/chatbot_avatar.png" alt="" />
                             </div>
@@ -248,11 +248,11 @@ function Chatbot(props){
                                     <div className="chatbot_ticketCountArea">
                                         <div className="chatbot_ticketMinus" onClick={()=>{
                                             if(adultTicket>=1)setAdultTicket(adultTicket-1)
-                                        }}><i class="fas fa-minus"></i></div>
+                                        }}><i className="fas fa-minus"></i></div>
                                         <div className="chatbot_ticketNum">{adultTicket}</div>
                                         <div className="chatbot_ticketAdd" onClick={()=>{
                                             setAdultTicket(adultTicket+1);
-                                        }}><i class="fas fa-plus"></i></div>
+                                        }}><i className="fas fa-plus"></i></div>
                                     </div>
                                 </div>
                                 <div className="chatbot_ticketStudent">
@@ -260,11 +260,11 @@ function Chatbot(props){
                                     <div className="chatbot_ticketCountArea">
                                         <div className="chatbot_ticketMinus" onClick={()=>{
                                             if(studentTicket>=1)setStudentTicket(studentTicket-1)
-                                        }}><i class="fas fa-minus"></i></div>
+                                        }}><i className="fas fa-minus"></i></div>
                                         <div className="chatbot_ticketNum">{studentTicket}</div>
                                         <div className="chatbot_ticketAdd" onClick={()=>{
                                             setStudentTicket(studentTicket+1);
-                                        }}><i class="fas fa-plus"></i></div>
+                                        }}><i className="fas fa-plus"></i></div>
                                     </div>
                                 </div>
                                 <div className="chatbot_ticketOld">
@@ -272,11 +272,11 @@ function Chatbot(props){
                                     <div className="chatbot_ticketCountArea">
                                         <div className="chatbot_ticketMinus" onClick={()=>{
                                             if(loveTicket>=1)setLoveTicket(loveTicket-1)
-                                        }}><i class="fas fa-minus"></i></div>
+                                        }}><i className="fas fa-minus"></i></div>
                                         <div className="chatbot_ticketNum">{loveTicket}</div>
                                         <div className="chatbot_ticketAdd" onClick={()=>{
                                             setLoveTicket(loveTicket+1);
-                                        }}><i class="fas fa-plus"></i></div>
+                                        }}><i className="fas fa-plus"></i></div>
                                     </div>
                                 </div>
                                 <div className="chatbot_ticketSend" style={{pointerEvents:loveTicket+studentTicket+adultTicket!==0?"all":"none",background:loveTicket+studentTicket+adultTicket!==0?"rgb(19, 87, 126)":"gray"}}  onClick={()=>{
@@ -304,7 +304,7 @@ function Chatbot(props){
                     }
                     if(v.type === 'stickers'){
                         return(
-                            <div className="user_reply" >
+                            <div className="user_reply" key={i}>
                                 <div className="sticker_message">
                                     <img src={v.text} alt=""/>
                                 </div>
@@ -317,11 +317,12 @@ function Chatbot(props){
                     }
                     if(v.type==='getWeather'){
                         return (
-                            <div className="chatbot_reply" >
+                            <React.Fragment key={i}>
+                            <div className="chatbot_reply">
                             <div className="chatbot_avatar">
                                 <img src="/img/game/chatbot_avatar.png" alt="" />
                             </div>
-                            <ul className="weather_carousel" style={moveCarousel(move)}>
+                            <ul className="weather_carousel" style={moveCarousel(move)} >
                                 {weatherData.map((v,i)=>{
                                     if(v.wx===1){  
                                     return(
@@ -369,14 +370,15 @@ function Chatbot(props){
                             <div className="chatbot_time">{v.time}</div>
                             <div className="chatbot_toLeft" onClick={()=>{if(move>0)setMove(move-1)}} style={{opacity:move===0?0:1}}><i className="fas fa-chevron-left"></i></div>
                             <div className="chatbot_toRight" onClick={()=>{if(move<5)setMove(move+1)}} style={{opacity:move===5?0:1}}><i className="fas fa-chevron-right"></i></div>
-                        </div>     
+                        </div> 
+                    </React.Fragment>    
                         )
                     }
                     if(v.id % 2===1){
                         {/* console.log('我是機器人的代表') */}
                         return(
                         
-                        <div className="chatbot_reply" >
+                        <div className="chatbot_reply" key={i}>
                             <div className="chatbot_avatar">
                                 <img src="/img/game/chatbot_avatar.png" alt="" />
                             </div>
@@ -389,7 +391,7 @@ function Chatbot(props){
                     }else{
                         {/* console.log('我是使用者的代表') */}
                         return ( 
-                            <div className="user_reply" >
+                            <div className="user_reply" key={i}>
                                             <div className="user_message">
                                                 {v.text}
                                             </div>

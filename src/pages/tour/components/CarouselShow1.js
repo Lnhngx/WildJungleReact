@@ -6,6 +6,7 @@ import React, { useRef } from "react";
 
 
 
+
 let hot = ["亞洲象","鯨頭鸛","水豚","馬來貘","大猩猩","彩虹巨嘴鳥","樹懶","穿山甲"];
 let hotEN = ["Elephas maximus","Shoebill","Capybara","Malayan Tapir","Gorilla","Ramphastos sulfuratus","Folivora","Manidae"];
 let HotDescriptions = [
@@ -54,7 +55,15 @@ let nocturnalDescriptions=[
 "(學名:Strigiformes)梟、貓頭鷹,是鴞形目(的鳥類。鴞形目是鳥綱中的目。眼睛大,嘴短而粗壯前端成鉤狀。相對於頭部碩大的雙目均向前是本目鳥類共有且區別於其他鳥類的特徵,頭部正面的羽毛排列成面盤,部分種類具有耳狀羽毛。鴞形目在除南極洲以外所有的大洲都有分布,其中大部分物種為夜行性肉食性動物。貓頭鷹在西方的愛琴海和基督教文化中是「幸運、智慧」的象徵,而在中國文化中卻有「厄運、恐怖」的意義,這恰巧與蝙蝠在中西文化中的定位正好相反。"
 ];
 
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 function ChangeMap (state){
+  document.getElementById("tourElephone").classList.remove("tourDisplayNone");
+  sleep(2000).then(r => {
+    document.getElementById("tourElephone").classList.add("tourDisplayNone");
+  })
   for (let i = 1; i <= 8; i++){
     document.getElementById("Centerig"+i).src = "/img/tour/"+state+"/0"+i+".jpg";
     document.getElementsByClassName('figure')[i-1].setAttribute('id',state);
@@ -135,7 +144,7 @@ function showdescription(i){
       break;
     case "nocturnal" :
       showstatus[3] = true;
-      break;
+      break; 
     default :
       break;
   }
@@ -168,13 +177,41 @@ function CarouselShow1 (){
             <img src="/img/home/tropicalmap.svg" alt="" ref={tourmap} />
             </div>
         </div>
+        <div className="ele-container tourDisplayNone" id="tourElephone">
+      <div  className="tourbackground2">
+        <div className="ele-wrapper">
+            <div className="ele-tail"></div>
+            <div className="ele-body">
+                <div className="ele-head">
+                    <div className="ele-eyebrows"></div>
+                    <div className="ele-eyes"></div>
+                    <div className="ele-mouth"></div>
+                    <div className="ele-fang-front"></div>
+                    <div className="ele-fang-back"></div>
+                    <div className="ele-ear"></div>
+                </div>
+            </div>
+            <div className="ele-leg-1 ele-leg-back">
+                <div className="ele-foot"></div>
+            </div>
+            <div className="ele-leg-2 ele-leg-front">
+                <div className="ele-foot"></div>
+            </div>
+            <div className="ele-leg-3 ele-leg-back">
+                <div className="ele-foot"></div>
+            </div>
+            <div className="ele-leg-4 ele-leg-front">
+                <div className="ele-foot"></div>
+            </div>
+        </div>
+      </div>  
+  </div>
         <div className="tourGuide2">
             <figure className="tourR1img">
               <img src="/img/home/tropical.jpg" alt="#/" 
                   onMouseMove={()=>{tourmap.current.src =
                   "/img/home/tropicalmap.svg"}}
-                  onClick={()=>{ChangeMap("hot"); 
-                }}
+                  onClick={()=>{ChangeMap("hot")}}
               /> 
               <figcaption>熱帶雨林</figcaption>
             </figure>
@@ -182,7 +219,7 @@ function CarouselShow1 (){
               <img src="/img/home/Ocean.jpg" alt="#/" 
                   onMouseMove={()=>{tourmap.current.src =
                   "/img/home/Oceanmap.svg"}} 
-                  onClick={()=>{ChangeMap("Ocean") }}
+                  onClick={()=>{ChangeMap("Ocean")}}
               /> 
               <figcaption>海底世界</figcaption>
             </figure>
@@ -380,12 +417,6 @@ function CarouselShow1 (){
         <div className="tourwrap">
         <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
             <img style={{}}src="/img/tour/p6CVo6abkKGY.gif" alt=""/>
-          {/* <div className="txt1">
-            <h2>捕食</h2>
-            <p style={{color: "black"}} >當北極狐聞到在窩裡的旅鼠氣味或聽到旅鼠的尖叫聲時，它會迅速地挖掘位於雪下面的旅鼠窩。
-            等到扒得差不多時，北極狐會突然高高跳起，借著躍起的力量，用腿將雪做的鼠窩壓塌，將一窩旅鼠一網打盡，逐個吃掉它們。
-            </p>
-          </div> */}
         </div>
         <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
         <div className="txt1">
@@ -395,15 +426,6 @@ function CarouselShow1 (){
             </p>
           </div>
         </div>
-        {/* <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
-            <img style={{}}src="/img/tour/p6CVo6abkKGY.gif" alt=""/>
-          <div className="txt1">
-            <h2>捕食</h2>
-            <p style={{color: "black"}} >當北極狐聞到在窩裡的旅鼠氣味或聽到旅鼠的尖叫聲時，它會迅速地挖掘位於雪下面的旅鼠窩。
-            等到扒得差不多時，北極狐會突然高高跳起，借著躍起的力量，用腿將雪做的鼠窩壓塌，將一窩旅鼠一網打盡，逐個吃掉它們。
-            </p>
-          </div>
-        </div> */}
         </div>
       </div>
       <div id="iceno3" className= "tourDisplayNone tour_showBooking_area">
@@ -448,6 +470,7 @@ function CarouselShow1 (){
         </div>
         </div>
       </div>
+
 </>)
 }
 const rootElement = document.getElementById('root')

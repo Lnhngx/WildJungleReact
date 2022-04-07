@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 function OrderInfo() {
   const [order_search, setOrder_search] = useState([]);
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
-  let temp = 0;
-  let tempspan = "0";
+
 
   useEffect(() => {
     const temp = async () => {
@@ -52,7 +51,7 @@ function OrderInfo() {
             <tbody>
               <tr className="tysu_orderTr tysu_orderText">
                 <th>{i + 1}</th>
-                <td rowSpan={temp}>
+                <td rowSpan="0">
                   <a href="#/">
                     A
                     {v.order_date.slice(0, 10).split("-").join("") +
@@ -62,7 +61,7 @@ function OrderInfo() {
                 {/* {console.log(typeof v.product_name==='string')} */}
                 {typeof v.product_name==='string'?
                 <td className="tysu_orderBg"><div>{v.product_name}</div></td>:
-                <td className="tysu_orderBg"> <div>{v.product_name.join(' ')}</div></td>}
+                <td className="tysu_orderBg"> <div>{v.product_name.join('\n')}</div></td>}
                 
                 <td>${v.product_price}</td>
                 <td>{v.product_quantity}</td>
@@ -73,7 +72,6 @@ function OrderInfo() {
                 </td>
                 <td>${v.amount}</td>
                 <td>{v.status}</td>
-                {(temp = v.order_sid)}
               </tr>
             </tbody>
           );

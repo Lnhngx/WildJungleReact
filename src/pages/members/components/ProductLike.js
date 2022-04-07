@@ -4,78 +4,53 @@ import Config from "../Config";
 function ProductLike(props){
     const {likeAddCard,setLikeAddCart,likeListData,setLikeListData}=props;
     const sid=JSON.parse(localStorage.getItem('admin_account'))
-    const productLikeLocal=JSON.parse(localStorage.getItem('like'));
-    const [localLike,setLocalLike]=useState(productLikeLocal);
-    useEffect(()=>{
-        let newAr=localLike.push(likeListData);
-        setLocalLike(newAr);
-    },[])
-    // 取得localStorage的商品sid存在state
+     let likes = [];
+    if(localStorage.getItem("like")){
+        likes = JSON.parse(localStorage.getItem("like"));
+    }
     
-    const [likes,setLikes]=useState(productLikeLocal);
-
     // 取得資料庫所有商品列表
     const [productLikeData,setProductLikeData]=useState([]);
-
-    // 設定進資料庫
-    const [favData,setFavData]=useState([])
-
+    const [likeProducts, setLikeProducts] = useState({});
+    
+    
+    
     useEffect(()=>{
-
-        
-
-
-        const getProductsData=async()=>{
-            await fetch(Config.TYSU_PRODUCT_LIKE,{
+        const getProductsData= async () => {
+            const r = await fetch(Config.TYSU_PRODUCT_LIKE,{
                 method:'GET',
                 headers:{
                     "Content-Type":"application/json"
                 }
-            }).then(r=>r.json()).then(obj=>{
-                console.log(obj);
-                setProductLikeData(obj)
+            });
+            const obj = await r.json();
+            console.log(obj);
+            setProductLikeData(obj)
+
+            let newAr={};
+
+            obj.forEach(el=>{
+                likes.forEach(v=>{
+                    // console.log(el['ProductSid']===Number(v))
+                    if(el['ProductSid']===Number(v)){
+                        console.log(el);
+                        //newAr.push(el)
+                        newAr[ el.ProductSid.toString() ] = el;
+                    }
+                })
+                
             })
+            console.log('newAr:', newAr);
+            setLikeProducts(newAr);
+            
         }
         getProductsData()
     },[])
-
-    // console.log(typeof parseInt(likes[0]))
     
 
-   
-        let ar=[]
-        likes.forEach(el=>{
-            productLikeData.forEach(m=>{
-                // console.log('i ---',el)
-                // console.log(m)
-                // console.log(parseInt(el)===m.ProductSid)
-                if(parseInt(el)===m.ProductSid){
-                    ar.push(m)
-                }
-            })
-        })
-        // const addLike=()=>{
-        //     fetch(Config.TYSU_PRODUCT_LIKE,{
-        //         method: 'POST',
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },body: JSON.stringify({
-        //             "p_id":likes.join(","),
-        //             "add_time":new Date().toISOString().slice(0, 10),
-        //             "m_id":sid['m_sid']
-        //         })
-        //     }).then(r=>r.json()).then(obj=>{
-        //         console.log(obj);
-        //         setFavData(obj)
-        //     })
-        // }
-        // useEffect(()=>{
-            
-        //         addLike()
-        // },[])
     
     return(<>
-    {console.log(favData)}
+{console.log(likeProducts)}
         <table className="tysu_table">
             <thead>
                 <tr className="tysu_orderTr">
@@ -88,7 +63,8 @@ function ProductLike(props){
                 </tr>
             </thead>
             <tbody>
-                {ar.map((v,i)=>{
+            {!!Object.keys({...likeProducts}).length && likes.map((pid,i)=>{
+                    const v = likeProducts[pid];
                     return (<tr key={v.ProductSid} className="tysu_orderTr tysu_orderText" name={v.ProductSid}>
                         <th>{i+1}</th>
                         <td>
@@ -103,6 +79,8 @@ function ProductLike(props){
                         </td>
                     </tr>)
                 })}
+                        
+
                 
             </tbody>
         </table>

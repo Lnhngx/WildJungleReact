@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
-import { Link } from "react-scroll";
-// import { Link } from "react-router-dom";
-const eagledata = [
+import { Link } from "react-router-dom";
+const eagledata2 = [
   {
     picture: "img/home/eagle_products/eagle_products01.jpg",
   },
@@ -20,21 +19,9 @@ const eagledata = [
   },
   {
     picture: "img/home/eagle_products/eagle_products01.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products02.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products03.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products04.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products05.jpeg",
   },
 ];
-const elephantdata = [
+const elephantdata2 = [
   {
     picture: "img/home/elephant_products/elephant_products01.jpg",
   },
@@ -53,113 +40,65 @@ const elephantdata = [
   {
     picture: "img/home/elephant_products/elephant_products06.jpg",
   },
+];
+const tigerdata2 = [
   {
-    picture: "img/home/elephant_products/elephant_products07.jpg",
+    picture: "img/home/tiger_products/tiger_products01.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products08.jpg",
+    picture: "img/home/tiger_products/tiger_products02.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products09.jpg",
+    picture: "img/home/tiger_products/tiger_products03.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products10.jpg",
+    picture: "img/home/tiger_products/tiger_products04.jpg",
+  },
+  {
+    picture: "img/home/tiger_products/tiger_products05.jpg",
+  },
+  {
+    picture: "img/home/tiger_products/tiger_products06.jpg",
   },
 ];
-const tigerdata = [
+const sharkdata2 = [
   {
-    picture: "img/home/eagle_products/eagle_products01.jpg",
+    picture: "img/home/shark_products/shark_products01.jpg",
   },
   {
-    picture: "img/home/eagle_products/eagle_products02.jpg",
+    picture: "img/home/shark_products/shark_products02.jpg",
   },
   {
-    picture: "img/home/eagle_products/eagle_products03.jpg",
+    picture: "img/home/shark_products/shark_products03.jpg",
   },
   {
-    picture: "img/home/eagle_products/eagle_products04.jpg",
+    picture: "img/home/shark_products/shark_products04.jpg",
   },
   {
-    picture: "img/home/eagle_products/eagle_products05.jpeg",
+    picture: "img/home/shark_products/shark_products05.jpg",
   },
   {
-    picture: "img/home/eagle_products/eagle_products01.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products02.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products03.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products04.jpg",
-  },
-  {
-    picture: "img/home/eagle_products/eagle_products05.jpeg",
+    picture: "img/home/shark_products/shark_products06.jpg",
   },
 ];
-const sharkdata = [
+const hitefoxdata2 = [
   {
-    picture: "img/home/elephant_products/elephant_products01.jpg",
+    picture: "img/home/hitefox_products/hitefox_products01.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products02.jpg",
+    picture: "img/home/hitefox_products/hitefox_products02.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products03.jpg",
+    picture: "img/home/hitefox_products/hitefox_products03.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products04.jpg",
+    picture: "img/home/hitefox_products/hitefox_products04.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products05.jpg",
+    picture: "img/home/hitefox_products/hitefox_products05.jpg",
   },
   {
-    picture: "img/home/elephant_products/elephant_products06.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products07.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products08.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products09.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products10.jpg",
-  },
-];
-const hitefoxdata = [
-  {
-    picture: "img/home/elephant_products/elephant_products01.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products02.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products03.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products04.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products05.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products06.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products07.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products08.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products09.jpg",
-  },
-  {
-    picture: "img/home/elephant_products/elephant_products10.jpg",
+    picture: "img/home/hitefox_products/hitefox_products06.jpg",
   },
 ];
 
@@ -177,6 +116,7 @@ const HomeJungleStar = () => {
     setsharkcard(false);
     sethitefoxcard(false);
     setdata(eagledata);
+    setdata2(eagledata2);
     setCurrent(0);
   };
   const elephantPush = () => {
@@ -186,6 +126,7 @@ const HomeJungleStar = () => {
     setsharkcard(false);
     sethitefoxcard(false);
     setdata(elephantdata);
+    setdata2(elephantdata2);
     setCurrent(0);
   };
   const tigerPush = () => {
@@ -195,6 +136,7 @@ const HomeJungleStar = () => {
     setsharkcard(false);
     sethitefoxcard(false);
     setdata(tigerdata);
+    setdata2(tigerdata2);
     setCurrent(0);
   };
   const sharkPush = () => {
@@ -204,6 +146,7 @@ const HomeJungleStar = () => {
     setsharkcard(!sharkcard);
     sethitefoxcard(false);
     setdata(sharkdata);
+    setdata2(sharkdata2);
     setCurrent(0);
   };
   const hitefoxPush = () => {
@@ -213,15 +156,80 @@ const HomeJungleStar = () => {
     setsharkcard(false);
     sethitefoxcard(!hitefoxcard);
     setdata(hitefoxdata);
+    setdata2(hitefoxdata2);
     setCurrent(0);
   };
 
   //動物商品
 
-  const [data, setdata] = useState(eagledata);
+  const [data, setdata] = useState([]);
+  const [data2, setdata2] = useState([]);
+  const [eagledata, seteagledata] = useState([]);
+  const [elephantdata, setelephantdata] = useState([]);
+  const [tigerdata, settigerdata] = useState([]);
+  const [sharkdata, setsharkdata] = useState([]);
+  const [hitefoxdata, sethitefoxdata] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/products")
+      .then((r) => r.json())
+      .then((obj) => {
+        let eagle = [...obj].filter((v, i) => {
+          return v.ProductsMainPic.includes("Eagle");
+        });
+        seteagledata(eagle);
+        setdata(eagle);
+        setdata2(eagledata2);
+        
+        let elephant = [...obj].filter((v, i) => {
+          return v.ProductsMainPic.includes("Elephant");
+        });
+        setelephantdata(elephant);
+
+        let tiger = [...obj].filter((v, i) => {
+          return v.ProductsMainPic.includes("Tiger");
+        });
+        settigerdata(tiger);
+
+        let hitefox = [...obj].filter((v, i) => {
+          return v.ProductsMainPic.includes("Fox");
+        });
+        sethitefoxdata(hitefox);
+
+        let shark = [...obj].filter((v, i) => {
+          return v.ProductsMainPic.includes("Shark");
+        });
+        setsharkdata(shark);
+      });
+  }, []);
+
+  // let eagle = [...data].filter((v, i) => {
+  //   return v.ProductsMainPic.includes("Eagle");
+  // });
+  // seteagledata(eagle);
+
+  // let elephant = data.filter((v, i) => {
+  //   return v.ProductsMainPic.includes("Elephant");
+  // });
+  // setelephantdata(elephant);
+
+  // let tiger = data.filter((v, i) => {
+  //   return v.ProductsMainPic.includes("Tiger");
+  // });
+  // settigerdata(tiger);
+
+  // let hitefox = data.filter((v, i) => {
+  //   return v.ProductsMainPic.includes("WildLife");
+  // });
+  // sethitefoxdata(hitefox);
+
+  // let shark = data.filter((v, i) => {
+  //   return v.ProductsMainPic.includes("Shark");
+  // });
+  // setsharkdata(shark);
 
   const [current, setCurrent] = useState(0);
-  const length = data.length;
+  const length = data.length + eagledata.length;
 
   function leftClick() {
     if (current > 0) {
@@ -425,14 +433,36 @@ const HomeJungleStar = () => {
               {data.map((v, i) => {
                 return (
                   <>
-                    <div className="ning_starproductimg">
+                    <Link
+                      to={"/productsdetail?id=" + v.ProductSid}
+                      className="ning_starproductimg"
+                    >
+                      <img src={"/img/product/" + v.ProductsMainPic} alt="" />
+
+                      <div className="ning_productText">
+                        <div className="ning_productname">
+                          <p>{v.ProductsName}</p>
+                          <p>
+                            <span>售價 </span>
+                            {v.ProductsPrice}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  </>
+                );
+              })}
+              {data2.map((v, i) => {
+                return (
+                  <>
+                    <div className="ning_starproductimg" key={i}>
                       <img src={v.picture} alt="" />
                     </div>
                     <div className="ning_productText">
                       <div className="ning_productname">
-                        <p>老鷹皮雕短夾</p>
+                        <p></p>
                         <p>
-                          <span>售價 </span>NT$1200
+                          <span>售價 </span>
                         </p>
                       </div>
                     </div>
