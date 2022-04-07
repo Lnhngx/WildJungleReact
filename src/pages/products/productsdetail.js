@@ -187,8 +187,72 @@ function ProductsDetail(props) {
       // props.setLikeListData(item);
       // console.log(props.likeListData);
       setCon({ confetti: true });
+      fly();
     }
   };
+
+
+
+  const fly = () => {
+    const likeheart = document.querySelector("#likeheart");
+    const savedPosition = document.querySelector(".fixedPosition");
+    let scrollTop =
+      document.documentElement.scrollTop ||
+      window.pageYOffset ||
+      document.body.scrollTop;
+    let div = document.createElement("div");
+    div.setAttribute("class", "heartFly");
+    document.body.appendChild(div);
+    div.innerHTML = `<i class="flyfly fas fa-heart"></i>`;
+    //console.log(scrollTop);
+    div.style.top = getOffset(likeheart).top - scrollTop + "px";
+    div.style.left = getOffset(likeheart).left + "px";
+
+    div.animate(
+      [
+        {
+          top: getOffset(likeheart).top - scrollTop + "px",
+          left: getOffset(likeheart).left + "px",
+          opacity: 1,
+          offset: 0,
+        },
+        {
+          top: getOffset(savedPosition).top + 20 + "px",
+          left: getOffset(savedPosition).left + "px",
+          opacity: 0.8,
+          offset: 0.85,
+        },
+        {
+          top: getOffset(savedPosition).top + "px",
+          left: getOffset(savedPosition).left + "px",
+          opacity: 0.5,
+          offset: 1,
+        },
+      ],
+      800
+    );
+    Promise.all(
+      div.getAnimations().map((animation) => animation.finished)
+    ).then(() => div.remove());
+  };
+
+  function getOffset(Node, offset) {
+    if (!offset) {
+      offset = {};
+      offset.top = 0;
+      offset.left = 0;
+    }
+    if (Node === document.body) {
+      return offset;
+    }
+    offset.top += Node.offsetTop;
+    offset.left += Node.offsetLeft;
+    return getOffset(
+      Node.offsetParent === null ? Node.parentNode : Node.offsetParent,
+      offset
+    ); 
+  }
+
 
   const config = {
     angle: 90,
@@ -203,6 +267,9 @@ function ProductsDetail(props) {
     perspective: "500px",
     colors: ["#eb5c37"],
   };
+
+
+
 
   return (
     <>

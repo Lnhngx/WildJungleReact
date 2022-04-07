@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../carts/utils/useCart";
 import Confetti from "react-dom-confetti";
+
 function ProductItem(props) {
-
   const [con, setCon] = useState({ confetti: false });
-
-
   const {
     ProductSid,
     ProductsName,
@@ -41,7 +39,7 @@ function ProductItem(props) {
 
   const likela = () => {
     const current = JSON.parse(localStorage.getItem("like"));
-    const alanheart = document.querySelectorAll(".alanheart");
+    //const alanheart = document.querySelectorAll(".alanheart");
     let item = [...current];
     if (current.includes("" + ProductSid)) {
       let num = item.findIndex((v) => v === "" + ProductSid);
@@ -50,17 +48,17 @@ function ProductItem(props) {
       }
       console.log("刪去");
       localStorage.setItem("like", JSON.stringify(item));
-      alanheart[ProductSid - 1].style.color = "#2d3436";
-      console.log(alanheart[ProductSid - 1]);
-      setCon({ confetti: false});
+      setCon({ confetti: false });
+      //alanheart[ProductSid - 1].style.color = "#2d3436";
     } else {
       item.push("" + ProductSid);
       console.log("新增成功");
       localStorage.setItem("like", JSON.stringify(item));
-      alanheart[ProductSid - 1].style.color = "#eb5c37";
       setCon({ confetti: true });
+      fly();
+      //console.log(ProductSid);
+      //alanheart[ProductSid - 1].style.color = "#eb5c37";
     }
-
   };
 
   const config = {
@@ -77,7 +75,65 @@ function ProductItem(props) {
     colors: ["#eb5c37"],
   };
 
+  const fly = () => {
+    const alanheart = document.querySelectorAll(".alanheart");
+    const savedPosition = document.querySelector(".fixedPosition");
+    let scrollTop =
+      document.documentElement.scrollTop ||
+      window.pageYOffset ||
+      document.body.scrollTop;
+    let div = document.createElement("div");
+    div.setAttribute("class", "heartFly");
+    document.body.appendChild(div);
+    div.innerHTML = `<i class="flyfly fas fa-heart"></i>`;
+    //console.log(scrollTop);
+    div.style.top = getOffset(alanheart[ProductSid - 1]).top - scrollTop + "px";
+    div.style.left = getOffset(alanheart[ProductSid - 1]).left + "px";
 
+    div.animate(
+      [
+        {
+          top: getOffset(alanheart[ProductSid - 1]).top - scrollTop + "px",
+          left: getOffset(alanheart[ProductSid - 1]).left + "px",
+          opacity: 1,
+          offset: 0,
+        },
+        {
+          top: getOffset(savedPosition).top + 20 + "px",
+          left: getOffset(savedPosition).left + "px",
+          opacity: 0.8,
+          offset: 0.85,
+        },
+        {
+          top: getOffset(savedPosition).top + "px",
+          left: getOffset(savedPosition).left + "px",
+          opacity: 0.5,
+          offset: 1,
+        },
+      ],
+      800
+    );
+    Promise.all(
+      div.getAnimations().map((animation) => animation.finished)
+    ).then(() => div.remove());
+  };
+
+  function getOffset(Node, offset) {
+    if (!offset) {
+      offset = {};
+      offset.top = 0;
+      offset.left = 0;
+    }
+    if (Node === document.body) {
+      return offset;
+    }
+    offset.top += Node.offsetTop;
+    offset.left += Node.offsetLeft;
+    return getOffset(
+      Node.offsetParent === null ? Node.parentNode : Node.offsetParent,
+      offset
+    ); 
+  }
 
   return (
     <>
@@ -97,10 +153,12 @@ function ProductItem(props) {
             <span>${ProductsPrice}</span>
           </Link>
           <div className="cardIcon">
-          <Confetti active={con.confetti} config={config} />
+            <Confetti active={con.confetti} config={config} />
             <i
               className="alanheart fas fa-heart"
-              onClick={likela}
+              onClick={() => {
+                likela();
+              }}
               style={
                 JSON.parse(localStorage.getItem("like")).includes(
                   "" + ProductSid

@@ -124,7 +124,7 @@ function Navbar(props) {
               </ul>
             </div>}
             <a href="/members/modify-member-info">
-              <i className="fas fa-heart"></i>
+              <i className="fas fa-heart fixedPosition"></i>
             </a>
             <a href="/carts">
               <i className="fas fa-shopping-cart stan_cartIcon">
