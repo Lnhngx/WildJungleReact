@@ -82,10 +82,9 @@ ul.slider-dots {
   //animation: scalepic 2.5s infinite;
 }
 
-.mainRun{
+.mainRun {
   animation: scalepic 2.5s infinite;
 }
-
 
 .white {
   width: 100%;
@@ -354,7 +353,7 @@ ul.slider-dots {
   top: 35%;
 }
 
-.form-control:focus{
+.form-control:focus {
   border-color: #eb5c37;
   box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.25);
 }
@@ -377,13 +376,11 @@ ul.slider-dots {
   border-radius: 0px;
   background-color: white;
 }
-.selectGroup select:focus{
+.selectGroup select:focus {
   border-color: #eb5c37;
   box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.25);
   outline: 0;
 }
-
-
 
 .dragableinput {
   margin: 20px 0 20px 0;
@@ -584,11 +581,11 @@ ul.slider-dots {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
 }
 @keyframes emailshow {
-  0%{
+  0% {
     width: 30%;
     opacity: 0;
   }
-  100%{
+  100% {
     width: 35%;
     opacity: 1;
   }
@@ -601,7 +598,7 @@ ul.slider-dots {
 //   }
 //   100%{
 //     width: 0%;
-//     opacity: 0;   
+//     opacity: 0;
 //   }
 // }
 
@@ -677,41 +674,54 @@ ul.slider-dots {
   transform: scale(0.8) translateX(-30px);
   color: #575757;
 }
-.alan_de{
+.alan_de {
   position: absolute;
   right: 3%;
-  top:3%;
+  top: 3%;
   font-size: 18px;
   cursor: pointer;
 }
 
-
-.alan_deer{
+.alan_deer {
   height: 160px;
-  width: 280px; 
+  width: 280px;
   object-fit: contain;
-  animation:spinner 3s ;
+  animation: spinner 3s;
 }
-.alan_spinner{
+.alan_spinner {
   position: relative;
   height: 300px;
   width: 800px;
 }
 
 @keyframes spinner {
-  0%{
+  0% {
     position: absolute;
     left: 0;
   }
-  15%{left: 25%;}
-  30%{left: 50%;}
-  45%{left: 75%;}
-  60%{left: 100%;}
-  75%{left: 125%;}
-  90%{left: 150%;}
-  100%{left: 175%;}
+  15% {
+    left: 25%;
+  }
+  30% {
+    left: 50%;
+  }
+  45% {
+    left: 75%;
+  }
+  60% {
+    left: 100%;
+  }
+  75% {
+    left: 125%;
+  }
+  90% {
+    left: 150%;
+  }
+  100% {
+    left: 175%;
+  }
 }
-.alan_resetfilter button{
+.alan_resetfilter button {
   margin-top: 12px;
   width: 120px;
   height: 30px;
@@ -724,6 +734,20 @@ ul.slider-dots {
   flex-wrap: wrap;
   justify-content: normal;
 }
+
+.heartFly {
+  color: #eb5c37;
+  width: 18px;
+  height: 18px;
+  font-size: 35px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  z-index: 9999;
+}
+
 
 @media screen and (min-width: 980px) {
   .productContainer {
@@ -889,6 +913,9 @@ ul.slider-dots {
   .cardIcon i {
     margin-bottom: 5px;
     margin-right: 10px;
+  }
+  .alanheart {
+    position: relative;
   }
   .alan_email_alert {
     word-wrap: break-word;

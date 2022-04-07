@@ -32,7 +32,7 @@ function OrderInfo() {
           <option value="aYear">一年內</option>
         </select>
       </div>
-      <table className="tysu_table">
+      <table className="tysu_table"  style={{marginBottom:"40rem"}}>
         <thead>
           <tr className="tysu_orderTr">
             <th style={{ width: "42px" }}></th>
@@ -48,7 +48,7 @@ function OrderInfo() {
 
         {order_search.map((v, i) => {
           return (
-            <tbody>
+            <tbody key={i}>
               <tr className="tysu_orderTr tysu_orderText">
                 <th>{i + 1}</th>
                 <td rowSpan="0">
@@ -102,7 +102,7 @@ function OrderInfo() {
           </tr>
         </tbody>
       </table>
-      <nav className="tysu_filterSelect tysu_btnPages">
+      {/* <nav className="tysu_filterSelect tysu_btnPages">
         <ul className="tysu_pageGroup">
           <li className="tysu_pageItem">
             <a className="tysu_pageLink" href="#/">
@@ -121,7 +121,7 @@ function OrderInfo() {
         <ul>
           <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
         </ul>
-      </nav>
+      </nav> */}
     </>
   );
 }

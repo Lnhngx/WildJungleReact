@@ -24,7 +24,7 @@ function ProductLike(props){
                 }
             });
             const obj = await r.json();
-            console.log(obj);
+            // console.log(obj);
             setProductLikeData(obj)
 
             let newAr={};
@@ -51,7 +51,7 @@ function ProductLike(props){
     
     return(<>
 {console.log(likeProducts)}
-        <table className="tysu_table">
+        <table className="tysu_table" style={{marginBottom:"50rem"}}>
             <thead>
                 <tr className="tysu_orderTr">
                     <th style={{width: "38px"}}></th>
@@ -68,23 +68,48 @@ function ProductLike(props){
                     return (<tr key={v.ProductSid} className="tysu_orderTr tysu_orderText" name={v.ProductSid}>
                         <th>{i+1}</th>
                         <td>
-                            <img  style={{width:"110px"}} src={'/img/product/'+v.ProductsMainPic} alt="" />
+                            <img className="tysu_likeImg" src={'/img/product/'+v.ProductsMainPic} alt="" />
                         </td>
                         <td className="tysu_orderBg">{v.ProductsName}</td>
                         <td>${v.ProductsPrice}</td>
                         <td>{new Date().toISOString().slice(0, 10)}</td>
                         <td className="tysu_likeGroup">
                             <button id="tysu_likeBtn" className="tysu_likeBtn tysu_likeCart">加入購物車</button>
-                            <button id="tysu_likeBtn" className="tysu_likeBtn tysu_likeCancel">取消收藏</button>
+                            <button id="tysu_likeBtn" className="tysu_likeBtn tysu_likeCancel" onClick={(e)=>{
+                                // console.log(v.ProductSid)
+                                const numAr=Object.keys(likeProducts).filter((j,k)=>{
+                                    return j==v.ProductSid
+                                })
+                                // console.log(numAr[0])
+                                if(v.ProductSid.toString()===numAr[0]){
+                                    console.log(v.ProductSid)
+                                    console.log(likes)
+                                    let targetNum = likes.findIndex((k) => k===v.ProductSid.toString());
+                                    if (targetNum !== -1) {
+                                        likes.splice(targetNum, 1);
+                                        console.log(likes)
+                                        localStorage.setItem('like',JSON.stringify(likes))
+                                    }
+                                }
+                            }}>取消收藏</button>
                         </td>
                     </tr>)
                 })}
-                        
+              {!Object.keys({...likeProducts}).length && 
+              (<tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td>
+                    <div className="tysu_creditT">尚未加入唷!</div>
+                </td>
+                <td></td>
+              </tr>)}          
 
                 
             </tbody>
         </table>
-        <nav className="tysu_filterSelect tysu_btnPages">
+        {/* <nav className="tysu_filterSelect tysu_btnPages">
             <ul className="tysu_pageGroup">
                 <li className="tysu_pageItem">
                     <a className="tysu_pageLink" href="#/">
@@ -103,7 +128,7 @@ function ProductLike(props){
             <ul>
                 <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
             </ul>
-        </nav>
+        </nav> */}
     </>)
 }
 export default ProductLike

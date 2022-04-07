@@ -11,7 +11,7 @@ import HomeJungleStar from "./components/HomeJungleStar";
 import HomeTransportion from "./components/HomeTransportion";
 import HomeTransportionP from "./components/HomeTransportionP";
 import { CarouselData } from "./components/CarouselData";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [transportionbtn, setTransportionbtn] = useState(true);
@@ -164,18 +164,19 @@ function HomePage() {
           </div>
         </div>
         <div className="ning_buttonbox">
-          <button className="btn ning_viewmorebtn">
-            <p className="ning_viewmorebtntext">View More</p>
-            <p className="ning_viewmoreicon">⟶</p>
-          </button>
+          <Link to="/activity">
+            <button className="btn ning_viewmorebtn">
+              <p className="ning_viewmorebtntext">View More</p>
+              <p className="ning_viewmoreicon">⟶</p>
+            </button>
+          </Link>
         </div>
         <div className="ning_Accommodation">
           <h1 className="ning_TitleEnblack">Accommodation</h1>
           <h2 className="ning_TitleChblack">風格住宿</h2>
         </div>
-        
-        <Accommodation />
 
+        <Accommodation />
 
         <div className="container">
           <div className="ning_buttonbox">
@@ -195,8 +196,18 @@ function HomePage() {
         <h1 className="ning_TitleEnblack">Transportion</h1>
         <h2 className="ning_TitleChblack">交通</h2>
         <div className="ning_transportionButton">
-          <button className="ning_busButton btn" onClick={()=>setTransportionbtn(true)}>公車即時</button>
-          <button className="ning_PButton btn" onClick={()=>setTransportionbtn(false)}>停車場</button>
+          <button
+            className="ning_busButton btn"
+            onClick={() => setTransportionbtn(true)}
+          >
+            公車即時
+          </button>
+          <button
+            className="ning_PButton btn"
+            onClick={() => setTransportionbtn(false)}
+          >
+            停車場
+          </button>
           {/* <HomeTransportion /> */}
           {transportionbtn === true ? (
             <HomeTransportion />

@@ -18,6 +18,7 @@ function ForgotPassChange(){
     const authRole=usp.get('auth');
     // console.log(authRole);
 
+    const [changePass,setChangePass]=useState(false)
 
     const FormChange=(e)=>{
         const name=e.target.name;
@@ -64,11 +65,12 @@ function ForgotPassChange(){
                     console.log(obj.error);
                     setForgotPassText(obj.error || '已更改成功，請重新登入');
                     setEditModalShow(true);
-                    
+                    setChangePass(true)
                 }else{
                     console.log(obj.error);
                     setForgotPassText(obj.error || '不可與前一次密碼相同');
                     setEditModalShow(true);
+                    setChangePass(false)
                 }
             })
         }
@@ -109,7 +111,9 @@ function ForgotPassChange(){
                 <th></th>
                 <td>
                     <div className="tysu_logHelp">
-                        <button id="submit" className="tysu_btn_sign">登 入</button>
+                        {!changePass ? (<button id="submit" className="tysu_btn_sign">確　定　變　更</button>):(<button id="submit" className="tysu_btn_sign" onClick={()=>{
+                            history.push('/members/login');
+                        }}>前　往　登　入</button>)}
                     </div>
                     <EditModal editModalShow={editModalShow} setEditModalShow={setEditModalShow} forgotPassText={forgotPassText} setForgotPassText={setForgotPassText}/>
                 </td>

@@ -80,8 +80,9 @@ const HomeTransportion = () => {
 
     // https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/${v}?%24format=JSON
   }
-  
+
   function getBusAllstop(v) {
+    console.log("v", v);
     setbusInfo(!busInfo);
     setSmallbusname(v);
     fetch(
@@ -108,8 +109,19 @@ const HomeTransportion = () => {
     )
       .then((r) => r.json())
       .then((data) => {
-        // console.log(data);
         setBustimeData(data);
+        // {key:value}
+        const timeDataObj = {};
+
+        for (let i = 0; i < data.length; i++) {
+          const key = data[i].Direction + data[i].StopID;
+          const value = data[i].EstimateTime;
+          timeDataObj[key] = value;
+        }
+
+        console.log("timeDataObj", timeDataObj);
+        setBusgotimeData(timeDataObj);
+
         // setBusgotimeData(data.filter((v) => v["Direction"] === 0));
         // setBusbacktimeData(data.filter((v) => v["Direction"] === 1));
       });
@@ -163,10 +175,10 @@ const HomeTransportion = () => {
     Select_stop(demoDataFromServer[selectValue].StopID);
   }, [selectValue]);
 
-  useEffect(() => {
-    setBusgotimeData(bustimeData.filter((v) => v["Direction"] === 0));
-    setBusbacktimeData(bustimeData.filter((v) => v["Direction"] === 1));
-  }, [bustimeData]);
+  // useEffect(() => {
+  //   setBusgotimeData(bustimeData.filter((v) => v["Direction"] === 0));
+  //   setBusbacktimeData(bustimeData.filter((v) => v["Direction"] === 1));
+  // }, [bustimeData]);
 
   return (
     <>
@@ -225,13 +237,14 @@ const HomeTransportion = () => {
           className="ning_smallbusInfo"
           style={{ display: busInfo === false && "none" }}
         >
-          <h3 className="ning_smallbusname">{smallbusname}</h3>
+          
           <div className="ning_smallbusBox">
             <span className="businfoClose material-icons" onClick={clickbtn}>
               close
             </span>
 
             <div className="ning_smallbusGo">
+            <h3 className="ning_smallbusname">{smallbusname}</h3>
               <h4>去程</h4>
               {busgostopData.map((v, i) => {
                 return (
@@ -241,13 +254,20 @@ const HomeTransportion = () => {
                       <p className="ning_smallbusStopname">
                         {v["StopName"]["Zh_tw"]}
                       </p>
-                      <p className="ning_smallbusStopTime"></p>
+                      <p className="ning_smallbusStopTime">
+                        {busgotimeData[0 + v.StopID]
+                          ? busgotimeData[0 + v.StopID] <= 120
+                            ? "將到站"
+                            : parseInt(busgotimeData[0 + v.StopID] / 60) + "分鐘"
+                          : "未發車"}
+                      </p>
                     </div>
                   </>
                 );
               })}
             </div>
             <div className="ning_smallbusBack">
+            <h3 className="ning_no"></h3>
               <h4>返程</h4>
               {busbackstopData.map((v, i) => {
                 return (
@@ -257,7 +277,13 @@ const HomeTransportion = () => {
                       <p className="ning_smallbusStopname">
                         {v["StopName"]["Zh_tw"]}
                       </p>
-                      <p className="ning_smallbusStopTime"></p>
+                      <p className="ning_smallbusStopTime">
+                      {busgotimeData[1 + v.StopID]
+                          ? busgotimeData[1 + v.StopID] <= 120
+                            ? "將到站"
+                            : parseInt(busgotimeData[1 + v.StopID] / 60) + "分鐘"
+                          : "未發車"}
+                      </p>
                     </div>
                   </>
                 );

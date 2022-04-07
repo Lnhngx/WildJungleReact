@@ -135,7 +135,7 @@
 .tysu_orderTr {
   font-weight: var(--tysu_fontWeight);
   border-bottom: 1px solid #000;
-  div{
+  div {
     width: 180px;
     white-space: pre;
     margin: 0 auto;
@@ -746,6 +746,11 @@ input:-webkit-autofill:active,
   width: 400px;
 }
 .tysu_address_input {
-  width: 20rem;
+  width: 30rem;
   background-color: #eee;
+}
+.tysu_likeImg {
+  width: 110px;
+  max-height: 110px;
+  object-fit: contain;
 }

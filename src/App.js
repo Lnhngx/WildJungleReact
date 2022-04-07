@@ -239,33 +239,46 @@ function App() {
                     <Game />
                   </Route>
                   <Route path="/carts/filloutform">
-                    <Cartsfilloutform
-                      name={name}
-                      phone={phone}
-                      email={email}
-                      address={address}
-                      delivery={delivery}
-                      payment={payment}
-                      setName={setName}
-                      setPhone={setPhone}
-                      setEmail={setEmail}
-                      setAddress={setAddress}
-                      setDelivery={setDelivery}
-                      setPayment={setPayment}
-                    />
-                  </Route>
+<<<<<<< HEAD
+  <Cartsfilloutform
+    name={name}
+    phone={phone}
+    email={email}
+    address={address}
+    delivery={delivery}
+    payment={payment}
+=======
+                    {auth || localState.token ? (<Cartsfilloutform
+>>>>>>> 0c14519fbaf9cdd9b9dbaeb0108a2ef12aef6e19
+    setName={setName}
+    setPhone={setPhone}
+    setEmail={setEmail}
+    setAddress={setAddress}
+    setDelivery={setDelivery}
+    setPayment={setPayment}
+  />) : (
+    <Redirect to="/members" />
+  )
+}
+                    
+                  </Route >
                   <Route path="/carts/finishorder">
-                    <Cartsfinishorder
+                  {auth || localState.token ? (<Cartsfinishorder
                       name={name}
                       phone={phone}
                       email={email}
                       address={address}
                       delivery={delivery}
                       payment={payment}
-                    />
+                    />) : (
+                      <Redirect to="/members" />
+                    )}
+                    
                   </Route>
                   <Route path="/carts">
-                    <Carts />
+                    {auth || localState.token ? (<Carts />) : (
+                      <Redirect to="/members" />
+                    )}
                   </Route>
                   <Route path="/members/signup">
                     <MemberSignUp />
@@ -332,7 +345,7 @@ function App() {
                     />
                   </Route>
 
-                  {/* 網址上的動態參數params 
+{/* 網址上的動態參數params 
           <Route path="/product-list/product-detail/:id?">
             <ProductDetail />
           </Route>
@@ -346,17 +359,17 @@ function App() {
             <Home auth={auth} />
           </Route>
           */}
-                  <Route path="*">
-                    <NotFoundPage />
-                  </Route>
-                </Switch>
-                <Footer />
+<Route path="*">
+  <NotFoundPage />
+</Route>
+                </Switch >
+  <Footer />
               </>
-            </Router>
-          </CartProvider>
-        </SecondCartProvider>
-      </ThirdCartProvider>
-    </FourthCartProvider>
+            </Router >
+          </CartProvider >
+        </SecondCartProvider >
+      </ThirdCartProvider >
+    </FourthCartProvider >
   );
 }
 export default App;
