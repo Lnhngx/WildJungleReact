@@ -48,7 +48,7 @@ function OrderInfo() {
 
         {order_search.map((v, i) => {
           return (
-            <tbody>
+            <tbody key={i}>
               <tr className="tysu_orderTr tysu_orderText">
                 <th>{i + 1}</th>
                 <td rowSpan="0">

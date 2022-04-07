@@ -142,15 +142,17 @@ function ConvenienceStoreAdd(props){
                     </select>
                     <select id="tysu_store" className="tysu_input store"
                         name='store'
-                        value={storeData[0].storeName+'店('+storeData[0].storeAddress+')'}
-                        onChange={(e)=>{
-                            if(e.target.name==='store'){
-                                setStoreName(e.target.value);
+                        value={`${storeData[0].storeName}店 ${storeData[0].storeAddress}`}
+                        onChange={(event)=>{
+                            // console.log(event.target)
+                            if(event.target.name==='store'){
+                                console.log(event.target.value)
+                                // setStoreName(event.target.value);
                             }
                         }} >
                         {storeData.map((v,i)=>{
                             return(<React.Fragment key={i}>
-                                    <option value={v.storeAddress}>{v.storeName+'店('+v.storeAddress+')'}</option>
+                                    <option value={`${v.storeName}店 ${v.storeAddress}`}>{v.storeName+'店('+v.storeAddress+')'}</option>
                                 </React.Fragment>)
                         })}
                         {/* storeAddress: "台北市松山區復興北路35號"
@@ -170,8 +172,8 @@ function ConvenienceStoreAdd(props){
     }
     
     <div className="tysu_btnCenter">
-        <button id="tysu_addBtn" className="tysu_addBtn" onClick={(e)=>{
-            e.preventDefault()
+        <button id="tysu_addBtn" className="tysu_addBtn" onClick={(event)=>{
+            event.preventDefault()
             if(cityName==='' || areaName==='' || storeName===''){
                 console.log('沒有資料')
 
@@ -185,7 +187,7 @@ function ConvenienceStoreAdd(props){
                     body: JSON.stringify({
                         "city":cityName,
                         "area":areaName,
-                        "store":storeName+'店',
+                        "store":storeName,
                         // "address":storeaddress,
                         "m_sid":sid['m_sid']
                         })
@@ -194,17 +196,17 @@ function ConvenienceStoreAdd(props){
                         if(obj.success){
                             console.log(obj.info);
                             // [{store_sid: 48, store_name: '吉盛店(台北市松山區南京東路五段66巷3弄1號1樓)'}]
-                            let newAr=user711D.push(obj.info[0])
-                            setUser711D(newAr);
-                            console.log('190',user711Data);
-                            // setUser711Data({...user711Data,info:newAr})
+                            
+                            setUser711D(obj.info);
+
                             setStoreModalText('新增完成');
-                            setShow(true);
+                            
 
                         }else{
                             setStoreModalText(obj.error || '無法新增')
-                            setShow(true);
+                            
                         }
+                        setShow(true);
                     })
                 }
                 save711()

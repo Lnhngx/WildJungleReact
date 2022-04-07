@@ -5,7 +5,7 @@ import ConvenienceStoreAdd from './ConvenienceStoreAdd'
 
 function ConvenienceStore(props){
     const {user711Data,setUser711Data}=props
-    
+    const sid=JSON.parse(localStorage.getItem('admin_account'))
     // props fetch的資料將data(array)設為狀態
     const [user711D,setUser711D]=useState([]);
     // 切換為新增畫面
@@ -17,11 +17,27 @@ function ConvenienceStore(props){
             setUser711D(user711Data.info);
             
         }
-    },[user711Data,user711D])
+    },[user711Data])
 
+
+    useEffect(()=>{
+        const get711Again=async()=>{
+            const r=await fetch(Config.TYSU_711_Add+'?m_id='+sid['m_sid'],{
+                method:'GET',
+                headers:{
+                    "Content-Type":"application/x-www-form-urlencoded"
+                }
+            })
+            const obj=await r.json()
+            console.log('again 711 obj',obj)
+            // setUser711Data(obj);
+            
+          }
+          get711Again()
+    },[user711D])
 
     return(<>
-    {console.log(user711Data)}
+    {/* {console.log(user711Data)} */}
     {console.log(user711D)}
         {showStoreAdd===false && (<>
             <table className='tysu_table'>
