@@ -9,7 +9,7 @@ import Config from "../Config";
 import Keys from './../Keys';
 
 function Login(props){
-  const {auth,setAuth,account,localState,setLocalState,comeUrl,setCommentbox}=props
+  const {auth,setAuth,account,localState,setLocalState,comeUrl,setCommentbox,likeListData}=props
   const history=useHistory();
   const emailInput=useRef();
   
@@ -88,6 +88,7 @@ function Login(props){
                             history.push('/members/modify-member-info')
                         }
                     }, 1500);
+                    
                     
                     console.log(obj.success)
                     // alert('登入成功');

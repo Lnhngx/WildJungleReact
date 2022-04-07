@@ -805,42 +805,42 @@ $ning-englishont: "Playfair Display", serif;
   /* Popular Events 熱門活動 hover */
 
   .ning_eventsbox:hover {
-    background-color: $ning-color2;
+    border:1px solid $ning-color4;
     padding: 10px 0px 10px 20px;
     margin-top: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.212);
 
-    .ning_eventsday {
-      color: $ning-color3;
-    }
+    // .ning_eventsday {
+    //   color: $ning-color3;
+    // }
 
-    .ning_eventsyear {
-      color: $ning-color3;
-    }
+    // .ning_eventsyear {
+    //   color: $ning-color3;
+    // }
 
-    .ning_eventsdateline {
-      background-color: $ning-color3;
-    }
+    // .ning_eventsdateline {
+    //   background-color: $ning-color3;
+    // }
 
-    .ning_eventstour {
-      color: $ning-color3;
-    }
+    // .ning_eventstour {
+    //   color: $ning-color3;
+    // }
     .ning_eventsimg img {
       -webkit-filter: grayscale(0%); /* Safari */
       filter: grayscale(0%);
     }
 
-    .ning_eventstext {
-      color: $ning-color3;
-    }
+    // .ning_eventstext {
+    //   color: $ning-color3;
+    // }
 
-    .ning_eventsgo {
-      border-top: 1.2px solid $ning-color3;
-    }
+    // .ning_eventsgo {
+    //   border-top: 1.2px solid $ning-color3;
+    // }
 
-    .ning_eventsgo span {
-      color: $ning-color3;
-    }
+    // .ning_eventsgo span {
+    //   color: $ning-color3;
+    // }
   }
 
   /* Accommodation 風格住宿 */

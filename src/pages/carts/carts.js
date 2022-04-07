@@ -9,17 +9,29 @@ import CheckareaShow from "./components/Checkarea_show";
 import CheckareaAdopt from "./components/Checkarea_adopt";
 import CheckareaLive from "./components/Checkarea_live";
 import React, { useState } from "react";
+import Config from "./Config";
 
 function Carts(props) {
   const [cartpro, setCartpro] = useState(true);
   const [cartshow, setCartshow] = useState(false);
   const [cartlive, setCartlive] = useState(false);
   const [cartadopt, setCartadopt] = useState(false);
+  // const m_sid="";
+  // if (localStorage.getItem("admin_account") !== undefined) {
+  //   m_sid = JSON.parse(localStorage.getItem("admin_account"));
+  //   console.log(m_sid);
+  // };
 
-  if (localStorage.getItem("admin_account") !== undefined) {
-    const member_sid = JSON.parse(localStorage.getItem("admin_account"));
-  };
-
+  // const bonus=0;
+  // fetch(Config.GET_BONUSPOINTS, {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify(m_sid),
+  //   })
+  //   .then((r) => r.json())
+  //   .then((obj) => {
+  //     obj=bonus;
+  //   });
 
   return (
     <>

@@ -31,7 +31,7 @@ function CartAdopt() {
                 </button>
               </li>
               <li>
-                {/* <img alt="" src={v.image} /> */}
+                <img alt="" src={v.image} />
               </li>
               <li className="stan_ds_product">{v.name}</li>
               <li className="stan_ds_product">${v.price}</li>

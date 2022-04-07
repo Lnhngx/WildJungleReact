@@ -179,11 +179,15 @@ function ProductsDetail(props) {
       console.log("刪去");
       localStorage.setItem("like", JSON.stringify(item));
       likeheart.style.color = "#2d3436";
+      // props.setLikeListData(item);
+      // console.log(props.likeListData);
     } else {
       item.push(Sid);
       console.log("新增成功");
       localStorage.setItem("like", JSON.stringify(item));
       likeheart.style.color = "#eb5c37";
+      // props.setLikeListData(item);
+      // console.log(props.likeListData);
     }
   };
 

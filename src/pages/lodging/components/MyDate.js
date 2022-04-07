@@ -84,38 +84,64 @@ function MyDate(props) {
   //
   const [count, setCount] = useState(0);
   const [checkTime, setcheckTime] = useState([]);
-  const [checkColor, setCheckColor] = useState("");
-  console.log(checkColor);
+  let colorArr = [];
   function checkDate(e) {
-    setCheckColor(e.target.className)
     if (count === 0) {
       let Arr = [...check];
       Arr.splice(0, 2);
-      Arr.push(new Date(new Date(e.target.dataset.value).getTime()).toLocaleDateString());
+      Arr.push(
+        new Date(
+          new Date(e.target.dataset.value).getTime()
+        ).toLocaleDateString()
+      );
       setCheck(Arr);
       setcheckTime(new Date(e.target.dataset.value).getTime());
       setCount(1);
+      //console.log(Arr);
+      //colorArr.push(e.target)
+      //e.target.style.backgroundColor = "#f9b112";
     } else if (count === 1) {
-      let Arr = [...check];
       if (new Date(e.target.dataset.value).getTime() > checkTime) {
-        Arr.push(new Date(new Date(e.target.dataset.value).getTime()).toLocaleDateString());
+        let Arr = [...check];
+        Arr.push(
+          new Date(
+            new Date(e.target.dataset.value).getTime()
+          ).toLocaleDateString()
+        );
         setCheck(Arr);
         setCount(0);
       } else {
+        let Arr = [...check];
         Arr.splice(0, 1);
-        Arr.push(new Date(new Date(e.target.dataset.value).getTime()).toLocaleDateString());
+        Arr.push(
+          new Date(
+            new Date(e.target.dataset.value).getTime()
+          ).toLocaleDateString()
+        );
         setCheck(Arr);
+        setcheckTime(new Date(e.target.dataset.value).getTime());
+        setCount(1);
       }
+      //colorArr.push(e.target)
     }
+    e.target.style.backgroundColor = "#f9b112";
+    colorArr.push(e.target.innerHTML);
+    console.log(e.target.dataset.value, check[0]);
   }
+
   setCartdate(check[0]);
   setCartdate2(check[1]);
-  console.log(check);
 
   return (
     <>
       <h2 id="yearAndMonth" className="yearAndMonth">
-        <span>入住：</span>
+        <span
+          onClick={() => {
+            //console.log(check[0], check[1]);
+          }}
+        >
+          入住：
+        </span>
         {check[0]}
         <span> 退房：</span>
         {check[1]}
@@ -143,6 +169,25 @@ function MyDate(props) {
                       className={item}
                       data-value={"2022/4/" + item}
                       onClick={(e) => checkDate(e)}
+                      style={
+                        Date.parse("2022/4/" + item) < new Date().setDate(new Date().getDate() -1)
+                          ? {
+                              backgroundColor: "#dddddd",
+                              cursor: "not-allowed",
+                              pointerEvents: "none",
+                              
+                            }
+                          : Date.parse("2022/4/" + item) ===
+                              Date.parse(check[0]) ||
+                            Date.parse("2022/4/" + item) ===
+                              Date.parse(check[1])
+                          ? { backgroundColor: "#f9b112" }
+                          : Date.parse("2022/4/" + item) >
+                              Date.parse(check[0]) &&
+                            Date.parse("2022/4/" + item) < Date.parse(check[1])
+                          ? { backgroundColor: "#ffe8b5" }
+                          : { backgroundColor: "white" }
+                      }
                     >
                       {item}
                     </td>
