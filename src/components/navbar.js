@@ -115,6 +115,7 @@ function Navbar(props) {
                   setShowOut(false)
                 }}>會員專區</li>
                 <li onClick={() => {
+                  localStorage.setItem("like",JSON.stringify([]))
                   localStorage.removeItem("admin_account");
                   localStorage.removeItem("admin_token");
                   setAuth(false);
@@ -124,7 +125,7 @@ function Navbar(props) {
               </ul>
             </div>}
             <a href="/members/modify-member-info">
-              <i className="fas fa-heart"></i>
+              <i className="fas fa-heart fixedPosition"></i>
             </a>
             <a href="/carts">
               <i className="fas fa-shopping-cart stan_cartIcon">

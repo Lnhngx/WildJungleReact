@@ -9,6 +9,7 @@ import Creditcard from './Creditcard'
 import AddressAdd from './AddressAdd'
 import OrderInfo from './OrderInfo'
 import OrderTicket from './OrderTicket'
+import OrderCancel from './OrderCancel'
 import ConvenienceStore from './ConvenienceStore'
 import ConvenienceStoreAdd from './ConvenienceStoreAdd'
 import DiscountPoints from './DiscountPoints'
@@ -175,7 +176,7 @@ function MemberNavItem(props){
     {actived===memberlist[0] && navState.navItem===navItem[3] ? <AddressAdd navActived={navActived} navItem={navItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[0] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[1] ? <OrderTicket navActived={navActived} orderNavItem={orderNavItem}/> : '' }
-    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[2] ? <OrderInfo navActived={navActived} orderNavItem={orderNavItem}/> : '' }
+    {actived===memberlist[1] && navState.orderNavItem===orderNavItem[2] ? <OrderCancel navActived={navActived} orderNavItem={orderNavItem}/> : '' }
     {actived===memberlist[1] && navState.orderNavItem===orderNavItem[3] ? <ConvenienceStore navActived={navActived} orderNavItem={orderNavItem} user711Data={user711Data} setUser711Data={setUser711Data}/> : '' }
     {actived===memberlist[2] && navState.discountNavItem===discountNavItem[0] ? <DiscountPoints navActived={navActived} discountNavItem={discountNavItem} pointData={pointData} setPointData={setPointData} /> : '' }
     {actived===memberlist[2] && navState.discountNavItem===discountNavItem[1] ? <DiscountTicket navActived={navActived} discountNavItem={discountNavItem}/> : '' }

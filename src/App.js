@@ -239,27 +239,35 @@ function App() {
                     <Game />
                   </Route>
                   <Route path="/carts/filloutform">
-                    <Cartsfilloutform
+                    {auth || localState.token ? (<Cartsfilloutform
                       setName={setName}
                       setPhone={setPhone}
                       setEmail={setEmail}
                       setAddress={setAddress}
                       setDelivery={setDelivery}
                       setPayment={setPayment}
-                    />
+                    />) : (
+                      <Redirect to="/members" />
+                    )}
+                    
                   </Route>
                   <Route path="/carts/finishorder">
-                    <Cartsfinishorder
+                  {auth || localState.token ? (<Cartsfinishorder
                       name={name}
                       phone={phone}
                       email={email}
                       address={address}
                       delivery={delivery}
                       payment={payment}
-                    />
+                    />) : (
+                      <Redirect to="/members" />
+                    )}
+                    
                   </Route>
                   <Route path="/carts">
-                    <Carts />
+                    {auth || localState.token ? (<Carts />) : (
+                      <Redirect to="/members" />
+                    )}
                   </Route>
                   <Route path="/members/signup">
                     <MemberSignUp />
