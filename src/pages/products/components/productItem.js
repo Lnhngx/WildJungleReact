@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../carts/utils/useCart";
-
+import Confetti from "react-dom-confetti";
 function ProductItem(props) {
+
+  const [con, setCon] = useState({ confetti: false });
+
+
   const {
     ProductSid,
     ProductsName,
@@ -52,13 +56,32 @@ function ProductItem(props) {
       localStorage.setItem("like", JSON.stringify(item));
       alanheart[ProductSid - 1].style.color = "#2d3436";
       console.log(alanheart[ProductSid - 1]);
+      setCon({ confetti: false});
     } else {
       item.push("" + ProductSid);
       console.log("新增成功");
       localStorage.setItem("like", JSON.stringify(item));
       alanheart[ProductSid - 1].style.color = "#eb5c37";
+      setCon({ confetti: true });
     }
+
   };
+
+  const config = {
+    angle: 90,
+    spread: 50,
+    startVelocity: 40,
+    elementCount: 150,
+    dragFriction: 0.1,
+    duration: 750,
+    stagger: 0,
+    width: "10px",
+    height: "10px",
+    perspective: "500px",
+    colors: ["#eb5c37"],
+  };
+
+
 
   return (
     <>
@@ -78,6 +101,7 @@ function ProductItem(props) {
             <span>${ProductsPrice}</span>
           </Link>
           <div className="cardIcon">
+          <Confetti active={con.confetti} config={config} />
             <i
               className="alanheart fas fa-heart"
               onClick={likela}

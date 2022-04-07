@@ -78,6 +78,7 @@ const FixedRight = (props) => {
               </button>
               <input
                 type="text"
+                readOnly
                 value={adultcount}
                 className="AdultTicketvalue"
               />
@@ -95,8 +96,10 @@ const FixedRight = (props) => {
               </button>
               <input
                 type="text"
+                readOnly
                 value={studentcount}
                 className="studentTicketvalue"
+                
               />
               <button className="btn addBtn" onClick={addstudentcount}>
                 <i className="fas fa-plus"></i>
@@ -114,6 +117,7 @@ const FixedRight = (props) => {
                 type="text"
                 value={lovecount}
                 className="loveTicketvalue"
+                readOnly
               />
               <button className="btn addBtn" onClick={addlovecount}>
                 <i className="fas fa-plus"></i>

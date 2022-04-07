@@ -527,8 +527,7 @@ function Lodging(props) {
               <div className="lodging_oceanprice">
                 <p>房間定價</p>
                 <h3>
-                  <span>NT$ </span>
-                  {3200}
+                  <span>NT$ </span>3200
                 </h3>
               </div>
             </div>
@@ -540,6 +539,7 @@ function Lodging(props) {
                 <i className="fas fa-minus"></i>
               </button>
               <input
+              readOnly
                 type="text"
                 value={oceancount}
                 className="lodging_oceanvalue"
@@ -598,7 +598,7 @@ function Lodging(props) {
               <div className="ocean_introduce">
                 <h2>房型簡介</h2>
                 <div className="ocean_score">
-                  <p>{total}</p>
+                  <p>{total.toString()}</p>
                 </div>
                 <p
                   onClick={() => {
@@ -803,8 +803,7 @@ function Lodging(props) {
                 <div className="lodging_iceprice">
                   <p>房間定價</p>
                   <h3>
-                    <span>NT$</span>
-                    {4500}
+                    <span>NT$</span>4500
                   </h3>
                 </div>
               </div>
@@ -813,6 +812,7 @@ function Lodging(props) {
                   <i className="fas fa-minus"></i>
                 </button>
                 <input
+                readOnly
                   type="text"
                   value={icecount}
                   className="lodging_icevalue"
@@ -871,7 +871,7 @@ function Lodging(props) {
               <div className="ice_introduce">
                 <h2>房型簡介</h2>
                 <div className="ice_score">
-                  <p>{total}</p>
+                  <p>{total.toString()}</p>
                 </div>
                 <p
                   onClick={() => {
@@ -1079,8 +1079,7 @@ function Lodging(props) {
                 <div className="lodging_nocturnalprice">
                   <p>房間定價</p>
                   <h3>
-                    <span>NT$</span>
-                    {5500}
+                    <span>NT$</span>5500
                   </h3>
                 </div>
               </div>
@@ -1092,6 +1091,7 @@ function Lodging(props) {
                   <i className="fas fa-minus"></i>
                 </button>
                 <input
+                readOnly
                   type="text"
                   value={nocturnalcount}
                   className="lodging_nocturnalvalue"
@@ -1158,7 +1158,7 @@ function Lodging(props) {
               <div className="nocturnal_introduce">
                 <h2>房型簡介</h2>
                 <div className="nocturnal_score">
-                  <p>{total}</p>
+                  <p>{total.toString()}</p>
                 </div>
                 <p
                   onClick={() => {
@@ -1368,7 +1368,7 @@ function Lodging(props) {
                   <p>房間定價</p>
                   <h3>
                     <span>NT$</span>
-                    {6500 * tropicalcount}
+                    {(6500 * tropicalcount).toString()}
                   </h3>
                 </div>
               </div>
@@ -1380,6 +1380,7 @@ function Lodging(props) {
                   <i className="fas fa-minus"></i>
                 </button>
                 <input
+                readOnly
                   type="text"
                   value={tropicalcount}
                   className="lodging_tropicalvalue"
@@ -1441,7 +1442,7 @@ function Lodging(props) {
               <div className="tropical_introduce">
                 <h2>房型簡介</h2>
                 <div className="tropical_score">
-                  <p>{total}</p>
+                  <p>{total.toString()}</p>
                 </div>
                 <p
                   onClick={() => {

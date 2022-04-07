@@ -21,6 +21,7 @@ import {
 } from "react-share";
 import { EmailIcon, FacebookIcon, LineIcon, TwitterIcon } from "react-share";
 
+
 function Products(props) {
   // 產品用的資料
   // 1. 從伺服器來的原始資料
@@ -42,6 +43,7 @@ function Products(props) {
   const [type5, setType5] = useState(0);
   const [type6, setType6] = useState(0);
 
+  
   //const refresh = function(){ window.location.reload()};
   const Allreset = function () {
     setType1(0);
@@ -355,9 +357,6 @@ function Products(props) {
     </>
   );
 
- 
-
-
   // useEffect(() => {
   //   window.fbAsyncInit = function () {
   //     //SDK loaded, initialize it
@@ -387,6 +386,7 @@ function Products(props) {
   //   }
   // }, []);
 
+  
   return (
     <>
       <Productsbackground />
@@ -642,7 +642,7 @@ function Products(props) {
             </div>
           </div>
           <div className="productgroup">
-            {isLoading ? spinner : <ProductsCard products={displayProducts}  />}
+            {isLoading ? spinner : <ProductsCard products={displayProducts} />}
           </div>
         </div>
       </div>

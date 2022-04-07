@@ -126,22 +126,25 @@ function MyDate(props) {
     }
     e.target.style.backgroundColor = "#f9b112";
     colorArr.push(e.target.innerHTML);
-    console.log(e.target.dataset.value, check[0]);
+    //console.log(e.target.dataset.value, check[0]);
   }
 
-  setCartdate(check[0]);
-  setCartdate2(check[1]);
+  useEffect(() => {
+    const set1 = () => {
+      setCartdate(check[0]);
+    };
+    const set2 = () => {
+      setCartdate2(check[1]);
+    };
+
+    set1();
+    set2();
+  }, [check, setCartdate, setCartdate2]);
 
   return (
     <>
       <h2 id="yearAndMonth" className="yearAndMonth">
-        <span
-          onClick={() => {
-            //console.log(check[0], check[1]);
-          }}
-        >
-          入住：
-        </span>
+        <span>入住：</span>
         {check[0]}
         <span> 退房：</span>
         {check[1]}
@@ -169,7 +172,25 @@ function MyDate(props) {
                       className={item}
                       data-value={"2022/4/" + item}
                       onClick={(e) => checkDate(e)}
-                      style={ Date.parse("2022/4/" + item) === Date.parse(check[0]) || Date.parse("2022/4/" + item)===Date.parse(check[1]) ? {backgroundColor:"#f9b112"} : Date.parse("2022/4/"+item) > Date.parse(check[0]) &&Date.parse("2022/4/"+ item) < Date.parse(check[1]) ? {backgroundColor:"#ffe8b5"}:{ backgroundColor:"white"} }
+                      style={
+                        Date.parse("2022/4/" + item) <
+                        new Date().setDate(new Date().getDate() - 1)
+                          ? {
+                              backgroundColor: "#dddddd",
+                              cursor: "not-allowed",
+                              pointerEvents: "none",
+                            }
+                          : Date.parse("2022/4/" + item) ===
+                              Date.parse(check[0]) ||
+                            Date.parse("2022/4/" + item) ===
+                              Date.parse(check[1])
+                          ? { backgroundColor: "#f9b112" }
+                          : Date.parse("2022/4/" + item) >
+                              Date.parse(check[0]) &&
+                            Date.parse("2022/4/" + item) < Date.parse(check[1])
+                          ? { backgroundColor: "#ffe8b5" }
+                          : { backgroundColor: "white" }
+                      }
                     >
                       {item}
                     </td>

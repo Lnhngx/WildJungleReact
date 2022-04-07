@@ -60,7 +60,7 @@ const LodgingComment = (props) => {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].service_score;
-      console.log(Total);
+      //console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -73,7 +73,7 @@ const LodgingComment = (props) => {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].clean_score;
-      console.log(Total);
+      //console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -86,7 +86,7 @@ const LodgingComment = (props) => {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].comfort_score;
-      console.log(Total);
+     // console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -99,7 +99,7 @@ const LodgingComment = (props) => {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].facility_score;
-      console.log(Total);
+      //console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -112,7 +112,7 @@ const LodgingComment = (props) => {
     let Total = 0;
     for (let i = 0; i < v.length; i++) {
       Total += v[i].cpValue_score;
-      console.log(Total);
+      //console.log(Total);
     }
     return Math.round(Total / v.length);
   }
@@ -300,7 +300,7 @@ const LodgingComment = (props) => {
         <div
           className="commentScore"
           onClick={() => {
-            console.log(order.length);
+            //console.log(order.length);
           }}
         >
           各項評分
@@ -417,7 +417,7 @@ const LodgingComment = (props) => {
         style={{ display: writecommen === false && "none" }}
       >
         <div className="lefticonbox">
-          <span class="material-icons lefticon" onClick={backbtn}>
+          <span className="material-icons lefticon" onClick={backbtn}>
             west
           </span>
         </div>

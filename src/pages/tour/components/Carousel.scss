@@ -34,7 +34,7 @@
   }
   
   .Carousel__btn--next {
-    right: -100px;
+    right: -40px;
     transform: rotate(45deg);
   }
   .figure{
@@ -46,6 +46,9 @@
 
   @media screen and (min-width: 980px) {
     .Carousel__railWrapper {
-      width: 105%;
+      width:135%;
+    }
+    .Carousel__btn--next {
+      right: -500px;
     }
   }

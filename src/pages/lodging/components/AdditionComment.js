@@ -106,12 +106,12 @@ function AdditionComment(props) {
           Config.COMMENT_TROPICALLIST,
         ];
 
-        console.log("apiArray[props.roomSid]", apiArray[props.roomSid]);
+        //console.log("apiArray[props.roomSid]", apiArray[props.roomSid]);
 
         fetch(apiArray[props.roomSid])
           .then((res) => res.json())
           .then((res) => {
-            console.log("res", res);
+            //console.log("res", res);
             props.setData(res);
             props.setClosebtn(true);
             props.setWritecommen(false);

@@ -150,15 +150,15 @@ figcaption {
 
 .tourCenterCard {
   width: 100%;
-  height: 100%;
+  height: 80%;
   background-color: #000000;
   padding-top: 3%;
   text-align: center;
 }
 
 .figure {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 90%;
   border-radius: 50%;
   overflow: hidden;
   margin-left: auto;
@@ -220,7 +220,7 @@ figcaption {
 }
 .tourdescriptionpic img {
   object-fit: content;
-  width: 300px; //手機
+  width: 360px; //手機
   height: 300px;
 }
 .tourdescriptionGuild2 {
@@ -278,8 +278,8 @@ figcaption {
 }
 .tourdescriptionGuild2Icon2:hover::before{
   content:url(./imgs/hippo_diet.png);
-  width:520px;
-  height:330px;
+  width:620px;
+  height:350px;
   background:#f9b112;
   display:block;
   position:absolute;
@@ -359,7 +359,7 @@ figcaption {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.wrap{
+.tourwrap{
   width:100%; 
   display: flex;
 }
@@ -432,7 +432,7 @@ figcaption {
   display: none;
 }
 .tour_showBooking_area{
-  margin-top:10rem;
+  margin-top:18rem;
 }
 
 
@@ -492,18 +492,21 @@ figcaption {
     font-size: 2rem;
   }
   .tourdescriptionGuild1 {
-    width: 50%;
+    width: 45%;
     height:100%;
   }
   .tourdescriptionGuild2 {
-    width: 40%;
+    width: 45%;
   }
   .tourback {
     height: 45vh;
+    width: 120%;
   }
   .tourdescriptionGuild2Text {
     width: 100%;
     height: 300px;
+    margin-right: -100px;
+    margin: 0;
   }
   .tourLife {
     margin-top: 300px;
@@ -513,14 +516,14 @@ figcaption {
   }
   .tourdescriptionpic img {
     object-fit: content;
-    width: 750px; 
+    width: 900px; 
     height: 495px;
   }
   .tourdescriptionGuild2Iconbox {
     margin-top: -7rem;
   }
   .tour_showBooking_area{
-    margin-top:25rem;
+    margin-top:55rem;
   }
 
 }
