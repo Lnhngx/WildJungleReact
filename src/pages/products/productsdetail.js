@@ -8,13 +8,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import ProductCarousel from "./components/productCarousel";
 import { useEffect } from "react";
-import * as Scroll from "react-scroll";
 import {
-  Button,
-  Element,
   Events,
   animateScroll as scroll,
-  scrollSpy,
   scroller,
 } from "react-scroll";
 import DetailPicture from "./components/detailPicture";
