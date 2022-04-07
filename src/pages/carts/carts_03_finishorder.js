@@ -6,16 +6,18 @@ import Config from "./Config";
 
 function Cartsfinishorder(props) {
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
+  const m_email = JSON.parse(localStorage.getItem("admin_account")).email;
+  const m_name = JSON.parse(localStorage.getItem("admin_account")).m_name;
   const { clearCart, items } = useCart();
   const backupitems = [...items];
   const { name, phone, email, address, delivery, payment } = props;
-  const [orderid,setOrderid]=useState("");
+  const [orderid, setOrderid] = useState("");
   useEffect(() => {
     const temp = async () => {
       await fetch(Config.RECEIVE_DATA, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ m_sid: m_sid }),
+        body: JSON.stringify({ m_sid: m_sid, m_email: m_email, m_name: m_name }),
       })
         .then((r) => r.json())
         .then((obj) => {
