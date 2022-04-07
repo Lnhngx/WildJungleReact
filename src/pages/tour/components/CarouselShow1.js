@@ -339,7 +339,7 @@ function CarouselShow1 (){
                 <p style={{color: "black"}} className="tourP1">園區導覽</p>
             </div>
         </div>
-        <div className="wrap">
+        <div className="tourwrap">
         <div className="Touritem">
             <img src="/img/tour/an1.jpeg" alt=""/>
           <div className="txt">
@@ -377,7 +377,7 @@ function CarouselShow1 (){
                 <p style={{color: "black"}} className="tourP1">園區導覽</p>
             </div>
         </div>
-        <div className="wrap">
+        <div className="tourwrap">
         <div style={{width: "50%", height:"50%"}}className="Touritem Touritem1">
             <img style={{}}src="/img/tour/p6CVo6abkKGY.gif" alt=""/>
           {/* <div className="txt1">
@@ -413,7 +413,7 @@ function CarouselShow1 (){
                 <p style={{color: "black"}} className="tourP1">園區導覽</p>
             </div>
         </div>
-        <div style={{flexWrap:'wrap'}} className="wrap">
+        <div style={{flexWrap:'wrap',high:'150vh'}} className="tourwrap">
         <div style={{width:'50%'}} className="Touritem">
             <img style={{objectFit:'cover', objectPosition:'50%'}}
             src="/img/tour/ice/001.jpg" alt=""/>
