@@ -1,21 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "./carts.scss";
 import Process03 from "./components/Process_03";
-import Filloutorder from "./components/Filloutform_order";
-import Finishorder from "./components/Finish_order";
 import { useCart } from "./utils/useCart";
 import Config from "./Config";
 
 function Cartsfinishorder(props) {
+  const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
   const { clearCart, items } = useCart();
   const backupitems = [...items];
   const { name, phone, email, address, delivery, payment } = props;
+  const [orderid,setOrderid]=useState("");
+  useEffect(() => {
+    const temp = async () => {
+      await fetch(Config.RECEIVE_DATA, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ m_sid: m_sid }),
+      })
+        .then((r) => r.json())
+        .then((obj) => {
+          setOrderid(obj);
+        });
+    };
+    temp();
 
-  useEffect(()=>{
-    setTimeout(()=>{
+    setTimeout(() => {
       clearCart();
-  },5000)
-  },[])
+    }, 5000)
+  }, [])
 
   return (
     <>
@@ -26,7 +38,7 @@ function Cartsfinishorder(props) {
             <p>感謝您的訂購</p>
             <p>訂購資訊以傳送至您的信箱</p>
             <p>
-              訂單編號：<span></span>
+              訂單編號：<span>{orderid}</span>
             </p>
           </div>
           <div className="stan_fo_order">
