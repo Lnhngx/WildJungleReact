@@ -95,7 +95,7 @@ function ProductLike(props){
                         </td>
                     </tr>)
                 })}
-              {!Object.keys({...likeProducts}).length && 
+              {Object.keys({...likeProducts}).length<1 || likes.length<1 ? 
               (<tr>
                 <th></th>
                 <td></td>
@@ -104,7 +104,8 @@ function ProductLike(props){
                     <div className="tysu_creditT">尚未加入唷!</div>
                 </td>
                 <td></td>
-              </tr>)}          
+              </tr>
+              ):<tr></tr>}          
 
                 
             </tbody>

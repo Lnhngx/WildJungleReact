@@ -44,34 +44,29 @@ function MemberList(props){
   //   });
   // },[])
   
-  // const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(0);
 
-  //   useEffect(() => {
-  //       const onScroll = () => setOffset(window.pageYOffset);
-  //       // clean up code
-  //       window.removeEventListener('scroll', onScroll);
-  //       window.addEventListener('scroll', onScroll, { passive: true });
-  //       return () => window.removeEventListener('scroll', onScroll);
+    useEffect(() => {
+        const onScroll = () => setOffset(window.pageYOffset);
+        // clean up code
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
         
-  //   }, []);
-  //   useEffect(() => {
-  //     // console.log(offset);
-  //     // console.log('tysuBg', tysuBg.current.scrollTop ); 
-  //     // console.log('scrollTop', tysuBg.current.offsetTop); 
-  //     // console.log('window', window.scrollY); 
-  //       console.log('offset',offset); 
+    }, []);
+    useEffect(() => {
+      // console.log(offset);
+      // console.log('tysuBg', tysuBg.current.scrollTop ); 
+      // console.log('scrollTop', tysuBg.current.offsetTop); 
+      // console.log('window', window.scrollY);
+  // console.log('offset',tysuBg.current.offsetTop); 
       
-  //     if(offset-tysuBg.current.offsetTop>400){
-  //       // console.log('tysuBg:',tysuBg.current.style.offset="0")
-        
-  //       // tysuBg.current.style.position="absolute";
-  //       tysuBg.current.style.bottom="36vh"
-  //     }else{
-  //       tysuBg.current.style.position="fixed";
-  //       tysuBg.current.style.bottom="-3rem"
-  //     }
-      
-  //   },[offset])
+      if(offset-tysuBg.current.offsetTop>=-600){
+        tysuBg.current.style.position="fixed";
+        tysuBg.current.style.bottom="-3rem"
+      }
+
+    },[offset])
     // console.log(tysuBg.current.style)
  
 
