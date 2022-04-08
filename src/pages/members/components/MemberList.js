@@ -55,7 +55,7 @@ function MemberList(props){
         
     }, []);
     useEffect(() => {
-      // console.log(offset);
+      // console.log(offset);like
       // console.log('tysuBg', tysuBg.current.scrollTop ); 
       // console.log('scrollTop', tysuBg.current.offsetTop); 
       // console.log('window', window.scrollY);
