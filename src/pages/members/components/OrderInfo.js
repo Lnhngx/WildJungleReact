@@ -88,7 +88,7 @@ function OrderInfo() {
           {order_search.map((v, i) => {
             let a = v.order_date === 'none' ? count : count++;
             return (
-              <>
+              <React.Fragment key={i}>
                 <tr className="tysu_orderTr tysu_orderText" key={i}>
                   {/* <th>{i + 1}</th> */}
                   {v.order_date === 'none' ? null : <th rowSpan={rowSpan[i]}>{a}</th>}
@@ -111,7 +111,7 @@ function OrderInfo() {
                   {v.amount === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.amount}</td>}
                   {v.status === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.status}</td>}
                 </tr>
-              </>
+              </React.Fragment>
             );
             
           })}
