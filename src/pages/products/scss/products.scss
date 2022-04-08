@@ -199,12 +199,17 @@ ul.slider-dots {
   color: #c4c4c4;
   margin: 0 5px 0 5px;
 }
-.iconGroup i:first-child {
+
+.iconGroup i.active {
   color: #eb5c37;
 }
+
+// .iconGroup i:first-child {
+//   color: #eb5c37;
+// }
 .iconGroup i:hover {
-  color: #eb5c37;
-  text-shadow: 1px 1px white, -1px -1px #390b00;
+  // color: #eb5c37;
+  // text-shadow: 1px 1px white, -1px -1px #390b00;
 }
 
 .adNew {
@@ -748,7 +753,6 @@ ul.slider-dots {
   z-index: 9999;
 }
 
-
 @media screen and (min-width: 980px) {
   .productContainer {
     width: 100%;
@@ -803,6 +807,7 @@ ul.slider-dots {
   .iconGroup {
     left: 50%;
   }
+
   .sliderButtom {
     position: absolute;
     bottom: 0;

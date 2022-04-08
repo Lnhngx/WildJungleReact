@@ -3,8 +3,10 @@ import { useEffect, useState, useCallback } from "react";
 import $ from "jquery";
 
 function JqueryProduct() {
-  const [page, setPage] = useState(1);
-
+  //console.log('start');
+  const [page, setPage] = useState(0);
+  const [iconActive,setIconActive] = useState(0);
+  const [intervalId, setIntervalId] = useState(null);
   const iconalan1 = document.querySelector(".iconalan1");
   const iconalan2 = document.querySelector(".iconalan2");
   const iconalan3 = document.querySelector(".iconalan3");
@@ -15,132 +17,92 @@ function JqueryProduct() {
   const alan = document.querySelector(".alan_wrap");
   const iconGroup = document.querySelector(".iconGroup");
 
-  const icon1 = () => {
-    iconalan1.style.color = "#eb5c37";
-    iconalan2.style.color = "#c4c4c4";
-    iconalan3.style.color = "#c4c4c4";
-  };
-  const icon2 = () => {
-    iconalan2.style.color = "#eb5c37";
-    iconalan1.style.color = "#c4c4c4";
-    iconalan3.style.color = "#c4c4c4";
-  };
-  const icon3 = () => {
-    iconalan3.style.color = "#eb5c37";
-    iconalan1.style.color = "#c4c4c4";
-    iconalan2.style.color = "#c4c4c4";
-  };
-  const hover1 = () => {
-    icon1();
-    imgWrap.style.transform = "translateX(0%)";
-  };
-  const hover2 = () => {
-    icon2();
-    imgWrap.style.transform = "translateX(-25%)";
-  };
-  const hover3 = () => {
-    icon3();
-    imgWrap.style.transform = "translateX(-50%)";
+
+
+  useEffect(()=>{
+    console.log('useeffect');
+  },[])
+
+  const iconHover = (iconNumber) => {
+    console.log('iconNumber',iconNumber);
+    const imgWrap = document.querySelector(".alan_img-wrap");
+    setIconActive(iconNumber);
+    setPage(iconNumber);
+    imgWrap.style.transform = `translateX(${iconNumber * -25}%)`;
+    //clearInterval(intervalId)
   };
 
   const leftClick = () => {
-    console.log(page);
-    setPage(page - 1);
-    if (page === 1) {
-      setPage(3);
-    }
-    const moveX = (page - 1) * -25;
+    const newPage = (page -1) < 0? 2:page-1;
+    console.log(newPage);
+    
+    const moveX =  newPage * -25;
     imgWrap.style.transition = "0.5s";
     imgWrap.style.transform = `translateX(${moveX}%)`;
-    if (page === 1 || page > 3) {
-      icon1();
-    }
-    if (page === 2) {
-      icon2();
-    }
-    if (page === 3) {
-      icon3();
-    }
+
+    setPage(newPage);
+    setIconActive(newPage);
   };
 
   const rightClick = () => {
-    setPage(page + 1);
-    console.log(page);
-    const moveX = (page === 0 ? 1 : page) * -25;
+    const newPage = (page +1) > 2? 0:page+1;
+    console.log(newPage);
+
+    const moveX =  newPage * -25;
     imgWrap.style.transition = "0.5s";
     imgWrap.style.transform = `translateX(${moveX}%)`;
-    if (page === 0 || page > 2) {
-      icon1();
-    }
-    if (page === 1) {
-      icon2();
-    }
-    if (page === 2) {
-      icon3();
+
+    setPage(newPage);
+    setIconActive(newPage);
+  };
+
+  const resetPage = () => {
+    if (page === 3 || page > 3) {
+      console.log('page === 3 reset page' );
+      imgWrap.style.transition = "none";
+      imgWrap.style.transform = "translate(0px)";
+      setPage(0);
     }
   };
 
+  const mouseLeave = ()=>{
+    setPage(page+1);
+  }
+
   useEffect(() => {
-    const icon1 = () => {
-      iconalan1.style.color = "#eb5c37";
-      iconalan2.style.color = "#c4c4c4";
-      iconalan3.style.color = "#c4c4c4";
-    };
-    const icon2 = () => {
-      iconalan2.style.color = "#eb5c37";
-      iconalan1.style.color = "#c4c4c4";
-      iconalan3.style.color = "#c4c4c4";
-    };
-    const icon3 = () => {
-      iconalan3.style.color = "#eb5c37";
-      iconalan1.style.color = "#c4c4c4";
-      iconalan2.style.color = "#c4c4c4";
-    };
     const imgWrap = document.querySelector(".alan_img-wrap");
-    const iconGroup = document.querySelector(".iconGroup");
-    const alan = document.querySelector(".alan_wrap");
-    const startInterval = setInterval(() => {
-      setPage(page + 1);
-      const moveX = (page === 0 ? 1 : page) * -25;
+    // const iconGroup = document.querySelector(".iconGroup");
+    // const alan = document.querySelector(".alan_wrap");
+
+    imgWrap.addEventListener("transitionend", resetPage);
+
+    const changePage = () => {
+      console.log('change page',intervalId);
+      const newPage = (page +1) > 2? 0:page+1;
+      const moveX = newPage * -25;
       imgWrap.style.transition = "0.5s";
       imgWrap.style.transform = `translateX(${moveX}%)`;
       //main[page === 3 ? 0 : page].classList.add("mainRun");
-      if (page === 0 || page > 2) {
-        icon1();
-      }
-      if (page === 1) {
-        icon2();
-      }
-      if (page === 2) {
-        icon3();
-      }
-    }, 2500);
+      setPage(newPage);
+      setIconActive(newPage);
+    }
+    const myInterval = (setInterval(changePage, 2500)) ;
 
-    const reset = () => {
-      if (page === 4 || page > 4) {
-        imgWrap.style.transition = "none";
-        imgWrap.style.transform = "translate(0px)";
-        setPage(1);
-      }
-    };
-
-    const clear = () => {
-      console.log(111)
-      clearInterval(startInterval);
-    };
-
+    setIntervalId(myInterval);
 
     //imgWrap.addEventListener("mouseenter", clear);
     //imgWrap.addEventListener("mouseleave", startInterval());
-    imgWrap.addEventListener("transitionend", reset);
 
     return () => {
-      imgWrap.removeEventListener("transitionend", reset);
+      imgWrap.removeEventListener("transitionend", resetPage);
+      // imgWrap.removeEventListener("transitionend", reset);
       //imgWrap.removeEventListener("mouseleave", startInterval());
       //imgWrap.removeEventListener("mouseenter", clear);
-      clearInterval(startInterval);
+      console.log('clear page',intervalId);
+      clearInterval(myInterval);
     };
-  }, [icon1, icon2, icon3, page,]);
+
+  }, [page]);
 
   useEffect(() => {
     // $(".alan_wrap").hover(
@@ -186,9 +148,9 @@ function JqueryProduct() {
         </div>
       </div>
       <div className="iconGroup" onMouseOver={() => {}}>
-        <i className="iconalan1 fas fa-circle" onMouseOver={hover1}></i>
-        <i className="iconalan2 fas fa-circle" onMouseOver={hover2}></i>
-        <i className="iconalan3 fas fa-circle" onMouseOver={hover3}></i>
+        <i className={`iconalan1 ${(iconActive === 0)?'active':''} fas fa-circle`} onMouseEnter={()=>iconHover(0)} ></i>
+        <i className={`iconalan2 ${(iconActive === 1)?'active':''} fas fa-circle`}  onMouseEnter={()=>iconHover(1)} ></i>
+        <i className={`iconalan3 ${(iconActive === 2)?'active':''} fas fa-circle`} onMouseEnter={()=>iconHover(2)}></i>
       </div>
     </>
   );
