@@ -5,8 +5,9 @@ import Config from "./Config";
 import "./lodging.scss";
 import "./lodging_mb.scss";
 import LodgingComment from "./components/LodgingComment";
-// import { Modal, Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { useFourthCart } from "../carts/utils/useFourthCart";
+import { useHistory } from "react-router-dom";
 
 function Lodging(props) {
   const { setCommentbox, commentbox } = props;
@@ -14,6 +15,7 @@ function Lodging(props) {
   const [cartdate, setCartdate] = useState("");
   const [cartdate2, setCartdate2] = useState("");
 
+  const history=useHistory();
   const sid = JSON.parse(localStorage.getItem("admin_account"));
   const [oceanbox, setOceanbox] = useState(0);
   const [icebox, setIcebox] = useState(0);
@@ -39,28 +41,30 @@ function Lodging(props) {
   const [roomSid, setRoomSid] = useState(0);
   const [order, setOrder] = useState([]);
 
-  // const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
 
-  // const ModalShow = (
-  //   <Modal show={show} animation={false}>
-  //     <Modal.Header>
-  //       <Modal.Title className="room_ModalTitle">加入購物車</Modal.Title>
-  //     </Modal.Header>
-  //     <Modal.Body className="room_ModalBody">訂房資訊已加入購物車！</Modal.Body>
-  //     <Modal.Footer>
-  //       <Button
-  //         className="room_Modalyesbtn"
-  //         onClick={setShow(false)}
-  //       >
-  //         繼續購物
-  //       </Button>
-  //       <Button className="room_Modalnobtn" onClick={()=>{window.location.href = "http://localhost:3000/carts";}}>
-  //         前往購物車
-  //       </Button>
-  //     </Modal.Footer>
-  //   </Modal>
-  // );
+  const ModalShow = (
+    <Modal show={show} animation={false}>
+      <Modal.Header>
+        <Modal.Title className="room_ModalTitle">加入購物車</Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="room_ModalBody">訂房資訊已加入購物車！</Modal.Body>
+      <Modal.Footer>
+        <Button
+          className="room_Modalyesbtn"
+          onClick={()=>{setShow(false)}}
+        >
+          繼續購物
+        </Button>
+        <Button className="room_Modalnobtn"
+         onClick={()=> history.push('/carts')}
+         >
+          前往購物車
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 
   //海洋房詳細資訊btn
 
@@ -577,11 +581,12 @@ function Lodging(props) {
                 };
                 addItem(room);
                 console.log(room);
+                setShow(true)
               }}
             >
               預約訂房
             </button>
-            {/* {ModalShow} */}
+            {show && ModalShow}
           </div>
         </div>
 
@@ -850,11 +855,11 @@ function Lodging(props) {
                   };
                   addItem(room);
                   console.log(room);
+                  setShow(true)
                 }}
               >
                 預約訂房
               </button>
-              {/* {ModalShow} */}
             </div>
           </div>
         </div>
@@ -1135,11 +1140,11 @@ function Lodging(props) {
                   };
                   addItem(room);
                   console.log(room);
+                  setShow(true)
                 }}
               >
                 預約訂房
               </button>
-              {/* {ModalShow} */}
             </div>
           </div>
         </div>
@@ -1420,11 +1425,11 @@ function Lodging(props) {
                   };
                   addItem(room);
                   console.log(room);
+                  setShow(true)
                 }}
               >
                 預約訂房
               </button>
-              {/* {ModalShow} */}
             </div>
           </div>
         </div>

@@ -99,7 +99,6 @@ const FixedRight = (props) => {
                 readOnly
                 value={studentcount}
                 className="studentTicketvalue"
-                
               />
               <button className="btn addBtn" onClick={addstudentcount}>
                 <i className="fas fa-plus"></i>
@@ -123,40 +122,42 @@ const FixedRight = (props) => {
                 <i className="fas fa-plus"></i>
               </button>
             </div>
-            <button
-              className="btn goPay"
-              onClick={() => {
-                const temp_arr123 = [
-                  {
-                    sid: 998,
-                    image: "/zooTicket.jpg",
-                    name: "動物園門票:成人",
-                    price: 50,
-                    quantity: adultcount,
-                  },
-                  {
-                    sid: 999,
-                    image: "/zooTicket.jpg",
-                    name: "動物園門票:學生",
-                    price: 30,
-                    quantity: studentcount,
-                  },
-                  {
-                    sid: 1000,
-                    image: "/zooTicket.jpg",
-                    name: "動物園門票:愛心",
-                    price: 20,
-                    quantity: lovecount,
-                  },
-                ];
-                let template = temp_arr123.filter((v) => v.quantity !== 0);
-                template.forEach((v) => {
-                  addItem(v);
-                });
-              }}
-            >
-              立即結帳
-            </button>
+            <Link to="/carts">
+              <button
+                className="btn goPay"
+                onClick={() => {
+                  const temp_arr123 = [
+                    {
+                      sid: 998,
+                      image: "/zooTicket.jpg",
+                      name: "動物園門票:成人",
+                      price: 50,
+                      quantity: adultcount,
+                    },
+                    {
+                      sid: 999,
+                      image: "/zooTicket.jpg",
+                      name: "動物園門票:學生",
+                      price: 30,
+                      quantity: studentcount,
+                    },
+                    {
+                      sid: 1000,
+                      image: "/zooTicket.jpg",
+                      name: "動物園門票:愛心",
+                      price: 20,
+                      quantity: lovecount,
+                    },
+                  ];
+                  let template = temp_arr123.filter((v) => v.quantity !== 0);
+                  template.forEach((v) => {
+                    addItem(v);
+                  });
+                }}
+              >
+                立即結帳
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -164,8 +165,8 @@ const FixedRight = (props) => {
         <div
           className="ning_game"
           onClick={() => {
-            let top = window.pageYOffset + 60
-            document.querySelector('.lottery_container').style.top = top+'px';
+            let top = window.pageYOffset + 60;
+            document.querySelector(".lottery_container").style.top = top + "px";
             // 由右邊訂選欄的按鈕先判別使用者是否為會員，是的話，才可以玩
             if (localStorage.admin_account !== undefined) {
               const storage = localStorage.getItem("received");

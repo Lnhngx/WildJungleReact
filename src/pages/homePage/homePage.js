@@ -171,7 +171,7 @@ function HomePage() {
             </button>
           </Link>
         </div>
-        <div className="ning_Accommodation">
+        {/* <div className="ning_Accommodation">
           <h1 className="ning_TitleEnblack">Accommodation</h1>
           <h2 className="ning_TitleChblack">風格住宿</h2>
         </div>
@@ -185,7 +185,7 @@ function HomePage() {
               <p className="ning_viewmoreicon">⟶</p>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* 明星動物認養 */}
