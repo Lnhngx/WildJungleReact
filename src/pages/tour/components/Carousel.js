@@ -15,7 +15,7 @@ const Carousel = ({ cols = 1, gap = 10, children }) => {
     let isMobileDevice = mobileDevice.some(e => navigator.userAgent.match(e))
     if (isMobileDevice) {
       cols = 2;
-      gap = 0;
+      gap = 10;
     }
     if (i % cols === 0) {
       result.push([<Item key={i}>{item}</Item>])
@@ -48,9 +48,8 @@ const Carousel = ({ cols = 1, gap = 10, children }) => {
           className="Carousel__rail"
           style={{
             gridTemplateColumns: `repeat(${page}, 100%)`,
-            // left: `calc(${-100 * currentPage}% - ${gap * currentPage}px)`,
+            left: `calc(${-100 * currentPage}% - ${gap * currentPage}px)`,
             gridColumnGap: `${gap}px`,
-            left:'-28px'
           }}
         >
           {itemSetList.map((set, i) => (
