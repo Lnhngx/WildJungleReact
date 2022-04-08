@@ -41,7 +41,7 @@ function Cartfilloutform(props) {
   };
   const { cart } = useCart();
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
-  const [bonus,setBonus] = useState(0);
+  const [bonus,setBonus] = useState([]);
   useEffect(() => {
     const temp = async () => {
       await fetch(Config.GET_BONUSPOINTS, {
