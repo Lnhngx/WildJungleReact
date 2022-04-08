@@ -47,9 +47,14 @@
 
   @media screen and (min-width: 980px) {
     .Carousel__railWrapper {
-      width:135%;
+      width:100%;
     }
     .Carousel__btn--next {
-      right: -500px;
+      right: -230px;
+    }
+    .Carousel {
+      position: relative;
+      left: 150px;
+    
     }
   }
