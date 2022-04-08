@@ -248,6 +248,7 @@ figcaption {
 .tourdescriptionGuild2Iconbox {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 .tourdescriptionGuild2Icon1 {
   width: 50px;
@@ -266,6 +267,7 @@ figcaption {
     position:absolute;
     top:0;
     left:-50px;
+    z-index: 999;
   
 }
 .tourdescriptionGuild2Icon2 {
@@ -274,7 +276,8 @@ figcaption {
   background-color: #ffffff;
   background-image: url(./imgs/food.svg);
   background-repeat: no-repeat;
-  position:relative;
+  position:absolute;
+  margin-left: 8rem;
 }
 .tourdescriptionGuild2Icon2:hover::before{
   content:url(./imgs/hippo_diet.png);
