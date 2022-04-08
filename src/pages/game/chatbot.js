@@ -505,12 +505,21 @@ function Chatbot(props){
                     .then(obj=>{
                         let Data = [];
                         for(let i=0;i<=12;i=i+2){
-                            Data.push({
+                            if(i>4){
+                                Data.push({
                                     date:obj.records.locations[0].location[0].weatherElement[0].time[i].startTime,
-                                    rain:obj.records.locations[0].location[0].weatherElement[0].time[i].elementValue[0].value,
+                                    rain:'-',
                                     temp:obj.records.locations[0].location[0].weatherElement[1].time[i].elementValue[0].value,
                                     wx:obj.records.locations[0].location[0].weatherElement[2].time[i].elementValue[1].value,
                             });
+                            }else{
+                                Data.push({
+                                        date:obj.records.locations[0].location[0].weatherElement[0].time[i].startTime,
+                                        rain:obj.records.locations[0].location[0].weatherElement[0].time[i].elementValue[0].value,
+                                        temp:obj.records.locations[0].location[0].weatherElement[1].time[i].elementValue[0].value,
+                                        wx:obj.records.locations[0].location[0].weatherElement[2].time[i].elementValue[1].value,
+                                });
+                            }
                         }
                         const getTime = new Date();
                         let hour = getTime.getHours();

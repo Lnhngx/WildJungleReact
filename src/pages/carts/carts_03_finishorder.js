@@ -9,7 +9,7 @@ function Cartsfinishorder(props) {
   const m_email = JSON.parse(localStorage.getItem("admin_account")).email;
   const m_name = JSON.parse(localStorage.getItem("admin_account")).m_name;
   const { clearCart, items } = useCart();
-  const backupitems = [...items];
+  const [backupitems,setBackupitems] = useState(items);
   const { name, phone, email, address, delivery, payment } = props;
   const [orderid, setOrderid] = useState("");
   useEffect(() => {
@@ -28,7 +28,7 @@ function Cartsfinishorder(props) {
 
     setTimeout(() => {
       clearCart();
-    }, 5000)
+    }, 1000)
   }, [])
 
   return (

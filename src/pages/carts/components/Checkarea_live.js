@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../utils/useCart";
+import { useFourthCart } from "../utils/useFourthCart";
 
 function CheckareaLive(props) {
-  const { cart } = useCart();
+  const { cart } = useFourthCart();
+  const temp = JSON.parse(localStorage.getItem("fourthCart"));
+  const compare = temp.length;
+  const [showbox, setShowbox] = useState(!!compare);
   return (
     <>
       <div className="stan_tempay">付款詳情</div>
@@ -19,28 +22,51 @@ function CheckareaLive(props) {
         </ul>
         <ul>
           <li>紅利折扣</li>
-          <li>${Math.ceil(props.bonus/10)}</li>
+          <li>${Math.ceil(props.bonus / 10)}</li>
         </ul>
         <hr className="stan_checkouthr stan_hr" />
         <ul>
           <li>結帳金額</li>
-          <li>${cart.cartTotal>0?cart.cartTotal-Math.ceil(props.bonus/10):0}</li>
+          <li>
+            $
+            {cart.cartTotal > 0
+              ? cart.cartTotal - Math.ceil(props.bonus / 10)
+              : 0}
+          </li>
         </ul>
 
-        <Link to="/carts/filloutform" className="stan_link">
-          <button
-            className="stan_checkout_btn">
-            前往結帳
-          </button>
-        </Link>
+        {compare ? (
+          <>
+            <Link to="/carts/filloutform" className="stan_link">
+              <button className="stan_checkout_btn">前往結帳</button>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/carts/filloutform" className="stan_link">
+              <button className="stan_checkout_btn" disabled>
+                前往結帳
+              </button>
+            </Link>
+          </>
+        )}
       </div>
       <div className="stan_checkout_btn2_block"></div>
-      <Link to="/carts/filloutform" className="stan_link">
-        <button
-          className="stan_checkout_btn2">
-          前往結帳
-        </button>
-      </Link>
+      {compare ? (
+        <>
+          <Link to="/carts/filloutform" className="stan_link">
+            <button className="stan_checkout_btn2">前往結帳</button>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Link to="/carts/filloutform" className="stan_link">
+            <button className="stan_checkout_btn2" disabled>
+              前往結帳
+            </button>
+          </Link>
+        </>
+      )}
     </>
   );
 }

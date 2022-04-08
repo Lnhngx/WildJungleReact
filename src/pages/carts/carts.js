@@ -17,7 +17,7 @@ function Carts(props) {
   const [cartlive, setCartlive] = useState(false);
   const [cartadopt, setCartadopt] = useState(false);
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
-  const [bonus,setBonus] = useState(0);
+  const [bonus,setBonus] = useState([]);
   useEffect(() => {
     const temp = async () => {
       await fetch(Config.GET_BONUSPOINTS, {
@@ -35,6 +35,7 @@ function Carts(props) {
 
   return (
     <>
+    {          console.log(bonus[bonus.length-1])}
       <div className="stan_carts_main_ec">
         <Process01 />
         <div className="stan_carts_middle_ec">
@@ -129,16 +130,16 @@ function Carts(props) {
           </div>
           <div className="stan_block"></div>
           <div className={cartpro ? "stan_checkout_area" : "stan_displaynone"}>
-            <Checkarea bonus={bonus}/>
+            <Checkarea bonus={bonus[bonus.length-1]}/>
           </div>
           <div className={cartshow ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaShow bonus={bonus}/>
+            <CheckareaShow bonus={bonus[bonus.length-1]}/>
           </div>
           <div className={cartadopt ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaAdopt bonus={bonus}/>
+            <CheckareaAdopt bonus={bonus[bonus.length-1]}/>
           </div>
           <div className={cartlive ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaLive bonus={bonus}/>
+            <CheckareaLive bonus={bonus[bonus.length-1]}/>
           </div>
         </div>
       </div>

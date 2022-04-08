@@ -2,20 +2,17 @@ import React, { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Config from "../Config";
-// import { Modal, Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
 function AdditionComment(props) {
   const Range = Slider;
 
-  // const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  // const [show, setShow] = useState(false);
-  // const handleShow = () => {
-  //   setShow(true);
-  // };
+ 
   // const [signSuccess, setSignSuccess] = useState("");
 
   // const [comments, setComments] = useState({
@@ -62,7 +59,7 @@ function AdditionComment(props) {
 
     setCommentsError(updateFieldError);
   };
-
+  const sid = JSON.parse(localStorage.getItem("admin_account"));
   const handleSubmit = async (e) => {
     e.preventDefault(); // 避免傳統方式送出表單
 
@@ -76,18 +73,18 @@ function AdditionComment(props) {
     // });
 
     // return;
-    const fd = new FormData(e.target);
-    const commentTextarea = fd.get("commentTextarea");
-    if (commentTextarea.trim() === "") {
-      const updateCommentsError = {
-        ...commentsError,
-        name: "請給我們改善的意見，或鼓勵我們！",
-      };
-      setCommentsError(updateCommentsError);
-      return;
-    }
+    // const fd = new FormData(e.target);
+    // const commentTextarea = fd.get("commentTextarea");
+    // if (commentTextarea.trim() === "") {
+    //   const updateCommentsError = {
+    //     ...commentsError,
+    //     name: "請給我們改善的意見，或鼓勵我們！",
+    //   };
+    //   setCommentsError(updateCommentsError);
+    //   return;
+    // }
 
-    const sid = JSON.parse(localStorage.getItem("admin_account"));
+    
 
     await fetch(Config.COMMENT_ADD, {
       method: "POST",
@@ -104,6 +101,7 @@ function AdditionComment(props) {
     })
       .then((r) => r.json())
       .then((r) => {
+        console.log(r)
         const apiArray = [
           0,
           Config.COMMENT_OCEANLIST,
@@ -131,6 +129,7 @@ function AdditionComment(props) {
         //   setSignSuccess(obj.error || "未評論成功");
         //   handleShow(true);
         // }
+        handleClose()
       });
   };
 
@@ -379,13 +378,13 @@ function AdditionComment(props) {
         />
         <div className="textareaHelp"></div>
         <div className="commentbtngroup">
-        <button type="submit" id="submit" className="btn commentbtn">
+        {/* <button type="submit" id="submit" className="btn commentbtn">
         送出
-          </button>
-          {/* <button type="button" className="btn commentbtn" onClick={handleShow}>
+          </button> */}
+          <button type="button" className="btn commentbtn" onClick={handleShow}>
             送出
           </button>
-          <Modal show={show} onHide={handleClose}>
+          {show && <Modal show={show} onHide={handleClose}>
             <Modal.Header >
               <Modal.Title className="room_ModalTitle">送出</Modal.Title>
             </Modal.Header>
@@ -393,9 +392,10 @@ function AdditionComment(props) {
             <Modal.Footer>
               <Button
                 className="room_Modalyesbtn"
-                onClick={handleClose}
+                onClick={handleSubmit}
                 type="submit"
                 id="submit"
+                
               >
                 確定
               </Button>
@@ -403,7 +403,7 @@ function AdditionComment(props) {
                 取消
               </Button>
             </Modal.Footer>
-          </Modal> */}
+          </Modal>}
           <button type="reset" className="btn cancelbtn" onClick={allClear}>
             清除
           </button>

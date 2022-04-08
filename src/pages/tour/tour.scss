@@ -21,12 +21,11 @@
 
 .tourbackground {
   position: absolute;
-  width: 120%;
- 
-
+  width: 100%;
 
   img {
-    width: 120%;
+    width: 100%;
+
 
   }
 }
@@ -149,7 +148,7 @@ figcaption {
 }
 
 .tourCenterCard {
-  width: 100%;
+  width: 80%;
   height: 80%;
   background-color: #000000;
   padding-top: 3%;
@@ -157,8 +156,8 @@ figcaption {
 }
 
 .figure {
-  width: 80%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   overflow: hidden;
   margin-left: auto;
@@ -195,7 +194,7 @@ figcaption {
 }
 .tourdescription {
   display: flex;
-  padding-top: 2rem;
+  // padding-top: 2rem;
   width: 100%;
   height:100%;
 }
@@ -220,8 +219,8 @@ figcaption {
 }
 .tourdescriptionpic img {
   object-fit: content;
-  width: 360px; //手機
-  height: 300px;
+  width: 330px; //手機
+  height: 280px;
 }
 .tourdescriptionGuild2 {
   width: 100%;
@@ -243,7 +242,8 @@ figcaption {
 }
 .tourdescriptionGuild2Icon {
   width: 100%;
-  margin-top: 15rem;
+  margin-top: 20rem;
+  left: 20px;
 }
 .tourdescriptionGuild2Iconbox {
   display: flex;
@@ -265,8 +265,8 @@ figcaption {
     background:#f9b112;
     display:block;
     position:absolute;
-    top:0;
-    left:-50px;
+    top:-250px;
+    left:-10px;
     z-index: 999;
   
 }
@@ -282,11 +282,11 @@ figcaption {
 .tourdescriptionGuild2Icon2:hover::before{
   content:url(./imgs/hippo_diet.png);
   width:620px;
-  height:350px;
+  height:330px;
   background:#f9b112;
   display:block;
   position:absolute;
-  top:0;
+  top:-250px;
   left:-50px;
  
 
@@ -297,8 +297,9 @@ figcaption {
   font-size: 1.5rem;
   background-color: var(--tour_color);
   border-radius: 0;
-  width: 200px;
-  height: 100px;
+  width:150px;
+  height: 80px;
+  // margin-right: 45px;
 }
 .tourLife {
   margin-top: 100px;
@@ -430,14 +431,15 @@ figcaption {
   font-size: var(--tour_fontSize);
   font-family: "Noto Sans TC", sans-serif;
   letter-spacing: 5px;
+  width: 100%;
 
 }
 .tourDisplayNone {
   display: none;
 }
-.tour_showBooking_area{
-  margin-top:18rem;
-}
+// .tour_showBooking_area{
+//   margin-top:18rem;
+// }
 
 
 
@@ -490,7 +492,7 @@ figcaption {
     margin-top: 20px;
     margin-bottom: -20px;
   }
-  figcaption {
+  .figcaption {
     font-weight: var(--tour_fontWeight);
     font-size: var(--tour_fontSize);
     font-size: 2rem;
@@ -503,8 +505,8 @@ figcaption {
     width: 45%;
   }
   .tourback {
-    height: 45vh;
-    width: 120%;
+    height: 65vh;
+    width: 100%;
   }
   .tourdescriptionGuild2Text {
     width: 100%;
@@ -527,7 +529,7 @@ figcaption {
     margin-top: -7rem;
   }
   .tour_showBooking_area{
-    margin-top:55rem;
+    margin-top:30rem;
   }
   .touradoptbtn {
     font-family: var(--tour_chinesefont);
@@ -548,6 +550,21 @@ figcaption {
     position:absolute;
     margin-left: 23rem;
   }
+  .figure{
+    width: 80%;
+    height: 80%;
+
+  }
+  #TourDescriptionText{
+    font-weight: var(--tour_fontWeight);
+    font-size: var(--tour_fontSize);
+    font-family: "Noto Sans TC", sans-serif;
+    letter-spacing: 5px;
+    width: 100%;
+
+  
+  }
+
 
 }
 @media screen and (max-width: 768px) {

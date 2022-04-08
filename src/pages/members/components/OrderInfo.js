@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 
 function OrderInfo() {
   const [order_search, setOrder_search] = useState([]);
+  const [rowSpan,setRowSpan] = useState([])
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
-
+  let count = 1
 
   useEffect(() => {
+    let isMounted = true;
     const temp = async () => {
       await fetch("http://localhost:4000/carts/order_search", {
         method: "POST",
@@ -15,10 +17,47 @@ function OrderInfo() {
       })
         .then((r) => r.json())
         .then((obj) => {
-          setOrder_search(obj);
+          console.log('整理的',obj)
+          if(isMounted){
+            setOrder_search(obj);
+          }
         });
     };
+    const temp2 = async () => {
+      await fetch("http://localhost:4000/carts/order_search2", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ m_sid: m_sid }),
+      })
+        .then((r) => r.json())
+        .then((obj) => {
+          // console.log('檢查span長度',obj);
+          let b = [...rowSpan];
+          obj.map((v,i)=>{
+            if(typeof v.product_name==='string'){
+
+              b.push(String(1));
+              if(isMounted){
+                setRowSpan(b)
+              }
+            }else{
+              let num = v.product_name.length
+              b.push(String(num));
+              for(i=0;i<v.product_name.length-1;i++){
+                b.push(String(1))
+              }
+              if(isMounted){
+                setRowSpan(b)
+              }
+            }
+          })
+        });
+    };
+    temp2();
     temp();
+    return () => {
+      isMounted = false;
+  };
   }, []);
 
   return (
@@ -45,61 +84,37 @@ function OrderInfo() {
             <th style={{ width: "88px" }}>狀態</th>
           </tr>
         </thead>
-
-        {order_search.map((v, i) => {
-          return (
-            <tbody key={i}>
-              <tr className="tysu_orderTr tysu_orderText">
-                <th>{i + 1}</th>
-                <td rowSpan="0">
-                  <a href="#/">
-                    A
-                    {v.order_date.slice(0, 10).split("-").join("") +
-                      v.order_sid}
-                  </a>
-                </td>
-                {/* {console.log(typeof v.product_name==='string')} */}
-                {typeof v.product_name==='string'?
-                <td className="tysu_orderBg"><div>{v.product_name}</div></td>:
-                <td className="tysu_orderBg"> <div>{v.product_name.join('\n')}</div></td>}
-                
-                <td>${v.product_price}</td>
-                <td>{v.product_quantity}</td>
-                <td>
-                  {v.order_date.slice(0, 10)}
-                  <br />
-                  {v.order_date.slice(10)}
-                </td>
-                <td>${v.amount}</td>
-                <td>{v.status}</td>
-              </tr>
-            </tbody>
-          );
-        })}
-
-        {/* <tr className="tysu_orderTr tysu_orderText">
-            <td className="tysu_orderBg">法蘭絨動物兒童披風</td>
-            <td>$1065</td>
-            <td>2</td>
-          </tr> */}
-
         <tbody>
-          <tr className="tysu_orderTr tysu_orderText">
-            <th>2</th>
-            <td>
-              <a href="#/">A220201777889</a>
-            </td>
-            <td className="tysu_orderBg">動物拼圖</td>
-            <td>$105</td>
-            <td>1</td>
-            <td>
-              2022/02/05
-              <br />
-              22:00:36
-            </td>
-            <td>$105</td>
-            <td>已配達</td>
-          </tr>
+          {order_search.map((v, i) => {
+            let a = v.order_date === 'none' ? count : count++;
+            return (
+              <>
+                <tr className="tysu_orderTr tysu_orderText" key={i}>
+                  {/* <th>{i + 1}</th> */}
+                  {v.order_date === 'none' ? null : <th rowSpan={rowSpan[i]}>{a}</th>}
+                  {v.order_date==='none'? null :  <td rowSpan={rowSpan[i]}>
+                    <a href="#/">
+                      A
+                      {v.order_date.slice(0, 10).split("-").join("") +
+                        v.order_sid}
+                    </a>
+                  </td>}
+                
+                  <td className="tysu_orderBg"> {v.product_name}</td>
+                  <td>${v.product_price}</td>
+                  <td>{v.product_quantity}</td>
+                  {v.order_date === 'none' ? null : <td rowSpan={rowSpan[i]}>
+                    {v.order_date.slice(0, 10)}
+                    <br />
+                    {v.order_date.slice(10)}
+                  </td>}
+                  {v.amount === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.amount}</td>}
+                  {v.status === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.status}</td>}
+                </tr>
+              </>
+            );
+            
+          })}
         </tbody>
       </table>
       {/* <nav className="tysu_filterSelect tysu_btnPages">

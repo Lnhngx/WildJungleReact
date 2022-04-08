@@ -92,6 +92,25 @@ const HomeCarousel = () => {
     <>
       <div className="carousel">
         <img src="img/home/carousel/carousel01.jpg" alt="" ref={img} />
+
+        {/* <ul className="ning_imgwrap">
+          <li className="ning_li">
+            <img className="ning_img" src="img/home/carousel/carousel01.jpg" alt="" />
+          </li>
+          <li className="ning_li">
+            <img className="ning_img" src="img/home/carousel/carousel02.jpg" alt="" />
+          </li>
+          <li className="ning_li">
+            <img className="ning_img" src="img/home/carousel/carousel03.jpg" alt="" />
+          </li>
+          <li className="ning_li">
+            <img className="ning_img" src="img/home/carousel/carousel04.jpg" alt="" />
+          </li>
+          <li className="ning_li">
+            <img className="ning_img" src="img/home/carousel/carousel05.jpg" alt="" />
+          </li>
+        </ul> */}
+
         {/* <div className="welcome">
           <h2>WELCOME</h2>
           <h1>Wild Jungle</h1>
@@ -168,6 +187,7 @@ const HomeCarousel = () => {
               src="/img/home/carousel/carousel05.jpg"
               alt=""
               className={count === 4 ? "thumbnail active" : "thumbnail"}
+              
             ></img>
           </div>
           <span className="material-icons" onClick={next}>
