@@ -37,13 +37,13 @@ function ProductItem(props) {
   //   }
   // }, []);
 
-  const likela = () => {
+  const likela = (target) => {
     let current = [];
     if(localStorage.getItem("like")){
       current = JSON.parse(localStorage.getItem("like"));
     }
 
-    const alanheart = document.querySelectorAll(".alanheart");
+    //const alanheart = document.querySelectorAll(".alanheart");
     let item = [...current];
     if (current.includes("" + ProductSid)) {
       let num = item.findIndex((v) => v === "" + ProductSid);
@@ -59,7 +59,7 @@ function ProductItem(props) {
       console.log("新增成功");
       localStorage.setItem("like", JSON.stringify(item));
       setCon({ confetti: true });
-      fly();
+      fly(target);
       //console.log(ProductSid);
       //alanheart[ProductSid - 1].style.color = "#eb5c37";
     }
@@ -79,8 +79,8 @@ function ProductItem(props) {
     colors: ["#eb5c37"],
   };
 
-  const fly = () => {
-    const alanheart = document.querySelectorAll(".alanheart");
+  const fly = (target) => {
+    //const alanheart = document.querySelectorAll(".alanheart");
     const savedPosition = document.querySelector(".fixedPosition");
     let scrollTop =
       document.documentElement.scrollTop ||
@@ -91,14 +91,14 @@ function ProductItem(props) {
     document.body.appendChild(div);
     div.innerHTML = `<i class="flyfly fas fa-heart"></i>`;
     //console.log(scrollTop);
-    div.style.top = getOffset(alanheart[ProductSid - 1]).top - scrollTop + "px";
-    div.style.left = getOffset(alanheart[ProductSid - 1]).left + "px";
+    div.style.top = getOffset(target).top - scrollTop + "px";
+    div.style.left = getOffset(target).left + "px";
 
     div.animate(
       [
         {
-          top: getOffset(alanheart[ProductSid - 1]).top - scrollTop + "px",
-          left: getOffset(alanheart[ProductSid - 1]).left + "px",
+          top: getOffset(target).top - scrollTop + "px",
+          left: getOffset(target).left + "px",
           opacity: 1,
           offset: 0,
         },
@@ -160,8 +160,8 @@ function ProductItem(props) {
             <Confetti active={con.confetti} config={config} />
             <i
               className="alanheart fas fa-heart"
-              onClick={() => {
-                likela();
+              onClick={(e) => {
+                likela(e.target);
               }}
               style={
                 JSON.parse(localStorage.getItem("like")).includes(
