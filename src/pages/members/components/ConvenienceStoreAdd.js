@@ -13,7 +13,7 @@ function ConvenienceStoreAdd(props){
     const [areaName,setAreaName]=useState(areaSelect[0]);
 
     const [storeData,setStoreData]=useState([]);
-    const [storeName,setStoreName]=useState('上弘');
+    const [storeName,setStoreName]=useState('上弘333');
     const [storeaddress,setStoreaddress]=useState('');
 
     // 先過幾秒再顯示設定選項
@@ -68,8 +68,9 @@ function ConvenienceStoreAdd(props){
             }).then(r=>r.json()).then(obj=>{
                 
                 if(obj.result[0]['storeTown']!==undefined){
+                    console.log('get711StoreData obj',obj);
                     setStoreData(obj.result);
-                    setStoreName(obj.result[0].storeName)
+                    setStoreName(`${obj.result[0].storeName}店(${obj.result[0].storeAddress})`)
                     setStoreaddress(obj.result[0].storeaddress)
                 }
             })
