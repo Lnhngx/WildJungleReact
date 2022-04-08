@@ -47,7 +47,7 @@ function Cartfilloutform(props) {
       await fetch(Config.GET_BONUSPOINTS, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ m_sid: m_sid }),
+        body: JSON.stringify({ "m_sid": m_sid }),
       })
         .then((r) => r.json())
         .then((obj) => {
@@ -180,21 +180,21 @@ function Cartfilloutform(props) {
                   setCash(true);
                   setBank(false);
                   setCredit(false);
-                  setPayment(e.target.value);
+                  setPayment("貨到付款");
                   setPaymenttodb(1);
                 }
                 if (e.target.value === "銀行轉帳") {
                   setCash(false);
                   setBank(true);
                   setCredit(false);
-                  setPayment(e.target.value);
+                  setPayment("銀行轉帳");
                   setPaymenttodb(2);
                 }
                 if (e.target.value === "信用卡") {
                   setCash(false);
                   setBank(false);
                   setCredit(true);
-                  setPayment(e.target.value);
+                  setPayment("信用卡");
                   setPaymenttodb(3);
                 }
               }}

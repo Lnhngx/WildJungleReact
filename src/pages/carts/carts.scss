@@ -766,16 +766,17 @@ $stan_height: 50px;
 
 .stan_checkout_area {
   width: 33%;
-  min-height: 33vh; //暫時
-  max-height: 37vh;
+  min-height: 35vh; //暫時
+  max-height: 35vh;
   background-color: $stan_white;
   font-size: 16px;
   font-weight: 600;
-
+  padding-bottom: 10px;
   @include mobile {
     min-height: 0vh;
     width: 100%;
     height: auto;
+    padding-bottom: 0px;
   }
 }
 
