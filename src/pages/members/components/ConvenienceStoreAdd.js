@@ -76,7 +76,7 @@ function ConvenienceStoreAdd(props){
             })
         }
         get711StoreData();
-  
+        
     },[areaName])
 
     return(<>
