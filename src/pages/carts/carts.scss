@@ -252,7 +252,7 @@ $stan_height: 50px;
   height: auto; //暫時
   background-color: $stan_white;
   position: relative;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 
   @include mobile {
     width: 100%;
@@ -767,7 +767,7 @@ $stan_height: 50px;
 .stan_checkout_area {
   width: 33%;
   min-height: 35vh; //暫時
-  max-height: 35vh;
+  max-height: 40vh;
   background-color: $stan_white;
   font-size: 16px;
   font-weight: 600;
