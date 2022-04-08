@@ -139,19 +139,19 @@ function Cartfilloutform(props) {
                   setHode(true);
                   setStore(false);
                   setPark(false);
-                  setDelivery(e.target.value);
+                  setDelivery("宅配");
                 }
                 if (e.target.value === "超商取貨") {
                   setStore(true);
                   setPark(false);
                   setHode(false);
-                  setDelivery(e.target.value);
+                  setDelivery("超商取貨");
                 }
                 if (e.target.value === "園區取貨") {
                   setPark(true);
                   setStore(false);
                   setHode(false);
-                  setDelivery(e.target.value);
+                  setDelivery("園區取貨");
                 }
               }}
             >
