@@ -3,14 +3,13 @@ import { useSecondCart } from "../utils/useSecondCart";
 
 function CartShow() {
   const { items, removeItem } = useSecondCart();
-  const compare = (JSON.parse(localStorage.getItem("secondCart"))).length;
+  const temp = JSON.parse(localStorage.getItem("secondCart"));
+  const compare = temp.length;
   const [showbox, setShowbox] = useState(!!compare);
-
   return (
     <>
       {compare ? (
         <>
-          {" "}
           <div className="stan_product_title">
             <ul>
               <li></li>

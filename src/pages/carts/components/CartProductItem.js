@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useCart } from "../utils/useCart";
 
-function CartProductItem(props) {
+function CartProductItem() {
   const { items, plusOne, minusOne, removeItem } = useCart();
-  const compare = JSON.parse(localStorage.getItem("cart")).length;
+  const temp = JSON.parse(localStorage.getItem("cart"));
+  const compare = temp.length;
   const [showbox, setShowbox] = useState(!!compare);
   return (
     <>
@@ -89,7 +90,11 @@ function CartProductItem(props) {
         </>
       ) : (
         <>
-          <div className="stan_compare">此購物車無產品及票券<br/>請至產品頁面選購</div>
+          <div className="stan_compare">
+            此購物車無產品及票券
+            <br />
+            請至產品頁面選購
+          </div>
         </>
       )}
     </>

@@ -3,14 +3,14 @@ import { useFourthCart } from "../utils/useFourthCart";
 
 function CartLive() {
   const { items, plusOne, minusOne, removeItem } = useFourthCart();
-  const compare = JSON.parse(localStorage.getItem("fourthCart")).length;
+  const temp = JSON.parse(localStorage.getItem("fourthCart"));
+  const compare = temp.length;
   const [showbox, setShowbox] = useState(!!compare);
 
   return (
     <>
       {compare ? (
         <>
-          {" "}
           <div className="stan_product_title_livd">
             <ul>
               <li></li>

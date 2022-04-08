@@ -3,14 +3,14 @@ import { useThirdCart } from "../utils/useThirdCart";
 
 function CartAdopt() {
   const { items, removeItem } = useThirdCart();
-  const compare = JSON.parse(localStorage.getItem("thirdCart")).length;
+  const temp = JSON.parse(localStorage.getItem("thirdCart"));
+  const compare = temp.length;
   const [showbox, setShowbox] = useState(!!compare);
 
   return (
     <>
       {compare ? (
         <>
-          {" "}
           <div className="stan_product_title">
             <ul>
               <li></li>
