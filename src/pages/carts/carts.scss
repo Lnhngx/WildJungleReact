@@ -321,6 +321,22 @@ $stan_height: 50px;
   }
 }
 
+.stan_compare {
+  padding: 0px 10%;
+  padding-top: 6%;
+  width: 100%;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+  color: #888888;
+  @include mobile {
+    padding: 0 5%;
+    padding-top: 3%;
+    font-size: 18px;
+  }
+}
+
 .stan_product_title {
   padding: 0px 10%;
   width: 100%;
