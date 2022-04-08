@@ -61,6 +61,9 @@ const sleep = (milliseconds) => {
 
 function ChangeMap (state){
   document.getElementById("tourElephone").classList.remove("tourDisplayNone");
+  document.getElementById("hotno1").classList.add("tourDisplayNone");
+  document.getElementById("iceno2").classList.add("tourDisplayNone");
+  document.getElementById("iceno3").classList.add("tourDisplayNone");
   sleep(2000).then(r => {
     document.getElementById("tourElephone").classList.add("tourDisplayNone");
   })
