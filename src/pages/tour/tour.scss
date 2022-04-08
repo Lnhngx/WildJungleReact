@@ -148,7 +148,7 @@ figcaption {
 }
 
 .tourCenterCard {
-  width: 100%;
+  width: 80%;
   height: 80%;
   background-color: #000000;
   padding-top: 3%;
@@ -156,8 +156,8 @@ figcaption {
 }
 
 .figure {
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   overflow: hidden;
   margin-left: auto;
@@ -219,7 +219,7 @@ figcaption {
 }
 .tourdescriptionpic img {
   object-fit: content;
-  width: 270px; //手機
+  width: 330px; //手機
   height: 280px;
 }
 .tourdescriptionGuild2 {
@@ -299,7 +299,7 @@ figcaption {
   border-radius: 0;
   width:150px;
   height: 80px;
-  margin-right: 45px;
+  // margin-right: 45px;
 }
 .tourLife {
   margin-top: 100px;
@@ -431,15 +431,15 @@ figcaption {
   font-size: var(--tour_fontSize);
   font-family: "Noto Sans TC", sans-serif;
   letter-spacing: 5px;
-  width: 280px;
+  width: 100%;
 
 }
 .tourDisplayNone {
   display: none;
 }
-.tour_showBooking_area{
-  margin-top:18rem;
-}
+// .tour_showBooking_area{
+//   margin-top:18rem;
+// }
 
 
 
@@ -492,7 +492,7 @@ figcaption {
     margin-top: 20px;
     margin-bottom: -20px;
   }
-  figcaption {
+  .figcaption {
     font-weight: var(--tour_fontWeight);
     font-size: var(--tour_fontSize);
     font-size: 2rem;
@@ -573,7 +573,7 @@ figcaption {
   }
 
   .tourGuide2 {
-    min-width: 75%;
+    min-width: 100%;
   }
   .tourGuide1 img {
     display: none;

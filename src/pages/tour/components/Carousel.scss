@@ -35,7 +35,7 @@
   }
   
   .Carousel__btn--next {
-    right: -40px;
+    right: 3px;
     transform: rotate(45deg);
   }
   .figure{
@@ -50,11 +50,11 @@
       width:100%;
     }
     .Carousel__btn--next {
-      right: -230px;
+      right: 50px;
     }
-    .Carousel {
-      position: relative;
-      left: 150px;
+    // .Carousel {
+    //   position: relative;
+    //   left: 150px;
     
-    }
+    // }
   }
