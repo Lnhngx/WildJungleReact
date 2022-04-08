@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../utils/useCart";
+import { useFourthCart } from "../utils/useFourthCart";
 
 function CheckareaLive(props) {
-  const { cart } = useCart();
+  const { cart } = useFourthCart();
   return (
     <>
       <div className="stan_tempay">付款詳情</div>

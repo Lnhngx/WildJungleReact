@@ -35,6 +35,7 @@ function Carts(props) {
 
   return (
     <>
+    {          console.log(bonus[bonus.length-1])}
       <div className="stan_carts_main_ec">
         <Process01 />
         <div className="stan_carts_middle_ec">
@@ -129,16 +130,16 @@ function Carts(props) {
           </div>
           <div className="stan_block"></div>
           <div className={cartpro ? "stan_checkout_area" : "stan_displaynone"}>
-            <Checkarea bonus={bonus}/>
+            <Checkarea bonus={bonus[bonus.length-1]}/>
           </div>
           <div className={cartshow ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaShow bonus={bonus}/>
+            <CheckareaShow bonus={bonus[bonus.length-1]}/>
           </div>
           <div className={cartadopt ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaAdopt bonus={bonus}/>
+            <CheckareaAdopt bonus={bonus[bonus.length-1]}/>
           </div>
           <div className={cartlive ? "stan_checkout_area" : "stan_displaynone"}>
-            <CheckareaLive bonus={bonus}/>
+            <CheckareaLive bonus={bonus[bonus.length-1]}/>
           </div>
         </div>
       </div>

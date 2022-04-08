@@ -15,14 +15,33 @@ function Cartfilloutform(props) {
   const [cash, setCash] = useState(false);
   const [bank, setBank] = useState(false);
 
-  const { setName, setPhone, setEmail, setAddress, setDelivery, setPayment, name, phone, email, address, delivery, payment } =
-    props;
+  const {
+    setName,
+    setPhone,
+    setEmail,
+    setAddress,
+    setDelivery,
+    setPayment,
+    name,
+    phone,
+    email,
+    address,
+    delivery,
+    payment,
+  } = props;
 
   const [paymenttodb, setPaymenttodb] = useState("1");
-  const receive_data = { name: name, phone: phone, email: email, address: address, delivery: delivery, payment: payment }
+  const receive_data = {
+    name: name,
+    phone: phone,
+    email: email,
+    address: address,
+    delivery: delivery,
+    payment: payment,
+  };
   const { cart } = useCart();
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
-  const [bonus, setBonus] = useState(0);
+  const [bonus,setBonus] = useState(0);
   useEffect(() => {
     const temp = async () => {
       await fetch(Config.GET_BONUSPOINTS, {
@@ -38,7 +57,8 @@ function Cartfilloutform(props) {
     temp();
   }, []);
 
-  const realtotal = cart.cartTotal + 100 - Math.ceil(bonus / 10);
+  const realtotal =
+    cart.cartTotal + 100 - Math.ceil(bonus[bonus.length - 1] / 10);
 
   const data = {
     m_sid: m_sid,
@@ -47,8 +67,6 @@ function Cartfilloutform(props) {
     status: "未付款",
   };
   const data2 = JSON.parse(localStorage.getItem("cart"));
-
-
 
   return (
     <>
@@ -89,7 +107,7 @@ function Cartfilloutform(props) {
               <ul>
                 <li></li>
                 <li>紅利折扣</li>
-                <li>${Math.ceil(bonus / 10)}</li>
+                <li>${Math.ceil(bonus[bonus.length - 1] / 10)}</li>
               </ul>
               <ul className="stan_total_hr">
                 <div></div>
@@ -381,6 +399,8 @@ function Cartfilloutform(props) {
                     order: data,
                     order_detail_product: data2,
                     receive_data: receive_data,
+                    bonus: bonus,
+                    m_sid:m_sid,
                   }),
                 })
                   .then((r) => r.json())

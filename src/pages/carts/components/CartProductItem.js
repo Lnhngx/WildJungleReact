@@ -1,9 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import { useCart } from "../utils/useCart";
 
 function CartProductItem(props) {
   const { items, plusOne, minusOne, removeItem } = useCart();
-
   return (
     <>
       <div className="stan_product_title">
