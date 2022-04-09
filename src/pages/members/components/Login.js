@@ -12,6 +12,7 @@ function Login(props){
   const {auth,setAuth,account,localState,setLocalState,comeUrl,setCommentbox,likeListData}=props
   const history=useHistory();
   const emailInput=useRef();
+  const passInput=useRef();
   
 
   const [captchaValue,setCaptchaValue]=useState(null);
@@ -166,10 +167,15 @@ function Login(props){
             setCaptchaValue(false)
         }
     }
+
+    
   
     return(<>
     <div className="tysu_contain">
-      <h1 className="tysu_h1">LOGIN</h1>
+      <h1 className="tysu_h1" onClick={(e)=>{
+        setEmail(emailInput.current.value='pig33@gmail.com')
+        setPassword(passInput.current.value='123456')
+      }}>LOGIN</h1>
       
         <form name="form1" id="tysu_form" onSubmit={submitData}>
           <table>
@@ -190,7 +196,7 @@ function Login(props){
                   <label htmlFor="tysu_pass">密碼<br /><span className="tysu_titleSpan">Password</span></label>
                 </th>
                 <td>
-                    <input type={passType} id="tysu_pass" className="tysu_input" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} />
+                    <input ref={passInput} type={passType} id="tysu_pass" className="tysu_input" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} />
                         {visible ? (<i className="fas fa-eye tysu_see" onClick={()=>{
                             setPassType('password')
                             setVisible(false);
