@@ -121,45 +121,45 @@ function Navbar(props) {
                   </li>
                   <li
                     onClick={() => {
-                      const m_sid = JSON.parse(
-                        localStorage.getItem("admin_account")
-                      ).m_sid;
+                      // const m_sid = JSON.parse(
+                      //   localStorage.getItem("admin_account")
+                      // ).m_sid;
 
-                      const cart_temp1 = JSON.parse(
-                        localStorage.getItem("cart")
-                      );
-                      console.log(cart_temp1);
-                      const cart_temp2 = JSON.parse(
-                        localStorage.getItem("secondCart")
-                      );
-                      const cart_temp3 = JSON.parse(
-                        localStorage.getItem("thirdCart")
-                      );
-                      const cart_temp4 = JSON.parse(
-                        localStorage.getItem("fourthCart")
-                      );
+                      // const cart_temp1 = JSON.parse(
+                      //   localStorage.getItem("cart")
+                      // );
+                      // console.log(cart_temp1);
+                      // const cart_temp2 = JSON.parse(
+                      //   localStorage.getItem("secondCart")
+                      // );
+                      // const cart_temp3 = JSON.parse(
+                      //   localStorage.getItem("thirdCart")
+                      // );
+                      // const cart_temp4 = JSON.parse(
+                      //   localStorage.getItem("fourthCart")
+                      // );
 
-                      fetch("http://localhost:4000/carts/inserttodb", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                          m_sid: m_sid,
-                          cart_temp1: cart_temp1,
-                          cart_temp2: cart_temp2,
-                          cart_temp3: cart_temp3,
-                          cart_temp4: cart_temp4,
-                        }),
-                      })
-                        .then((r) => r.json())
-                        .then((obj) => {});
+                      // fetch("http://localhost:4000/carts/inserttodb", {
+                      //   method: "POST",
+                      //   headers: { "Content-Type": "application/json" },
+                      //   body: JSON.stringify({
+                      //     m_sid: m_sid,
+                      //     cart_temp1: cart_temp1,
+                      //     cart_temp2: cart_temp2,
+                      //     cart_temp3: cart_temp3,
+                      //     cart_temp4: cart_temp4,
+                      //   }),
+                      // })
+                      //   .then((r) => r.json())
+                      //   .then((obj) => {});
 
                       localStorage.setItem("like", JSON.stringify([]));
                       localStorage.removeItem("admin_account");
                       localStorage.removeItem("admin_token");
-                      firstcart.clearCart();
-                      secondcart.clearCart();
-                      thirdcart.clearCart();
-                      fourthcart.clearCart();
+                      // firstcart.clearCart();
+                      // secondcart.clearCart();
+                      // thirdcart.clearCart();
+                      // fourthcart.clearCart();
                       setAuth(false);
                       setLocalState({ token: false });
                       setShowOut(false);

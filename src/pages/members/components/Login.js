@@ -96,7 +96,7 @@ function Login(props){
                     //   localStorage.getItem("admin_account")
                     // ).m_sid;
 
-                    // fetch("http://localhost:4000/carts/removetodb", {
+                    // fetch("http://localhost:4000/carts/removetodb_1", {
                     //   method: "POST",
                     //   headers: { "Content-Type": "application/json" },
                     //   body: JSON.stringify({
@@ -104,8 +104,53 @@ function Login(props){
                     //   }),
                     // })
                     //   .then((r) => r.json())
-                    //   .then((obj) => {});
+                    //   .then((obj) => {
+                    //     console.log(obj)
+                    //     if(obj!=0){
+                    //     setCart_temp1(JSON.stringify(obj);
+                    //   }
+                    //     localStorage.setItem('cart',cart_temp1);
+                    //   });
                     
+                    //   fetch("http://localhost:4000/carts/removetodb_2", {
+                    //     method: "POST",
+                    //     headers: { "Content-Type": "application/json" },
+                    //     body: JSON.stringify({
+                    //       m_sid: m_sid,
+                    //     }),
+                    //   })
+                    //     .then((r) => r.json())
+                    //     .then((obj) => {
+                    //       setCart_temp2(obj);
+                    //       localStorage.setItem('secondCart',obj);
+                    //     });
+
+                    //     fetch("http://localhost:4000/carts/removetodb_3", {
+                    //       method: "POST",
+                    //       headers: { "Content-Type": "application/json" },
+                    //       body: JSON.stringify({
+                    //         m_sid: m_sid,
+                    //       }),
+                    //     })
+                    //       .then((r) => r.json())
+                    //       .then((obj) => {
+                    //         setCart_temp3(obj);
+                    //         localStorage.setItem('thirdCart',obj);
+                    //       });
+
+                    //       fetch("http://localhost:4000/carts/removetodb_4", {
+                    //         method: "POST",
+                    //         headers: { "Content-Type": "application/json" },
+                    //         body: JSON.stringify({
+                    //           m_sid: m_sid,
+                    //         }),
+                    //       })
+                    //         .then((r) => r.json())
+                    //         .then((obj) => {
+                    //           setCart_temp4(obj);
+                    //           localStorage.setItem('fourthCart',obj);
+                    //         });
+
                     // console.log(obj.success)
                     // alert('登入成功');
                 }else{
