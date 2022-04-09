@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProductItem from "./productItem";
 import InfiniteScroll from "react-infinite-scroll-component";
 

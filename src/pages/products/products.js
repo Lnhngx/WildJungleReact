@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./scss/products.scss";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { useHistory, useLocation, Link } from "react-router-dom";
 import Productsbackground from "./components/productsbackground";
 import ProductMain from "./components/ProductMain";
 import EmailControl from "./components/theEmailControl";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StarRating from "./starRating";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Form(props) {
   const [selection, setSelection] = useState("");
