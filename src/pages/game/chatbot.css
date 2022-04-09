@@ -627,4 +627,8 @@
     font-weight: 800;
     cursor: pointer;
 }
-
+@media screen and (max-width:700px){
+    .chatbot_logo{
+        display: none;
+    }
+}
