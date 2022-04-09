@@ -262,6 +262,21 @@
     .game_container{
         margin-bottom: -168px;
     }
+    .game_profile{
+        display: none;
+    }
+    .cloud_left{
+        display: none;
+    }
+    .cloud_left1{
+        display: none;
+    }
+    .cloud_right{
+        display: none;
+    }
+    .cloud_right1{
+        display: none;
+    }
     .gameChoose_zone{
         width: 375px;
         margin-top: 40rem;
