@@ -1,5 +1,5 @@
 
-import React,{useState} from "react";
+import React,{useRef, useState} from "react";
 import Config from "../Config";
 import MemberModal from './MemberModal'
 import {Form} from 'react-bootstrap'
@@ -147,10 +147,24 @@ function Signup(){
         })
     }
 
-
+    const emailInput=useRef();
+    const nameInput=useRef();
+    const genderSelect=useRef();
+    const birthInput=useRef();
+    const passInput=useRef();
+    const cfpassInput=useRef();
     
     return(<>
-    <h1 className="tysu_h1">SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
+    <h1 className="tysu_h1" onClick={(e)=>{
+        setFields({
+            email:emailInput.current.value='tigger@gmail.com',
+            name:'王獅',
+            gender:'未決定',
+            birthday:'1995-02-02',
+            password:'123456',
+            confirmPassword:'123456',
+        })
+    }}>SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
     <form id="tysu_form" name="form2"
         onSubmit={handleSubmit}
         onInvalid={handleFormInvalid}
@@ -163,7 +177,7 @@ function Signup(){
                     <label htmlFor="tysu_email">帳號 / 電子郵件<br /><span className="tysu_titleSpan">Email</span></label>
                 </th>
                 <td>
-                    <input type="email" id="tysu_email" className="tysu_input"
+                    <input ref={emailInput} type="email" id="tysu_email" className="tysu_input"
                     value={fields.email}
                     placeholder="請輸入您的email"
                     onChange={handleFieldChange} 
@@ -178,7 +192,7 @@ function Signup(){
                     <label htmlFor="tysu_name">姓名<br /><span className="tysu_titleSpan">Name</span></label>
                 </th>
                 <td>
-                    <input type="text" id="tysu_name" className="tysu_input" 
+                    <input ref={nameInput} type="text" id="tysu_name" className="tysu_input" 
                     value={fields.name} 
                     placeholder="請輸入您的姓名"
                     onChange={handleFieldChange} 
@@ -192,7 +206,7 @@ function Signup(){
                     <label htmlFor="tysu_gender">性別<br /><span className="tysu_titleSpan">Gender</span></label>
                 </th>
                 <td>
-                    <select id="tysu_gender" className="tysu_input" name="gender" value={fields.gender}  onChange={handleFieldChange}>
+                    <select ref={genderSelect} id="tysu_gender" className="tysu_input" name="gender" value={fields.gender}  onChange={handleFieldChange}>
                     <option value="">請選擇</option>
                     <option value="男">男性</option>
                     <option value="女">女性</option>
@@ -206,7 +220,7 @@ function Signup(){
                     <label htmlFor="tysu_birth">生日<br /><span className="tysu_titleSpan">Birthday</span></label>
                 </th>
                 <td>
-                    <input id="tysu_birth" type="date" className="tysu_input" name="birthday" value={fields.birthday} onChange={handleFieldChange} />
+                    <input ref={birthInput} id="tysu_birth" type="date" className="tysu_input" name="birthday" value={fields.birthday} onChange={handleFieldChange} />
                     <div id="birthHelp">{fieldErrors.birthday}</div>
                 </td>
             </tr>
@@ -215,7 +229,7 @@ function Signup(){
                     <label htmlFor="tysu_pass">密碼<br /><span className="tysu_titleSpan">Password</span></label>
                 </th>
                 <td>
-                    <input type="text" id="tysu_pass" className="tysu_input" name="password" value={fields.password} onChange={handleFieldChange} />
+                    <input ref={passInput} type="text" id="tysu_pass" className="tysu_input" name="password" value={fields.password} onChange={handleFieldChange} />
                     <div id="tysu_passHelp">{fieldErrors.password}</div>
                 </td>
 
@@ -226,7 +240,7 @@ function Signup(){
                             Password</span></label>
                 </th>
                 <td>
-                    <input type="text" id="tysu_cfPass" className="tysu_input" value={fields.confirmPassword}  onChange={handleFieldChange} name="confirmPassword" />
+                    <input ref={cfpassInput} type="text" id="tysu_cfPass" className="tysu_input" value={fields.confirmPassword}  onChange={handleFieldChange} name="confirmPassword" />
                     <div id="tysu_cfPassHelp">{fieldErrors.confirmPassword}</div>
                 </td>
 
