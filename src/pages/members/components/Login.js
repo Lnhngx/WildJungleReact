@@ -34,7 +34,10 @@ function Login(props){
     setShow(true);
   }
 
-
+  const [cart_temp1,setCart_temp1] = useState([]);
+  const [cart_temp2,setCart_temp2] = useState([]);
+  const [cart_temp3,setCart_temp3] = useState([]);
+  const [cart_temp4,setCart_temp4] = useState([]);
     
     // 如果是已經登入狀態，email欄位自動帶入用戶帳號
     // if(auth || localState.token){
@@ -89,6 +92,19 @@ function Login(props){
                         }
                     }, 1500);
                     
+                    // const m_sid = JSON.parse(
+                    //   localStorage.getItem("admin_account")
+                    // ).m_sid;
+
+                    // fetch("http://localhost:4000/carts/removetodb", {
+                    //   method: "POST",
+                    //   headers: { "Content-Type": "application/json" },
+                    //   body: JSON.stringify({
+                    //     m_sid: m_sid,
+                    //   }),
+                    // })
+                    //   .then((r) => r.json())
+                    //   .then((obj) => {});
                     
                     // console.log(obj.success)
                     // alert('登入成功');
