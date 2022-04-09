@@ -153,7 +153,7 @@ function Navbar(props) {
                       //   .then((r) => r.json())
                       //   .then((obj) => {});
 
-                      localStorage.setItem("like", JSON.stringify([]));
+                      // localStorage.setItem("like", JSON.stringify([]));
                       localStorage.removeItem("admin_account");
                       localStorage.removeItem("admin_token");
                       // firstcart.clearCart();
@@ -177,12 +177,12 @@ function Navbar(props) {
               <i className="fas fa-shopping-cart stan_cartIcon">
                 <div
                   className={
-                    allcartItems >= 10
+                    allcartItems >= 10 
                       ? "stan_cartIcon_count_over10"
                       : "stan_cartIcon_count"
                   }
                 >
-                  {allcartItems}
+                  {localStorage.getItem("admin_account", JSON.stringify({"m_sid":8}))|| localStorage.getItem("admin_account", JSON.stringify({"m_sid":1}))? allcartItems :0}
                 </div>
               </i>
             </a>

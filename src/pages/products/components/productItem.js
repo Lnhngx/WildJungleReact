@@ -53,6 +53,7 @@ function ProductItem(props) {
       console.log("刪去");
       localStorage.setItem("like", JSON.stringify(item));
       setCon({ confetti: false });
+      alert(`您已取消收藏 ${ProductsName}`)
       //alanheart[ProductSid - 1].style.color = "#2d3436";
     } else {
       item.push("" + ProductSid);
