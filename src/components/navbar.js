@@ -182,7 +182,7 @@ function Navbar(props) {
                       : "stan_cartIcon_count"
                   }
                 >
-                  {localStorage.getItem("admin_account", JSON.stringify({"m_sid":8}))|| localStorage.getItem("admin_account", JSON.stringify({"m_sid":1}))? allcartItems :0}
+                  {localStorage.getItem("admin_account")==={"m_sid":8}|| localStorage.getItem("admin_account")==={"m_sid":1}? allcartItems :0}
                 </div>
               </i>
             </a>
