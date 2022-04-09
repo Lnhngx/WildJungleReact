@@ -263,7 +263,7 @@ const HomeJungleStar = () => {
           <div
             className="ning_eaglecardbox"
             style={{ width: eaglecard === false && "12.5%" }}
-            onClick={eaglecard === true ? true : eaglePush}
+            onClick={()=> eaglecard === true ? true : eaglePush}
           >
             <div className="ning_eaglecard">
               <div
@@ -294,7 +294,7 @@ const HomeJungleStar = () => {
           <div
             className="ning_elephantcardbox"
             style={{ width: elephantcard === true && "50%" }}
-            onClick={elephantcard === true ? true : elephantPush}
+            onClick={()=>elephantcard === true ? true : elephantPush}
           >
             <div className="ning_elephantcard">
               <div
@@ -325,7 +325,7 @@ const HomeJungleStar = () => {
           <div
             className="ning_tigercardbox"
             style={{ width: tigercard === true && "50%" }}
-            onClick={tigercard === true ? true : tigerPush}
+            onClick={()=>tigercard === true ? true : tigerPush}
           >
             <div className="ning_tigercard">
               <div
@@ -356,7 +356,7 @@ const HomeJungleStar = () => {
           <div
             className="ning_sharkcardbox"
             style={{ width: sharkcard === true && "50%" }}
-            onClick={sharkcard === true ? true : sharkPush}
+            onClick={()=>sharkcard === true ? true : sharkPush}
           >
             <div className="ning_sharkcard">
               <div
@@ -387,7 +387,7 @@ const HomeJungleStar = () => {
           <div
             className="ning_hitefoxcardbox"
             style={{ width: hitefoxcard === true && "50%" }}
-            onClick={hitefoxcard === true ? true : hitefoxPush}
+            onClick={()=>hitefoxcard === true ? true : hitefoxPush}
           >
             <div className="ning_hitefoxcardhd">
               <div className="ning_hitefoxcard">
@@ -440,7 +440,7 @@ const HomeJungleStar = () => {
             <div className="ning_starproductwrap">
               {data.map((v, i) => {
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     <Link
                       to={"/productsdetail?id=" + v.ProductSid}
                       className="ning_starproductimg"
@@ -457,12 +457,12 @@ const HomeJungleStar = () => {
                         </div>
                       </div>
                     </Link>
-                  </>
+                  </React.Fragment>
                 );
               })}
               {data2.map((v, i) => {
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     <div className="ning_starproductimg" key={i}>
                       <img src={v.picture} alt="" />
                     </div>
@@ -474,7 +474,7 @@ const HomeJungleStar = () => {
                         </p>
                       </div>
                     </div>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>
