@@ -356,7 +356,13 @@ const HomeJungleStar = () => {
           <div
             className="ning_sharkcardbox"
             style={{ width: sharkcard === true && "50%" }}
-            onClick={()=>sharkcard === true ? true : sharkPush}
+            onClick={()=>{
+              if(sharkcard){
+                setsharkcard(false);
+              }else{
+                sharkPush();
+              }}
+            }
           >
             <div className="ning_sharkcard">
               <div
