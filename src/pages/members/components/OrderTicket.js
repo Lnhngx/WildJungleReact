@@ -45,7 +45,7 @@ function OrderTicket() {
         </thead>
         {ticket_search.map((v, i) => {
           return (
-            <tbody>
+            <tbody key={i}>
               <tr className="tysu_orderTr tysu_orderText">
                 <th rowSpan="0">{i + 1}</th>
                 <td rowSpan="0">

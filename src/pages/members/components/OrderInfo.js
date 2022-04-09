@@ -17,7 +17,7 @@ function OrderInfo() {
       })
         .then((r) => r.json())
         .then((obj) => {
-          console.log('整理的',obj)
+          // console.log('整理的',obj)
           if(isMounted){
             setOrder_search(obj);
           }
@@ -88,7 +88,7 @@ function OrderInfo() {
           {order_search.map((v, i) => {
             let a = v.order_date === 'none' ? count : count++;
             return (
-              <>
+              <React.Fragment key={i}>
                 <tr className="tysu_orderTr tysu_orderText" key={i}>
                   {/* <th>{i + 1}</th> */}
                   {v.order_date === 'none' ? null : <th rowSpan={rowSpan[i]}>{a}</th>}
@@ -109,9 +109,9 @@ function OrderInfo() {
                     {v.order_date.slice(10)}
                   </td>}
                   {v.amount === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.amount}</td>}
-                  {v.status === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.status}</td>}
+                  {v.status === 'none' ? null : <td rowSpan={rowSpan[i]}>{v.status}</td>}
                 </tr>
-              </>
+              </React.Fragment>
             );
             
           })}

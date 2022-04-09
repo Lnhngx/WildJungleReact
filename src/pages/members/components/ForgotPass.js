@@ -24,7 +24,7 @@ function ForgotPass(){
                   },
                 body:JSON.stringify({"email":email}),
             }).then(r=>r.json()).then(obj=>{
-                console.log(obj);
+                // console.log(obj);
                 setForgotModalText(obj.info || obj.error);
                 setEditModalShow(true);
             });

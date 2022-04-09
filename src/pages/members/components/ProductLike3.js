@@ -32,7 +32,7 @@ function ProductLike(props){
                     "Content-Type":"application/json"
                 }
             }).then(r=>r.json()).then(obj=>{
-                console.log(obj);
+                // console.log(obj);
                 setProductLikeData(obj)
             })
         }
@@ -75,7 +75,7 @@ function ProductLike(props){
         // },[])
     
     return(<>
-    {console.log(favData)}
+    {/* {console.log(favData)} */}
         <table className="tysu_table"  style={{marginBottom:"50rem"}}>
             <thead>
                 <tr className="tysu_orderTr">

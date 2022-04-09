@@ -211,7 +211,7 @@ const HomeTransportion = () => {
                   : `${parseInt(v["EstimateTime"] / 60)}<span>分鐘</span>`
                 : "未發車";
             return (
-              <div className="ning_bus">
+              <div className="ning_bus" key={i}>
                 <p
                   className="ning_bustime"
                   dangerouslySetInnerHTML={{ __html: a }}
@@ -252,7 +252,7 @@ const HomeTransportion = () => {
                     : parseInt(busgotimeData[0 + v.StopID] / 60) + "分鐘"
                   : "未發車";
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     <div className="ning_smallbusStop">
                       <div
                         className={
@@ -279,7 +279,7 @@ const HomeTransportion = () => {
                           : "未發車"} */}
                       </p>
                     </div>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>
@@ -293,7 +293,7 @@ const HomeTransportion = () => {
                     : parseInt(busgotimeData[1 + v.StopID] / 60) + "分鐘"
                   : "未發車";
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     <div className="ning_smallbusStop">
                       <div className={
                           a==="將到站"
@@ -318,7 +318,7 @@ const HomeTransportion = () => {
                           : "未發車"} */}
                       </p>
                     </div>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>

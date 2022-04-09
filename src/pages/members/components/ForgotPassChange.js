@@ -60,14 +60,14 @@ function ForgotPassChange(){
                 },
                 body:JSON.stringify({"password":password})
             }).then(r=>r.json()).then(obj=>{
-                console.log(obj);
+                // console.log(obj);
                 if(obj.success){
-                    console.log(obj.error);
+                    // console.log(obj.error);
                     setForgotPassText(obj.error || '已更改成功，請重新登入');
                     setEditModalShow(true);
                     setChangePass(true)
                 }else{
-                    console.log(obj.error);
+                    // console.log(obj.error);
                     setForgotPassText(obj.error || '不可與前一次密碼相同');
                     setEditModalShow(true);
                     setChangePass(false)

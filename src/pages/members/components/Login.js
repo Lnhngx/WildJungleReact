@@ -45,7 +45,7 @@ function Login(props){
 
     const handleChange = () => {
       if(captcha.current.getValue()){
-        console.log('我不是機器人');
+        // console.log('我不是機器人');
         setCaptchaValue(true);
       }
     }
@@ -90,7 +90,7 @@ function Login(props){
                     }, 1500);
                     
                     
-                    console.log(obj.success)
+                    // console.log(obj.success)
                     // alert('登入成功');
                 }else{
                     setSuccess(obj.error || '帳號或密碼錯誤')

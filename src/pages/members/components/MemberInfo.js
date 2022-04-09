@@ -51,7 +51,7 @@ function MemberInfo(props){
   async function submitMemberInfoForm(e){
     e.preventDefault();
     // const setNewPassword=setNewData({...newData,password:mData.password});
-    console.log(sid['m_sid'])
+    // console.log(sid['m_sid'])
     await fetch(Config.TYSU_MEMBER_INFO+sid['m_sid'],{
       method: 'POST',
       headers: {
@@ -71,7 +71,7 @@ function MemberInfo(props){
       // console.log(obj)
       if(obj.success){
         
-        console.log(newData);
+        // console.log(newData);
         
         // console.log(obj.info.trim() !=='')
         if(obj.info.trim() !==''){
@@ -173,27 +173,36 @@ function MemberInfo(props){
             </td>
           </tr>
         </tbody>
-        {/* <tbody  className="tysu_tBody2">
+        {/* 手機版 */}
+        <tbody  className="tysu_tBody2">
           <tr className="tysu_tr">
             <th></th>
             <td>
               <label htmlFor="tysu_email">帳號 / 電子郵件 Email</label>
-              <input type="email" id="tysu_email" className="tysu_input" /><br />
+              <input type="email" id="tysu_email" className="tysu_input" defaultValue={mData.email}
+              /><br />
               <div id="emailHelp"></div>
             </td>
           </tr>
           <tr className="tysu_tr">
             <th></th>
-              <td><label htmlFor="tysu_name">姓名 Name</label>
-              <input type="text" id="tysu_name" className="tysu_input" />
-              <div id="nameHelp"></div>
+              <td>
+                <label htmlFor="tysu_name">姓名 Name</label>
+                <input type="text" id="tysu_name" className="tysu_input" 
+                  defaultValue={newData.name}
+                />
+                <div id="nameHelp"></div>
             </td>
           </tr>
           <tr className="tysu_tr">
             <th></th>
             <td>
               <label htmlFor="tysu_gender">性別 Gender</label>
-              <input type="text" id="tysu_gender" className="tysu_input" />
+              <select type="text" id="tysu_gender" className="tysu_input" defaultValue={newData.gender} >
+                    <option value="男">男性</option>
+                    <option value="女">女性</option>
+                    <option value="未決定">未決定</option>
+              </select>
               
               <div id="genderHelp"></div>
             </td>
@@ -202,11 +211,7 @@ function MemberInfo(props){
             <th></th>
             <td>
               <label htmlFor="tysu_birth">生日 Birthday</label>
-              <div className="tysu_birthGroup">
-                <input type="text" id="tysu_birth" className="tysu_input tysu_year" maxLength="4" />年
-                <input type="text" className="tysu_input tysu_month" maxLength="2" />月
-                <input type="text" className="tysu_input tysu_date" maxLength="2" />日
-              </div>
+                <input  type="text" id="tysu_birth" className="tysu_input" defaultValue={mData.birthday} max="2022-03-01" pattern="yyyy-MM-dd" />
               <div id="birthHelp"></div>
             </td>
           </tr>
@@ -214,7 +219,7 @@ function MemberInfo(props){
             <th></th>
             <td>
               <label htmlFor="tysu_address">聯絡地址 Address</label>
-              <input type="text" id="tysu_address" className="tysu_input" />
+              <input type="text" id="tysu_address" className="tysu_input" defaultValue={newData.address} />
               <div id="tysu_addressHelp"></div>
             </td>
           </tr>
@@ -229,7 +234,7 @@ function MemberInfo(props){
               </div>
             </td>
           </tr>
-        </tbody> */}
+        </tbody>
       </table>
     </form>
 

@@ -2,7 +2,24 @@ import { isTrivialHref } from "@restart/ui/esm/Anchor";
 import React, { useState, useEffect } from "react";
 
 function OrderCancel() {
-  
+  const [live_search, setLive_search] = useState([]);
+  const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
+
+  useEffect(() => {
+    const temp = async () => {
+      await fetch("http://localhost:4000/carts/live_search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ m_sid: m_sid }),
+      })
+        .then((r) => r.json())
+        .then((obj) => {
+          setLive_search(obj);
+        });
+    };
+    temp();
+  }, []);
+
   return (
     <>
       <div className="tysu_filterSelect">
@@ -22,13 +39,42 @@ function OrderCancel() {
             <th style={{ width: "208px" }}>商品名稱</th>
             <th style={{ width: "68px" }}>單價</th>
             <th style={{ width: "60px" }}>數量</th>
-            <th style={{ width: "126px" }}>訂購時間</th>
+            <th style={{ width: "126px" }}>訂房 / 退房時間</th>
             <th style={{ width: "88px" }}>訂單金額</th>
             <th style={{ width: "88px" }}>狀態</th>
           </tr>
         </thead>
+        {live_search.map((v, i) => {
+          return (
+            <tbody key={i}>
+              <tr className="tysu_orderTr tysu_orderText">
+                <th rowSpan="0">{i + 1}</th>
+                <td rowSpan="0">
+                  <a href="#/">A
+                    {v.order_date.slice(0, 10).split("-").join("") +
+                      v.order_sid}</a>
+                </td>
+                {typeof v.room_name==='string'?
+                <td className="tysu_orderBg"><div>{v.room_name}</div></td>:
+                <td className="tysu_orderBg"><div>{v.room_name.join('\n')}</div></td>}
+                <td>${v.price}</td>
+                <td>{v.room_count}</td>
+                <td >${v.amount}</td>
+                <td >{v.start}<br/>至<br/>{v.end}</td>
+                <td>{v.status}</td>
+              </tr>
+              {/* <tr className="tysu_orderTr tysu_orderText">
+                <td className="tysu_orderBg">動物餵食秀</td>
+                <td>$100</td>
+                <td>2</td>
+                <td>2022/02/08</td>
+                <td>已過期</td>
+              </tr> */}
+            </tbody>
+          );
+        })}
 
-        <tbody>
+        {/* <tbody>
             <tr className="tysu_tr tysu_last">
                 <th></th>
                 <td></td>
@@ -36,8 +82,8 @@ function OrderCancel() {
                 <td><div className="tysu_creditT">沒有資料</div></td>
                 <td></td>
                 <td></td>
-            </tr> 
-        </tbody>
+            </tr>
+        </tbody> */}
       </table>
       {/* <nav className="tysu_filterSelect tysu_btnPages">
         <ul className="tysu_pageGroup">
