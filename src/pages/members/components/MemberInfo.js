@@ -51,7 +51,7 @@ function MemberInfo(props){
   async function submitMemberInfoForm(e){
     e.preventDefault();
     // const setNewPassword=setNewData({...newData,password:mData.password});
-    console.log(sid['m_sid'])
+    // console.log(sid['m_sid'])
     await fetch(Config.TYSU_MEMBER_INFO+sid['m_sid'],{
       method: 'POST',
       headers: {
@@ -71,7 +71,7 @@ function MemberInfo(props){
       // console.log(obj)
       if(obj.success){
         
-        console.log(newData);
+        // console.log(newData);
         
         // console.log(obj.info.trim() !=='')
         if(obj.info.trim() !==''){

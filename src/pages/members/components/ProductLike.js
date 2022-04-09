@@ -33,14 +33,14 @@ function ProductLike(props){
                 likes.forEach(v=>{
                     // console.log(el['ProductSid']===Number(v))
                     if(el['ProductSid']===Number(v)){
-                        console.log(el);
+                        // console.log(el);
                         //newAr.push(el)
                         newAr[ el.ProductSid.toString() ] = el;
                     }
                 })
                 
             })
-            console.log('newAr:', newAr);
+            // console.log('newAr:', newAr);
             setLikeProducts(newAr);
             
         }
@@ -50,7 +50,7 @@ function ProductLike(props){
 
     
     return(<>
-{console.log(likeProducts)}
+{/* {console.log(likeProducts)} */}
         <table className="tysu_table" style={{marginBottom:"50rem"}}>
             <thead>
                 <tr className="tysu_orderTr">
@@ -82,12 +82,12 @@ function ProductLike(props){
                                 })
                                 // console.log(numAr[0])
                                 if(v.ProductSid.toString()===numAr[0]){
-                                    console.log(v.ProductSid)
-                                    console.log(likes)
+                                    // console.log(v.ProductSid)
+                                    // console.log(likes)
                                     let targetNum = likes.findIndex((k) => k===v.ProductSid.toString());
                                     if (targetNum !== -1) {
                                         likes.splice(targetNum, 1);
-                                        console.log(likes)
+                                        // console.log(likes)
                                         localStorage.setItem('like',JSON.stringify(likes))
                                     }
                                 }

@@ -41,7 +41,7 @@ function MembersConfirm(){
             })
             .then(r=>r.json())
             .then(obj=>{
-                console.log(obj);
+                // console.log(obj);
                 if(obj.success){
                 setConfirmText(obj.info || 'WELCOME　TO　JOIN　US');
                 setEnterText('登入');

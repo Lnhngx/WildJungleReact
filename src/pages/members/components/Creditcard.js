@@ -31,7 +31,7 @@ function Creditcard(props){
 
     return(<>
     
-    {console.log('creditData',creditData)}
+    {/* {console.log('creditData',creditData)} */}
     {/* {console.log('cdData',cdData)} */}
         {showTable===true ? <table  className="tysu_table">
             <tbody>
@@ -42,7 +42,7 @@ function Creditcard(props){
                            return <div key={v.credit_sid} className= {v!==creditData.slice(-1)[0] ? "tysu_creditGroup tysu_tr" : "tysu_creditGroup"}>
                                 <div className="tysu_creditDelete" onClick={
                                     async(e)=>{
-                                    console.log(v.credit_sid)
+                                    // console.log(v.credit_sid)
                                     await fetch(Config.TYSU_CREDITCARD_DELETE+v.credit_sid,{
                                     method:'GET',
                                     headers:{
@@ -57,7 +57,7 @@ function Creditcard(props){
                                         const newArr=creditData.filter((k,t)=>{
                                             return v.credit_sid!==k.credit_sid
                                         })
-                                        console.log(newArr)
+                                        // console.log(newArr)
                                 //         // setCdData(newArr);
                                         setCreditData(newArr);
                                 //     }else{

@@ -68,7 +68,7 @@ function ConvenienceStoreAdd(props){
             }).then(r=>r.json()).then(obj=>{
                 
                 if(obj.result[0]['storeTown']!==undefined){
-                    console.log('get711StoreData obj',obj);
+                    // console.log('get711StoreData obj',obj);
                     setStoreData(obj.result);
                     setStoreName(`${obj.result[0].storeName}店(${obj.result[0].storeAddress})`)
                     setStoreaddress(obj.result[0].storeaddress)
@@ -100,15 +100,15 @@ function ConvenienceStoreAdd(props){
                     name="city"
                     value={citySelect}
                     onChange={(e)=>{
-                        console.log(e.target.name)
-                        console.log(e.target.value)
+                        // console.log(e.target.name)
+                        // console.log(e.target.value)
                         setCitySelect(e.target.value);
                         let n=cityData.filter((v,i)=>{
                             return v.areaID===e.target.value
                         })
                         if(n.length!==0){
                             if(e.target.name==='city'){
-                                console.log(n);
+                                // console.log(n);
                                 setCityName(n[0].area);
                             }
                             
@@ -128,7 +128,7 @@ function ConvenienceStoreAdd(props){
                         value={areaName}
                         onChange={(e)=>{
                             // console.log(cityName);
-                            console.log(e.target.value);
+                            // console.log(e.target.value);
                             if(e.target.name==='area'){
                                 setAreaName(e.target.value);
                             }
@@ -147,7 +147,7 @@ function ConvenienceStoreAdd(props){
                         onChange={(event)=>{
                             // console.log(event.target)
                             if(event.target.name==='store'){
-                                console.log(event.target.value)
+                                // console.log(event.target.value)
                                 setStoreName(event.target.value);
                             }
                         }} >
@@ -176,7 +176,7 @@ function ConvenienceStoreAdd(props){
         <button id="tysu_addBtn" className="tysu_addBtn" onClick={(event)=>{
             event.preventDefault()
             if(cityName==='' || areaName==='' || storeName===''){
-                console.log('沒有資料')
+                // console.log('沒有資料')
 
             }else{
                 const save711=async()=>{
@@ -193,9 +193,9 @@ function ConvenienceStoreAdd(props){
                         "m_sid":sid['m_sid']
                         })
                     }).then(r=>r.json()).then(obj=>{
-                        console.log(obj)
+                        // console.log(obj)
                         if(obj.success){
-                            console.log(obj.info);
+                            // console.log(obj.info);
                             // [{store_sid: 48, store_name: '吉盛店(台北市松山區南京東路五段66巷3弄1號1樓)'}]
                             
                             setUser711D(obj.info);

@@ -69,7 +69,7 @@ function MemberNavItem(props){
               "Content-Type": "application/json"
             },
           }).then(r=>r.json()).then(obj=>{
-            console.log(obj.info);
+            // console.log(obj.info);
             setSidData(obj.info);     
           })
         }
@@ -81,7 +81,7 @@ function MemberNavItem(props){
                   "Content-Type":"application/json"
               }
           }).then(r=>r.json()).then(obj=>{
-              console.log(obj);
+              // console.log(obj);
               // setCreditData(obj);
               // console.log(obj.info.list);
               if(obj.success){
@@ -107,11 +107,11 @@ function MemberNavItem(props){
                   setNavState({...navState,navItem:e.target.innerHTML});
                   if(e.target.innerHTML===navItem[0]){
                     getSidDataAgain();
-                    console.log('第一個');
+                    // console.log('第一個');
                   }
                   if(e.target.innerHTML===navItem[2]){
                     getCreditDataAgain();
-                    console.log('第二個');
+                    // console.log('第二個');
                   }
                 }
               }}>

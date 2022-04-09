@@ -66,7 +66,7 @@ export default class CreditcardAdd extends React.Component {
   
       this.setState({ formData });
         //   this.form.reset();
-        console.log(formData)
+        // console.log(formData)
         await fetch(Config.TYSU_CREDITCARD_ADD,{
             method:'POST',
             headers:{
@@ -75,17 +75,17 @@ export default class CreditcardAdd extends React.Component {
             },
             body:JSON.stringify(formData),
         }).then(r=>r.json()).then(obj=>{
-            console.log(obj);
+            // console.log(obj);
             if(obj.success){
                 const newCredit={...JSON.parse(localStorage.getItem('wildjungle_creditcard'),{...formData})}
                 localStorage.setItem('wildjungle_creditcard',JSON.stringify(newCredit))
-                console.log(newCredit)
+                // console.log(newCredit)
 
                 let newAr=Object.keys(newCredit).map((v)=> newCredit[v] )
-                console.log(newAr)
+                // console.log(newAr)
                 // this.props.setLocalCredit(newAr);
                 newAr.unshift({credit_sid: obj.info, credit_num: formData.number, credit_name: formData.name, credit_date: formData.expiry, credit_code:parseInt(formData.cvc)});
-                console.log(newAr)
+                // console.log(newAr)
                 this.props.setCreditData(newAr);
 
                 this.props.getCreditDataAgain();

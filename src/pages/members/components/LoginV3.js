@@ -52,7 +52,7 @@ function Login(props){
 
     // load the script by passing the URL
     loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${Keys.RECAPTCHA_KEY}`, function () {
-      console.log("google驗證");
+      // console.log("google驗證");
     });
     
     // 如果是已經登入狀態，email欄位自動帶入用戶帳號
@@ -109,7 +109,7 @@ function Login(props){
           
         }, 1500);
           
-        console.log(obj.success)
+        // console.log(obj.success)
       
         // alert('登入成功');
       }else{

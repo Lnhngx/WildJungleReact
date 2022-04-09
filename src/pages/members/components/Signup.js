@@ -78,7 +78,7 @@ function Signup(){
         const password=fd.get('password')
         const confirmPassword=fd.get('confirmPassword')
         const checkbox=fd.get('checkbox')
-        console.log(!!checkbox)
+        // console.log(!!checkbox)
         if(email.trim()==='' && name.trim()===''  && gender==='' && password==='' && confirmPassword===''){
             const updateFieldError={
                 ...fieldErrors,
@@ -135,7 +135,7 @@ function Signup(){
             method:'POST',
             body:fd
         }).then(r=>r.json()).then(obj=>{
-            console.log(obj)
+            // console.log(obj)
             if(obj.success){
                 setSignSuccess('成功註冊，請至您的信箱收取驗證信')
                 handleShow(true);

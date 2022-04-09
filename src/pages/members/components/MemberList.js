@@ -106,7 +106,7 @@ function MemberList(props){
           "Content-Type": "application/json"
         },
       }).then(r=>r.json()).then(obj=>{
-          console.log('MemberList-obj:',obj);
+          // console.log('MemberList-obj:',obj);
           setSidData(obj.info);
         })
     }
@@ -120,7 +120,7 @@ function MemberList(props){
               "Content-Type":"application/json"
           }
       }).then(r=>r.json()).then(obj=>{
-          console.log('CreditCard:',obj);
+          // console.log('CreditCard:',obj);
           
           if(obj.success){
             setCreditData(obj.info.list);
@@ -138,7 +138,7 @@ function MemberList(props){
           "Content-Type":"application/json"
         }
       }).then(r=>r.json()).then(obj=>{
-        console.log('BonusPoint:',obj)
+        // console.log('BonusPoint:',obj)
         if(obj.success){
           setPointData(obj.info);
         }
@@ -157,7 +157,7 @@ function MemberList(props){
               "Content-Type":"application/x-www-form-urlencoded"
           }
       }).then(r=>r.json()).then(obj=>{
-          console.log('User711:',obj)
+          // console.log('User711:',obj)
           setUser711Data(obj);
       })
     }

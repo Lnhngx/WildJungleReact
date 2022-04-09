@@ -17,7 +17,7 @@ function OrderInfo() {
       })
         .then((r) => r.json())
         .then((obj) => {
-          console.log('整理的',obj)
+          // console.log('整理的',obj)
           if(isMounted){
             setOrder_search(obj);
           }

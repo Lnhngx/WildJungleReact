@@ -24,7 +24,7 @@ function ConvenienceStore(props){
                 }
             })
             const obj=await r.json()
-            console.log('again 711 obj',obj)
+            // console.log('again 711 obj',obj)
             setUser711D(obj.info);
             
           }
@@ -39,7 +39,7 @@ function ConvenienceStore(props){
 
     return(<>
     {/* {console.log(user711Data)} */}
-    {console.log(user711D)}
+    {/* {console.log(user711D)} */}
         {showStoreAdd===false && (<>
             <table className='tysu_table'>
                 <tbody>
@@ -58,16 +58,16 @@ function ConvenienceStore(props){
                                             "store_sid":v['store_sid']
                                         })
                                     }).then(r=>r.json()).then(obj=>{
-                                        console.log('刪除',obj)
+                                        // console.log('刪除',obj)
                                         if(obj.success){
                                             let newAr=user711D.filter((k,j)=>{
                                                 return v['store_sid']!==k['store_sid']
                                             })
-                                            console.log(newAr)
+                                            // console.log(newAr)
                                             setUser711Data({...user711Data,"error":newAr})
                                             setUser711D(newAr)
                                         }else{
-                                            console.log('NO')
+                                            // console.log('NO')
                                         }
                                     })
                                 }
