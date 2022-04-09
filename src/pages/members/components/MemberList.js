@@ -59,7 +59,7 @@ function MemberList(props){
       // console.log('tysuBg', tysuBg.current.scrollTop ); 
       // console.log('scrollTop', tysuBg.current.offsetTop); 
       // console.log('window', window.scrollY);
-  // console.log('offset',tysuBg.current.offsetTop); 
+      // console.log('offset',tysuBg.current.offsetTop); 
       
       if(offset-tysuBg.current.offsetTop>=-600){
         tysuBg.current.style.position="fixed";
@@ -78,7 +78,7 @@ function MemberList(props){
   const memberlist=['會員資料','訂單資訊','折價優惠','喜愛收藏']
 
   const navItem=['基本設定','分級資訊','信用卡管理','常用資訊']
-  const orderNavItem=['訂單查詢','票券查詢','訂單退換貨','配送設定']
+  const orderNavItem=['訂單查詢','票券查詢','住宿查詢','配送設定']
   const discountNavItem=['紅利','折價券']
   const likeNavItem=['商品','活動']
 

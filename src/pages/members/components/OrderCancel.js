@@ -22,7 +22,7 @@ function OrderCancel() {
             <th style={{ width: "208px" }}>商品名稱</th>
             <th style={{ width: "68px" }}>單價</th>
             <th style={{ width: "60px" }}>數量</th>
-            <th style={{ width: "126px" }}>訂購時間</th>
+            <th style={{ width: "126px" }}>訂房 / 退房時間</th>
             <th style={{ width: "88px" }}>訂單金額</th>
             <th style={{ width: "88px" }}>狀態</th>
           </tr>
