@@ -629,6 +629,6 @@
 }
 @media screen and (max-width:700px){
     .chatbot_logo{
-        display: none;
+        z-index: -1;
     }
 }
