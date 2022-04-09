@@ -6,42 +6,29 @@ $ning-color5: #1b7754;
 $ning-chinesefont: "Noto Sans", sans-serif;
 $ning-englishont: "Playfair Display", serif;
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 700px) {
   /* 釘選門票 、 刮刮樂遊戲 */
   .ning_buyticket,
   .ning_game {
-    background-color: $ning-color2;
-    width: 65px;
-    height: 65px;
-    text-align: center;
-    margin-left: -5px;
-    padding-top: 5px;
-    margin-top: 30px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-    border: 2px solid $ning-color3;
-    cursor: pointer;
+    display: none;
   }
 
   .ning_buyticketicon p,
   .ning_gameicon p {
-    font-family: $ning-chinesefont;
-    color: $ning-color3;
-    font-size: 1rem;
-    margin-top: -5px;
+    display: none;
   }
 
   .ning_buyticketicon span,
   .ning_gameicon span {
-    color: $ning-color3;
-    font-size: 3rem;
-    padding-left: 1.5px;
+    display: none;
   }
 
   .ning_rightflex {
-    position: fixed;
-    z-index: 8888;
-    top: 150px;
-    right: 0px;
+    display: none;
+  }
+
+  .ning_buyticketBox {
+    display: none;
   }
 
   /* 輪播牆 */

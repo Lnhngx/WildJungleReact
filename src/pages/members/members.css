@@ -67,6 +67,9 @@
   .tysu_focusUnderLine li {
     margin-top: 0;
   }
+  .tysu_logInfo , .tysu_logInOut{
+    display: none;
+  }
 }
 
 @media screen and (min-width: 631px) {

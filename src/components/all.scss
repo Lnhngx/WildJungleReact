@@ -61,8 +61,8 @@ body {
 }
 
 .navbarIcon {
-  margin: 0px 20px 10px 20px;
-  width: 100px;
+  
+  width: 60px;
   height: 60px;
   font-size: 24px;
   text-align: center;
@@ -71,8 +71,14 @@ body {
     color: #eb5c37;
   }
 }
+.navbarIcon {
+  margin: 10px;
+  width: 40px;
+  height: 40px;
+}
 .stan_cartIcon {
   position: relative;
+  z-index: 100;
   .stan_cartIcon_count {
     font-family: sans-serif;
     position: absolute;
