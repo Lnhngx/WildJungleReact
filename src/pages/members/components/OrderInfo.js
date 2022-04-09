@@ -109,7 +109,7 @@ function OrderInfo() {
                     {v.order_date.slice(10)}
                   </td>}
                   {v.amount === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.amount}</td>}
-                  {v.status === 'none' ? null : <td rowSpan={rowSpan[i]}>${v.status}</td>}
+                  {v.status === 'none' ? null : <td rowSpan={rowSpan[i]}>{v.status}</td>}
                 </tr>
               </React.Fragment>
             );
