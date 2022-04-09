@@ -263,7 +263,12 @@ const HomeJungleStar = () => {
           <div
             className="ning_eaglecardbox"
             style={{ width: eaglecard === false && "12.5%" }}
-            onClick={()=> eaglecard === true ? true : eaglePush}
+            onClick={()=>{
+              if(eaglecard){
+              setEaglecard(false);
+              }else{
+                eaglePush();
+              }}}
           >
             <div className="ning_eaglecard">
               <div
@@ -294,7 +299,12 @@ const HomeJungleStar = () => {
           <div
             className="ning_elephantcardbox"
             style={{ width: elephantcard === true && "50%" }}
-            onClick={()=>elephantcard === true ? true : elephantPush}
+            onClick={()=>{
+              if(elephantcard){
+                setelephantcard(false);
+              }else{
+                elephantPush();
+              }}}
           >
             <div className="ning_elephantcard">
               <div
@@ -325,7 +335,12 @@ const HomeJungleStar = () => {
           <div
             className="ning_tigercardbox"
             style={{ width: tigercard === true && "50%" }}
-            onClick={()=>tigercard === true ? true : tigerPush}
+            onClick={()=>{
+              if(tigercard){
+                settigercard(false);
+              }else{
+                tigerPush();
+              }}}
           >
             <div className="ning_tigercard">
               <div
@@ -393,7 +408,12 @@ const HomeJungleStar = () => {
           <div
             className="ning_hitefoxcardbox"
             style={{ width: hitefoxcard === true && "50%" }}
-            onClick={()=>hitefoxcard === true ? true : hitefoxPush}
+            onClick={()=>{
+              if(hitefoxcard){
+              sethitefoxcard(false);
+              }else{
+                hitefoxPush();
+              }}}
           >
             <div className="ning_hitefoxcardhd">
               <div className="ning_hitefoxcard">
