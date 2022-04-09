@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 
 function CommentItem(props) {
-
-
-  const [navigation , setNavigation] = useState(false)
-
+  const [navigation, setNavigation] = useState(false);
+  const { order } = props;
   const clickNav = () => {
     setNavigation(!navigation);
   };
-  
-
+  const m_sid = JSON.parse(localStorage.getItem("admin_account"));
   const {
     sid,
     service_score,
@@ -34,7 +31,7 @@ function CommentItem(props) {
               <div className="guestName">{m_name}</div>
               <div className="cleckinDate">
                 <span className="DateIcon material-icons">date_range</span>
-                <p>
+                <p onClick={console.log(sid)}>
                   {Math.abs(new Date(end) - new Date(start)) /
                     (1000 * 3600 * 24)}
                   晚・<span>{start}</span>
@@ -45,7 +42,10 @@ function CommentItem(props) {
           <div className="guestCommentTextbox">
             <p className="guestCommentText">{comments}</p>
           </div>
-          <p className="guestScore" style={{visibility : navigation === true && "hidden" }} >
+          <p
+            className="guestScore"
+            style={{ visibility: navigation === true && "hidden" }}
+          >
             {Math.ceil(
               (service_score +
                 clean_score +
@@ -56,9 +56,17 @@ function CommentItem(props) {
             )}
           </p>
         </div>
-        <div className={navigation? "navigation active" : "navigation" } onClick={clickNav}  >
-          <span><i className="far fa-edit"></i></span>
-          <span><i className="far fa-trash-alt"></i></span>
+        <div
+          className={navigation ? "navigation active" : "navigation"}
+          onClick={clickNav}
+          // style={{ display: order.sid !== sid["m_sid"] && "none" }}
+        >
+          <span>
+            <i className="far fa-edit"></i>
+          </span>
+          <span>
+            <i className="far fa-trash-alt"></i>
+          </span>
         </div>
       </div>
     </>

@@ -596,7 +596,7 @@ function Lodging(props) {
       <div className="container mb_container">
         <div
           className="lodging_oceanboxdetail"
-          style={{ height: oceanbox === 1 && "100vh" }}
+          style={{ height: oceanbox === 1 && "750px" }}
         >
           <div className="lodging_oceandetail">
             <div className="ocean_introducebox">
@@ -870,7 +870,7 @@ function Lodging(props) {
       <div className="container mb_container">
         <div
           className="lodging_iceboxdetail"
-          style={{ height: icebox === 1 && "100vh" }}
+          style={{ height: icebox === 1 && "750px" }}
         >
           <div className="lodging_icedetail">
             <div className="ice_introducebox">
@@ -1155,7 +1155,7 @@ function Lodging(props) {
       <div className="container mb_container">
         <div
           className="lodging_nocturnalboxdetail"
-          style={{ height: nocturnalbox === 1 && "100vh" }}
+          style={{ height: nocturnalbox === 1 && "750px" }}
         >
           <div className="lodging_nocturnaldetail">
             <div className="nocturnal_introducebox">
@@ -1440,7 +1440,7 @@ function Lodging(props) {
       <div className="container mb_container">
         <div
           className="lodging_tropicalboxdetail"
-          style={{ height: tropicalbox === 1 && "100vh" }}
+          style={{ height: tropicalbox === 1 && "750px" }}
         >
           <div className="lodging_tropicaldetail">
             <div className="tropical_introducebox">

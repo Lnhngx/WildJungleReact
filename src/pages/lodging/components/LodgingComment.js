@@ -409,7 +409,7 @@ const LodgingComment = (props) => {
         </div>
         <div className="commentline"></div>
         <div className="guestComment">住客評論</div>
-        <CommentList comments={displayComments} />
+        <CommentList comments={displayComments} order={order}/>
       </div>
 
       <div

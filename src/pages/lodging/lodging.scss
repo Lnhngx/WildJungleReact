@@ -373,6 +373,10 @@ $ning-englishont: "Playfair Display", serif;
       margin: 0;
       margin-left: 10px;
     }
+
+    p:hover {
+      color: $ning-color4;  
+    }
   }
 
   .ocean_introducetext {
@@ -743,6 +747,10 @@ $ning-englishont: "Playfair Display", serif;
       margin: 0;
       margin-left: 10px;
     }
+
+    p:hover {
+      color: $ning-color4;  
+    }
   }
 
   .ice_introducetext {
@@ -1090,6 +1098,10 @@ $ning-englishont: "Playfair Display", serif;
       margin: 0;
       margin-left: 10px;
     }
+
+    p:hover {
+      color: $ning-color4;  
+    }
   }
 
   .nocturnal_introducetext {
@@ -1432,6 +1444,10 @@ $ning-englishont: "Playfair Display", serif;
       margin: 0;
       margin-left: 10px;
     }
+
+    p:hover {
+      color: $ning-color4;  
+    }
   }
 
   .tropical_introducetext {
@@ -1541,19 +1557,28 @@ $ning-englishont: "Playfair Display", serif;
 
   .commentClose {
     font-size: 3rem;
-    color: $ning-color2;
+    color: #999;
     cursor: pointer;
     position: absolute;
     right: 20px;
   }
 
+  .commentClose:hover {
+    color: $ning-color2;
+  }
+
   .lefticon {
     font-size: 3rem;
-    color: $ning-color2;
+    color: #999;
     cursor: pointer;
     position: absolute;
     left: 20px;
   }
+
+  .lefticon:hover{
+    color: $ning-color2;
+  }
+
 
   .commentTotalbox {
     width: 100%;
@@ -1759,6 +1784,15 @@ $ning-englishont: "Playfair Display", serif;
     appearance: none;
     background: url(../../../public/img/lodging/selectIcon.svg) 100% / 15%
       no-repeat;
+      border: 1px solid $ning-color4;
+    outline: 0;
+  }
+
+  .selectScore:hover,
+  .selectDate:hover,
+  .selectSort:hover{
+    border-color: $ning-color2;
+    box-shadow: 0 0 0 #ffffff00;
   }
 
   .guestCommentwrap {
@@ -1993,13 +2027,28 @@ $ning-englishont: "Playfair Display", serif;
     margin-left: 10px;
   }
 
-  .commentTextareabox {
+  .ning_commentTextareabox {
     border-radius: 0;
     border: 1px solid $ning-color4;
+    outline: 0;
     font-size: 1.2rem;
     font-family: $ning-chinesefont;
     margin-top: 15px;
   }
+
+  .ning_commentTextareabox:hover {
+    border-color: $ning-color2;
+    box-shadow: 0 0 0 #ffffff00;
+  }
+
+  .ning_commentTextareabox:focus { 
+    outline: none ;
+    border-color: $ning-color2;
+    box-shadow: 0 0 0 #ffffff00;
+ 
+  }
+
+
 
   .commentbtngroup {
     width: 100%;

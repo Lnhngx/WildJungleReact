@@ -59,7 +59,7 @@ function AdditionComment(props) {
 
     setCommentsError(updateFieldError);
   };
-  const sid = JSON.parse(localStorage.getItem("admin_account"));
+  
   const handleSubmit = async (e) => {
     e.preventDefault(); // 避免傳統方式送出表單
 
@@ -84,8 +84,8 @@ function AdditionComment(props) {
     //   return;
     // }
 
+    const sid = JSON.parse(localStorage.getItem("admin_account"));
     
-
     await fetch(Config.COMMENT_ADD, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -97,6 +97,8 @@ function AdditionComment(props) {
         cpValue: CPvalue,
         commentTextarea: commentText,
         m_sid: sid ? sid["m_sid"] : 1,
+        order_sid: props.order[0]["order_sid"],
+        order_detail_live_sid:props.order[0]["order_sid"]
       }),
     })
       .then((r) => r.json())
@@ -140,7 +142,7 @@ function AdditionComment(props) {
           <div className="orderInformation">訂購資訊</div>
           <div className="orderList">
             <p className="orderNumber">
-            訂單編號 : <span>{(props.order).length===0?"":props.order[0]["order_sid"]}</span>
+            訂單編號 : <span>{(props.order).length===0?"":`A${props.order[0]["order_date"].slice(0,10).split("-").join("")+props.order[0]["order_sid"]}`}</span>
             </p>
             <p className="orderRoom">
               入住房型 : <span>{props.roomName}</span>
@@ -366,7 +368,7 @@ function AdditionComment(props) {
         <div className="commentline"></div>
         <div className="commentTextarea">撰寫評論</div>
         <textarea
-          className="form-control commentTextareabox"
+          className="form-control ning_commentTextareabox"
           id="commentTextarea"
           name="commentTextarea"
           value={commentText}
