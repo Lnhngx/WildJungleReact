@@ -630,5 +630,6 @@
 @media screen and (max-width:700px){
     .chatbot_logo{
         z-index: -1;
+        opacity:0;
     }
 }
