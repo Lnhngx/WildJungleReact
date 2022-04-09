@@ -174,7 +174,7 @@ function Chatbot(props){
     function changeAvatar(){
         let src = '';
         switch (nowRoom){
-            case '熊貓的告解室':
+            case '北極熊的告解室':
                 src = '/img/game/agent_avatar.png';
                 return src;
             case '大熊的告解室':
@@ -670,7 +670,7 @@ function Chatbot(props){
                     }else{
                         myChatbotInput.current.readOnly = false;
                         document.querySelector('.agent_chooseArea').style.display = 'none';
-                        let room = '熊貓的告解室';
+                        let room = '北極熊的告解室';
                         setNowRoom(room);
                         // 這邊的room是將前端設定的房間名稱(純文字)，傳入後端做socket.join()
                         // 而message會由後端整理好文字再傳回前端，丟入狀態渲染對話
