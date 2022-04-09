@@ -45,22 +45,37 @@ function Chatbot(props){
                 }
             })
             io.on('room message', function(msg) {
+                let replyMessage = '';
                 // 因為別台使用者傳過來的是一個打包好的物件，像是以下的模組，我再去做轉換type
                 // { id:agentChat_id+1,
                 //     text:myChatbotInput.current.value,
                 //     type:'user_reply',
                 //     time:timeNow,
                 // } ;
-                let replyMessage = [...privateMessage];
-                const uploadTmp1 = { id:msg.id,
+                if(msg.type==='stickers'){
+                    replyMessage = [...privateMessage];
+                    const uploadTmp1 = { id:msg.id,
                                     text: msg.text,
-                                    type:'agent_reply',
+                                    type:'stickers_agent',
                                     time:msg.time,
                                 } ;
-                replyMessage.push(uploadTmp1);
-                if(isMounted){
-                    setPrivateMessage(replyMessage);
+                    replyMessage.push(uploadTmp1);
+                    if(isMounted){
+                        setPrivateMessage(replyMessage);
+                    }
+                }else{
+                    replyMessage = [...privateMessage];
+                    const uploadTmp1 = { id:msg.id,
+                                        text: msg.text,
+                                        type:'agent_reply',
+                                        time:msg.time,
+                                    } ;
+                    replyMessage.push(uploadTmp1);
+                    if(isMounted){
+                        setPrivateMessage(replyMessage);
+                    }
                 }
+                
             });
         }
         return () => {
@@ -71,7 +86,7 @@ function Chatbot(props){
     useEffect(()=>{
         const chat_area = document.querySelector('.chat_area');
         chat_area.scrollTo({top:chat_area.scrollHeight})
-    },[message])
+    },[message,privateMessage])
     // 每一次開啟機器人的第一句預設問好
     useEffect(()=>{
         const sendTime = new Date();
@@ -134,14 +149,26 @@ function Chatbot(props){
         let minute = getTime.getMinutes()<10?'0'+getTime.getMinutes():getTime.getMinutes();
         let description = hour >= 12 ? '下午':'上午';
         let timeNow =  hour === 0 ? `${description}0${hour}:${minute}`:`${description}${hour}:${minute}`;
-        let replyMessage = [...message];
-        const uploadTmp1 = { id:999,
+        if(io){
+            let replyMessage = [...privateMessage];
+            const uploadTmp1 = { id:999,
                         text: src,
                         type:'stickers',
                         time:timeNow,
                     } ;
-        replyMessage.push(uploadTmp1);
-        setMessage(replyMessage);
+            replyMessage.push(uploadTmp1);
+            io.emit('room message', uploadTmp1);
+            setPrivateMessage(replyMessage);
+        }else{
+            let replyMessage = [...message];
+            const uploadTmp1 = { id:999,
+                        text: src,
+                        type:'stickers',
+                        time:timeNow,
+                    } ;
+            replyMessage.push(uploadTmp1);
+            setMessage(replyMessage);
+        }
     }
     // 一對一客服換頭像
     function changeAvatar(){
@@ -195,6 +222,32 @@ function Chatbot(props){
             </div>
             {/* 以下給之後跟專人客服對話的內容map出來 */}
             {privateMessage.map((v,i)=>{
+                if(v.type === 'stickers'){
+                        return(
+                            <div className="user_reply" key={i}>
+                                <div className="sticker_message">
+                                    <img src={v.text} alt=""/>
+                                </div>
+                                <div className="user_avatar">
+                                    <i className="fas fa-user"></i>
+                                </div>
+                                <div className="user_time">{v.time}</div>
+                            </div>
+                        )
+                    }
+                if(v.type === 'stickers_agent'){
+                        return(
+                            <div className="chatbot_reply" key={i}>
+                                <div className="agentAvatar_wrap">
+                                    <img src={changeAvatar()} alt="" className="agentChat_avatar" />
+                                </div>
+                                <div className="sticker_message">
+                                    <img src={v.text} alt=""/>
+                                </div>
+                                <div className="chatbot_time">{v.time}</div>
+                            </div>
+                        )
+                    }
                 if(v.id===0){
                     return(
                         <div className="chatbot_reply" key={i}>
