@@ -383,31 +383,17 @@
     height: 35px;
     position: absolute;
     z-index: 999;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     left: 16%;
     bottom: 14%;
 }
-/* .spot1 .far.fa-circle{ 
-    color: green;
-    font-size: 2rem;
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: -10%;
-    bottom: 5%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
-}  */
-
 /* 在前面那隻的右耳朵 */
 .spot2 {
     width: 35px;
     height: 35px;
     position: absolute;
     z-index: 999;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     left: 32%;
     top: 30%;
 }
@@ -417,7 +403,7 @@
     height: 35px;
     position: absolute;
     z-index: 999;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     left: 39%;
     top: 30%;
 }
@@ -427,47 +413,19 @@
     height: 35px;
     position: absolute;
     z-index: 999;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     left: 42%;
     top: 23%;
 }
-.spot4 .far.fa-circle{ 
-    color: green;
-    /* width: 30px;
-    height: 30px; */
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: -10%;
-    top: 5%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
-} 
 .spot5 {
     width: 35px;
     height: 35px;
     position: absolute;
     z-index: 999;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     right: 20%;
     top: 52%;
 }
-.spot5 .far.fa-circle{ 
-    color: green;
-    /* width: 30px;
-    height: 30px; */
-    position: absolute;
-    border: none;
-    z-index: 999;
-    left: -10%;
-    top: 5%;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 30px;
-    pointer-events: none;
-} 
 /* 這個判斷左圖的叉叉置中 */
 .wrap_pic .fas.fa-times {
     font-size: 50px;
