@@ -153,7 +153,7 @@ function Navbar(props) {
                       //   .then((r) => r.json())
                       //   .then((obj) => {});
 
-                      localStorage.setItem("like", JSON.stringify([]));
+                      // localStorage.setItem("like", JSON.stringify([]));
                       localStorage.removeItem("admin_account");
                       localStorage.removeItem("admin_token");
                       // firstcart.clearCart();
