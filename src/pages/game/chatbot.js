@@ -509,7 +509,7 @@ function Chatbot(props){
             {localStorage.admin_account===undefined &&
                 <div className="coupon" onClick={()=>{
                     props.setModalTitle("尚未登入通知");
-                    props.setModalText("親愛的顧客<br/>請您先登入才可至購物車頁面?");
+                    props.setModalText("親愛的顧客<br/>請您先登入才可至會員頁面?");
                     props.setModalBtn('前往登入');
                     props.setShow(true);
                 }}
