@@ -25,6 +25,9 @@ import TheReview from "./components/theReview";
 import Form from "./components/Form";
 import { useCart } from "../carts/utils/useCart";
 import Confetti from "react-dom-confetti";
+import { Modal, Button } from "react-bootstrap";
+
+
 function ProductsDetail(props) {
   const [selection, setSelection] = useState("");
   //子傳父
@@ -35,6 +38,10 @@ function ProductsDetail(props) {
   const [review, setReview] = useState([]);
   const [member, setMember] = useState([]);
   const [con, setCon] = useState({ confetti: false });
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   // const [datetime, setDatetime] = useState(
   //   new Date()
@@ -432,6 +439,7 @@ function ProductsDetail(props) {
                       };
                       addItem(item);
                       console.log(item);
+                      handleShow();
                     }}
                   >
                     <i className="fas fa-shopping-cart"></i> 加入購物車
@@ -590,6 +598,38 @@ function ProductsDetail(props) {
         </>
       )}
       <Productsbackground />
+      <Modal show={show} onHide={handleClose} className={"alan_modal"}>
+        <Modal.Body className={"alan_modalBody"}>
+          <svg width="120" height="120">
+            <circle
+              fill="none"
+              stroke="#eb5c37"
+              stroke-width="10"
+              cx="100"
+              cy="100"
+              r="50"
+              stroke-linecap="round"
+              class="alan_circle"
+              transform="rotate(-90 60 100)"
+            />
+            <polyline
+              fill="none"
+              stroke="#eb5c37"
+              stroke-width="10"
+              points="30,60 50,85 85,40"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="alan_tick"
+            />
+          </svg>
+           <span>商品已加入購物車</span>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            確認
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../carts/utils/useCart";
 import Confetti from "react-dom-confetti";
+import { Modal, Button } from "react-bootstrap";
 
 function ProductItem(props) {
   const [con, setCon] = useState({ confetti: false });
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const {
     ProductSid,
     ProductsName,
@@ -39,7 +44,7 @@ function ProductItem(props) {
 
   const likela = (target) => {
     let current = [];
-    if(localStorage.getItem("like")){
+    if (localStorage.getItem("like")) {
       current = JSON.parse(localStorage.getItem("like"));
     }
 
@@ -53,7 +58,7 @@ function ProductItem(props) {
       console.log("刪去");
       localStorage.setItem("like", JSON.stringify(item));
       setCon({ confetti: false });
-      alert(`您已取消收藏 ${ProductsName}`)
+      alert(`您已取消收藏 ${ProductsName}`);
       //alanheart[ProductSid - 1].style.color = "#2d3436";
     } else {
       item.push("" + ProductSid);
@@ -137,7 +142,7 @@ function ProductItem(props) {
     return getOffset(
       Node.offsetParent === null ? Node.parentNode : Node.offsetParent,
       offset
-    ); 
+    );
   }
 
   return (
@@ -184,11 +189,44 @@ function ProductItem(props) {
                 };
                 addItem(item);
                 console.log(item);
+                handleShow();
               }}
             ></i>
           </div>
         </div>
       </div>
+      <Modal show={show} onHide={handleClose} className={"alan_modal"}>
+        <Modal.Body className={"alan_modalBody"}>
+          <svg width="120" height="120">
+            <circle
+              fill="none"
+              stroke="#eb5c37"
+              stroke-width="10"
+              cx="100"
+              cy="100"
+              r="50"
+              stroke-linecap="round"
+              class="alan_circle"
+              transform="rotate(-90 60 100)"
+            />
+            <polyline
+              fill="none"
+              stroke="#eb5c37"
+              stroke-width="10"
+              points="30,60 50,85 85,40"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="alan_tick"
+            />
+          </svg>
+           <span>商品已加入購物車</span>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            確認
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

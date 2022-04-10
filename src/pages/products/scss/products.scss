@@ -771,9 +771,70 @@ ul.slider-dots {
   transition: 0.5s;
   z-index: 9999;
 }
+.alan_modalBody {
+  height: 20vh;
+}
+.alan_modalBody > span {
+  opacity: 0;
+  font-size: 20px;
+}
+.alan_modalBody > span {
+  animation: 0.6s title ease-in-out;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards;
+}
+.alan_modal {
+  font-family: "Noto Sans TC", sans-serif;
+}
+.alan_modal > .modal-dialog > .modal-content {
+  width: 63%;
+  margin-left: 18%;
+}
+.alan_circle {
+  stroke-dasharray: 314; 
+  stroke-dashoffset: 314;
+}
+.alan_circle {
+  animation: circle 1s ease-in-out;
+  animation-fill-mode:forwards;
+}
+.alan_tick{
+  stroke-dasharray:350 ;
+  stroke-dashoffset: 350;
+}
+.alan_tick{
+  animation: tick .8s ease-in-out;
+  animation-fill-mode:forwards;
+  animation-delay: .95s;
+}
+@keyframes circle{ 
+  from{
+      stroke-dashoffset:314;
+  }
+  to{
+      stroke-dashoffset:628 ;    
+  }
+}
+@keyframes tick{
+  from{
+      stroke-dashoffset: 350;
+  }
+  to{
+      stroke-dashoffset: 0;
+  }
+}
+
+@keyframes title{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
 
 @media screen and (min-width: 980px) {
-  .backToTop{
+  .backToTop {
     display: block;
   }
   .productContainer {
