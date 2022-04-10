@@ -157,12 +157,12 @@ function Signup(){
     return(<>
     <h1 className="tysu_h1" onClick={(e)=>{
         setFields({
-            email:emailInput.current.value='tigger@gmail.com',
-            name:'王獅',
+            email:emailInput.current.value='tingyun1120@gmail.com',
+            name:'蘇亭勻',
             gender:'未決定',
-            birthday:'1995-02-02',
-            password:'123456',
-            confirmPassword:'123456',
+            birthday:'1989-11-20',
+            password:'a123456',
+            confirmPassword:'a123456',
         })
     }}>SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
     <form id="tysu_form" name="form2"

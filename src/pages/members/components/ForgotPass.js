@@ -1,4 +1,4 @@
-import React,{useState}  from "react";
+import React,{useRef, useState}  from "react";
 import { Link,useHistory } from "react-router-dom";
 
 import Config from "../Config";
@@ -10,7 +10,7 @@ function ForgotPass(){
     const [editModalShow,setEditModalShow]=useState(false);
     const [forgotModalText,setForgotModalText]=useState('');
 
-
+    const emailInput=useRef();
     
 
     function submitForgotPass(e){
@@ -35,8 +35,12 @@ function ForgotPass(){
         }
     }
 
+    
+
     return(<>
-    <h1 className="tysu_h1">FORGOT&nbsp;&nbsp;&nbsp;&nbsp;PASSWORD</h1>
+    <h1 className="tysu_h1" onClick={()=>{
+        setEmail(emailInput.current.value='wildjungle2022@gmail.com')
+    }}>FORGOT&nbsp;&nbsp;&nbsp;&nbsp;PASSWORD</h1>
     <div className="tysu_contain">
         <form id="tysu_form">
             <table>
@@ -47,7 +51,7 @@ function ForgotPass(){
                                 <span className="tysu_titleSpan">Email</span></label>
                         </th>
                         <td>
-                            <input type="email" id="tysu_email" className="tysu_input"
+                            <input ref={emailInput} type="email" id="tysu_email" className="tysu_input"
                             value={email}
                             placeholder="請輸入您的email"
                             onChange={(e)=>{setEmail(e.target.value)}} 
