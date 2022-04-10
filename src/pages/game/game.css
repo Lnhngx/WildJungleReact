@@ -232,8 +232,9 @@
         margin-bottom: -280px;
     }
     .gameChoose_zone{
-        width: 700px;
+        width: 730px;
         margin-top: 18rem;
+        justify-content: space-evenly;
     }
     .choose_spotGame{
         width: 320px;
@@ -244,6 +245,9 @@
         width: 320px;
         height: 320px;
         margin-bottom: 3rem;
+    }
+    .choose_psychoGame:hover{
+        transform: scale(1);
     }
     .choose_crossGame{
         width: 320px;
@@ -278,7 +282,7 @@
         display: none;
     }
     .gameChoose_zone{
-        width: 375px;
+        width: 100%;
         margin-top: 40rem;
     }
     .choose_spotGame{
@@ -291,6 +295,9 @@
         height: 320px;
         margin-bottom: 3rem;
     }
+    .choose_psychoGame:hover{
+        transform: scale(1);
+    }
     .choose_crossGame{
         width: 320px;
         height: 320px;
@@ -298,6 +305,10 @@
     .choose_iceGame{
         width: 320px;
         height: 320px;   
+    }
+    .mask{
+        width: 500px;
+        height: 500px;
     }
     .animals-footer{
         margin-top: 400px;

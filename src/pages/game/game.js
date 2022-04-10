@@ -5,10 +5,13 @@ import './game.css';
 function Game(){
     const [hover,setHover] = useState(-1);
     // const [spotLeft,setSpotLeft] = useState(0);
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    useEffect(()=>{
+         window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    },[])
+   
     useEffect(()=>{
         // const spot = document.querySelector('.choose_spotGame').getBoundingClientRect().left;
         // setSpotLeft(spot);
@@ -63,6 +66,7 @@ function Game(){
     //     }
     // }
     const hoverHandlerSpot = id => {
+        
         let obj = {
             transform:'scale(1.66)',
             marginRight:'6.5rem',
