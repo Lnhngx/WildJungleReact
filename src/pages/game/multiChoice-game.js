@@ -87,7 +87,7 @@ function MultiChoice(){
                 <img src="/img/game/cloud-right1.png" alt=""/> 
             </div>
             <div className="game_title">冷知識大挑戰</div>
-            <p className="game_profile">在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>50</span><br /><span>全部答對能拿到翻倍紅利哦</span></p>
+            <p className="game_profile">在這<span>10</span>題中努力回答吧，可能有些答案會超出你的想像<br /><span>答對5</span>題以上會得到紅利點數<span>35</span><br /><span>全部答對能拿到50點紅利哦</span></p>
             <div className="mc_container_game">
             {/* 這是教學影片，點擊小幫手才會出現 */}
                 <div className="mc_video" style={{display:help?"flex":'none'}}>
