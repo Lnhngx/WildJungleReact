@@ -170,19 +170,33 @@ function Navbar(props) {
                 </ul>
               </div>
             )}
-            <a href="/members/modify-member-info">
+            <a
+              href="#/"
+              onClick={() => {
+                const w = window.open("about:blank");
+                w.location.href =
+                  "http://localhost:3000/members/modify-member-info#/";
+              }}
+            >
               <i className="fas fa-heart fixedPosition"></i>
             </a>
             <a href="/carts">
               <i className="fas fa-shopping-cart stan_cartIcon">
                 <div
                   className={
-                    allcartItems >= 10 
+                    allcartItems >= 10
                       ? "stan_cartIcon_count_over10"
                       : "stan_cartIcon_count"
                   }
                 >
-                  {localStorage.getItem("admin_account")?JSON.parse(localStorage.getItem("admin_account")).m_sid===8 || JSON.parse(localStorage.getItem("admin_account")).m_sid===1 ? allcartItems :0 :0}
+                  {localStorage.getItem("admin_account")
+                    ? JSON.parse(localStorage.getItem("admin_account"))
+                        .m_sid === 8 ||
+                      JSON.parse(localStorage.getItem("admin_account"))
+                        .m_sid === 1
+                      ? allcartItems
+                      : 0
+                    : 0}
                 </div>
               </i>
             </a>

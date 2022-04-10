@@ -13,7 +13,13 @@ function MultiChoice(){
     const [bonusSid,setBonusSid] = useState(0);
     const [review,setReview] = useState([]);
     const [help,setHelp] = useState(false);
-    useEffect(()=>{   
+    useEffect(()=>{
+        setTimeout(() => {
+            window.scrollTo({
+                top: 280,
+                behavior: 'smooth'
+            });
+        }, 0);   
         fetch('http://localhost:4000/game')
         .then(r=>r.json())
         .then(obj=>{
