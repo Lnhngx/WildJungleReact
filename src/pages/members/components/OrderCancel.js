@@ -3,27 +3,76 @@ import React, { useState, useEffect } from "react";
 
 function OrderCancel() {
   const [live_search, setLive_search] = useState([]);
+
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
 
-  useEffect(() => {
-    const temp = async () => {
-      await fetch("http://localhost:4000/carts/live_search", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ "m_sid": m_sid }),
-      })
-        .then((r) => r.json())
-        .then((obj) => {
-          setLive_search(obj);
-        });
-    };
+  const temp = async () => {
+    await fetch("http://localhost:4000/carts/live_search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ "m_sid": m_sid }),
+    })
+      .then((r) => r.json())
+      .then((obj) => {
+        setLive_search(obj);
+      });
+  };
+
+  useEffect(() => { 
     temp();
   }, []);
+  
+ 
+  
+  const handleSort = (live_search, sortBy) => {
+    let newRoomdata = [...live_search]
+
+    switch (sortBy) {
+      case 'oneMonth':
+        newRoomdata=newRoomdata.filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.order_date)) <= 30 * 1000 * 3600 * 24
+        })
+        setLive_search(newRoomdata)
+        break
+      case 'threeMonth':
+        newRoomdata=newRoomdata.filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.order_date)) <= 90 * 1000 * 3600 * 24
+        })
+        setLive_search(newRoomdata)
+        break
+      case 'sixMonth':
+        newRoomdata=live_search.filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.order_date)) <= 180 * 1000 * 3600 * 24
+        })
+        setLive_search(newRoomdata)
+        break
+      case 'aYear':
+        newRoomdata=live_search.filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.order_date)) <= 365 * 1000 * 3600 * 24
+        })
+        setLive_search(newRoomdata)
+        break
+      case '':
+        temp()
+      default:
+        break
+    }
+    
+
+    return newRoomdata
+  }
+
+  
+
+  
 
   return (
     <>
       <div className="tysu_filterSelect">
-        <select name="cars" id="cars" className="tysu_select" style={{}}>
+        <select name="cars" id="cars" className="tysu_select" onChange={(e)=>{
+          // console.log(e.target.value)
+          handleSort(live_search,e.target.value)
+        }}>
           <option value="">篩選條件</option>
           <option value="oneMonth">最近一個月</option>
           <option value="threeMonth">最近三個月</option>
@@ -44,7 +93,7 @@ function OrderCancel() {
             <th style={{ width: "88px" }}>狀態</th>
           </tr>
         </thead>
-        {live_search.map((v, i) => {
+        {live_search.length!==0 ? live_search.map((v, i) => {
           return (
             <tbody key={i}>
               <tr className="tysu_orderTr tysu_orderText">
@@ -72,7 +121,17 @@ function OrderCancel() {
               </tr> */}
             </tbody>
           );
-        })}
+        })  : (<tbody>
+            <tr className="tysu_tr tysu_last">
+                <th></th>
+                <td></td>
+                <td></td>
+                <td><div className="tysu_creditT">沒有資料</div></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>)
+        }
 
         {/* <tbody>
             <tr className="tysu_tr tysu_last">
