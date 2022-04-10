@@ -779,8 +779,8 @@ ul.slider-dots {
   font-size: 20px;
 }
 .alan_modalBody > span {
-  animation: 0.6s title ease-in-out;
-  animation-delay: 1.2s;
+  animation: 0.3s title ease-in-out;
+  animation-delay: .8s;
   animation-fill-mode: forwards;
 }
 .alan_modal {
@@ -795,7 +795,7 @@ ul.slider-dots {
   stroke-dashoffset: 314;
 }
 .alan_circle {
-  animation: circle 1s ease-in-out;
+  animation: circle .5s ease-in-out;
   animation-fill-mode:forwards;
 }
 .alan_tick{
@@ -803,9 +803,9 @@ ul.slider-dots {
   stroke-dashoffset: 350;
 }
 .alan_tick{
-  animation: tick .8s ease-in-out;
+  animation: tick .4s ease-in-out;
   animation-fill-mode:forwards;
-  animation-delay: .95s;
+  animation-delay: .5s;
 }
 @keyframes circle{ 
   from{

@@ -186,6 +186,7 @@ function ProductsDetail(props) {
       console.log("刪去");
       localStorage.setItem("like", JSON.stringify(item));
       likeheart.style.color = "#2d3436";
+      alert(`您已取消收藏 ${product.ProductsName}`);
       // props.setLikeListData(item);
       // console.log(props.likeListData);
       setCon({ confetti: false});
