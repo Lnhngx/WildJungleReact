@@ -1892,65 +1892,65 @@ $ning-englishont: "Playfair Display", serif;
     margin-bottom: 0;
   }
 
-  .navigation {
-    width: 30px;
-    height: 40px;
-    cursor: pointer;
-    transition: 0.5s;
+//收放特效
+  // .navigation {
+  //   width: 30px;
+  //   height: 40px;
+  //   cursor: pointer;
+  //   transition: 0.5s;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+
+  //   span {
+  //     width: 5px;
+  //     height: 5px;
+  //     background-color: $ning-color2;
+  //     border-radius: 50%;
+  //     position: absolute;
+  //     transition: 0.5s;
+  //   }
+  // }
+
+  // .navigation span i {
+  //   color: transparent;
+  //   font-size: 1.5rem;
+  // }
+
+  // .navigation span:nth-child(1) {
+  //   transform: translateY(-6px);
+  // }
+
+  // .navigation span:nth-child(2) {
+  //   transform: translateY(6px);
+  // }
+
+  // .navigation.active {
+  //   width: 100px;
+
+
+  .navigation.active {
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     span {
-      width: 5px;
-      height: 5px;
-      background-color: $ning-color2;
-      border-radius: 50%;
-      position: absolute;
-      transition: 0.5s;
-    }
-  }
-
-  .navigation span i {
-    color: transparent;
-    font-size: 1.5rem;
-  }
-
-  .navigation span:nth-child(1) {
-    transform: translateY(-6px);
-  }
-
-  .navigation span:nth-child(2) {
-    transform: translateY(6px);
-  }
-
-  .navigation.active {
-    width: 100px;
-
-    span {
       width: 38px;
       height: 38px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       border: 2px solid $ning-color2;
       background-color: transparent;
+      margin-right: 2px;
     }
   }
 
   .navigation.active span i {
     color: $ning-color2;
     font-size: 1.5rem;
-  }
-
-  .navigation.active span:nth-child(1) {
-    transform: translateY(0);
-    transform: translateX(-20px);
-  }
-
-  .navigation.active span:nth-child(2) {
-    transform: translateY(0);
-    transform: translateX(20px);
   }
 
   .navigation.active span:hover {
@@ -2077,10 +2077,10 @@ $ning-englishont: "Playfair Display", serif;
   .room_Modalyesbtn {
     width: 80px;
     height: 40px;
-    background-color: $ning-color2;
+    background-color: $ning-color4;
     font-size: 1.3rem;
     font-family: $ning-chinesefont;
-    color: $ning-color4;
+    color: $ning-color3;
     text-align: center;
     border-radius: 0;
   }
@@ -2109,15 +2109,52 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .room_Modalyesbtn:hover {
-    background-color: $ning-color4;
+    background-color: $ning-color1;
     color: $ning-color3;
   }
 
   .room_Modalnobtn:hover {
+    background-color: $ning-color1;
+    color: $ning-color3;
+  }
+
+
+  .room_Modaldeletbtn ,
+  .room_ModalAddbtn {
+    width: 80px;
+    height: 40px;
     background-color: $ning-color4;
     font-size: 1.3rem;
     font-family: $ning-chinesefont;
     color: $ning-color3;
+    text-align: center;
+    border-radius: 0;
   }
+
+  .room_Modalnodeletbtn ,
+  .room_ModalnoAddbtn {
+    width: 80px;
+    height: 40px;
+    background-color: $ning-color4;
+    font-size: 1.3rem;
+    font-family: $ning-chinesefont;
+    color: $ning-color3;
+    text-align: center;
+    border-radius: 0;
+  }
+
+
+  .room_Modaldeletbtn:hover,
+  .room_ModalAddbtn:hover {
+    background-color: $ning-color1;
+    color: $ning-color3;
+  }
+
+  .room_Modalnodeletbtn:hover,
+  .room_ModalnoAddbtn:hover {
+    background-color: $ning-color1;
+    color: $ning-color3;
+  }
+  
 
 }
