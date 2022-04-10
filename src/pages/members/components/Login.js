@@ -173,7 +173,7 @@ function Login(props){
     return(<>
     <div className="tysu_contain">
       <h1 className="tysu_h1" onClick={(e)=>{
-        setEmail(emailInput.current.value='pig@gmail.com')
+        setEmail(emailInput.current.value='wildjungle2022@gmail.com')
         setPassword(passInput.current.value='123456')
       }}>LOGIN</h1>
       

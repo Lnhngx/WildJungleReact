@@ -77,7 +77,7 @@ function MemberList(props){
 
   const memberlist=['會員資料','訂單資訊','折價優惠','喜愛收藏']
 
-  const navItem=['基本設定','分級資訊','信用卡管理','常用資訊']
+  const navItem=['基本設定','分級資訊','信用卡管理','常用地址']
   const orderNavItem=['訂單查詢','票券查詢','住宿查詢','配送設定']
   const discountNavItem=['紅利','折價券']
   const likeNavItem=['商品','活動']
