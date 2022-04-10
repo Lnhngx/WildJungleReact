@@ -4,7 +4,7 @@ import "rc-slider/assets/index.css";
 import Config from "../Config";
 import { Modal, Button } from "react-bootstrap";
 
-function AdditionComment(props) {
+function EditComment(props) {
   const Range = Slider;
 
   const [show, setShow] = useState(false);
@@ -406,4 +406,4 @@ function AdditionComment(props) {
   );
 }
 
-export default AdditionComment;
+export default EditComment;

@@ -5,6 +5,10 @@ function GameStart(props){
     // console.log(props.location.state);
     const [title,text,url] = props.location.state;
     useEffect(()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
         document.querySelector('.game_profile').innerHTML = text
     },[])
     return(

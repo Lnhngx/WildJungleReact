@@ -91,7 +91,7 @@ const HomeCarousel = () => {
   return (
     <>
       <div className="carousel">
-        <img src="img/home/carousel/carousel01.jpg" alt="" ref={img} />
+        <img className="ning_main_carousel"  src="img/home/carousel/carousel01.jpg" alt="" ref={img} />
 
         {/* <ul className="ning_imgwrap">
           <li className="ning_li">

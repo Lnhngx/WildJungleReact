@@ -5,6 +5,7 @@ const config = {
     COMMENT_NOCTURNALLIST: `${host}/roomplatform/room-comments-nocturnallist/`,
     COMMENT_TROPICALLIST: `${host}/roomplatform/room-comments-tropicallist/`,
     COMMENT_ADD: `${host}/roomplatform/room-comments-post/`,
+    COMMENT_DELETE: `${host}/roomplatform/room-comments/delete/`,
     ORDER: `${host}/roomplatform/room-order/`,
     
 };

@@ -3,6 +3,7 @@ import Config from "../Config";
 import "rc-slider/assets/index.css";
 import CommentList from "./CommentList";
 import AdditionComment from "./AdditionComment";
+import EditComment from "./EditComment";
 
 const LodgingComment = (props) => {
   const { setCommentbox, data, total, roomSid, roomName, setData, order } =
@@ -409,7 +410,7 @@ const LodgingComment = (props) => {
         </div>
         <div className="commentline"></div>
         <div className="guestComment">住客評論</div>
-        <CommentList comments={displayComments} />
+        <CommentList comments={displayComments} order={order} setData={setData} roomSid={roomSid}/>
       </div>
 
       <div
@@ -431,6 +432,14 @@ const LodgingComment = (props) => {
           sendComments={props.sendComments}
           order={order}
         />
+
+        <EditComment setData={setData}
+          roomSid={roomSid}
+          roomName={roomName}
+          setClosebtn={setClosebtn}
+          setWritecommen={setWritecommen}
+          sendComments={props.sendComments}
+          order={order}/>
       </div>
     </>
   );

@@ -263,12 +263,13 @@ const HomeJungleStar = () => {
           <div
             className="ning_eaglecardbox"
             style={{ width: eaglecard === false && "12.5%" }}
-            onClick={()=>{
-              if(eaglecard){
-              setEaglecard(false);
-              }else{
+            onClick={() => {
+              if (eaglecard) {
+                setEaglecard(false);
+              } else {
                 eaglePush();
-              }}}
+              }
+            }}
           >
             <div className="ning_eaglecard">
               <div
@@ -276,11 +277,8 @@ const HomeJungleStar = () => {
                 style={{ marginLeft: eaglecard === false && "-18%" }}
               >
                 <img
-                  src={
-                    eaglecard === true
-                      ? "img/home/star_eagle.png"
-                      : "img/home/star_eagle_bk.png"
-                  }
+                  className={eaglecard === true ? "" : "star_img"}
+                  src="img/home/star_eagle.png"
                   alt=""
                 />
               </div>
@@ -299,12 +297,13 @@ const HomeJungleStar = () => {
           <div
             className="ning_elephantcardbox"
             style={{ width: elephantcard === true && "50%" }}
-            onClick={()=>{
-              if(elephantcard){
+            onClick={() => {
+              if (elephantcard) {
                 setelephantcard(false);
-              }else{
+              } else {
                 elephantPush();
-              }}}
+              }
+            }}
           >
             <div className="ning_elephantcard">
               <div
@@ -312,11 +311,8 @@ const HomeJungleStar = () => {
                 style={{ marginLeft: elephantcard === true && "0" }}
               >
                 <img
-                  src={
-                    elephantcard === true
-                      ? "img/home/star_elephant.png"
-                      : "img/home/star_elephant_bk.png"
-                  }
+                  className={elephantcard === true ? "" : "star_img"}
+                  src="img/home/star_elephant.png"
                   alt=""
                 />
               </div>
@@ -335,24 +331,21 @@ const HomeJungleStar = () => {
           <div
             className="ning_tigercardbox"
             style={{ width: tigercard === true && "50%" }}
-            onClick={()=>{
-              if(tigercard){
+            onClick={() => {
+              if (tigercard) {
                 settigercard(false);
-              }else{
+              } else {
                 tigerPush();
-              }}}
+              }
+            }}
           >
             <div className="ning_tigercard">
               <div
                 className="ning_tigerimg"
                 style={{ marginLeft: tigercard === true && "0" }}
               >
-                <img
-                  src={
-                    tigercard === true
-                      ? "img/home/star_tiger.png"
-                      : "img/home/star_tiger_bk.png"
-                  }
+                <img className={tigercard === true ? "" : "star_img"}
+                  src="img/home/star_tiger.png"     
                   alt=""
                 />
               </div>
@@ -371,25 +364,23 @@ const HomeJungleStar = () => {
           <div
             className="ning_sharkcardbox"
             style={{ width: sharkcard === true && "50%" }}
-            onClick={()=>{
-              if(sharkcard){
+            onClick={() => {
+              if (sharkcard) {
                 setsharkcard(false);
-              }else{
+              } else {
                 sharkPush();
-              }}
-            }
+              }
+            }}
           >
             <div className="ning_sharkcard">
               <div
                 className="ning_sharkimg"
                 style={{ marginLeft: sharkcard === true && "0" }}
               >
-                <img
-                  src={
-                    sharkcard === true
-                      ? "img/home/star_shark.png"
-                      : "img/home/star_shark_bk.png"
-                  }
+                <img className={sharkcard === true ? "" : "star_img"}
+                  src=
+                    "img/home/star_shark.png"
+                    
                   alt=""
                 />
               </div>
@@ -408,12 +399,13 @@ const HomeJungleStar = () => {
           <div
             className="ning_hitefoxcardbox"
             style={{ width: hitefoxcard === true && "50%" }}
-            onClick={()=>{
-              if(hitefoxcard){
-              sethitefoxcard(false);
-              }else{
+            onClick={() => {
+              if (hitefoxcard) {
+                sethitefoxcard(false);
+              } else {
                 hitefoxPush();
-              }}}
+              }
+            }}
           >
             <div className="ning_hitefoxcardhd">
               <div className="ning_hitefoxcard">
@@ -421,12 +413,10 @@ const HomeJungleStar = () => {
                   className="ning_hitefoximg"
                   style={{ marginLeft: hitefoxcard === true && "0" }}
                 >
-                  <img
-                    src={
-                      hitefoxcard === true
-                        ? "img/home/star_hitefox.png"
-                        : "img/home/star_hitefox_bk.png"
-                    }
+                  <img className={hitefoxcard === true ? "" : "star_img"}
+                    src=
+                   "img/home/star_hitefox.png"
+                      
                     alt=""
                   />
                 </div>
@@ -436,8 +426,8 @@ const HomeJungleStar = () => {
                     吻部很尖，耳短而圓，臉頰後部生長毛，腳底部也密生長毛，所以適於在冰雪地上行走，尾毛蓬鬆，尖端白色，身體略小於赤狐。北極狐毛皮既長又軟且厚，厚厚的皮毛使北極狐的體溫保持在四十度，因此可抵禦嚴寒。
                   </span>
                   <Link to="/activity">
-                  <button className="adoptbtn btn">我要認養！</button>
-                </Link>
+                    <button className="adoptbtn btn">我要認養！</button>
+                  </Link>
                 </div>
               </div>
             </div>
