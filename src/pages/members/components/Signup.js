@@ -164,6 +164,15 @@ function Signup(){
             password:'a123456',
             confirmPassword:'a123456',
         })
+        setFieldErrors({
+            email:'',
+            name:'',
+            gender:'',
+            birthday:'',
+            password:'',
+            confirmPassword:'',
+            checkbox:'',
+        })
     }}>SIGN&nbsp;&nbsp;&nbsp;&nbsp;UP</h1>
     <form id="tysu_form" name="form2"
         onSubmit={handleSubmit}
