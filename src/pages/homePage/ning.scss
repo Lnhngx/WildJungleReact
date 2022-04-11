@@ -132,11 +132,12 @@ $ning-englishont: "Playfair Display", serif;
     position: relative;
     overflow: hidden;
 
-  //   img {
-  //     width: calc(100vw - calc(100vw - 100%));
-  //   }
+    .ning_main_carousel {
+      width: calc(100vw - calc(100vw - 100%));
+      object-fit: cover;
+    }
   }
-  
+
   .ning_imgwrap {
     width: calc(500vw - calc(500vw - 500%));
     display: flex;
@@ -149,7 +150,6 @@ $ning-englishont: "Playfair Display", serif;
   .ning_img {
     width: calc(100vw - calc(100vw - 100%));
   }
-  
 
   // .welcome {
   //   width: 50%;
@@ -181,6 +181,9 @@ $ning-englishont: "Playfair Display", serif;
   //   }
   // }
 
+
+  //apple版
+  
   .zooDetail {
     width: 50%;
     height: 18vh;
@@ -191,6 +194,17 @@ $ning-englishont: "Playfair Display", serif;
     backdrop-filter: blur(10px);
   }
 
+
+  // .zooDetail {
+  //   width: 42%;
+  //   height: 15vh;
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   background-color: rgba(86, 86, 86, 0.3);
+  //   backdrop-filter: blur(10px);
+  // }
+
   .info {
     width: 100%;
     position: absolute;
@@ -198,17 +212,23 @@ $ning-englishont: "Playfair Display", serif;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
+    //apple版
     justify-content: space-around;
+    // justify-content: space-evenly;
   }
 
   .zooslider {
     width: 45%;
+    //apple版
     height: 18vh;
+    // height: 15vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: absolute;
+    //apple版
     right: 5%;
+    // right: 10%;
     bottom: 0;
     span {
       width: 10%;
@@ -383,8 +403,10 @@ $ning-englishont: "Playfair Display", serif;
 
   .ning_bgcblack {
     background: url("../../../public/img/home/homebgcblack.svg") no-repeat;
+    //apple版
     width: 100%;
-    // outline: 1px solid red;
+    // height: 110vh;
+    
     background-size: cover;
     background-position: bottom;
   }
@@ -405,7 +427,9 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_JungleTourmapbox {
+    //apple版
     height: 110vh;
+    // height: 100vh;
     display: flex;
     justify-content: space-evenly;
     margin: 30px 120px 0 120px;
@@ -413,7 +437,9 @@ $ning-englishont: "Playfair Display", serif;
 
   .ning_Jungletourimgbox {
     display: flex;
+    //apple版
     width: 65%;
+    // width: 70%;
   }
 
   .ning_tourboxhd {
@@ -443,11 +469,14 @@ $ning-englishont: "Playfair Display", serif;
   .ning_Jungle {
     width: 100%;
     display: flex;
+    //apple版
     justify-content: center;
   }
 
   .ning_Jungletropical {
+    //apple版
     width: 20%;
+    // width: 25%;
     margin-top: 70px;
     opacity: 0.8;
   }
@@ -458,7 +487,9 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_JungleOcean {
+    //apple版
     width: 20%;
+    // width: 25%;
     margin-top: 140px;
     opacity: 0.8;
   }
@@ -469,7 +500,9 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_Junglenocturnal {
+    //apple版
     width: 20%;
+    // width: 25%;
     margin-top: 70px;
     opacity: 0.8;
   }
@@ -480,7 +513,9 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_Jungleice {
+    //apple版
     width: 20%;
+    // width: 25%;
     opacity: 0.8;
   }
 
@@ -819,7 +854,7 @@ $ning-englishont: "Playfair Display", serif;
   /* Popular Events 熱門活動 hover */
 
   .ning_eventsbox:hover {
-    border:1px solid $ning-color4;
+    border: 1px solid $ning-color4;
     padding: 10px 0px 10px 20px;
     margin-top: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.212);
@@ -1042,7 +1077,9 @@ $ning-englishont: "Playfair Display", serif;
     width: 60%;
     height: 100%;
     transition: 1s;
+    //apple版
     margin-left: -90px;
+    // margin-left: -150px;
 
     img {
       height: 100%;
@@ -1100,10 +1137,14 @@ $ning-englishont: "Playfair Display", serif;
     width: 60%;
     height: 100%;
     transition: 1s;
+    //apple版
     margin-left: -90px;
+    // margin-left: -140px;
 
     img {
-      height: 130%;
+      //apple版
+      height: 120%;
+      // height: 130%;
     }
   }
 
@@ -1158,7 +1199,9 @@ $ning-englishont: "Playfair Display", serif;
     width: 60%;
     height: 100%;
     transition: 1s;
+    //apple版
     margin-left: -200px;
+    // margin-left: -280px;
 
     img {
       height: 100%;
@@ -1258,18 +1301,19 @@ $ning-englishont: "Playfair Display", serif;
     transition: 0.5s;
     transform: translateX(0px);
   }
-  
 
   .ning_starproductimg {
     width: 20%;
+    //apple版
     height: 15vw;
+    // height: 12vw;
     overflow: hidden;
     cursor: pointer;
     border: 4px solid $ning-color3;
     img {
       width: 100%;
       height: 100%;
-      object-fit:cover;
+      object-fit: cover;
       transition: all 0.5s ease;
     }
   }
@@ -1304,7 +1348,6 @@ $ning-englishont: "Playfair Display", serif;
       transform: scale(1.2);
     }
   }
-
 
   .ning_starproductbox {
     position: relative;
@@ -1401,7 +1444,7 @@ $ning-englishont: "Playfair Display", serif;
     margin-bottom: 5px;
   }
 
-  .ning_busbox  {
+  .ning_busbox {
     width: 50%;
     display: flex;
     flex-wrap: wrap;
@@ -1410,14 +1453,13 @@ $ning-englishont: "Playfair Display", serif;
 
   .ning_Pbox {
     width: 45%;
-    
   }
 
   .ning_PTotalBox {
     display: flex;
     width: 100%;
     margin-bottom: 10px;
-    p{
+    p {
       width: 30%;
       font-size: 1.6rem;
       font-family: $ning-chinesefont;
@@ -1427,7 +1469,7 @@ $ning-englishont: "Playfair Display", serif;
       width: 70%;
       font-size: 1.8rem;
       font-family: $ning-chinesefont;
-      white-space:pre-wrap; 
+      white-space: pre-wrap;
     }
   }
 
@@ -1502,31 +1544,33 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .ning_smallbusGo {
-    width: 45%;
+    width: 48%;
     h4 {
       font-family: $ning-chinesefont;
       font-size: 1.6rem;
-      color: $ning-color5;
+      color: #777;
     }
   }
 
   .ning_smallbusBack {
-    width: 45%;
+    width: 48%;
     h4 {
       font-family: $ning-chinesefont;
       font-size: 1.6rem;
-      color: $ning-color4;
+      color: #777;
     }
   }
 
   .businfoClose {
-    color: $ning-color3;
-    position:absolute;
-    right:20px;
-    top:0;
-    border-radius: 50%;
-    background-color: $ning-color4;
+    color: $ning-color4;
+    position: absolute;
+    right: 20px;
+    top: 0;
     cursor: pointer;
+  }
+
+  .businfoClose:hover {
+    color: $ning-color2;
   }
 
   .ning_smallbusStop {
@@ -1582,7 +1626,6 @@ $ning-englishont: "Playfair Display", serif;
     border-radius: 20px;
     margin-bottom: 0;
   }
-
 
   .ning_smallbusStop {
     display: flex;

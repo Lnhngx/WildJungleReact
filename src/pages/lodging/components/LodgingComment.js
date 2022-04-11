@@ -382,7 +382,7 @@ const LodgingComment = (props) => {
             value={scoreRange}
             onChange={(e) => setScoreRange(e.target.value)}
           >
-            <option value="0">所有評分(15)</option>
+            <option value="0">所有評分({data.length})</option>
             <option value="1">9~10分</option>
             <option value="2">6~8分</option>
             <option value="3">3~5分</option>
@@ -433,13 +433,13 @@ const LodgingComment = (props) => {
           order={order}
         />
 
-        <EditComment setData={setData}
+        {/* <EditComment setData={setData}
           roomSid={roomSid}
           roomName={roomName}
           setClosebtn={setClosebtn}
           setWritecommen={setWritecommen}
           sendComments={props.sendComments}
-          order={order}/>
+          order={order}/> */}
       </div>
     </>
   );
