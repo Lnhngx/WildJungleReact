@@ -274,7 +274,7 @@ const HomeJungleStar = () => {
             <div className="ning_eaglecard">
               <div
                 className="ning_eagleimg"
-                style={{ marginLeft: eaglecard === false && "-18%" }}
+                style={{ marginLeft: eaglecard === false && "-180px" }}
               >
                 <img
                   className={eaglecard === true ? "" : "star_img"}
@@ -342,7 +342,7 @@ const HomeJungleStar = () => {
             <div className="ning_tigercard">
               <div
                 className="ning_tigerimg"
-                style={{ marginLeft: tigercard === true && "0" }}
+                style={{ marginLeft: tigercard === true && "-60px" }}
               >
                 <img className={tigercard === true ? "" : "star_img"}
                   src="img/home/star_tiger.png"     
@@ -375,7 +375,7 @@ const HomeJungleStar = () => {
             <div className="ning_sharkcard">
               <div
                 className="ning_sharkimg"
-                style={{ marginLeft: sharkcard === true && "0" }}
+                style={{ marginLeft: sharkcard === true && "-120px" }}
               >
                 <img className={sharkcard === true ? "" : "star_img"}
                   src=

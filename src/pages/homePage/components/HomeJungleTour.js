@@ -19,9 +19,9 @@ const HomeJungleTour = () => {
             <img src="/img/home/tropicalmap.svg" alt="" ref={tourmap} />
           </div>
           <div className="ning_Jungletourimgbox">
-            <div className="ning_Jungle">
-              <Link to="/tour">
-                <div className="ning_Jungletropical">
+            {/* <div className="ning_Jungle"> */}
+              {/* <Link to="/tour"> */}
+                <div className="ning_Jungletropical" style={{width:"25%"}}>
                   <div className="ning_tourboxhd">
                     <img
                       className="ning_Jungletropicalimg"
@@ -34,9 +34,9 @@ const HomeJungleTour = () => {
                   </div>
                   <p>熱帶雨林館</p>
                 </div>
-              </Link>
-              <Link to="/tour">
-                <div className="ning_JungleOcean">
+              {/* </Link> */}
+              {/* <Link to="/tour"> */}
+                <div className="ning_JungleOcean" style={{width:"25%" }}>
                   <div className="ning_tourboxhd">
                     <img
                       className="ning_JungleOceanimg"
@@ -49,9 +49,9 @@ const HomeJungleTour = () => {
                   </div>
                   <p>海底世界館</p>
                 </div>
-              </Link>
-              <Link to="/tour">
-                <div className="ning_Junglenocturnal">
+              {/* </Link> */}
+              {/* <Link to="/tour"> */}
+                <div className="ning_Junglenocturnal" style={{width:"25%"}}>
                   <div className="ning_tourboxhd">
                     <img
                       className="ning_Junglenocturnalimg"
@@ -64,9 +64,9 @@ const HomeJungleTour = () => {
                   </div>
                   <p>夜行動物館</p>
                 </div>
-              </Link>
-              <Link to="/tour">
-                <div className="ning_Jungleice">
+              {/* </Link> */}
+              {/* <Link to="/tour"> */}
+                <div className="ning_Jungleice" style={{width:"25%" }}>
                   <div className="ning_tourboxhd">
                     <img
                       className="ning_Jungleiceimg"
@@ -79,9 +79,9 @@ const HomeJungleTour = () => {
                   </div>
                   <p>冰原歷險館</p>
                 </div>
-              </Link>
+              {/* </Link> */}
             </div>
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </>
