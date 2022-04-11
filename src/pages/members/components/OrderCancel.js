@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 
 function OrderCancel() {
   const [live_search, setLive_search] = useState([]);
+  const [sortBy,setSortBy]=useState("")
+  const [newD,setNewD]=useState([])
 
   const m_sid = JSON.parse(localStorage.getItem("admin_account")).m_sid;
 
@@ -26,52 +28,61 @@ function OrderCancel() {
   
   const handleSort = (live_search, sortBy) => {
     let newRoomdata = [...live_search]
-
+    
     switch (sortBy) {
       case 'oneMonth':
-        newRoomdata=newRoomdata.filter((v,i)=>{
-          return Math.abs(new Date() - new Date(v.order_date)) <= 30 * 1000 * 3600 * 24
+        newRoomdata=[...newRoomdata].filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.start)) <= 30 * 1000 * 3600 * 24
         })
-        setLive_search(newRoomdata)
+        // setLive_search(newRoomdata)
         break
       case 'threeMonth':
-        newRoomdata=newRoomdata.filter((v,i)=>{
-          return Math.abs(new Date() - new Date(v.order_date)) <= 90 * 1000 * 3600 * 24
+        newRoomdata=[...newRoomdata].filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.start)) <= 90 * 1000 * 3600 * 24
         })
-        setLive_search(newRoomdata)
+        // setLive_search(newRoomdata)
         break
       case 'sixMonth':
-        newRoomdata=live_search.filter((v,i)=>{
-          return Math.abs(new Date() - new Date(v.order_date)) <= 180 * 1000 * 3600 * 24
+        newRoomdata=[...newRoomdata].filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.start)) <= 180 * 1000 * 3600 * 24
         })
-        setLive_search(newRoomdata)
+        // setLive_search(newRoomdata)
         break
       case 'aYear':
-        newRoomdata=live_search.filter((v,i)=>{
-          return Math.abs(new Date() - new Date(v.order_date)) <= 365 * 1000 * 3600 * 24
+        newRoomdata=[...newRoomdata].filter((v,i)=>{
+          return Math.abs(new Date() - new Date(v.start)) <= 365 * 1000 * 3600 * 24
         })
-        setLive_search(newRoomdata)
+        // setLive_search(newRoomdata)
         break
-      case '':
-        temp()
+      // case '':
+      //   temp()
       default:
         break
     }
-    
-
     return newRoomdata
   }
 
+  useEffect(()=>{
+    setNewD(live_search)
+  },[live_search])
   
+  useEffect(()=>{
+    let newRoomdata=[...live_search]
+    newRoomdata=handleSort(newRoomdata,sortBy)
+    setNewD(newRoomdata)
+
+  },[live_search,sortBy])
 
   
 
   return (
     <>
       <div className="tysu_filterSelect">
-        <select name="cars" id="cars" className="tysu_select" onChange={(e)=>{
+        <select name="cars" id="cars" className="tysu_select" value={sortBy} onChange={(e)=>{
           // console.log(e.target.value)
-          handleSort(live_search,e.target.value)
+          setSortBy(e.target.value)
+          // handleSort(live_search,e.target.value)
+          // console.log(handleSort(live_search,e.target.value))
         }}>
           <option value="">篩選條件</option>
           <option value="oneMonth">最近一個月</option>
@@ -93,7 +104,7 @@ function OrderCancel() {
             <th style={{ width: "88px" }}>狀態</th>
           </tr>
         </thead>
-        {live_search.length!==0 ? live_search.map((v, i) => {
+        {newD.length!==0 ? newD.map((v, i) => {
           return (
             <tbody key={i}>
               <tr className="tysu_orderTr tysu_orderText">
