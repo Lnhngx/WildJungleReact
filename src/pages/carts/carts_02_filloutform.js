@@ -57,6 +57,13 @@ function Cartfilloutform(props) {
     temp();
   }, []);
 
+  useEffect(()=>{
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+},[])
+
   const realtotal =
     cart.cartTotal + 100 - Math.ceil(bonus[bonus.length - 1] / 10);
 

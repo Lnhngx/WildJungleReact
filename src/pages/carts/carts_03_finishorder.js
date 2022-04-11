@@ -31,6 +31,13 @@ function Cartsfinishorder(props) {
     }, 1000)
   }, [])
 
+  useEffect(()=>{
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+},[])
+
   return (
     <>
       <div className="stan_carts_main">
