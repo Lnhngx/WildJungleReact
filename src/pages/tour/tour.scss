@@ -219,7 +219,7 @@ figcaption {
 }
 .tourdescriptionpic img {
   object-fit: content;
-  width: 330px; //手機
+  width: 350px; //手機
   height: 280px;
 }
 .tourdescriptionGuild2 {
@@ -436,10 +436,11 @@ figcaption {
 }
 .tourDisplayNone {
   display: none;
+  
 }
-// .tour_showBooking_area{
-//   margin-top:18rem;
-// }
+.tour_showBooking_area{
+  margin-top:10rem;
+}
 
 
 
