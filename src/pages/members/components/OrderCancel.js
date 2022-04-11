@@ -108,8 +108,8 @@ function OrderCancel() {
                 <td className="tysu_orderBg"><div>{v.room_name.join('\n')}</div></td>}
                 <td>${v.price}</td>
                 <td>{v.room_count}</td>
-                <td >${v.amount}</td>
                 <td >{v.start}<br/>至<br/>{v.end}</td>
+                <td >${v.amount}</td>
                 <td>{v.status}</td>
               </tr>
               {/* <tr className="tysu_orderTr tysu_orderText">
