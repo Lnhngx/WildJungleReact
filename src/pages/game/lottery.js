@@ -166,6 +166,7 @@ function Lottery(props){
                         setPointData(pointData);
                         localStorage.setItem('received',JSON.stringify( {expire:new Date().getTime() + 5184000} ));
                         props.setToggleLottery(false);
+                        // 在前往會員頁面時,直接導至優惠的部分,所以從這設定會員頁的狀態
                         props.setActived('折價優惠');
                         history.push('/members/modify-member-info');
                     })
