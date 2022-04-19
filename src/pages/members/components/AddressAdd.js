@@ -1,15 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-function AddressAdd(){
-    return(<>
-    <table className='tysu_table'>
-        <tbody>
-            <tr>
-                <th></th>
-                <td><div className="tysu_creditT">{ '尚未設定' }</div></td>
-            </tr>
-            
-            {/* <tr className="tysu_tr" >
+function AddressAdd() {
+    return (
+        <>
+            <table className="tysu_table">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <div className="tysu_creditT">{'尚未設定'}</div>
+                        </td>
+                    </tr>
+
+                    {/* <tr className="tysu_tr" >
                 <th>
                     <div className="tysu_creditDelete">
                         <i className="fas fa-times"></i>
@@ -49,15 +52,14 @@ function AddressAdd(){
                 </td>
                 
             </tr> */}
-        </tbody>
-    </table>
-    <div className="tysu_btnCenter">
-        <button id="tysu_addBtn" className="tysu_addBtn">
-            <i className="fas fa-plus"></i>
-        </button>
-    </div>
-            
-        </>)
-    
+                </tbody>
+            </table>
+            <div className="tysu_btnCenter">
+                <button id="tysu_addBtn" className="tysu_addBtn">
+                    <i className="fas fa-plus"></i>
+                </button>
+            </div>
+        </>
+    )
 }
-export default AddressAdd;
+export default AddressAdd
