@@ -86,6 +86,16 @@ Wild Jungle的衷旨在於，使用者可以即時地知道我們動物園的自
 <img width="1440" alt="截圖 2022-04-20 14 16 02" src="https://user-images.githubusercontent.com/96760571/164163349-b4cae775-2b94-467f-a613-42c15881c572.png">
 
 
+# 網站聲明
+
+本作品目前尚屬開發階段，商品圖片、內容等，純粹為演示前端使用，不做任何商業用途。
+
+# 資料、圖片來源
+<ul>
+<li>pinkoi
+</ul>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
