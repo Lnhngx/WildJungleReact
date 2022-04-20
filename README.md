@@ -92,7 +92,7 @@ Wild Jungle的衷旨在於，使用者可以即時地知道我們動物園的自
 
 # 資料與圖片來源
 <ul>
-    <li> [pinkoi](https://www.pinkoi.com)
+    <li> pinkoi(https://www.pinkoi.com)
 </ul>
 
 
