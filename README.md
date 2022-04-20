@@ -48,6 +48,11 @@ Wild Jungle的衷旨在於，使用者可以即時地知道我們動物園的自
     <li type=circle>評分留言篩選、排序功能。</li>
     <li type=circle>評分留言的項目。</li>  
 </ul>
+<ul>
+    <li>會員中心頁面</li>
+    <li type=circle>會員登入、註冊、忘記密碼、資料修改與查詢</li>
+    <li type=circle>JWT驗證信、bcrypt加密密碼。</li>
+</ul>
 
 
 # 網站視覺
