@@ -33,42 +33,38 @@ function ConvenienceStoreAdd(props) {
     const sid = JSON.parse(localStorage.getItem('admin_account'))
     useEffect(() => {
         const get711CityData = async () => {
-            await fetch(Config.TYSU_CITY, {
+            const r = await fetch(Config.TYSU_CITY, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },
             })
-                .then((r) => r.json())
-                .then((obj) => {
-                    // console.log(obj)
-                    setCityData(obj)
-                })
+            const obj = r.json()
+            // console.log(obj)
+            setCityData(obj)
         }
         get711CityData()
     }, [])
 
     useEffect(() => {
         const get711AreaData = async () => {
-            await fetch(Config.TYSU_AREA + citySelect, {
+            const r = await fetch(Config.TYSU_AREA + citySelect, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
             })
-                .then((r) => r.json())
-                .then((obj) => {
-                    // console.log(obj.result)
-                    setAreaSelect(obj.result)
-                    setAreaName(obj.result[0])
-                })
+            const obj = r.json()
+            // console.log(obj.result)
+            setAreaSelect(obj.result)
+            setAreaName(obj.result[0])
         }
         get711AreaData()
     }, [citySelect])
 
     useEffect(() => {
         const get711StoreData = async () => {
-            await fetch(
+            const r = await fetch(
                 Config.TYSU_711_STORE +
                     '?city=' +
                     cityName +
@@ -81,17 +77,15 @@ function ConvenienceStoreAdd(props) {
                     },
                 }
             )
-                .then((r) => r.json())
-                .then((obj) => {
-                    if (obj.result[0]['storeTown'] !== undefined) {
-                        // console.log('get711StoreData obj',obj);
-                        setStoreData(obj.result)
-                        setStoreName(
-                            `${obj.result[0].storeName}店(${obj.result[0].storeAddress})`
-                        )
-                        setStoreaddress(obj.result[0].storeaddress)
-                    }
-                })
+            const obj = r.json()
+            if (obj.result[0]['storeTown'] !== undefined) {
+                // console.log('get711StoreData obj',obj);
+                setStoreData(obj.result)
+                setStoreName(
+                    `${obj.result[0].storeName}店(${obj.result[0].storeAddress})`
+                )
+                setStoreaddress(obj.result[0].storeaddress)
+            }
         }
         get711StoreData()
     }, [areaName])
@@ -132,19 +126,15 @@ function ConvenienceStoreAdd(props) {
                                     name="city"
                                     value={citySelect}
                                     onChange={(e) => {
-                                        // console.log(e.target.name)
-                                        // console.log(e.target.value)
                                         setCitySelect(e.target.value)
                                         let n = cityData.filter((v, i) => {
                                             return v.areaID === e.target.value
                                         })
                                         if (n.length !== 0) {
                                             if (e.target.name === 'city') {
-                                                // console.log(n);
                                                 setCityName(n[0].area)
                                             }
                                         }
-                                        // setCityName(e.target.innerHTML)
                                     }}
                                 >
                                     {cityData.map((v, i) => {
@@ -163,7 +153,6 @@ function ConvenienceStoreAdd(props) {
                                     name="area"
                                     value={areaName}
                                     onChange={(e) => {
-                                        // console.log(cityName);
                                         // console.log(e.target.value);
                                         if (e.target.name === 'area') {
                                             setAreaName(e.target.value)
@@ -186,7 +175,6 @@ function ConvenienceStoreAdd(props) {
                                     onChange={(event) => {
                                         // console.log(event.target)
                                         if (event.target.name === 'store') {
-                                            // console.log(event.target.value)
                                             setStoreName(event.target.value)
                                         }
                                     }}
@@ -206,12 +194,12 @@ function ConvenienceStoreAdd(props) {
                                         )
                                     })}
                                     {/* storeAddress: "台北市松山區復興北路35號"
-                            storeCity: "台北市"
-                            storeFax: "(02)27402897"
-                            storeID: "906209"
-                            storeName: "樂得"
-                            storeTele: "(02)27401886"
-                            storeTown: "松山區" */}
+                                        storeCity: "台北市"
+                                        storeFax: "(02)27402897"
+                                        storeID: "906209"
+                                        storeName: "樂得"
+                                        storeTele: "(02)27401886"
+                                        storeTown: "松山區" */}
                                 </select>
                                 <div id="tysu_addressHelp"></div>
                             </td>
@@ -243,19 +231,15 @@ function ConvenienceStoreAdd(props) {
                                         city: cityName,
                                         area: areaName,
                                         store: storeName,
-                                        // "address":storeaddress,
                                         m_sid: sid['m_sid'],
                                     }),
                                 })
                                     .then((r) => r.json())
                                     .then((obj) => {
-                                        // console.log(obj)
                                         if (obj.success) {
                                             // console.log(obj.info);
                                             // [{store_sid: 48, store_name: '吉盛店(台北市松山區南京東路五段66巷3弄1號1樓)'}]
-
                                             setUser711D(obj.info)
-
                                             setStoreModalText('新增完成')
                                         } else {
                                             setStoreModalText(
@@ -266,7 +250,6 @@ function ConvenienceStoreAdd(props) {
                                     })
                             }
                             save711()
-                            // setShowStoreAdd(false)
                         }
                     }}
                 >
@@ -277,8 +260,6 @@ function ConvenienceStoreAdd(props) {
                 <StoreModal
                     show={show}
                     setShow={setShow}
-                    showTable={showTable}
-                    setShowTable={setShowTable}
                     storeModalText={storeModalText}
                     setShowStoreAdd={setShowStoreAdd}
                 />

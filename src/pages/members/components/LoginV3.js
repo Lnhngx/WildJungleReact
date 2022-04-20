@@ -63,12 +63,6 @@ function Login(props) {
                 // console.log("google驗證");
             }
         )
-
-        // 如果是已經登入狀態，email欄位自動帶入用戶帳號
-        // if(auth || localState.token){
-        //   emailInput.current.value=localState.account.email;
-        //   setEmail(emailInput.current.value)
-        // }
     }, [])
 
     const handleOnClick = (e) => {
@@ -123,14 +117,10 @@ function Login(props) {
                     }, 1500)
 
                     // console.log(obj.success)
-
-                    // alert('登入成功');
                 } else {
                     setSuccess(obj.error || '帳號或密碼錯誤')
                     handleShow()
                     setTimeout(() => setShow(false), 1000)
-
-                    // alert(obj.error || '登入失敗');
                 }
             })
     }

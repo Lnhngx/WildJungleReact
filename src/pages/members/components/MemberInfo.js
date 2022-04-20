@@ -5,7 +5,7 @@ import Config from '../Config'
 import EditModal from './EditModal'
 
 function MemberInfo(props) {
-    const { sidData, setSidData, account, dataAgain, setDataAgain } = props
+    const { sidData, dataAgain } = props
     const sid = JSON.parse(localStorage.getItem('admin_account'))
 
     // Modal顯示與否
@@ -41,7 +41,6 @@ function MemberInfo(props) {
     const handleFieldChange = (e) => {
         const name = e.target.name
         const value = e.target.value
-        const type = e.target.type
 
         // let newValue=value;
         const updateFields = { ...newData, [name]: value }
@@ -52,15 +51,11 @@ function MemberInfo(props) {
         mData.birthday = mData.birthday.split('T')[0]
     }
 
-    const genderSelect = ['男', '女', '未決定']
-
-    // console.log(newData.birthday.split('T')[0])
-    //
     async function submitMemberInfoForm(e) {
         e.preventDefault()
         // const setNewPassword=setNewData({...newData,password:mData.password});
         // console.log(sid['m_sid'])
-        await fetch(Config.TYSU_MEMBER_INFO + sid['m_sid'], {
+        const r = await fetch(Config.TYSU_MEMBER_INFO + sid['m_sid'], {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('admin_token'),
@@ -75,25 +70,21 @@ function MemberInfo(props) {
                 address: newData.address,
             }),
         })
-            .then((r) => r.json())
-            .then((obj) => {
-                // console.log(obj)
-                if (obj.success) {
-                    // console.log(newData);
+        const obj = r.json()
+        // console.log(obj)
+        if (obj.success) {
+            if (obj.info.trim() !== '') {
+                setEditModalText(obj.info)
+                setEditModalShow(true)
+            } else {
+                setEditModalText('已更新完成')
+                setEditModalShow(true)
+            }
+        } else {
+            setEditModalText(obj.error || '資料沒有更新')
+            setEditModalShow(true)
+        }
 
-                    // console.log(obj.info.trim() !=='')
-                    if (obj.info.trim() !== '') {
-                        setEditModalText(obj.info)
-                        setEditModalShow(true)
-                    } else {
-                        setEditModalText('已更新完成')
-                        setEditModalShow(true)
-                    }
-                } else {
-                    setEditModalText(obj.error || '資料沒有更新')
-                    setEditModalShow(true)
-                }
-            })
         //http://localhost:4000/members/edit/8
     }
     return (

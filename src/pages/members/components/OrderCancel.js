@@ -1,23 +1,22 @@
-import { isTrivialHref } from '@restart/ui/esm/Anchor'
 import React, { useState, useEffect } from 'react'
 
 function OrderCancel() {
+    // 取得資料庫的訂單
     const [live_search, setLive_search] = useState([])
+    // 篩選方式
     const [sortBy, setSortBy] = useState('')
     const [newD, setNewD] = useState([])
 
     const m_sid = JSON.parse(localStorage.getItem('admin_account')).m_sid
 
     const temp = async () => {
-        await fetch('http://localhost:4000/carts/live_search', {
+        const r = await fetch('http://localhost:4000/carts/live_search', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ m_sid: m_sid }),
         })
-            .then((r) => r.json())
-            .then((obj) => {
-                setLive_search(obj)
-            })
+        const obj = r.json()
+        setLive_search(obj)
     }
 
     useEffect(() => {
@@ -26,7 +25,6 @@ function OrderCancel() {
 
     const handleSort = (live_search, sortBy) => {
         let newRoomdata = [...live_search]
-
         switch (sortBy) {
             case 'oneMonth':
                 newRoomdata = [...newRoomdata].filter((v, i) => {
@@ -35,7 +33,6 @@ function OrderCancel() {
                         30 * 1000 * 3600 * 24
                     )
                 })
-                // setLive_search(newRoomdata)
                 break
             case 'threeMonth':
                 newRoomdata = [...newRoomdata].filter((v, i) => {
@@ -44,7 +41,6 @@ function OrderCancel() {
                         90 * 1000 * 3600 * 24
                     )
                 })
-                // setLive_search(newRoomdata)
                 break
             case 'sixMonth':
                 newRoomdata = [...newRoomdata].filter((v, i) => {
@@ -53,7 +49,6 @@ function OrderCancel() {
                         180 * 1000 * 3600 * 24
                     )
                 })
-                // setLive_search(newRoomdata)
                 break
             case 'aYear':
                 newRoomdata = [...newRoomdata].filter((v, i) => {
@@ -62,10 +57,7 @@ function OrderCancel() {
                         365 * 1000 * 3600 * 24
                     )
                 })
-                // setLive_search(newRoomdata)
                 break
-            // case '':
-            //   temp()
             default:
                 break
         }
@@ -91,10 +83,7 @@ function OrderCancel() {
                     className="tysu_select"
                     value={sortBy}
                     onChange={(e) => {
-                        // console.log(e.target.value)
                         setSortBy(e.target.value)
-                        // handleSort(live_search,e.target.value)
-                        // console.log(handleSort(live_search,e.target.value))
                     }}
                 >
                     <option value="">篩選條件</option>
@@ -151,13 +140,6 @@ function OrderCancel() {
                                     <td>${v.amount}</td>
                                     <td>{v.status}</td>
                                 </tr>
-                                {/* <tr className="tysu_orderTr tysu_orderText">
-                <td className="tysu_orderBg">動物餵食秀</td>
-                <td>$100</td>
-                <td>2</td>
-                <td>2022/02/08</td>
-                <td>已過期</td>
-              </tr> */}
                             </tbody>
                         )
                     })
@@ -175,38 +157,27 @@ function OrderCancel() {
                         </tr>
                     </tbody>
                 )}
-
-                {/* <tbody>
-            <tr className="tysu_tr tysu_last">
-                <th></th>
-                <td></td>
-                <td></td>
-                <td><div className="tysu_creditT">沒有資料</div></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody> */}
             </table>
             {/* <nav className="tysu_filterSelect tysu_btnPages">
-        <ul className="tysu_pageGroup">
-          <li className="tysu_pageItem">
-            <a className="tysu_pageLink" href="#/">
-              <i className="fas fa-angle-left"></i>
-            </a>
-          </li>
-          <li className="tysu_pageItem tysu_pageText">
-            <input type="text" className="tysu_pageInput" defaultValue="1" />
-          </li>
-          <li className="tysu_pageItem">
-            <a className="tysu_pageLink" href="#/">
-              <i className="fas fa-angle-right"></i>
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
-        </ul>
-      </nav> */}
+                <ul className="tysu_pageGroup">
+                <li className="tysu_pageItem">
+                    <a className="tysu_pageLink" href="#/">
+                    <i className="fas fa-angle-left"></i>
+                    </a>
+                </li>
+                <li className="tysu_pageItem tysu_pageText">
+                    <input type="text" className="tysu_pageInput" defaultValue="1" />
+                </li>
+                <li className="tysu_pageItem">
+                    <a className="tysu_pageLink" href="#/">
+                    <i className="fas fa-angle-right"></i>
+                    </a>
+                </li>
+                </ul>
+                <ul>
+                <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
+                </ul>
+            </nav> */}
         </>
     )
 }

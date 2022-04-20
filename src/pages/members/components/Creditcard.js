@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import CreditcardAdd from './CreditcardAdd'
 
@@ -21,19 +21,8 @@ function Creditcard(props) {
 
     const [cardId, setCardId] = useState(null)
 
-    // useEffect(()=>{
-    //     if(Object.keys(creditData).length!==0){
-    //         setCdData(creditData);
-    //     }
-
-    // },[creditData])
-
-    // let newAr=Object.keys(cdData).map((v)=> cdData[v])
-
     return (
         <>
-            {/* {console.log('creditData',creditData)} */}
-            {/* {console.log('cdData',cdData)} */}
             {showTable === true ? (
                 <table className="tysu_table">
                     <tbody>
@@ -59,47 +48,29 @@ function Creditcard(props) {
                                                     className="tysu_creditDelete"
                                                     onClick={async (e) => {
                                                         // console.log(v.credit_sid)
-                                                        await fetch(
+                                                        const r = await fetch(
                                                             Config.TYSU_CREDITCARD_DELETE +
                                                                 v.credit_sid,
                                                             {
                                                                 method: 'GET',
                                                                 headers: {
-                                                                    // "Authorization": 'Bearer '+localStorage.getItem('admin_token'),
                                                                     'Content-Type':
                                                                         'application/json',
                                                                 },
-                                                                // body:JSON.stringify(creditData.credit_sid)
                                                             }
                                                         )
-                                                            .then((r) =>
-                                                                r.json()
-                                                            )
-                                                            .then((obj) => {
-                                                                //     console.log(obj)
-                                                                //     if(obj.success){
-                                                                //         // console.log(obj.error);
-                                                                const newArr =
-                                                                    creditData.filter(
-                                                                        (
-                                                                            k,
-                                                                            t
-                                                                        ) => {
-                                                                            return (
-                                                                                v.credit_sid !==
-                                                                                k.credit_sid
-                                                                            )
-                                                                        }
+                                                        const obj = r.json()
+                                                        const newArr =
+                                                            creditData.filter(
+                                                                (k, t) => {
+                                                                    return (
+                                                                        v.credit_sid !==
+                                                                        k.credit_sid
                                                                     )
-                                                                // console.log(newArr)
-                                                                //         // setCdData(newArr);
-                                                                setCreditData(
-                                                                    newArr
-                                                                )
-                                                                //     }else{
-                                                                //         console.log(obj.error);
-                                                                //     }
-                                                            })
+                                                                }
+                                                            )
+
+                                                        setCreditData(newArr)
                                                     }}
                                                 >
                                                     <i className="fas fa-times"></i>

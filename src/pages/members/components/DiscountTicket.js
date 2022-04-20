@@ -26,15 +26,6 @@ function DiscountTicket() {
                         <td></td>
                         <td></td>
                     </tr>
-                    {/* <tr className="tysu_orderTr tysu_orderText">
-                    <th>1</th>
-                    <td>R33C98</td>
-                    <td className="tysu_orderBg">1月生日禮</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>2022/01/31</td>
-                    <td>已過期</td>
-                </tr> */}
                 </tbody>
             </table>
         </>

@@ -5,7 +5,6 @@ function DiscountPoints(props) {
 
     return (
         <>
-            {/* {console.log(pointData)} */}
             <table className="tysu_table" style={{ marginBottom: '50rem' }}>
                 <thead>
                     <tr className="tysu_orderTr">

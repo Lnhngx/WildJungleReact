@@ -10,47 +10,43 @@ function OrderInfo() {
     useEffect(() => {
         let isMounted = true
         const temp = async () => {
-            await fetch('http://localhost:4000/carts/order_search', {
+            const r = await fetch('http://localhost:4000/carts/order_search', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ m_sid: m_sid }),
             })
-                .then((r) => r.json())
-                .then((obj) => {
-                    // console.log('整理的',obj)
-                    if (isMounted) {
-                        setOrder_search(obj)
-                    }
-                })
+            const obj = r.json()
+            // console.log('整理的',obj)
+            if (isMounted) {
+                setOrder_search(obj)
+            }
         }
         const temp2 = async () => {
-            await fetch('http://localhost:4000/carts/order_search2', {
+            const r = await fetch('http://localhost:4000/carts/order_search2', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ m_sid: m_sid }),
             })
-                .then((r) => r.json())
-                .then((obj) => {
-                    // console.log('檢查span長度',obj);
-                    let b = [...rowSpan]
-                    obj.map((v, i) => {
-                        if (typeof v.product_name === 'string') {
-                            b.push(String(1))
-                            if (isMounted) {
-                                setRowSpan(b)
-                            }
-                        } else {
-                            let num = v.product_name.length
-                            b.push(String(num))
-                            for (i = 0; i < v.product_name.length - 1; i++) {
-                                b.push(String(1))
-                            }
-                            if (isMounted) {
-                                setRowSpan(b)
-                            }
-                        }
-                    })
-                })
+            const obj = r.json()
+            // console.log('檢查span長度',obj);
+            let b = [...rowSpan]
+            obj.map((v, i) => {
+                if (typeof v.product_name === 'string') {
+                    b.push(String(1))
+                    if (isMounted) {
+                        setRowSpan(b)
+                    }
+                } else {
+                    let num = v.product_name.length
+                    b.push(String(num))
+                    for (i = 0; i < v.product_name.length - 1; i++) {
+                        b.push(String(1))
+                    }
+                    if (isMounted) {
+                        setRowSpan(b)
+                    }
+                }
+            })
         }
         temp2()
         temp()
@@ -141,25 +137,25 @@ function OrderInfo() {
                 </tbody>
             </table>
             {/* <nav className="tysu_filterSelect tysu_btnPages">
-        <ul className="tysu_pageGroup">
-          <li className="tysu_pageItem">
-            <a className="tysu_pageLink" href="#/">
-              <i className="fas fa-angle-left"></i>
-            </a>
-          </li>
-          <li className="tysu_pageItem tysu_pageText">
-            <input type="text" className="tysu_pageInput" defaultValue="1" />
-          </li>
-          <li className="tysu_pageItem">
-            <a className="tysu_pageLink" href="#/">
-              <i className="fas fa-angle-right"></i>
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
-        </ul>
-      </nav> */}
+                <ul className="tysu_pageGroup">
+                <li className="tysu_pageItem">
+                    <a className="tysu_pageLink" href="#/">
+                    <i className="fas fa-angle-left"></i>
+                    </a>
+                </li>
+                <li className="tysu_pageItem tysu_pageText">
+                    <input type="text" className="tysu_pageInput" defaultValue="1" />
+                </li>
+                <li className="tysu_pageItem">
+                    <a className="tysu_pageLink" href="#/">
+                    <i className="fas fa-angle-right"></i>
+                    </a>
+                </li>
+                </ul>
+                <ul>
+                <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
+                </ul>
+            </nav> */}
         </>
     )
 }

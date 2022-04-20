@@ -6,15 +6,13 @@ function OrderTicket() {
 
     useEffect(() => {
         const temp = async () => {
-            await fetch('http://localhost:4000/carts/ticket_search', {
+            const r = await fetch('http://localhost:4000/carts/ticket_search', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ m_sid: m_sid }),
             })
-                .then((r) => r.json())
-                .then((obj) => {
-                    setTicket_search(obj)
-                })
+            const obj = await r.json()
+            setTicket_search(obj)
         }
         temp()
     }, [])
@@ -77,52 +75,30 @@ function OrderTicket() {
                                 <td>{v.order_date.slice(0, 10)}</td>
                                 <td>未使用</td>
                             </tr>
-                            {/* <tr className="tysu_orderTr tysu_orderText">
-                <td className="tysu_orderBg">動物餵食秀</td>
-                <td>$100</td>
-                <td>2</td>
-                <td>2022/02/08</td>
-                <td>已過期</td>
-              </tr> */}
                         </tbody>
                     )
                 })}
-
-                <tbody>
-                    {/* <tr className="tysu_orderTr tysu_orderText">
-            <th>2</th>
-            <td>
-              <a href="#/">A220201777889</a>
-            </td>
-            <td className="tysu_orderBg">WildJungle入園門票</td>
-            <td>$105</td>
-            <td>1</td>
-            <td>$105</td>
-            <td>2022/01/08</td>
-            <td>已使用</td>
-          </tr> */}
-                </tbody>
             </table>
             {/* <nav className="tysu_filterSelect tysu_btnPages">
-        <ul className="tysu_pageGroup">
-          <li className="tysu_pageItem">
-            <a className="tysu_pageLink" href="#/">
-              <i className="fas fa-angle-left"></i>
-            </a>
-          </li>
-          <li className="tysu_pageItem tysu_pageText">
-            <input type="text" className="tysu_pageInput" defaultValue="1" />
-          </li>
-          <li className="tysu_pageItem">
-            <a className="tysu_pageLink" href="#/">
-              <i className="fas fa-angle-right"></i>
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
-        </ul>
-      </nav> */}
+                <ul className="tysu_pageGroup">
+                <li className="tysu_pageItem">
+                    <a className="tysu_pageLink" href="#/">
+                    <i className="fas fa-angle-left"></i>
+                    </a>
+                </li>
+                <li className="tysu_pageItem tysu_pageText">
+                    <input type="text" className="tysu_pageInput" defaultValue="1" />
+                </li>
+                <li className="tysu_pageItem">
+                    <a className="tysu_pageLink" href="#/">
+                    <i className="fas fa-angle-right"></i>
+                    </a>
+                </li>
+                </ul>
+                <ul>
+                <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
+                </ul>
+            </nav> */}
         </>
     )
 }

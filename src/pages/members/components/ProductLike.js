@@ -3,7 +3,6 @@ import Config from '../Config'
 
 function ProductLike(props) {
     const { likeAddCard, setLikeAddCart, likeListData, setLikeListData } = props
-    const sid = JSON.parse(localStorage.getItem('admin_account'))
     let likes = []
     if (localStorage.getItem('like')) {
         likes = JSON.parse(localStorage.getItem('like'))
@@ -45,7 +44,6 @@ function ProductLike(props) {
 
     return (
         <>
-            {/* {console.log(likeProducts)} */}
             <table className="tysu_table" style={{ marginBottom: '50rem' }}>
                 <thead>
                     <tr className="tysu_orderTr">
@@ -96,19 +94,15 @@ function ProductLike(props) {
                                             id="tysu_likeBtn"
                                             className="tysu_likeBtn tysu_likeCancel"
                                             onClick={(e) => {
-                                                // console.log(v.ProductSid)
                                                 const numAr = Object.keys(
                                                     likeProducts
                                                 ).filter((j, k) => {
                                                     return j == v.ProductSid
                                                 })
-                                                // console.log(numAr[0])
                                                 if (
                                                     v.ProductSid.toString() ===
                                                     numAr[0]
                                                 ) {
-                                                    // console.log(v.ProductSid)
-                                                    // console.log(likes)
                                                     let targetNum =
                                                         likes.findIndex(
                                                             (k) =>
@@ -120,7 +114,6 @@ function ProductLike(props) {
                                                             targetNum,
                                                             1
                                                         )
-                                                        // console.log(likes)
                                                         localStorage.setItem(
                                                             'like',
                                                             JSON.stringify(

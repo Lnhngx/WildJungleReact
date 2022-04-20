@@ -30,25 +30,25 @@ function ActivityLike() {
                 尚未加入唷!
             </div>
             {/* <nav className="tysu_filterSelect tysu_btnPages">
-            <ul className="tysu_pageGroup" style={{marginLeft:"63.2px"}}>
-                <li className="tysu_pageItem">
-                    <a className="tysu_pageLink" href="#/">
-                        <i className="fas fa-angle-left"></i>
-                    </a>
-                </li>
-                <li className="tysu_pageItem tysu_pageText">
-                    <input type="text" className="tysu_pageInput" defaultValue="1" />
-                </li>
-                <li className="tysu_pageItem">
-                    <a className="tysu_pageLink" href="#/">
-                        <i className="fas fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
-            </ul>
-        </nav> */}
+                <ul className="tysu_pageGroup" style={{marginLeft:"63.2px"}}>
+                    <li className="tysu_pageItem">
+                        <a className="tysu_pageLink" href="#/">
+                            <i className="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li className="tysu_pageItem tysu_pageText">
+                        <input type="text" className="tysu_pageInput" defaultValue="1" />
+                    </li>
+                    <li className="tysu_pageItem">
+                        <a className="tysu_pageLink" href="#/">
+                            <i className="fas fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li className="tysu_allPage">/&nbsp;10&nbsp;頁</li>
+                </ul>
+            </nav> */}
         </>
     )
 }

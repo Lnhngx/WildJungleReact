@@ -36,8 +36,6 @@ function ConvenienceStore(props) {
 
     return (
         <>
-            {/* {console.log(user711Data)} */}
-            {/* {console.log(user711D)} */}
             {showStoreAdd === false && (
                 <>
                     <table className="tysu_table">

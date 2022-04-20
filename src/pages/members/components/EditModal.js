@@ -19,10 +19,6 @@ function EditModal(props) {
         setEditShow,
     } = props
 
-    const usp = new URLSearchParams(location.pathname)
-    const pathurl = usp.has('/members/password-change')
-    // console.log(pathurl)
-
     const handleClose = () => {
         setEditModalShow(false)
         if (forgotPassText === '已更改成功，請重新登入') {

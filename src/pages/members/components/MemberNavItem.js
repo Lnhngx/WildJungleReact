@@ -58,38 +58,29 @@ function MemberNavItem(props) {
     const [localCredit, setLocalCredit] = useState(credit)
 
     const getSidDataAgain = async () => {
-        await fetch(Config.TYSU_MEMBER_INFO + `${sid.m_sid}`, {
+        const r = await fetch(Config.TYSU_MEMBER_INFO + `${sid.m_sid}`, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('admin_token'),
                 'Content-Type': 'application/json',
             },
         })
-            .then((r) => r.json())
-            .then((obj) => {
-                // console.log(obj.info);
-                setSidData(obj.info)
-            })
+        const obj = r.json()
+        setSidData(obj.info)
     }
     const getCreditDataAgain = async () => {
-        await fetch(Config.TYSU_CREDITCARD_INFO + sid.m_sid, {
+        const r = await fetch(Config.TYSU_CREDITCARD_INFO + sid.m_sid, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('admin_token'),
                 'Content-Type': 'application/json',
             },
         })
-            .then((r) => r.json())
-            .then((obj) => {
-                // console.log(obj);
-                // setCreditData(obj);
-                // console.log(obj.info.list);
-                if (obj.success) {
-                    // console.log(obj.info.list);
-                    setCreditData(obj.info.list)
-                    setLocalCredit(obj.info.list)
-                }
-            })
+        const obj = r.json()
+        if (obj.success) {
+            setCreditData(obj.info.list)
+            setLocalCredit(obj.info.list)
+        }
     }
 
     return (

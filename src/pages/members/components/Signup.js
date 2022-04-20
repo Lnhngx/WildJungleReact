@@ -2,11 +2,9 @@ import React, { useRef, useState } from 'react'
 import Config from '../Config'
 import MemberModal from './MemberModal'
 import { Form } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Signup() {
-    const history = useHistory()
-
     const [show, setShow] = useState(false)
     const handleShow = () => {
         setShow(true)
@@ -60,9 +58,6 @@ function Signup() {
                       checkbox: '',
                   }
                 : { ...fieldErrors, [name]: '' }
-        // if(fieldErrors.checkbox===true){
-        //     setFieldErrors({...fieldErrors,[name]:''})
-        // }
         setFieldErrors(updateFieldError)
     }
 
@@ -73,7 +68,6 @@ function Signup() {
             ...fieldErrors,
             [e.target.name]: e.target.validationMessage,
         }
-
         setFieldErrors(updateFieldError)
     }
 
@@ -183,11 +177,10 @@ function Signup() {
                 className="tysu_h1"
                 onClick={(e) => {
                     setFields({
-                        email: (emailInput.current.value =
-                            'tingyun1120@gmail.com'),
-                        name: '蘇亭勻',
+                        email: (emailInput.current.value = ''),
+                        name: '',
                         gender: '未決定',
-                        birthday: '1989-11-20',
+                        birthday: '',
                         password: 'a123456',
                         confirmPassword: 'a123456',
                     })

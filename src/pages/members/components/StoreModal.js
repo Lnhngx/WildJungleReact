@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
 
 function StoreModal(props) {
-    const history = useHistory()
-
     const { show, setShow, storeModalText, setShowStoreAdd } = props
 
     const handleClose = () => {
@@ -20,11 +17,6 @@ function StoreModal(props) {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                {/* <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
-        </Modal.Header> */}
                 <Modal.Body className="tysu_editModal">
                     <h4>{storeModalText}</h4>
                 </Modal.Body>

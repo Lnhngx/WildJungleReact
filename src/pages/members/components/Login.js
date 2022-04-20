@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import React, { useRef, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 // import './members/tysu.scss'
@@ -9,16 +9,7 @@ import Config from '../Config'
 import Keys from './../Keys'
 
 function Login(props) {
-    const {
-        auth,
-        setAuth,
-        account,
-        localState,
-        setLocalState,
-        comeUrl,
-        setCommentbox,
-        likeListData,
-    } = props
+    const { setAuth, comeUrl, setCommentbox } = props
     const history = useHistory()
     const emailInput = useRef()
     const passInput = useRef()
@@ -42,17 +33,6 @@ function Login(props) {
         setShow(true)
     }
 
-    const [cart_temp1, setCart_temp1] = useState([])
-    const [cart_temp2, setCart_temp2] = useState([])
-    const [cart_temp3, setCart_temp3] = useState([])
-    const [cart_temp4, setCart_temp4] = useState([])
-
-    // 如果是已經登入狀態，email欄位自動帶入用戶帳號
-    // if(auth || localState.token){
-    //   emailInput.current.value=localState.account.email;
-    //   setEmail(emailInput.current.value)
-    // }
-
     const handleChange = () => {
         if (captcha.current.getValue()) {
             // console.log('我不是機器人');
@@ -67,7 +47,7 @@ function Login(props) {
             setUserState(true)
             setCaptchaValue(true)
 
-            await fetch(Config.TYSU_LOGIN, {
+            const r = await fetch(Config.TYSU_LOGIN, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,101 +58,35 @@ function Login(props) {
                     'g-recaptcha-response': captcha.current.getValue(),
                 }),
             })
-                .then((res) => res.json())
-                .then((obj) => {
-                    // console.log(obj);
-                    if (obj.success) {
-                        localStorage.setItem(
-                            'admin_account',
-                            JSON.stringify(obj.account)
-                        )
-                        localStorage.setItem('admin_token', obj.token)
+            const obj = r.json()
+            // console.log(obj);
+            if (obj.success) {
+                localStorage.setItem(
+                    'admin_account',
+                    JSON.stringify(obj.account)
+                )
+                localStorage.setItem('admin_token', obj.token)
 
-                        // 傳回頂層登入與否的狀態
-                        setAuth(true)
-                        setSuccess('登入成功')
-                        handleShow()
-                        setTimeout(() => setShow(false), 1000)
-                        setTimeout(() => {
-                            if (comeUrl === '/carts') {
-                                history.goBack()
-                            } else if (comeUrl === '/lodging') {
-                                setCommentbox(false)
-                                history.goBack()
-                            } else {
-                                history.push('/members/modify-member-info')
-                            }
-                        }, 1500)
-
-                        // const m_sid = JSON.parse(
-                        //   localStorage.getItem("admin_account")
-                        // ).m_sid;
-
-                        // fetch("http://localhost:4000/carts/removetodb_1", {
-                        //   method: "POST",
-                        //   headers: { "Content-Type": "application/json" },
-                        //   body: JSON.stringify({
-                        //     m_sid: m_sid,
-                        //   }),
-                        // })
-                        //   .then((r) => r.json())
-                        //   .then((obj) => {
-                        //     console.log(obj)
-                        //     if(obj!=0){
-                        //     setCart_temp1(JSON.stringify(obj);
-                        //   }
-                        //     localStorage.setItem('cart',cart_temp1);
-                        //   });
-
-                        //   fetch("http://localhost:4000/carts/removetodb_2", {
-                        //     method: "POST",
-                        //     headers: { "Content-Type": "application/json" },
-                        //     body: JSON.stringify({
-                        //       m_sid: m_sid,
-                        //     }),
-                        //   })
-                        //     .then((r) => r.json())
-                        //     .then((obj) => {
-                        //       setCart_temp2(obj);
-                        //       localStorage.setItem('secondCart',obj);
-                        //     });
-
-                        //     fetch("http://localhost:4000/carts/removetodb_3", {
-                        //       method: "POST",
-                        //       headers: { "Content-Type": "application/json" },
-                        //       body: JSON.stringify({
-                        //         m_sid: m_sid,
-                        //       }),
-                        //     })
-                        //       .then((r) => r.json())
-                        //       .then((obj) => {
-                        //         setCart_temp3(obj);
-                        //         localStorage.setItem('thirdCart',obj);
-                        //       });
-
-                        //       fetch("http://localhost:4000/carts/removetodb_4", {
-                        //         method: "POST",
-                        //         headers: { "Content-Type": "application/json" },
-                        //         body: JSON.stringify({
-                        //           m_sid: m_sid,
-                        //         }),
-                        //       })
-                        //         .then((r) => r.json())
-                        //         .then((obj) => {
-                        //           setCart_temp4(obj);
-                        //           localStorage.setItem('fourthCart',obj);
-                        //         });
-
-                        // console.log(obj.success)
-                        // alert('登入成功');
+                // 傳回頂層登入與否的狀態
+                setAuth(true)
+                setSuccess('登入成功')
+                handleShow()
+                setTimeout(() => setShow(false), 1000)
+                setTimeout(() => {
+                    if (comeUrl === '/carts') {
+                        history.goBack()
+                    } else if (comeUrl === '/lodging') {
+                        setCommentbox(false)
+                        history.goBack()
                     } else {
-                        setSuccess(obj.error || '帳號或密碼錯誤')
-                        handleShow()
-                        setTimeout(() => setShow(false), 1000)
-
-                        // alert(obj.error || '登入失敗');
+                        history.push('/members/modify-member-info')
                     }
-                })
+                }, 1500)
+            } else {
+                setSuccess(obj.error || '帳號或密碼錯誤')
+                handleShow()
+                setTimeout(() => setShow(false), 1000)
+            }
         } else {
             setUserState(false)
             setCaptchaValue(false)

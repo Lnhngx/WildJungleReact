@@ -19,7 +19,6 @@ function ForgotPassChange() {
     })
     const usp = new URLSearchParams(location.search)
     const authRole = usp.get('auth')
-    // console.log(authRole);
 
     const [changePass, setChangePass] = useState(false)
 
@@ -30,9 +29,6 @@ function ForgotPassChange() {
             name === 'password' || name === 'confirmpassword'
                 ? { ...formError, password: '', confirmpassword: '' }
                 : { ...formError, [name]: '' }
-        // if(fieldErrors.checkbox===true){
-        //     setFieldErrors({...fieldErrors,[name]:''})
-        // }
         setFormError(updateFieldError)
     }
 
@@ -47,8 +43,7 @@ function ForgotPassChange() {
 
     const submitChangePass = async (e) => {
         e.preventDefault()
-        // console.log(password);
-        // console.log(confirmpassword);
+
         const fd = new FormData(e.target)
         const fdpassword = fd.get('password')
         const fdconfirmpassword = fd.get('confirmpassword')

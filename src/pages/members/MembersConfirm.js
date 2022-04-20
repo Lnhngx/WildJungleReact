@@ -25,7 +25,7 @@ function MembersConfirm() {
             setSearchId(id)
         }
         const confirmMember = async () => {
-            const d = await fetch(Config.TYSU_CONFIRM + '?id=' + id, {
+            const r = await fetch(Config.TYSU_CONFIRM + '?id=' + id, {
                 method: 'GET',
                 headers: {
                     Authorization: 'Bearer ' + id,
@@ -36,7 +36,7 @@ function MembersConfirm() {
                     }),
                 },
             })
-            const obj = await d.json()
+            const obj = await r.json()
 
             if (obj.success) {
                 setConfirmText(obj.info || 'WELCOME　TO　JOIN　US')
