@@ -58,8 +58,8 @@ function Login(props) {
                     'g-recaptcha-response': captcha.current.getValue(),
                 }),
             })
-            const obj = r.json()
-            // console.log(obj);
+            const obj = await r.json()
+            // console.log(obj)
             if (obj.success) {
                 localStorage.setItem(
                     'admin_account',
