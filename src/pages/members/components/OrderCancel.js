@@ -15,7 +15,7 @@ function OrderCancel() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ m_sid: m_sid }),
         })
-        const obj = r.json()
+        const obj = await r.json()
         setLive_search(obj)
     }
 
