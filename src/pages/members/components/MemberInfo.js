@@ -70,7 +70,7 @@ function MemberInfo(props) {
                 address: newData.address,
             }),
         })
-        const obj = r.json()
+        const obj = await r.json()
         // console.log(obj)
         if (obj.success) {
             if (obj.info.trim() !== '') {
