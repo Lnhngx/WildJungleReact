@@ -232,7 +232,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .ning_checkbox {
     display: flex;
-    width: 100%;
+    width: 60%;
   }
 
   .ning_datebox {
@@ -241,11 +241,11 @@ $ning-englishont: "Playfair Display", serif;
   
   }
 
-  .ning_lastdatebox {
-    width: 100%;
-    font-family: $ning-chinesefont;
+  // .ning_lastdatebox {
+  //   width: 100%;
+  //   font-family: $ning-chinesefont;
   
-  }
+  // }
 
   .ning_table {
     width: 100%;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 
 const myYear = 2022;
-const myMonth = 5;
+const myMonth = new Date().getMonth()+1;
 
 const lastMonth =4;
 
@@ -145,7 +145,7 @@ function MyDate(props) {
         {check[1]}
       </h2>
       <div className="ning_checkbox">
-        <div className="ning_lastdatebox">
+        {/* <div className="ning_lastdatebox">
           <table border="1" className="ning_table">
             <thead id="title">
               <tr className="ning_tr">
@@ -197,7 +197,7 @@ function MyDate(props) {
               })}
             </tbody>
           </table>
-        </div>
+        </div> */}
         <div className="ning_datebox">
           <table border="1" className="ning_table">
             <thead id="title">
