@@ -71,9 +71,9 @@ function CommentItem(props) {
           onClick={clickNav}
           style={{ display: m_sid["m_name"] !== m_name && "none" }}
         >
-          <span>
+          {/* <span>
             <i className="far fa-edit" ></i>
-          </span>
+          </span> */}
 
           <span>
             <i className="far fa-trash-alt" onClick={handleShow}></i>
