@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import Config from '../Config'
 
-import MemberInfo from './MemberInfo'
-import GradeInfo from './GradeInfo'
-import Creditcard from './Creditcard'
+import ActivityLike from './ActivityLike'
 import AddressAdd from './AddressAdd'
-import OrderInfo from './OrderInfo'
-import OrderTicket from './OrderTicket'
-import OrderCancel from './OrderCancel'
 import ConvenienceStore from './ConvenienceStore'
-import ConvenienceStoreAdd from './ConvenienceStoreAdd'
+import Creditcard from './Creditcard'
 import DiscountPoints from './DiscountPoints'
 import DiscountTicket from './DiscountTicket'
+import GradeInfo from './GradeInfo'
+import MemberInfo from './MemberInfo'
+import OrderCancel from './OrderCancel'
+import OrderInfo from './OrderInfo'
+import OrderTicket from './OrderTicket'
 import ProductLike from './ProductLike'
-import ActivityLike from './ActivityLike'
 
 // navItem=['基本設定','分級資訊','信用卡管理','常用資訊']
 // orderNavItem=['訂單查詢','票券查詢','訂單退換貨','配送設定']
@@ -65,7 +64,7 @@ function MemberNavItem(props) {
                 'Content-Type': 'application/json',
             },
         })
-        const obj = r.json()
+        const obj = await r.json()
         setSidData(obj.info)
     }
     const getCreditDataAgain = async () => {
@@ -76,7 +75,7 @@ function MemberNavItem(props) {
                 'Content-Type': 'application/json',
             },
         })
-        const obj = r.json()
+        const obj = await r.json()
         if (obj.success) {
             setCreditData(obj.info.list)
             setLocalCredit(obj.info.list)

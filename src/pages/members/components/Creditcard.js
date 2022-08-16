@@ -59,7 +59,7 @@ function Creditcard(props) {
                                                                 },
                                                             }
                                                         )
-                                                        const obj = r.json()
+                                                        const obj =await r.json()
                                                         const newArr =
                                                             creditData.filter(
                                                                 (k, t) => {

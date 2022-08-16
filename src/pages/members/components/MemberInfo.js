@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Config from '../Config'
 
 import EditModal from './EditModal'
@@ -21,15 +20,18 @@ function MemberInfo(props) {
         password: '',
         address: '',
     })
+
     useEffect(() => {
-        // console.log(dataAgain);
+        console.log(dataAgain)
+        console.log(sidData)
         if (Object.keys(sidData).length !== 0) {
             // console.log(sidData)
             setmData(sidData)
             setNewData({
                 ...newData,
+
                 email: sidData.email,
-                name: sidData.m_name,
+                name: sidData['m_name'],
                 gender: sidData.gender,
                 birthday: sidData.birthday.split('T')[0],
                 address: sidData.m_address,

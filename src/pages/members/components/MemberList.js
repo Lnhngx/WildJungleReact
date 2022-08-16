@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Config from '../Config'
 
@@ -41,20 +41,32 @@ function MemberList(props) {
     // 取得會員超商設定
     const [user711Data, setUser711Data] = useState({})
 
+    const getSidData = async () => {
+        const r = await fetch(Config.TYSU_MEMBER_INFO + `${sid.m_sid}`, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('admin_token'),
+                'Content-Type': 'application/json',
+            },
+        })
+        const obj = await r.json()
+        // console.log('MemberList-obj:',obj);
+        setSidData(obj.info)
+    }
     useEffect(() => {
-        const getSidData = async () => {
-            const r = await fetch(Config.TYSU_MEMBER_INFO + `${sid.m_sid}`, {
-                method: 'GET',
-                headers: {
-                    Authorization:
-                        'Bearer ' + localStorage.getItem('admin_token'),
-                    'Content-Type': 'application/json',
-                },
-            })
-            const obj = r.json()
-            // console.log('MemberList-obj:',obj);
-            setSidData(obj.info)
-        }
+        // const getSidData = async () => {
+        //     const r = await fetch(Config.TYSU_MEMBER_INFO + `${sid.m_sid}`, {
+        //         method: 'GET',
+        //         headers: {
+        //             Authorization:
+        //                 'Bearer ' + localStorage.getItem('admin_token'),
+        //             'Content-Type': 'application/json',
+        //         },
+        //     })
+        //     const obj = await r.json()
+        //     // console.log('MemberList-obj:',obj);
+        //     setSidData(obj.info)
+        // }
         getSidData()
 
         const getCreditData = async () => {
@@ -66,7 +78,7 @@ function MemberList(props) {
                     'Content-Type': 'application/json',
                 },
             })
-            const obj = r.json()
+            const obj = await r.json()
             // console.log('CreditCard:',obj);
             if (obj.success) {
                 setCreditData(obj.info.list)
@@ -86,7 +98,7 @@ function MemberList(props) {
                     'Content-Type': 'application/json',
                 },
             })
-            const obj = r.json()
+            const obj = await r.json()
             // console.log('BonusPoint:',obj)
             if (obj.success) {
                 setPointData(obj.info)
@@ -104,7 +116,7 @@ function MemberList(props) {
                     },
                 }
             )
-            const obj = r.json()
+            const obj = await r.json()
             // console.log('User711:',obj)
             setUser711Data(obj)
         }
@@ -119,7 +131,7 @@ function MemberList(props) {
     //                 'Content-Type': 'application/json',
     //             },
     //         })
-    //         const obj = r.json()
+    //         const obj =await r.json()
     //         // console.log('LikeList:', obj)
     //         if (obj.success) {
     //             localStorage.setItem('like', JSON.stringify(obj.info))
@@ -141,6 +153,7 @@ function MemberList(props) {
                             <li
                                 key={i}
                                 onClick={(e) => {
+                                    getSidData()
                                     props.setActived(v)
                                     setNavState({
                                         navItem: navItem[0],
