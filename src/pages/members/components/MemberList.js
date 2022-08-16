@@ -51,7 +51,7 @@ function MemberList(props) {
                     'Content-Type': 'application/json',
                 },
             })
-            const obj = r.json()
+            const obj =await r.json()
             // console.log('MemberList-obj:',obj);
             setSidData(obj.info)
         }
@@ -66,7 +66,7 @@ function MemberList(props) {
                     'Content-Type': 'application/json',
                 },
             })
-            const obj = r.json()
+            const obj =await r.json()
             // console.log('CreditCard:',obj);
             if (obj.success) {
                 setCreditData(obj.info.list)
@@ -86,7 +86,7 @@ function MemberList(props) {
                     'Content-Type': 'application/json',
                 },
             })
-            const obj = r.json()
+            const obj =await r.json()
             // console.log('BonusPoint:',obj)
             if (obj.success) {
                 setPointData(obj.info)
@@ -104,7 +104,7 @@ function MemberList(props) {
                     },
                 }
             )
-            const obj = r.json()
+            const obj =await r.json()
             // console.log('User711:',obj)
             setUser711Data(obj)
         }
@@ -119,7 +119,7 @@ function MemberList(props) {
     //                 'Content-Type': 'application/json',
     //             },
     //         })
-    //         const obj = r.json()
+    //         const obj =await r.json()
     //         // console.log('LikeList:', obj)
     //         if (obj.success) {
     //             localStorage.setItem('like', JSON.stringify(obj.info))

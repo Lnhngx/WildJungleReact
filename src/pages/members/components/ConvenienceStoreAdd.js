@@ -39,7 +39,7 @@ function ConvenienceStoreAdd(props) {
                     'Content-Type': 'application/json',
                 },
             })
-            const obj = r.json()
+            const obj =await r.json()
             // console.log(obj)
             setCityData(obj)
         }
@@ -54,7 +54,7 @@ function ConvenienceStoreAdd(props) {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
             })
-            const obj = r.json()
+            const obj =await r.json()
             // console.log(obj.result)
             setAreaSelect(obj.result)
             setAreaName(obj.result[0])
@@ -77,7 +77,7 @@ function ConvenienceStoreAdd(props) {
                     },
                 }
             )
-            const obj = r.json()
+            const obj =await r.json()
             if (obj.result[0]['storeTown'] !== undefined) {
                 // console.log('get711StoreData obj',obj);
                 setStoreData(obj.result)

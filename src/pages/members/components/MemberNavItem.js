@@ -65,7 +65,7 @@ function MemberNavItem(props) {
                 'Content-Type': 'application/json',
             },
         })
-        const obj = r.json()
+        const obj =await r.json()
         setSidData(obj.info)
     }
     const getCreditDataAgain = async () => {
@@ -76,7 +76,7 @@ function MemberNavItem(props) {
                 'Content-Type': 'application/json',
             },
         })
-        const obj = r.json()
+        const obj =await r.json()
         if (obj.success) {
             setCreditData(obj.info.list)
             setLocalCredit(obj.info.list)
