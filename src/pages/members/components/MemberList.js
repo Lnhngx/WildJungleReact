@@ -54,6 +54,7 @@ function MemberList(props) {
         setSidData(obj.info)
     }
     useEffect(() => {
+<<<<<<< HEAD
         // const getSidData = async () => {
         //     const r = await fetch(Config.TYSU_MEMBER_INFO + `${sid.m_sid}`, {
         //         method: 'GET',
@@ -67,6 +68,21 @@ function MemberList(props) {
         //     // console.log('MemberList-obj:',obj);
         //     setSidData(obj.info)
         // }
+=======
+        const getSidData = async () => {
+            const r = await fetch(Config.TYSU_MEMBER_INFO + `${sid.m_sid}`, {
+                method: 'GET',
+                headers: {
+                    Authorization:
+                        'Bearer ' + localStorage.getItem('admin_token'),
+                    'Content-Type': 'application/json',
+                },
+            })
+            const obj =await r.json()
+            // console.log('MemberList-obj:',obj);
+            setSidData(obj.info)
+        }
+>>>>>>> d05d39f02b4de2cc8ef615f5f40bf1bc2de889c2
         getSidData()
 
         const getCreditData = async () => {
@@ -78,7 +94,11 @@ function MemberList(props) {
                     'Content-Type': 'application/json',
                 },
             })
+<<<<<<< HEAD
             const obj = await r.json()
+=======
+            const obj =await r.json()
+>>>>>>> d05d39f02b4de2cc8ef615f5f40bf1bc2de889c2
             // console.log('CreditCard:',obj);
             if (obj.success) {
                 setCreditData(obj.info.list)
@@ -98,7 +118,11 @@ function MemberList(props) {
                     'Content-Type': 'application/json',
                 },
             })
+<<<<<<< HEAD
             const obj = await r.json()
+=======
+            const obj =await r.json()
+>>>>>>> d05d39f02b4de2cc8ef615f5f40bf1bc2de889c2
             // console.log('BonusPoint:',obj)
             if (obj.success) {
                 setPointData(obj.info)
@@ -116,7 +140,11 @@ function MemberList(props) {
                     },
                 }
             )
+<<<<<<< HEAD
             const obj = await r.json()
+=======
+            const obj =await r.json()
+>>>>>>> d05d39f02b4de2cc8ef615f5f40bf1bc2de889c2
             // console.log('User711:',obj)
             setUser711Data(obj)
         }

@@ -230,15 +230,26 @@ $ning-englishont: "Playfair Display", serif;
     }
   }
 
-  .ning_datebox {
+  .ning_checkbox {
+    display: flex;
     width: 60%;
+  }
+
+  .ning_datebox {
+    width: 100%;
     font-family: $ning-chinesefont;
   
   }
 
+  // .ning_lastdatebox {
+  //   width: 100%;
+  //   font-family: $ning-chinesefont;
+  
+  // }
+
   .ning_table {
     width: 100%;
-    height: 200px;
+    height: 180px;
     border: 1px solid $ning-color4;
     text-align: center;
 

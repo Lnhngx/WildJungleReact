@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Config from "../Config";
+// import Config from "../Config";
 import "rc-slider/assets/index.css";
 import CommentList from "./CommentList";
 import AdditionComment from "./AdditionComment";
-import EditComment from "./EditComment";
+// import EditComment from "./EditComment";
 
 const LodgingComment = (props) => {
   const { setCommentbox, data, total, roomSid, roomName, setData, order } =

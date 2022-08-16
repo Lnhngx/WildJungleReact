@@ -64,7 +64,11 @@ function MemberNavItem(props) {
                 'Content-Type': 'application/json',
             },
         })
+<<<<<<< HEAD
         const obj = await r.json()
+=======
+        const obj =await r.json()
+>>>>>>> d05d39f02b4de2cc8ef615f5f40bf1bc2de889c2
         setSidData(obj.info)
     }
     const getCreditDataAgain = async () => {
@@ -75,7 +79,11 @@ function MemberNavItem(props) {
                 'Content-Type': 'application/json',
             },
         })
+<<<<<<< HEAD
         const obj = await r.json()
+=======
+        const obj =await r.json()
+>>>>>>> d05d39f02b4de2cc8ef615f5f40bf1bc2de889c2
         if (obj.success) {
             setCreditData(obj.info.list)
             setLocalCredit(obj.info.list)

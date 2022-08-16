@@ -53,7 +53,11 @@ Wild Jungle的衷旨在於，使用者可以即時地知道我們動物園的自
     <li type=circle>會員登入、註冊、忘記密碼、資料修改與查詢</li>
     <li type=circle>JWT驗證信、bcrypt加密密碼。</li>
 </ul>
-
+<ul>
+    <li>購物車頁面</li>
+    <li type=circle>商品性質分類的購物車</li>
+    <li type=circle>紅利及結帳系統</li>
+</ul>
 
 # 網站視覺
 
@@ -84,11 +88,11 @@ Wild Jungle的衷旨在於，使用者可以即時地知道我們動物園的自
 
 <img width="1440" alt="截圖 2022-04-20 14 08 40" src="https://user-images.githubusercontent.com/96760571/164163260-499cd9dc-4e2d-4575-8645-c0d31a8ac6a7.png">
 
-<img width="1440" alt="截圖 2022-04-20 14 08 50" src="https://user-images.githubusercontent.com/96760571/164163294-61ef4549-49c5-400e-909a-92b297e7d0e3.png">
+<img width="1440" alt="截圖 2022-04-20 14 08 50" src="https://user-images.githubusercontent.com/96732250/167647777-2d5a572f-e852-4862-99ba-b41186b7d5c2.png">
 
-<img width="1440" alt="截圖 2022-04-20 14 09 14" src="https://user-images.githubusercontent.com/96760571/164163299-e0ca0297-326a-4e47-800e-fde0544cf554.png">
+<img width="1440" alt="截圖 2022-04-20 14 09 14" src="https://user-images.githubusercontent.com/96732250/167647787-2ebfe287-1616-4543-81ea-c95192e477a2.png">
 
-<img width="1440" alt="截圖 2022-04-20 14 16 02" src="https://user-images.githubusercontent.com/96760571/164163349-b4cae775-2b94-467f-a613-42c15881c572.png">
+<img width="1440" alt="截圖 2022-04-20 14 16 02" src="https://user-images.githubusercontent.com/96732250/167647794-d2a19f67-e72d-4984-851c-fd323f0de43d.png">
 
 
 # 網站聲明

@@ -185,7 +185,7 @@ $ning-englishont: "Playfair Display", serif;
   //apple版
   
   .zooDetail {
-    width: 42%;
+    width: 48%;
     height: 18vh;
     position: absolute;
     bottom: 0;
@@ -218,7 +218,7 @@ $ning-englishont: "Playfair Display", serif;
   }
 
   .zooslider {
-    width: 45%;
+    width: 44%;
     //apple版
     height: 18vh;
     // height: 15vh;
@@ -228,10 +228,10 @@ $ning-englishont: "Playfair Display", serif;
     position: absolute;
     //apple版
     // right: 5%;
-    right: 10%;
+    right: 8%;
     bottom: 0;
     span {
-      width: 10%;
+      width: 12%;
       color: $ning-color3;
       font-size: 2rem;
       cursor: pointer;
@@ -245,7 +245,7 @@ $ning-englishont: "Playfair Display", serif;
     justify-content: space-evenly;
     align-items: center;
     img {
-      width: 15%;
+      width: 16%;
       opacity: 0.5;
     }
     .active {
@@ -432,7 +432,7 @@ $ning-englishont: "Playfair Display", serif;
     height: 100vh;
     display: flex;
     justify-content: space-evenly;
-    margin: 30px 300px 0 300px;
+    margin: 30px 180px 0 180px;
   }
 
   .ning_Jungletourimgbox {
@@ -454,7 +454,7 @@ $ning-englishont: "Playfair Display", serif;
   // }
 
   .ning_JungleTourmap {
-    width: 30%;
+    width: 35%;
     margin-top: 80px;
     margin-bottom: 250px;
   }
@@ -498,7 +498,7 @@ $ning-englishont: "Playfair Display", serif;
 
   .ning_JungleOceanimg {
     position: absolute;
-    left: -280px;
+    left: -300px;
     // height: 100%;
     height: 420px;
   }
@@ -1087,7 +1087,7 @@ $ning-englishont: "Playfair Display", serif;
     height: 100%;
     transition: 1s;
     //apple版
-    margin-left: -150px;
+    margin-left: -100px;
     // margin-left: -150px;
 
     img {
@@ -1147,8 +1147,8 @@ $ning-englishont: "Playfair Display", serif;
     height: 100%;
     transition: 1s;
     //apple版
-    // margin-left: -90px;
-    margin-left: -140px;
+    margin-left: -90px;
+    // margin-left: -140px;
 
     img {
       //apple版
@@ -1209,8 +1209,8 @@ $ning-englishont: "Playfair Display", serif;
     height: 100%;
     transition: 1s;
     //apple版
-    // margin-left: -300px;
-    margin-left: -280px;
+    margin-left: -200px;
+    // margin-left: -280px;
 
     img {
       height: 100%;
@@ -1314,8 +1314,8 @@ $ning-englishont: "Playfair Display", serif;
   .ning_starproductimg {
     width: 20%;
     //apple版
-    // height: 15vw;
-    height: 12vw;
+    height: 15vw;
+    // height: 12vw;
     overflow: hidden;
     cursor: pointer;
     border: 4px solid $ning-color3;
